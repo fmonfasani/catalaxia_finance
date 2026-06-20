@@ -127,7 +127,7 @@ Leer en orden:
 
 ## Licencia
 
-Privado — Equipo CatalaXia (Valentino, Mateo, Aldana, Joaquin)
+Privado — Equipo webshooks (Mateo, Aldana, Joaquin)
 
 ---
 
