@@ -1,0 +1,6 @@
+yfinance==0.2.50
+requests==2.32.3
+sqlalchemy==2.0.36
+asyncpg==0.30.0
+pydantic==2.9.2
+python-dotenv==1.0.1
