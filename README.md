@@ -41,7 +41,7 @@ Todos los scripts vienen del repo [catalaxia-cedears](D:\Software Development\Do
 - `migrations/001_initial_schema.sql` ← schema oficial PostgreSQL
 - `docs/*.md` ← documentación técnica del equipo (Valentino, Mateo, Aldana, Joaquin)
 
-## Qué falta implementar (próximas semanas)
+## implementar 
 
 Este módulo es la **base limpia para las próximas fases**:
 
