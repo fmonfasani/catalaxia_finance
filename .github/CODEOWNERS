@@ -1,3 +1,6 @@
+# Backend — Precios
+/backend/fetchers/precios.py        @fmonfasani
+
 # Backend — Financials & Ratios
 /backend/calculators/               @mateollorente
 /backend/fetchers/sec_edgar.py      @mateollorente
