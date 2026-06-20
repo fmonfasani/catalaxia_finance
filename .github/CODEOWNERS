@@ -1,0 +1,21 @@
+# Backend — Precios
+/backend/fetchers/precios.py        @ValentinoPicco
+
+# Backend — Financials & Ratios
+/backend/calculators/               @mateollorente
+/backend/fetchers/sec_edgar.py      @mateollorente
+
+# Frontend — Screener & Análisis
+/frontend/app/analisis-financiero/page.tsx     @JoaquinLevis
+/frontend/components/screener/                  @JoaquinLevis
+
+# Frontend — Procesos & Gestión
+/frontend/app/procesos/                         @OviedoAldana
+/frontend/app/analisis-financiero/[ticker]/     @OviedoAldana
+/frontend/components/processes/                 @OviedoAldana
+/frontend/components/ticker/                    @OviedoAldana
+
+# Infrastructure & Docs
+/migrations/        @fmonfasani
+/docs/              @fmonfasani
+/.github/           @fmonfasani
