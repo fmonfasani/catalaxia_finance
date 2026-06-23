@@ -1,0 +1,17 @@
+Categoría,Ticker,Empresa,Cotiza en BYMA,Cotiza en USA,Data en EDGAR,Data en CNV,Fuente datos
+CEDEARs USA en BYMA,AAPL,Apple,SÍ,SÍ,SI,N/A,EDGAR
+CEDEARs USA en BYMA,MSFT,Microsoft,SÍ,SÍ,SI,N/A,EDGAR
+CEDEARs USA en BYMA,NVDA,NVIDIA,SÍ,SÍ,SI,N/A,EDGAR
+CEDEARs USA en BYMA,TSLA,Tesla,SÍ,SÍ,SI,N/A,EDGAR
+CEDEARs USA en BYMA,AMZN,Amazon,SÍ,SÍ,SI,N/A,EDGAR
+---,,,,,,,
+Acciones Arg en USA,YPF,YPF SA,SÍ,SÍ,SI,SI,EDGAR + CNV
+Acciones Arg en USA,GGAL,Grupo Gálicia,SÍ,SÍ,SI,SI,EDGAR + CNV
+Acciones Arg en USA,BMA,Banco Macro,SÍ,SÍ,SI,SI,EDGAR + CNV
+Acciones Arg en USA,TARG,Telecom Arg,SÍ,SÍ,SI,SI,EDGAR + CNV
+Acciones Arg en USA,CRESY,Cresud,SÍ,SÍ,SI,SI,EDGAR + CNV
+---,,,,,,,
+SOLO en BYMA (Argentina),PAMPm,Pampa Energía,SÍ,NO,NO,SI,CNV/BYMA
+SOLO en BYMA (Argentina),EDNm,Edenor,SÍ,NO,NO,SI,CNV/BYMA
+SOLO en BYMA (Argentina),CEPUm,Central Puerto,SÍ,NO,NO,SI,CNV/BYMA
+SOLO en BYMA (Argentina),MOLAm,Molinos Agro,SÍ,NO,NO,SI,CNV/BYMA

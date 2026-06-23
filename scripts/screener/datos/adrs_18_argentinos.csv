@@ -1,0 +1,19 @@
+ticker,empresa,bolsa,sector,pais,precio_usd
+BBAR_US,Banco BBVA Argentina,NYSE,Financials,Argentina,20.99
+BMA_US,Banco Macro,NYSE,Financials,Argentina,97.28
+CAAP_US,Corporación América Airports,NASDAQ,Transportation,Argentina,26.59
+CEPU_US,Central Puerto,NASDAQ,Utilities,Argentina,15.55
+CRESY_US,Cresud,NASDAQ,Agriculture,Argentina,11.57
+EDN_US,Edenor,NYSE,Utilities,Argentina,26.63
+GGAL_US,Grupo Financiero Galicia,NASDAQ,Financials,Argentina,53.33
+GLOB_US,Globant,NASDAQ,Technology,Argentina,29.97
+IRS_US,IRSA,NASDAQ,Real Estate,Argentina,16.30
+LOMA_US,Loma Negra,NYSE,Materials,Argentina,11.91
+MELI_US,MercadoLibre,NASDAQ,E-commerce,Argentina,1589.45
+PAM_US,Pampa Energía,NYSE,Utilities,Argentina,84.53
+SUPV_US,Grupo Supervielle,NYSE,Financials,Argentina,10.32
+TEO_US,Telecom Argentina,NYSE,Telecommunications,Argentina,13.19
+TGS_US,Transportadora Gas Sur,NYSE,Energy,Argentina,31.51
+TS_US,Tenaris,NYSE,Materials,Argentina,58.15
+TX_US,Ternium Argentina,NYSE,Materials,Argentina,46.63
+YPF_US,YPF,NYSE,Energy,Argentina,49.47

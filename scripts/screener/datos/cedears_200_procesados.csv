@@ -1,0 +1,130 @@
+ticker,empresa,sector,pais,tipo,precio
+AAPL,Apple Inc.,Technology,USA,CEDEAR,297.01
+MSFT,Microsoft Corp.,Technology,USA,CEDEAR,367.34
+NVDA,NVIDIA Corp.,Technology,USA,CEDEAR,208.65
+TSLA,Tesla Inc.,Automobiles,USA,CEDEAR,405.05
+AMZN,Amazon.com Inc.,Consumer,USA,CEDEAR,232.79
+AMZN,Amazon.com Inc.,Consumer,USA,CEDEAR,232.79
+GOOGL,Alphabet Inc.,Technology,USA,CEDEAR,349.68
+NFLX,Netflix Inc.,Media,USA,CEDEAR,72.88
+META,Meta Platforms Inc.,Technology,USA,CEDEAR,563.85
+BABA,Alibaba Group,Technology,USA,CEDEAR,104.97
+MELI,MercadoLibre Inc.,E-commerce,USA,CEDEAR,1589.45
+JPM,J.P. Morgan Chase,Financials,USA,CEDEAR,331.48
+BAC,Bank of America,Financials,USA,CEDEAR,57.37
+GS,Goldman Sachs,Financials,USA,CEDEAR,1106.37
+C,Citigroup Inc.,Financials,USA,CEDEAR,145.67
+AXP,American Express,Financials,USA,CEDEAR,338.07
+MA,Mastercard Inc.,Financials,USA,CEDEAR,484.09
+V,Visa Inc.,Financials,USA,CEDEAR,326.6
+JNJ,Johnson & Johnson,Healthcare,USA,CEDEAR,231.29
+PFE,Pfizer Inc.,Healthcare,USA,CEDEAR,25.08
+MRK,Merck & Co.,Healthcare,USA,CEDEAR,115.48
+ABT,Abbott Labs,Healthcare,USA,CEDEAR,87.83
+TMO,Thermo Fisher,Healthcare,USA,CEDEAR,464.01
+CVS,CVS Health,Healthcare,USA,CEDEAR,101.3
+ABBV,AbbVie Inc.,Healthcare,USA,CEDEAR,230.01
+GILD,Gilead Sciences,Healthcare,USA,CEDEAR,124.87
+XOM,ExxonMobil,Energy,USA,CEDEAR,138.47
+CVX,Chevron Corp.,Energy,USA,CEDEAR,175.06
+COP,ConocoPhillips,Energy,USA,CEDEAR,109.7
+MPC,Marathon Petroleum,Energy,USA,CEDEAR,247.29
+PSX,Phillips 66,Energy,USA,CEDEAR,168.41
+PM,Philip Morris,Consumer,USA,CEDEAR,173.17
+MO,Altria Group,Consumer,USA,CEDEAR,69.51
+PG,Procter & Gamble,Consumer,USA,CEDEAR,147.68
+KO,Coca-Cola,Consumer,USA,CEDEAR,79.53
+PEP,PepsiCo,Consumer,USA,CEDEAR,140.71
+MCD,McDonald's,Consumer,USA,CEDEAR,270.1
+SBUX,Starbucks,Consumer,USA,CEDEAR,100.15
+BA,Boeing,Industrials,USA,CEDEAR,220.83
+CAT,Caterpillar,Industrials,USA,CEDEAR,1022.28
+DE,Deere & Co.,Industrials,USA,CEDEAR,598.59
+GE,General Electric,Industrials,USA,CEDEAR,355.12
+MMM,3M Company,Industrials,USA,CEDEAR,163.22
+HON,Honeywell,Industrials,USA,CEDEAR,228.11
+RTX,Raytheon,Defense,USA,CEDEAR,181.83
+LMT,Lockheed Martin,Defense,USA,CEDEAR,493.6
+NOC,Northrop Grumman,Defense,USA,CEDEAR,507.33
+DIS,Walt Disney,Media,USA,CEDEAR,102.45
+CMCSA,Comcast,Media,USA,CEDEAR,22.32
+PARA,Paramount,Media,USA,CEDEAR,
+INTC,Intel,Technology,USA,CEDEAR,140.94
+AMD,Advanced Micro Devices,Technology,USA,CEDEAR,551.63
+QCOM,Qualcomm,Technology,USA,CEDEAR,221.9
+AVGO,Broadcom,Technology,USA,CEDEAR,392.13
+MU,Micron Technology,Technology,USA,CEDEAR,1211.38
+MRVL,Marvell Tech,Technology,USA,CEDEAR,307.86
+LRCX,Lam Research,Technology,USA,CEDEAR,409.54
+ASML,ASML Holding,Technology,USA,CEDEAR,1929.25
+SNDK,SanDisk,Technology,USA,CEDEAR,2273.73
+ORCL,Oracle,Technology,USA,CEDEAR,175.07
+SAP,SAP SE,Technology,USA,CEDEAR,149.51
+CRM,Salesforce,Technology,USA,CEDEAR,150.12
+ADBE,Adobe,Technology,USA,CEDEAR,194.9
+NOW,ServiceNow,Technology,USA,CEDEAR,93.01
+TEAM,Atlassian,Technology,USA,CEDEAR,79.96
+SHOP,Shopify,E-commerce,USA,CEDEAR,107.98
+SPY,SPDR S&P 500,ETF,USA,CEDEAR,
+QQQ,Invesco QQQ,ETF,USA,CEDEAR,
+IVV,iShares Core S&P 500,ETF,USA,CEDEAR,
+EEM,Mercados Emergentes,ETF,USA,CEDEAR,
+EFA,iShares EAFE,ETF,USA,CEDEAR,
+AGG,Bonos,ETF,USA,CEDEAR,
+GLD,Oro,ETF,USA,CEDEAR,
+SLV,Plata,ETF,USA,CEDEAR,
+COST,Costco,Retail,USA,CEDEAR,951.35
+WMT,Walmart,Retail,USA,CEDEAR,117.18
+TGT,Target,Retail,USA,CEDEAR,129.73
+HD,Home Depot,Retail,USA,CEDEAR,326.62
+LOW,Lowe's,Retail,USA,CEDEAR,214.4
+AMZN,Amazon,E-commerce,USA,CEDEAR,232.79
+AMZN,Amazon,E-commerce,USA,CEDEAR,232.79
+EBAY,eBay,E-commerce,USA,CEDEAR,104.94
+ETSY,Etsy,E-commerce,USA,CEDEAR,72.54
+F,Ford,Automobiles,USA,CEDEAR,14.11
+GM,General Motors,Automobiles,USA,CEDEAR,80.43
+TM,Toyota,Automobiles,USA,CEDEAR,169.73
+HMC,Honda,Automobiles,USA,CEDEAR,25.99
+UBER,Uber,Transportation,USA,CEDEAR,71.43
+LYFT,Lyft,Transportation,USA,CEDEAR,14.22
+CCL,Carnival,Travel,USA,CEDEAR,30.19
+RCL,Royal Caribbean,Travel,USA,CEDEAR,309.36
+LVS,Las Vegas Sands,Travel,USA,CEDEAR,47.8
+WYNN,Wynn Resorts,Travel,USA,CEDEAR,103.62
+MGM,MGM Resorts,Travel,USA,CEDEAR,46.57
+PENN,Penn Entertainment,Travel,USA,CEDEAR,20.83
+DRI,Dine Global,Food,USA,CEDEAR,212.0
+CAKE,The Cheesecake Factory,Food,USA,CEDEAR,76.91
+CMG,Chipotle,Food,USA,CEDEAR,30.54
+YUM,Yum! Brands,Food,USA,CEDEAR,150.74
+NKE,Nike,Apparel,USA,CEDEAR,43.19
+LULU,Lululemon,Apparel,USA,CEDEAR,105.43
+VF,VF Corp,Apparel,USA,CEDEAR,
+GPS,Gap Inc,Apparel,USA,CEDEAR,
+DECK,Deckers Outdoor,Apparel,USA,CEDEAR,105.57
+TJX,TJX Companies,Retail,USA,CEDEAR,164.17
+RH,RH,Furniture,USA,CEDEAR,146.71
+ZM,Zoom,Technology,USA,CEDEAR,84.34
+DOCU,DocuSign,Technology,USA,CEDEAR,42.71
+PAYC,Paycom,Technology,USA,CEDEAR,123.67
+PAYX,Paychex,Technology,USA,CEDEAR,95.93
+ADP,Automatic Data,Technology,USA,CEDEAR,214.6
+FISV,Fiserv,Technology,USA,CEDEAR,47.18
+FIS,Fidelity National,Technology,USA,CEDEAR,37.72
+INTU,Intuit,Technology,USA,CEDEAR,257.77
+PYPL,PayPal,Financials,USA,CEDEAR,42.34
+SQ,Square,Financials,USA,CEDEAR,
+COIN,Coinbase,Crypto,USA,CEDEAR,164.84
+RIOT,Riot Platforms,Crypto,USA,CEDEAR,28.63
+MARA,Marathon Digital,Crypto,USA,CEDEAR,14.85
+MSTR,Microstrategy,Technology,USA,CEDEAR,109.46
+SOFI,SoFi,Financials,USA,CEDEAR,17.1
+UPST,Upstart,Technology,USA,CEDEAR,31.32
+RBLX,Roblox,Gaming,USA,CEDEAR,47.27
+ASRT,Assertio,Healthcare,USA,CEDEAR,23.5
+WDAY,Workday,Technology,USA,CEDEAR,113.04
+OKTA,Okta,Technology,USA,CEDEAR,115.94
+CRWD,CrowdStrike,Technology,USA,CEDEAR,675.44
+NET,Cloudflare,Technology,USA,CEDEAR,218.38
+FASN,Fastenmaster,Industrials,USA,CEDEAR,

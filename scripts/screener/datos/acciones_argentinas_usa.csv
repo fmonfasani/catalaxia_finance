@@ -1,0 +1,7 @@
+ticker_usa,empresa,sector,bolsa_usa,cik,tipo,fuente
+YPF,YPF SA,Energy,NYSE,1104659,Acción Argentina en USA,SEC EDGAR
+GGAL,Grupo Financiero Galicia,Financials,NASDAQ,1069595,Acción Argentina en USA,SEC EDGAR
+BMA,Banco Macro SA,Financials,NYSE,1113245,Acción Argentina en USA,SEC EDGAR
+TARG,Telecom Argentina SA,Telecommunications,NASDAQ,1112872,Acción Argentina en USA,SEC EDGAR
+CRESY,Cresud SA,Agriculture,NASDAQ,1082722,Acción Argentina en USA,SEC EDGAR
+EDENOR,Empresa Distribuidora y Comercializadora Sur SA,Utilities,NYSE (histórico),1070253,Acción Argentina en USA,SEC EDGAR

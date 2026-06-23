@@ -1,0 +1,42 @@
+ticker,empresa,fuente
+AAPL,Apple Inc.,yfinance
+MSFT,Microsoft Corporation,yfinance
+NVDA,NVIDIA Corporation,yfinance
+TSLA,"Tesla, Inc.",yfinance
+AMZN,"Amazon.com, Inc.",yfinance
+GOOGL,Alphabet Inc.,yfinance
+META,"Meta Platforms, Inc.",yfinance
+NFLX,"Netflix, Inc.",yfinance
+BABA,Alibaba Group Holding Limited,yfinance
+ASML,ASML Holding N.V.,yfinance
+ARM,Arm Holdings plc,yfinance
+MRVL,"Marvell Technology, Inc.",yfinance
+TMUS,"T-Mobile US, Inc.",yfinance
+TJX,"The TJX Companies, Inc.",yfinance
+HON,Honeywell International Inc.,yfinance
+ISRG,"Intuitive Surgical, Inc.",yfinance
+BKNG,Booking Holdings Inc.,yfinance
+DHR,Danaher Corporation,yfinance
+VRTX,Vertex Pharmaceuticals Incorporated,yfinance
+PDD,PDD Holdings Inc.,yfinance
+NOW,"ServiceNow, Inc.",yfinance
+CEG,Constellation Energy Corporation,yfinance
+EQNR,Equinor ASA,yfinance
+ORLY,"O'Reilly Automotive, Inc.",yfinance
+CRW,Crane Co,yfinance
+BKR,Baker Hughes Company,yfinance
+VST,Vistra Corp.,yfinance
+CLS,Celestica Inc.,yfinance
+FNMA,Federal National Mortgage Association,yfinance
+DOW,Dow Inc.,yfinance
+TEAM,Atlassian Corporation,yfinance
+FMCC,Federal Home Loan Mortgage Corporation,yfinance
+DECK,Deckers Outdoor Corporation,yfinance
+XPEV,XPeng Inc.,yfinance
+PINS,"Pinterest, Inc.",yfinance
+SWKS,"Skyworks Solutions, Inc.",yfinance
+TEM,"Tempus AI, Inc.",yfinance
+RGTI,"Rigetti Computing, Inc.",yfinance
+NXE,NexGen Energy Ltd.,yfinance
+URBN,"Urban Outfitters, Inc.",yfinance
+PATH,"UiPath, Inc.",yfinance

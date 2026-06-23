@@ -1,0 +1,11 @@
+ticker_byma,empresa,sector,ticker_usa,bolsa_usa,tipo,fuente
+AAPL,Apple Inc.,Technology,AAPL,NASDAQ/NYSE,CEDEAR (USA en Argentina),BYMADATA
+MSFT,Microsoft Corp.,Technology,MSFT,NASDAQ/NYSE,CEDEAR (USA en Argentina),BYMADATA
+NVDA,NVIDIA Corp.,Technology,NVDA,NASDAQ/NYSE,CEDEAR (USA en Argentina),BYMADATA
+TSLA,Tesla Inc.,Automobiles,TSLA,NASDAQ/NYSE,CEDEAR (USA en Argentina),BYMADATA
+AMZN,Amazon.com Inc.,Consumer,AMZN,NASDAQ/NYSE,CEDEAR (USA en Argentina),BYMADATA
+GOOGL,Alphabet Inc.,Technology,GOOGL,NASDAQ/NYSE,CEDEAR (USA en Argentina),BYMADATA
+NFLX,Netflix Inc.,Media,NFLX,NASDAQ/NYSE,CEDEAR (USA en Argentina),BYMADATA
+BABA,Alibaba Group,Technology,BABA,NASDAQ/NYSE,CEDEAR (USA en Argentina),BYMADATA
+MELI,MercadoLibre Inc.,Commerce,MELI,NASDAQ/NYSE,CEDEAR (USA en Argentina),BYMADATA
+SPCXm,Space Exploration Technologies,Technology,SPCE,NASDAQ/NYSE,CEDEAR (USA en Argentina),BYMADATA
