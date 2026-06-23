@@ -1,0 +1,164 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                                                              ║
+║         INSTRUCCIONES PARA COLABORADORES - CATALAXIA FINANCE                ║
+║                 (Copiar y pegar esto en una reunión)                        ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Hola chicos,
+
+Así trabajamos en catalaxia_finance. Es simple pero importante que todos
+sigamos el mismo flujo.
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ PASO 1: CLONAR EL REPOSITORIO
+
+$ git clone https://github.com/fmonfasani/catalaxia_finance.git
+$ cd catalaxia_finance
+$ pip install -r scripts/screener/requirements.txt
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ PASO 2: CREAR UNA RAMA PARA TU TAREA
+
+IMPORTANTE: Nunca trabajen en main directamente
+
+$ git checkout -b feature/nombre-de-tu-tarea
+
+Ejemplos válidos:
+  - feature/agregar-cedears-20
+  - feature/mejorar-cobertura-precios
+  - fix/error-descarga-precios
+  - docs/agregar-ejemplos
+  - refactor/optimizar-calculo-ratios
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ PASO 3: HACER CAMBIOS Y COMMITS
+
+Editar archivos según tu tarea...
+
+$ git add scripts/screener/archivo_modificado.py
+$ git commit -m "feat: descripción clara de qué cambió
+
+Detalles adicionales si es necesario:
+- Qué se agregó
+- Por qué
+- Cómo testearlo"
+
+✨ IMPORTANTE: Mensajes descriptivos = nuestro sistema automático
+los detecta y actualiza Seguimiento.xlsx
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ PASO 4: PUSH A GITHUB
+
+$ git push origin feature/nombre-de-tu-tarea
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ PASO 5: CREAR PULL REQUEST EN GITHUB
+
+1. Ir a https://github.com/fmonfasani/catalaxia_finance
+2. Click en "Compare & pull request"
+3. Escribir descripción clara de qué cambiaron
+4. Click en "Create pull request"
+
+(Esperar que Federico revise y apruebe)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ PASO 6: DESPUÉS DEL MERGE (AUTOMÁTICO)
+
+Una vez que Federico aprueba y mergea tu PR:
+
+🤖 El sistema automáticamente:
+   ✓ Lee tu commit
+   ✓ Detecta la tarea que completaste
+   ✓ Actualiza Seguimiento.xlsx
+   ✓ Regenera los gráficos de progreso
+
+¡NO HACER NADA MÁS! Solo si ves que Seguimiento.xlsx se actualizó,
+significa que tu trabajo fue detectado correctamente.
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🎯 TAREAS ACTUALES Y RESPONSABLES
+
+Fase 1: Listas CEDEARs/ADRs ..................... ✅ COMPLETADA
+Fase 2: Precios yfinance ....................... ✅ COMPLETADA
+Fase 3: Financieros EDGAR ...................... ✅ COMPLETADA
+Fase 4: Cálculo de ratios ...................... ✅ COMPLETADA
+Fase 5: Screener final ......................... ✅ COMPLETADA
+
+Mejoras y mantenimiento (próximas tareas):
+  [ ] Mejorar cobertura de precios (78% → 90%)
+  [ ] Agregar 50+ CEDEARs nuevos
+  [ ] Implementar actualización mensual automática
+  [ ] Crear dashboard interactivo
+  [ ] Documentación en Español
+
+Si quieren trabajar en algo, avisen y asignamos.
+
+═══════════════════════════════════════════════════════════════════════════════
+
+⚠️  IMPORTANTE - QUÉ NO HACER
+
+❌ NO editen Seguimiento.xlsx manualmente (se actualiza automáticamente)
+❌ NO trabajen en la rama main (crear siempre una rama feature/fix/docs/)
+❌ NO hagan commits sin mensaje (siempre mensajes descriptivos)
+❌ NO mergeen sin revisar (siempre esperar aprobación)
+❌ NO ignoren los errores de testing (corregir antes de push)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+❓ PREGUNTAS FRECUENTES
+
+P: ¿Cómo sé si mi tarea se detectó correctamente?
+R: Mira Seguimiento.xlsx. Si tu tarea aparece como "COMPLETADA",
+   entonces el sistema la detectó. Si no, avísale a Federico.
+
+P: ¿Puedo editar Seguimiento.xlsx directamente?
+R: NO. Se actualiza automáticamente. Editar manualmente lo rompe.
+
+P: ¿Con qué frecuencia se actualiza?
+R: Automáticamente cada vez que alguien mergea a main (~1 minuto).
+
+P: ¿Qué pasa si mi PR no se aprueba?
+R: Haces más commits en la misma rama. La PR se actualiza automáticamente
+   con tus nuevos cambios.
+
+P: ¿Necesito instalar algo especial?
+R: Solo: pip install -r scripts/screener/requirements.txt
+
+P: ¿Dónde veo la documentación completa?
+R: CONTRIBUTING.md en el repo, o:
+   https://github.com/fmonfasani/catalaxia_finance/CONTRIBUTING.md
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🌐 REFERENCIAS
+
+GitHub repo: https://github.com/fmonfasani/catalaxia_finance
+CONTRIBUTING.md: Guía completa (léanla)
+COMIENZA_AQUI.md: Quick start documentation
+Script automatización: scripts/screener/actualizar_seguimiento.py
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✨ RESUMEN EN 4 PASOS:
+
+1️⃣  git checkout -b feature/mi-tarea
+2️⃣  [Editar archivos + git commit]
+3️⃣  git push origin feature/mi-tarea + Create PR
+4️⃣  [Esperar aprobación] → Automáticamente actualizado ✅
+
+═══════════════════════════════════════════════════════════════════════════════
+
+Si tienen dudas, pregunten. Cualquier cosa:
+Contactar a Federico: fmonfasani@gmail.com
+
+¡Gracias por colaborar!
+
+Federico
