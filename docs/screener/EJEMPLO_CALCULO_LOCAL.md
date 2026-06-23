@@ -26,12 +26,12 @@ total_debt = 106_600
 equity = 134_000
 precio_usd = 297.01
 
-# CALCULAS LOCALMENTE (fórmulas simples)
-eps_ttm = net_income / diluted_shares  # = 6.02
-pe_ratio = precio_usd / eps_ttm  # = 49.3
-ebitda = operating_income + da  # = 134,616
-debt_to_equity = total_debt / equity  # = 79.55%
-margen_neto = net_income / revenue  # = 23.97%
+#[Numero de ratio exel informe]CALCULAS LOCALMENTE (fórmulas simples)
+[8] eps_ttm = net_income / diluted_shares  # = 6.02
+[2] pe_ratio = precio_usd / eps_ttm  # = 49.3 # Chequear
+[dato secundario] ebitda = operating_income + da  # = 134,616
+[dato secundario] debt_to_equity = total_debt / equity  # = 79.55%
+[10] margen_neto = net_income / revenue  # = 23.97%
 ```
 
 ### Resultado
@@ -112,8 +112,8 @@ def calcular_ratios(ticker_data):
     ratios = {
         'eps_ttm': ticker_data['net_income_ttm'] / ticker_data['diluted_shares'],
         'pe_ratio': ticker_data['precio_usd'] / (ticker_data['net_income_ttm'] / ticker_data['diluted_shares']),
-        'ebitda_ttm': ticker_data['operating_income'] + ticker_data['da'],
-        'debt_to_equity': ticker_data['total_debt'] / ticker_data['equity'],
+        'ebitda_ttm': ticker_data['operating_income'] + ticker_data['da'],# este dato es el ingreso operativo + deprecacion y amortización
+        'debt_to_equity': ticker_data['total_debt'] / ticker_data['equity'], 
         'margen_neto': ticker_data['net_income_ttm'] / ticker_data['revenue_ttm'],
         'debt_to_ebitda': ticker_data['total_debt'] / (ticker_data['operating_income'] + ticker_data['da']),
         'fcf': ticker_data['cfo'] - ticker_data['capex'],
@@ -195,7 +195,7 @@ aapl_data = descargar_datos_edgar('AAPL')
 │ - EPS = $93,736M / 15,556M = $6.02 ✅             │
 │ - P/E = $297.01 / $6.02 = 49.3 ✅                 │
 │ - EBITDA = $123,216M + $11,400M = $134,616M ✅   │
-│ - Deuda/Equity = 106,600 / 134,000 = 79.55% ✅   │
+│ - Deuda/Equity = 106,600 / 134,000 = 79.55% ✅   │ #Investigar el dato corecto es deuda LT / EBITDA
 │ - Margen Neto = 93,736 / 391,035 = 23.97% ✅     │
 └──────────────────┬──────────────────────────────────┘
                    │
