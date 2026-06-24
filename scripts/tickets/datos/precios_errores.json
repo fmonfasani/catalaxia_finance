@@ -1,0 +1,310 @@
+[
+  {
+    "ticker": "GS",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "IBN",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "INFY",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "NOK",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "VALE",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "MUFG",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "TSM",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "GRMN",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "VIV",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "RIO",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "TRV",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "CSCO",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "SBS",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "INTC",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "MFG",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "KGC",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "AMAT",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "JNJ",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "BIIB",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "LMT",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "BHP",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "EBAY",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "NEM",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "ERIC",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "PG",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "SNA",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "CL",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "HPQ",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "KMB",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "TX",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "WMT",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "HD",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "AVY",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "TGT",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "NVS",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "SAP",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "PKX",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "MMM",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "KOF",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "AMGN",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "BG",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "PSO",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "HON",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "ITUB",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "BSBR",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "T",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "PEP",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "XOM",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "PFE",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "AXP",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "PCAR",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "AEG",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "ORCL",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "GSK",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "IBM",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "WB",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "SID",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "CAT",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "KO",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "XRX",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "HMC",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "USB",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "NGG",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "DE",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "GE",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "TM",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "C",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "JPM",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "BAC",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "MRK",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "BBD",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "LLY",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "KB",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "VZ",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "HWM",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "ING",
+    "error": "'currentTradingPeriod'"
+  },
+  {
+    "ticker": "NMR",
+    "error": "'currentTradingPeriod'"
+  }
+]

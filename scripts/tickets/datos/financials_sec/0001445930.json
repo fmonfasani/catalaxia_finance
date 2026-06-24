@@ -1,0 +1,397 @@
+{
+  "cik": "0001445930",
+  "esquema": "us-gaap",
+  "entity_name": "KB Financial Group Inc.",
+  "metricas": {
+    "NetIncomeLoss": {
+      "unit": "USD",
+      "datos": [
+        {
+          "start": "2009-01-01",
+          "end": "2009-12-31",
+          "val": 619293000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2010-07-21",
+          "frame": "CY2009"
+        },
+        {
+          "start": "2010-01-01",
+          "end": "2010-12-31",
+          "val": -520180000,
+          "fy": 2010,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2011-07-05",
+          "frame": "CY2010"
+        }
+      ]
+    },
+    "EarningsPerShareBasic": {
+      "unit": "USD/shares",
+      "datos": [
+        {
+          "start": "2009-01-01",
+          "end": "2009-12-31",
+          "val": 1.903,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2010-07-21",
+          "frame": "CY2009"
+        },
+        {
+          "start": "2010-01-01",
+          "end": "2010-12-31",
+          "val": -1.516,
+          "fy": 2010,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2011-07-05",
+          "frame": "CY2010"
+        }
+      ]
+    },
+    "EarningsPerShareDiluted": {
+      "unit": "USD/shares",
+      "datos": [
+        {
+          "start": "2009-01-01",
+          "end": "2009-12-31",
+          "val": 1.903,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2010-07-21",
+          "frame": "CY2009"
+        },
+        {
+          "start": "2010-01-01",
+          "end": "2010-12-31",
+          "val": -1.516,
+          "fy": 2010,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2011-07-05",
+          "frame": "CY2010"
+        }
+      ]
+    },
+    "WeightedAverageNumberOfDilutedSharesOutstanding": {
+      "unit": "shares",
+      "datos": [
+        {
+          "start": "2007-01-01",
+          "end": "2007-12-31",
+          "val": 344570000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2010-07-21",
+          "frame": "CY2007"
+        },
+        {
+          "start": "2008-01-01",
+          "end": "2008-12-31",
+          "val": 330498000,
+          "fy": 2010,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2011-07-05",
+          "frame": "CY2008"
+        },
+        {
+          "start": "2009-01-01",
+          "end": "2009-12-31",
+          "val": 325397000,
+          "fy": 2010,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2011-07-05",
+          "frame": "CY2009"
+        },
+        {
+          "start": "2010-01-01",
+          "end": "2010-12-31",
+          "val": 343029000,
+          "fy": 2010,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2011-07-05",
+          "frame": "CY2010"
+        }
+      ]
+    },
+    "WeightedAverageNumberOfSharesOutstandingBasic": {
+      "unit": "shares",
+      "datos": [
+        {
+          "start": "2007-01-01",
+          "end": "2007-12-31",
+          "val": 344570000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2010-07-21",
+          "frame": "CY2007"
+        },
+        {
+          "start": "2008-01-01",
+          "end": "2008-12-31",
+          "val": 330498000,
+          "fy": 2010,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2011-07-05",
+          "frame": "CY2008"
+        },
+        {
+          "start": "2009-01-01",
+          "end": "2009-12-31",
+          "val": 325397000,
+          "fy": 2010,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2011-07-05",
+          "frame": "CY2009"
+        },
+        {
+          "start": "2010-01-01",
+          "end": "2010-12-31",
+          "val": 343029000,
+          "fy": 2010,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2011-07-05",
+          "frame": "CY2010"
+        }
+      ]
+    },
+    "DepreciationAndAmortization": {
+      "unit": "USD",
+      "datos": [
+        {
+          "start": "2009-01-01",
+          "end": "2009-12-31",
+          "val": 370392000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2010-07-21",
+          "frame": "CY2009"
+        }
+      ]
+    },
+    "Assets": {
+      "unit": "USD",
+      "datos": [
+        {
+          "start": null,
+          "end": "2009-12-31",
+          "val": 218154456000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2010-07-21",
+          "frame": "CY2009Q4I"
+        },
+        {
+          "start": null,
+          "end": "2010-12-31",
+          "val": 222671151000,
+          "fy": 2010,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2011-07-05",
+          "frame": "CY2010Q4I"
+        }
+      ]
+    },
+    "Liabilities": {
+      "unit": "USD",
+      "datos": [
+        {
+          "start": null,
+          "end": "2009-12-31",
+          "val": 203050021000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2010-07-21",
+          "frame": "CY2009Q4I"
+        },
+        {
+          "start": null,
+          "end": "2010-12-31",
+          "val": 207603446000,
+          "fy": 2010,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2011-07-05",
+          "frame": "CY2010Q4I"
+        }
+      ]
+    },
+    "StockholdersEquity": {
+      "unit": "USD",
+      "datos": [
+        {
+          "start": null,
+          "end": "2009-12-31",
+          "val": 15072890000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2010-07-21",
+          "frame": "CY2009Q4I"
+        },
+        {
+          "start": null,
+          "end": "2010-12-31",
+          "val": 15033199000,
+          "fy": 2010,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2011-07-05",
+          "frame": "CY2010Q4I"
+        }
+      ]
+    },
+    "CashAndCashEquivalentsAtCarryingValue": {
+      "unit": "USD",
+      "datos": [
+        {
+          "start": null,
+          "end": "2008-12-31",
+          "val": 2641181000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2010-07-21",
+          "frame": "CY2008Q4I"
+        },
+        {
+          "start": null,
+          "end": "2009-12-31",
+          "val": 2384194000,
+          "fy": 2010,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2011-07-05",
+          "frame": "CY2009Q4I"
+        },
+        {
+          "start": null,
+          "end": "2010-12-31",
+          "val": 3420587000,
+          "fy": 2010,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2011-07-05",
+          "frame": "CY2010Q4I"
+        }
+      ]
+    },
+    "NetCashProvidedByUsedInOperatingActivities": {
+      "unit": "USD",
+      "datos": [
+        {
+          "start": "2009-01-01",
+          "end": "2009-12-31",
+          "val": 3334322000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2010-07-21",
+          "frame": "CY2009"
+        },
+        {
+          "start": "2010-01-01",
+          "end": "2010-12-31",
+          "val": 3834834000,
+          "fy": 2010,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2011-07-05",
+          "frame": "CY2010"
+        }
+      ]
+    },
+    "PaymentsToAcquirePropertyPlantAndEquipment": {
+      "unit": "USD",
+      "datos": [
+        {
+          "start": "2009-01-01",
+          "end": "2009-12-31",
+          "val": 160790000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2010-07-21",
+          "frame": "CY2009"
+        },
+        {
+          "start": "2010-01-01",
+          "end": "2010-12-31",
+          "val": 105975000,
+          "fy": 2010,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2011-07-05",
+          "frame": "CY2010"
+        }
+      ]
+    },
+    "CommonStockSharesOutstanding": {
+      "unit": "shares",
+      "datos": [
+        {
+          "start": null,
+          "end": "2008-12-31",
+          "val": 308921422,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2010-07-21",
+          "frame": "CY2008Q4I"
+        },
+        {
+          "start": null,
+          "end": "2009-12-31",
+          "val": 343028989,
+          "fy": 2010,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2011-07-05",
+          "frame": "CY2009Q4I"
+        },
+        {
+          "start": null,
+          "end": "2010-12-31",
+          "val": 343028989,
+          "fy": 2010,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2011-07-05",
+          "frame": "CY2010Q4I"
+        }
+      ]
+    },
+    "PaymentsOfDividendsCommonStock": {
+      "unit": "USD",
+      "datos": [
+        {
+          "start": "2010-01-01",
+          "end": "2010-12-31",
+          "val": 69783000,
+          "fy": 2010,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2011-07-05",
+          "frame": "CY2010"
+        }
+      ]
+    }
+  }
+}
