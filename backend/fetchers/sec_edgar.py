@@ -28,6 +28,11 @@ METRICAS_GAAP = [
     "GrossProfit",
     "OperatingIncomeLoss",
     "NetIncomeLoss",
+    # Fallback de NetIncomeLoss: empresas que consolidan intereses
+    # minoritarios (ej. CAT con Caterpillar Financial Services) tagean su
+    # income statement con ProfitLoss y dejan NetIncomeLoss desactualizado o
+    # sin tag en 10-K/10-Q. Ver docs/screener/GUIA_SEC_EDGAR_PARA_DEVS.md#9.
+    "ProfitLoss",
     "EarningsPerShareBasic",
     "EarningsPerShareDiluted",
     "WeightedAverageNumberOfDilutedSharesOutstanding",
