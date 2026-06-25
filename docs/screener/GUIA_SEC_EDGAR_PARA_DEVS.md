@@ -23,6 +23,7 @@
 10. [Código de ejemplo paso a paso](#10-código-de-ejemplo-paso-a-paso)
 11. [Errores comunes y cómo evitarlos](#11-errores-comunes)
 12. [Glosario](#12-glosario)
+13. [Sistema para replicar el Excel de Seguimiento (dashboard)](#13-sistema-para-replicar-el-excel-de-seguimiento-dashboard)
 
 ---
 
@@ -591,6 +592,173 @@ ROE:         ...
 | **FCF** | Flujo de caja libre (plata que sobra de verdad). |
 | **Payout** | Porcentaje de la ganancia repartido como dividendos. |
 | **Dividendo** | Plata que la empresa le paga al accionista. |
+
+---
+
+## 13. Sistema para replicar el Excel de Seguimiento (dashboard)
+
+> Esta sección documenta, de punta a punta, cómo construir un dashboard que
+> replique `Seguimiento_original.xlsx` para **todos los papeles que cotizan en
+> EE.UU.**, usando solo SEC EDGAR (financials) + yfinance (precios). Es el
+> resultado de validar el pipeline contra Investing.com y corregir 10 problemas
+> reales. Ver `docs/screener/DIAGNOSTICO_INVESTING_vs_EDGAR.md` para el detalle
+> del análisis y `scripts/tickets/` para el código.
+
+### 13.1 Objetivo y resultado
+
+El Excel de seguimiento tiene 15 columnas por papel. Reproducirlas con datos
+GAAP de EDGAR converge con Investing.com así (mediana de divergencia, set US):
+
+| Métrica | mediana \|dif\| | dentro del 10% |
+|---------|----------------|----------------|
+| PER | 1,3% | 95% |
+| EPS (TTM) | 1,3% | 95% |
+| EPS (anual reportado) | 0,0% | 82% |
+| Margen Neto | 0,0% | 91% |
+| ROE | 0,4% | 85% |
+| Payout | 0,0% | 87% |
+| Crec. EPS 5Y | 1,5% | 58% |
+
+Conclusión: **EDGAR-GAAP reproduce Investing**; las divergencias que quedan se
+explican por causas conocidas y flagueadas (ver §13.5).
+
+### 13.2 Las 15 columnas: fórmula y fuente exacta
+
+| # | Columna (Excel) | Fórmula | Fuente / tag XBRL |
+|---|-----------------|---------|-------------------|
+| 1 | Especie | ticker | input |
+| 2 | Dónde se encuentra | exchange | `yfinance.fast_info.exchange` |
+| 3 | **Precio en u$s** | precio actual | `yfinance.fast_info.last_price` |
+| 4 | **PER** | `precio / EPS_TTM` | calculado (ver fila EPS) |
+| 5 | Precio Máximo 52s | máximo 52 semanas | `yfinance.fast_info.year_high` |
+| 6 | Dif. contra Máx 52s | `precio / year_high − 1` | calculado |
+| 7 | Precio Mínimo 52s | mínimo 52 semanas | `yfinance.fast_info.year_low` |
+| 8 | Dif. contra Mín 52s | `precio / year_low − 1` | calculado |
+| 9 | **Deuda/EBITDA** | `deuda / EBITDA_TTM` | deuda = `LongTermDebt` (+`LongTermDebtCurrent` +`ShortTermBorrowings`/`DebtCurrent`); EBITDA = `OperatingIncomeLoss` + D&A (ver §13.5.6) |
+| 10 | **EPS (Anual)** | `NetIncome_TTM / DilutedShares` | `NetIncomeLoss`(→`ProfitLoss`) TTM / `WeightedAverageNumberOfDilutedSharesOutstanding`. ⚠️ pese al rótulo "Anual", la fórmula histórica es **TTM** (así cuadra con el PER) |
+| 11 | **Crec. EPS 5 años** | CAGR de `EarningsPerShareDiluted` anual | serie anual limpia, 6 años (ver §13.5.1 y §13.5.8) |
+| 12 | **Margen Neto** | `NetIncome_TTM / Revenue_TTM` | `Revenues`→`RevenueFromContractWithCustomerExcludingAssessedTax`→`SalesRevenueNet` |
+| 13 | **ROE (5 años)** | CAGR del ROE anual | `NetIncomeLoss`/`StockholdersEquity` por año, luego CAGR. ⚠️ es **CAGR a 5 años**, NO el ROE TTM |
+| 14 | **FCFonCE** | `FCF_TTM / Capital_empleado` | FCF = `NetCashProvidedByUsedInOperatingActivities` − `PaymentsToAcquirePropertyPlantAndEquipment`; CapEmpleado = `StockholdersEquity` + deuda LP (variante A) o + deuda − caja (variante B) |
+| 15 | **Payout** | `Dividendos_TTM / NetIncome_TTM` | `PaymentsOfDividendsCommonStock`→`PaymentsOfDividends` |
+
+> **Dos columnas que confunden por el rótulo**: la "EPS (Anual)" se calcula TTM
+> (para que `PER × EPS = precio`); el "ROE (5 años)" es un CAGR, no un nivel.
+> Si además querés comparar contra la columna "Diluted EPS ANN" de Investing,
+> usá el **EPS anual reportado** (`EarningsPerShareDiluted` del último 10-K),
+> que es un dato distinto del EPS TTM (ver §13.5.2).
+
+### 13.3 Arquitectura del pipeline (5 pasos)
+
+Implementado en `scripts/tickets/` (aislado, no toca `backend/`):
+
+1. **`01_mapear_cik.py`** — ticker → CIK vía `company_tickers.json`. Excluye
+   tickers reciclados por la SEC (GOLD, CHA) y manda a revisión manual lo que
+   no matchea, en vez de adivinar.
+2. **`02_descargar_datos.py`** — baja `companyfacts` (SEC) y precios (yfinance),
+   cacheado en `datos/`. Resume-safe (no re-baja lo que ya está).
+3. **`03_calcular_ratios.py`** — el corazón: TTM, CAGR, EBITDA, ROE, etc. Acá
+   viven los 10 fixes de §13.5.
+4. **`04_generar_reporte.py`** — Excel con tabs Ratios / Calidad / Sin CIK.
+5. **`05_comparar_investing.py`** — cruza por ticker (nunca por fila) contra el
+   archivo de seguimiento y calcula divergencias.
+
+### 13.4 El cálculo del TTM (lo más importante)
+
+**Clave 1: `companyfacts` ya trae TODO.** No se bajan filings individuales: el
+endpoint `companyfacts` devuelve el dataset XBRL agregado completo (100+
+datapoints por empresa), con trimestres de 10-Q **y** anuales de 10-K. No hace
+falta "bajar los últimos 6 10-Q" — ya están.
+
+**Clave 2: tres estrategias para armar el TTM de un flujo** (revenue, net income,
+etc.), en orden de preferencia:
+
+- **A** — 4 trimestres standalone (~90d) consecutivos → sumar.
+- **B (generalizada)** — `Anual + parcial_FY_nuevo − mismo_parcial_año_anterior`.
+  El "parcial del FY nuevo" puede ser 1 trimestre (Q1, ~90d), un semestre o 9
+  meses. Ej. a junio 2026: `FY2025 + Q1'2026 − Q1'2025`.
+- **C** — último anual solo. ⚠️ **NO es un TTM rodante**: es el último año fiscal
+  cerrado. Si un trimestre reciente tuvo un ítem no recurrente, diverge.
+
+**Por qué importa:** el "Q4 standalone" no existe (no hay 10-Q de Q4; el Q4 es
+anual − 9 meses YTD), así que la estrategia A casi nunca aplica. La B es la
+canónica. Antes de generalizarla, cuando el último filing era el Q1 del año nuevo
+caía a C y el TTM divergía (MRK/JNJ/LLY). Con la B generalizada, 39 de 53
+empresas usan TTM rodante real.
+
+### 13.5 Las 10 trampas que hay que evitar (con su fix)
+
+Cada una rompía silenciosamente algún ratio. Están todas resueltas en
+`03_calcular_ratios.py` y expuestas como flags en el campo `_flags`.
+
+**1. Dedup por `fy` (el peor bug).** El campo XBRL `fy` es el año del *filing*,
+no del período: un 10-K reporta 2-3 años comparativos **con el mismo `fy`**.
+Deduplicar la serie anual por `fy` los colapsa y se pisan (ej. MRK 2023/2024/2025
+comparten fy=2025; el 2023 tenía EPS 0,14 por un cargo y contaminaba todo).
+**Fix:** deduplicar por el **`end` del período**, no por `fy`. Esto solo arregló
+`eps_annual`, `cagr_eps` y `roe_cagr` a la vez (Crec. EPS pasó de mediana 104% a
+1,5%).
+
+**2. EPS TTM ≠ EPS anual.** Investing tiene dos columnas con earnings distintos:
+"P/E Ratio TTM" usa TTM rodante, "Diluted EPS ANN" usa el anual reportado. No se
+reconstruye uno desde el otro. **Fix:** calcular ambos —`eps_ttm_diluted`
+(NetIncome_TTM/shares, alimenta el PER) y `eps_annual` (`EarningsPerShareDiluted`
+del último 10-K)— y comparar cada uno contra su par.
+
+**3. Ventana TTM = FY (estrategia C).** Ver §13.4. **Fix:** estrategia B
+generalizada + flag `ni_es_fy_no_ttm` cuando igual cae a C.
+
+**4. Datos stale.** Foreign private issuers (TM/Toyota, VALE, NMR) dejaron de
+filear us-gaap detallado; su último income statement es de 2012 pero se tomaba
+como "TTM" actual. **Fix:** si el net income usado tiene >2 años → anular los
+ratios (flag `stale_<fecha>`).
+
+**5. Escala de shares.** NMR tagea el weighted-avg de acciones con la unidad
+equivocada (3,04×10¹⁵, ~10⁶ de más) → EPS/PER absurdos. **Fix:** descartar
+`diluted_shares` si difiere >100× del `CommonStockSharesOutstanding` (flag
+`shares_descartadas_escala`).
+
+**6. EBITDA e intangibles.** Elegir el tag de D&A "más reciente" tomaba el
+estrecho `Depreciation` (sin amortización de intangibles) y subestimaba el EBITDA
+de empresas adquisitivas (ORCL/Cerner, GE, IBM). **Fix:** usar
+`DepreciationDepletionAndAmortization` si existe; si no, el tag de **mayor** TTM
+(evita el mis-tag de INTC); y si solo hay `Depreciation`, sumarle
+`AmortizationOfIntangibleAssets` (flag `ebitda_da_mas_intangibles`).
+
+**7. ROE con equity puntual.** Daba ruido en empresas con recompras. **Fix:**
+usar **equity promedio** (último balance + el de ~1 año antes) / 2, como
+Investing. Mediana de divergencia de ROE: 10,4% → 0,4%. Flag
+`roe_no_significativo` si equity < 5% de los activos (ej. CL, equity casi cero
+por treasury stock → ROE no interpretable).
+
+**8. Crec. EPS con base corrupta.** El CAGR explota si el año base es chico o
+está contaminado (CSCO base 0,02 → +173% falso). **Fix:** serie anual limpia
+(solo años fiscales completos) + descartar el cálculo si el año base es < 10% de
+la mediana de la serie.
+
+**9. PER con EPS ≤ 0.** Un PER negativo no tiene sentido económico. **Fix:** PER
+= NULL si EPS ≤ 0 (Investing a veces muestra el negativo; EDGAR no).
+
+**10. Empresas IFRS (pendiente).** El fetcher cae a `ifrs-full` pero
+`METRICAS_GAAP` lista nombres us-gaap → 0 métricas para INFY, TSM, RIO, BHP,
+KGC, NVS, etc. **Pendiente:** mapear los tags IFRS (`Revenue`, `ProfitLoss`,
+`EquityAttributableToOwnersOfParent`…). Por ahora el sistema cubre solo US-GAAP.
+
+### 13.6 Cómo llevarlo a un dashboard
+
+1. **Universo:** lista de tickers US (los que mapean a un CIK en
+   `company_tickers.json`). Los IFRS y stale quedan marcados, no rotos.
+2. **Refresh:** precios (yfinance) son intradiarios; financials (EDGAR) cambian
+   solo cuando hay un nuevo 10-Q/10-K (trimestral). Cachear `companyfacts` y
+   re-bajar solo ante un filing nuevo.
+3. **Persistencia:** guardar los ratios calculados + el campo `_flags` por
+   ticker. El dashboard muestra el ratio y, si hay flag, un ícono de advertencia
+   con el motivo (stale / FY-no-TTM / ROE no significativo / etc.).
+4. **Regla de oro:** **nunca estimar.** Si falta un componente, el ratio es NULL.
+   Un NULL honesto vale más que un número inventado.
+5. **Validación continua:** correr `05_comparar_investing.py` contra una muestra
+   cargada a mano cada tanto; si la mediana de divergencia de PER/EPS/Margen/ROE
+   se va por encima de ~5%, algo se rompió.
 
 ---
 

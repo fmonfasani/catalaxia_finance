@@ -74,7 +74,11 @@ COL_TICKER_CMP = 16
 # nombre de metrica -> (col Investing, col EDGAR, col Comparacion, es_porcentaje, campo en ratios_tickets.csv)
 METRICAS = {
     "per":      (1, 9, 17, False, "per_ttm"),
-    "eps":      (2, 10, 18, False, "eps_ttm_diluted"),
+    # La columna de Investing es "Diluted EPS ANN" (anual) -> se compara contra
+    # eps_annual (ultimo 10-K), no contra eps_ttm. El eps_ttm rodante se usa
+    # para el PER; mezclarlos rompia la comparacion en empresas con un trimestre
+    # no recurrente (MRK). Ver docs/screener/DIAGNOSTICO_INVESTING_vs_EDGAR.md.
+    "eps":      (2, 10, 18, False, "eps_annual"),
     "crec_eps": (3, 11, 19, True, "cagr_eps_5y"),
     "margen":   (4, 12, 20, True, "margen_neto_ttm"),
     "roe":      (5, 13, 21, True, "roe_ttm"),

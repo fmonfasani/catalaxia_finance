@@ -190,6 +190,57 @@ Flags de calidad expuestos en `ratios_tickets.json` campo `_flags`:
 - **Crec. EPS** sigue sin ser comparable contra Investing (metodología
   propietaria), pero el lado EDGAR ya no produce valores absurdos como +6528%.
 
+## 8. Segunda tanda de fixes (TTM rodante, eps_annual, bug del `fy`)
+
+Tras los fixes de §7 se atacó la causa raíz del PER y se descubrió un bug mayor.
+
+### 8.1 TTM rodante (estrategia B generalizada)
+
+`ttm_flujo()` caía a la estrategia C (= último año fiscal) cuando el último filing
+era el Q1 del año nuevo, porque solo reconocía YTD largos (170-290d), no el Q1
+standalone (90d). **Fix:** generalizar la estrategia B a `Anual + parcial_FY_nuevo
+− mismo_parcial_año_anterior`, aceptando el Q1. La data ya estaba en
+`companyfacts` (no se bajó nada nuevo). Reconstrucción exacta:
+
+| Ticker | FY (antes) | + Q1'26 | − Q1'25 | **TTM correcto** | NI implícito Investing |
+|--------|-----------|---------|---------|------------------|------------------------|
+| MRK | 18,25 B | −4,24 | 5,08 | **8,93 B** | 8,84 B ✓ |
+| JNJ | 26,80 B | 5,24 | 11,00 | **21,04 B** | 21,19 B ✓ |
+| LLY | 20,64 B | 7,40 | 2,76 | **25,28 B** | 25,42 B ✓ |
+
+Distribución de estrategia: **B=39, C=10, A=4** (antes dominaba C). PER de
+MRK/JNJ/LLY pasó de divergir −51%/−21%/+23% a ≈0%.
+
+### 8.2 `eps_annual` (EPS anual reportado) + comparación apples-to-apples
+
+La columna "Diluted EPS ANN" de Investing es el EPS anual reportado, no el TTM.
+Se agregó `eps_annual` (`EarningsPerShareDiluted` del último 10-K) y la
+comparación de EPS pasó a usarlo. Resultado: **mediana de divergencia 0,0%**
+(muchos exactos), validando que Investing copia el EPS GAAP del 10-K.
+
+### 8.3 Bug del `fy` (el de mayor impacto oculto)
+
+El campo XBRL `fy` es el año del *filing*, no del período: un 10-K reporta 2-3
+años comparativos con el mismo `fy`. Deduplicar la serie anual por `fy` los
+colapsaba (MRK 2023/2024/2025 → fy=2025). **Fix:** deduplicar por el `end` del
+período. Corrigió `eps_annual`, `cagr_eps` y `roe_cagr` de una.
+
+### 8.4 Resultado final medido
+
+| Métrica | mediana inicial | **mediana final** | ≤10% inicial → **final** |
+|---------|-----------------|-------------------|--------------------------|
+| PER | 3,6% | **1,3%** | 79% → **95%** |
+| EPS (anual vs ANN) | — | **0,0%** | — → **82%** |
+| Margen | 4,0% | **0,0%** | 82% → **91%** |
+| ROE | 10,4% | **0,4%** | 44% → **85%** |
+| Payout | 2,6% | **0,0%** | 68% → **87%** |
+| Crec. EPS | 109,5% | **1,5%** | 3% → **58%** |
+
+**Divergencias >10% totales: 107 → 81 → 58 → 39** (−64% desde el inicio).
+
+Réplica enriquecida de la planilla en `comparacion_edgar_investing_NUEVA.csv`
+(con los dos EPS, estrategia TTM y flags por fila).
+
 ### Pendiente
 
 - **Fix #1 (mapeo IFRS):** recupera ~14 tickers hoy en blanco (INFY, TSM, RIO,

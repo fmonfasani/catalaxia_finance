@@ -88,7 +88,7 @@ def ttm_flujo(serie: list[dict]) -> tuple[float | None, str | None, str | None]:
     if not serie:
         return None, None, None
 
-    quarters, ytds, annuals = [], [], []
+    quarters, annuals = [], []
     for dp in serie:
         d = dias_periodo(dp)
         if d is None:
@@ -97,11 +97,8 @@ def ttm_flujo(serie: list[dict]) -> tuple[float | None, str | None, str | None]:
             quarters.append(dp)
         elif 355 <= d <= 380:
             annuals.append(dp)
-        elif 170 <= d <= 290:
-            ytds.append(dp)
 
     quarters.sort(key=lambda x: x["end"], reverse=True)
-    ytds.sort(key=lambda x: x["end"], reverse=True)
     annuals.sort(key=lambda x: x["end"], reverse=True)
 
     # --- Estrategia A: 4 quarters consecutivos ---
@@ -119,35 +116,57 @@ def ttm_flujo(serie: list[dict]) -> tuple[float | None, str | None, str | None]:
         if consecutivo:
             return sum(q["val"] for q in candidatos), candidatos[0]["end"], "A"
 
-    # --- Estrategia B: Annual + YTD_actual - YTD_anterior ---
-    if annuals and ytds:
+    # --- Estrategia B (generalizada): Annual + parcial_FY_nuevo - mismo_parcial_anio_anterior ---
+    # TTM rodante canonico. El "parcial del FY nuevo" es cualquier periodo que
+    # ARRANCA al inicio del FY nuevo (~= fin del ultimo anual) y todavia no
+    # completo un anio: puede ser 1 quarter (Q1, ~90d), un semestre (~180d) o
+    # 9 meses (~270d). Antes solo se aceptaba el YTD largo (170-290d), por eso
+    # cuando el ultimo filing era el primer 10-Q del anio (Q1 standalone, 90d)
+    # la estrategia caia a C (= FY pelado) y el TTM divergia de Investing por
+    # items no recurrentes (MRK/JNJ/LLY). Ahora se acepta el Q1 tambien:
+    #   TTM = FY_anterior + Q1_nuevo - Q1_viejo.
+    # No depende de descargar mas datos -- el quarter ya esta en companyfacts.
+    if annuals:
         anual = annuals[0]
         anual_end = datetime.fromisoformat(anual["end"])
-        ytd_actual = None
-        for y in ytds:
-            if not y.get("start"):
-                continue
-            ystart = datetime.fromisoformat(y["start"])
-            if abs((ystart - anual_end).days) <= 5:
-                ytd_actual = y
-                break
 
-        if ytd_actual is not None:
-            ytd_actual_end = datetime.fromisoformat(ytd_actual["end"])
-            ytd_actual_dias = dias_periodo(ytd_actual)
-            ytd_prior = None
-            for y in ytds:
-                if y is ytd_actual:
+        # candidatos al "parcial del FY nuevo": empiezan ~= fin del anual y no
+        # son anuales (cualquier duracion < ~300 dias).
+        parciales = []
+        for dp in serie:
+            if not dp.get("start"):
+                continue
+            d = dias_periodo(dp)
+            if d is None or d > 300:
+                continue
+            dstart = datetime.fromisoformat(dp["start"])
+            if abs((dstart - anual_end).days) <= 7:
+                parciales.append(dp)
+
+        # el de mayor cobertura/mas reciente (mayor end): si ya hay 9 meses del
+        # FY nuevo, preferirlo al Q1.
+        parcial_actual = max(parciales, key=lambda x: x["end"]) if parciales else None
+
+        if parcial_actual is not None:
+            parcial_end = datetime.fromisoformat(parcial_actual["end"])
+            parcial_dias = dias_periodo(parcial_actual)
+            # mismo periodo, ~1 anio antes, misma duracion (Q1 vs Q1, 9m vs 9m).
+            parcial_prior = None
+            for dp in serie:
+                if dp is parcial_actual or not dp.get("start"):
                     continue
-                yend = datetime.fromisoformat(y["end"])
-                delta_year = (ytd_actual_end - yend).days
-                if 355 <= delta_year <= 380 and abs(dias_periodo(y) - ytd_actual_dias) <= 5:
-                    ytd_prior = y
+                dd = dias_periodo(dp)
+                if dd is None:
+                    continue
+                dend = datetime.fromisoformat(dp["end"])
+                delta_year = (parcial_end - dend).days
+                if 350 <= delta_year <= 380 and abs(dd - parcial_dias) <= 7:
+                    parcial_prior = dp
                     break
 
-            if ytd_prior is not None:
-                ttm = anual["val"] + ytd_actual["val"] - ytd_prior["val"]
-                return ttm, ytd_actual["end"], "B"
+            if parcial_prior is not None:
+                ttm = anual["val"] + parcial_actual["val"] - parcial_prior["val"]
+                return ttm, parcial_actual["end"], "B"
 
     # --- Estrategia C: ultimo anual solo ---
     if annuals:
@@ -172,14 +191,19 @@ def serie_anual(serie: list[dict]) -> list[dict]:
         elif dp.get("start") is None and dp.get("form") in ("10-K", "20-F", "40-F"):
             annuals.append(dp)
 
-    por_fy = {}
+    # Dedup por PERIODO (end), NO por 'fy'. El 'fy' de XBRL es el anio del
+    # FILING: un mismo 10-K reporta 2-3 anios comparativos, todos con el mismo
+    # fy -> deduplicar por fy los colapsaba y se pisaban (ej. MRK 2023/2024/2025
+    # comparten fy=2025). Por 'end' cada anio fiscal es una clave distinta, y
+    # ante restatements del mismo periodo se conserva el 'filed' mas reciente.
+    por_end = {}
     for dp in annuals:
-        fy = dp.get("fy") or (dp.get("end") or "")[:4]
-        prev = por_fy.get(fy)
+        key = dp.get("end") or ""
+        prev = por_end.get(key)
         if prev is None or (dp.get("filed") or "") > (prev.get("filed") or ""):
-            por_fy[fy] = dp
+            por_end[key] = dp
 
-    return sorted(por_fy.values(), key=lambda x: x.get("end") or "")
+    return sorted(por_end.values(), key=lambda x: x.get("end") or "")
 
 
 def cagr(serie_anual_data: list[dict], years: int = 5) -> float | None:
@@ -207,13 +231,15 @@ def serie_anual_eps_limpia(fin: dict) -> list[dict]:
         d = dias_periodo(dp)
         if d is not None and 355 <= d <= 380 and dp.get("val") is not None:
             out.append(dp)
-    por_fy = {}
+    # Dedup por PERIODO (end), no por 'fy' (ver nota en serie_anual): asi el
+    # ultimo elemento es de verdad el EPS del anio fiscal mas reciente.
+    por_end = {}
     for dp in out:
-        fy = dp.get("fy") or (dp.get("end") or "")[:4]
-        prev = por_fy.get(fy)
+        key = dp.get("end") or ""
+        prev = por_end.get(key)
         if prev is None or (dp.get("filed") or "") > (prev.get("filed") or ""):
-            por_fy[fy] = dp
-    return sorted(por_fy.values(), key=lambda x: x.get("end") or "")
+            por_end[key] = dp
+    return sorted(por_end.values(), key=lambda x: x.get("end") or "")
 
 
 def cagr_eps_robusto(serie_eps: list[dict], years: int = 5) -> float | None:
@@ -442,7 +468,15 @@ def calcular_ratios(fin: dict, precio_info: dict) -> dict:
     # Fix #7 -- crecimiento EPS con serie anual LIMPIA (solo anios fiscales
     # completos) y guarda de anio base, para no inflar el CAGR con un dato
     # base corrupto (ej. CSCO base 0,02 -> +173% falso).
-    cagr_eps_5y = None if es_stale else cagr_eps_robusto(serie_anual_eps_limpia(fin), years=5)
+    serie_eps_anual = serie_anual_eps_limpia(fin)
+    cagr_eps_5y = None if es_stale else cagr_eps_robusto(serie_eps_anual, years=5)
+
+    # EPS ANUAL reportado (ultimo 10-K). Es el EarningsPerShareDiluted que la
+    # empresa publica para su anio fiscal cerrado, == la columna "Diluted EPS
+    # ANN" de Investing -> sirve para comparar manzana-con-manzana. Distinto del
+    # eps_ttm (rodante) que alimenta el PER: cuando hubo un trimestre no
+    # recurrente, anual y TTM divergen (ej. MRK 7,28 anual vs 3,61 TTM).
+    eps_annual = (serie_eps_anual[-1]["val"] if serie_eps_anual and not es_stale else None)
 
     fcf_ttm = (cfo_ttm - capex_ttm) if (cfo_ttm is not None and capex_ttm is not None) else None
 
@@ -465,6 +499,7 @@ def calcular_ratios(fin: dict, precio_info: dict) -> dict:
         "deuda_lp_sobre_ebitda": deuda_ebitda_lp,
         "deuda_total_sobre_ebitda": deuda_ebitda_total,
         "eps_ttm_diluted": eps_ttm,
+        "eps_annual": eps_annual,
         "cagr_eps_5y": cagr_eps_5y,
         "margen_neto_ttm": margen_neto,
         "roe_cagr_5y": roe_cagr_5y,
