@@ -28,6 +28,31 @@
         }
       ]
     },
+    "ProfitLoss": {
+      "unit": "USD",
+      "datos": [
+        {
+          "start": "2009-01-01",
+          "end": "2009-12-31",
+          "val": 617512000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2010-07-21",
+          "frame": "CY2009"
+        },
+        {
+          "start": "2010-01-01",
+          "end": "2010-12-31",
+          "val": -524080000,
+          "fy": 2010,
+          "fp": "FY",
+          "form": "20-F/A",
+          "filed": "2011-07-05",
+          "frame": "CY2010"
+        }
+      ]
+    },
     "EarningsPerShareBasic": {
       "unit": "USD/shares",
       "datos": [
