@@ -19,6 +19,11 @@ dejamos en una base de datos consultable con SQL, marcando dónde no confiar.
 
 ## El recorrido recomendado (de mayor a menor nivel)
 
+0. **`BITACORA_Y_DECISIONES.md`** 🧭
+   El **porqué** de todo: el recorrido de la construcción y las decisiones de
+   fondo. **Leélo si querés entender por qué el repo es como es** (ideal para
+   agentes que se incorporan).
+
 1. **`../../scripts/tickets/README.md`** ⭐
    Cómo funciona el pipeline completo, los scripts, la base de datos y cómo
    correrlo. **Empezá acá si vas a tocar código.**
