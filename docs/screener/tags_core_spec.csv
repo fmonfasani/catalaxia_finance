@@ -1,0 +1,41 @@
+estado,concepto,tag_primario,fallbacks,tipo,cobertura_7,alimenta
+income,Ingresos,Revenues,RevenueFromContractWithCustomerExcludingAssessedTax;SalesRevenueNet,flujo,6,"Margen Neto/Op/Bruto;P/S;EV/Sales;Asset Turnover;Crec Revenue"
+income,Costo de ventas,CostOfRevenue,CostOfGoodsAndServicesSold;CostOfGoodsSold,flujo,4,"Margen Bruto;Inventory Turnover;DIO"
+income,Ganancia bruta,GrossProfit,,flujo,3,Margen Bruto
+income,Ganancia operativa (EBIT),OperatingIncomeLoss,,flujo,5,"Margen Op;EBITDA;EV/EBIT;ROCE;Cobertura intereses"
+income,I+D,ResearchAndDevelopmentExpense,,flujo,3,Intensidad I+D
+income,SG&A,SellingGeneralAndAdministrativeExpense,GeneralAndAdministrativeExpense,flujo,5,Eficiencia operativa
+income,Gasto en intereses,InterestExpense,InterestExpenseDebt,flujo,6,Cobertura de intereses
+income,Ganancia antes de impuestos,IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest,,flujo,7,"Tasa efectiva;NOPAT"
+income,Impuesto a las ganancias,IncomeTaxExpenseBenefit,,flujo,7,"NOPAT (ROIC);Tasa efectiva"
+income,Ganancia neta,NetIncomeLoss,ProfitLoss,flujo,7,"EPS;PER;Margen Neto;ROE;ROA;Payout"
+income,EPS diluido reportado,EarningsPerShareDiluted,,flujo,7,"EPS anual;Crec EPS 5Y"
+income,EPS basico reportado,EarningsPerShareBasic,,flujo,7,EPS basico
+income,Acciones diluidas promedio,WeightedAverageNumberOfDilutedSharesOutstanding,,flujo,7,"EPS;ratios per-share"
+income,Acciones basicas promedio,WeightedAverageNumberOfSharesOutstandingBasic,,flujo,7,EPS basico
+income,Depreciacion y amortizacion,DepreciationDepletionAndAmortization,DepreciationAndAmortization;Depreciation,flujo,7,"EBITDA;Deuda/EBITDA;EV/EBITDA"
+income,Amortizacion de intangibles,AmortizationOfIntangibleAssets,,flujo,5,EBITDA (cuando D&A es estrecho)
+balance,Activos totales,Assets,,foto,7,"ROA;Asset Turnover;Equity/Assets"
+balance,Activo corriente,AssetsCurrent,,foto,6,"Current Ratio;Quick Ratio;Working Capital"
+balance,Caja y equivalentes,CashAndCashEquivalentsAtCarryingValue,,foto,7,"Deuda Neta;EV;Cash Ratio;Cash/accion"
+balance,Inversiones corto plazo,ShortTermInvestments,MarketableSecuritiesCurrent,foto,4,Cash Ratio ampliado
+balance,Cuentas por cobrar,AccountsReceivableNetCurrent,,foto,5,"DSO;Receivables Turnover;Quick Ratio"
+balance,Inventario,InventoryNet,,foto,6,"Inventory Turnover;DIO;Quick Ratio"
+balance,Propiedad planta y equipo,PropertyPlantAndEquipmentNet,,foto,7,Intensidad de capital
+balance,Goodwill,Goodwill,,foto,6,Tangible Book Value
+balance,Intangibles,IntangibleAssetsNetExcludingGoodwill,FiniteLivedIntangibleAssetsNet,foto,5,Tangible Book Value
+balance,Pasivos totales,Liabilities,,foto,5,"Deuda/Equity aprox;solvencia"
+balance,Pasivo corriente,LiabilitiesCurrent,,foto,6,"Current Ratio;Quick Ratio;Working Capital"
+balance,Cuentas por pagar,AccountsPayableCurrent,,foto,3,"Payables Turnover;Cash Conversion Cycle"
+balance,Deuda largo plazo,LongTermDebt,LongTermDebtNoncurrent,foto,7,"Deuda/Equity;Deuda/EBITDA;EV"
+balance,Deuda LP corriente,LongTermDebtCurrent,,foto,6,Deuda total
+balance,Deuda corto plazo,ShortTermBorrowings,DebtCurrent,foto,6,Deuda total
+balance,Patrimonio neto,StockholdersEquity,,foto,7,"ROE;P/B;Deuda/Equity;BVPS"
+balance,Resultados acumulados,RetainedEarningsAccumulatedDeficit,,foto,7,Calidad/madurez
+balance,Acciones en circulacion,CommonStockSharesOutstanding,EntityCommonStockSharesOutstanding,foto,7,"Validacion escala;Market Cap"
+cashflow,Flujo de caja operativo CFO,NetCashProvidedByUsedInOperatingActivities,,flujo,7,"FCF;P/CF;Earnings Quality"
+cashflow,CapEx,PaymentsToAcquirePropertyPlantAndEquipment,PaymentsToAcquireProductiveAssets,flujo,6,"FCF;CapEx/Revenue;CapEx/D&A"
+cashflow,Dividendos pagados,PaymentsOfDividendsCommonStock,PaymentsOfDividends,flujo,6,"Payout;Dividend Yield;FCF Payout"
+cashflow,Recompras de acciones,PaymentsForRepurchaseOfCommonStock,,flujo,7,"Buyback Yield;Shareholder Yield"
+cashflow,Stock-based compensation,ShareBasedCompensation,,flujo,4,"FCF ajustado;Earnings Quality"
+dei,Public Float,EntityPublicFloat,,foto,7,Tamano/liquidez

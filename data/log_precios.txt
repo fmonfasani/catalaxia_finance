@@ -1,0 +1,16 @@
+Bajando precios (yfinance) para 553 empresas...
+  50/553 (ok=50, sin_precio=0)
+  100/553 (ok=100, sin_precio=0)
+  150/553 (ok=150, sin_precio=0)
+  200/553 (ok=200, sin_precio=0)
+  250/553 (ok=250, sin_precio=0)
+  300/553 (ok=300, sin_precio=0)
+  350/553 (ok=350, sin_precio=0)
+  400/553 (ok=400, sin_precio=0)
+  450/553 (ok=450, sin_precio=0)
+  500/553 (ok=500, sin_precio=0)
+  550/553 (ok=550, sin_precio=0)
+
+OK: 553 con valuacion, 0 sin precio en yfinance
+FX usados: { BRL=0.19375, MXN=0.05699, COP=0.00029, CLP=0.00109, ARS=0.00068 }
+Empresas con PER: 514

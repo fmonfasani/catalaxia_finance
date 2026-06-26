@@ -72,17 +72,23 @@ def dias_periodo(dp: dict) -> int | None:
         return None
 
 
-def ttm_flujo(serie: list[dict]) -> tuple[float | None, str | None]:
+def ttm_flujo(serie: list[dict]) -> tuple[float | None, str | None, str | None]:
     """
     TTM para una metrica de flujo. Estrategias en orden de preferencia:
     A) 4 trimestres standalone (~90d) consecutivos -> sumar.
     B) Annual + YTD_actual - YTD_anterior (canonico para 10-Q acumulado).
     C) Ultimo anual solo (~365d).
+
+    Devuelve (valor, end, estrategia). La estrategia 'C' NO es un TTM rodante
+    real: es el ultimo anio fiscal cerrado. Si un trimestre reciente tuvo un
+    item no recurrente, ese FY puede divergir fuerte del TTM que muestra
+    Investing (caso MRK, ver docs/screener/DIAGNOSTICO_INVESTING_vs_EDGAR.md).
+    Por eso se reporta la estrategia, para poder marcar la fila como FY.
     """
     if not serie:
-        return None, None
+        return None, None, None
 
-    quarters, ytds, annuals = [], [], []
+    quarters, annuals = [], []
     for dp in serie:
         d = dias_periodo(dp)
         if d is None:
@@ -91,11 +97,8 @@ def ttm_flujo(serie: list[dict]) -> tuple[float | None, str | None]:
             quarters.append(dp)
         elif 355 <= d <= 380:
             annuals.append(dp)
-        elif 170 <= d <= 290:
-            ytds.append(dp)
 
     quarters.sort(key=lambda x: x["end"], reverse=True)
-    ytds.sort(key=lambda x: x["end"], reverse=True)
     annuals.sort(key=lambda x: x["end"], reverse=True)
 
     # --- Estrategia A: 4 quarters consecutivos ---
@@ -111,43 +114,65 @@ def ttm_flujo(serie: list[dict]) -> tuple[float | None, str | None]:
                 consecutivo = False
                 break
         if consecutivo:
-            return sum(q["val"] for q in candidatos), candidatos[0]["end"]
+            return sum(q["val"] for q in candidatos), candidatos[0]["end"], "A"
 
-    # --- Estrategia B: Annual + YTD_actual - YTD_anterior ---
-    if annuals and ytds:
+    # --- Estrategia B (generalizada): Annual + parcial_FY_nuevo - mismo_parcial_anio_anterior ---
+    # TTM rodante canonico. El "parcial del FY nuevo" es cualquier periodo que
+    # ARRANCA al inicio del FY nuevo (~= fin del ultimo anual) y todavia no
+    # completo un anio: puede ser 1 quarter (Q1, ~90d), un semestre (~180d) o
+    # 9 meses (~270d). Antes solo se aceptaba el YTD largo (170-290d), por eso
+    # cuando el ultimo filing era el primer 10-Q del anio (Q1 standalone, 90d)
+    # la estrategia caia a C (= FY pelado) y el TTM divergia de Investing por
+    # items no recurrentes (MRK/JNJ/LLY). Ahora se acepta el Q1 tambien:
+    #   TTM = FY_anterior + Q1_nuevo - Q1_viejo.
+    # No depende de descargar mas datos -- el quarter ya esta en companyfacts.
+    if annuals:
         anual = annuals[0]
         anual_end = datetime.fromisoformat(anual["end"])
-        ytd_actual = None
-        for y in ytds:
-            if not y.get("start"):
-                continue
-            ystart = datetime.fromisoformat(y["start"])
-            if abs((ystart - anual_end).days) <= 5:
-                ytd_actual = y
-                break
 
-        if ytd_actual is not None:
-            ytd_actual_end = datetime.fromisoformat(ytd_actual["end"])
-            ytd_actual_dias = dias_periodo(ytd_actual)
-            ytd_prior = None
-            for y in ytds:
-                if y is ytd_actual:
+        # candidatos al "parcial del FY nuevo": empiezan ~= fin del anual y no
+        # son anuales (cualquier duracion < ~300 dias).
+        parciales = []
+        for dp in serie:
+            if not dp.get("start"):
+                continue
+            d = dias_periodo(dp)
+            if d is None or d > 300:
+                continue
+            dstart = datetime.fromisoformat(dp["start"])
+            if abs((dstart - anual_end).days) <= 7:
+                parciales.append(dp)
+
+        # el de mayor cobertura/mas reciente (mayor end): si ya hay 9 meses del
+        # FY nuevo, preferirlo al Q1.
+        parcial_actual = max(parciales, key=lambda x: x["end"]) if parciales else None
+
+        if parcial_actual is not None:
+            parcial_end = datetime.fromisoformat(parcial_actual["end"])
+            parcial_dias = dias_periodo(parcial_actual)
+            # mismo periodo, ~1 anio antes, misma duracion (Q1 vs Q1, 9m vs 9m).
+            parcial_prior = None
+            for dp in serie:
+                if dp is parcial_actual or not dp.get("start"):
                     continue
-                yend = datetime.fromisoformat(y["end"])
-                delta_year = (ytd_actual_end - yend).days
-                if 355 <= delta_year <= 380 and abs(dias_periodo(y) - ytd_actual_dias) <= 5:
-                    ytd_prior = y
+                dd = dias_periodo(dp)
+                if dd is None:
+                    continue
+                dend = datetime.fromisoformat(dp["end"])
+                delta_year = (parcial_end - dend).days
+                if 350 <= delta_year <= 380 and abs(dd - parcial_dias) <= 7:
+                    parcial_prior = dp
                     break
 
-            if ytd_prior is not None:
-                ttm = anual["val"] + ytd_actual["val"] - ytd_prior["val"]
-                return ttm, ytd_actual["end"]
+            if parcial_prior is not None:
+                ttm = anual["val"] + parcial_actual["val"] - parcial_prior["val"]
+                return ttm, parcial_actual["end"], "B"
 
     # --- Estrategia C: ultimo anual solo ---
     if annuals:
-        return annuals[0]["val"], annuals[0]["end"]
+        return annuals[0]["val"], annuals[0]["end"], "C"
 
-    return None, None
+    return None, None, None
 
 
 def ultimo_valor(serie: list[dict]) -> tuple[float | None, str | None]:
@@ -166,14 +191,19 @@ def serie_anual(serie: list[dict]) -> list[dict]:
         elif dp.get("start") is None and dp.get("form") in ("10-K", "20-F", "40-F"):
             annuals.append(dp)
 
-    por_fy = {}
+    # Dedup por PERIODO (end), NO por 'fy'. El 'fy' de XBRL es el anio del
+    # FILING: un mismo 10-K reporta 2-3 anios comparativos, todos con el mismo
+    # fy -> deduplicar por fy los colapsaba y se pisaban (ej. MRK 2023/2024/2025
+    # comparten fy=2025). Por 'end' cada anio fiscal es una clave distinta, y
+    # ante restatements del mismo periodo se conserva el 'filed' mas reciente.
+    por_end = {}
     for dp in annuals:
-        fy = dp.get("fy") or (dp.get("end") or "")[:4]
-        prev = por_fy.get(fy)
+        key = dp.get("end") or ""
+        prev = por_end.get(key)
         if prev is None or (dp.get("filed") or "") > (prev.get("filed") or ""):
-            por_fy[fy] = dp
+            por_end[key] = dp
 
-    return sorted(por_fy.values(), key=lambda x: x.get("end") or "")
+    return sorted(por_end.values(), key=lambda x: x.get("end") or "")
 
 
 def cagr(serie_anual_data: list[dict], years: int = 5) -> float | None:
@@ -187,14 +217,104 @@ def cagr(serie_anual_data: list[dict], years: int = 5) -> float | None:
 
 
 # ============================================================
+# HELPERS de los fixes (ver docs/screener/DIAGNOSTICO_INVESTING_vs_EDGAR.md)
+# ============================================================
+
+def serie_anual_eps_limpia(fin: dict) -> list[dict]:
+    """Serie anual de EPS diluido, SOLO periodos de un anio fiscal completo
+    (355-380 dias). Excluye los datapoints raros con start=None (a veces
+    periodos parciales/transicion tageados como 10-K) que contaminan el anio
+    base y hacen explotar el CAGR -- ej. CSCO con un EPS base de 0,02 que
+    inflaba el crecimiento a +173%. Ver fix #7 del diagnostico."""
+    out = []
+    for dp in get_serie(fin, "EarningsPerShareDiluted"):
+        d = dias_periodo(dp)
+        if d is not None and 355 <= d <= 380 and dp.get("val") is not None:
+            out.append(dp)
+    # Dedup por PERIODO (end), no por 'fy' (ver nota en serie_anual): asi el
+    # ultimo elemento es de verdad el EPS del anio fiscal mas reciente.
+    por_end = {}
+    for dp in out:
+        key = dp.get("end") or ""
+        prev = por_end.get(key)
+        if prev is None or (dp.get("filed") or "") > (prev.get("filed") or ""):
+            por_end[key] = dp
+    return sorted(por_end.values(), key=lambda x: x.get("end") or "")
+
+
+def cagr_eps_robusto(serie_eps: list[dict], years: int = 5) -> float | None:
+    """CAGR de EPS con guarda de anio base. Ademas del requisito de signo
+    (base y fin > 0), descarta el calculo si el anio base es un outlier chico
+    (< 10% de la mediana de la serie): eso delata un dato corrupto/parcial que
+    haria estallar el CAGR. Si pasa, devuelve None en vez de un numero falso."""
+    if len(serie_eps) < years + 1:
+        return None
+    vals = [dp["val"] for dp in serie_eps if dp.get("val") is not None]
+    if len(vals) < years + 1:
+        return None
+    inicio = serie_eps[-(years + 1)]["val"]
+    fin = serie_eps[-1]["val"]
+    if inicio is None or fin is None or inicio <= 0 or fin <= 0:
+        return None
+    mediana = sorted(vals)[len(vals) // 2]
+    if mediana > 0 and inicio < 0.10 * mediana:
+        return None  # anio base sospechoso -> no inventar un crecimiento
+    return (fin / inicio) ** (1 / years) - 1
+
+
+def equity_promedio_ttm(fin: dict) -> tuple[float | None, str | None]:
+    """Equity PROMEDIO para el denominador del ROE (no el puntual). Promedia el
+    equity del ultimo balance con el de ~1 anio antes, que es como lo hace
+    Investing.com (ver docs/.../FORMULAS_RATIOS.md: 'ROE = NI_TTM / Equity_prom').
+    Reduce el ruido en empresas con recompras donde el equity se mueve fuerte
+    trimestre a trimestre. Si no hay un punto ~1 anio atras, usa el ultimo."""
+    serie = get_serie(fin, "StockholdersEquity")
+    if not serie:
+        return None, None
+    serie_ok = sorted((dp for dp in serie if dp.get("end") and dp.get("val") is not None),
+                      key=lambda x: x["end"])
+    if not serie_ok:
+        return None, None
+    actual = serie_ok[-1]
+    end_actual = datetime.fromisoformat(actual["end"])
+    previo = None
+    for dp in reversed(serie_ok[:-1]):
+        delta = (end_actual - datetime.fromisoformat(dp["end"])).days
+        if 300 <= delta <= 430:  # ~1 anio antes
+            previo = dp
+            break
+    if previo is None:
+        return actual["val"], actual["end"]
+    return (actual["val"] + previo["val"]) / 2, actual["end"]
+
+
+def fecha_mas_reciente(*series: list[dict]) -> str | None:
+    """Maximo 'end' entre varias series -- para detectar datos stale."""
+    ends = [dp.get("end") for s in series for dp in s if dp.get("end")]
+    return max(ends) if ends else None
+
+
+def anios_desde(fecha_iso: str | None, hoy: datetime | None = None) -> float | None:
+    if not fecha_iso:
+        return None
+    hoy = hoy or datetime.now()
+    try:
+        return (hoy - datetime.fromisoformat(fecha_iso)).days / 365.25
+    except Exception:
+        return None
+
+
+# ============================================================
 # CALCULO DE RATIOS POR EMPRESA (idem _research, sin cambios de formula)
 # ============================================================
 
 def calcular_ratios(fin: dict, precio_info: dict) -> dict:
+    flags: list[str] = []  # banderas de calidad de datos (fix #2/#3/#5/#6)
+
     metric_rev, s_rev = get_serie_alt(
         fin, "Revenues", "RevenueFromContractWithCustomerExcludingAssessedTax", "SalesRevenueNet",
     )
-    revenue_ttm, _ = ttm_flujo(s_rev)
+    revenue_ttm, _, _ = ttm_flujo(s_rev)
 
     # Fallback NetIncomeLoss -> ProfitLoss: documentado en
     # docs/screener/GUIA_SEC_EDGAR_PARA_DEVS.md#9 (ProfitLoss es el tag
@@ -204,28 +324,67 @@ def calcular_ratios(fin: dict, precio_info: dict) -> dict:
     # NetIncomeLoss desactualizado o solo tageado en proxy statements (DEF 14A,
     # tabla Pay vs Performance) que no se ingestan aca a proposito.
     metric_ni, s_ni = get_serie_alt(fin, "NetIncomeLoss", "ProfitLoss")
-    netinc_ttm, _ = ttm_flujo(s_ni)
-    opinc_ttm, _ = ttm_flujo(get_serie(fin, "OperatingIncomeLoss"))
-    cfo_ttm, _ = ttm_flujo(get_serie(fin, "NetCashProvidedByUsedInOperatingActivities"))
+    netinc_ttm, ni_end, ni_estrategia = ttm_flujo(s_ni)
+    opinc_ttm, _, _ = ttm_flujo(get_serie(fin, "OperatingIncomeLoss"))
+    cfo_ttm, _, _ = ttm_flujo(get_serie(fin, "NetCashProvidedByUsedInOperatingActivities"))
 
     metric_capex, s_capex = get_serie_alt(
         fin, "PaymentsToAcquirePropertyPlantAndEquipment", "PaymentsToAcquireProductiveAssets",
     )
-    capex_ttm, _ = ttm_flujo(s_capex)
+    capex_ttm, _, _ = ttm_flujo(s_capex)
 
     metric_div, s_div = get_serie_alt(
         fin, "PaymentsOfDividendsCommonStock", "PaymentsOfDividends",
     )
-    div_ttm, _ = ttm_flujo(s_div)
+    div_ttm, _, _ = ttm_flujo(s_div)
 
-    metric_da, s_da = get_serie_alt(
-        fin, "DepreciationDepletionAndAmortization", "DepreciationAndAmortization", "Depreciation",
-    )
-    da_ttm, _ = ttm_flujo(s_da)
+    # Fix #4 -- eleccion del tag de D&A para EBITDA. La regla NO puede ser "el
+    # mas reciente" (rompia GE: elegia Depreciation estrecho 4,25B en vez del
+    # comprensivo 9,29B) ni "prioridad estricta" (rompia INTC: elegia un
+    # DepreciationAndAmortization mal tageado de 0,2B sobre el Depreciation real
+    # de 9,43B). Regla robusta:
+    #   1) si existe DepreciationDepletionAndAmortization (el mas comprensivo,
+    #      incluye depletion + amortizacion de intangibles) -> usarlo.
+    #   2) si no, elegir entre DepreciationAndAmortization y Depreciation el de
+    #      MAYOR TTM (un tag diminuto es un mis-tag, no el D&A real).
+    #   3) si el elegido es 'Depreciation' (solo PP&E), sumarle la
+    #      AmortizationOfIntangibleAssets para no subestimar el EBITDA de
+    #      empresas adquisitivas (ORCL/Cerner, IBM).
+    da_dda, _, _ = ttm_flujo(get_serie(fin, "DepreciationDepletionAndAmortization"))
+    da_da, _, _ = ttm_flujo(get_serie(fin, "DepreciationAndAmortization"))
+    da_dep, _, _ = ttm_flujo(get_serie(fin, "Depreciation"))
+    if da_dda is not None:
+        metric_da, da_ttm, da_incluye_intangibles = "DepreciationDepletionAndAmortization", da_dda, True
+    else:
+        candidatos_da = [(m, v) for m, v in (("DepreciationAndAmortization", da_da),
+                                             ("Depreciation", da_dep)) if v is not None]
+        if candidatos_da:
+            metric_da, da_ttm = max(candidatos_da, key=lambda x: x[1])
+        else:
+            metric_da, da_ttm = "", None
+        da_incluye_intangibles = metric_da == "DepreciationAndAmortization"
+    if metric_da == "Depreciation":
+        amort_ttm, _, _ = ttm_flujo(get_serie(fin, "AmortizationOfIntangibleAssets"))
+        if amort_ttm is not None:
+            da_ttm = (da_ttm or 0) + amort_ttm
+            da_incluye_intangibles = True
+            flags.append("ebitda_da_mas_intangibles")
 
     diluted_shares_serie = get_serie(fin, "WeightedAverageNumberOfDilutedSharesOutstanding")
     basic_shares_serie = get_serie(fin, "WeightedAverageNumberOfSharesOutstandingBasic")
     diluted_shares, _ = ultimo_valor(diluted_shares_serie or basic_shares_serie)
+
+    # Fix #2 -- validacion de ESCALA de shares. NMR tagea el weighted-avg de
+    # acciones en una unidad equivocada (3,04e15, ~1e6 veces de mas) y SID con
+    # un valor de 2009 fuera de escala -> EPS/PER quedan absurdos. Si el conteo
+    # difiere >100x del CommonStockSharesOutstanding (control independiente del
+    # balance), se descarta en vez de inventar un EPS roto.
+    shares_outstanding, _ = ultimo_valor(get_serie(fin, "CommonStockSharesOutstanding"))
+    if diluted_shares and shares_outstanding and shares_outstanding > 0:
+        ratio = diluted_shares / shares_outstanding
+        if ratio > 100 or ratio < 0.01:
+            flags.append("shares_descartadas_escala")
+            diluted_shares = None
 
     equity, _ = ultimo_valor(get_serie(fin, "StockholdersEquity"))
     cash, _ = ultimo_valor(get_serie(fin, "CashAndCashEquivalentsAtCarryingValue"))
@@ -240,12 +399,37 @@ def calcular_ratios(fin: dict, precio_info: dict) -> dict:
     componentes = [x for x in (lt_debt, lt_debt_curr, st_debt or debt_curr) if x is not None]
     deuda_total = sum(componentes) if componentes else None
 
+    # Fix #3 -- deteccion de datos STALE. Foreign private issuers como TM
+    # (Toyota) y VALE dejaron de filear us-gaap detallado: su ultimo
+    # income statement es de 2012, pero el pipeline lo toma como si fuera el
+    # "TTM" actual. Si el dato de NI/revenue tiene > 2 anios, se anulan los
+    # ratios derivados (mejor NULL honesto que un ratio de hace una decada).
+    # Se mide sobre el net income REALMENTE usado (ni_end): es lo que alimenta
+    # PER/EPS/margen/ROE/payout. NMR, por ejemplo, tiene revenue reciente pero
+    # su ultimo net income es de 2010 -> debe contar como stale igual.
+    end_datos = ni_end or fecha_mas_reciente(s_ni, s_rev)
+    antiguedad = anios_desde(end_datos)
+    es_stale = antiguedad is not None and antiguedad > 2.0
+    if es_stale:
+        flags.append(f"stale_{end_datos}")
+        netinc_ttm = revenue_ttm = opinc_ttm = cfo_ttm = None
+        capex_ttm = div_ttm = da_ttm = None
+        diluted_shares = equity = None
+
     ebitda_ttm = opinc_ttm + da_ttm if (opinc_ttm is not None and da_ttm is not None) else None
 
     precio = (precio_info or {}).get("last_price")
 
     eps_ttm = (netinc_ttm / diluted_shares) if (netinc_ttm and diluted_shares) else None
     per_ttm = (precio / eps_ttm) if (precio and eps_ttm and eps_ttm > 0) else None
+
+    # Fix #6 -- si el "TTM" de net income salio de la estrategia C (ultimo anio
+    # fiscal cerrado, no un TTM rodante), se marca: PER/EPS/margen/ROE/payout de
+    # esa fila son FY, no TTM, y pueden divergir de Investing por items no
+    # recurrentes en un trimestre reciente (caso MRK).
+    ni_es_fy = (ni_estrategia == "C") and not es_stale
+    if ni_es_fy:
+        flags.append("ni_es_fy_no_ttm")
 
     year_high = (precio_info or {}).get("year_high")
     year_low = (precio_info or {}).get("year_low")
@@ -269,18 +453,30 @@ def calcular_ratios(fin: dict, precio_info: dict) -> dict:
     roe_anual.sort(key=lambda x: x["end"])
     roe_cagr_5y = cagr(roe_anual, years=5)
 
-    # ROE TTM simple (NetIncome_TTM / Equity) -- esto es lo que Investing.com
-    # muestra como "Return on Equity TTM". NO confundir con roe_cagr_5y (que
-    # es la tasa de crecimiento del ROE en 5 anios, una magnitud distinta).
-    # Formula documentada en docs/screener/GUIA_RATIOS_EDGAR_vs_INVESTING.md.
-    roe_ttm = (netinc_ttm / equity) if (netinc_ttm is not None and equity and equity > 0) else None
+    # Fix #5 -- ROE TTM con EQUITY PROMEDIO (no puntual), que es lo que usa
+    # Investing.com (docs/.../FORMULAS_RATIOS.md). Reduce el ruido en empresas
+    # con recompras. Ademas se marca 'roe_no_significativo' cuando el equity es
+    # < 5% de los activos (ej. CL con equity casi cero por treasury stock): ahi
+    # el ROE puede ser tecnicamente correcto pero no interpretable.
+    equity_prom, _ = (None, None) if es_stale else equity_promedio_ttm(fin)
+    roe_ttm = (netinc_ttm / equity_prom) if (netinc_ttm is not None and equity_prom and equity_prom > 0) else None
+    assets, _ = ultimo_valor(get_serie(fin, "Assets"))
+    if roe_ttm is not None and equity_prom is not None and assets and assets > 0:
+        if equity_prom < 0.05 * assets:
+            flags.append("roe_no_significativo")
 
-    eps_anual = []
-    eps_serie = get_serie(fin, "EarningsPerShareDiluted")
-    for dp in serie_anual(eps_serie):
-        if dp.get("val") is not None:
-            eps_anual.append(dp)
-    cagr_eps_5y = cagr(eps_anual, years=5)
+    # Fix #7 -- crecimiento EPS con serie anual LIMPIA (solo anios fiscales
+    # completos) y guarda de anio base, para no inflar el CAGR con un dato
+    # base corrupto (ej. CSCO base 0,02 -> +173% falso).
+    serie_eps_anual = serie_anual_eps_limpia(fin)
+    cagr_eps_5y = None if es_stale else cagr_eps_robusto(serie_eps_anual, years=5)
+
+    # EPS ANUAL reportado (ultimo 10-K). Es el EarningsPerShareDiluted que la
+    # empresa publica para su anio fiscal cerrado, == la columna "Diluted EPS
+    # ANN" de Investing -> sirve para comparar manzana-con-manzana. Distinto del
+    # eps_ttm (rodante) que alimenta el PER: cuando hubo un trimestre no
+    # recurrente, anual y TTM divergen (ej. MRK 7,28 anual vs 3,61 TTM).
+    eps_annual = (serie_eps_anual[-1]["val"] if serie_eps_anual and not es_stale else None)
 
     fcf_ttm = (cfo_ttm - capex_ttm) if (cfo_ttm is not None and capex_ttm is not None) else None
 
@@ -303,6 +499,7 @@ def calcular_ratios(fin: dict, precio_info: dict) -> dict:
         "deuda_lp_sobre_ebitda": deuda_ebitda_lp,
         "deuda_total_sobre_ebitda": deuda_ebitda_total,
         "eps_ttm_diluted": eps_ttm,
+        "eps_annual": eps_annual,
         "cagr_eps_5y": cagr_eps_5y,
         "margen_neto_ttm": margen_neto,
         "roe_cagr_5y": roe_cagr_5y,
@@ -318,10 +515,17 @@ def calcular_ratios(fin: dict, precio_info: dict) -> dict:
         "_fcf_ttm": fcf_ttm,
         "_diluted_shares": diluted_shares,
         "_equity": equity,
+        "_equity_prom": equity_prom,
         "_lt_debt": lt_debt,
         "_deuda_total": deuda_total,
         "_metric_revenue": metric_rev,
         "_metric_da": metric_da,
+        "_da_incluye_intangibles": da_incluye_intangibles,
+        "_ni_estrategia": ni_estrategia,
+        "_ni_es_fy": ni_es_fy,
+        "_stale": es_stale,
+        "_end_datos": end_datos,
+        "_flags": ";".join(flags),
     }
 
 

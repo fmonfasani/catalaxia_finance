@@ -143,3 +143,11 @@ build/
 # Environment variables
 .env.local
 .env.*.local
+
+# Datos del screener (cache crudo + base) - NO versionar (pesa GBs)
+data/raw/
+data/bulk/
+data/*.db
+data/*.backup*
+*.db-journal
+*.db-wal

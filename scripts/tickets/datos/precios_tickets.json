@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-24T20:58:49.662103+00:00",
+  "timestamp": "2026-06-25T00:42:25.542584+00:00",
   "precios": {
     "GS": {
       "last_price": 1076.9100341796875,
@@ -10,18 +10,18 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 1091.25,
-      "fetched_at": "2026-06-24T20:57:14.177305+00:00"
+      "fetched_at": "2026-06-25T00:41:02.180883+00:00"
     },
     "IBN": {
       "last_price": 29.0,
       "year_high": 34.56999969482422,
       "year_low": 25.079999923706055,
-      "market_cap": 104001681230.0,
-      "shares": 3586264870,
+      "market_cap": 104003289048.0,
+      "shares": 3586320312,
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 27.96,
-      "fetched_at": "2026-06-24T20:57:15.411387+00:00"
+      "fetched_at": "2026-06-25T00:41:04.011852+00:00"
     },
     "INFY": {
       "last_price": 10.930000305175781,
@@ -32,7 +32,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 11.0,
-      "fetched_at": "2026-06-24T20:57:16.584868+00:00"
+      "fetched_at": "2026-06-25T00:41:05.003856+00:00"
     },
     "NOK": {
       "last_price": 13.8100004196167,
@@ -43,7 +43,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 13.72,
-      "fetched_at": "2026-06-24T20:57:17.824267+00:00"
+      "fetched_at": "2026-06-25T00:41:06.010790+00:00"
     },
     "VALE": {
       "last_price": 14.84000015258789,
@@ -54,7 +54,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 15.3,
-      "fetched_at": "2026-06-24T20:57:19.037434+00:00"
+      "fetched_at": "2026-06-25T00:41:06.997675+00:00"
     },
     "MUFG": {
       "last_price": 19.809999465942383,
@@ -65,7 +65,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 20.34,
-      "fetched_at": "2026-06-24T20:57:20.276795+00:00"
+      "fetched_at": "2026-06-25T00:41:08.060028+00:00"
     },
     "TSM": {
       "last_price": 440.8299865722656,
@@ -76,7 +76,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 440.49,
-      "fetched_at": "2026-06-24T20:57:21.451547+00:00"
+      "fetched_at": "2026-06-25T00:41:09.018149+00:00"
     },
     "GRMN": {
       "last_price": 240.02000427246094,
@@ -87,7 +87,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 236.8,
-      "fetched_at": "2026-06-24T20:57:22.618243+00:00"
+      "fetched_at": "2026-06-25T00:41:10.013511+00:00"
     },
     "VIV": {
       "last_price": 13.149999618530273,
@@ -98,7 +98,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 13.22,
-      "fetched_at": "2026-06-24T20:57:23.865020+00:00"
+      "fetched_at": "2026-06-25T00:41:11.002190+00:00"
     },
     "RIO": {
       "last_price": 94.02999877929688,
@@ -109,7 +109,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 95.87,
-      "fetched_at": "2026-06-24T20:57:25.060096+00:00"
+      "fetched_at": "2026-06-25T00:41:12.001952+00:00"
     },
     "TRV": {
       "last_price": 320.739990234375,
@@ -120,7 +120,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 314.412,
-      "fetched_at": "2026-06-24T20:57:26.290066+00:00"
+      "fetched_at": "2026-06-25T00:41:13.014421+00:00"
     },
     "CSCO": {
       "last_price": 119.7300033569336,
@@ -131,7 +131,7 @@
       "currency": "USD",
       "exchange": "NMS",
       "previous_close": 122.08,
-      "fetched_at": "2026-06-24T20:57:27.495528+00:00"
+      "fetched_at": "2026-06-25T00:41:14.309568+00:00"
     },
     "SBS": {
       "last_price": 5.53000020980835,
@@ -142,7 +142,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 5.54,
-      "fetched_at": "2026-06-24T20:57:28.691571+00:00"
+      "fetched_at": "2026-06-25T00:41:15.313636+00:00"
     },
     "INTC": {
       "last_price": 131.64999389648438,
@@ -153,7 +153,7 @@
       "currency": "USD",
       "exchange": "NMS",
       "previous_close": 132.81,
-      "fetched_at": "2026-06-24T20:57:29.868627+00:00"
+      "fetched_at": "2026-06-25T00:41:16.298832+00:00"
     },
     "MFG": {
       "last_price": 9.579999923706055,
@@ -164,7 +164,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 10.07,
-      "fetched_at": "2026-06-24T20:57:31.121894+00:00"
+      "fetched_at": "2026-06-25T00:41:17.320341+00:00"
     },
     "KGC": {
       "last_price": 23.700000762939453,
@@ -175,7 +175,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 25.06,
-      "fetched_at": "2026-06-24T20:57:32.284035+00:00"
+      "fetched_at": "2026-06-25T00:41:18.930364+00:00"
     },
     "AMAT": {
       "last_price": 588.969970703125,
@@ -186,7 +186,7 @@
       "currency": "USD",
       "exchange": "NMS",
       "previous_close": 590.0,
-      "fetched_at": "2026-06-24T20:57:33.490683+00:00"
+      "fetched_at": "2026-06-25T00:41:19.939751+00:00"
     },
     "JNJ": {
       "last_price": 241.0,
@@ -197,7 +197,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 239.0993,
-      "fetched_at": "2026-06-24T20:57:34.830407+00:00"
+      "fetched_at": "2026-06-25T00:41:20.969025+00:00"
     },
     "BIIB": {
       "last_price": 199.58999633789062,
@@ -208,7 +208,7 @@
       "currency": "USD",
       "exchange": "NMS",
       "previous_close": 197.56,
-      "fetched_at": "2026-06-24T20:57:35.934540+00:00"
+      "fetched_at": "2026-06-25T00:41:21.911370+00:00"
     },
     "LMT": {
       "last_price": 491.6400146484375,
@@ -219,7 +219,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 502.44,
-      "fetched_at": "2026-06-24T20:57:37.323485+00:00"
+      "fetched_at": "2026-06-25T00:41:22.989023+00:00"
     },
     "BHP": {
       "last_price": 80.72000122070312,
@@ -230,7 +230,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 82.81,
-      "fetched_at": "2026-06-24T20:57:38.598993+00:00"
+      "fetched_at": "2026-06-25T00:41:24.001659+00:00"
     },
     "EBAY": {
       "last_price": 109.44999694824219,
@@ -241,7 +241,7 @@
       "currency": "USD",
       "exchange": "NMS",
       "previous_close": 109.0345,
-      "fetched_at": "2026-06-24T20:57:39.743697+00:00"
+      "fetched_at": "2026-06-25T00:41:24.945710+00:00"
     },
     "NEM": {
       "last_price": 94.04000091552734,
@@ -252,7 +252,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 97.8399,
-      "fetched_at": "2026-06-24T20:57:40.996025+00:00"
+      "fetched_at": "2026-06-25T00:41:26.024752+00:00"
     },
     "ERIC": {
       "last_price": 11.15999984741211,
@@ -263,7 +263,7 @@
       "currency": "USD",
       "exchange": "NMS",
       "previous_close": 11.36,
-      "fetched_at": "2026-06-24T20:57:42.175133+00:00"
+      "fetched_at": "2026-06-25T00:41:27.561464+00:00"
     },
     "PG": {
       "last_price": 152.0399932861328,
@@ -274,7 +274,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 150.51,
-      "fetched_at": "2026-06-24T20:57:43.470191+00:00"
+      "fetched_at": "2026-06-25T00:41:28.611037+00:00"
     },
     "SNA": {
       "last_price": 392.1400146484375,
@@ -285,7 +285,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 384.35,
-      "fetched_at": "2026-06-24T20:57:44.735533+00:00"
+      "fetched_at": "2026-06-25T00:41:29.613680+00:00"
     },
     "CL": {
       "last_price": 91.87999725341797,
@@ -296,7 +296,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 91.03,
-      "fetched_at": "2026-06-24T20:57:45.990837+00:00"
+      "fetched_at": "2026-06-25T00:41:30.788605+00:00"
     },
     "HPQ": {
       "last_price": 23.290000915527344,
@@ -307,7 +307,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 23.67,
-      "fetched_at": "2026-06-24T20:57:47.301612+00:00"
+      "fetched_at": "2026-06-25T00:41:31.843096+00:00"
     },
     "KMB": {
       "last_price": 106.7300033569336,
@@ -318,7 +318,7 @@
       "currency": "USD",
       "exchange": "NMS",
       "previous_close": 103.61,
-      "fetched_at": "2026-06-24T20:57:48.537214+00:00"
+      "fetched_at": "2026-06-25T00:41:32.808822+00:00"
     },
     "TX": {
       "last_price": 44.959999084472656,
@@ -329,7 +329,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 45.36,
-      "fetched_at": "2026-06-24T20:57:49.714603+00:00"
+      "fetched_at": "2026-06-25T00:41:34.318992+00:00"
     },
     "WMT": {
       "last_price": 119.0,
@@ -340,7 +340,7 @@
       "currency": "USD",
       "exchange": "NMS",
       "previous_close": 119.38,
-      "fetched_at": "2026-06-24T20:57:51.013878+00:00"
+      "fetched_at": "2026-06-25T00:41:35.330601+00:00"
     },
     "HD": {
       "last_price": 342.8599853515625,
@@ -351,7 +351,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 324.29,
-      "fetched_at": "2026-06-24T20:57:52.248894+00:00"
+      "fetched_at": "2026-06-25T00:41:36.371730+00:00"
     },
     "AVY": {
       "last_price": 163.14999389648438,
@@ -362,7 +362,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 157.2,
-      "fetched_at": "2026-06-24T20:57:53.528481+00:00"
+      "fetched_at": "2026-06-25T00:41:37.414281+00:00"
     },
     "TGT": {
       "last_price": 141.1999969482422,
@@ -373,7 +373,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 134.5537,
-      "fetched_at": "2026-06-24T20:57:54.867546+00:00"
+      "fetched_at": "2026-06-25T00:41:38.576196+00:00"
     },
     "NVS": {
       "last_price": 153.1199951171875,
@@ -384,7 +384,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 151.87,
-      "fetched_at": "2026-06-24T20:57:56.086907+00:00"
+      "fetched_at": "2026-06-25T00:41:39.837010+00:00"
     },
     "SAP": {
       "last_price": 152.75,
@@ -395,7 +395,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 153.1845,
-      "fetched_at": "2026-06-24T20:57:57.314342+00:00"
+      "fetched_at": "2026-06-25T00:41:40.834045+00:00"
     },
     "PKX": {
       "last_price": 53.52000045776367,
@@ -406,7 +406,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 53.38,
-      "fetched_at": "2026-06-24T20:57:58.505110+00:00"
+      "fetched_at": "2026-06-25T00:41:41.951141+00:00"
     },
     "MMM": {
       "last_price": 165.91000366210938,
@@ -417,7 +417,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 162.71,
-      "fetched_at": "2026-06-24T20:57:59.805268+00:00"
+      "fetched_at": "2026-06-25T00:41:43.083426+00:00"
     },
     "KOF": {
       "last_price": 104.69000244140625,
@@ -428,7 +428,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 109.99,
-      "fetched_at": "2026-06-24T20:58:01.026827+00:00"
+      "fetched_at": "2026-06-25T00:41:44.086390+00:00"
     },
     "AMGN": {
       "last_price": 351.42999267578125,
@@ -439,7 +439,7 @@
       "currency": "USD",
       "exchange": "NMS",
       "previous_close": 345.0592,
-      "fetched_at": "2026-06-24T20:58:02.729216+00:00"
+      "fetched_at": "2026-06-25T00:41:45.053882+00:00"
     },
     "BG": {
       "last_price": 108.98999786376953,
@@ -450,7 +450,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 111.53,
-      "fetched_at": "2026-06-24T20:58:03.965397+00:00"
+      "fetched_at": "2026-06-25T00:41:46.310249+00:00"
     },
     "PSO": {
       "last_price": 15.0600004196167,
@@ -461,7 +461,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 14.99,
-      "fetched_at": "2026-06-24T20:58:05.159288+00:00"
+      "fetched_at": "2026-06-25T00:41:47.593605+00:00"
     },
     "HON": {
       "last_price": 227.4199981689453,
@@ -472,7 +472,7 @@
       "currency": "USD",
       "exchange": "NMS",
       "previous_close": 223.5,
-      "fetched_at": "2026-06-24T20:58:06.457272+00:00"
+      "fetched_at": "2026-06-25T00:41:48.643738+00:00"
     },
     "ITUB": {
       "last_price": 7.880000114440918,
@@ -483,7 +483,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 7.5,
-      "fetched_at": "2026-06-24T20:58:07.721450+00:00"
+      "fetched_at": "2026-06-25T00:41:49.611767+00:00"
     },
     "BSBR": {
       "last_price": 5.139999866485596,
@@ -494,7 +494,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 5.25,
-      "fetched_at": "2026-06-24T20:58:08.915932+00:00"
+      "fetched_at": "2026-06-25T00:41:50.573701+00:00"
     },
     "T": {
       "last_price": 22.3700008392334,
@@ -505,7 +505,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 22.83,
-      "fetched_at": "2026-06-24T20:58:10.163123+00:00"
+      "fetched_at": "2026-06-25T00:41:51.890103+00:00"
     },
     "PEP": {
       "last_price": 142.27000427246094,
@@ -516,7 +516,7 @@
       "currency": "USD",
       "exchange": "NMS",
       "previous_close": 142.12,
-      "fetched_at": "2026-06-24T20:58:11.471890+00:00"
+      "fetched_at": "2026-06-25T00:41:52.898454+00:00"
     },
     "XOM": {
       "last_price": 136.89999389648438,
@@ -527,7 +527,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 139.7,
-      "fetched_at": "2026-06-24T20:58:12.760431+00:00"
+      "fetched_at": "2026-06-25T00:41:53.967849+00:00"
     },
     "PFE": {
       "last_price": 24.040000915527344,
@@ -538,7 +538,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 24.7568,
-      "fetched_at": "2026-06-24T20:58:14.092307+00:00"
+      "fetched_at": "2026-06-25T00:41:55.017753+00:00"
     },
     "AXP": {
       "last_price": 342.55999755859375,
@@ -549,7 +549,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 337.85,
-      "fetched_at": "2026-06-24T20:58:15.351401+00:00"
+      "fetched_at": "2026-06-25T00:41:56.351939+00:00"
     },
     "PCAR": {
       "last_price": 117.02999877929688,
@@ -560,7 +560,7 @@
       "currency": "USD",
       "exchange": "NMS",
       "previous_close": 116.94,
-      "fetched_at": "2026-06-24T20:58:16.617754+00:00"
+      "fetched_at": "2026-06-25T00:41:57.380315+00:00"
     },
     "AEG": {
       "last_price": 8.34000015258789,
@@ -571,7 +571,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 8.68,
-      "fetched_at": "2026-06-24T20:58:17.818879+00:00"
+      "fetched_at": "2026-06-25T00:41:58.351232+00:00"
     },
     "ORCL": {
       "last_price": 157.52999877929688,
@@ -582,7 +582,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 165.58,
-      "fetched_at": "2026-06-24T20:58:18.979302+00:00"
+      "fetched_at": "2026-06-25T00:41:59.341057+00:00"
     },
     "GSK": {
       "last_price": 51.09000015258789,
@@ -593,7 +593,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 52.01,
-      "fetched_at": "2026-06-24T20:58:20.228959+00:00"
+      "fetched_at": "2026-06-25T00:42:00.447415+00:00"
     },
     "IBM": {
       "last_price": 262.9599914550781,
@@ -604,7 +604,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 264.14,
-      "fetched_at": "2026-06-24T20:58:21.586871+00:00"
+      "fetched_at": "2026-06-25T00:42:01.577395+00:00"
     },
     "WB": {
       "last_price": 7.289999961853027,
@@ -615,7 +615,7 @@
       "currency": "USD",
       "exchange": "NMS",
       "previous_close": 7.33,
-      "fetched_at": "2026-06-24T20:58:22.745260+00:00"
+      "fetched_at": "2026-06-25T00:42:02.830531+00:00"
     },
     "SID": {
       "last_price": 0.9810000061988831,
@@ -626,7 +626,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 1.0399,
-      "fetched_at": "2026-06-24T20:58:23.946715+00:00"
+      "fetched_at": "2026-06-25T00:42:03.790089+00:00"
     },
     "CAT": {
       "last_price": 994.4500122070312,
@@ -637,7 +637,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 987.39,
-      "fetched_at": "2026-06-24T20:58:25.295639+00:00"
+      "fetched_at": "2026-06-25T00:42:04.855363+00:00"
     },
     "KO": {
       "last_price": 80.5999984741211,
@@ -648,7 +648,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 80.05,
-      "fetched_at": "2026-06-24T20:58:26.696389+00:00"
+      "fetched_at": "2026-06-25T00:42:05.877979+00:00"
     },
     "XRX": {
       "last_price": 3.140000104904175,
@@ -659,7 +659,7 @@
       "currency": "USD",
       "exchange": "NMS",
       "previous_close": 3.116,
-      "fetched_at": "2026-06-24T20:58:28.112068+00:00"
+      "fetched_at": "2026-06-25T00:42:06.894256+00:00"
     },
     "HMC": {
       "last_price": 25.760000228881836,
@@ -670,7 +670,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 25.56,
-      "fetched_at": "2026-06-24T20:58:29.432962+00:00"
+      "fetched_at": "2026-06-25T00:42:08.145465+00:00"
     },
     "USB": {
       "last_price": 60.11000061035156,
@@ -681,7 +681,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 60.1949,
-      "fetched_at": "2026-06-24T20:58:30.696245+00:00"
+      "fetched_at": "2026-06-25T00:42:09.145273+00:00"
     },
     "NGG": {
       "last_price": 82.83000183105469,
@@ -692,7 +692,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 79.91,
-      "fetched_at": "2026-06-24T20:58:31.974256+00:00"
+      "fetched_at": "2026-06-25T00:42:10.110179+00:00"
     },
     "DE": {
       "last_price": 600.75,
@@ -703,7 +703,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 592.99,
-      "fetched_at": "2026-06-24T20:58:33.234669+00:00"
+      "fetched_at": "2026-06-25T00:42:11.144380+00:00"
     },
     "GE": {
       "last_price": 365.8800048828125,
@@ -714,7 +714,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 355.67,
-      "fetched_at": "2026-06-24T20:58:34.581870+00:00"
+      "fetched_at": "2026-06-25T00:42:12.175386+00:00"
     },
     "TM": {
       "last_price": 167.75999450683594,
@@ -725,7 +725,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 168.0,
-      "fetched_at": "2026-06-24T20:58:35.849124+00:00"
+      "fetched_at": "2026-06-25T00:42:13.195057+00:00"
     },
     "C": {
       "last_price": 143.58999633789062,
@@ -736,7 +736,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 144.41,
-      "fetched_at": "2026-06-24T20:58:37.059502+00:00"
+      "fetched_at": "2026-06-25T00:42:14.526424+00:00"
     },
     "JPM": {
       "last_price": 333.45001220703125,
@@ -747,7 +747,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 334.5,
-      "fetched_at": "2026-06-24T20:58:38.312378+00:00"
+      "fetched_at": "2026-06-25T00:42:15.627001+00:00"
     },
     "BAC": {
       "last_price": 57.72999954223633,
@@ -758,7 +758,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 57.91,
-      "fetched_at": "2026-06-24T20:58:39.560373+00:00"
+      "fetched_at": "2026-06-25T00:42:16.663733+00:00"
     },
     "MRK": {
       "last_price": 120.5999984741211,
@@ -769,7 +769,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 119.8298,
-      "fetched_at": "2026-06-24T20:58:40.861745+00:00"
+      "fetched_at": "2026-06-25T00:42:17.710106+00:00"
     },
     "BBD": {
       "last_price": 3.369999885559082,
@@ -780,7 +780,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 3.43,
-      "fetched_at": "2026-06-24T20:58:42.078505+00:00"
+      "fetched_at": "2026-06-25T00:42:18.698845+00:00"
     },
     "LLY": {
       "last_price": 1117.260009765625,
@@ -791,7 +791,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 1107.48,
-      "fetched_at": "2026-06-24T20:58:43.339905+00:00"
+      "fetched_at": "2026-06-25T00:42:19.847584+00:00"
     },
     "KB": {
       "last_price": 99.91000366210938,
@@ -802,7 +802,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 102.47,
-      "fetched_at": "2026-06-24T20:58:44.527138+00:00"
+      "fetched_at": "2026-06-25T00:42:20.876213+00:00"
     },
     "VZ": {
       "last_price": 45.68000030517578,
@@ -813,7 +813,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 46.4602,
-      "fetched_at": "2026-06-24T20:58:45.811355+00:00"
+      "fetched_at": "2026-06-25T00:42:21.954402+00:00"
     },
     "HWM": {
       "last_price": 276.05999755859375,
@@ -824,7 +824,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 275.13,
-      "fetched_at": "2026-06-24T20:58:47.016376+00:00"
+      "fetched_at": "2026-06-25T00:42:23.033781+00:00"
     },
     "ING": {
       "last_price": 31.049999237060547,
@@ -835,7 +835,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 29.9595,
-      "fetched_at": "2026-06-24T20:58:48.279807+00:00"
+      "fetched_at": "2026-06-25T00:42:24.159568+00:00"
     },
     "NMR": {
       "last_price": 8.609999656677246,
@@ -846,7 +846,7 @@
       "currency": "USD",
       "exchange": "NYQ",
       "previous_close": 8.86,
-      "fetched_at": "2026-06-24T20:58:49.461772+00:00"
+      "fetched_at": "2026-06-25T00:42:25.339091+00:00"
     }
   }
 }

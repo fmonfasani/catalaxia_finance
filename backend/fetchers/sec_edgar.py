@@ -40,6 +40,12 @@ METRICAS_GAAP = [
     "DepreciationDepletionAndAmortization",
     "DepreciationAndAmortization",
     "Depreciation",
+    # Amortizacion de intangibles: cuando una empresa tagea solo "Depreciation"
+    # (estrecho, sin amortizacion) en el cash flow, su EBITDA queda subestimado
+    # porque omite la amortizacion de intangibles adquiridos (ej. ORCL/Cerner,
+    # GE, IBM -- miles de millones/anio). Se descarga aparte para sumarla en
+    # ratios cuando NO esta ya incluida en DepreciationDepletionAndAmortization.
+    "AmortizationOfIntangibleAssets",
     "Assets",
     "AssetsCurrent",
     "Liabilities",

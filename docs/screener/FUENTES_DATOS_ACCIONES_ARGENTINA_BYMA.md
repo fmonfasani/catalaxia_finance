@@ -4,6 +4,25 @@
 
 ---
 
+> ## ⚠️ CORRECCIÓN (jun 2026) — más ADRs argentinos están en EDGAR de lo que decía la tabla
+>
+> La tabla de abajo marcaba varias como "❌ NO cotiza en USA → scraping CNV". **Verificamos
+> contra EDGAR y la mayoría SÍ filean con la SEC** (20-F en **IFRS**) y ya las descargamos:
+>
+> | Ticker | Estado real en EDGAR | Tags |
+> |--------|----------------------|------|
+> | **PAM** (Pampa) | ✅ IFRS | 289 |
+> | **BBAR** (BBVA Arg) | ✅ IFRS | 227 |
+> | **SUPV** (Supervielle) | ✅ IFRS | 239 |
+> | **LOMA** (Loma Negra) | ✅ IFRS | 265 |
+> | **EDN** (Edenor) | ✅ EDGAR | 196 |
+> | **CEPU, TGS, BIOX, GLOB, GGAL, BMA, IRS, CRESY, TEO, YPF, MELI** | ✅ EDGAR | — |
+>
+> De **17 ADRs argentinos chequeados: ~16 están en EDGAR** (solo DESP faltaba), casi todos
+> en **IFRS** — descargables con el **fix IFRS** (ver `ESPEC_TAGS_RATIOS.md` §7). Ya están
+> en `data/screener.db` (grupo `adr_arg`). El scraping de CNV queda solo para las que **no**
+> cotizan en USA (Molinos, Metrogas, Clarín, Ledesma, etc.).
+
 ## 📊 TABLA: Acciones Argentinas + Fuentes de Datos
 
 | Ticker BYMA | Empresa | Cotiza en USA? | Ticker USA | Fuente de Datos | Automático? |

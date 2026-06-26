@@ -2,6 +2,11 @@
 
 Esta guía explica cómo trabajar en el proyecto catalaxia_finance y cómo se actualiza automáticamente el archivo **Seguimiento.xlsx**.
 
+> 📌 **Estado (jun 2026):** el screener ya tiene una **base de datos** funcional
+> (`data/screener.db`, 553 empresas con ratios). Si vas a trabajar en la
+> descarga/cálculo, leé primero **`scripts/tickets/README.md`** (pipeline completo)
+> y **`docs/screener/COMIENZA_AQUI.md`** (mapa general).
+
 ---
 
 ## 🎯 Objetivo Final

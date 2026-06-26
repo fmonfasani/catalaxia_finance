@@ -1,175 +1,98 @@
-# 🚀 COMIENZA AQUI
+# 🚀 COMIENZA AQUÍ
 
-Estructura completamente reorganizada. Acá está la guía rápida.
+Punto de entrada al **screener financiero**: una base de datos de ratios de
+acciones que cotizan en EE.UU. (S&P 500 + ADRs), armada con datos oficiales de
+**SEC EDGAR** + precios de **yfinance**.
 
-## 📖 Paso 1: Lee la Documentación (5-10 min)
-
-```
-demo_catalaxia/
-├─ README_PRINCIPAL.md          ← Lee esto primero (visión general)
-└─ 03_DOCUMENTACION/PLAN_SCREENER_218_ACCIONES.md  ← Luego esto (plan detallado)
-```
-
-**¿Qué aprenderás?**
-- Qué son CEDEARs y ADRs
-- Los 13 ratios que calcularemos
-- Las 5 fases de implementación
-- Fuentes de datos (EDGAR + yfinance)
+> **Estado:** funcional. 8.021 empresas catalogadas, **553 con ratios completos**
+> (S&P 500 + ADRs ARG/BRA/LatAm), unificando US-GAAP e IFRS. Junio 2026.
 
 ---
 
-## 📊 Paso 2: Entiende la Estructura
+## ¿Qué es esto en una frase?
 
-```
-demo_catalaxia/
-│
-├─ 01_INVESTIGACION_INVESTING/     ⚠️ NO USAR (scraping fallido de Investing)
-│  └─ Ver README.md para entender por qué se descartó
-│
-├─ 02_EXTRACCION_EDGAR/            ✅ NÚCLEO (esto es lo que funciona)
-│  ├─ scripts/                     (5 scripts de descarga + cálculos)
-│  └─ datos/                       (entrada: listas | salida: CSVs)
-│
-├─ 03_DOCUMENTACION/               📚 (planes y guías técnicas)
-│  └─ 7 documentos de referencia
-│
-├─ 04_REPORTES/                    📈 (salida final: Excel + HTML)
-│
-└─ logs/                           📝 (logs de ejecución)
-```
+Bajamos los estados financieros oficiales de la SEC, calculamos ~35 ratios por
+empresa con una metodología validada (error mediano ~1% vs Investing.com), y los
+dejamos en una base de datos consultable con SQL, marcando dónde no confiar.
 
 ---
 
-## 🏃 Paso 3: Ejecuta los Scripts (si quieres probar)
+## El recorrido recomendado (de mayor a menor nivel)
 
-**Requisitos:**
+1. **`../../scripts/tickets/README.md`** ⭐
+   Cómo funciona el pipeline completo, los scripts, la base de datos y cómo
+   correrlo. **Empezá acá si vas a tocar código.**
+
+2. **`GUIA_SEC_EDGAR_PARA_DEVS.md`**
+   De cero absoluto: qué es una acción, un balance, SEC EDGAR, XBRL, y cómo se
+   arma cada ratio. **Para entender el dominio sin saber finanzas.**
+
+3. **`ESPEC_TAGS_RATIOS.md`**
+   Los ~40 tags core (XBRL us-gaap **+** ifrs-full) y los ~45 ratios que se
+   pueden construir, con cobertura medida por sector.
+
+4. **`DIAGNOSTICO_INVESTING_vs_EDGAR.md`**
+   La validación: por qué EDGAR-GAAP reproduce Investing, los 10 bugs que
+   encontramos y arreglamos (el del `fy`, el TTM rodante, etc.), con números.
+
+5. **`../calculos-financieros/`**
+   Fórmulas detalladas de cada ratio + código de referencia de la investigación.
+
+---
+
+## El sistema, de un vistazo
+
+```
+SEC EDGAR (companyfacts) ──┐
+                           ├─► data/screener.db  (SQLite, Postgres-ready)
+yfinance (precios) ────────┘     │
+                                 ├─ empresas (8.021)   catálogo: sector, país, tamaño
+                                 ├─ facts (4,6M)       series GAAP+IFRS, 6 años
+                                 ├─ ratios (553)       ~35 ratios + valuación
+                                 ├─ precios (553)      market cap + FX
+                                 └─ + flags de calidad
+```
+
+5 capas: **catálogo → facts → ratios → precios → flags**. Cada una es un script en
+`scripts/tickets/`.
+
+---
+
+## Decisiones técnicas clave
+
+| Pregunta | Respuesta | Por qué |
+|----------|-----------|---------|
+| ¿Investing.com (scraping)? | ❌ NO | frágil, bloqueos, números raros (ver `failed_investing_scraping/`) |
+| ¿SEC EDGAR? | ✅ SÍ | API oficial, gratis, datos validados (~99% en lo que importa) |
+| ¿yfinance? | ✅ SÍ | precios diarios + 52w + market cap (en USD, también para ADRs) |
+| ¿GAAP e IFRS juntos? | ✅ SÍ | mapeo canónico unifica `NetIncomeLoss`/`ProfitLoss`, etc. |
+| ¿SQLite o Postgres? | SQLite ahora | cero setup; migrable a Postgres (`pgloader`) sin reescribir |
+| ¿Estimar datos faltantes? | ❌ NUNCA | si falta un componente, el ratio es NULL |
+
+---
+
+## Probarlo en 1 minuto (si la base ya está construida)
+
 ```bash
-pip install yfinance pandas numpy sec-edgar-downloader openpyxl requests
+sqlite3 data/screener.db "
+  SELECT ticker, per, roe, deuda_ebitda
+  FROM ratios WHERE grupo='sp500' AND flags IS NULL
+  AND per BETWEEN 0 AND 15 AND roe>0.20 ORDER BY per LIMIT 10;"
 ```
 
-**Ejecución:**
-```bash
-cd demo_catalaxia/02_EXTRACCION_EDGAR/scripts
-
-# Fase 1: Generar listas de CEDEARs y ADRs
-python 01_descargar_cedears_adrs.py
-→ Output: ../datos/cedears_200_procesados.csv, adrs_18_argentinos.csv
-
-# Fase 2: Descargar precios actuales desde yfinance
-python 02_descargar_precios_yfinance.py
-→ Output: ../datos/precios_completos.csv
-
-# Fase 3-5: Pendientes de implementación
-# python 03_descargar_datos_edgar.py
-# python 04_calcular_ratios.py
-# python 05_generar_screener.py
-```
-
-**Tiempo:** ~15-20 minutos para scripts 01-02
+Para **construir la base desde cero**, ver `scripts/tickets/README.md` §2.
 
 ---
 
-## 📋 Paso 4: Revisa los Datos
+## Estado y próximos pasos
 
-Los datos se generan aquí:
-```
-demo_catalaxia/02_EXTRACCION_EDGAR/datos/
-
-cedears_200_procesados.csv   ← 127 CEDEARs (AAPL, MSFT, TSLA, etc.)
-adrs_18_argentinos.csv       ← 18 ADRs (BBAR, BMA, GGAL, MELI, etc.)
-precios_completos.csv        ← Precios actuales + 52w high/low + vol
-[próximos]
-financieros_edgar.csv        ← Datos de balance sheet e income
-ratios.csv                   ← 13 ratios calculados
-```
+- ✅ S&P 500 + ADRs ARG/BRA/LatAm con ratios + valuación + flags.
+- ⏳ Cola larga US (~7.458) vía el `companyfacts.zip` masivo de SEC.
+- ⏳ Fase 2: historia completa (hoy: últimos 6 años).
+- ⏳ Capa de export/dashboard (replicar el `Seguimiento_original.xlsx`).
 
 ---
 
-## 🎯 Paso 5 (Futuro): Genera el Plan/Informe
-
-Con la estructura clara, puedes:
-1. **Armar un informe ejecutivo** sobre el proyecto
-2. **Presentar a stakeholders** con:
-   - Qué acciones incluye (218+)
-   - Qué ratios calcula (13)
-   - Timeline de ejecución (4 fases)
-   - Fuentes de datos validadas (EDGAR ~99% confiable)
-
----
-
-## ⚡ Decisiones Técnicas Clave
-
-| Pregunta | Respuesta | Por Qué |
-|----------|-----------|--------|
-| ¿Investing.com? | ❌ NO | Protecciones anti-scraping + cambios de estructura |
-| ¿SEC EDGAR? | ✅ SÍ | API oficial + gratuita + ~99% fiable |
-| ¿CEDEARs + ADRs? | ✅ SÍ | Comparabilidad total con metodología uniforme |
-| ¿yfinance? | ✅ SÍ | Precios actuales diarios + 52 semanas |
-| ¿Escalable? | ✅ SÍ | Estructura lista para 300+ acciones sin cambios |
-
----
-
-## 📚 Documentos de Referencia
-
-### Entendimiento General
-- `README_PRINCIPAL.md` - Índice y visión general
-- `01_INVESTIGACION_INVESTING/README.md` - Por qué falló Investing
-
-### Implementación
-- `03_DOCUMENTACION/PLAN_SCREENER_218_ACCIONES.md` - Plan formal
-- `02_EXTRACCION_EDGAR/README.md` - Detalles técnicos
-
-### Metodología
-- `03_DOCUMENTACION/GUIA_RATIOS_EDGAR_vs_INVESTING.md` - 13 ratios
-- `03_DOCUMENTACION/FUENTES_DATOS_ACCIONES_ARGENTINA_BYMA.md` - Mapping
-
----
-
-## ❓ FAQ Rápido
-
-**P: ¿Por dónde empiezo?**  
-R: Lee `README_PRINCIPAL.md` (5 min), luego `PLAN_SCREENER_218_ACCIONES.md` (10 min).
-
-**P: ¿Cuánto tarda ejecutar todo?**  
-R: Scripts 01-02: ~20 min. Scripts 03-05: ~2-3 horas (cuando estén implementados).
-
-**P: ¿Necesito descargar Investing?**  
-R: NO. Todo viene de SEC EDGAR (oficial) + yfinance (precios).
-
-**P: ¿Qué pasa con la carpeta 01_INVESTIGACION_INVESTING/?**  
-R: Referencia histórica. Muestra qué se intentó y por qué no funcionó.
-
-**P: ¿Puedo agregar más acciones?**  
-R: SÍ. Agrega ticker a `02_EXTRACCION_EDGAR/datos/*.csv` y ejecuta scripts.
-
----
-
-## 🎯 Resumen de Cambios
-
-### Antes (Caos)
-```
-demo_catalaxia/
-├─ 50+ archivos sueltos
-├─ Scripts de scraping fallidos
-├─ 20+ documentos sin organizar
-├─ Datos duplicados en varias carpetas
-└─ Imposible entender qué sirve
-```
-
-### Ahora (Claridad)
-```
-demo_catalaxia/
-├─ 01_INVESTIGACION_INVESTING/  [NO USAR - referencia]
-├─ 02_EXTRACCION_EDGAR/         [USAR - funciona]
-├─ 03_DOCUMENTACION/            [LEER - guías]
-├─ 04_REPORTES/                 [OUTPUT - resultados]
-├─ logs/                        [TÉCNICO - logs]
-├─ README_PRINCIPAL.md          [INICIO]
-└─ COMIENZA_AQUI.md             [ESTE ARCHIVO]
-```
-
----
-
-**Status:** ✅ REORGANIZACIÓN COMPLETADA  
-**Próximo:** Leer documentación y ejecutar scripts  
-**Fecha:** 2026-06-23
+**Nota histórica:** la carpeta `failed_investing_scraping/` y los docs en
+`calculos-financieros/` son referencia de la investigación previa. El sistema que
+**funciona hoy** vive en `scripts/tickets/` + `data/screener.db`.

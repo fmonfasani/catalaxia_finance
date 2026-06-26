@@ -1,0 +1,37 @@
+================================================================
+  BLOQUE 2 (facts) -> screener.db  | modo=sp500  | historia=6a (desde 2020-06-27)
+  Universo: 500 empresas
+================================================================
+  [   1/500] A       -> us-gaap    425 tags, 10651 dp
+  [   2/500] AAPL    -> us-gaap    255 tags,  6692 dp
+  [   3/500] ABBV    -> us-gaap    301 tags,  8792 dp
+  [   4/500] ABNB    -> us-gaap    358 tags,  7315 dp
+  [   5/500] ABT     -> us-gaap    268 tags,  6945 dp
+  [  25/500] AMAT    -> us-gaap    362 tags,  9541 dp
+  [  50/500] AXP     -> us-gaap    397 tags,  9525 dp
+  [  75/500] CAG     -> us-gaap    372 tags,  9049 dp
+  [ 100/500] CMG     -> us-gaap    262 tags,  6884 dp
+  [ 125/500] CVNA    -> us-gaap    261 tags,  7260 dp
+  [ 150/500] DVA     -> us-gaap    343 tags,  8564 dp
+  [ 175/500] EXC     -> us-gaap    395 tags, 10811 dp
+  [ 200/500] GD      -> us-gaap    303 tags,  7277 dp
+  [ 225/500] HLT     -> us-gaap    306 tags,  7393 dp
+  [ 250/500] IRM     -> us-gaap    326 tags,  8695 dp
+  [ 275/500] LDOS    -> us-gaap    375 tags,  8714 dp
+  [ 300/500] MDLZ    -> us-gaap    350 tags,  9583 dp
+  [ 325/500] NDAQ    -> us-gaap    332 tags,  9588 dp
+  [ 350/500] OTIS    -> us-gaap    390 tags, 10200 dp
+  [ 375/500] PSA     -> us-gaap    258 tags,  6868 dp
+  [ 400/500] SCHW    -> us-gaap    482 tags, 11639 dp
+  [ 425/500] TAP     -> us-gaap    368 tags,  8417 dp
+  [ 450/500] TXT     -> us-gaap    312 tags,  8184 dp
+  [ 475/500] VZ      -> us-gaap    370 tags,  9247 dp
+  [ 500/500] ZTS     -> us-gaap    391 tags,  9462 dp
+
+----------------------------------------------------------------
+  Empresas en la base : 8021
+  Datapoints totales  : 4,646,513
+  Datapoints 'core'   : 611,746 (conceptos canonicos)
+  Por esquema         : {'us-gaap': 499, 'sin-financials': 1}
+
+  OK D:\Software Development\Porfolio\catalaxia-cedears-prod\data\screener.db
