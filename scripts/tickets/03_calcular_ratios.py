@@ -262,19 +262,26 @@ def cagr_eps_robusto(serie_eps: list[dict], years: int = 5) -> float | None:
     return (fin / inicio) ** (1 / years) - 1
 
 
-def equity_promedio_ttm(fin: dict) -> tuple[float | None, str | None]:
+def equity_promedio_ttm(fin: dict) -> dict:
     """Equity PROMEDIO para el denominador del ROE (no el puntual). Promedia el
     equity del ultimo balance con el de ~1 anio antes, que es como lo hace
     Investing.com (ver docs/.../FORMULAS_RATIOS.md: 'ROE = NI_TTM / Equity_prom').
     Reduce el ruido en empresas con recompras donde el equity se mueve fuerte
-    trimestre a trimestre. Si no hay un punto ~1 anio atras, usa el ultimo."""
+    trimestre a trimestre. Si no hay un punto ~1 anio atras, usa el ultimo.
+
+    Devuelve un dict con el promedio Y el desglose (actual/previo por separado)
+    -- el desglose es para poder mostrar la cuenta completa en
+    06_generar_calculos_edgar.py, no cambia el valor que usa calcular_ratios().
+    """
+    vacio = {"promedio": None, "end": None, "val_actual": None, "end_actual": None,
+             "val_previo": None, "end_previo": None}
     serie = get_serie(fin, "StockholdersEquity")
     if not serie:
-        return None, None
+        return vacio
     serie_ok = sorted((dp for dp in serie if dp.get("end") and dp.get("val") is not None),
                       key=lambda x: x["end"])
     if not serie_ok:
-        return None, None
+        return vacio
     actual = serie_ok[-1]
     end_actual = datetime.fromisoformat(actual["end"])
     previo = None
@@ -284,8 +291,12 @@ def equity_promedio_ttm(fin: dict) -> tuple[float | None, str | None]:
             previo = dp
             break
     if previo is None:
-        return actual["val"], actual["end"]
-    return (actual["val"] + previo["val"]) / 2, actual["end"]
+        return {"promedio": actual["val"], "end": actual["end"],
+                "val_actual": actual["val"], "end_actual": actual["end"],
+                "val_previo": None, "end_previo": None}
+    return {"promedio": (actual["val"] + previo["val"]) / 2, "end": actual["end"],
+            "val_actual": actual["val"], "end_actual": actual["end"],
+            "val_previo": previo["val"], "end_previo": previo["end"]}
 
 
 def fecha_mas_reciente(*series: list[dict]) -> str | None:
@@ -458,7 +469,9 @@ def calcular_ratios(fin: dict, precio_info: dict) -> dict:
     # con recompras. Ademas se marca 'roe_no_significativo' cuando el equity es
     # < 5% de los activos (ej. CL con equity casi cero por treasury stock): ahi
     # el ROE puede ser tecnicamente correcto pero no interpretable.
-    equity_prom, _ = (None, None) if es_stale else equity_promedio_ttm(fin)
+    eq_prom_detalle = {"promedio": None, "val_actual": None, "end_actual": None,
+                        "val_previo": None, "end_previo": None} if es_stale else equity_promedio_ttm(fin)
+    equity_prom = eq_prom_detalle["promedio"]
     roe_ttm = (netinc_ttm / equity_prom) if (netinc_ttm is not None and equity_prom and equity_prom > 0) else None
     assets, _ = ultimo_valor(get_serie(fin, "Assets"))
     if roe_ttm is not None and equity_prom is not None and assets and assets > 0:
@@ -486,6 +499,13 @@ def calcular_ratios(fin: dict, precio_info: dict) -> dict:
     fcfonce_b = (fcf_ttm / ce_b) if (fcf_ttm is not None and ce_b) else None
 
     payout = (div_ttm / netinc_ttm) if (div_ttm is not None and netinc_ttm and netinc_ttm > 0) else None
+
+    # Desglose de los 2 puntos que alimentan el CAGR de EPS (fin/inicio, 5
+    # anios de distancia) -- solo para mostrar la cuenta en
+    # 06_generar_calculos_edgar.py, no cambia cagr_eps_5y (eso ya lo calculo
+    # cagr_eps_robusto con sus propias guardas).
+    eps_ini_dp = serie_eps_anual[-6] if len(serie_eps_anual) >= 6 else None
+    eps_fin_dp = serie_eps_anual[-1] if serie_eps_anual else None
 
     return {
         "precio_usd": precio,
@@ -526,6 +546,24 @@ def calcular_ratios(fin: dict, precio_info: dict) -> dict:
         "_stale": es_stale,
         "_end_datos": end_datos,
         "_flags": ";".join(flags),
+        # --- agregado para 06_generar_calculos_edgar.py (transparencia de calculo) ---
+        "_metric_ni": metric_ni,
+        "_metric_capex": metric_capex,
+        "_metric_div": metric_div,
+        "_opinc_ttm": opinc_ttm,
+        "_cfo_ttm": cfo_ttm,
+        "_capex_ttm": capex_ttm,
+        "_div_ttm": div_ttm,
+        "_cash": cash,
+        "_ni_end": ni_end,
+        "_equity_actual": eq_prom_detalle["val_actual"],
+        "_equity_actual_end": eq_prom_detalle["end_actual"],
+        "_equity_previo": eq_prom_detalle["val_previo"],
+        "_equity_previo_end": eq_prom_detalle["end_previo"],
+        "_eps_fin_val": eps_fin_dp["val"] if eps_fin_dp else None,
+        "_eps_fin_end": eps_fin_dp["end"] if eps_fin_dp else None,
+        "_eps_ini_val": eps_ini_dp["val"] if eps_ini_dp else None,
+        "_eps_ini_end": eps_ini_dp["end"] if eps_ini_dp else None,
     }
 
 
