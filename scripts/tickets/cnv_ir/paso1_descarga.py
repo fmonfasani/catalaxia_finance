@@ -37,8 +37,9 @@ def clasificar_eeff(nombre, cierre_mes=12):
         for nombre_mes, num in MESES_ES.items():
             if nombre_mes in n:
                 mes = num; break
-    # trimestre explicito: "3_T", "3T", "1Q", "1er trim"
-    mt = re.search(r"([1-4])\s*[°ºo]?\s*(?:t|q|trim)", n) or re.search(r"(?:t|q)\s*([1-4])", n)
+    # trimestre explicito: "3_T", "3T", "3°T", "1Q", "1er trim", "T3", "Q1"
+    mt = (re.search(r"([1-4])\s*[°ºo._\- ]{0,3}(?:t|q|trim)(?:imestre|estral)?(?:[._\b]|$)", n)
+          or re.search(r"\b(?:t|q|trim)[._\- ]{0,2}([1-4])\b", n))
     trimestre = int(mt.group(1)) if mt else None
     if trimestre and mes is None:
         mes = (cierre_mes - 3 * (4 - trimestre) - 1) % 12 + 1   # aprox
