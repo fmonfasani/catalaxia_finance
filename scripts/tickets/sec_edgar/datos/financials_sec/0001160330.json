@@ -1,0 +1,72 @@
+{
+  "cik": "0001160330",
+  "esquema": "us-gaap",
+  "entity_name": "BANK BRADESCO",
+  "metricas": {
+    "CommonStockSharesOutstanding": {
+      "unit": "shares",
+      "datos": [
+        {
+          "start": null,
+          "end": "2007-12-31",
+          "val": 13953489,
+          "fy": 2010,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2011-05-20",
+          "frame": "CY2007Q4I"
+        },
+        {
+          "start": null,
+          "end": "2008-03-31",
+          "val": 511644460,
+          "fy": 2010,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2011-05-20",
+          "frame": "CY2008Q1I"
+        },
+        {
+          "start": null,
+          "end": "2009-10-31",
+          "val": 22831389,
+          "fy": 2010,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2011-05-20",
+          "frame": "CY2009Q3I"
+        },
+        {
+          "start": null,
+          "end": "2009-12-31",
+          "val": 155776637,
+          "fy": 2010,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2011-05-20",
+          "frame": "CY2009Q4I"
+        },
+        {
+          "start": null,
+          "end": "2010-05-31",
+          "val": 171020483,
+          "fy": 2010,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2011-05-20",
+          "frame": "CY2010Q2I"
+        },
+        {
+          "start": null,
+          "end": "2010-12-31",
+          "val": 31172072,
+          "fy": 2010,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2011-05-20",
+          "frame": "CY2010Q4I"
+        }
+      ]
+    }
+  }
+}

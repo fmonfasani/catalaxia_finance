@@ -1,0 +1,432 @@
+{
+  "cik": "0001049659",
+  "esquema": "us-gaap",
+  "entity_name": "NATIONAL STEEL CO",
+  "metricas": {
+    "GrossProfit": {
+      "unit": "USD",
+      "datos": [
+        {
+          "start": "2007-01-01",
+          "end": "2007-12-31",
+          "val": 2441000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2007"
+        },
+        {
+          "start": "2008-01-01",
+          "end": "2008-12-31",
+          "val": 3585000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2008"
+        },
+        {
+          "start": "2009-01-01",
+          "end": "2009-12-31",
+          "val": 1764000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2009"
+        }
+      ]
+    },
+    "OperatingIncomeLoss": {
+      "unit": "USD",
+      "datos": [
+        {
+          "start": "2007-01-01",
+          "end": "2007-12-31",
+          "val": 1861000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2007"
+        },
+        {
+          "start": "2008-01-01",
+          "end": "2008-12-31",
+          "val": 2844000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2008"
+        },
+        {
+          "start": "2009-01-01",
+          "end": "2009-12-31",
+          "val": 1164000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2009"
+        }
+      ]
+    },
+    "NetIncomeLoss": {
+      "unit": "USD",
+      "datos": [
+        {
+          "start": "2007-01-01",
+          "end": "2007-12-31",
+          "val": 1703000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2007"
+        },
+        {
+          "start": "2008-01-01",
+          "end": "2008-12-31",
+          "val": 2654000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2008"
+        },
+        {
+          "start": "2009-01-01",
+          "end": "2009-12-31",
+          "val": 1281000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2009"
+        }
+      ]
+    },
+    "EarningsPerShareBasic": {
+      "unit": "USD/shares",
+      "datos": [
+        {
+          "start": "2007-01-01",
+          "end": "2007-12-31",
+          "val": 1.11,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2007"
+        },
+        {
+          "start": "2008-01-01",
+          "end": "2008-12-31",
+          "val": 1.73,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2008"
+        },
+        {
+          "start": "2009-01-01",
+          "end": "2009-12-31",
+          "val": 0.86,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2009"
+        }
+      ]
+    },
+    "WeightedAverageNumberOfSharesOutstandingBasic": {
+      "unit": "shares",
+      "datos": [
+        {
+          "start": "2007-01-01",
+          "end": "2007-12-31",
+          "val": 1539489000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2007"
+        },
+        {
+          "start": "2008-01-01",
+          "end": "2008-12-31",
+          "val": 1534067000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2008"
+        },
+        {
+          "start": "2009-01-01",
+          "end": "2009-12-31",
+          "val": 1492453000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2009"
+        }
+      ]
+    },
+    "DepreciationAndAmortization": {
+      "unit": "USD",
+      "datos": [
+        {
+          "start": "2007-01-01",
+          "end": "2007-12-31",
+          "val": -397000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2007"
+        },
+        {
+          "start": "2008-01-01",
+          "end": "2008-12-31",
+          "val": -341000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2008"
+        },
+        {
+          "start": "2009-01-01",
+          "end": "2009-12-31",
+          "val": -343000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2009"
+        }
+      ]
+    },
+    "Assets": {
+      "unit": "USD",
+      "datos": [
+        {
+          "start": null,
+          "end": "2008-12-31",
+          "val": 15709000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2008Q4I"
+        },
+        {
+          "start": null,
+          "end": "2009-12-31",
+          "val": 19188000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2009Q4I"
+        }
+      ]
+    },
+    "AssetsCurrent": {
+      "unit": "USD",
+      "datos": [
+        {
+          "start": null,
+          "end": "2008-12-31",
+          "val": 7307000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2008Q4I"
+        },
+        {
+          "start": null,
+          "end": "2009-12-31",
+          "val": 6841000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2009Q4I"
+        }
+      ]
+    },
+    "LiabilitiesCurrent": {
+      "unit": "USD",
+      "datos": [
+        {
+          "start": null,
+          "end": "2008-12-31",
+          "val": 3813000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2008Q4I"
+        },
+        {
+          "start": null,
+          "end": "2009-12-31",
+          "val": 2091000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2009Q4I"
+        }
+      ]
+    },
+    "StockholdersEquity": {
+      "unit": "USD",
+      "datos": [
+        {
+          "start": null,
+          "end": "2008-12-31",
+          "val": 3316000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2008Q4I"
+        },
+        {
+          "start": null,
+          "end": "2009-12-31",
+          "val": 4264000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2009Q4I"
+        }
+      ]
+    },
+    "CashAndCashEquivalentsAtCarryingValue": {
+      "unit": "USD",
+      "datos": [
+        {
+          "start": null,
+          "end": "2006-12-31",
+          "val": 959000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2006Q4I"
+        },
+        {
+          "start": null,
+          "end": "2007-12-31",
+          "val": 1213000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2007Q4I"
+        },
+        {
+          "start": null,
+          "end": "2008-12-31",
+          "val": 3542000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2008Q4I"
+        },
+        {
+          "start": null,
+          "end": "2009-12-31",
+          "val": 3981000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2009Q4I"
+        }
+      ]
+    },
+    "NetCashProvidedByUsedInOperatingActivities": {
+      "unit": "USD",
+      "datos": [
+        {
+          "start": "2007-01-01",
+          "end": "2007-12-31",
+          "val": 1264000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2007"
+        },
+        {
+          "start": "2008-01-01",
+          "end": "2008-12-31",
+          "val": 2067000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2008"
+        },
+        {
+          "start": "2009-01-01",
+          "end": "2009-12-31",
+          "val": 40000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2009"
+        }
+      ]
+    },
+    "PaymentsToAcquirePropertyPlantAndEquipment": {
+      "unit": "USD",
+      "datos": [
+        {
+          "start": "2007-01-01",
+          "end": "2007-12-31",
+          "val": 632000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2007"
+        },
+        {
+          "start": "2008-01-01",
+          "end": "2008-12-31",
+          "val": 886000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2008"
+        },
+        {
+          "start": "2009-01-01",
+          "end": "2009-12-31",
+          "val": 930000000,
+          "fy": 2009,
+          "fp": "FY",
+          "form": "20-F",
+          "filed": "2010-06-01",
+          "frame": "CY2009"
+        }
+      ]
+    }
+  }
+}
