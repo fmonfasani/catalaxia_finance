@@ -1,73 +1,95 @@
 # -*- coding: utf-8 -*-
 """
-Catalogo CURADO de los ~55 papeles BYMA-only -> sus sitios de Relacion con
-Inversores (donde publican los EEFF). NO se adivinan URLs: son las conocidas.
-Los que no tienen IR confirmado quedan con [] y el discovery los busca por
-bolsar / buscador como fallback.
+Catalogo CURADO de los 56 papeles BYMA-only -> nombre, SECTOR, cierre fiscal y
+URLs de Relacion con Inversores (donde publican los EEFF).
 
-tipo: orienta la libreria de etiquetas (banco usa "Ingresos por intereses",
-industrial "Ventas netas", utility/gas "Ingresos por servicios", etc.).
+Campos por ticker: (nombre, sector, cierre_mes, [urls_ir])
+  sector: para filtrar (energia, gas, bancos, financiero, real_estate,
+          materiales, industrial, agro, consumo, medios, salud, holding, infra)
+  cierre_mes: mes de cierre de ejercicio (12=diciembre, 6=junio, etc.)
+  urls_ir: [] si no se conoce -> el discovery intenta fallback (bolsar/buscador)
+
+NOTA: las URLs con [] hay que completarlas (facil desde Argentina). El que tenga
+la URL correcta, agregarla aca. La identidad contable valida si el EEFF es el bueno.
 """
 
-# ticker -> (nombre, [urls IR/inversores candidatas], tipo)
 CATALOGO = {
-    "ALUA":  ("Aluar", ["https://www.aluar.com.ar/inversores"], "industrial"),
-    "MIRG":  ("Mirgor", ["https://www.mirgor.com.ar/inversores", "https://ri.mirgor.com.ar/"], "industrial"),
-    "LEDE":  ("Ledesma", ["https://www.ledesma.com.ar/inversores"], "agro"),
-    "SAMI":  ("San Miguel", ["https://www.sanmiguelglobal.com/inversores"], "agro"),
-    "HARG":  ("Holcim Argentina", ["https://www.holcim.com.ar/inversionistas", "https://www.holcim.com.ar/"], "industrial"),
-    "CELU":  ("Celulosa Argentina", ["https://www.celulosaargentina.com.ar/inversores"], "industrial"),
-    "MOLA":  ("Molinos Agro", ["https://www.molinosagro.com.ar/inversores"], "agro"),
-    "MOLI":  ("Molinos Rio de la Plata", ["https://www.molinos.com.ar/inversores"], "industrial"),
-    "GRIM":  ("Grimoldi", ["https://www.grimoldi.com/inversores"], "industrial"),
-    "FERR":  ("Ferrum", ["https://www.ferrum.com/inversores"], "industrial"),
-    "RIGO":  ("Rigolleau", ["https://www.rigolleau.com.ar/inversores"], "industrial"),
-    "LONG":  ("Longvie", ["https://www.longvie.com/inversores"], "industrial"),
-    "MORI":  ("Morixe", ["https://www.morixe.com.ar/inversores"], "agro"),
-    "HAVA":  ("Havanna", ["https://www.havanna.com.ar/inversores"], "industrial"),
-    "CARC":  ("Carboclor", ["https://www.carboclor.com.ar/"], "industrial"),
-    "AGRO":  ("Agrometal", ["https://www.agrometal.com.ar/inversores"], "industrial"),
-    "INVJ":  ("Inversora Juramento", ["https://www.juramento.com.ar/inversores"], "agro"),
-    "RICH":  ("Laboratorios Richmond", ["https://www.richmond.com.ar/inversores"], "industrial"),
-    "BOLT":  ("Boldt", ["https://www.boldt.com.ar/inversores"], "holding"),
-    "CADO":  ("Carlos Casado", ["https://www.carloscasado.com.ar/"], "real_estate"),
-    "RAGH":  ("RAGHSA", ["https://www.raghsa.com.ar/"], "real_estate"),
-    "CTIO":  ("Consultatio", ["https://www.consultatio.com.ar/inversores"], "real_estate"),
-    "GCDI":  ("GCDI", ["https://www.gcdi.com.ar/inversores"], "real_estate"),
-    "IRSA":  ("IRSA", ["https://www.irsa.com.ar/inversores"], "real_estate"),
-    # utilities / energia / gas
-    "CECO2": ("Endesa Costanera", ["https://www.centralcostanera.com/", "https://www.centralcostanera.com/inversores"], "utility"),
-    "CAPX":  ("Capex", ["https://www.capex.com.ar/inversores"], "utility"),
-    "TRAN":  ("Transener", ["https://www.transener.com.ar/inversores"], "utility"),
-    "TGNO4": ("Transportadora Gas del Norte", ["https://www.tgn.com.ar/inversores"], "gas"),
-    "METR":  ("Metrogas", ["https://www.metrogas.com.ar/inversores"], "gas"),
-    "GBAN":  ("Gas Natural Ban", ["https://www.naturgy.com.ar/inversores"], "gas"),
-    "CGPA2": ("Camuzzi Gas Pampeana", ["https://www.camuzzigas.com.ar/"], "gas"),
-    "ECOG":  ("Ecogas Inversiones", ["https://www.ecogas.com.ar/inversores"], "gas"),
-    "DGCU2": ("Distribuidora Gas Cuyana", ["https://www.ecogas.com.ar/"], "gas"),
-    "DGCE":  ("Distribuidora Gas del Centro", ["https://www.ecogas.com.ar/"], "gas"),
-    "AUSO":  ("Autopistas del Sol", ["https://www.ausol.com.ar/inversores"], "utility"),
-    "OEST":  ("Grupo Concesionario del Oeste", ["https://www.aec.com.ar/inversores"], "utility"),
-    "EDSH":  ("EDESA Holding", ["https://www.edesa.com.ar/"], "utility"),
-    # bancos / financieras
-    "BHIP":  ("Banco Hipotecario", ["https://www.hipotecario.com.ar/inversores"], "banco"),
-    "BPAT":  ("Banco Patagonia", ["https://www.bancopatagonia.com.ar/inversiones/"], "banco"),
-    "VALO":  ("Banco de Valores", ["https://www.bancodevalores.com/inversores"], "banco"),
-    "BYMA":  ("Bolsas y Mercados Argentinos", ["https://www.byma.com.ar/relacion-con-inversores/informacion-financiera/"], "holding"),
-    "A3":    ("A3 Mercados", ["https://www.a3mercados.com.ar/"], "holding"),
-    # holdings / medios / otros
-    "GCLA":  ("Grupo Clarin", ["https://www.grupoclarin.com/inversores"], "holding"),
-    "CVH":   ("Cablevision Holding", ["https://www.cablevisionholding.com/inversores"], "holding"),
-    "COME":  ("Sociedad Comercial del Plata", ["https://www.comercialdelplata.com.ar/inversores"], "holding"),
-    "GAMI":  ("B-Gaming", ["https://www.boldt.com.ar/"], "industrial"),
-    "PATA":  ("Imp y Exp de la Patagonia", ["https://www.laanonima.com.ar/inversores"], "industrial"),
-    "DOME":  ("Domec", [], "industrial"),
-    "GARO":  ("Garovaglio y Zorraquin", [], "holding"),
-    "FIPL":  ("Fiplasto", [], "industrial"),
-    "INTR":  ("Introductora de Bs As", [], "industrial"),
-    "SEMI":  ("Molinos Juan Semino", [], "agro"),
-    "POLL":  ("Polledo", [], "industrial"),
-    "COUR":  ("Continental Urbana", [], "real_estate"),
-    "REGE":  ("Garcia Reguera", [], "industrial"),
-    "TXAR":  ("Ternium Argentina", ["https://ar.ternium.com/es/inversores"], "industrial"),
+    # --- materiales / industria pesada ---
+    "ALUA":  ("Aluar", "materiales", 6, ["https://www.aluar.com.ar/inversores"]),
+    "TXAR":  ("Ternium Argentina", "materiales", 12, ["https://ar.ternium.com/es/inversores"]),
+    "HARG":  ("Holcim Argentina", "materiales", 12, ["https://www.holcim.com.ar/inversionistas"]),
+    "CELU":  ("Celulosa Argentina", "materiales", 5, ["https://www.celulosaargentina.com.ar/inversores"]),
+    "CARC":  ("Carboclor", "materiales", 12, ["https://www.carboclor.com.ar/"]),
+    "RIGO":  ("Rigolleau", "materiales", 12, ["https://www.rigolleau.com.ar/inversores"]),
+    "FIPL":  ("Fiplasto", "materiales", 6, []),
+    # --- industrial / bienes durables ---
+    "MIRG":  ("Mirgor", "industrial", 12, ["https://www.mirgor.com.ar/inversores", "https://ri.mirgor.com.ar/"]),
+    "FERR":  ("Ferrum", "industrial", 6, ["https://www.ferrum.com/inversores"]),
+    "LONG":  ("Longvie", "industrial", 12, ["https://www.longvie.com/inversores"]),
+    "DOME":  ("Domec", "industrial", 12, []),
+    "AGRO":  ("Agrometal", "industrial", 12, ["https://www.agrometal.com.ar/inversores"]),
+    "INTR":  ("Introductora de Bs As", "industrial", 12, []),
+    "REGE":  ("Garcia Reguera", "industrial", 12, []),
+    "POLL":  ("Polledo", "industrial", 12, []),
+    # --- agro / alimentos ---
+    "LEDE":  ("Ledesma", "agro", 5, ["https://www.ledesma.com.ar/inversores"]),
+    "SAMI":  ("San Miguel", "agro", 12, ["https://www.sanmiguelglobal.com/inversores"]),
+    "MOLA":  ("Molinos Agro", "agro", 6, ["https://www.molinosagro.com.ar/inversores"]),
+    "INVJ":  ("Inversora Juramento", "agro", 6, ["https://www.juramento.com.ar/inversores"]),
+    "SEMI":  ("Molinos Juan Semino", "agro", 9, []),
+    # --- consumo / retail ---
+    "MOLI":  ("Molinos Rio de la Plata", "consumo", 12, ["https://www.molinos.com.ar/inversores"]),
+    "MORI":  ("Morixe", "consumo", 6, ["https://www.morixe.com.ar/inversores"]),
+    "HAVA":  ("Havanna", "consumo", 12, ["https://www.havanna.com.ar/inversores"]),
+    "GRIM":  ("Grimoldi", "consumo", 12, ["https://www.grimoldi.com/inversores"]),
+    "PATA":  ("Imp y Exp de la Patagonia", "consumo", 6, ["https://www.laanonima.com.ar/inversores"]),
+    # --- real estate ---
+    "CTIO":  ("Consultatio", "real_estate", 12, ["https://www.consultatio.com.ar/inversores"]),
+    "GCDI":  ("GCDI", "real_estate", 12, ["https://www.gcdi.com.ar/inversores"]),
+    "RAGH":  ("RAGHSA", "real_estate", 6, ["https://www.raghsa.com.ar/"]),
+    "CADO":  ("Carlos Casado", "real_estate", 9, ["https://www.carloscasado.com.ar/"]),
+    "COUR":  ("Continental Urbana", "real_estate", 6, []),
+    # --- energia (electricidad) ---
+    "CECO2": ("Endesa Costanera", "energia", 12, ["https://www.centralcostanera.com/"]),
+    "CAPX":  ("Capex", "energia", 4, ["https://www.capex.com.ar/inversores"]),
+    "TRAN":  ("Transener", "energia", 12, ["https://www.transener.com.ar/inversores"]),
+    "EDSH":  ("EDESA Holding", "energia", 12, ["https://www.edesa.com.ar/"]),
+    # --- gas ---
+    "TGNO4": ("Transportadora Gas del Norte", "gas", 12, ["https://www.tgn.com.ar/inversores"]),
+    "METR":  ("Metrogas", "gas", 12, ["https://www.metrogas.com.ar/inversores"]),
+    "GBAN":  ("Gas Natural Ban", "gas", 12, ["https://www.naturgy.com.ar/inversores"]),
+    "CGPA2": ("Camuzzi Gas Pampeana", "gas", 12, ["https://www.camuzzigas.com.ar/"]),
+    "ECOG":  ("Ecogas Inversiones", "gas", 12, ["https://www.ecogas.com.ar/inversores"]),
+    "DGCU2": ("Distribuidora Gas Cuyana", "gas", 12, ["https://www.ecogas.com.ar/"]),
+    "DGCE":  ("Distribuidora Gas del Centro", "gas", 12, ["https://www.ecogas.com.ar/"]),
+    # --- infraestructura (concesiones viales) ---
+    "AUSO":  ("Autopistas del Sol", "infra", 12, ["https://www.ausol.com.ar/inversores"]),
+    "OEST":  ("Grupo Concesionario del Oeste", "infra", 12, ["https://www.aec.com.ar/inversores"]),
+    # --- bancos / financiero ---
+    "BHIP":  ("Banco Hipotecario", "bancos", 12, ["https://www.hipotecario.com.ar/inversores"]),
+    "BPAT":  ("Banco Patagonia", "bancos", 12, ["https://www.bancopatagonia.com.ar/inversiones/"]),
+    "VALO":  ("Banco de Valores", "bancos", 12, ["https://www.bancodevalores.com/inversores"]),
+    "BYMA":  ("Bolsas y Mercados Argentinos", "financiero", 12, ["https://www.byma.com.ar/relacion-con-inversores/informacion-financiera/"]),
+    "A3":    ("A3 Mercados", "financiero", 12, ["https://www.a3mercados.com.ar/"]),
+    # --- medios / telecom ---
+    "GCLA":  ("Grupo Clarin", "medios", 12, ["https://www.grupoclarin.com/inversores"]),
+    "CVH":   ("Cablevision Holding", "medios", 12, ["https://www.cablevisionholding.com/inversores"]),
+    # --- salud ---
+    "RICH":  ("Laboratorios Richmond", "salud", 12, ["https://www.richmond.com.ar/inversores"]),
+    "ROSE":  ("Instituto Rosenbusch", "salud", 12, []),
+    # --- holding / otros ---
+    "BOLT":  ("Boldt", "holding", 12, ["https://www.boldt.com.ar/inversores"]),
+    "COME":  ("Sociedad Comercial del Plata", "holding", 12, ["https://www.comercialdelplata.com.ar/inversores"]),
+    "GARO":  ("Garovaglio y Zorraquin", "holding", 9, []),
+    "GAMI":  ("B-Gaming", "holding", 12, []),
 }
+
+SECTORES = sorted(set(v[1] for v in CATALOGO.values()))
+
+
+def por_sector(sector):
+    return [tk for tk, v in CATALOGO.items() if v[1] == sector]
+
+
+def info(ticker):
+    return CATALOGO.get(ticker)

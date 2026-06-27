@@ -54,7 +54,7 @@ def descubrir_eeff(ticker, catalogo=None, seguir_subpaginas=True):
     if catalogo is None:
         from catalogo_ir import CATALOGO as catalogo
     info = catalogo.get(ticker)
-    urls_ir = info[1] if info else []
+    urls_ir = info[3] if info else []      # (nombre, sector, cierre, urls)
     pdfs = set()
     subpaginas = []
     for ir in urls_ir:

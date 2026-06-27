@@ -1,87 +1,93 @@
-# Pipeline CNV-IR — EEFF oficiales de los BYMA-only
+# Pipeline CNV-IR — EEFF oficiales de los BYMA-only (por pasos)
 
-Sistema completo para bajar los **estados contables oficiales** (formato CNV/FACPCE)
-de los papeles **BYMA-only** (que NO están en EDGAR) desde el **sitio de Relación
-con Inversores** de cada empresa, parsearlos y reconstruir ratios — con
-**auto-validación por identidades contables**.
+Baja los **estados contables oficiales** (formato CNV/FACPCE) de los **56 papeles
+BYMA-only** desde el sitio de **Relación con Inversores** de cada empresa, los
+parsea y carga a la base — con **menú interactivo** y **auto-validación contable**.
 
-> **Por qué IR y no la CNV:** el portal de la CNV (aif.cnv.gov.ar) está
-> geo-bloqueado fuera de Argentina. Pero las empresas publican los **mismos EEFF**
-> en su web de inversores. Probado: Aluar → identidad **0.00%**, ratios completos.
+> **Importante:** corré esto **desde Argentina**. Varios IR geo-bloquean IPs de
+> afuera. Desde Buenos Aires responden normalmente.
 
 ---
 
-## Componentes
+## Instalación (una vez)
 
-| Módulo | Qué hace |
-|--------|----------|
-| `catalogo_ir.py` | **lista curada** ticker → URLs de IR + tipo de empresa (no se adivinan URLs) |
-| `discovery.py` | baja la página de IR, encuentra el **EEFF más reciente** (sigue subpáginas, fallback bolsar) |
-| `parser_eeff.py` | **librería de etiquetas** (variantes español por tipo) + números argentinos + validación + fallback OCR |
-| `ocr.py` | OCR de EEFF escaneados (pytesseract/easyocr), con degradación elegante |
-| `pipeline.py` | orquestador: discover → download → parse → **validar** → cargar a `cnv_estados` |
+```bash
+# 1. Python 3.10+  (python.org)
+# 2. librerías:
+pip install requests pdfplumber pymupdf pandas yfinance
 
-## La auto-validación (el checksum)
-
-Cada EEFF se valida con las **identidades contables**:
+# 3. OCR (opcional, para los EEFF escaneados):
+pip install pytesseract
+#   + instalar Tesseract-OCR con idioma español:
+#   Windows: https://github.com/UB-Mannheim/tesseract/wiki  (marcar "Spanish")
+#   o, alternativa sin binario:  pip install easyocr
 ```
-Activo = Pasivo + Patrimonio Neto      (Aluar: 0.00% → extracción correcta)
-Resultado Bruto = Ventas − Costo       (Aluar: 0.00%)
-```
-**El pipeline solo carga lo que cierra (~0%).** Si la identidad no cuadra, se marca
-`PARCIAL` y NO se carga (no se confía en data mal extraída).
 
-## Uso
+## Cómo correrlo
 
 ```bash
 cd scripts/tickets/cnv_ir
-python pipeline.py                  # reporte de todo el catálogo (no carga)
-python pipeline.py --cargar         # carga las que validan a cnv_estados
-python pipeline.py ALUA CECO2       # puntual
-python discovery.py                 # solo descubrir EEFF (qué IR responde)
-python ocr.py archivo.pdf           # probar OCR de un escaneado
+python run.py            # menú interactivo: te pregunta TODO antes de bajar
 ```
 
-## Estado y cobertura (medido)
+El menú pregunta, **antes de descargar**:
+1. **Qué empresas**: todas / un sector / un papel
+2. **Tipo de presentación**: anual / trimestral / ambos
+3. **Períodos**: solo el último / rango de años (desde-hasta)
+4. **Tipo de PDF**: cualquiera / solo texto (rápido) / solo imagen (OCR)
+5. **Cargar a la base**: sí / no
 
-Probado end-to-end. Resultado por empresa (depende del entorno):
+```bash
+python run.py --rapido   # sin menú: todas, último, cualquier PDF, carga a BD
+```
 
-| Caso | Empresa ejemplo | Estado |
-|------|-----------------|--------|
-| ✅ texto + labels estándar | **ALUA** | OK — identidad 0%, 11 items, cargado |
-| 🟡 texto, labels propios | CECO2 | PARCIAL — generalizar etiquetas |
-| 🖼️ escaneado | SAMI | ESCANEADO — requiere OCR |
-| 🔒 IR geo-bloqueado | LEDE, TRAN, CAPX… | SIN EEFF (desde IP no-AR) |
-
-## ⚠️ Dos límites del entorno (no de la solución)
-
-1. **OCR**: requiere `tesseract` (con idioma `spa`) o `easyocr` instalado. Sin eso,
-   los escaneados quedan `ESCANEADO` (el módulo degrada elegante).
-   ```bash
-   pip install pytesseract     # + instalar Tesseract-OCR con paquete de español
-   # o
-   pip install easyocr
-   ```
-2. **IP argentina**: varios IR están geo-bloqueados fuera de AR. **Correr el
-   pipeline desde una IP argentina** destraba la mayoría (`SIN EEFF` → encontrados).
-
-→ Con OCR instalado + corrido desde AR, la cobertura sube fuerte. La parte difícil
-(parseo + validación) ya funciona; el resto es entorno.
-
-## Salida → tabla `cnv_estados`
+## Arquitectura por pasos (cada uno corre suelto)
 
 ```
-ticker, cik, concepto, period_end, tipo, valor, fecha_reexpresion,
-form='EEFF-IR', fuente='cnv-ir'
+run.py  →  orquesta los 5 pasos con la config del menú
+
+paso1_descarga.py      descubre EEFF en el IR + descarga los que pasan el filtro → manifiesto
+paso2_extraccion.py    abre cada PDF, detecta texto/imagen, extrae line items (texto u OCR)
+paso3_validacion.py    identidades contables (Activo=Pasivo+PN). Marca OK / parcial
+paso4_normalizacion.py rotula: ARS, NIC 29, fecha de re-expresión, period_end
+paso5_publicacion.py   carga a cnv_estados (solo lo validado)
 ```
-Cada dato con su **fecha de re-expresión** (NIC 29) → base para re-normalizar por
-IPC. Ver `docs/screener/PIPELINE_CNV.md` para el diseño robusto general.
 
-## Para extender la cobertura
+Correr un paso solo:
+```bash
+python paso1_descarga.py     # solo descarga (te pregunta config)
+python paso3_validacion.py   # corre paso1+2+3
+```
 
-1. **Completar `catalogo_ir.py`** con las URLs de IR que falten (las marcadas `[]`).
-2. **Agregar variantes** a `parser_eeff.LIB` para los `PARCIAL` (mirar las etiquetas
-   reales del PDF, ej. CECO2 usa "Ingresos de actividades ordinarias").
-3. **Instalar OCR** para los escaneados.
-4. **Correr desde AR** para los geo-bloqueados.
-La identidad contable dice, empresa por empresa, si quedó bien (0%) o hay que revisar.
+## Soporte (módulos base)
+
+| Módulo | Qué hace |
+|--------|----------|
+| `catalogo_ir.py` | los 56 con **sector**, cierre fiscal y URLs de IR |
+| `discovery.py` | encuentra el/los EEFF en el sitio de IR |
+| `parser_eeff.py` | librería de etiquetas (ES, por tipo) + números argentinos + validación |
+| `ocr.py` | OCR de escaneados (pytesseract/easyocr) |
+| `config.py` | el menú interactivo + filtros |
+
+## La auto-validación (clave)
+
+Cada EEFF pasa el **checksum contable**: `Activo = Pasivo + Patrimonio`. **Solo se
+carga lo que cierra (<1%).** Si no cuadra, queda `parcial` y NO se carga — nunca se
+confía en data mal extraída. Así sabés, empresa por empresa, si quedó bien.
+
+## Completar cobertura
+
+- **URLs faltantes**: en `catalogo_ir.py`, los que tienen `[]` — agregá la URL del
+  IR (la encontrás googleando "<empresa> relación con inversores estados contables").
+- **PARCIAL**: si la identidad no cierra, mirá las etiquetas del PDF y agregá la
+  variante en `parser_eeff.LIB` (ej. bancos: "Ingresos por intereses").
+- **Escaneados**: instalá OCR.
+
+## Salida → `cnv_estados`
+
+```
+ticker, cik, concepto, period_end, tipo (A/Q), valor, fecha_reexpresion,
+fuente='cnv-ir', esquema=NIC 29
+```
+Cada dato con su fecha de re-expresión. Listo para reconstruir ratios oficiales
+y, a futuro, re-normalizar por IPC para series largas.
