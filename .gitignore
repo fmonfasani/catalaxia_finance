@@ -151,3 +151,18 @@ data/*.db
 data/*.backup*
 *.db-journal
 *.db-wal
+
+# ============================================================
+#  DATOS CRUDOS de los pipelines — NO versionar (solo procesado va a git)
+# ============================================================
+# CNV: HTMLs descargados, trabajo, logs, lista cruda de presentaciones
+scripts/tickets/cnv/eeff/
+scripts/tickets/cnv/debug/
+scripts/tickets/cnv/logs/
+scripts/tickets/cnv/datos/links.csv
+scripts/tickets/cnv/datos/*_failed.csv
+# SEC: cache crudo de companyfacts
+scripts/tickets/sec_edgar/datos/financials_sec/
+# debug/trabajo generico
+scripts/tickets/debug/
+**/logs/
