@@ -59,7 +59,8 @@ for _, empresa in empresas.iterrows():
             if "/presentations/publicview/" not in href:
                 continue
 
-            href = urljoin(BASE, href)
+            # Resolve relative links against the fetched page URL to preserve the original domain
+            href = urljoin(r.url, href)
 
             guid = href.split("/")[-1]
 

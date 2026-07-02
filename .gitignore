@@ -161,6 +161,24 @@ scripts/tickets/cnv/debug/
 scripts/tickets/cnv/logs/
 scripts/tickets/cnv/datos/links.csv
 scripts/tickets/cnv/datos/*_failed.csv
+# CNV jobs (mina 556): company pages crudas + HTML de dividendos + logs de resume
+scripts/tickets/cnv/datos/html_descargados/
+data/log_job5_done.txt
+data/log_job6_done.txt
+# CNV: HTML crudo suelto + CSVs grandes reproducibles (discovery, se regeneran con jobs)
+scripts/tickets/cnv/datos/*.html
+scripts/tickets/cnv/datos/guid_formtype.csv
+scripts/tickets/cnv/datos/whitelist_eeff.csv
+scripts/tickets/cnv/datos/whitelist_div.csv
+scripts/tickets/cnv/datos/links_eeff.csv
+scripts/tickets/cnv/datos/links_eeff_refined.csv
+# logs sueltos de data/ (no versionar)
+data/*.txt
+# scripts scratch/debug (no ensuciar el repo)
+**/_tmp_*.py
+scripts/tickets/cnv/jobs/_*.py
+temp_*.py
+/Engine/
 # SEC: cache crudo de companyfacts
 scripts/tickets/sec_edgar/datos/financials_sec/
 # debug/trabajo generico

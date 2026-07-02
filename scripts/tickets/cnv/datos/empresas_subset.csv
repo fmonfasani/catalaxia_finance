@@ -1,0 +1,73 @@
+﻿ticker,empresa,id,cuit,url_empresa,grupo
+LEDE,Ledesma S.A.,137,30501250305,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30501250305,byma_only
+SAMI,S.A. San Miguel A.G.I.C.I. y F.,3067,30511190238,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30511190238,byma_only
+MOLA,Molinos Agro S.A.,32039,30715118773,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30715118773,byma_only
+INVJ,Inversora Juramento S.A.,30224,30640285431,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30640285431,byma_only
+SEMI,Molinos Juan Semino S.A.,158,30536928703,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30536928703,byma_only
+BHIP,Banco Hipotecario S.A.,30421,30500011072,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30500011072,byma_only
+PATA,Banco Patagonia SA,30464,30500006613,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30500006613,byma_only
+VALO,Banco de Valores S.A.,30471,30576124275,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30576124275,byma_only
+GRIM,Grimoldi S.A.,107,30500781293,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30500781293,byma_only
+HAVA,HAVANNA HOLDING S.A.,30389,30708544082,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30708544082,byma_only
+MOLI,MOLINOS RÍO DE LA PLATA S.A.,30746,30500858628,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30500858628,byma_only
+MORI,Morixe Hnos S.A.,160,30525346389,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30525346389,byma_only
+CAPX,Capex S.A.,331,30629827060,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30629827060,byma_only
+CECO2,CENTRAL COSTANERA S.A.,32100,30652254248,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30652254248,byma_only
+EDSH,Edesa Holding S.A.,30297,30712506497,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30712506497,byma_only
+TRAN,Cia. de Transporte de Energia Electrica,1018,30663148776,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30663148776,byma_only
+A3,A3 Mercados S.A.,30460,30525698412,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30525698412,byma_only
+BYMA,Bolsas y Mercados Argentinos SA,31697,30715471953,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30715471953,byma_only
+CGPA2,Camuzzi Gas del Sur S.A.,32151,30657864427,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30657864427,byma_only
+DGCU2,Distribuidora de Gas Cuyana,975,33657865589,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/33657865589,byma_only
+ECOG,ECOGAS INVERSIONES S.A.,105391,30658275522,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30658275522,byma_only
+GBAN,NATURGY BAN S.A.,500,30657864117,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30657864117,byma_only
+METR,Metrogas S.A.,249,30657863676,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30657863676,byma_only
+TGNO4,Transportadora de Gas del Norte S.A.,292,30657863056,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30657863056,byma_only
+GAMI,B-GAMING SA,32307,30709967424,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30709967424,byma_only
+COME,Sociedad Comercial del Plata S.A.,200,33526316989,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/33526316989,byma_only
+GARO,Garovaglio y Zorraquin S.A.,196,30509284861,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30509284861,byma_only
+AGRO,Agrometal Sociedad Anonima Industrial,3,30503087967,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30503087967,byma_only
+DOME,Domec Cia. de Artefactos Domesticos,85,30501999470,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30501999470,byma_only
+FERR,Ferrum S.A. de Cerámica y Metalurgia,97,30525341263,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30525341263,byma_only
+INTR,Cia. Introductora de Bs.As.,78,30501290323,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30501290323,byma_only
+LONG,Longvie,140,30500833781,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30500833781,byma_only
+MIRG,Mirgor,1003,30578036071,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30578036071,byma_only
+POLL,Polledo S.A.I.C.F.,179,30538748478,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30538748478,byma_only
+REGE,Garcia Reguera,103,33528807939,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/33528807939,byma_only
+AUSO,Autopistas del Sol S.A.,3075,30677237119,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30677237119,byma_only
+OEST,Grupo Concesionario del Oeste S.A.,3348,30663498513,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30663498513,byma_only
+ALUA,Aluar Aluminio Argentino,7,30522780606,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30522780606,byma_only
+CARC,Carboclor S.A.(Ex. Sol Petroleo S.A.),5019,30504249227,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30504249227,byma_only
+CELU,Celulosa Argentina,61,30501062150,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30501062150,byma_only
+FIPL,Fiplasto S.A.,99,30502112259,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30502112259,byma_only
+HARG,Holcim (Argentina) S.A.,30277,30501111127,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30501111127,byma_only
+RIGO,Rigolleau S.A.,183,30500526935,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30500526935,byma_only
+TXAR,TERNIUM ARGENTINA S.A.,32121,30516888241,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30516888241,byma_only
+CVH,CABLEVISIÓN HOLDING S.A.,31827,30715591231,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30715591231,byma_only
+GCLA,Grupo Clarín S.A.,5087,30707001735,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30707001735,byma_only
+CADO,Carlos Casado,58,30525406756,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30525406756,byma_only
+COUR,Continental Urbana S.A.,4005,30709130354,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30709130354,byma_only
+CTIO,Consultatio S.A.,30177,30587480359,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30587480359,byma_only
+GCDI,GCDI S.A.,30223,30709282537,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30709282537,byma_only
+RAGH,Raghsa S.A.,5007,30620880600,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30620880600,byma_only
+RICH,"LABORATORIOS RICHMOND SOCIEDAD ANONIMA, COMERCIAL,",30290,30501152826,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30501152826,byma_only
+ROSE,INSTITUTO ROSENBUSCH S.A. DE BIOLOGÍA E Y A,32106,30501407093,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30501407093,byma_only
+,YPF ENERGÍA ELÉCTRICA S.A.,32201,30714128309,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30714128309,adr
+,YPF S.A.,31224,30546689979,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30546689979,adr
+,BANCO DE GALICIA Y BUENOS AIRES S.A.,30341,30500001735,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30500001735,adr
+,Grupo Financiero Galicia S.A.,3353,30704962807,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30704962807,adr
+,Banco Macro SA,32118,30500010084,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30500010084,adr
+,BANCO BBVA ARGENTINA S.A.,30485,30500003193,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30500003193,adr
+,Banco Supervielle S.A.,31890,33500005179,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/33500005179,adr
+,Grupo Supervielle S.A.,30230,30617442937,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30617442937,adr
+,Pampa Energía S.A.,30775,30526552659,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30526552659,adr
+,Transportadora de Gas del Sur S.A.,248,30657862068,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30657862068,adr
+,Central Puerto,254,33650305499,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/33650305499,adr
+,Cresud SACIF Y A,83,30509300700,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30509300700,adr
+,IRSA Inversiones y Representaciones S.A.,124,30525322749,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30525322749,adr
+,Loma Negra  CIASA,31905,30500530851,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30500530851,adr
+,Telecom Argentina S.A.,5029,30639453738,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30639453738,adr
+,VISTA ENERGY ARGENTINA SAU,100156,33515950899,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/33515950899,adr
+,Aeropuertos Argentina 2000 S.A.,3730,30696170580,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30696170580,adr
+PATA,S.A. Importadora y Exp. de La Patagonia,197,30506730038,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30506730038,byma_only
+BOLT,Boldt,48,30500179151,https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30500179151,byma_only

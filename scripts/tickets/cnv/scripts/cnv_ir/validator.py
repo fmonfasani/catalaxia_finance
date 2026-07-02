@@ -69,7 +69,6 @@ def contains_error_page(html: str) -> bool:
     html = html.lower()
 
     keywords = (
-        "404",
         "not found",
         "ha ocurrido un error",
         "ocurrió un error",
@@ -97,15 +96,14 @@ def validate_html(html: str) -> ValidationResult:
     if contains_maintenance(html):
         return ValidationResult(False, "maintenance")
 
+    # Try to extract the presentation id early: if present, treat as valid page
+    presentation_id = extract_presentation_id(html)
+
+    if presentation_id is not None:
+        return ValidationResult(ok=True, presentation_id=presentation_id)
+
+    # If no presentation id found, consider explicit error pages
     if contains_error_page(html):
         return ValidationResult(False, "error_page")
 
-    presentation_id = extract_presentation_id(html)
-
-    if presentation_id is None:
-        return ValidationResult(False, "presentation_id_not_found")
-
-    return ValidationResult(
-        ok=True,
-        presentation_id=presentation_id,
-    )
+    return ValidationResult(False, "presentation_id_not_found")

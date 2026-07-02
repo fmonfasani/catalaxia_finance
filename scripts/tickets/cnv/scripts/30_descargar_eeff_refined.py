@@ -1,24 +1,13 @@
 """
-30_descargar_eeff.py
+30_descargar_eeff_refined.py
 
-Descargador industrial de EEFF CNV
-
-Responsabilidad:
-- Leer links_eeff.csv
-- Crear estructura de carpetas
-- Lanzar workers
-- Reanudar descargas
-- Mostrar estadísticas
-
-La descarga HTTP vive en:
-
-cnv_ir/downloader.py
+Descarga utilizando `links_eeff_refined.csv` (filtrado por formtypes whitelist).
+Es una copia ligera de `30_descargar_eeff.py` apuntando al CSV refinado.
 """
 
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import pandas as pd
-import requests
 import time
 import argparse
 
@@ -37,7 +26,7 @@ DATOS = ROOT / "datos"
 
 EEFF = ROOT / "eeff"
 
-LINKS = DATOS / "links_eeff.csv"
+LINKS = DATOS / "links_eeff_refined.csv"
 
 EEFF.mkdir(exist_ok=True)
 
@@ -56,109 +45,46 @@ USER_AGENT = (
     "Chrome/137 Safari/537.36"
 )
 
-# ==========================================================
-# SESSION
-# ==========================================================
-
-# The new Downloader manages its own session with retry/backoff.
-
-# ==========================================================
-
 
 def crear_carpetas(df):
-
-    print()
-
-    print("Creando carpetas...")
-
     for ticker in sorted(df.ticker.unique()):
-
-        (EEFF / ticker).mkdir(
-
-            exist_ok=True
-
-        )
-
-    print("OK")
-
-
-# ==========================================================
+        (EEFF / ticker).mkdir(exist_ok=True)
 
 
 def archivos_existentes():
-
     existentes = set()
-
     for html in EEFF.rglob("*.html"):
-
         existentes.add(html.stem)
-
     return existentes
 
 
 def presentation_key(value):
-
     if pd.isna(value):
-
         return ""
-
     try:
-
         return str(int(value))
-
     except (ValueError, TypeError):
-
         return str(value).strip()
 
 
-# ==========================================================
-
-
 def construir_trabajos(df):
-
     existentes = archivos_existentes()
-
     trabajos = []
-
     for row in df.itertuples():
-
         presentation = presentation_key(row.presentationId)
-
         if presentation and presentation in existentes:
-
             continue
-
         trabajos.append(row)
-
     return trabajos
 
 
-# ==========================================================
-
-
 def main():
-
+    print("=" * 70)
+    print("DESCARGADOR EEFF (REFINED)")
     print("=" * 70)
 
-    print("DESCARGADOR EEFF")
+    df = pd.read_csv(LINKS, low_memory=False)
 
-    print("=" * 70)
-
-    print()
-
-    print("Leyendo links...")
-
-    df = pd.read_csv(
-
-        LINKS,
-
-        low_memory=False,
-
-    )
-
-    print(df.shape)
-
-    # Command-line limit: if provided, only process first N trabajos
     parser = argparse.ArgumentParser()
     parser.add_argument("--limit", type=int, default=None, help="Limit number of downloads (for testing)")
     args = parser.parse_args()
@@ -171,16 +97,10 @@ def main():
         trabajos = trabajos[: args.limit]
         print(f"Limit applied: {len(trabajos)} trabajos (test mode)")
 
-    print()
-
     print("Pendientes:", len(trabajos))
 
-    print()
-
     inicio = time.time()
-
     ok = 0
-
     error = 0
 
     downloader = Downloader(
@@ -192,29 +112,22 @@ def main():
     )
 
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
-
         futures = []
-
         for row in trabajos:
-            # row is a pandas namedtuple; prefer passing the full URL when available
             payload = {"ticker": row.ticker, "guid": row.guid, "url": getattr(row, "url", None)}
             futures.append(pool.submit(downloader.download, payload))
 
         for i, future in enumerate(as_completed(futures), start=1):
             try:
                 res = future.result()
-
-                # Normalize status extraction for Enum or string
                 status = getattr(res, "status", None)
                 status_value = getattr(status, "value", None) if status is not None else None
                 if status_value is None:
                     status_value = str(status)
-
                 if status_value == "SUCCESS":
                     ok += 1
                 else:
                     error += 1
-
             except Exception as e:
                 error += 1
                 print(e)
@@ -224,33 +137,17 @@ def main():
 
     downloader.close()
 
-    segundos = round(
-
-        time.time() - inicio,
-
-        1,
-
-    )
+    segundos = round(time.time() - inicio, 1)
 
     print()
-
     print("=" * 70)
-
     print("FINALIZADO")
-
     print("=" * 70)
-
     print()
-
     print("OK:", ok)
-
     print("ERROR:", error)
-
     print("Tiempo:", segundos, "seg")
 
 
-# ==========================================================
-
 if __name__ == "__main__":
-
     main()
