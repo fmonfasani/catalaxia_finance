@@ -177,6 +177,7 @@ data/*.txt
 # scripts scratch/debug (no ensuciar el repo)
 **/_tmp_*.py
 scripts/tickets/cnv/jobs/_*.py
+scripts/tickets/screener/__*.py
 temp_*.py
 /Engine/
 # SEC: cache crudo de companyfacts
