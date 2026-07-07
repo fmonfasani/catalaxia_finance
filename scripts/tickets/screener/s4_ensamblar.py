@@ -23,7 +23,9 @@ from collections import defaultdict
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / "data").is_dir())
 DB = ROOT / "data" / "screener.db"
 
-UMBRAL_CNV = 0.05  # diferencia absoluta |calc - oficial| > 0.05 -> usa CNV_*
+# NOTA: UMBRAL_CNV desactivado. Los valores CNV_* son v1 stale y con v2
+# normalizado, los calculados son mas confiables. Ver _check_margen2.py.
+UMBRAL_CNV = 9999  # desactivado
 
 
 def get_valor(cur, cuit, concepto, period_end):
@@ -256,6 +258,12 @@ def build():
                         items_prov.append("Payout(facts)")
                         break
 
+        # Si facts no tiene payout, caer al de s2 (calculado desde cnv_dividendos)
+        if payout_final is None and payout_old is not None and 0 < payout_old <= 2:
+            payout_final = payout_old
+            payout_src = "cnv_dividendos"
+            items_prov.append("Payout(cnv_dividendos)")
+
         if payout_final is None:
             items_prov.append("Payout(sin_dato)")
 
@@ -328,13 +336,16 @@ def build():
         if dato_desactualizado:
             per = pb = ps = None
 
-        # Flag combinado de no_significativo (al menos un ratio anulado)
+        # Flag combinado de no_significativo (al menos un ratio anulado o sospechoso)
+        # Nuevos: Margen (|Margen|>300% o Revenue<=0) y ROE (Equity<=0)
+        margen_flag = (margen is not None and abs(margen) > 3) or (margen is not None and rev_ttm is not None and rev_ttm <= 0)
+        roe_flag = roe is not None and eq is not None and eq <= 0
         flag_no_sig = 1 if (
-            per_raw is not None and per is None
-        ) or (
-            pb_raw is not None and pb is None
-        ) or (
-            ps_raw is not None and ps is None
+            (per_raw is not None and per is None)
+            or (pb_raw is not None and pb is None)
+            or (ps_raw is not None and ps is None)
+            or margen_flag
+            or roe_flag
         ) else 0
 
         # Stats

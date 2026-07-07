@@ -12,7 +12,7 @@ Tabla salida: ratios_cnv
   - provenance: que conceptos se usaron y de que fuente
 """
 from __future__ import annotations
-import sqlite3, math
+import sqlite3, math, csv
 from pathlib import Path
 from collections import defaultdict
 
@@ -50,25 +50,67 @@ def get_valor_historico(cur, cuit, concepto, years=5):
     return cur.fetchall()
 
 
-def calcular_cagr(valores_hist, years=5):
-    """Calcular CAGR usando los valores de hace ~5 anos y el actual."""
+def cargar_ipc():
+    """Cargar IPC Nacional desde data/ipc_nacional.csv.
+    
+    Retorna dict {YYYY-MM: coef_deflacion_a_ultimo} o None si no existe.
+    Cada valor nominal * coef = pesos constantes del ultimo mes del IPC.
+    """
+    ipc_path = ROOT / "data" / "ipc_nacional.csv"
+    if not ipc_path.exists():
+        return None
+    ipc = {}
+    with open(ipc_path, encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            fecha = r["fecha"].strip()
+            ipc[fecha] = float(r["coef_deflacion_a_ultimo"])
+    return ipc
+
+
+def deflactar(valor, period_end, ipc):
+    """Convertir valor nominal a pesos constantes del ultimo mes IPC."""
+    if ipc is None or valor is None:
+        return valor
+    coef = ipc.get(period_end[:7])
+    return valor * coef if coef else valor
+
+
+def calcular_cagr(valores_hist, ipc=None, years=5):
+    """Calcular CAGR real (deflactado por IPC) o nominal.
+    
+    Si ipc dict esta presente, deflacta cada valor por su periodo
+    antes de calcular el CAGR. Toda la serie queda en pesos constantes
+    del ultimo mes del IPC → CAGR real.
+    
+    Retorna (cagr, flag). flag = 'vintage_mixto' solo cuando usa fechas
+    aproximadas (no encuentra alineacion exacta).
+    """
     if len(valores_hist) < 2:
         return None, "insuficientes_periodos"
-    # Tomar el mas reciente (anio 0) y buscar el de ~5 anos atras
-    actual = valores_hist[0][1]
+    
+    # Deflactar el valor actual si hay IPC
+    actual_raw = valores_hist[0][1]
+    actual = deflactar(actual_raw, valores_hist[0][0], ipc)
+    
     target_date = None
+    exacto = True
     try:
         anio_actual = int(valores_hist[0][0][:4])
         anio_target = anio_actual - years
+        mes_actual = int(valores_hist[0][0][5:7])
         for pe, val in valores_hist:
             if int(pe[:4]) == anio_target:
                 target_date = pe
-                pasado = val
+                pasado = deflactar(val, pe, ipc)
+                # Verificar si el mes tambien alinea
+                if int(pe[5:7]) != mes_actual:
+                    exacto = False
                 break
         if target_date is None:
-            # Si no hay exactamente 5 anos, tomar el mas lejano
-            pasado = valores_hist[-1][1]
+            # Fallback: no hay periodo en el anio exacto, tomar el mas lejano
+            pasado = deflactar(valores_hist[-1][1], valores_hist[-1][0], ipc)
             target_date = valores_hist[-1][0]
+            exacto = False
     except (ValueError, IndexError):
         return None, "error_fecha"
 
@@ -77,10 +119,29 @@ def calcular_cagr(valores_hist, years=5):
     ratio = actual / abs(pasado)
     if ratio < 0:
         return None, "ratio_negativo"
-    cagr = ratio ** (1.0 / years) - 1
+
+    # Si no es exacto, ajustar years al差距 real
+    if not exacto and target_date:
+        try:
+            d1 = int(valores_hist[0][0][:4]) * 12 + int(valores_hist[0][0][5:7])
+            d0 = int(target_date[:4]) * 12 + int(target_date[5:7])
+            years_real = (d1 - d0) / 12.0
+        except (ValueError, IndexError):
+            years_real = years
+    else:
+        years_real = years
+
+    if years_real <= 0:
+        return None, "span_cero"
+
+    cagr = ratio ** (1.0 / years_real) - 1
     if isinstance(cagr, complex):
         return None, "complejo"
-    return cagr, f"vintage_mixto({target_date}..{valores_hist[0][0]})"
+
+    if exacto:
+        return cagr, ""
+    else:
+        return cagr, f"vintage_mixto({target_date}..{valores_hist[0][0]})"
 
 
 def build():
@@ -173,6 +234,13 @@ def build():
     cagr_flag = 0
     div_con_monto = 0
 
+    # Cargar IPC para deflactar CAGR
+    ipc = cargar_ipc()
+    if ipc:
+        print(f"IPC cargado: {len(ipc)} meses, deflactando CAGR a constantes")
+    else:
+        print("IPC no encontrado — CAGR nominal con fallback vintage_mixto")
+
     for cuit, ticker, ultimo in entidades:
         prov = []
 
@@ -227,26 +295,43 @@ def build():
             stats["con_fcf"] += 1
 
         # --- 7. Payout (dividendos / NetIncome) ---
+        # Usar monto_candidato (total dividend amount) de cnv_dividendos v2.
+        # Ventana de 12 meses desde ultimo (fiscal year end) para alinear
+        # correctamente los dividendos con el ejercicio fiscal:
+        #   suma_div = pagos en [ultimo - 12m, ultimo]
+        #   payout = suma_div / NI del mismo ejercicio
         cur.execute("""
-            SELECT por_accion FROM cnv_dividendos
-            WHERE cuit=? AND por_accion IS NOT NULL AND por_accion != ''
+            SELECT fecha_candidata, CAST(monto_candidato AS REAL)
+            FROM cnv_dividendos
+            WHERE cuit=? AND monto_candidato IS NOT NULL AND monto_candidato != ''
+              AND CAST(monto_candidato AS REAL) > 0
             ORDER BY fecha_candidata DESC
-            LIMIT 1
         """, (cuit,))
-        div_row = cur.fetchone()
+        div_rows = cur.fetchall()
         div_total = None
-        if div_row:
+        suma_div = 0.0
+        if div_rows and ni and ni != 0:
             try:
-                div_val = float(div_row[0])
-                div_con_monto += 1
-                div_total = (div_val / eps) if (eps and eps != 0) else None
-            except (ValueError, TypeError):
-                pass
-        prov.append(f"dividendo_por_accion={div_row[0] if div_row else None}")
+                anio_ultimo = int(ultimo[:4])
+                mes_ultimo = int(ultimo[5:7])
+                dia_ultimo = int(ultimo[8:10])
+                anio_inicio = anio_ultimo - 1
+                window_start = f"{anio_inicio}-{mes_ultimo:02d}-{dia_ultimo:02d}"
+            except (ValueError, IndexError, TypeError):
+                window_start = ""
+            for f, m in div_rows:
+                if f and f >= window_start and f <= ultimo:
+                    suma_div += m
+            if suma_div > 0:
+                payout_candidate = suma_div / abs(ni)
+                if 0 < payout_candidate <= 2:
+                    div_total = payout_candidate
+                    div_con_monto += 1
+        prov.append(f"dividendos_total={suma_div:.0f}" if div_rows and suma_div else "dividendos=N/A")
 
         # --- 8. CAGR EPS 5y ---
         eps_hist = get_valor_historico(cur, cuit, "EPS_basico", 5)
-        cagr, flag = calcular_cagr(eps_hist, 5)
+        cagr, flag = calcular_cagr(eps_hist, ipc, 5)
         if cagr is not None:
             cagr_ok += 1
         if flag and "vintage_mixto" in flag:
