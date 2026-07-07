@@ -27,9 +27,9 @@ Cada fila tiene `period_ref` (fecha del último estado contable disponible) y
 | FCF/CE | 69/72 (96%) | = | |
 | **Payout** | **34/72 (47%)** | **15→34** ✅ | 33 facts + 1 CNV |
 | **CAGR EPS 5y** | **46/72 (64%)** | = * | ahora **real** (IPC) |
-| **PER** | **38/72 (53%)** | **24→38** ✅ | v2 normalizado |
-| **P/B** | **59/72 (82%)** | **40→59** ✅ | v2 normalizado |
-| **P/S** | **57/72 (79%)** | **36→57** ✅ | v2 normalizado |
+| **PER** | **33/72 (46%)** | **24→33** ✅ | per-share (Precio/EPS) |
+| **P/B** | **45/72 (62%)** | **40→45** ✅ | per-share (Precio/BVPS) |
+| **P/S** | **45/72 (62%)** | **36→45** ✅ | per-share (Precio/SPS) |
 | Precio | 69/72 (96%) | = | 3 tickers sin cotización Yahoo |
 | **Staleness** | **1/72** | **16→1** ✅ | solo PATA_2 (2023, legítimo) |
 
@@ -62,6 +62,18 @@ dividendos de ejercicios distintos y asegura que `payout = dividendos_del_ejerci
 Si el total supera 2× el NetIncome (ej. TXAR 516% → filtrado), se descarta como payout
 no operativo.
 
+### Valuación por acción (shares_CNV consistente)
+En v1 y v2 inicial, PER = market_cap_yahoo / NetIncome_TTM, P/B = market_cap / Equity,
+P/S = market_cap / Revenue. Esto suponía que el market cap de Yahoo usaba las mismas
+acciones que CNV. En realidad, Yahoo puede usar solo una clase de acciones (ej. CVH:
+552M acciones CNV vs 181M Yahoo, ratio 3.06×), o el TTM de NetIncome suma valores
+acumulados duplicando períodos (ej. MOLA: PER 3.10 vs Precio/EPS 6.12). La v2 final
+usa **Precio / EPS directo** (no necesita acciones), y para P/B/P/S deriva
+`shares = abs(NetIncome / EPS_basico)` del mismo período, consistente con CNV.
+
+Para ADR, el precio en USD se convierte a ARS (`precio_ars = precio_usd / fx_usd_per_ars`)
+antes de computar los ratios, asegurando moneda homogénea con los fundamentales CNV.
+
 ### Normalización de UnidadMedida
 Los estados contables CNV v2 se normalizan por su `UnidadMedida` (MILES → ×1000,
 MILLONES → ×1.000.000, otro → ×1). Esto corrigió el bug del v1 que dejaba escalas
@@ -80,7 +92,7 @@ Ya no se aplica.
 | # | Ratio | Fuente | Nota |
 |---|---|---|---|
 | 1 | Precio (u$s) | yfinance | precio local × FX |
-| 2 | PER | híbrido | market_cap / NetIncome (misma moneda) |
+| 2 | PER | híbrido | Precio / EPS (per-share, evita market_cap Yahoo con shares inconsistentes) |
 | 3 | Máx 52 sem | yfinance | |
 | 4 | Dif Máx | yfinance | precio/máx − 1 |
 | 5 | Mín 52 sem | yfinance | |
@@ -104,7 +116,13 @@ NIC 29 (el mismo período tiene valores nominales distintos según de qué balan
 extrajo). **Usalo como orden de magnitud, no como dato exacto.** Los valores negativos
 son caída real (Argentina no crece en términos reales la mayoría de los años).
 
-### 2. Valuación (PER / P/B / P/S) — flag `no_significativo`
+### 2. Valuación por acción (PER / P/B / P/S) — per-share
+PER = Precio / EPS,  P/B = Precio / BVPS,  P/S = Precio / SPS.
+**No usa market_cap de Yahoo.** El market cap de Yahoo usa acciones en circulación que
+pueden diferir de las implícitas en los balances CNV (diferencia de hasta 3× en CVH
+por clases de acciones múltiples). En su lugar, shares_CNV = NetIncome / EPS_basico,
+consistente con todos los conceptos CNV. BVPS = Equity / shares_CNV, SPS = Revenue / shares_CNV.
+
 En empresas con **ganancias / patrimonio / ventas ≈ 0 o negativos**, estos ratios
 explotan a valores absurdos (PER de millones, P/B de miles). Están **marcados con flag**.
 **Filtralos antes de usar o promediar.** No son "extremos reales", son división por

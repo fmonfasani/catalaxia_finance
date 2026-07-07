@@ -299,37 +299,49 @@ def build():
             precio = mcap = cury = yhigh = ylow = max52w = min52w = None
             sin_precio += 1
 
-        # Hibridos
-        # PER/P/B/P/S: NO aplicar fx si ambos lados estan en ARS.
-        # BYMA (currency=ARS): mcap es ARS, fundamentales son ARS → ratio sin moneda.
-        # ADR  (currency=USD): mcap es USD, fundamentales son ARS → fx necesario.
-        fx = get_fx(cury) if cury else 1.0
+        # Per-share valuation: PER = Precio/EPS, P/B = Precio/BVPS, P/S = Precio/SPS.
+        # Evita market_cap de Yahoo (usa shares inconsistentes con CNV).
+        # shares = NetIncome / EPS (CNV-consistent, single period).
+        # BYMA: precio en ARS, fundamentales en ARS → ratio directo.
+        # ADR:  precio en USD → convertir precio a ARS para emparejar moneda.
+        eps = get_valor(cur, cuit, "EPS_basico", ultimo)
+        ni = get_valor(cur, cuit, "NetIncome", ultimo)
+        shares = abs(ni / eps) if (eps is not None and ni is not None and eps != 0) else None
 
-        # PER/P/B/P/S: usar TTM (suma 4Q) para flujo, balance es point-in-time.
-        # Para BYMA (ARS), mcap y fundamentales ya estan en misma moneda → sin fx.
-        use_fx = fx if cury != "ARS" else 1.0
-        ni_ttm = get_ttm(cur, cuit, "NetIncome", ultimo)
-        ni_h = ni_ttm * use_fx if (ni_ttm is not None and use_fx) else None
-        per_raw = (mcap / ni_h) if (mcap and ni_h and ni_h > 0) else None
+        # Para ADR: precio esta en USD, fundamentales en ARS.
+        # get_fx("ARS") devuelve USD_per_ARS (0.000673).
+        # precio_ars = precio_usd / USD_per_ARS = precio_usd * ARS_per_USD.
+        precio_ars = precio
+        if cury is not None and cury != "ARS":
+            usd_per_ars = get_fx("ARS") if cury == "USD" else get_fx(cury)
+            if usd_per_ars:
+                precio_ars = precio / usd_per_ars
 
+        # PER = Precio / EPS  (un periodo, no necesita shares)
+        per_raw = (precio_ars / eps) if (precio_ars is not None and eps is not None and eps > 0) else None
+
+        # P/B = Precio / (Equity / shares) = Precio * shares / Equity
         eq = get_valor(cur, cuit, "Equity", ultimo)
-        eq_h = eq * use_fx if (eq is not None and use_fx) else None
-        pb_raw = (mcap / eq_h) if (mcap and eq_h and eq_h > 0) else None
+        pb_raw = None
+        if precio_ars is not None and eq is not None and eq > 0 and shares is not None and shares > 0:
+            pb_raw = precio_ars / (eq / shares)
 
-        rev_ttm = get_ttm(cur, cuit, "Revenue", ultimo)
-        rev_h = rev_ttm * use_fx if (rev_ttm is not None and use_fx) else None
-        ps_raw = (mcap / rev_h) if (mcap and rev_h and rev_h > 0) else None
+        # P/S = Precio / (Revenue / shares) = Precio * shares / Revenue
+        rev = get_valor(cur, cuit, "Revenue", ultimo)
+        ps_raw = None
+        if precio_ars is not None and rev is not None and rev > 0 and shares is not None and shares > 0:
+            ps_raw = precio_ars / (rev / shares)
 
         # Flag de desactualizacion: period_ref >= 2 anos
         dato_desactualizado = 1 if (ultimo or "") < "2024-01-01" else 0
 
         # Anular cada ratio solo si su propio denominador es ≈ 0 o el ratio es absurdo.
-        # PER: sin sentido si NI ≤ 0 (pérdida) o PER > 500
-        per = per_raw if (per_raw is not None and per_raw <= 500 and ni_ttm is not None and ni_ttm > 0) else None
-        # P/B: válido si Equity > 0 y P/B ≤ 50 (independiente de ganancias)
+        # PER: sin sentido si EPS ≤ 0 (pérdida) o PER > 500
+        per = per_raw if (per_raw is not None and per_raw <= 500 and eps is not None and eps > 0) else None
+        # P/B: válido si Equity > 0 y P/B ≤ 50
         pb = pb_raw if (pb_raw is not None and pb_raw <= 50 and eq is not None and eq > 0) else None
-        # P/S: válido si Revenue > 0 y P/S ≤ 50 (independiente de ganancias)
-        ps = ps_raw if (ps_raw is not None and ps_raw <= 50 and rev_ttm is not None and rev_ttm > 0) else None
+        # P/S: válido si Revenue > 0 y P/S ≤ 50
+        ps = ps_raw if (ps_raw is not None and ps_raw <= 50 and rev is not None and rev > 0) else None
 
         # Si los datos estan desactualizados, anular valuacion hibrida
         # (precio actual / fundamentales viejos = sin sentido)
@@ -338,7 +350,7 @@ def build():
 
         # Flag combinado de no_significativo (al menos un ratio anulado o sospechoso)
         # Nuevos: Margen (|Margen|>300% o Revenue<=0) y ROE (Equity<=0)
-        margen_flag = (margen is not None and abs(margen) > 3) or (margen is not None and rev_ttm is not None and rev_ttm <= 0)
+        margen_flag = (margen is not None and abs(margen) > 3) or (margen is not None and rev is not None and rev <= 0)
         roe_flag = roe is not None and eq is not None and eq <= 0
         flag_no_sig = 1 if (
             (per_raw is not None and per is None)

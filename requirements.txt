@@ -1,0 +1,6 @@
+# Dependencias del screener (Python 3.11+)
+requests
+urllib3
+yfinance
+pandas
+openpyxl
