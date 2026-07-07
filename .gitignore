@@ -177,9 +177,15 @@ data/*.txt
 # scripts scratch/debug (no ensuciar el repo)
 **/_tmp_*.py
 scripts/tickets/cnv/jobs/_*.py
+scripts/tickets/cnv/_*.py
+scripts/tickets/cnv/_*.csv
 scripts/tickets/screener/_*.py
 scripts/tickets/screener/_diagnostico/
 temp_*.py
+/test_*.py
+/audit_*.py
+/find_*.py
+/Dashboard_*.xlsx
 /Engine/
 # SEC: cache crudo de companyfacts
 scripts/tickets/sec_edgar/datos/financials_sec/
