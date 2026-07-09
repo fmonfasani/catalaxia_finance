@@ -82,8 +82,12 @@ Flags:
 
 - **Incremental de EDGAR**: compara `lastFiled` de SEC contra `empresas.fecha_facts` **por CIK**,
   y **solo** dispara con forms fundamentales (`10-K/10-Q/20-F` y `/A`) — no con 8-K/Form 4.
-- **Incremental de CNV**: acotado al subset de 72 CUITs; si CNV está caído, **saltea** la
-  extracción (no cuelga) y la difiere al próximo run.
+- **Incremental de CNV**: acotado al subset de 72 CUITs. Chequea conectividad con
+  **reintentos + backoff** (5/10/20s sobre 2 URLs); la extracción de nuevos códigos
+  reintenta 1 vez. Si CNV sigue caído, **difiere** (no cuelga, no arrastra dato viejo en
+  silencio) y escribe `data/logs/cnv_last_status.json` con `deferred`, `new_codigos`
+  pendientes, `newest_period` y `stale_days`. En `--quarterly` el resumen loguea `[!] CNV
+  DIFERIDO` para que se note. **Monitoreo**: chequear ese JSON tras cada run trimestral.
 - Todo idempotente. Cada corrida deja `data/logs/upd_YYYYMMDD_HHMMSS.log`.
 
 ---
@@ -141,7 +145,8 @@ Primero: mirar el último log en `data/logs/` (los jobs escriben ahí siempre, a
 | `database is locked` | dos procesos tocando la DB, o una fase no cerró conexión | correr **una sola** instancia; el rebuild ya intercala `sleep` entre fases |
 | `--daily` con muchos `[ERR] … no_data` | yfinance rate-limit (429) o ticker deslistado | reintentar más tarde; es tolerante (sigue con el resto) |
 | EDGAR 403 | falta header User-Agent | ya seteado en los scripts; si persiste, SEC te bloqueó — esperar |
-| CNV cuelga / timeout | CNV caído o rate-limit | `--quarterly` ya **saltea** CNV si no responde; se difiere al próximo run |
+| CNV cuelga / timeout | CNV caído o rate-limit | `--quarterly` reintenta con backoff (5/10/20s); si sigue caído **difiere** y lo deja registrado (no arrastra dato viejo en silencio). Ver `data/logs/cnv_last_status.json` |
+| BYMA con dato viejo | CNV estuvo caído varios runs | revisar `cnv_last_status.json`: `deferred:true` + `stale_days`. Si `stale_days > 180` con códigos nuevos pendientes → correr `--quarterly` cuando CNV vuelva |
 | export con < 571 filas | alguna fase de assemble falló | ver qué fase dio `FAILED` en el log y correr `run_all.py --only assemble` |
 
 **Regla de oro**: *"corre sin error" ≠ "actualizó bien"*. Después de un `--quarterly` o `run_all`,

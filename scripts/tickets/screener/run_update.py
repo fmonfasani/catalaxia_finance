@@ -325,11 +325,76 @@ RX_CNV_TR = re.compile(
 RX_CIERRE_BAL = re.compile(r"FECH\.\s*CIERRE\s+BAL\.?\s*:\s*(\d{2}-\d{2}-\d{4})", re.I)
 
 
+CNV_STATUS_FILE = LOG_DIR / "cnv_last_status.json"
+CNV_PROBE_URLS = [
+    "https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30546689979",  # YPF
+    "https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30500001735",  # Galicia
+]
+# Si el dato BYMA más nuevo supera esto y CNV está caído, es una alerta fuerte.
+CNV_STALE_ALERT_DAYS = 180
+
+
+def cnv_reachable_with_retry(log, attempts=4, base_sleep=5):
+    """Conectividad a CNV con reintentos + backoff exponencial (5,10,20s) sobre
+    varias URLs. Devuelve True si alguna responde 200 con contenido real."""
+    last = ""
+    for i in range(1, attempts + 1):
+        for url in CNV_PROBE_URLS:
+            try:
+                r = requests.get(url, headers=CNV_H, timeout=15)
+                if r.status_code == 200 and len(r.text) > 5000:
+                    if i > 1:
+                        log.log(f"cnv: alcanzable en intento {i}/{attempts}")
+                    return True
+                last = f"HTTP {r.status_code}"
+            except Exception as e:
+                last = str(e)[:80]
+        if i < attempts:
+            wait = base_sleep * (2 ** (i - 1))
+            log.log(f"cnv: no responde ({last}) — intento {i}/{attempts}, reintento en {wait}s")
+            time.sleep(wait)
+    log.log(f"cnv: INALCANZABLE tras {attempts} intentos ({last})")
+    return False
+
+
+def cnv_staleness(log):
+    """Cuán viejo está el dato BYMA. Devuelve (newest_period_end, dias). Sirve para
+    avisar si un diferido dejó los BYMA con dato viejo sin que nadie se entere."""
+    try:
+        con = sqlite3.connect(DB); cur = con.cursor()
+        row = cur.execute("SELECT MAX(period_end) FROM cnv_estados_v2 "
+                          "WHERE period_end IS NOT NULL AND period_end != ''").fetchone()
+        con.close()
+        newest = row[0] if row and row[0] else None
+        if not newest:
+            return (None, None)
+        from datetime import date
+        y, m, d = (int(x) for x in newest[:10].split("-"))
+        return (newest[:10], (datetime.now().date() - date(y, m, d)).days)
+    except Exception as e:
+        log.log(f"cnv: no se pudo medir staleness: {e}")
+        return (None, None)
+
+
+def write_cnv_status(status, log):
+    """Persiste el último estado del refresh CNV a JSON (para monitoreo/alerta externa)."""
+    try:
+        LOG_DIR.mkdir(parents=True, exist_ok=True)
+        status = dict(status, timestamp=datetime.now().isoformat(timespec="seconds"))
+        CNV_STATUS_FILE.write_text(json.dumps(status, indent=2, ensure_ascii=False), encoding="utf-8")
+        log.log(f"cnv: status escrito en {CNV_STATUS_FILE.name}")
+    except Exception as e:
+        log.log(f"cnv: no se pudo escribir status: {e}")
+
+
 def cnv_discovery_subset(log):
     """Run CNV discovery pipeline scoped to the 72-cuit subset.
     job2 (re-download pages to detect new filings) → parse company HTMLs
     to identify codigo GUIDs (with period_end in descripcion) → diff against
-    cnv_estados_v2 → extract SOLO los nuevos codigos (no anexos)."""
+    cnv_estados_v2 → extract SOLO los nuevos codigos (no anexos).
+
+    Resiliente: conectividad con reintentos+backoff; si CNV está caído, DIFIERE
+    (no arrastra dato viejo en silencio) y deja un status/alerta. Devuelve dict de estado."""
     cnv_dir = Path(__file__).resolve().parent.parent / "cnv" / "jobs"
     cwd = str(cnv_dir)
     cnv_datos = cnv_dir.parent / "datos"
@@ -340,14 +405,10 @@ def cnv_discovery_subset(log):
     # ── 0. Load subset CUITs ──
     subset_cuits = {r["cuit"].strip() for r in csv.DictReader(open(subset, encoding="utf-8-sig")) if r.get("cuit")}
 
-    # Quick connectivity check — CNV may be rate-limiting us
-    cnv_reachable = False
-    try:
-        r = requests.get("https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30546689979",
-                         headers=CNV_H, timeout=10)
-        cnv_reachable = (r.status_code == 200 and len(r.text) > 5000)
-    except Exception:
-        pass
+    # Conectividad con reintentos + backoff (antes era un solo intento)
+    cnv_reachable = cnv_reachable_with_retry(log)
+    status = {"reachable": cnv_reachable, "deferred": False, "new_codigos": 0,
+              "extracted": 0, "newest_period": None, "stale_days": None, "alert": None}
 
     if cnv_reachable:
         log.log("cnv: job2 download subset pages...")
@@ -438,25 +499,60 @@ def cnv_discovery_subset(log):
             log.log(f"cnv: bulk-marked {len(new_done)} anexo GUIDs as done (no period_end in descripcion)")
 
     # ── 7. Extract only new codigo GUIDs (skip if CNV unreachable) ──
+    status["new_codigos"] = len(new_rows)
     if new_rows:
         log.log(f"cnv: {len(new_rows)} new codigo GUIDs (subset={len(subset_cuits)} companies)")
         if cnv_reachable:
             with open(tmp_new, "w", newline="", encoding="utf-8-sig") as f:
                 w = csv.DictWriter(f, fieldnames=["cuit", "empresa", "guid", "formulario", "clase", "url"])
                 w.writeheader(); w.writerows(new_rows)
-            log.log("cnv: job5_v2 extract nuevos...")
-            r = subprocess.run(["python", "job5_v2_extract_eeff.py", "--whitelist", str(tmp_new),
-                                "--cuits", str(subset), "--max", "500"],
-                               capture_output=True, text=True, cwd=cwd, timeout=300)
-            for line in r.stdout.strip().splitlines():
-                log.log(f"  job5> {line}")
+            # Extracción con 1 reintento (CNV puede cortar a mitad de camino)
+            ok_extract = False
+            for intento in (1, 2):
+                log.log(f"cnv: job5_v2 extract nuevos (intento {intento})...")
+                r = subprocess.run(["python", "job5_v2_extract_eeff.py", "--whitelist", str(tmp_new),
+                                    "--cuits", str(subset), "--max", "500"],
+                                   capture_output=True, text=True, cwd=cwd, timeout=300)
+                for line in r.stdout.strip().splitlines():
+                    log.log(f"  job5> {line}")
+                if r.returncode == 0:
+                    ok_extract = True
+                    break
+                log.log(f"cnv: job5_v2 falló (rc={r.returncode})" + (" — reintento" if intento == 1 else ""))
+                if intento == 1:
+                    time.sleep(10)
             tmp_new.unlink(missing_ok=True)
+            if ok_extract:
+                # contar cuántos de los new_rows entraron realmente
+                con3 = sqlite3.connect(DB); cur3 = con3.cursor()
+                done_now = {r[0] for r in cur3.execute(
+                    "SELECT DISTINCT accn FROM cnv_estados_v2 WHERE fuente='cnv-aif2' AND accn != ''")}
+                con3.close()
+                status["extracted"] = sum(1 for row in new_rows if row["guid"] in done_now)
+            else:
+                status["deferred"] = True
+                status["alert"] = "CNV respondió pero la extracción falló 2 veces; diferido."
         else:
-            log.log("cnv: CNV down, extraccion diferida al proximo run")
+            status["deferred"] = True
+            status["alert"] = (f"CNV inalcanzable: {len(new_rows)} códigos nuevos NO extraídos, "
+                               "diferidos al próximo run. BYMA queda con dato previo.")
+            log.log(f"cnv: CNV down — {len(new_rows)} códigos DIFERIDOS al próximo run")
     else:
         log.log("cnv: no new codigo GUIDs to extract (all subset codigos already in cnv_estados_v2)")
 
+    # ── 8. Staleness + status persistente (alerta si el dato BYMA quedó viejo) ──
+    newest, days = cnv_staleness(log)
+    status["newest_period"], status["stale_days"] = newest, days
+    if newest:
+        log.log(f"cnv: dato BYMA más nuevo = {newest} ({days} días)")
+        if status["deferred"] and days is not None and days > CNV_STALE_ALERT_DAYS:
+            status["alert"] = (status["alert"] or "") + \
+                f" [!] Dato BYMA de hace {days} días (> {CNV_STALE_ALERT_DAYS})."
+    if status["alert"]:
+        log.log(f"cnv: *** ALERTA: {status['alert']} ***")
+    write_cnv_status(status, log)
     log.log("cnv: subset discovery complete")
+    return status
 
 
 def rebuild_screener(log):
@@ -515,13 +611,22 @@ def upd_quarterly(log):
     con.close()
 
     # ── 3. CNV incremental (subset-scoped discovery + extraction) ──
-    cnv_discovery_subset(log)
+    cnv_status = cnv_discovery_subset(log)
 
     # ── 4. Rebuild screener (s0→s8→s5) ──
     log.log("rebuild: Rebuilding screener...")
     results = rebuild_screener(log)
     n_ok = sum(1 for r in results if r[1] == "OK")
     log.log(f"rebuild: {n_ok}/{len(results)} phases OK")
+
+    # ── 5. Resumen CNV (que un diferido NO pase desapercibido) ──
+    if cnv_status:
+        if cnv_status.get("deferred"):
+            log.log(f"--quarterly: [!] CNV DIFERIDO — {cnv_status.get('alert')}")
+        elif cnv_status.get("extracted"):
+            log.log(f"--quarterly: CNV OK — {cnv_status['extracted']} códigos nuevos extraídos")
+        else:
+            log.log("--quarterly: CNV OK — sin códigos nuevos (BYMA al día)")
     return results
 
 
