@@ -99,6 +99,8 @@ def get_payout_facts(cur, ticker, period_end):
 
 def build():
     con = sqlite3.connect(DB)
+    con.execute("PRAGMA journal_mode=WAL")
+    con.execute("PRAGMA busy_timeout=60000")
     cur = con.cursor()
 
     print("FASE 4 -- Ensamblar screener completo")

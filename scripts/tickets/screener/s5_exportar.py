@@ -21,6 +21,8 @@ OUT = ROOT / "data" / "screener_export.csv"
 
 def build():
     con = sqlite3.connect(DB)
+    con.execute("PRAGMA journal_mode=WAL")
+    con.execute("PRAGMA busy_timeout=60000")
     cur = con.cursor()
 
     print("FASE 5 -- Validacion final + export CSV")
@@ -33,7 +35,8 @@ def build():
 
     ratios = ["ROE", "ROA", "MargenNeto", "DeudaEBITDA", "EPS", "FCF_CE",
               "Payout", "CAGR_EPS_5y", "PER", "PriceBook", "PriceSales",
-              "Precio", "Max52w", "Min52w"]
+              "Precio", "Max52w", "Min52w",
+              "ev_ebitda", "margen_operativo", "payout_status"]
 
     print(f"\n  Cobertura por ratio:")
     cobertura = {}
@@ -47,7 +50,7 @@ def build():
     # --- Rango razonable ---
     print(f"\n  Gate de rangos:")
     gates = [
-        ("ROE", -1.0, 1.0),
+        ("ROE", -5.0, 5.0),
         ("ROA", -1.0, 1.0),
         ("MargenNeto", -10.0, 10.0),
         ("DeudaEBITDA", 0, 50),

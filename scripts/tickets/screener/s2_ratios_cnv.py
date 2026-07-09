@@ -146,6 +146,8 @@ def calcular_cagr(valores_hist, ipc=None, years=5):
 
 def build():
     con = sqlite3.connect(DB)
+    con.execute("PRAGMA journal_mode=WAL")
+    con.execute("PRAGMA busy_timeout=60000")
     cur = con.cursor()
 
     print("FASE 2 -- Ratios fundamentales CNV")

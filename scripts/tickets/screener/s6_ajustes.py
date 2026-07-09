@@ -68,9 +68,12 @@ def usar_edgar_para_adr(cur):
         if c not in cols:
             cur.execute(f"ALTER TABLE screener ADD COLUMN {c} {t}")
     cur.execute("UPDATE screener SET fuente_fund='cnv' WHERE fuente_fund IS NULL")
+    has_cols = {r[1] for r in cur.execute("PRAGMA table_info(ratios)")}
     MAP = {"ROE": "roe", "ROA": "roa", "MargenNeto": "margen_neto", "DeudaEBITDA": "deuda_ebitda",
-           "EPS": "eps_anual", "PER": "per", "PriceBook": "p_book", "PriceSales": "p_sales",
-           "Payout": "payout", "CAGR_EPS_5y": "cagr_eps_5y"}
+           "EPS": "eps_anual", "Payout": "payout", "CAGR_EPS_5y": "cagr_eps_5y"}
+    for sc, rc in [("PER", "per"), ("PriceBook", "p_book"), ("PriceSales", "p_sales")]:
+        if rc in has_cols:
+            MAP[sc] = rc
     n = 0
     for cuit, etk, adrr in cur.execute(
         "SELECT s.cuit, ar.edgar_ticker, ar.ratio FROM screener s JOIN adr_ratios ar ON s.cuit=ar.cuit WHERE s.grupo='adr'").fetchall():
@@ -85,7 +88,10 @@ def usar_edgar_para_adr(cur):
 
 
 def main():
-    con = sqlite3.connect(DB, timeout=30); cur = con.cursor()
+    con = sqlite3.connect(DB, timeout=60)
+    con.execute("PRAGMA journal_mode=WAL")
+    con.execute("PRAGMA busy_timeout=60000")
+    cur = con.cursor()
     cols = [r[1] for r in cur.execute("PRAGMA table_info(screener)")]
     for c, tipo in (("es_financiera", "INTEGER DEFAULT 0"), ("sector", "TEXT")):
         if c not in cols:

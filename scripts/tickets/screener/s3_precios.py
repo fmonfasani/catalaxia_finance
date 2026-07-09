@@ -66,6 +66,8 @@ def yf_precio(ticker_yf, retries=3):
 
 def main():
     con = sqlite3.connect(DB)
+    con.execute("PRAGMA journal_mode=WAL")
+    con.execute("PRAGMA busy_timeout=60000")
     cur = con.cursor()
 
     print("FASE 3 -- Precios yfinance")

@@ -1,39 +1,134 @@
-# screener_export.csv — Guía de uso y limitaciones honestas (v2)
+# screener_export.csv — Guía de uso y limitaciones honestas (v4)
 
-> Screener de **13 ratios** para ~72 empresas argentinas (56 BYMA-only + 17 ADR).
-> **Fundamentales desde CNV** (estados contables oficiales, re-extracción v2 normalizada
-> por UnidadMedida), **precios desde yfinance**. Generado por el ETL de
-> `scripts/tickets/screener/` (ver
-> [docs/screener/PLAN_ETL_SCREENER_CNV.md](../docs/screener/PLAN_ETL_SCREENER_CNV.md)).
+> Screener de **571 empresas** (499 S&P 500 + 16 ADR argentinos + 56 BYMA-only),
+> **16 ratios comparables** + payout_status + margen_operativo + EV/EBITDA.
+> Fundamentales: **S&P/ADR → SEC EDGAR** (10-K, 20-F, XBRL), **BYMA → CNV** (estados
+> contables oficiales v2 normalizada). Precios desde yfinance. Pipeline modular en
+> `scripts/tickets/screener/` (s0→s2→s3→s4→s6→s7→s8→s5).
 >
 > **Leé esto antes de usar los datos.** Este archivo documenta cobertura real, fuentes
 > y limitaciones de cada ratio.
 
+**Cambios v4 (2026-07):**
+- **Fix regresión silenciosa de PER**: en la v3 la tabla `ratios` había perdido la columna
+  `per` (se corría `calcular_ratios_base` sin `precios_y_valuacion`), dejando el PER de las
+  499 S&P en NULL mientras el pipeline "corría OK". Corregido: los dos pasos van apareados
+  en `run_all.py`; el PER de S&P volvió a **93%**.
+- **PER válido con equity negativo**: MCD, SBUX, PM, AZO, HCA... tienen patrimonio contable
+  negativo por recompras pero PER perfectamente válido. La v3 lo anulaba por error; ahora
+  solo se anula P/B y ROE (que sí quedan sin sentido con equity ≤ 0).
+- **Sanity gate NIC-29 en EV/EBITDA y Deuda/EBITDA**: valores absurdos por EBITDA ≈ 0 o
+  mala unidad (ROSE ev_ebitda=80M, AUSO=142M, ROSE D/EBITDA=14M) se anulan + flag.
+- **Reproducibilidad**: `run_all.py` (reconstrucción end-to-end) + jobs periódicos en
+  `run_update.py`. Operación documentada en [docs/screener/OPERACION.md](../docs/screener/OPERACION.md).
+
 Fecha de generación: 2026-07.
-Cada fila tiene `period_ref` (fecha del último estado contable disponible) y
-`dato_desactualizado` (flag = 1 si `period_ref` es anterior a 2024).
+Cada fila tiene `period_ref` (fecha del último estado contable disponible),
+`fuente_fund` (edgar/cnv), `grupo` (sp500/adr/byma_only), `sector` (GICS para S&P,
+clasificación propia para AR) y `payout_status` (calculado/no_paga/falta_dato).
 
 ---
 
 ## Cobertura medida (no estimada)
 
-| Ratio | Cobertura | vs v1 | Nota |
-|---|---|---|---|
-| ROE | 65/72 (90%) | = | |
-| ROA | 65/72 (90%) | = | |
-| Margen Neto | 64/72 (89%) | = | |
-| Deuda/EBITDA | 48/72 (67%) | = | |
-| EPS | 66/72 (92%) | = | |
-| FCF/CE | 69/72 (96%) | = | |
-| **Payout** | **34/72 (47%)** | **15→34** ✅ | 33 facts + 1 CNV |
-| **CAGR EPS 5y** | **46/72 (64%)** | = * | ahora **real** (IPC) |
-| **PER** | **33/72 (46%)** | **24→33** ✅ | per-share (Precio/EPS) |
-| **P/B** | **45/72 (62%)** | **40→45** ✅ | per-share (Precio/BVPS) |
-| **P/S** | **45/72 (62%)** | **36→45** ✅ | per-share (Precio/SPS) |
-| Precio | 69/72 (96%) | = | 3 tickers sin cotización Yahoo |
-| **Staleness** | **1/72** | **16→1** ✅ | solo PATA_2 (2023, legítimo) |
+| Ratio | S&P 500 (499) | ADR (16) | BYMA (56) | Total (571) |
+|---|---|---|---|---|
+| ROE | 88% | 100% | 93% | 88% |
+| ROA | 98% | 100% | 100% | 98% |
+| Margen Neto | 89% | 62% | 93% | 89% |
+| Deuda/EBITDA | 60% | 50% | 68% | 61% |
+| EPS | 98% | 94% | 89% | 97% |
+| FCF/CE | 84% | 69% | 91% | 84% |
+| Payout | 73% | 44% | 61% | 71% |
+| CAGR EPS 5y | 69% | 12% | 61% | 67% |
+| PER | 93% | 62% | 34% | 86% |
+| P/B | 87% | 88% | 64% | 85% |
+| P/S | 91% | 56% | 64% | 87% |
+| Precio | 100% | 94% | 96% | 99% |
+| **payout_status** | 100% | 100% | 100% | 100% |
+| **ev_ebitda** | 72% | 50% | 43% | 68% |
+| **margen_operativo** | 73% | 69% | 89% | 74% |
 
-**Resumen:** de los 13 ratios, ~12 confiables. CAGR es real (deflactado), payout cubre 34/72.
+Medido con `scripts/tickets/screener/validar_final.py` (2026-07, post-fixes v4).
+
+**Notas de cobertura:**
+- **PER S&P 93%** (antes reportado 94%): el gap restante son 23 empresas con ganancias ≤ 0
+  (PER sin sentido), 9 sin NetIncome TTM ensamblable, y unas pocas con PER > 500 flageadas.
+- **ROE 88%** (antes 94%): bajó porque ahora se **anula ROE cuando equity ≤ 0** (recompras) —
+  ROE = NI/patrimonio no está definido con patrimonio negativo. No es falta de dato, es que
+  el ratio no aplica. Los analistas tampoco reportan ROE para esas empresas.
+- **ev_ebitda BYMA 43%** (antes 61%): se anularon los valores absurdos por unidad NIC-29.
+  Preferimos NULL honesto a un 142.000.000 falso.
+- **BYMA FCF/CE y PER bajos** son el techo conocido de la fuente CNV (períodos sin flujo de
+  caja; muchas BYMA no son rentables → PER sin sentido).
+
+---
+
+## Cobertura payout_status (nuevo en v3)
+
+| Estado | Total | S&P | ADR | BYMA |
+|---|---|---|---|---|
+| **calculado** | 403 (71%) | 362 (73%) | 7 (44%) | 34 (61%) |
+| **no_paga** | 124 (22%) | 103 (21%) | 6 (38%) | 15 (27%) |
+| **falta_dato** | 44 (8%) | 34 (7%) | 3 (19%) | 7 (13%) |
+| **respondido** | **527 (92%)** | **465 (93%)** | **13 (81%)** | **49 (88%)** |
+
+---
+
+## Novedades de la v3
+
+### Universo unificado: S&P 500 + ADR + BYMA
+Las 571 empresas se unifican en una sola tabla con clave `cuit` (CIK para S&P, CUIT para
+Argentina — sin colisiones). Los S&P provienen de EDGAR (SEC), los ADR tienen fundamentales
+de EDGAR (20-F) + CNV, y los BYMA-only de CNV. Cada fila lleva `fuente_fund` (edgar/cnv).
+
+### payout_status (nuevo)
+Cada empresa se clasifica en tres estados:
+- **calculado**: payout numérico disponible (EDGAR para S&P, facts o CNV para BYMA/ADR)
+- **no_paga**: la empresa no paga dividendos verificable (sin Dividends en facts/EDGAR)
+- **falta_dato**: paga dividendos pero el dato no está disponible (brecha conocida)
+
+Para S&P se verifica contra la tabla facts (CIK→Dividends). Para BYMA/ADR contra
+facts.BYMA-* y cnv_dividendos. ~44 empresas (8%) en falta_dato — son el techo actual
+de la fuente.
+
+### EV/EBITDA (nuevo)
+Enterprise Value / EBITDA. EV = MarketCap + TotalDebt. Para S&P desde ratios EDGAR
+(_deuda + _ebitda_ttm, con fallback a pasivos totales). Para BYMA desde CNV
+(DebtNonCurrent + DebtCurrent + EBITDA). Para ADR con fuente EDGAR se usa
+ratios.ev_ebitda directo de SEC.
+
+**Fuente CNV:** se consulta primero `cnv_estados_v2` (validado); como respaldo
+`cnv_estados_norm` con sanity check (el _norm contiene períodos 2026-03-31 con
+datos corruptos para TXAR/MOLA EBITDA ~50K vs ~200B real; el sanity rechaza
+valores < 0.1% del período anterior). Cobertura 72%, BYMA 61%.
+
+### FCF/CE — cambio en v3.1
+De 11% a 84% gracias a los building blocks de EDGAR. Se computa como:
+`FCF/CE = _fcf_ttm / (_equity + _deuda)` para cada S&P, usando los mismos valores
+que usa EV/EBITDA. BYMA se mantienen en 96% (desde CNV). ADR desde CNV o EDGAR
+según fuente.
+
+### flag_no_significativo — saneamiento de valores absurdos (corregido en v4)
+Se aplica un post-pase (`s8.apply_no_significativo`) sobre todas las filas que anula el
+ratio **solo cuando no tiene sentido**, no cuando es simplemente alto:
+- **PER** → NULL si NetIncome (TTM) ≤ 0, o PER > 500. **NO** se anula por equity ≤ 0
+  (MCD/SBUX/PM/AZO tienen equity negativo por recompras y PER válido) ni por eps_anual ≤ 0
+  (puede ser un corte anual atípico con TTM positivo).
+- **P/B** → NULL si equity ≤ 0 o P/B > 50.
+- **ROE** → NULL si equity ≤ 0 (indefinido con patrimonio negativo) o |ROE| > 5 (500%, dato
+  de unidad mala o equity ínfimo).
+- **P/S** → NULL si revenue ≤ 0 o P/S > 50.
+- **EV/EBITDA** → NULL si no está en (0, 100] (EBITDA ≈ 0 o mala unidad NIC-29 en BYMA:
+  ROSE 80M, AUSO 142M, OEST 71M).
+- **Deuda/EBITDA** → NULL si no está en [-25, 40] (ROSE 14M, VICI 51.7, RICH -71).
+- Flag `no_significativo=1` en todos esos casos (82 empresas). El valor crudo original vive
+  en la tabla `ratios`; el screener muestra NULL para no contaminar rankings/promedios.
+
+### Margen operativo (nuevo)
+OperatingIncome / Revenue. Para S&P desde ratios EDGAR (margen_operativo). Para BYMA
+desde CNV (OperatingIncome / Revenue). Cobertura 73%. Refleja el negocio subyacente
+sin ruido de resultados financieros o extraordinarios.
 
 ---
 
@@ -89,82 +184,99 @@ Ya no se aplica.
 
 ## Fuente por ratio
 
-| # | Ratio | Fuente | Nota |
+| # | Ratio | S&P 500 | BYMA / ADR |
 |---|---|---|---|
-| 1 | Precio (u$s) | yfinance | precio local × FX |
-| 2 | PER | híbrido | Precio / EPS (per-share, evita market_cap Yahoo con shares inconsistentes) |
-| 3 | Máx 52 sem | yfinance | |
-| 4 | Dif Máx | yfinance | precio/máx − 1 |
-| 5 | Mín 52 sem | yfinance | |
-| 6 | Dif Mín | yfinance | precio/mín − 1 |
-| 7 | Deuda/EBITDA | **CNV** | (DebtCurrent+DebtNonCurrent)/EBITDA |
-| 8 | EPS anual | **CNV** | EPS_basico último período |
-| 9 | Crec. EPS 5y | **CNV** | CAGR real (deflactado IPC INDEC) |
-| 10 | Margen Neto | **CNV** | NetIncome/Revenue |
-| 11 | ROE | **CNV** | NetIncome/Equity |
-| 12 | FCF/CE | **CNV** | (CF_Op+CF_Inv)/(Equity+DeudaLP) |
-| 13 | Payout | **CNV / yfinance** | facts(yfinance) + cnv_dividendos |
+| 1 | Precio | yfinance (USD) | yfinance (ARS/USD) |
+| 2 | PER | EDGAR (ratios) | Precio/EPS per-share (BYMA) o EDGAR (ADR) |
+| 3 | Máx 52 sem | yfinance | yfinance |
+| 4 | Dif Máx | yfinance | yfinance |
+| 5 | Mín 52 sem | yfinance | yfinance |
+| 6 | Dif Mín | yfinance | yfinance |
+| 7 | Deuda/EBITDA | EDGAR (ratios) | CNV (DebtCurrent+DebtNonCurrent)/EBITDA |
+| 8 | EPS anual | EDGAR (ratios) | CNV EPS_basico (BYMA) o EDGAR (ADR) |
+| 9 | Crec. EPS 5y | EDGAR (nominal USD) | CNV CAGR real (deflactado IPC) |
+| 10 | Margen Neto | EDGAR (ratios) | CNV NetIncome/Revenue |
+| 11 | ROE | EDGAR (ratios) | CNV NetIncome/Equity |
+| 12 | FCF/CE | — | CNV (CF_Op+CF_Inv)/(Equity+DeudaLP) |
+| 13 | Payout | EDGAR (ratios) | facts(yfinance) + cnv_dividendos |
+| — | payout_status | EDGAR + facts | facts + cnv_dividendos |
+| — | ev_ebitda | EDGAR | CNV (deuda+EBITDA) |
+| — | margen_operativo | EDGAR | CNV OperatingIncome/Revenue |
 
 ---
 
 ## Limitaciones (leer sí o sí)
 
-### 1. CAGR real — flageado `vintage_mixto` — APROXIMADO
-El CAGR se deflacta por IPC INDEC (base dic-2016) a pesos constantes. Sin embargo,
-la serie histórica de EPS extraída de CNV puede tener vintages mixtos de reexpresión
-NIC 29 (el mismo período tiene valores nominales distintos según de qué balance se lo
-extrajo). **Usalo como orden de magnitud, no como dato exacto.** Los valores negativos
-son caída real (Argentina no crece en términos reales la mayoría de los años).
+### 1. Universos con fuentes distintas — NO comparar BYMA vs S&P 1:1
+BYMA y S&P/ADR usan fuentes fundamentalmente distintas (CNV vs EDGAR), monedas distintas
+(ARS nominal vs USD), y entornos económicos distintos (inflación Argentina vs US).
+Los ratios son **comparables dentro de cada universo** pero NO entre universos sin ajuste.
+BYMA tiene CAGR real (deflactado IPC), S&P tiene CAGR nominal USD. BYMA usa valuación
+per-share (shares_CNV), S&P usa ratios directos de EDGAR. **No rankear BYMA vs S&P por
+PER, P/B, P/S, CAGR.**
 
-### 2. Valuación por acción (PER / P/B / P/S) — per-share
-PER = Precio / EPS,  P/B = Precio / BVPS,  P/S = Precio / SPS.
-**No usa market_cap de Yahoo.** El market cap de Yahoo usa acciones en circulación que
-pueden diferir de las implícitas en los balances CNV (diferencia de hasta 3× en CVH
-por clases de acciones múltiples). En su lugar, shares_CNV = NetIncome / EPS_basico,
-consistente con todos los conceptos CNV. BVPS = Equity / shares_CNV, SPS = Revenue / shares_CNV.
+### 2. PER de BYMA — 34% de cobertura (techo conocido)
+Muchas BYMA tienen NetIncome ≤ 0 (no rentables) → PER sin sentido (se anula). Esto no es un
+bug, es la realidad del mercado argentino donde muchas empresas son holding o no generan
+ganancias positivas. S&P PER cubre 93% — la mayoría de las empresas US son rentables.
 
-En empresas con **ganancias / patrimonio / ventas ≈ 0 o negativos**, estos ratios
-explotan a valores absurdos (PER de millones, P/B de miles). Están **marcados con flag**.
-**Filtralos antes de usar o promediar.** No son "extremos reales", son división por
-casi-cero.
+### 3. CAGR — dos fuentes, distintos significados
+- **BYMA**: CAGR real (deflactado IPC INDEC). Puede tener `vintage_mixto` por cambios en
+  la reexpresión NIC 29. **Usalo como orden de magnitud.**
+- **S&P**: CAGR nominal USD desde EDGAR. Comparable entre sí pero no con BYMA.
 
-### 3. Margen Neto y ROE — flag `no_significativo` (nuevo en v2)
-El flag `no_significativo` ahora también cubre:
-- **MargenNeto**: si Revenue ≤ 0 o |Margen| > 300% (división por Revenue casi-cero o
-  ingresos no operativos que dominan). Ej: GCLA (holding, Revenue casi cero) → 584%.
-- **ROE**: si Equity ≤ 0 (patrimonio neto negativo o cero). Ej: ROSE → 858%.
+### 4. Valuación por acción (PER / P/B / P/S) — BYMA-only
+En BYMA: PER = Precio/EPS, P/B = Precio/BVPS, P/S = Precio/SPS. **No usa market_cap.**
+shares_CNV = NetIncome/EPS_basico (consistente CNV pero puede diferir de Yahoo).
+En empresas con ganancias/patrimonio/ventas ≈ 0, estos ratios explotan → marcados con
+`no_significativo`. **Filtralos antes de promediar.**
 
-El valor crudo se conserva en la celda; el flag indica que no es confiable.
+### 5. Margen Neto y ROE — flag `no_significativo`
+Cubre Revenue ≤ 0, |Margen| > 300%, Equity ≤ 0. El valor crudo se conserva; el flag
+indica que no es confiable.
 
-### 4. Payout — 34/72 (47%)
-- **33** desde facts (yfinance): Cash Dividends Paid anual / NetIncome.
-- **1** desde CNV (`cnv_dividendos`): formularios 339 de dividendos (monto total).
-- El payout CNV se calcula con ventana de 12 meses desde el cierre fiscal (`ultimo`),
-  sumando solo los dividendos pagados durante el ejercicio. Si el total supera 2× el
-  NetIncome (ej. TXAR 516% → filtrado), se descarta por no ser un payout operativo.
-- Las 38 restantes tienen payout=NULL: puede ser que **no pagaron dividendos** o que
-  **falta el dato**. No asumir 0.
+### 6. Payout_status — 8% en falta_dato
+44 empresas (8%) están en `falta_dato`: pagan dividendos pero el dato no fue capturado.
+Para S&P el gap es el `payout` faltante en la tabla ratios (EDGAR). Para BYMA/ADR es
+la falta de formularios 339 de CNV (HTML no capturado). **No asumir que falta_dato = 0.**
 
-### 5. Datos desactualizados — de 16 a 1 en v2
-La re-extracción v2 (normalización de UnidadMedida) corrigió la mayoría de los casos
-donde el parser v1 fallaba en períodos recientes (~2024+). Antes 16/72 tenían
-`period_ref` anterior a 2024; ahora solo **1/72** (PATA_2, secundaria con cierre
-genuino en 2023). El resto tiene datos al 2024-2026.
+### 7. EV/EBITDA — 68% de cobertura (con sanity gate NIC-29)
+Para S&P usa `_deuda` de ratios EDGAR (cubre empresas con deuda reportada). Fallback
+a pasivos totales (_assets - _equity) que sobreestima deuda para financieras. Para BYMA
+usa DebtNonCurrent+DebtCurrent de CNV. **Los valores fuera de (0, 100] se anulan**: en BYMA
+la extracción NIC-29 de EBITDA a veces toma una celda de mala unidad (ROSE dio EBITDA=103
+con deuda de 1.400M → ev_ebitda=80M), y preferimos NULL a un número falso. Empresas sin
+deuda o sin EBITDA confiable quedan excluidas. Esta es la limitación BYMA a atacar en la
+próxima iteración (normalización de unidad de EBITDA en la extracción CNV).
 
-### 6. Precios en ARS — flag `fx_ars`
-BYMA cotiza en ARS. Los precios se convierten a USD usando el tipo de cambio de
-yfinance, que puede diferir del CCL o MEP. Tratá la valuación en USD como referencia
-gruesa.
+### 8. FCF/CE — 84% total (S&P + BYMA)
+Se computa `FCF/CE = _fcf_ttm / (_equity + _deuda)` para S&P desde los building blocks de
+EDGAR (84%), y desde CNV (CF_Op+CF_Inv)/(Equity+DeudaLP) para BYMA (91%). Los pocos huecos
+son empresas sin flujo de caja reportado en el período.
 
-### 7. Bancos y financieras
-Los bancos usan plantilla contable distinta (sin códigos estándar de CNV). Con la
-normalización v2, los ratios calculados (ROE, ROA, Margen) son más confiables que los
-v1 stale, aunque el mapeo de conceptos puede no ser perfecto. PER de bancos **no es
-confiable** (NetIncome mal mapeado) — no lo uses.
+### 9. Datos desactualizados
+BYMA: solo PATA_2 (2023, legítimo). S&P/ADR: datos de los últimos 10-K/20-F (2025-2026),
+todos actualizados.
 
-### 8. Sin precio (3 entidades)
-BOLT_2, PATA_2 y _ADR_8309 no tienen cotización en Yahoo Finance. Sus tickers BYMA
-no existen o cambiaron. P/B, P/S, PER son NULL para estas.
+### 10. Precios BYMA en ARS
+BYMA cotiza en ARS. Los precios USD pueden diferir del CCL/MEP. Tratá la valuación USD
+como referencia gruesa.
+
+### 11. Bancos y financieras
+PER de bancos argentinos no es confiable (NetIncome mal mapeado en CNV). S&P bancos
+tienen PER desde EDGAR (confiable).
+
+### 12. Sin precio (3 entidades)
+BOLT_2, PATA_2 y _ADR_8309 no tienen cotización Yahoo. P/B, P/S, PER son NULL.
+
+### 13. ADR: moneda mixta
+Los ADR toman fundamentales de EDGAR (USD) o CNV (ARS) según disponibilidad. La columna
+`fuente_fund` indica la fuente predominante. No comparar ADR con fuente_fund='cnv' contra
+'edgar' sin ajuste monetario.
+
+### 14. S&P faltante: FDXF
+FedEx Freight (FDXF) es spin-off de FDX sin filing EDGAR propio. No está en ratios.
+El screener tiene 571/572 empresas.
 
 ---
 
@@ -172,22 +284,39 @@ no existen o cambiaron. P/B, P/S, PER son NULL para estas.
 
 Antes de rankear o promediar cualquier ratio, **excluí las filas con el flag correspondiente**:
 - Ranking por PER/P/B/P/S → excluir `no_significativo`.
-- Análisis de Margen o ROE → excluir `no_significativo` (nuevo).
-- Series de crecimiento → CAGR es real, pero con posible `vintage_mixto`.
+- Análisis de Margen o ROE → excluir `no_significativo`.
+- Series de crecimiento → CAGR tiene `vintage_mixto` posible (BYMA) o es nominal (S&P).
 - Datos actuales → excluir `dato_desactualizado=1`.
 - Precios ARS → tratar valuación como referencia.
+- payout_status = 'falta_dato' → no asumir 0.
 
 ## Qué NO hacer
+- No rankear BYMA vs S&P por PER/P/B/P/S/CAGR sin entender las fuentes distintas.
 - No promediar PER/P/B/P/S sin filtrar `no_significativo` (contaminan).
-- No asumir CAGR negativo = empresa en crisis (es real, Argentina no crece).
-- No asumir payout=0 donde está NULL.
-- No comparar valuación ARS 1:1 contra ADR en USD (brecha cambiaria).
+- No asumir CAGR negativo BYMA = empresa en crisis (es real, Argentina no crece).
+- No asumir payout=0 donde está NULL o falta_dato.
+- No comparar valuación ARS 1:1 contra USD (brecha cambiaria).
+- No asumir que EV/EBITDA bajo = barato sin verificar si la deuda incluye pasivos operativos.
 
 ## Cómo se reconstruye
-ETL en `scripts/tickets/screener/` (s0 normalizar → s2 ratios CNV → s3 precios →
-s4 ensamblar → s5 export). Requiere `data/screener.db` (no está en git, ~1GB).
-Detalle: [docs/screener/PLAN_ETL_SCREENER_CNV.md](../docs/screener/PLAN_ETL_SCREENER_CNV.md).
+- **Reconstrucción end-to-end**: `python run_all.py` (EXTRACT → TRANSFORM → ASSEMBLE → EXPORT;
+  saltea lo cacheado). Con cache: `run_all.py --skip-extract` (transform + assemble) o
+  `--skip-extract --skip-transform` (solo re-ensambla, ~30s, offline).
+- **Solo ensamblar**: `python run_screener.py` → s0 (normalizar CNV) → s2 (ratios CNV) →
+  s3 (precios yfinance) → s4 (ensamblar BYMA) → s6 (ajustes ADR/bancos) → s7 (unificar S&P
+  desde EDGAR) → s8 (payout_status, EV/EBITDA, margen_operativo, no_significativo) → s5
+  (validación + export CSV).
+- **Actualización periódica**: `python run_update.py --daily|--monthly|--quarterly|--annual`.
+- **Validación**: `python validar_final.py` (cobertura × universo, identidades, outliers).
 
-El archivo IPC (`data/ipc_nacional.csv`) es provisto externamente (no se descarga).
-Contiene el índice de precios INDEC base dic-2016=100 y el coeficiente de deflación
-al último mes. Sin este archivo, el CAGR cae a nominal con flag `vintage_mixto`.
+⚠️ `calcular_ratios_base` y `precios_y_valuacion` van **siempre juntos**: el primero dropea
+la tabla `ratios` (sin `per`), el segundo la restaura. Correr uno sin el otro deja el PER
+de las S&P en NULL (falla silenciosa). `run_all.py` los corre apareados.
+
+Requiere `data/screener.db` (~754MB, no está en git). Contiene todas las tablas
+intermedias (ratios EDGAR, cnv_estados_v2/norm, precios, facts, etc.).
+
+Detalle: [docs/screener/PLAN_PIPELINE_COMPLETO.md](../docs/screener/PLAN_PIPELINE_COMPLETO.md) ·
+Operación y jobs: [docs/screener/OPERACION.md](../docs/screener/OPERACION.md).
+
+El archivo IPC (`data/ipc_nacional.csv`) es necesario para CAGR real de BYMA.

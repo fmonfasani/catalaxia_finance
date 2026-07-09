@@ -36,6 +36,10 @@ HTML_DIR = BASE / "eeff" / "eeff_html"
 DONE = ROOT / "data" / "log_job5_v2_done.txt"
 H = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120", "Accept-Language": "es-AR"}
 
+def _mark_done(guid):
+    with open(DONE, "a", encoding="utf-8") as fh:
+        fh.write(guid + "\n")
+
 CODIGOS = {
     "1122500": "Cash", "1121999": "Receivables", "1120100": "Inventory",
     "1139999": "AssetsCurrent", "1110100": "PPE", "1110200": "Intangibles",
@@ -125,6 +129,14 @@ def validar(d):
 
 def main():
     args = sys.argv[1:]
+    whitelist_path = WHITELIST  # module default
+    if "--whitelist" in args:
+        i = args.index("--whitelist")
+        wp = Path(args[i + 1])
+        if wp.exists():
+            whitelist_path = wp
+        else:
+            print(f"  --whitelist {wp} not found, using default")
     sleep = float(args[args.index("--sleep") + 1]) if "--sleep" in args else 0.3
     mx = int(args[args.index("--max") + 1]) if "--max" in args else 10 ** 9
     r0, r1 = 0, 10 ** 9
@@ -148,7 +160,7 @@ def main():
 
     HTML_DIR.mkdir(parents=True, exist_ok=True)
     hechos = set(DONE.read_text(encoding="utf-8").split()) if DONE.exists() else set()
-    filas = list(csv.DictReader(open(WHITELIST, encoding="utf-8-sig")))
+    filas = list(csv.DictReader(open(whitelist_path, encoding="utf-8-sig")))
     if cuits_ok is not None:
         filas = [f for f in filas if f["cuit"].strip() in cuits_ok]
     filas = filas[r0:r1]
@@ -203,6 +215,7 @@ def main():
             pe = period_end(html)
             if not pe:
                 err += 1
+                _mark_done(guid)
                 time.sleep(sleep)
                 continue
 
@@ -228,6 +241,7 @@ def main():
 
             if len(datos) < 5:
                 err += 1
+                _mark_done(guid)
                 time.sleep(sleep)
                 continue
 
@@ -265,6 +279,7 @@ def main():
                 fh.write(guid + "\n")
         except Exception as ex:
             err += 1
+            _mark_done(guid)
             print(f"  ! {guid[:8]}: {type(ex).__name__}")
         if (i + 1) % 50 == 0:
             print(f"  [{i+1}/{len(filas)}] ok={ok} skip={skip} cache={cache} err={err} dp={dp}")

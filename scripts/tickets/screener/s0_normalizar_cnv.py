@@ -110,6 +110,8 @@ def extraer_ticker_de_cik(cik):
 
 def build():
     con = sqlite3.connect(DB)
+    con.execute("PRAGMA journal_mode=WAL")
+    con.execute("PRAGMA busy_timeout=60000")
     cur = con.cursor()
 
     print("FASE 0 -- Normalizacion de clave cnv_estados")

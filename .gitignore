@@ -192,3 +192,4 @@ scripts/tickets/sec_edgar/datos/financials_sec/
 # debug/trabajo generico
 scripts/tickets/debug/
 **/logs/
+scripts/tickets/cnv/datos/whitelist_nuevos.csv
