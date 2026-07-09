@@ -60,11 +60,18 @@
 
 ## 4. Por SCOPE (clasificación por impacto)
 
-### 🔴 Sistémicos (afectan a muchos — hay que DECIDIR)
-- **`CNV_*` referencia rota** → descartarla como ancla de validación, o entender por qué da
-  valores del v1 (¿período mal? ¿código mal mapeado? ¿lee data vieja?).
+### ✅ RESUELTO — `CNV_*` referencia rota
+Confirmado (2026-07): el parser de la sección de ratios **mal-asocia los códigos con sus
+valores** (ej. TXAR `CNV_margen_neto=0.85` es en realidad la solvencia Eq/As≈0.90, no el
+margen 3.3%). Los `CNV_*` son inservibles como ancla. **Decisión: descartados** como ancla
+de validación y como fallback de bancos. La fuente de verdad son los **conceptos crudos**
+(pasan las identidades contables). Las "100 divergencias vs CNV_*" del doble-nelson NO son
+bugs nuestros. Validación real = identidades + DuPont + rangos sanos.
+
+### 🔴 Sistémicos abiertos (afectan a muchos — hay que DECIDIR)
 - **Bancos** (BHIP, BPAT, Galicia, Macro, BBVA, Supervielle): plantilla financiera → sus
-  fundamentales CNV son poco confiables. Necesitan parser bank-aware o fuente alternativa.
+  fundamentales CNV son poco confiables (ni siquiera tenemos el `CNV_*` como referencia).
+  Necesitan parser bank-aware o fuente alternativa (yfinance/EDGAR), flageados.
 - **Shares inestables** (CAGR_EPS ≠ CAGR_NI en 40/72) → roza P/B, P/S y CAGR (usan NI/EPS).
 
 ### 🟠 Individuales (pocas entidades — limpieza puntual, casi todos ADR-placeholders)
@@ -96,8 +103,8 @@ EPS_diluido OK), PER arreglado, staleness muerta, CAGR real. Lo que queda:
 Nada rompe el screener; son datos puntuales + decisiones, no un problema de fondo.
 
 ## Orden de ataque sugerido
-1. **Decidir el ancla CNV_*** (descartar o arreglar) — desbloquea la validación.
-2. **Limpiar los ~6 bugs individuales** (ADR-placeholders + CF faltantes) — barato, mejora cobertura.
-3. **Bancos**: decidir fuente (CNV bank-aware vs yfinance/EDGAR) → flag claro.
+1. ~~Decidir el ancla CNV_*~~ ✅ **HECHO** (descartado — parser de ratios mal-asocia códigos).
+2. **Limpiar los ~6 bugs individuales** (ADR-placeholders + CF faltantes) — barato, mejora cobertura. ← siguiente
+3. **Bancos**: decidir fuente (yfinance/EDGAR vs parser bank-aware) → flag claro.
 4. **Shares/CAGR**: confirmar si es cambio real de acciones o inconsistencia EPS/NI.
-5. Recién con eso: **push del v2** + eventual expansión a las 556 + unificación EDGAR.
+5. Recién con eso: (ya pusheado el v2) expansión a las 556 + unificación EDGAR.

@@ -1,0 +1,14 @@
+﻿edgar_ticker,cuit,ratio,clase,source_url,filing_form,filing_date
+BBAR,30500003193,3,ordinary shares,https://www.sec.gov/Archives/edgar/data/913059/000162828026024441/bbar-20251231.htm,20-F,2026-04-09
+BMA,,10,"Class B (fuente: depositario, provisto)",https://www.sec.gov/Archives/edgar/data/1347426/000101915506000004/bancomacrobansudformf6.htm,20-F,2026-04-20
+CEPU,33650305499,10,common shares,https://www.sec.gov/Archives/edgar/data/1717161/000129281426002446/cepuform20f_2025.htm,20-F,2026-04-22
+CRESY,30509300700,10,common shares,https://www.sec.gov/Archives/edgar/data/1034957/000165495425012195/cresud_20f.htm,20-F,2025-10-24
+GGAL,30704962807,10,Class B ordinary Shares,https://www.sec.gov/Archives/edgar/data/1114700/000111470026000038/ggal-20251231.htm,20-F,2026-04-16
+IRS,30525322749,10,common shares,https://www.sec.gov/Archives/edgar/data/933267/000165495425012190/irsa_20f.htm,20-F,2025-10-24
+LOMA,30500530851,5,ordinary shares,https://www.sec.gov/Archives/edgar/data/1711375/000171137526000030/loma-20251231.htm,20-F,2026-04-28
+PAM,30526552659,25,common shares,https://www.sec.gov/Archives/edgar/data/1469395/000129281426002185/pamform20f_2025.htm,20-F,2026-04-09
+SUPV,30617442937,5,Class B shares,https://www.sec.gov/Archives/edgar/data/1517399/000110465926040713/supv-20251231x20f.htm,20-F,2026-04-08
+TEO,30639453738,5,Class B Shares,https://www.sec.gov/Archives/edgar/data/932470/000110465926026480/teo-20251231x20f.htm,20-F,2026-03-11
+TGS,30657862068,5,shares,https://www.sec.gov/Archives/edgar/data/931427/000114036126016167/ef20060824_20f.htm,20-F,2026-04-22
+VIST,33515950899,1,common share,https://www.sec.gov/Archives/edgar/data/1762506/000119312526187099/d936340d20f.htm,20-F,2026-04-28
+YPF,30546689979,1,Class D share,https://www.sec.gov/Archives/edgar/data/904851/000119312526126363/d95578d20f.htm,20-F,2026-03-26
