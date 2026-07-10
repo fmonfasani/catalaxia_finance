@@ -166,6 +166,7 @@ def stage_assemble(log, results):
         ("s6_ajustes",        "main",  "Ajustes (ADR/bancos/sector)"),
         ("s7_unificar",       "build", "Unificar S&P desde EDGAR"),
         ("s8_calidad",        "build", "Calidad (payout/EV/OpMargen)"),
+        ("iamc_dual_price",   "build", "IAMC + Dual Price (ARS/USD)"),
     ]
     for mod, entry, label in phases:
         st, el = _run_module(mod, entry, log)
@@ -251,8 +252,8 @@ def main():
         by = dict(cur.execute("SELECT grupo, COUNT(*) FROM screener GROUP BY grupo").fetchall())
         con.close()
         log.log(f"  screener: {n} filas  {by}")
-        if n != 571:
-            log.log(f"  *** ADVERTENCIA: se esperaban 571 filas, hay {n} ***")
+        if n != 572:
+            log.log(f"  *** ADVERTENCIA: se esperaban 572 filas, hay {n} ***")
     except Exception as e:
         log.log(f"  no se pudo verificar screener: {e}")
 

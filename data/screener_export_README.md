@@ -1,7 +1,21 @@
-# screener_export.csv — Guía de uso y limitaciones honestas (v4)
+# screener_export.csv — Guía de uso y limitaciones honestas (v5)
 
-> Screener de **571 empresas** (499 S&P 500 + 16 ADR argentinos + 56 BYMA-only),
-> **16 ratios comparables** + payout_status + margen_operativo + EV/EBITDA.
+> Screener de **572 empresas** (499 S&P 500 + 17 ADR argentinos + 56 BYMA-only),
+> **16 ratios comparables** + payout_status + margen_operativo + EV/EBITDA + **doble precio ARS/USD**.
+
+**Cambios v5 (2026-07):**
+- **Doble precio `precio_ars` + `precio_usd`** para las 572. FX = **CCL** (dólar contado con
+  liqui) calculado desde los ADR: `CCL = local_ARS × adr_ratio / ADR_USD` (mediana de 11 ADR,
+  dispersión 1.3% → **valida los ADR ratios de paso**). Columnas nuevas: `precio_ars`,
+  `precio_usd`, `ccl`, `precio_fuente` (iamc/yfinance/ccl/implied), `precio_dif_iamc`.
+- **Precio oficial BYMA de IAMC**: el "Informe Diario de Acciones" de IAMC da el cierre
+  oficial de BYMA. Corrigió **6 precios BYMA mal de yfinance** (AGRO, BOLT, CELU, COUR,
+  HAVA, INTR — venían con valores basura). Fuente: `iamc_dual_price.py` → tabla `iamc_precios`.
+- **BMA (Banco Macro) agregado** al grupo ADR (faltaba; sus ratios ya estaban en `ratios`).
+  Ratio ADR 10 (oficial). Total pasó de 571 a **572**.
+
+> Fundamentales: **S&P/ADR → SEC EDGAR** (10-K, 20-F, XBRL), **BYMA → CNV** (estados
+> contables oficiales v2 normalizada). Precios: **yfinance** (NYSE) + **IAMC** (cierre oficial BYMA).
 > Fundamentales: **S&P/ADR → SEC EDGAR** (10-K, 20-F, XBRL), **BYMA → CNV** (estados
 > contables oficiales v2 normalizada). Precios desde yfinance. Pipeline modular en
 > `scripts/tickets/screener/` (s0→s2→s3→s4→s6→s7→s8→s5).

@@ -565,6 +565,7 @@ def rebuild_screener(log):
         ("s6_ajustes", "main", "Ajustes (ADR/bancos/sector)"),
         ("s7_unificar", "build", "Unificar S&P desde EDGAR"),
         ("s8_calidad", "build", "Calidad (payout/EV/OpMargen)"),
+        ("iamc_dual_price", "build", "IAMC + Dual Price (ARS/USD)"),
         ("s5_exportar", "build", "Validacion + Export"),
     ]
     results = []

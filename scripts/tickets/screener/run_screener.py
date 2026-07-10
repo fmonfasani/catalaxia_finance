@@ -47,6 +47,7 @@ def main():
         ("FASE 6 — Ajustes (ADR/bancos/sector)", "s6_ajustes", "main"),
         ("FASE 1 — Unificar (S&P desde EDGAR)",  "s7_unificar", "build"),
         ("FASE 2 — Calidad (payout/EV/OpMargen)", "s8_calidad",  "build"),
+        ("IAMC + Dual Price (ARS/USD)",   "iamc_dual_price",   "build"),
         ("FASE 5 — Validacion + Export",  "s5_exportar",       "build"),
     ]
 

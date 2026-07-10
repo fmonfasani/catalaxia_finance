@@ -101,22 +101,29 @@ def build():
     col_map = {"ultimo_periodo": "period_ref"}
     safe_cols = [col_map.get(c, c) for c in cols]
     filas = cur.execute("SELECT * FROM screener ORDER BY ticker").fetchall()
-    with open(OUT, "w", newline="", encoding="utf-8-sig") as f:
-        w = csv.writer(f)
-        w.writerow(safe_cols)
-        w.writerows(filas)
-    print(f"    -> {OUT} ({n} filas, {len(safe_cols)} columnas)")
+    try:
+        with open(OUT, "w", newline="", encoding="utf-8-sig") as f:
+            w = csv.writer(f)
+            w.writerow(safe_cols)
+            w.writerows(filas)
+        print(f"    -> {OUT} ({n} filas, {len(safe_cols)} columnas)")
+    except PermissionError:
+        print(f"    [!] {OUT.name} LOCKEADO (¿abierto en Excel/visor?) — se saltea el CSV, "
+              f"cerralo y re-corré s5. El JSON y el DB están OK.")
 
     # --- Export JSON (mismo dato, para consumo por apps) ---
-    # Array de 571 objetos {columna: valor}. NaN/inf -> null (JSON valido).
+    # Array de objetos {columna: valor}. NaN/inf -> null (JSON valido).
     def _clean(v):
         if isinstance(v, float) and (math.isnan(v) or math.isinf(v)):
             return None
         return v
     registros = [{k: _clean(v) for k, v in zip(safe_cols, fila)} for fila in filas]
-    with open(OUT_JSON, "w", encoding="utf-8") as f:
-        json.dump(registros, f, ensure_ascii=False)
-    print(f"    -> {OUT_JSON} ({len(registros)} empresas, {OUT_JSON.stat().st_size//1024} KB)")
+    try:
+        with open(OUT_JSON, "w", encoding="utf-8") as f:
+            json.dump(registros, f, ensure_ascii=False)
+        print(f"    -> {OUT_JSON} ({len(registros)} empresas, {OUT_JSON.stat().st_size//1024} KB)")
+    except PermissionError:
+        print(f"    [!] {OUT_JSON.name} LOCKEADO — se saltea; cerralo y re-corré s5.")
 
     # --- Reporte de completitud ---
     print(f"\n  Entidades con mas datos faltantes (top 5):")
