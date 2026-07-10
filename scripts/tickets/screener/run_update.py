@@ -567,6 +567,7 @@ def rebuild_screener(log):
         ("s8_calidad", "build", "Calidad (payout/EV/OpMargen)"),
         ("iamc_dual_price", "build", "IAMC + Dual Price (ARS/USD)"),
         ("cedear_ratios", "build", "Ratios CEDEAR (Comafi)"),
+        ("jpm_adr", "build", "Datos ADR (JPMorgan: CUSIP/level/div)"),
         ("s5_exportar", "build", "Validacion + Export"),
     ]
     results = []

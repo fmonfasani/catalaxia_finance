@@ -19,6 +19,11 @@
   custodia en BNY Mellon) — endpoint `custodiaglobal/json/apps/getproducts.aspx`, campo
   `character`. Detalle auditable en `data/cedear_ratios.csv` (con `source_url`). Los otros
   355 S&P no cotizan como CEDEAR en Argentina. Fetcher: `cedear_ratios.py`.
+- **Datos de ADR desde J.P. Morgan** (adr.com, API pública MarkitDigital): `cusip`, `dr_level`
+  (I/II/III), `div_adr_12m` (dividendo USD/ADR últimos 12m), `last_div_date`, `div_yield_adr`.
+  13 ADR con CUSIP+level; historial de dividendos en tabla `adr_dividendos`. Fetcher:
+  `jpm_adr.py`. Nota: el **ratio DR:ORD NO está en la API pública** de JPMorgan (sale de SEC
+  EDGAR, ver `sec_adr_ratios.py`); los fees vienen vacíos.
 
 > Fundamentales: **S&P/ADR → SEC EDGAR** (10-K, 20-F, XBRL), **BYMA → CNV** (estados
 > contables oficiales v2 normalizada). Precios: **yfinance** (NYSE) + **IAMC** (cierre oficial BYMA).

@@ -49,6 +49,7 @@ def main():
         ("FASE 2 — Calidad (payout/EV/OpMargen)", "s8_calidad",  "build"),
         ("IAMC + Dual Price (ARS/USD)",   "iamc_dual_price",   "build"),
         ("Ratios CEDEAR (Comafi)",        "cedear_ratios",     "build"),
+        ("Datos ADR (JPMorgan)",          "jpm_adr",           "build"),
         ("FASE 5 — Validacion + Export",  "s5_exportar",       "build"),
     ]
 
