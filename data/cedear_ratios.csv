@@ -1,0 +1,357 @@
+﻿ticker,empresa,ratio,cedears_por_accion,isin_cedear,isin_subyacente,pais,source_url,fecha
+AABA,ALTABA INC,3:1,3.0,ARDEUT111051,US0213461017,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+AAL,AMERICAN AIRLINES GROUP INC,2:1,2.0,ARBCOM4603W8,US02376R1023,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+AAP,ADVANCE AUTO PARTS INC,14:1,14.0,AR0402038027,US00751Y1064,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+AAPL,APPLE INC.,20:1,20.0,ARDEUT116183,US0378331005,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ABBV,ABBVIE INC,10:1,10.0,ARBCOM4603M9,US00287Y1091,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ABEV,AMBEV S.A.,1:3,0.3333333333333333,ARBCOM4601V4,US02319V1035,Brasil,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ABT,ABBOTT LABORATORIES,4:1,4.0,ARDEUT110608,US0028241000,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ACN,ACCENTURE PLC,75:1,75.0,AR0334997050,IE00B4BNMY34,Irlanda,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ACWI,iShares MSCI ACWI ETF,26:1,26.0,AR0219286272,US4642882579,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ADBE,ADOBE INC,44:1,44.0,ARBCOM460192,US00724F1012,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ADI,ANALOG DEVICES INC.,15:1,15.0,ARDEUT110616,US0326541051,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ADP,AUTOMATIC DATA PROCESSING INC,6:1,6.0,ARDEUT110681,US0530151036,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ADS,ADIDAS AG,22:1,22.0,ARBCOM460424,DE000A1EWWW0,Alemania,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+AEG,AEGON LTD NPV,1:1,1.0,ARDEUT112398,US0076CA1045,Paises Bajos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+AEM,AGNICO EAGLE MINES LIMITED,6:1,6.0,ARDEUT115383,CA0084741085,Canadá,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+AGRO,ADECOAGRO S.A.,1:1,1.0,ARBCOM460143,LU0584671464,Argentina,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+AI,C3.AI INC,5:1,5.0,AR0979595433,US12468P1049,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+AIG,AMERICAN INTERNATIONAL GROUP INC (AIG),5:1,5.0,ARDEUT110640,US0268747849,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+AKO.B,EMBOTELLADORA ANDINA S.A.,1:1,1.0,ARBCOM4603Q0,US29081P3038,Chile,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ALAB,ASTERA LABS INC,44:1,44.0,AR0717084534,US04626A1034,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+AMAT,APPLIED MATERIALS INC.,5:1,5.0,ARDEUT110657,US0382221051,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+AMD,"ADVANCED MICRO DEVICES, INC.",10:1,10.0,ARBCOM4601M3,US0079031078,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+AMGN,AMGEN INC.,30:1,30.0,ARDEUT110665,US0311621009,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+AMX,AMERICA MOVIL-SPN ADR,1:1,1.0,ARDEUT112646,US02390A1016,Mexico,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+AMZN,"AMAZON.COM, INC.",144:1,144.0,ARBCOM460176,US0231351067,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ANET,ARISTA NETWORKS INC.,29:1,29.0,AR0827075372,US0404132054,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ANF,ABERCROMBIE & FITCH CO.,1:1,1.0,ARBCOM4601P6,US0028962076,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ARCO,ARCOS DORADOS HOLDINGS INC.,1:2,0.5,ARBCOM460135,VGG0457F1071,Uruguay,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ARM,ARM HOLDINGS PLC,27:1,27.0,AR0489277225,US0420682058,Gran Bretana,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ASML,ASML HOLDING NV,146:1,146.0,AR0725224551,USN070592100,Paises Bajos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ASR,"GRUPO AEROPORTUARIO DEL SURESTE , S.A.B. de C.V.",20:1,20.0,ARDEUT115185,US40051E2028,Mexico,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ATAD,TATNEFT PAO,4:1,4.0,ARDEUT114089,US8766292051,Rusia,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+AVGO,BROADCOM INC,39:1,39.0,ARBCOM4603J5,US11135F1012,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+AVY,AVERY DENNISON CORPORATION,18:1,18.0,ARDEUT110707,US0536111091,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+AXIA,AXIA ENERGIA,1:4,0.25,ARBCOM4602G3,US15234Q2075,Brasil,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+AXP,AMERICAN EXPRESS Co.,15:1,15.0,ARDEUT110046,US0258161092,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+AZN,ASTRAZENECA PLC,4:1,4.0,ARDEUT112489,GB0009895292,Reino Unido,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+B,BARRICK MINING CORPORATION,2:1,2.0,ARDEUT112562,CA06849F1080,Canadá,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+BA,BOEING CO/THE,24:1,24.0,ARDEUT110061,US0970231058,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+BABA,ALIBABA GROUP HOLDING LIMITED,9:1,9.0,ARBCOM4601T8,US01609W1027,China,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+BAC,BANK OF AMERICA CORPORATION,4:1,4.0,ARDEUT112851,US0605051046,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+BAK,BRASKEM SA,2:1,2.0,AR0261973801,US1055321053,Brasil,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+BAS GR,BASF SE,2:1,2.0,ARDEUT112497,DE000BASF111,Alemania,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+BAYN GR,BAYER AG,3:1,3.0,ARDEUT112414,DE000BAY0017,Alemania,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+BB,BLACKBERRY LIMITED,3:1,3.0,ARDEUT116142,CA09228F1036,Canadá,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+BBD,"BANCO BRADESCO, S.A.",1:1,1.0,ARDEUT116001,US0594603039,Brasil,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+BBVA,BANCO BILBAO VIZCAYA-SP ADR,1:1,1.0,ARDEUT112232,US05946K1016,Espana,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+BCS,BARCLAYS BANK plc ADR,1:1,1.0,ARDEUT111770,US06738E2046,Reino Unido,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+BG,BUNGE LIMITED,5:1,5.0,ARDEUT115029,CH1300646267,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+BHP,BHP GROUP LTD,2:1,2.0,ARDEUT112992,US0886061086,Australia,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+BIDU,"BAIDU, INC.",11:1,11.0,ARBCOM4601U6,US0567521085,China,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+BIIB,BIOGEN INC.,13:1,13.0,ARBCOM4601A8,US09062X1037,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+BIOX,BIOCERES CROP SOLUTIONS CORP,1:1,1.0,ARBCOM4603K3,KYG1117K1141,Argentina,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+BKNG,BOOKING HOLDINGS INC.,700:1,700.0,AR0171546572,US09857L1089,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+BKR,BAKER HUGHES CO.,7:1,7.0,AR0302010498,US05722G1004,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+BMNR,"BITMINE INMERSION TECHNOLOGIES, INC.",8:1,8.0,AR0701450691,US09175A2069,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+BMY,BRISTOL MYERS SQUIBB COMPANY,3:1,3.0,ARDEUT112877,US1101221083,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+BNY,BANK OF NEW YORK MELLON CORP,2:1,2.0,ARDEUT110756,US0640581007,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+BP,BP PLC-SPONS ADR,5:1,5.0,ARDEUT110582,US0556221044,Reino Unido,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+BRK/B,BERKSHIRE HATHAWAY INC,22:1,22.0,ARBCOM4603L1,US0846707026,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+BSBR,BANCO SANTANDER (BRASIL) S.A.,1:1,1.0,ARDEUT115995,US05967A1079,Brasil,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+BSN GR,DANONE,20:1,20.0,ARDEUT110491,FR0000120644,Francia,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+BX,BLACKSTONE INC.,30:1,30.0,AR0103922032,US09260D1072,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+C,CITIGROUP INC,3:1,3.0,ARDEUT110426,US1729674242,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+CAAP,CORP AMERICA AIRPORTS SA,1:4,0.25,ARBCOM4603I7,LU1756447840,Argentina,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+CAH,CARDINAL HEALTH INC,3:1,3.0,ARDEUT110798,US14149Y1082,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+CAR,AVIS BUDGET GROUP INC.,26:1,26.0,ARDEUT110822,US0537741052,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+CAT,CATERPILLAR Inc.,20:1,20.0,ARDEUT110079,US1491231015,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+CBDBY,COMPANHIA BRASILEIRA DE DISTRIBUIÇÃO,1:1,1.0,ARBCOM460234,US20440T3005,Brasil,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+CCJ,Cameco Corporation,23:1,23.0,AR0270854455,CA13321L1085,Canadá,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+CCL,CARNIVAL CORP. LTD,3:1,3.0,AR0180391374,BMG2004J1036,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+CDE,COEUR MINING INC,1:1,1.0,ARDEUT115409,US1921085049,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+CEG,CONSTELLATION ENERGY CORPORATION,45:1,45.0,AR0100063491,US21037T1097,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+CL,COLGATE PALMOLIVE COMPANY,3:1,3.0,ARDEUT110855,US1941621039,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+CLS,CELESTICA INC,20:1,20.0,AR0777424190,CA15101Q2071,Canadá,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+COIN,COINBASE GLOBAL INC,27:1,27.0,ARBCOM4603U2,US19260Q1076,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+COP,CONOCOPHILLIPS,25:1,25.0,AR0313306612,US20825C1045,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+COPX,GLOBAL X COPPER MINERS ETF,14:1,14.0,AR0315114816,US37954Y8306,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+COST,COSTCO WHOLSALE CORP,48:1,48.0,ARDEUT110863,US22160K1051,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+CRM,SALESFORCE INC.,18:1,18.0,ARBCOM4601J9,US79466L3024,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+CRWD,"CROWDSTRIKE HOLDINGS, INC.",79:1,79.0,AR0766021650,US22788C1053,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+CRWV,COREWEAVE INC,27:1,27.0,AR0478754218,US21873S1087,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+CSCO,CISCO SYSTEMS INC,5:1,5.0,ARDEUT110095,US17275R1023,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+CVS,CVS HEALTH CORP.,15:1,15.0,AR0107022060,US1266501006,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+CVX,CHEVRON CORP,16:1,16.0,ARDEUT110087,US1667641005,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+CX,CEMEX S.A. de C.V.,1:1,1.0,ARDEUT112216,US1512908898,Mexico,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+DAL,DELTA AIR LINES INC.,8:1,8.0,AR0051689021,US2473617023,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+DD,DUPONT DE NEMOURS INC,5:1,5.0,ARDEUT110145,US26614N2018,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+DE,DEERE & COMPANY,40:1,40.0,ARDEUT110905,US2441991054,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+DECK,DECKERS OUTDOOR CORPORATION,25:1,25.0,AR0571828273,US2435371073,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+DEO,DIAGEO PLC ADR,6:1,6.0,ARDEUT112505,US25243Q2057,Reino Unido,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+DHR,DANAHER CORP.,54:1,54.0,AR0002457668,US2358511028,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+DIS,WALT DISNEY CO/THE,12:1,12.0,ARDEUT110137,US2546871060,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+DJNJ3-XD004,JNJ6.95,1:1,1.0,ARDEUT112687,478160AJ3,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+DOCU,DOCUSIGN INC,22:1,22.0,ARBCOM4603H9,US2561631068,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+DOW,DOW INC,6:1,6.0,ARBCOM460416,US2605571031,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+DTEA GR,DEUTSCHE TELEKOM AG ADR,3:1,3.0,ARDEUT111838,US2515661054,Alemania,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+E,ENI SPA - ADR,4:1,4.0,ARDEUT112612,US26874R1086,Italia,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+EA,ELECTRONIC ARTS INC,14:1,14.0,ARBCOM4603Y4,US2855121099,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+EBAY,EBAY INC.,2:1,2.0,ARDEUT116167,US2786421030,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ECL,ECOLAB INC,56:1,56.0,AR0866277863,US2788651006,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+EFA,iShares MSCI EAFE ETF,18:1,18.0,AR0406299526,US4642874659,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+EFX,EQUIFAX INC,16:1,16.0,ARBCOM460325,US2944291051,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ELPC,COMPANHIA PARANAENSE DE ENERGIA-COPEL,1:3,0.3333333333333333,ARBCOM460283,US20441B7047,Brasil,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+EMBJ,EMBRAER-EMPRESA BRASILEIRA DE AERONÁUTICA S.A.,1:1,1.0,ARBCOM460291,US29082A1079,Brasil,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+EOAN GR,E.ON SE,6:1,6.0,ARDEUT112109,DE000ENAG999,Alemania,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+EQNR,EQUINOR ASA,6:1,6.0,AR0626892837,US29446M1027,Noruega,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ERIC,LM ERICSSON TELEPHONE Co. ADR,2:1,2.0,ARDEUT110525,US2948216088,Suecia,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ESGU,ISHARES ESG AWARE MSCI USA ETF,30:1,30.0,AR0572847066,US46435G4257,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ETSY,ETSY INC,16:1,16.0,ARBCOM4603G1,US29786A1060,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+EWJ,iShares MSCI JAPAN ETF,14:1,14.0,AR0582556699,US46434G8226,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+FCX,FREEPORT MCMORAN INC.,3:1,3.0,ARDEUT116076,US35671D8570,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+FDX,FEDEX CORP,10:1,10.0,ARDEUT110962,US31428X1063,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+FISV,"Fiserv, Inc.",11:1,11.0,AR0997854325,US3377381088,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+FMX,FOMENTO ECONOMICO MEXICANO - FEMSA ADR,6:1,6.0,ARDEUT111853,US3444191064,Mexico,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+FNMA,"FED. NATL, MORT - FANNIE MAE",1:1,1.0,ARDEUT110970,US3135861090,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+FREDDIE MAC,FREDDIE MAC (FEDERAL HOME LOAN MORTGAGE CORP.),1:1,1.0,ARDEUT112323,US3134003017,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+FSLR,FIRST SOLAR INC.,18:1,18.0,ARDEUT116126,US3364331070,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+FXI,ISHARES CHINA LARGE-CAP ETF,5:1,5.0,AR0033445195,US4642871846,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+GDX,Van Eck Gold Miners ETF/USA,10:1,10.0,AR0727034941,US92189F1066,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+GE,GE AEROSPACE.,8:1,8.0,ARDEUT110160,US3696043013,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+GFI,GOLD FIELDS LTD.,1:1,1.0,ARDEUT115425,US38059T1060,Sudafrica,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+GGB,GERDAU S.A.,1:4,0.25,ARBCOM460200,US3737371050,Brasil,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+GILD,"GILEAD SCIENCES, INC.",4:1,4.0,ARBCOM4601C4,US3755581036,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+GLNG,GOLAR LNG LTD.,10:1,10.0,AR0051097142,BMG9456A1009,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+GLOB,GLOBANT S.A.,18:1,18.0,ARBCOM460150,LU0974299876,Uruguay,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+GLW,CORNING INCORPORATED,4:1,4.0,ARDEUT111002,US2193501051,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+GM,GENERAL MOTORS CO,6:1,6.0,ARBCOM460408,US37045V1008,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+GOOGL,ALPHABET INC-CL A,58:1,58.0,ARDEUT116159,US02079K3059,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+GPRK,GEOPARK LTD,1:1,1.0,ARBCOM4603F3,BMG383271050,Chile,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+GRMN,GARMIN LTD.,3:1,3.0,ARBCOM4601G5,CH0114405324,Suiza,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+GS,"THE GOLDMAN SACHS GROUP, INC",13:1,13.0,ARBCOM460119,US38141G1040,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+GSK,GSK PLC,4:1,4.0,ARDEUT110483,US37733W2044,Reino Unido,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+GT,GOODYEAR TIRE & RUBBER CO./THE,2:1,2.0,AR0539172129,US3825501014,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+HAL,HALLIBURTON CO,2:1,2.0,ARBCOM4603E6,US4062161017,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+HD,HOME DEPOT INC.,32:1,32.0,ARDEUT111705,US4370761029,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+HDB,HDFC BANK LIMITED,2:1,2.0,ARDEUT114022,US40415F1012,India,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+HHPD LI,HON HAI PRECISION INDUSTRY CO. LTD.,2:1,2.0,ARDEUT115342,US4380908057,Taiwan,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+HIMS,"Hims & Hers Health, Inc.",4:1,4.0,AR0162508391,US4330001060,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+HL,HECLA MINING CO,1:1,1.0,ARDEUT115417,US4227041062,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+HMC,HONDA MOTOR  CO. LTD,1:1,1.0,ARDEUT112950,US4381283088,Japon,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+HMY,HARMONY GOLD MINING COMPANY LTD.,1:1,1.0,ARDEUT115433,US4132163001,Sudafrica,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+HOG,HARLEY DAVIDSON INC.,3:1,3.0,ARDEUT111069,US4128221086,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+HON,HONEYWELL INTERNATIONAL INC,8:1,8.0,ARDEUT110038,US4385162056,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+HOOD,ROBINHOOD MARKETS INC,29:1,29.0,AR0780848096,US7707001027,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+HPQ,HP Inc,1:1,1.0,ARDEUT110194,US40434L1052,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+HSBC,HSBC HOLDINGS plc ADR,2:1,2.0,ARDEUT112257,US4042804066,Reino Unido,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+HSY,THE HERSHEY COMPANY,21:1,21.0,ARDEUT111127,US4278661081,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+HWM,HOWMET AEROSPACE INC,1:1,1.0,ARDEUT110020,US4432011082,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+IBB,iShares Nasdaq Biotechnology Cedears Shares,27:1,27.0,AR0377480402,US4642875565,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+IBIT,ISHARES BITCOIN TRUST,10:1,10.0,AR0626566167,US46438F1012,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+IBM,IBM Corp.,15:1,15.0,ARDEUT110202,US4592001014,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+IBN,ICICI BANK LTD,1:1,1.0,ARDEUT114048,US45104G1040,India,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+IEMG,iShares Core MSCI Emerging Markets ETF,12:1,12.0,AR0787089710,US46434G1031,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+IEUR,iShares Core MSCI Europe Cedears Shares,11:1,11.0,AR0405465953,US46434V7385,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+IFF,INTERNATIONAL FLAVORS & FRAGRANCE INC.,12:1,12.0,ARDEUT111135,US4595061015,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+IJH,iShares CORE S&P MID-CAP ETF,12:1,12.0,AR0425509392,US4642875078,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ILF,ISHARES LATIN AMERICA 40 ETF,6:1,6.0,AR0872435588,US4642873909,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+INFY,INFOSYS LIMITED,1:1,1.0,ARDEUT113941,US4567881085,India,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ING,ING Group NV ADR,3:1,3.0,ARDEUT111937,US4568371037,Paises Bajos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+INTC,INTEL  Corporation,5:1,5.0,ARDEUT110210,US4581401001,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+IP,INTERNATIONAL PAPER Co.,4:1,4.0,ARDEUT110228,US4601461035,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+IREN,IREN LTD,12:1,12.0,AR0862704266,AU0000185993,Australia,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ISRG,INTUITIVE SURGICAL INC.,90:1,90.0,AR0902369476,US46120E6023,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ITUB,ITAÚ UNIBANCO HOLDING S.A.,1:1,1.0,ARBCOM460267,US4655621062,Brasil,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+IVE,iShares S&P 500 Value Cedears Shares,40:1,40.0,AR0864733115,US4642874089,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+IVV,ISHARES CORE S&P 500 ETF,692:1,692.0,AR0218736103,US4642872000,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+IVW,iShares S&P 500 Growth Cedears Shares,20:1,20.0,AR0344353757,US4642873099,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+IWDA LN,iShares Core MSCI World UCITS ETF,24:1,24.0,AR0352918277,IE00B4L5Y983,Irlanda,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+JCI,JOHNSON CONTROLS INTERNATIONAL,2:1,2.0,ARDEUT111630,IE00BY7QL619,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+JD,"JD.COM, INC.",4:1,4.0,ARBCOM4601Y8,US47215P1066,China,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+JNJ,JOHNSON & JOHNSON,15:1,15.0,ARDEUT110236,US4781601046,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+JOYY,JOYY Inc.,5:1,5.0,ARBCOM460242,US46591M1099,China,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+JPM,J.P. MORGAN & CHASE Co.,15:1,15.0,ARDEUT110244,US46625H1005,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+KB,KB FINANCIAL GROUP INC.,2:1,2.0,ARDEUT115268,US48241A1051,Corea del sur,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+KEP,KOREA ELECTRIC POWER CORP.,1:1,1.0,ARDEUT115250,US5006311063,Corea del sur,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+KGC,KINROSS GOLD CORP.,1:1,1.0,ARDEUT115391,CA4969024047,Canadá,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+KMB,KIMBERLY CLARK CORPORATION,6:1,6.0,ARDEUT111176,US4943681035,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+KO,COCA COLA Co.,5:1,5.0,ARDEUT110111,US1912161007,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+KOF,"COCA-COLA FEMSA, S.A.B DE CV",2:1,2.0,ARDEUT115201,US1912411089,Mexico,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+LAC,LITHIUM AMERICAS CORP,1:1,1.0,AR0925694561,CA53681J1030,Canadá,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+LAR,LITHIUM ARGENTINA AG.,1:1,1.0,AR0527954207,CH1403212751,Canadá,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+LKOD,LUKOIL PJSC,4:1,4.0,ARDEUT114253,US69343P1057,Rusia,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+LLY,ELI LILLY AND COMPANY,56:1,56.0,ARDEUT111192,US5324571083,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+LMT,LOCKHEED MARTIN CORPORATION,20:1,20.0,ARDEUT111200,US5398301094,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+LND,BRASILAGRO - CO BRASILEIRA DE PROPRIEDADES AGRICOLAS,1:1,1.0,AR0315369394,US10554B1044,Brasil,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+LRCX,LAM RESEARCH CORP,56:1,56.0,ARBCOM4603X6,US5128073062,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+LVS,LAS VEGAS SANDS CORP.,2:1,2.0,ARDEUT116092,US5178341070,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+LYG,LLOYDS BANKING GROUP plc.,2:1,2.0,ARDEUT112513,US5394391099,Reino Unido,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+MA,MASTERCARD INC,33:1,33.0,ARBCOM4603D8,US57636Q1040,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+MBG GR,MERCEDES-BENZ AG,4:1,4.0,ARDEUT111820,DE0007100000,Alemania,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+MCD,Mc DONALD'S Corp.,24:1,24.0,ARDEUT110269,US5801351017,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+MDLZ,"MONDELEZ INTERNATIONAL, INC.",15:1,15.0,AR0774942129,US6092071058,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+MDT,MEDTRONIC PLC,4:1,4.0,ARDEUT111283,IE00BTN1Y115,Irlanda,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+MELI,MERCADOLIBRE INC.,120:1,120.0,ARDEUT116175,US58733R1023,Argentina,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+META,META PLATFORMS INC.,24:1,24.0,ARBCOM460168,US30303M1027,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+MFG,MIZUHO FINANCIAL GROUP,1:1,1.0,ARDEUT114733,US60687Y1091,Japon,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+MMM,3M COMPANY,10:1,10.0,ARDEUT110293,US88579Y1010,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+MO,"ALTRIA GROUP, INC",4:1,4.0,ARDEUT110327,US02209S1033,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+MP,MP Materials Corp.,10:1,10.0,AR0290795639,US5533681012,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+MRK,MERCK & Co. Inc.,5:1,5.0,ARDEUT110277,US58933Y1055,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+MRNA,MODERNA INC.,19:1,19.0,AR0666228538,US60770K1079,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+MRSH,MARSH,16:1,16.0,ARDEUT111309,US5717481023,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+MRVL,MARVELL TECHNOLOGY INC,14:1,14.0,AR0557997514,US5738741041,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+MSFT,MICROSOFT CORPORATION,30:1,30.0,ARDEUT110285,US5949181045,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+MSI,MOTOROLA SOLUTIONS Inc.,20:1,20.0,ARDEUT110301,US6200763075,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+MUFG,MITSUBISHI UFJ FINANCIAL GROUP,1:1,1.0,ARDEUT111762,US6068221042,Japon,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+MUX,MCEWEN INC,2:1,2.0,AR0829300257,US58039P3055,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+NBIS,Nebius Group N.V.,27:1,27.0,AR0321947183,NL0009805522,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+NEC1 GR,NEC CORPORATION,1:3,0.3333333333333333,ARDEUT113081,JP3733000008,Japon,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+NEE,"NextEra Energy, Inc.",19:1,19.0,AR0204516899,US65339F1012,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+NEM,NEWMONT  CORPORATION,3:1,3.0,ARDEUT112570,US6516391066,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+NFLX,NETFLIX INC,48:1,48.0,ARBCOM4601D2,US64110L1061,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+NG,NOVAGOLD RESOURCES INC.,1:4,0.25,ARBCOM4601N1,CA66987E2069,Canadá,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+NGG,NATIONAL GRID PLC-SP  ADR,2:1,2.0,ARDEUT112620,US6362744095,Reino Unido,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+NIO,NIO INC,4:1,4.0,ARBCOM4603R8,US62914V1061,Islas Caiman,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+NKE,NIKE Inc.,12:1,12.0,ARDEUT111341,US6541061031,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+NLMK LI,NOVOLIPETSK STEEL PJSC,2:1,2.0,ARDEUT114725,US67011E2046,Rusia,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+NMR,NOMURA HOLDINGS INC.,1:1,1.0,ARDEUT113024,US65535H2085,Japon,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+NOK,NOKIA CORPORATION ADR,1:1,1.0,ARDEUT110533,US6549022043,Finlandia,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+NOW,SERVICENOW INC,172:1,172.0,AR0253474594,US81762P1021,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+NSANY,NISSAN MOTOR CO.,1:1,1.0,ARDEUT113032,US6547444082,Japon,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+NTES,"NETEASE, INC.",14:1,14.0,ARBCOM4601Z5,US64110W1027,China,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+NU,NU HOLDINGS LTD/CAYMAN ISLANDS,2:1,2.0,AR0512295764,KYG6683N1034,Reino Unido,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+NUE,NUCOR CORPORATION,16:1,16.0,ARDEUT111358,US6703461052,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+NVDA,NVIDIA CORPORATION,24:1,24.0,ARBCOM460184,US67066G1040,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+NVO,NOVO NORDISK A/S,7:1,7.0,AR0229808610,US6701002056,Dinamarca,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+NVS,NOVARTIS AG - ADR,4:1,4.0,ARDEUT112521,US66987V1098,Suiza,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+NXE,NEXGEN ENERGY LTD,1:1,1.0,AR0220648593,CA65340P1062,Canadá,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+O,REALTY INCOME CORP.,13:1,13.0,AR0245808040,US7561091049,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+OGZD,GAZPROM PJSC,2:1,2.0,ARDEUT114261,US3682872078,Rusia,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+OKLO,OKLO INC,28:1,28.0,AR0393658452,US02156V1098,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ONDS,ONDAS HOLDINGS INC.,2:1,2.0,AR0247723296,US68236H2040,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ORANY,ORANGE,1:1,1.0,ARDEUT111861,US6840601065,Francia,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ORCL,ORACLE CORPORATION,3:1,3.0,ARDEUT111374,US68389X1054,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ORLY,O'REILLY AUTOMOTIVE INC.,222:1,222.0,AR0876089472,US67103H1077,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+PAAS,PAN AMERICAN SILVER CORP,3:1,3.0,ARBCOM4603C0,CA6979001089,Canadá,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+PAC,"GRUPO AEROPORTUARIO DEL PACIFICO, S.A.B. de C.V.",16:1,16.0,ARDEUT115177,US4005061019,Mexico,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+PAGS,PAGSEGURO DIGITAL LTD,3:1,3.0,AR0651353770,KYG687071012,Reino Unido,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+PATH,UIPATH INC,2:1,2.0,AR0343130982,US90364P1057,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+PBI,PITNEY BOWES INC,1:1,1.0,ARDEUT111382,US7244791007,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+PBR,PETROLEO BRASILEIRO - PETROBRAS (ADR),1:1,1.0,ARBCOM4602U4,US71654V4086,Brasil,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+PCAR,PACCAR INC,3:1,3.0,ARDEUT111390,US6937181088,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+PDD,PDD HOLDINGS INC,25:1,25.0,AR0101251947,US7223041028,Irlanda,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+PEP,PEPSICO INC,18:1,18.0,ARDEUT111416,US7134481081,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+PFE,PFIZER INC,4:1,4.0,ARDEUT111424,US7170811035,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+PG,PROCTER & GAMBLE Co.,15:1,15.0,ARDEUT110335,US7427181091,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+PHG,KONINKLIJKE PHILIPS N.V,5:1,5.0,ARDEUT110558,US5004723038,Paises Bajos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+PINS,PINTEREST INC.,7:1,7.0,AR0752208279,US72352L1061,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+PKX,POSCO HOLDINGS INC,3:1,3.0,ARDEUT115276,US6934831099,Corea del sur,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+PLTR,PALANTIR TECHNOLOGIES INC,3:1,3.0,AR0132889822,US69608A1088,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+PM,PHILIP MORRIS INTERNATIONAL INC.,18:1,18.0,AR0361136887,US7181721090,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+PSO,PEARSON PLC.,1:1,1.0,ARDEUT113966,US7050151056,Reino Unido,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+PSQ,PROSHARES SHORT QQQ,8:1,8.0,AR0734794420,US74349Y8378,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+PSX,PHILLIPS 66,6:1,6.0,ARBCOM460333,US7185461040,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+PYPL,"PAYPAL HOLDINGS, INC.",8:1,8.0,ARBCOM4601S0,US70450Y1038,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+QCOM,QUALCOMM INCORPORATED,11:1,11.0,ARDEUT111457,US7475251036,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+RACE,FERRARI NV,83:1,83.0,AR0227017768,NL0011585146,Italia,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+RGTI,RIGETTI COMPUTING INC,2:1,2.0,AR0662506531,US76655K1034,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+RIO,RIO TINTO PLC - ADR,8:1,8.0,ARDEUT112638,US7672041008,Reino Unido,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+RIOT,RIOT PLATFORMS INC.,3:1,3.0,AR0375251839,US7672921050,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+RKLB,ROCKET LAB CORP,12:1,12.0,AR0864768848,US7731211089,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ROKU,ROKU INC.,13:1,13.0,AR0187927956,US77543R1023,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ROST,"ROSS STORES, INC.",4:1,4.0,ARBCOM4600Z7,US7782961038,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+RTX,RTX CORPORATION,5:1,5.0,ARDEUT110384,US75513E1010,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+SAN,BANCO SANTANDER  S.A. (ADR),1:4,0.25,ARBCOM4602T6,US05964H1059,Espana,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+SAP,SAP SE,6:1,6.0,ARDEUT112034,US8030542042,Alemania,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+SBS,COMPANHIA DE SANEAMENTO BÁSICO DO ESTADO DE SÃO PAULO–SABESP,1:2,0.5,ARBCOM4602F5,US20441A1025,Brasil,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+SBUX,STARBUCKS CORPORATION,12:1,12.0,ARDEUT111481,US8552441094,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+SCCO,SOUTHERN COPPER CORP.,2:1,2.0,ARDEUT116084,US84265V1052,Peru,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+SCHW,CHARLES SCHWAB CORP.,13:1,13.0,AR0368313562,US8085131055,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+SDA,SUNCAR TECHNOLOGY GROUP INC,2:1,2.0,AR0097548348,KYG857271087,Islas Caiman,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+SE,SEA LTD,32:1,32.0,ARBCOM4603S6,US81141R1005,Islas Caiman,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+SHEL,SHELL PLC,2:1,2.0,ARDEUT112547,US7802593050,Gran Bretana,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+SHOP,SHOPIFY INC,107:1,107.0,ARBCOM460341,CA82509L1076,Canadá,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+SHPWQ,SHAPEWAYS HOLDINGS INC**,1:2,0.5,AR0693614809,US81947T2015,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+SID,COMPANHIA SIDERÚRGICA NACIONAL,1:8,0.125,ARBCOM4602B4,US20440W1053,Brasil,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+SIEGY,SIEMENS AG ADR,3:1,3.0,ARDEUT112372,US8261975010,Alemania,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+SLB,SLB LTD,3:1,3.0,ARDEUT111515,AN8068571086,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+SLV,iShares SILVER TRUST,6:1,6.0,AR0863747074,US46428Q1094,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+SMSN LI,SAMSUNG ELECTRONICS CO. LTD.,14:1,14.0,ARDEUT115359,US7960508882,Corea del sur,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+SNA,SNAP-ON INCORPORATED,6:1,6.0,ARDEUT111549,US8330341012,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+SNAP,SNAP INC.,1:1,1.0,ARBCOM4601H3,US83304A1060,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+SNDK,Sandisk Corporation,170:1,170.0,AR0142846093,US80004C2008,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+SNOW,SNOWFLAKE INC,30:1,30.0,ARBCOM460358,US8334451098,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+SONY,SONY GROUP CORPORATION,8:1,8.0,ARDEUT112984,US8356993076,Japon,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+SPCE,VIRGIN GALACTIC HOLDINGS INC.,1:2,0.5,AR0212589896,US92766K4031,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+SPCX,SPACE EXPLORATION TECHNOLOGIES CORP.,50:1,50.0,AR0922353138,US84615Q1031,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+SPGI,S&P GLOBAL INC,45:1,45.0,ARBCOM4603V0,US78409V1044,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+SPHQ,Invesco S&P 500 Quality ETF,14:1,14.0,AR0754647243,US46137V2410,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+SPOT,SPOTIFY TECHNOLOGY SA,28:1,28.0,ARBCOM460366,LU1778762911,Suecia,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+STLA,STELLANTIS NV,5:1,5.0,AR0940941575,NL00150001Q9,Paises Bajos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+STNE,STONECO LTD,3:1,3.0,AR0657424591,KYG851581069,Islas Caiman,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+SUZ,SUZANO SA,1:1,1.0,ARBCOM4602E8,US86959K1051,Brasil,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+SWKS,SKYWORKS SOLUTIONS INC.,21:1,21.0,AR0061200025,US83088M1027,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+SYY,SYSCO CORPORATION,8:1,8.0,ARDEUT111598,US8718291078,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+T,AT&T INC,3:1,3.0,ARDEUT111713,US00206R1023,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+TCOM,TRIP.COM Group Ltd.,2:1,2.0,ARBCOM460226,US89677Q1076,China,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+TEAM,ATLASSIAN CORPORATION,47:1,47.0,AR0234754239,US0494681010,Australia,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+TELFY,TELEFONICA S.A. ADR,8:1,8.0,ARDEUT110574,US8793822086,Espana,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+TEM,TEMPUS AI INC,12:1,12.0,AR0520934156,US88023B1035,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+TGT,TARGET CORPORATION,24:1,24.0,ARBCOM460101,US87612E1064,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+TIIAY,TELECOM ITALIA SPA ADR,1:1,1.0,ARDEUT112059,US87927Y1029,Italia,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+TIMB,TIM PARTICIPAÇÕES S.A.,1:1,1.0,ARBCOM4602A6,US88706T1088,Brasil,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+TJX,TJX COMPANIES INC./THE,22:1,22.0,AR0831219149,US8725401090,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+TM,TOYOTA MOTOR CORPORATION ADR,15:1,15.0,ARDEUT112083,US8923313071,Japon,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+TMO,THERMO FISHER SCIENTIFIC INC.,22:1,22.0,ARBCOM4601F7,US8835561023,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+TMUS,T-MOBILE US INC.,33:1,33.0,AR0964115726,US8725901040,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+TRIP,"TRIPADVISOR, INC.",2:1,2.0,ARBCOM4601O9,US8969452015,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+TRV,"The Travelers Companies, Inc.",6:1,6.0,ARDEUT116100,US89417E1091,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+TS,TENARIS S.A. (ADS),1:1,1.0,ARBCOM4602S8,US88031M1099,Luxemburgo,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+TSLA,"TESLA, INC.",15:1,15.0,ARBCOM4601K7,US88160R1014,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+TSM,TAIWAN SEMICONDUCTOR MANUFACTURING,9:1,9.0,ARDEUT113016,US8740391003,Taiwan,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+TTE,TotalEnergies SE - ADR,3:1,3.0,ARDEUT112075,FR0000120271,Francia,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+TV,GRUPO TELEVISA S.A. ADR,3:1,3.0,ARDEUT112133,US40049J2069,Mexico,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+TWLO,TWILIO INC,36:1,36.0,ARBCOM4603T4,US90138F1021,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+TX,TERNIUM S.A.,4:1,4.0,ARDEUT116019,US8808901081,Luxemburgo,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+TXN,TEXAS INSTRUMENTS INCORPORATED,5:1,5.0,ARDEUT111622,US8825081040,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+UGP,ULTRAPAR PARTICIPAÇÕES S.A.,1:1,1.0,ARBCOM4602C2,US90400P1012,Brasil,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+UL,UNILEVER PLC-SPONSORED ADR,3:1,3.0,ARDEUT112091,US9047678035,Reino Unido,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+UNH,UNITEDHEALTH GROUP INC,33:1,33.0,ARBCOM460390,US91324P1021,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+UNP,UNION PACIFIC CORP,20:1,20.0,ARBCOM460382,US9078181081,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+URBN,"URBAN OUTFITTERS, INC.",2:1,2.0,ARBCOM4601Q4,US9170471026,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+USB,U.S. BANCORP,5:1,5.0,ARDEUT112919,US9029733048,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+USO,"United States Oil Fund, LP",15:1,15.0,AR0388535277,US91232N2071,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+V,VISA INC,18:1,18.0,ARBCOM460127,US92826C8394,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+VALE,VALE S.A.,2:1,2.0,ARDEUT113925,US91912E1055,Brasil,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+VEA,Vanguard FTSE Developed Markets Cedears Shares,10:1,10.0,AR0810570678,US9219438580,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+VIG,VANGUARD DIVIDEND APPRECIATION,39:1,39.0,AR0625060907,US9219088443,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+VIST,VISTA ENERGY S.A.B. de C.V (ADS),3:1,3.0,ARBCOM4602V2,US92837L1098,Mexico,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+VIV,TELEFÔNICA BRASIL S.A.,1:1,1.0,ARBCOM4601W2,US87936R2058,Brasil,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+VOD,VODAFONE GROUP plc. ADR,1:1,1.0,ARDEUT110590,US92857W3088,Reino Unido,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+VRSN,"VERISIGN, INC.",6:1,6.0,ARBCOM4600U8,US92343E1029,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+VRTX,VERTEX PHARMACEUTICALS INC,101:1,101.0,AR0468655268,US92532F1003,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+VST,VISTRA CORPORATION,26:1,26.0,AR0659507682,US92840M1027,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+VZ,VERIZON COMMUNICATIONS INC.,4:1,4.0,ARDEUT112927,US92343V1044,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+WB,WEIBO CORPORATION,6:1,6.0,ARBCOM460259,US9485961018,China,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+WBA,WALGREENS BOOTS ALLIANCE INC,3:1,3.0,ARBCOM4603A4,US9314271084,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+WFC,WELLS FARGO & COMPANY,5:1,5.0,ARDEUT110434,US9497461015,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+WMT,WALMART INC,18:1,18.0,ARDEUT110400,US9311421039,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+XLB,State Street Materials Select Sector SPDR ETF,18:1,18.0,AR0441163851,US81369Y1001,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+XLC,State Street Communication Services Select Sector SPDR ETF,19:1,19.0,AR0515201439,US81369Y8527,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+XLI,State Street Industrials Select Sector SPDR ETF,28:1,28.0,AR0595844538,US81369Y7040,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+XLK,State Street Technology Select Sector SPDR ETF,46:1,46.0,AR0824137712,US81369Y8030,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+XLP,State Street Consumer Staples Select Sector SPDR ETF,16:1,16.0,AR0887077425,US81369Y3080,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+XLRE,State Street Real Estate Select Sector SPDR ETF,9:1,9.0,AR0068390027,US81369Y8600,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+XLV,State Street Health Care Select Sector SPDR ETF,29:1,29.0,AR0216856044,US81369Y2090,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+XLY,State Street Consumer Discretionary Select Sector SPDR ETF,43:1,43.0,AR0427103855,US81369Y4070,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+XOM,EXXONMOBIL HOLDINGS CORP,10:1,10.0,ARDEUT110152,US30233Q1085,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+XP,XP INC,4:1,4.0,ARBCOM4603Z1,KYG982391099,Brasil,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+XPEV,XPENG INC,4:1,4.0,AR0453271709,US98422D1054,China,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+XRX,XEROX HOLDING CORPORATION,1:1,1.0,ARBCOM4600W4,US98421M1062,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+XYZ,"BLOCK, INC",20:1,20.0,ARBCOM460374,US8522341036,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+YELP,YELP INC.,2:1,2.0,ARBCOM4600Y0,US9858171054,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+YZCAY,YANKUANG ENERGY GROUP CO. LTD.,2:1,2.0,ARDEUT114758,US9848461052,China,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10
+ZM,ZOOM COMMUNICATIONS INC,47:1,47.0,ARBCOM4603B2,US98980L1017,Estados Unidos,https://www.comafi.com.ar/custodiaglobal/json/apps/getproducts.aspx,2026-07-10

@@ -13,6 +13,12 @@
   HAVA, INTR — venían con valores basura). Fuente: `iamc_dual_price.py` → tabla `iamc_precios`.
 - **BMA (Banco Macro) agregado** al grupo ADR (faltaba; sus ratios ya estaban en `ratios`).
   Ratio ADR 10 (oficial). Total pasó de 571 a **572**.
+- **Ratios CEDEAR oficiales** (`cedear_ratio` "N:1" + `cedear_x`): cuántos CEDEARs = 1 acción
+  del subyacente, para los **144 S&P que cotizan como CEDEAR** en BYMA (AAPL 20:1, MSFT 30:1,
+  AMZN 144:1, NVDA 24:1…). **Fuente OFICIAL: Banco Comafi** (emisor autorizado por CNV,
+  custodia en BNY Mellon) — endpoint `custodiaglobal/json/apps/getproducts.aspx`, campo
+  `character`. Detalle auditable en `data/cedear_ratios.csv` (con `source_url`). Los otros
+  355 S&P no cotizan como CEDEAR en Argentina. Fetcher: `cedear_ratios.py`.
 
 > Fundamentales: **S&P/ADR → SEC EDGAR** (10-K, 20-F, XBRL), **BYMA → CNV** (estados
 > contables oficiales v2 normalizada). Precios: **yfinance** (NYSE) + **IAMC** (cierre oficial BYMA).

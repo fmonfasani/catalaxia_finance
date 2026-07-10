@@ -167,6 +167,7 @@ def stage_assemble(log, results):
         ("s7_unificar",       "build", "Unificar S&P desde EDGAR"),
         ("s8_calidad",        "build", "Calidad (payout/EV/OpMargen)"),
         ("iamc_dual_price",   "build", "IAMC + Dual Price (ARS/USD)"),
+        ("cedear_ratios",     "build", "Ratios CEDEAR (Comafi)"),
     ]
     for mod, entry, label in phases:
         st, el = _run_module(mod, entry, log)
