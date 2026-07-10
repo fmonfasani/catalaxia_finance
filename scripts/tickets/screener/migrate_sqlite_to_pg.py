@@ -71,7 +71,7 @@ def main():
             print(f"OK    {table}: 0 rows")
             continue
 
-        columns = [d[0] for d in sl.execute(f"PRAGMA table_info({table}").fetchall()]
+        columns = [d[0] for d in sl.execute(f"PRAGMA table_info({table})").fetchall()]
 
         # Batch insert
         placeholders = ["%s"] * len(columns)
