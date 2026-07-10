@@ -73,10 +73,12 @@ def main():
 
         col_info = sl.execute(f"PRAGMA table_info({table})").fetchall()
         columns = [c[1] for c in col_info]
+        # PG lowercases unquoted identifiers; match SQLite uppercase names
+        pg_columns = [c.lower() for c in columns]
 
         # Batch insert
         placeholders = ["%s"] * len(columns)
-        qcols = [f'"{c}"' for c in columns]
+        qcols = [f'"{c}"' for c in pg_columns]
         cols_str = ", ".join(qcols)
         ph_str = ", ".join(placeholders)
 
