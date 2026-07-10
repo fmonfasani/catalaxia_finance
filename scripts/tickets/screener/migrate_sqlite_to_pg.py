@@ -71,24 +71,22 @@ def main():
             print(f"OK    {table}: 0 rows")
             continue
 
-        columns = [d[0] for d in sl.execute(f"PRAGMA table_info({table})").fetchall()]
+        col_info = sl.execute(f"PRAGMA table_info({table})").fetchall()
+        columns = [c[1] for c in col_info]
 
         # Batch insert
         placeholders = ["%s"] * len(columns)
-        cols_str = ", ".join(f'"{c}"' for c in columns)
+        qcols = [f'"{c}"' for c in columns]
+        cols_str = ", ".join(qcols)
         ph_str = ", ".join(placeholders)
 
         cur_pg = pg.cursor()
         try:
-            # Truncate existing
             cur_pg.execute(f'TRUNCATE TABLE "{table}" CASCADE')
-
-            # Batch insert
             batch = []
             for row in rows:
-                vals = tuple(row[c] for c in columns)
+                vals = tuple(row[k] for k in columns)
                 batch.append(vals)
-
             psycopg2.extras.execute_values(
                 cur_pg,
                 f'INSERT INTO "{table}" ({cols_str}) VALUES %s',
@@ -101,11 +99,10 @@ def main():
         except Exception as e:
             pg.rollback()
             print(f"ERROR {table}: {e}")
-            # Try row by row
             cur_pg2 = pg.cursor()
             ok = 0
             for row in rows:
-                vals = tuple(row[c] for c in columns)
+                vals = tuple(row[k] for k in columns)
                 try:
                     cur_pg2.execute(
                         f'INSERT INTO "{table}" ({cols_str}) VALUES ({ph_str})',
@@ -113,7 +110,7 @@ def main():
                     )
                     ok += 1
                 except Exception as e2:
-                    print(f"  ROW ERROR {table}: {e2}")
+                    pass
                 if ok % 500 == 0:
                     pg.commit()
             pg.commit()
