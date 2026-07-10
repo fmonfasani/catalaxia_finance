@@ -169,6 +169,7 @@ def stage_assemble(log, results):
         ("iamc_dual_price",   "build", "IAMC + Dual Price (ARS/USD)"),
         ("cedear_ratios",     "build", "Ratios CEDEAR (Comafi)"),
         ("jpm_adr",           "build", "Datos ADR (JPMorgan: CUSIP/level/div)"),
+        ("instrumentos",      "build", "Tabla instrumentos (empresa 1:N)"),
     ]
     for mod, entry, label in phases:
         st, el = _run_module(mod, entry, log)

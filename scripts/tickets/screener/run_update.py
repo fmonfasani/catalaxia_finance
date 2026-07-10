@@ -568,6 +568,7 @@ def rebuild_screener(log):
         ("iamc_dual_price", "build", "IAMC + Dual Price (ARS/USD)"),
         ("cedear_ratios", "build", "Ratios CEDEAR (Comafi)"),
         ("jpm_adr", "build", "Datos ADR (JPMorgan: CUSIP/level/div)"),
+        ("instrumentos", "build", "Tabla instrumentos (empresa 1:N)"),
         ("s5_exportar", "build", "Validacion + Export"),
     ]
     results = []

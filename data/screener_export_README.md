@@ -24,6 +24,13 @@
   13 ADR con CUSIP+level; historial de dividendos en tabla `adr_dividendos`. Fetcher:
   `jpm_adr.py`. Nota: el **ratio DR:ORD NO está en la API pública** de JPMorgan (sale de SEC
   EDGAR, ver `sec_adr_ratios.py`); los fees vienen vacíos.
+- **Modelo de 2 niveles: tabla `instrumentos`** (`data/instrumentos.csv` / `.json`). El screener
+  es 1 fila por EMPRESA (fundamentales); `instrumentos` es 1 fila por INSTRUMENTO negociable
+  (acción local, ADR, CEDEAR), cada uno con su **ISIN, mercado, moneda, precio y ratio**, unido
+  a la empresa por `company_id` (= CIK/CUIT). 733 instrumentos para 572 empresas (499 ordinaria
+  US + 144 CEDEAR + 17 ADR + 73 ordinaria AR). ISIN del ADR derivado del CUSIP (US+CUSIP+check
+  ISO 6166); ISIN del subyacente/CEDEAR desde Comafi. Fundamentales NO se duplican. Fetcher:
+  `instrumentos.py`.
 
 > Fundamentales: **S&P/ADR → SEC EDGAR** (10-K, 20-F, XBRL), **BYMA → CNV** (estados
 > contables oficiales v2 normalizada). Precios: **yfinance** (NYSE) + **IAMC** (cierre oficial BYMA).
