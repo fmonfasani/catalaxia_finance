@@ -27,6 +27,13 @@ Cada fila tiene `period_ref` (fecha del último estado contable disponible),
 `fuente_fund` (edgar/cnv), `grupo` (sp500/adr/byma_only), `sector` (GICS para S&P,
 clasificación propia para AR) y `payout_status` (calculado/no_paga/falta_dato).
 
+**Dos formatos de salida (mismo dato):**
+- `screener_export.csv` — para planillas / análisis (CSV con BOM UTF-8).
+- `screener_export.json` — para consumo por apps: **array plano de 571 objetos**
+  `{columna: valor}` (NaN → `null`). ~490 KB. Se lee en una línea:
+  `const data = await fetch("screener_export.json").then(r => r.json())`.
+  Ambos se regeneran juntos en `s5_exportar.py`.
+
 ---
 
 ## Cobertura medida (no estimada)
