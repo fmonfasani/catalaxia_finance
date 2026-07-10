@@ -6,8 +6,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     postgresql-client \
     && rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt scripts/screener/requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt -r scripts/screener/requirements.txt
+COPY requirements.txt ./
+COPY scripts/screener/requirements.txt ./screener_requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt -r screener_requirements.txt
 
 COPY . .
 
