@@ -1,195 +1,23 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
-
-# C extensions
-*.so
-
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-pip-wheel-metadata/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-
-# PyInstaller
-*.manifest
-*.spec
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py,cover
-.hypothesis/
-.pytest_cache/
-
-# Translations
-*.mo
-*.pot
-
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
-
-# Flask stuff:
-instance/
-.webassets-cache
-
-# Scrapy stuff:
-.scrapy
-
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-target/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# IPython
-profile_default/
-ipython_config.py
-
-# pyenv
-.python-version
-
-# pipenv
-Pipfile.lock
-
-# PEP 582
-__pypackages__/
-
-# Celery stuff
-celerybeat-schedule
-celerybeat.pid
-
-# SageMath parsed files
-*.sage.py
-
-# Environments
+# Entorno y config local
 .env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+.claude/
+.opencode/
 
-# Spyder project settings
-.spyderproject
-.spyproject
+# Documentacion interna
+docs/catalaxia/
+docs/screener/PLAN_5_FASES.md
 
-# Rope project settings
-.ropeproject
+# Tests locales
+scripts/tests/
 
-# mkdocs documentation
-/site
-
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Pyre type checker
-.pyre/
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Node (if frontend is added later)
-node_modules/
-.next/
-out/
-dist/
-build/
-
-# Environment variables
-.env.local
-.env.*.local
-
-# Datos del screener (cache crudo + base) - NO versionar (pesa GBs)
+# DB
+data/screener.db
 data/raw/
-data/bulk/
-data/*.db
-data/*.backup*
-*.db-journal
-*.db-wal
 
-# ============================================================
-#  DATOS CRUDOS de los pipelines — NO versionar (solo procesado va a git)
-# ============================================================
-# CNV: HTMLs descargados, trabajo, logs, lista cruda de presentaciones
-scripts/tickets/cnv/eeff/
-scripts/tickets/cnv/debug/
-scripts/tickets/cnv/logs/
-scripts/tickets/cnv/datos/links.csv
-scripts/tickets/cnv/datos/*_failed.csv
-# CNV jobs (mina 556): company pages crudas + HTML de dividendos + logs de resume
-scripts/tickets/cnv/datos/html_descargados/
-data/log_job5_done.txt
-data/log_job6_done.txt
-# CNV: HTML crudo suelto + CSVs grandes reproducibles (discovery, se regeneran con jobs)
-scripts/tickets/cnv/datos/*.html
-scripts/tickets/cnv/datos/guid_formtype.csv
-scripts/tickets/cnv/datos/whitelist_eeff.csv
-scripts/tickets/cnv/datos/whitelist_div.csv
-scripts/tickets/cnv/datos/links_eeff.csv
-scripts/tickets/cnv/datos/links_eeff_refined.csv
-# logs sueltos de data/ (no versionar)
-data/*.txt
-# scripts scratch/debug (no ensuciar el repo)
-**/_tmp_*.py
-scripts/tickets/cnv/jobs/_*.py
-scripts/tickets/cnv/_*.py
-scripts/tickets/cnv/_*.csv
-scripts/tickets/screener/_*.py
-scripts/tickets/screener/_diagnostico/
-temp_*.py
-/test_*.py
-/audit_*.py
-/find_*.py
-/Dashboard_*.xlsx
-/Engine/
-# SEC: cache crudo de companyfacts
-scripts/tickets/sec_edgar/datos/financials_sec/
-# debug/trabajo generico
-scripts/tickets/debug/
-**/logs/
-scripts/tickets/cnv/datos/whitelist_nuevos.csv
+# Logs
+data/logs/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo

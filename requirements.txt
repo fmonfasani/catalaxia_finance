@@ -1,6 +1,7 @@
-# Dependencias del screener (Python 3.11+)
+# Dependencias del pipeline Catalaxia (Python 3.11+)
 requests
 urllib3
 yfinance
 pandas
 openpyxl
+psycopg2-binary

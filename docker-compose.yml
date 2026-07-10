@@ -1,0 +1,67 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16
+    container_name: catalaxia-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: catalaxia
+      POSTGRES_USER: catalaxia
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./sql/init:/docker-entrypoint-initdb.d
+    ports:
+      - "127.0.0.1:5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U catalaxia -d catalaxia"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  pipeline:
+    build: .
+    image: catalaxia-pipeline
+    container_name: catalaxia-pipeline
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_TYPE: postgresql
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: catalaxia
+      DB_USER: catalaxia
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      TZ: America/Argentina/Buenos_Aires
+    volumes:
+      - ./data:/app/data
+    working_dir: /app
+    profiles:
+      - manual
+
+  migrate:
+    build: .
+    image: catalaxia-pipeline
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_TYPE: postgresql
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: catalaxia
+      DB_USER: catalaxia
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      TZ: America/Argentina/Buenos_Aires
+    volumes:
+      - ./data:/app/data
+    working_dir: /app
+    entrypoint: ["python", "scripts/tickets/screener/migrate_sqlite_to_pg.py"]
+    profiles:
+      - manual
+
+volumes:
+  pgdata:
