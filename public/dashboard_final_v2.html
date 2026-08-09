@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CatalaXia - Análisis Financiero CEDEARs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Design System - Catalaxia Constructores */
+            --red-primary: #E8503A;
+            --red-light: #FDECEA;
+            --dark-navy: #1A1A2E;
+            --dark-sidebar: #12121F;
+            --page-bg: #F4F4F0;
+            --card-bg: #FFFFFF;
+            --row-alt: #FAFAFA;
+            --green-ok: #D8F3DC;
+            --green-text: #2D6A4F;
+            --amber-warn: #FFF3CD;
+            --amber-text: #856404;
+            --blue-exchange: #E3F2FD;
+            --blue-text: #1565C0;
+            --muted: #888888;
+            --border: rgba(0, 0, 0, 0.07);
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--page-bg);
+            color: var(--dark-navy);
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .layout {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* ========== SIDEBAR ========== */
+        .sidebar {
+            width: 200px;
+            background: var(--dark-sidebar);
+            color: white;
+            padding: 0;
+            overflow-y: auto;
+            border-right: 0.5px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-logo {
+            padding: 14px 12px 10px;
+            border-bottom: 0.5px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .logo-text {
+            font-size: 17px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 2px;
+        }
+
+        .logo-text .logo-x {
+            color: var(--red-primary);
+        }
+
+        .logo-submarca {
+            font-size: 8px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.3);
+            text-transform: uppercase;
+        }
+
+        .sidebar-nav {
+            padding: 8px 5px;
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .nav-section {
+            margin-bottom: 20px;
+        }
+
+        .nav-section-title {
+            font-size: 8px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            color: rgba(255, 255, 255, 0.25);
+            text-transform: uppercase;
+            padding: 0 7px;
+            margin-bottom: 8px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px;
+            border-radius: 6px;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.45);
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 4px;
+        }
+
+        .nav-item:hover {
+            color: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-item.active {
+            background: var(--red-primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        .nav-icon {
+            width: 15px;
+            height: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+        }
+
+        /* ========== MAIN CONTENT ========== */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* TOPBAR */
+        .topbar {
+            background: var(--card-bg);
+            border-bottom: 0.5px solid rgba(0, 0, 0, 0.08);
+            padding: 10px 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 48px;
+        }
+
+        .topbar-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .topbar-icon {
+            color: var(--red-primary);
+            font-size: 15px;
+        }
+
+        .topbar-title {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--dark-navy);
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .badge-status {
+            font-size: 9px;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+        .badge-ok {
+            background: var(--green-ok);
+            color: var(--green-text);
+        }
+
+        .badge-warn {
+            background: var(--amber-warn);
+            color: var(--amber-text);
+        }
+
+        .avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--red-primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            font-weight: 600;
+        }
+
+        /* CONTENT AREA */
+        .content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px 18px;
+            background: var(--page-bg);
+        }
+
+        /* SECTION HEADER */
+        .section-header {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--dark-navy);
+            margin-bottom: 4px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .section-header::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 30px;
+            height: 3px;
+            background: var(--red-primary);
+            border-radius: 2px;
+        }
+
+        .section-content {
+            margin-bottom: 24px;
+        }
+
+        /* CARDS GRID */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        /* ========== PROCESS CARD ========== */
+        .process-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 0.5px solid var(--border);
+            padding: 16px;
+            transition: all 0.2s;
+        }
+
+        .process-card:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .card-icon-box {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: var(--red-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 21px;
+            color: var(--red-primary);
+            flex-shrink: 0;
+        }
+
+        .card-title-section {
+            flex: 1;
+        }
+
+        .card-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--dark-navy);
+            margin-bottom: 2px;
+        }
+
+        .card-desc {
+            font-size: 11px;
+            color: var(--muted);
+            line-height: 1.4;
+        }
+
+        .card-badge-new {
+            background: var(--red-light);
+            color: #C0392B;
+            font-size: 8px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            padding: 3px 6px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            align-self: flex-start;
+        }
+
+        .card-meta {
+            font-size: 9px;
+            color: var(--muted);
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-meta-left {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .card-meta-badge {
+            font-size: 8px;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        /* PROGRESS BAR */
+        .progress-section {
+            margin-bottom: 12px;
+        }
+
+        .progress-label {
+            font-size: 9px;
+            color: var(--muted);
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 5px;
+            background: #F0F0EE;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 4px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--red-primary);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            font-size: 9px;
+            color: var(--muted);
+        }
+
+        /* JOB LOG */
+        .job-log {
+            background: var(--dark-navy);
+            border-radius: 8px;
+            padding: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 9px;
+            color: #0F0;
+            max-height: 120px;
+            overflow-y: auto;
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        .log-line {
+            margin: 2px 0;
+        }
+
+        .log-arrow {
+            color: #0099FF;
+        }
+
+        .log-ok {
+            color: #00CC00;
+        }
+
+        .log-warn {
+            color: #FFAA00;
+        }
+
+        .log-error {
+            color: #FF3333;
+        }
+
+        /* BUTTON */
+        .btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .btn-idle {
+            background: var(--red-primary);
+            color: white;
+        }
+
+        .btn-idle:hover {
+            background: #D73A2A;
+            box-shadow: 0 2px 8px rgba(232, 80, 58, 0.3);
+        }
+
+        .btn-idle:active {
+            transform: scale(0.98);
+        }
+
+        .btn-running {
+            background: var(--amber-warn);
+            color: var(--amber-text);
+        }
+
+        .btn-soon {
+            background: #F0F0EE;
+            color: var(--muted);
+            cursor: not-allowed;
+        }
+
+        .btn-done {
+            background: var(--green-ok);
+            color: var(--green-text);
+        }
+
+        .btn-error {
+            background: var(--red-light);
+            color: #B71C1C;
+        }
+
+        .btn-secondary {
+            background: var(--blue-text);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #0D47A1;
+        }
+
+        /* SPINNER */
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border: 2px solid currentColor;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+        }
+
+        /* JOBS PANEL */
+        .jobs-panel {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 320px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 0.5px solid var(--border);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+            max-height: 450px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+        }
+
+        .jobs-panel.active {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .jobs-panel-header {
+            padding: 12px;
+            border-bottom: 0.5px solid var(--border);
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--dark-navy);
+        }
+
+        .job-item {
+            padding: 12px;
+            border-bottom: 0.5px solid var(--border);
+        }
+
+        .job-item-title {
+            font-size: 10px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: var(--dark-navy);
+        }
+
+        .job-item-status {
+            font-size: 8px;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 3px;
+            display: inline-block;
+            margin-bottom: 6px;
+        }
+
+        .status-running {
+            background: #E3F2FD;
+            color: var(--blue-text);
+        }
+
+        .status-completed {
+            background: var(--green-ok);
+            color: var(--green-text);
+        }
+
+        .job-progress-mini {
+            width: 100%;
+            height: 4px;
+            background: #EEE;
+            border-radius: 2px;
+            overflow: hidden;
+            margin-bottom: 4px;
+        }
+
+        .job-progress-bar-mini {
+            height: 100%;
+            background: var(--red-primary);
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+
+        .job-progress-text {
+            font-size: 8px;
+            color: var(--muted);
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 180px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .layout {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                flex-direction: row;
+                overflow-x: auto;
+                padding: 8px;
+            }
+
+            .sidebar-logo {
+                padding: 0;
+                border: none;
+                flex-shrink: 0;
+            }
+
+            .sidebar-nav {
+                display: flex;
+                gap: 20px;
+                padding: 0;
+            }
+
+            .nav-section {
+                margin: 0;
+                flex-shrink: 0;
+            }
+
+            .content {
+                padding: 12px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .topbar {
+                flex-direction: column;
+                gap: 8px;
+                align-items: flex-start;
+            }
+
+            .jobs-panel {
+                width: 90vw;
+                bottom: 10px;
+                right: 5vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="layout">
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-text">Catalax<span class="logo-x">i</span>a</div>
+                <div class="logo-submarca">Constructores</div>
+            </div>
+
+            <div class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-item active" onclick="navigateTo('dashboard')">
+                        <span class="nav-icon">📊</span> Dashboard
+                    </div>
+                    <div class="nav-item" onclick="navigateTo('admin')">
+                        <span class="nav-icon">🔒</span> Administración
+                    </div>
+                    <div class="nav-item" onclick="navigateTo('procesos')">
+                        <span class="nav-icon">⚙️</span> Procesos
+                    </div>
+                    <div class="nav-item" onclick="navigateTo('facturacion')">
+                        <span class="nav-icon">📋</span> Facturación
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Gestión Inversiones</div>
+                    <div class="nav-item" onclick="navigateTo('activos')">
+                        <span class="nav-icon">🏛️</span> Activos
+                    </div>
+                    <div class="nav-item" onclick="navigateTo('carteras')">
+                        <span class="nav-icon">💼</span> Carteras
+                    </div>
+                    <div class="nav-item" onclick="navigateTo('screener')">
+                        <span class="nav-icon">📈</span> Análisis Fin.
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Configuración</div>
+                    <div class="nav-item" onclick="navigateTo('config')">
+                        <span class="nav-icon">⚙️</span> Configuración
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <!-- TOPBAR -->
+            <div class="topbar">
+                <div class="topbar-left">
+                    <span class="topbar-icon">📊</span>
+                    <span class="topbar-title">Procesos — Análisis Financiero CEDEARs</span>
+                </div>
+
+                <div class="topbar-right">
+                    <div class="badge-status badge-ok">📅 Precios: hoy 22:01</div>
+                    <div class="badge-status badge-warn">⏱️ Ratios: hace 3 días</div>
+                    <span style="font-size: 14px; color: #BBB; cursor: pointer;">🔔</span>
+                    <div class="avatar">ML</div>
+                </div>
+            </div>
+
+            <!-- CONTENT -->
+            <div class="content">
+                <!-- PROCESOS AUTOMÁTICOS -->
+                <div class="section-content">
+                    <div class="section-header">Procesos Automáticos</div>
+                    <div class="cards-grid">
+                        <!-- Card: Descargar Estado -->
+                        <div class="process-card">
+                            <div class="card-header">
+                                <div class="card-icon-box">💼</div>
+                                <div class="card-title-section">
+                                    <div class="card-title">Descargar Estado de Cuenta</div>
+                                    <div class="card-desc">Scraping de Bull Market para obtener estados de cuenta.</div>
+                                </div>
+                            </div>
+                            <div class="card-meta">
+                                <div class="card-meta-left">
+                                    <span>Cron: diario 08:00 UTC</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-soon" disabled>🔒 Próximamente</button>
+                        </div>
+
+                        <!-- Card: Reporte Mensual -->
+                        <div class="process-card">
+                            <div class="card-header">
+                                <div class="card-icon-box">📊</div>
+                                <div class="card-title-section">
+                                    <div class="card-title">Generar Reporte Mensual</div>
+                                    <div class="card-desc">Reporte consolidado de actividades mensuales.</div>
+                                </div>
+                            </div>
+                            <div class="card-meta">
+                                <div class="card-meta-left">
+                                    <span>Cron: primer día mes 06:00 UTC</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-soon" disabled>🔒 Próximamente</button>
+                        </div>
+
+                        <!-- Card: Calcular Honorarios -->
+                        <div class="process-card">
+                            <div class="card-header">
+                                <div class="card-icon-box">⏱️</div>
+                                <div class="card-title-section">
+                                    <div class="card-title">Calcular Honorarios</div>
+                                    <div class="card-desc">Cálculo automático de honorarios mensuales.</div>
+                                </div>
+                            </div>
+                            <div class="card-meta">
+                                <div class="card-meta-left">
+                                    <span>Cron: fin de mes 18:00 UTC</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-soon" disabled>🔒 Próximamente</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ANÁLISIS FINANCIERO CEDEARs -->
+                <div class="section-content">
+                    <div class="section-header">Análisis Financiero — CEDEARs</div>
+                    <div class="cards-grid">
+                        <!-- Card: Actualizar Precios -->
+                        <div class="process-card">
+                            <div class="card-header">
+                                <div class="card-icon-box">💵</div>
+                                <div class="card-title-section">
+                                    <div class="card-title">Actualizar Precios</div>
+                                    <div class="card-desc">Descarga precios, max/min 52 semanas desde Yahoo Finance para todos los tickers.</div>
+                                </div>
+                                <span class="card-badge-new">Nuevo</span>
+                            </div>
+                            <div class="card-meta">
+                                <div class="card-meta-left">
+                                    <span>Cron: diario 22:00 UTC</span>
+                                </div>
+                                <span class="card-meta-badge badge-ok">Hoy 22:01</span>
+                            </div>
+
+                            <div id="precios-progress" style="display: none;">
+                                <div class="progress-label">Procesando 100 de 100 tickers...</div>
+                                <div class="progress-container">
+                                    <div class="progress-bar" id="precios-bar" style="width: 0%;"></div>
+                                </div>
+                                <div class="job-log" id="precios-log">
+                                    <div class="log-line"><span class="log-arrow">→</span> POST /api/jobs/ratios/precios</div>
+                                    <div class="log-line"><span class="log-ok">v</span> AAPL $189.50</div>
+                                    <div class="log-line"><span class="log-ok">v</span> MSFT $320.45</div>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-idle" onclick="startJob('precios')">▶ Iniciar</button>
+                        </div>
+
+                        <!-- Card: Actualizar Ratios -->
+                        <div class="process-card">
+                            <div class="card-header">
+                                <div class="card-icon-box">⏲️</div>
+                                <div class="card-title-section">
+                                    <div class="card-title">Actualizar Ratios Fundamentales</div>
+                                    <div class="card-desc">Scraping semanal de todos los ratios desde Investing.com y SEC EDGAR.</div>
+                                </div>
+                                <span class="card-badge-new">Nuevo</span>
+                            </div>
+                            <div class="card-meta">
+                                <div class="card-meta-left">
+                                    <span>Ejecuta Backend A y B en paralelo</span>
+                                </div>
+                                <span class="card-meta-badge badge-warn">Desactualizado</span>
+                            </div>
+
+                            <div id="ratios-progress" style="display: none;">
+                                <div class="progress-label">Backend A — Investing.com (45%)</div>
+                                <div class="progress-container">
+                                    <div class="progress-bar" id="ratios-bar-a" style="width: 45%; background: var(--red-primary);"></div>
+                                </div>
+
+                                <div class="progress-label" style="margin-top: 8px;">Backend B — SEC EDGAR (28%)</div>
+                                <div class="progress-container">
+                                    <div class="progress-bar" id="ratios-bar-b" style="width: 28%; background: #E09000;"></div>
+                                </div>
+
+                                <div class="job-log" id="ratios-log">
+                                    <div class="log-line"><span class="log-arrow">[A]</span> <span class="log-ok">v</span> AAPL PER:28.5 EPS:6.42</div>
+                                    <div class="log-line"><span class="log-arrow">[B]</span> <span class="log-ok">v</span> AAPL D/E:1.29 FCF:+28.6%</div>
+                                </div>
+                            </div>
+
+                            <div class="progress-text" style="margin-bottom: 12px; color: var(--muted); font-size: 9px;">
+                                Duración estimada: 8-12 min para 100 tickers
+                            </div>
+
+                            <button class="btn btn-idle" onclick="startJob('ratios')">▶ Iniciar</button>
+                        </div>
+
+                        <!-- Card: Ver Screener -->
+                        <div class="process-card">
+                            <div class="card-header">
+                                <div class="card-icon-box">📊</div>
+                                <div class="card-title-section">
+                                    <div class="card-title">Ver Screener CEDEARs</div>
+                                    <div class="card-desc">Tabla completa con todos los ratios actualizados, filtros y paginación.</div>
+                                </div>
+                                <span class="card-badge-new">Nuevo</span>
+                            </div>
+
+                            <div style="background: #F8F8F6; border-radius: 6px; padding: 8px; margin-bottom: 12px; font-size: 10px;">
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                                    <div><strong>Precios:</strong> <span style="color: var(--green-text);">✓ Hoy</span></div>
+                                    <div><strong>Ratios:</strong> <span style="color: var(--amber-text);">⚠ Hace 3d</span></div>
+                                    <div><strong>Exchange:</strong> NASDAQ · NYSE · AMEX</div>
+                                    <div><strong>Columnas:</strong> 16 ratios</div>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-secondary" onclick="navigateTo('screener')">→ Abrir screener</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JOBS PANEL FLOTANTE -->
+    <div class="jobs-panel" id="jobs-panel">
+        <div class="jobs-panel-header">⚙️ Procesos en Ejecución</div>
+        <div id="jobs-list"></div>
+    </div>
+
+    <script>
+        const API_BASE = 'https://api.catalaxia.webshooks.com';
+
+        function navigateTo(page) {
+            if (page === 'screener') {
+                window.location.href = 'screener_v2.html';
+            } else {
+                alert(`Sección "${page}" en construcción`);
+            }
+        }
+
+        function startJob(type) {
+            const jobType = type === 'precios' ? 'update_prices' : 'update_ratios';
+            const progressDiv = document.getElementById(`${type}-progress`);
+            const btn = event.target;
+
+            // Mostrar progreso
+            progressDiv.style.display = 'block';
+            btn.style.display = 'none';
+
+            // Simular progreso
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress > 100) progress = 100;
+
+                if (type === 'precios') {
+                    document.getElementById('precios-bar').style.width = progress + '%';
+                } else {
+                    document.getElementById('ratios-bar-a').style.width = (progress * 0.8) + '%';
+                    document.getElementById('ratios-bar-b').style.width = (progress * 0.6) + '%';
+                }
+
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    btn.textContent = '✓ Completado';
+                    btn.className = 'btn btn-done';
+                    btn.style.display = 'flex';
+                }
+            }, 800);
+
+            // Llamar API (si existe)
+            fetch(`${API_BASE}/v2/jobs/create?job_type=${jobType}`, { method: 'POST' })
+                .catch(err => console.log('API call (expected to fail in local):', err));
+
+            showJobsPanel();
+        }
+
+        function showJobsPanel() {
+            document.getElementById('jobs-panel').classList.add('active');
+            updateJobsList();
+        }
+
+        async function updateJobsList() {
+            try {
+                const response = await fetch(`${API_BASE}/v2/jobs`);
+                const result = await response.json();
+                const jobsList = document.getElementById('jobs-list');
+                jobsList.innerHTML = '';
+
+                const jobs = result.data || [];
+                jobs.forEach(job => {
+                    const jobEl = document.createElement('div');
+                    jobEl.className = 'job-item';
+                    jobEl.innerHTML = `
+                        <div class="job-item-title">${job.type}</div>
+                        <div class="job-item-status status-${job.status}">${job.status === 'running' ? '⭕ Ejecutándose' : '✅ Completado'}</div>
+                        <div class="job-progress-mini">
+                            <div class="job-progress-bar-mini" style="width: ${job.progress || 0}%"></div>
+                        </div>
+                        <div class="job-progress-text">${job.progress || 0}% completado</div>
+                    `;
+                    jobsList.appendChild(jobEl);
+                });
+            } catch (error) {
+                // API no disponible (esperado en local)
+            }
+        }
+    </script>
+</body>
+</html>

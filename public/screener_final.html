@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis Financiero - CEDEARs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #F4F4F0;
+            color: #1A1A2E;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .layout {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 210px;
+            background: #000;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            border-right: 1px solid #222;
+        }
+
+        .sidebar-logo {
+            padding: 20px 16px;
+            border-bottom: 1px solid #222;
+        }
+
+        .logo-text {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+        }
+
+        .logo-x {
+            color: #E8503A;
+        }
+
+        .logo-submarca {
+            font-size: 9px;
+            letter-spacing: 2px;
+            color: #06B6D4;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .sidebar-nav {
+            flex: 1;
+            padding: 12px 8px;
+        }
+
+        .nav-section {
+            margin-bottom: 20px;
+        }
+
+        .nav-section-title {
+            font-size: 9px;
+            letter-spacing: 1.5px;
+            color: #666;
+            text-transform: uppercase;
+            padding: 0 12px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            font-size: 13px;
+            color: #aaa;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s;
+            margin-bottom: 6px;
+        }
+
+        .nav-item:hover {
+            color: #ddd;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-item.active {
+            background: #E8503A;
+            color: white;
+            font-weight: 600;
+        }
+
+        .nav-icon {
+            font-size: 16px;
+            width: 18px;
+            text-align: center;
+        }
+
+        /* MAIN CONTENT */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* TOPBAR */
+        .topbar {
+            background: white;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 14px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .topbar-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+        }
+
+        .topbar-icon {
+            color: #E8503A;
+            font-size: 18px;
+        }
+
+        .topbar-title {
+            color: #888;
+            font-weight: 500;
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .topbar-item {
+            cursor: pointer;
+            color: #888;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .topbar-user {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: #333;
+        }
+
+        .avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #E8503A;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .btn-excel {
+            background: #E8503A;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-excel:hover {
+            background: #d73a2a;
+        }
+
+        /* PAGE TITLE */
+        .page-title {
+            padding: 20px 24px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #1A1A2E;
+            background: white;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        /* SCREENER BOX */
+        .screener-box {
+            margin: 20px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        /* FILTERS */
+        .filters-section {
+            background: white;
+            padding: 12px 24px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .filter-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: #1A1A2E;
+            white-space: nowrap;
+        }
+
+        .pills {
+            display: flex;
+            gap: 8px;
+        }
+
+        .pill {
+            padding: 6px 12px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            background: white;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .pill.active {
+            background: #E8503A;
+            color: white;
+            border-color: #E8503A;
+            box-shadow: 0 0 0 2px rgba(232, 80, 58, 0.15);
+        }
+
+        .pill:hover:not(.active) {
+            border-color: #E8503A;
+            color: #E8503A;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            padding: 6px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 11px;
+            background: white;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 160px;
+        }
+
+        input[type="number"] {
+            width: 70px;
+        }
+
+        select {
+            width: auto;
+            min-width: 100px;
+            cursor: pointer;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #E8503A;
+            box-shadow: 0 0 0 2px rgba(232, 80, 58, 0.1);
+        }
+
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        .filter-separator {
+            color: #ccc;
+        }
+
+        .filter-box-red {
+            border: 2px solid #E8503A;
+            border-radius: 4px;
+            padding: 4px 8px;
+        }
+
+        .buttons-group {
+            margin-left: auto;
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn {
+            padding: 6px 14px;
+            border: 1px solid #ddd;
+            background: white;
+            color: #888;
+            font-size: 11px;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background: #f5f5f5;
+        }
+
+        .btn-apply {
+            background: #E8503A;
+            color: white;
+            border-color: #E8503A;
+        }
+
+        .btn-apply:hover {
+            background: #d73a2a;
+        }
+
+        /* TABLE CONTAINER */
+        .table-container {
+            flex: 1;
+            overflow: auto;
+            background: white;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+
+        thead {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: #f5f5f5;
+            color: #1A1A2E;
+        }
+
+        th {
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 10px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-bottom: 2px solid #d0d0d0;
+            white-space: nowrap;
+        }
+
+        th.right-align {
+            text-align: right;
+        }
+
+        td {
+            padding: 10px 8px;
+            border-bottom: 1px solid #f0f0f0;
+            text-align: left;
+        }
+
+        td.right-align {
+            text-align: right;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #fafafa;
+        }
+
+        tbody tr:hover {
+            background: #f5f5f5;
+        }
+
+        .ticker-cell {
+            font-weight: 600;
+            color: #1A1A2E;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 9px;
+            font-weight: 600;
+            background: #ffebee;
+            color: #E8503A;
+            border: 1px solid #ffcdd2;
+        }
+
+        .text-positive {
+            color: #2D6A4F;
+            font-weight: 600;
+        }
+
+        .text-negative {
+            color: #E8503A;
+            font-weight: 600;
+        }
+
+        .text-neutral {
+            color: #1A1A2E;
+        }
+
+        /* STATUS BAR */
+        .status-bar {
+            background: white;
+            border-top: 1px solid #e0e0e0;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            color: #888;
+        }
+
+        .status-info strong {
+            color: #1A1A2E;
+        }
+
+        .rows-per-page {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        select {
+            padding: 4px 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 11px;
+        }
+    </style>
+</head>
+<body>
+    <div class="layout">
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-text">Catalax<span class="logo-x">i</span>a</div>
+                <div class="logo-submarca">Construyendo Valor</div>
+            </div>
+
+            <div class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-item" onclick="goToDashboard()">
+                        <span class="nav-icon">📊</span> Dashboard
+                    </div>
+                    <div class="nav-item">
+                        <span class="nav-icon">🔐</span> Administración
+                    </div>
+                    <div class="nav-item">
+                        <span class="nav-icon">⚙️</span> Procesos
+                    </div>
+                    <div class="nav-item">
+                        <span class="nav-icon">📄</span> Facturación
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Gestión Inversiones</div>
+                    <div class="nav-item">
+                        <span class="nav-icon">🏛️</span> Activos
+                    </div>
+                    <div class="nav-item active">
+                        <span class="nav-icon">📈</span> Análisis Financiero
+                    </div>
+                    <div class="nav-item">
+                        <span class="nav-icon">💼</span> Carteras Administradas
+                    </div>
+                    <div class="nav-item">
+                        <span class="nav-icon">🎯</span> Mis Portafolios
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Configuración</div>
+                    <div class="nav-item">
+                        <span class="nav-icon">⚙️</span> Configuración
+                    </div>
+                    <div class="nav-item">
+                        <span class="nav-icon">❓</span> Ayuda
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <!-- TOPBAR -->
+            <div class="topbar">
+                <div class="topbar-left">
+                    <span class="topbar-icon">📊</span>
+                    <span class="topbar-title">Análisis Financiero</span>
+                </div>
+
+                <div class="topbar-right">
+                    <span class="topbar-item">🔍</span>
+                    <span class="topbar-item">🌙</span>
+                    <span class="topbar-item">🔔</span>
+                    <div class="topbar-user">
+                        <div class="avatar">ML</div>
+                        <span>Marcelo Lezcano</span>
+                    </div>
+                    <button class="btn-excel" onclick="exportCSV()">📥 Descargar Excel</button>
+                </div>
+            </div>
+
+            <!-- PAGE TITLE -->
+            <div class="page-title">Análisis Financiero - CEDEARs</div>
+
+            <!-- SCREENER BOX -->
+            <div class="screener-box">
+            <!-- FILTERS -->
+            <div class="filters-section">
+                <!-- Exchange Pills -->
+                <div class="pills">
+                    <div class="pill active" onclick="setExchange('nasdaq', this)">NASDAQ</div>
+                    <div class="pill" onclick="setExchange('nyse', this)">NYSE</div>
+                    <div class="pill" onclick="setExchange('byma', this)">BYMA</div>
+                </div>
+
+                <span class="filter-separator">|</span>
+
+                <!-- Buscar -->
+                <span class="filter-label">Buscar:</span>
+                <input type="text" id="search" placeholder="Ticker..." onchange="applyFilters()">
+
+                <span class="filter-separator">|</span>
+
+                <!-- Ordenar por -->
+                <span class="filter-label">Ordenar por:</span>
+                <select id="sort-column" onchange="applyFilters()">
+                    <option value="ticker">Ticker</option>
+                    <option value="nombre">Nombre</option>
+                    <option value="precio_usd">Precio USD</option>
+                    <option value="per">PER</option>
+                    <option value="roe_5y">ROE</option>
+                    <option value="roa">ROA</option>
+                    <option value="margen_neto">Margen</option>
+                    <option value="fcf_on_ce">FCF/CE</option>
+                    <option value="deuda_ebitda">D/EBITDA</option>
+                </select>
+
+                <!-- Tipo -->
+                <span class="filter-label">Tipo:</span>
+                <select id="sort-type" onchange="applyFilters()">
+                    <option value="asc">Ascendente ↑</option>
+                    <option value="desc">Descendente ↓</option>
+                </select>
+
+                <span class="filter-separator">|</span>
+
+                <!-- Filtrar -->
+                <span class="filter-label">Filtrar:</span>
+                <select id="filter-type" onchange="toggleFilterInputs()">
+                    <option value="">-</option>
+                    <option value="range">Entre</option>
+                    <option value="gt">Mayor a</option>
+                    <option value="lt">Menor a</option>
+                </select>
+
+                <div id="filter-inputs" style="display: none; gap: 6px;">
+                    <input type="number" id="filter-min" placeholder="Min" onchange="applyFilters()">
+                    <input type="number" id="filter-max" placeholder="Máx" onchange="applyFilters()">
+                </div>
+
+                <div class="buttons-group">
+                    <button class="btn" onclick="resetFilters()">Limpiar</button>
+                    <button class="btn btn-apply" onclick="applyFilters()">Aplicar Filtro</button>
+                </div>
+            </div>
+
+            <!-- TABLE -->
+            <div class="table-container">
+                <table id="screener-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 60px;">Ticker</th>
+                            <th style="width: 120px;">Nombre</th>
+                            <th style="width: 90px;">Exchange</th>
+                            <th style="width: 75px;" class="right-align">Precio USD</th>
+                            <th style="width: 50px;" class="right-align">PER</th>
+                            <th style="width: 70px;" class="right-align">Max 52s</th>
+                            <th style="width: 65px;" class="right-align">Dif. Max</th>
+                            <th style="width: 70px;" class="right-align">Min 52s</th>
+                            <th style="width: 65px;" class="right-align">Dif. Min</th>
+                            <th style="width: 75px;" class="right-align">D/EBITDA</th>
+                            <th style="width: 55px;" class="right-align">EPS</th>
+                            <th style="width: 70px;" class="right-align">Crec. EPS</th>
+                            <th style="width: 65px;" class="right-align">Margen</th>
+                            <th style="width: 65px;" class="right-align">ROE 5Y</th>
+                            <th style="width: 70px;" class="right-align">FCFONCE</th>
+                            <th style="width: 60px;" class="right-align">Payout</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        <tr><td colspan="16" style="text-align: center; padding: 20px; color: #888;">Cargando...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- STATUS BAR -->
+            <div class="status-bar">
+                <div class="status-info">Mostrando <strong id="row-start">1</strong>-<strong id="row-end">25</strong> de <strong id="row-total">0</strong> tickers</div>
+                <div class="rows-per-page">
+                    <span>Filas por página:</span>
+                    <select onchange="changeRowsPerPage(this.value)">
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
+            </div>
+            </div>
+            <!-- FIN SCREENER BOX -->
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'https://api.catalaxia.webshooks.com';
+        let allData = [];
+        let currentPage = 1;
+        let rowsPerPage = 25;
+        let currentExchange = 'nasdaq';
+
+        async function loadData() {
+            try {
+                const response = await fetch(`${API_BASE}/v2/screener?limit=1000`);
+                const result = await response.json();
+                allData = result.data || [];
+                console.log('Datos cargados:', allData.length, allData[0]);
+                renderTable();
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('table-body').innerHTML = `<tr><td colspan="16" style="text-align: center; color: red; padding: 20px;">Error al cargar datos</td></tr>`;
+            }
+        }
+
+        function setExchange(exchange, element) {
+            document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+            element.classList.add('active');
+            currentExchange = exchange;
+            currentPage = 1;
+            renderTable();
+        }
+
+        function toggleFilterInputs() {
+            const filterType = document.getElementById('filter-type').value;
+            const filterInputs = document.getElementById('filter-inputs');
+            filterInputs.style.display = filterType ? 'flex' : 'none';
+        }
+
+        function renderTable() {
+            const tbody = document.getElementById('table-body');
+            tbody.innerHTML = '';
+
+            let filtered = allData.slice();
+
+            // Filtro por exchange
+            const exchangeMap = {
+                'nasdaq': 'NASDAQ',
+                'nyse': 'NYSE',
+                'byma': 'BYMA'
+            };
+            const exchangeFilter = exchangeMap[currentExchange];
+            filtered = filtered.filter(d => d.exchange === exchangeFilter);
+
+            // Filtro por búsqueda
+            const search = document.getElementById('search').value.toLowerCase();
+            if (search) {
+                filtered = filtered.filter(d => d.ticker.toLowerCase().includes(search));
+            }
+
+            // Ordenamiento
+            const sortColumn = document.getElementById('sort-column').value || 'ticker';
+            const sortType = document.getElementById('sort-type').value;
+
+            filtered.sort((a, b) => {
+                let aVal = a[sortColumn] || 0;
+                let bVal = b[sortColumn] || 0;
+
+                if (typeof aVal === 'string') {
+                    aVal = aVal.toLowerCase();
+                    bVal = bVal.toLowerCase();
+                    return sortType === 'asc' ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+                }
+
+                if (sortType === 'asc') {
+                    return aVal - bVal;
+                } else {
+                    return bVal - aVal;
+                }
+            });
+
+            // Filtro numérico
+            const filterType = document.getElementById('filter-type').value;
+            if (filterType && sortColumn) {
+                const filterMin = parseFloat(document.getElementById('filter-min').value);
+                const filterMax = parseFloat(document.getElementById('filter-max').value);
+
+                filtered = filtered.filter(d => {
+                    const val = d[sortColumn];
+                    if (val === null || val === undefined) return false;
+
+                    if (filterType === 'range') {
+                        return val >= filterMin && val <= filterMax;
+                    } else if (filterType === 'gt') {
+                        return val > filterMin;
+                    } else if (filterType === 'lt') {
+                        return val < filterMin;
+                    }
+                    return true;
+                });
+            }
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="16" style="text-align: center; color: #888; padding: 20px;">Sin datos</td></tr>`;
+                document.getElementById('row-total').textContent = '0';
+                return;
+            }
+
+            const start = (currentPage - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+            const pageData = filtered.slice(start, end);
+
+            pageData.forEach(item => {
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td class="ticker-cell">${item.ticker || '-'}</td>
+                    <td>${item.nombre || '-'}</td>
+                    <td><span class="badge">${item.exchange || 'NASDAQ'}</span></td>
+                    <td class="right-align">$${item.precio_usd ? item.precio_usd.toFixed(2) : '-'}</td>
+                    <td class="right-align">${item.per ? item.per.toFixed(1) : '-'}</td>
+                    <td class="right-align">${item.year_high ? item.year_high.toFixed(2) : '-'}</td>
+                    <td class="right-align ${item.dif_max < 0 ? 'text-negative' : 'text-neutral'}">${item.dif_max ? (item.dif_max * 100).toFixed(1) + '%' : '-'}</td>
+                    <td class="right-align">${item.year_low ? item.year_low.toFixed(2) : '-'}</td>
+                    <td class="right-align text-positive">${item.dif_min ? (item.dif_min * 100).toFixed(1) + '%' : '-'}</td>
+                    <td class="right-align">${item.deuda_ebitda ? item.deuda_ebitda.toFixed(2) : '-'}</td>
+                    <td class="right-align">${item.eps_anual ? item.eps_anual.toFixed(2) : '-'}</td>
+                    <td class="right-align ${item.crec_eps_5y > 0 ? 'text-positive' : item.crec_eps_5y < 0 ? 'text-negative' : 'text-neutral'}">${item.crec_eps_5y ? (item.crec_eps_5y * 100).toFixed(1) + '%' : '-'}</td>
+                    <td class="right-align">${item.margen_neto ? (item.margen_neto * 100).toFixed(1) + '%' : '-'}</td>
+                    <td class="right-align">${item.roe_5y ? (item.roe_5y * 100).toFixed(1) + '%' : '-'}</td>
+                    <td class="right-align">${item.fcf_on_ce ? (item.fcf_on_ce * 100).toFixed(1) + '%' : '-'}</td>
+                    <td class="right-align">${item.payout ? (item.payout * 100).toFixed(1) + '%' : '-'}</td>
+                `;
+                tbody.appendChild(row);
+            });
+
+            document.getElementById('row-start').textContent = start + 1;
+            document.getElementById('row-end').textContent = Math.min(end, filtered.length);
+            document.getElementById('row-total').textContent = filtered.length;
+        }
+
+        function applyFilters() {
+            currentPage = 1;
+            renderTable();
+        }
+
+        function resetFilters() {
+            document.getElementById('per-min').value = '0';
+            document.getElementById('per-max').value = '50';
+            document.getElementById('de-min').value = '0';
+            document.getElementById('de-max').value = '10';
+            document.getElementById('price-min').value = '';
+            document.getElementById('price-max').value = '';
+            currentPage = 1;
+            renderTable();
+        }
+
+        function changeRowsPerPage(value) {
+            rowsPerPage = parseInt(value);
+            currentPage = 1;
+            renderTable();
+        }
+
+        function goToDashboard() {
+            window.location.href = 'dashboard_final_v2.html';
+        }
+
+        function exportCSV() {
+            const table = document.getElementById('screener-table');
+            let csv = [];
+            table.querySelectorAll('tr').forEach(row => {
+                const cells = [];
+                row.querySelectorAll('td, th').forEach(cell => {
+                    cells.push('"' + cell.textContent.trim().replace(/"/g, '""') + '"');
+                });
+                csv.push(cells.join(','));
+            });
+            const blob = new Blob([csv.join('\n')], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'screener_' + new Date().toISOString().split('T')[0] + '.csv';
+            a.click();
+        }
+
+        document.addEventListener('DOMContentLoaded', loadData);
+        setInterval(loadData, 60000);
+    </script>
+</body>
+</html>
