@@ -43,6 +43,23 @@ TABLES_ORDER = [
     "screener", "instrumentos", "descargas_log",
 ]
 
+COLUMN_MAPPING = {
+    "screener": {
+        "MargenNeto": "margen_neto",
+        "DeudaEBITDA": "deuda_ebitda",
+        "CAGR_EPS_5y": "cagr_eps_5y",
+        "CAGR_flag": "cagr_flag",
+        "PriceBook": "price_book",
+        "PriceSales": "price_sales",
+        "MarketCapUSD": "market_cap_usd",
+        "Max52w": "max_52w",
+        "Min52w": "min_52w",
+    },
+    "ratios_cnv": {
+        "margenneto": "margen_neto",
+    }
+}
+
 
 def main():
     if not DB.exists():
@@ -75,6 +92,11 @@ def main():
         columns = [c[1] for c in col_info]
         # PG lowercases unquoted identifiers; match SQLite uppercase names
         pg_columns = [c.lower() for c in columns]
+
+        # Aplicar mapeo de columnas si existe
+        if table in COLUMN_MAPPING:
+            mapping = COLUMN_MAPPING[table]
+            pg_columns = [mapping.get(orig, pg_col) for orig, pg_col in zip(columns, pg_columns)]
 
         # Batch insert
         placeholders = ["%s"] * len(columns)
