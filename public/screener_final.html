@@ -691,10 +691,65 @@
             const tbody = document.getElementById('table-body');
             tbody.innerHTML = '';
 
-            for (let i = 0; i < allData.length; i++) {
-                const item = allData[i];
-                const row = document.createElement('tr');
+            let filtered = allData.slice();
 
+            // Filtro por grupo (pills)
+            if (currentExchange && currentExchange !== 'all') {
+                const grupoMap = {'sp500': 'sp500', 'adr': 'adr', 'byma': 'byma_only'};
+                const grupoFilter = grupoMap[currentExchange];
+                if (grupoFilter) {
+                    filtered = filtered.filter(d => d.grupo === grupoFilter);
+                }
+            }
+
+            // Filtro por búsqueda
+            const search = document.getElementById('search').value.toLowerCase();
+            if (search) {
+                filtered = filtered.filter(d => (d.ticker || '').toLowerCase().includes(search));
+            }
+
+            // Ordenamiento
+            const sortColumn = document.getElementById('sort-column').value || 'ticker';
+            const sortType = document.getElementById('sort-type').value;
+            filtered.sort((a, b) => {
+                let aVal = a[sortColumn] || 0;
+                let bVal = b[sortColumn] || 0;
+                if (typeof aVal === 'string') {
+                    aVal = aVal.toLowerCase();
+                    bVal = bVal.toLowerCase();
+                    return sortType === 'asc' ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+                }
+                return sortType === 'asc' ? aVal - bVal : bVal - aVal;
+            });
+
+            // Filtro numérico
+            const filterType = document.getElementById('filter-type').value;
+            if (filterType && sortColumn) {
+                const filterMin = parseFloat(document.getElementById('filter-min').value);
+                const filterMax = parseFloat(document.getElementById('filter-max').value);
+                filtered = filtered.filter(d => {
+                    const val = d[sortColumn];
+                    if (val === null || val === undefined) return false;
+                    if (filterType === 'range') return val >= filterMin && val <= filterMax;
+                    if (filterType === 'gt') return val > filterMin;
+                    if (filterType === 'lt') return val < filterMin;
+                    return true;
+                });
+            }
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="16" style="text-align: center; color: #888; padding: 20px;">Sin datos</td></tr>';
+                document.getElementById('row-total').textContent = '0';
+                return;
+            }
+
+            const start = (currentPage - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+            const pageData = filtered.slice(start, end);
+
+            for (let i = 0; i < pageData.length; i++) {
+                const item = pageData[i];
+                const row = document.createElement('tr');
                 const dif_max = (item.precio_usd && item.max_52w) ? ((item.precio_usd - item.max_52w) / item.max_52w) : null;
                 const dif_min = (item.precio_usd && item.min_52w) ? ((item.precio_usd - item.min_52w) / item.min_52w) : null;
 
@@ -718,7 +773,9 @@
                 tbody.appendChild(row);
             }
 
-            document.getElementById('row-total').textContent = allData.length;
+            document.getElementById('row-start').textContent = start + 1;
+            document.getElementById('row-end').textContent = Math.min(end, filtered.length);
+            document.getElementById('row-total').textContent = filtered.length;
         }
 
         function applyFilters() {
