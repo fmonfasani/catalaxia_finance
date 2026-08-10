@@ -546,8 +546,8 @@
             <div class="filters-section">
                 <!-- Exchange Pills -->
                 <div class="pills">
-                    <div class="pill active" onclick="setExchange('nasdaq', this)">NASDAQ</div>
-                    <div class="pill" onclick="setExchange('nyse', this)">NYSE</div>
+                    <div class="pill active" onclick="setExchange('sp500', this)">S&P 500</div>
+                    <div class="pill" onclick="setExchange('adr', this)">ADR</div>
                     <div class="pill" onclick="setExchange('byma', this)">BYMA</div>
                 </div>
 
@@ -563,13 +563,13 @@
                 <span class="filter-label">Ordenar por:</span>
                 <select id="sort-column" onchange="applyFilters()">
                     <option value="ticker">Ticker</option>
-                    <option value="nombre">Nombre</option>
+                    <option value="sector">Sector</option>
                     <option value="precio_usd">Precio USD</option>
                     <option value="per">PER</option>
-                    <option value="roe_5y">ROE</option>
+                    <option value="roe">ROE</option>
                     <option value="roa">ROA</option>
                     <option value="margen_neto">Margen</option>
-                    <option value="fcf_on_ce">FCF/CE</option>
+                    <option value="fcf_ce">FCF/CE</option>
                     <option value="deuda_ebitda">D/EBITDA</option>
                 </select>
 
@@ -649,22 +649,27 @@
     </div>
 
     <script>
-        const API_BASE = 'https://api.catalaxia.webshooks.com';
+        const API_BASE = window.location.hostname === 'localhost' ? 'http://localhost:9200' : 'https://api.catalaxia.webshooks.com';
         let allData = [];
         let currentPage = 1;
         let rowsPerPage = 25;
-        let currentExchange = 'nasdaq';
+        let currentExchange = 'sp500';
 
         async function loadData() {
             try {
-                const response = await fetch(`${API_BASE}/v2/screener?limit=1000`);
+                console.log('API_BASE:', API_BASE);
+                const url = `${API_BASE}/v2/screener?limit=1000`;
+                console.log('Fetching:', url);
+                const response = await fetch(url);
+                console.log('Response status:', response.status);
                 const result = await response.json();
                 allData = result.data || [];
-                console.log('Datos cargados:', allData.length, allData[0]);
+                console.log('Datos cargados:', allData.length);
+                if (allData.length > 0) console.log('Primer dato:', allData[0]);
                 renderTable();
             } catch (error) {
-                console.error('Error:', error);
-                document.getElementById('table-body').innerHTML = `<tr><td colspan="16" style="text-align: center; color: red; padding: 20px;">Error al cargar datos</td></tr>`;
+                console.error('Error cargando datos:', error);
+                document.getElementById('table-body').innerHTML = `<tr><td colspan="16" style="text-align: center; color: red; padding: 20px;">Error: ${error.message}</td></tr>`;
             }
         }
 
@@ -686,102 +691,34 @@
             const tbody = document.getElementById('table-body');
             tbody.innerHTML = '';
 
-            let filtered = allData.slice();
-
-            // Filtro por exchange
-            const exchangeMap = {
-                'nasdaq': 'NASDAQ',
-                'nyse': 'NYSE',
-                'byma': 'BYMA'
-            };
-            const exchangeFilter = exchangeMap[currentExchange];
-            filtered = filtered.filter(d => d.exchange === exchangeFilter);
-
-            // Filtro por búsqueda
-            const search = document.getElementById('search').value.toLowerCase();
-            if (search) {
-                filtered = filtered.filter(d => d.ticker.toLowerCase().includes(search));
-            }
-
-            // Ordenamiento
-            const sortColumn = document.getElementById('sort-column').value || 'ticker';
-            const sortType = document.getElementById('sort-type').value;
-
-            filtered.sort((a, b) => {
-                let aVal = a[sortColumn] || 0;
-                let bVal = b[sortColumn] || 0;
-
-                if (typeof aVal === 'string') {
-                    aVal = aVal.toLowerCase();
-                    bVal = bVal.toLowerCase();
-                    return sortType === 'asc' ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
-                }
-
-                if (sortType === 'asc') {
-                    return aVal - bVal;
-                } else {
-                    return bVal - aVal;
-                }
-            });
-
-            // Filtro numérico
-            const filterType = document.getElementById('filter-type').value;
-            if (filterType && sortColumn) {
-                const filterMin = parseFloat(document.getElementById('filter-min').value);
-                const filterMax = parseFloat(document.getElementById('filter-max').value);
-
-                filtered = filtered.filter(d => {
-                    const val = d[sortColumn];
-                    if (val === null || val === undefined) return false;
-
-                    if (filterType === 'range') {
-                        return val >= filterMin && val <= filterMax;
-                    } else if (filterType === 'gt') {
-                        return val > filterMin;
-                    } else if (filterType === 'lt') {
-                        return val < filterMin;
-                    }
-                    return true;
-                });
-            }
-
-            if (filtered.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="16" style="text-align: center; color: #888; padding: 20px;">Sin datos</td></tr>`;
-                document.getElementById('row-total').textContent = '0';
-                return;
-            }
-
-            const start = (currentPage - 1) * rowsPerPage;
-            const end = start + rowsPerPage;
-            const pageData = filtered.slice(start, end);
-
-            pageData.forEach(item => {
+            for (let i = 0; i < allData.length; i++) {
+                const item = allData[i];
                 const row = document.createElement('tr');
 
-                row.innerHTML = `
-                    <td class="ticker-cell">${item.ticker || '-'}</td>
-                    <td>${item.nombre || '-'}</td>
-                    <td><span class="badge">${item.exchange || 'NASDAQ'}</span></td>
-                    <td class="right-align">$${item.precio_usd ? item.precio_usd.toFixed(2) : '-'}</td>
-                    <td class="right-align">${item.per ? item.per.toFixed(1) : '-'}</td>
-                    <td class="right-align">${item.year_high ? item.year_high.toFixed(2) : '-'}</td>
-                    <td class="right-align ${item.dif_max < 0 ? 'text-negative' : 'text-neutral'}">${item.dif_max ? (item.dif_max * 100).toFixed(1) + '%' : '-'}</td>
-                    <td class="right-align">${item.year_low ? item.year_low.toFixed(2) : '-'}</td>
-                    <td class="right-align text-positive">${item.dif_min ? (item.dif_min * 100).toFixed(1) + '%' : '-'}</td>
-                    <td class="right-align">${item.deuda_ebitda ? item.deuda_ebitda.toFixed(2) : '-'}</td>
-                    <td class="right-align">${item.eps_anual ? item.eps_anual.toFixed(2) : '-'}</td>
-                    <td class="right-align ${item.crec_eps_5y > 0 ? 'text-positive' : item.crec_eps_5y < 0 ? 'text-negative' : 'text-neutral'}">${item.crec_eps_5y ? (item.crec_eps_5y * 100).toFixed(1) + '%' : '-'}</td>
-                    <td class="right-align">${item.margen_neto ? (item.margen_neto * 100).toFixed(1) + '%' : '-'}</td>
-                    <td class="right-align">${item.roe_5y ? (item.roe_5y * 100).toFixed(1) + '%' : '-'}</td>
-                    <td class="right-align">${item.fcf_on_ce ? (item.fcf_on_ce * 100).toFixed(1) + '%' : '-'}</td>
-                    <td class="right-align">${item.payout ? (item.payout * 100).toFixed(1) + '%' : '-'}</td>
-                `;
-                tbody.appendChild(row);
-            });
+                const dif_max = (item.precio_usd && item.max_52w) ? ((item.precio_usd - item.max_52w) / item.max_52w) : null;
+                const dif_min = (item.precio_usd && item.min_52w) ? ((item.precio_usd - item.min_52w) / item.min_52w) : null;
 
-            document.getElementById('row-start').textContent = start + 1;
-            document.getElementById('row-end').textContent = Math.min(end, filtered.length);
-            document.getElementById('row-total').textContent = filtered.length;
+                row.innerHTML = '<td>' + (item.ticker || '-') + '</td>' +
+                    '<td>' + (item.sector || '-') + '</td>' +
+                    '<td><span class="badge">' + (item.grupo || 'sp500') + '</span></td>' +
+                    '<td class="right-align">$' + (item.precio_usd ? item.precio_usd.toFixed(2) : '-') + '</td>' +
+                    '<td class="right-align">' + (item.per ? item.per.toFixed(1) : '-') + '</td>' +
+                    '<td class="right-align">' + (item.max_52w ? item.max_52w.toFixed(2) : '-') + '</td>' +
+                    '<td class="right-align">' + (dif_max !== null ? (dif_max * 100).toFixed(1) + '%' : '-') + '</td>' +
+                    '<td class="right-align">' + (item.min_52w ? item.min_52w.toFixed(2) : '-') + '</td>' +
+                    '<td class="right-align">' + (dif_min !== null ? (dif_min * 100).toFixed(1) + '%' : '-') + '</td>' +
+                    '<td class="right-align">' + (item.deuda_ebitda ? item.deuda_ebitda.toFixed(2) : '-') + '</td>' +
+                    '<td class="right-align">' + (item.eps ? item.eps.toFixed(2) : '-') + '</td>' +
+                    '<td class="right-align">' + (item.cagr_eps_5y ? (item.cagr_eps_5y * 100).toFixed(1) + '%' : '-') + '</td>' +
+                    '<td class="right-align">' + (item.margen_neto ? (item.margen_neto * 100).toFixed(1) + '%' : '-') + '</td>' +
+                    '<td class="right-align">' + (item.roe ? (item.roe * 100).toFixed(1) + '%' : '-') + '</td>' +
+                    '<td class="right-align">' + (item.fcf_ce ? (item.fcf_ce * 100).toFixed(1) + '%' : '-') + '</td>' +
+                    '<td class="right-align">' + (item.payout ? (item.payout * 100).toFixed(1) + '%' : '-') + '</td>';
+
+                tbody.appendChild(row);
+            }
+
+            document.getElementById('row-total').textContent = allData.length;
         }
 
         function applyFilters() {
