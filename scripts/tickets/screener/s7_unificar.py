@@ -216,6 +216,33 @@ def build():
 
     con.commit()
 
+    # ── BMA (Banco Macro): ADR argentino con fundamentales en EDGAR (20-F) que no
+    #    entra por el SELECT de arriba porque en `ratios` esta como grupo='adr_arg',
+    #    no 'sp500'. Antes lo insertaba iamc_dual_price.py; se movio aca, que es su
+    #    lugar natural (unificar universos) y no depende de ninguna fuente externa.
+    #    NOTA: hay otros 10 adr_arg en `ratios` sin entrar al screener (MELI, YPF,
+    #    GLOB, PAM, TGS, TEO, IRS, EDN, CRESY, BIOX). Sumarlos es una decision de
+    #    producto (cambia el universo publicado), no un arreglo tecnico.
+    BMA_CIK = "0001347426"
+    BMA_ADR_RATIO = 10  # 1 ADR = 10 acciones clase B (20-F oficial)
+    ya_esta = cur.execute(
+        "SELECT COUNT(*) FROM screener WHERE ticker='BMA'").fetchone()[0]
+    if not ya_esta:
+        r = cur.execute(
+            "SELECT cik,roe,roa,margen_neto,deuda_ebitda,eps_anual,per,p_book,"
+            "p_sales,payout,cagr_eps_5y FROM ratios WHERE cik=?", (BMA_CIK,)).fetchone()
+        if r:
+            cur.execute("""INSERT OR REPLACE INTO screener
+                (cuit,ticker,grupo,ROE,ROA,MargenNeto,DeudaEBITDA,EPS,PER,PriceBook,
+                 PriceSales,Payout,CAGR_EPS_5y,sector,adr_ratio,fuente_fund,
+                 es_financiera,CAGR_flag,provenance)
+                VALUES (?,?,'adr',?,?,?,?,?,?,?,?,?,?,?,?,'edgar',1,'edgar','EDGAR(20-F)')""",
+                (r["cik"], "BMA", r["roe"], r["roa"], r["margen_neto"], r["deuda_ebitda"],
+                 r["eps_anual"], r["per"], r["p_book"], r["p_sales"], r["payout"],
+                 r["cagr_eps_5y"], "Financiero", BMA_ADR_RATIO))
+            con.commit()
+            print("  + BMA (Banco Macro) insertado en grupo adr desde EDGAR 20-F")
+
     # ── Reporte ──
     cur.execute("SELECT COUNT(*) FROM screener")
     total = cur.fetchone()[0]
