@@ -398,3 +398,68 @@ vez de mezclarse**, que es exactamente lo buscado.
 Producción está hoy **sin la fase de calidad**: publica ROE y P/B de empresas con
 patrimonio negativo. Conviene correr `s8_calidad` allí, independientemente de lo que
 se decida con esta rama.
+
+---
+
+## 7.10 Migración a PostgreSQL: por qué no se ejecutó (2026-08-20)
+
+`migrate_sqlite_to_pg.py` hace **`TRUNCATE TABLE ... CASCADE` y después `INSERT`**.
+Si el `INSERT` falla —por ejemplo, porque el esquema de destino no tiene una columna
+nueva—, la tabla ya está vacía. Y el fallback fila-por-fila tenía un
+`except Exception: pass` que lo silenciaba: podía migrar 400 de 572 filas y reportarlo
+como éxito.
+
+### El simulacro (solo lectura, sin conectar a PostgreSQL)
+
+Se comparó el esquema real del SQLite contra `sql/init/01_schema.sql`, usando el
+`TABLES_ORDER` y el `COLUMN_MAPPING` reales del script. De 19 tablas:
+
+| | |
+|---|---|
+| Compatibles | 16 |
+| Se saltean (no existen en local) | 1 (`iamc_precios`) |
+| **Bloqueantes** | **2** |
+
+- **`screener`**: faltaban en PostgreSQL las **11 columnas de la migración MEP**
+  (`precio_usd_calc_mep_dolarito`, `valor_mep_dolarito`, `fecha_mep_dolarito`,
+  `max_52w_ars_yfinance`, `min_52w_*`, `dif_*_52w_pct`, `pct_ruedas_operadas`,
+  `guard_motivo`).
+- **`ratios_cnv`**: el `COLUMN_MAPPING` tenía la clave `"margenneto"` en minúsculas y
+  la columna real se llama `MargenNeto`, así que **el mapeo nunca se aplicaba**. Y de
+  `DeudaEBITDA` y `FCFYield` no había entrada.
+
+**Qué habría pasado:** `TRUNCATE` borra las 572 filas de `screener` → el `INSERT` falla
+por las 11 columnas → el fallback rechaza las 572 en silencio → **la API devuelve cero
+empresas**.
+
+### Lo que se corrigió (sin tocar PostgreSQL)
+
+1. **`sql/init/01_schema.sql`**: +11 columnas en `screener`.
+2. **`COLUMN_MAPPING`**: claves con el nombre exacto de SQLite, y las que faltaban.
+3. **Precondición antes del `TRUNCATE`**: lee `information_schema.columns` del destino
+   y **aborta esa tabla sin destruirla** si falta alguna columna o la tabla no existe.
+4. **El fallback ya no silencia**: cuenta las filas rechazadas, muestra los tres
+   primeros errores y **sale con código 1** si algo quedó incompleto.
+
+Re-simulacro tras los arreglos: **0 bloqueantes**.
+
+### Recomendación pendiente
+
+`TRUNCATE + INSERT` sin transacción envolvente es frágil para una tabla que sirve una
+API en vivo. El patrón habitual es **cargar a una tabla temporal y hacer un swap
+atómico** (`ALTER TABLE ... RENAME`): si algo falla, la tabla vieja sigue sirviendo y
+nadie se entera. No se implementó porque cambia el diseño de la migración, no es un
+arreglo puntual.
+
+### Aclaración sobre las dos «producciones»
+
+Durante la sesión se usó «producción» para dos cosas distintas:
+
+| | Qué es | ¿Se tocó? |
+|---|---|---|
+| `data/screener.db` | SQLite local | **Sí**: migración MEP y `s8_calidad` |
+| `api.catalaxia.webshooks.com` | El **PostgreSQL** que sirve la API | **No** |
+
+La API sigue sirviendo el esquema anterior (con `ccl`, `precio_fuente`,
+`precio_dif_iamc`; sin los campos MEP). Verificado el 2026-08-20: HTTP 200, 572
+empresas, 45 campos.

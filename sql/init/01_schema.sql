@@ -330,7 +330,22 @@ CREATE TABLE IF NOT EXISTS screener (
     dr_level             TEXT,
     div_adr_12m          DOUBLE PRECISION,
     last_div_date        TEXT,
-    div_yield_adr        DOUBLE PRECISION
+    div_yield_adr        DOUBLE PRECISION,
+
+    -- Migracion IAMC -> MEP (s9_guards_yfinance). Sin estas columnas el
+    -- INSERT de migrate_sqlite_to_pg falla y, tras el TRUNCATE, la tabla
+    -- queda VACIA en produccion. Ver docs/07-homologacion-cnv.md
+    max_52w_ars_yfinance             DOUBLE PRECISION,
+    min_52w_ars_yfinance             DOUBLE PRECISION,
+    max_52w_usd_calc_mep_dolarito    DOUBLE PRECISION,
+    min_52w_usd_calc_mep_dolarito    DOUBLE PRECISION,
+    dif_max_52w_pct                  DOUBLE PRECISION,
+    dif_min_52w_pct                  DOUBLE PRECISION,
+    precio_usd_calc_mep_dolarito     DOUBLE PRECISION,
+    valor_mep_dolarito               DOUBLE PRECISION,
+    fecha_mep_dolarito               TEXT,
+    pct_ruedas_operadas              DOUBLE PRECISION,
+    guard_motivo                     TEXT
 );
 
 -- ── instrumentos ─────────────────────────────────────────────────────

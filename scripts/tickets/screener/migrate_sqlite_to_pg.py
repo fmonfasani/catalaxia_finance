@@ -56,7 +56,14 @@ COLUMN_MAPPING = {
         "Min52w": "min_52w",
     },
     "ratios_cnv": {
-        "margenneto": "margen_neto",
+        # OJO: las claves deben coincidir EXACTO con el nombre en SQLite.
+        # Estaba "margenneto" en minusculas y la columna real es "MargenNeto",
+        # asi que el mapeo nunca se aplicaba y el INSERT fallaba.
+        "MargenNeto": "margen_neto",
+        "DeudaEBITDA": "deuda_ebitda",
+        "FCFYield": "fcf_yield",
+        "CAGR_EPS_5y": "cagr_eps_5y",
+        "CAGR_flag": "cagr_flag",
     }
 }
 
@@ -72,6 +79,7 @@ def main():
     pg.autocommit = False
 
     total_rows = 0
+    errores = []
 
     for table in TABLES_ORDER:
         # Check if table exists in SQLite
@@ -105,6 +113,33 @@ def main():
         ph_str = ", ".join(placeholders)
 
         cur_pg = pg.cursor()
+
+        # --- PRECONDICION: comprobar el destino ANTES de destruir nada ---------
+        # TRUNCATE vacia la tabla y despues inserta. Si el INSERT falla (por
+        # ejemplo, porque el esquema de destino no tiene una columna nueva), la
+        # tabla queda VACIA en produccion y el fallback fila-por-fila lo silencia.
+        # Medido el 2026-08-20: `screener` habria quedado en 0 filas por 11
+        # columnas de la migracion MEP ausentes en PostgreSQL.
+        cur_pg.execute("""
+            SELECT column_name FROM information_schema.columns
+            WHERE table_name = %s
+        """, (table,))
+        destino = {r[0].lower() for r in cur_pg.fetchall()}
+        if not destino:
+            print(f"ABORTA {table}: la tabla no existe en PostgreSQL. "
+                  f"Aplica sql/init/01_schema.sql primero.")
+            errores.append((table, "tabla inexistente en destino"))
+            cur_pg.close()
+            continue
+        faltan = [c for c in pg_columns if c.lower() not in destino]
+        if faltan:
+            print(f"ABORTA {table}: faltan columnas en PostgreSQL: {', '.join(faltan)}")
+            print(f"       No se hace TRUNCATE. Aplica sql/init/01_schema.sql primero.")
+            errores.append((table, "faltan columnas: " + ", ".join(faltan)))
+            cur_pg.close()
+            continue
+        # ----------------------------------------------------------------------
+
         try:
             cur_pg.execute(f'TRUNCATE TABLE "{table}" CASCADE')
             batch = []
@@ -125,6 +160,7 @@ def main():
             print(f"ERROR {table}: {e}")
             cur_pg2 = pg.cursor()
             ok = 0
+            fallidas = 0
             for row in rows:
                 vals = tuple(row[k] for k in columns)
                 try:
@@ -134,11 +170,16 @@ def main():
                     )
                     ok += 1
                 except Exception as e2:
-                    pass
+                    fallidas += 1
+                    if fallidas <= 3:
+                        print(f"     fila rechazada: {e2}")
                 if ok % 500 == 0:
                     pg.commit()
             pg.commit()
-            print(f"  -> {ok}/{len(rows)} inserted row-by-row")
+            print(f"  -> {ok}/{len(rows)} inserted row-by-row"
+                  f" ({fallidas} rechazadas)")
+            if fallidas:
+                errores.append((table, f"{fallidas} filas rechazadas"))
             total_rows += ok
         finally:
             cur_pg.close()
@@ -146,6 +187,17 @@ def main():
     sl.close()
     pg.close()
     print(f"\nTotal: {total_rows} rows migradas a PostgreSQL")
+
+    # Un resumen que se pueda creer: antes, migrar 400 de 572 filas y abortar
+    # tablas enteras terminaba igual que un exito. Ahora se reporta y se sale
+    # con codigo != 0, para que un job encadenado se entere.
+    if errores:
+        print("\n" + "=" * 62)
+        print("MIGRACION INCOMPLETA -- %d tabla(s) con problemas:" % len(errores))
+        for t, motivo in errores:
+            print("   %-24s %s" % (t, motivo))
+        print("=" * 62)
+        sys.exit(1)
 
 
 if __name__ == "__main__":
