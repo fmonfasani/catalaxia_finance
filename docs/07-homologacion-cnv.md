@@ -524,3 +524,83 @@ segunda corrida bajó **0 ruedas**. No hace falta vaciar nada.
 el precio del 9 de julio** pese a tener serie hasta hoy. Derivar `precios` del último
 cierre de `precios_diarios` cierra el círculo y elimina de paso el problema del refresco
 destructivo.
+
+---
+
+## 7.12 El PER no era reproducible (`s7b_eps_base_per.py`)
+
+Lo encontró la validación de coherencia interna: **de 452 papeles del S&P 500, solo 45
+reproducían `PER = Precio / EPS`**. Los de BYMA sí (21/21).
+
+```
+AAPL   PER = 37.89   Precio = 316.22   EPS = 7.46
+       Precio / EPS  = 42.39   (no da)
+       Precio / 8.30 = 38.10   (da: 8.30 es el eps_ttm de `ratios`)
+```
+
+El PER del S&P 500 sale de `ratios.per`, calculado con **eps_ttm**, mientras la columna
+`EPS` publica **eps_anual**. Ninguno está mal; faltaba **decir cuál es cuál**. Tal como
+estaba, la API exponía un PER que su consumidor no podía verificar — y al no cuadrar, la
+conclusión razonable es «estos datos no son confiables».
+
+### La solución: la que ya usaba `screener_gold`
+
+`screener_gold` tiene dos familias completas con su fecha de corte declarada
+(`periodo_cierre` / `ttm_cierre`, `per` / `per_ttm`). Se adopta el mismo criterio de
+forma **aditiva** — ningún valor publicado cambia:
+
+| Columna | Qué dice |
+|---|---|
+| `eps_ttm` | El EPS que realmente alimenta el PER |
+| `ttm_cierre` | Hasta qué fecha llega ese TTM |
+| `per_base` | Qué EPS usó el PER **de esa fila** |
+
+`per_base` importa porque el criterio cambia por grupo, y sin él el próximo que mire
+tiene que investigarlo desde cero.
+
+### Los cuatro valores de `per_base`
+
+| Valor | Papeles | Significado |
+|---|---|---|
+| `ttm` | 471 | PER = Precio / `eps_ttm` |
+| `anual` | 29 | PER = Precio / `EPS` (BYMA) |
+| `adr_local` | 10 | **PER compuesto**: precio del ADR en USD, EPS local en ARS, ratio y tipo de cambio. No se reproduce con las columnas publicadas |
+| `ttm_no_verificable` | 10 | El `eps_ttm` de `ratios` no reproduce el PER |
+
+### Hallazgo colateral: `ratios.eps_ttm` tiene basura
+
+Diez casos donde el `eps_ttm` es imposible:
+
+| Ticker | PER publicado | Precio / eps_ttm | eps_ttm |
+|---|---|---|---|
+| MCD | 22,64 | 0,00 | **12.162.578** |
+| ERIE | 22,68 | 0,00 | **224.780** |
+| WAT | 82,42 | **68.953** | 0,0055 |
+| KLAC | 64,19 | 6,49 | 35,36 |
+
+Se pone `eps_ttm = NULL` y `per_base = 'ttm_no_verificable'`. Misma política que `s9`:
+antes NULL que un número que engaña. **Queda la lista para arreglarlo en origen.**
+
+### Cobertura final
+
+| | Papeles |
+|---|---|
+| PER publicados | 495 |
+| **Verificables y cuadran (±2 %)** | **367 (74,1 %)** |
+| Verificables con desvío | 102 — *82 en 2-5 %, 18 en 5-10 %, 2 en 10-20 %* |
+| No verificable · `adr_local` | 10 |
+| No verificable · `ttm_no_verificable` | 10 |
+| No verificable · sin insumos | 6 |
+
+Los 102 con desvío **no son redondeo**: el PER de `ratios` se calculó con una foto de
+`eps_ttm` que no coincide exactamente con la almacenada. Es un desajuste real, pequeño,
+y hay que revisarlo en origen. Se declara la banda en vez de taparlo con una etiqueta
+cómoda.
+
+### Pendiente
+
+- Los 10 `eps_ttm` corruptos, en origen (`ratios`).
+- Los 102 con desvío 2-20 %: entender por qué `ratios.per` y `Precio / eps_ttm`
+  divergen si el precio es idéntico en ambas tablas (verificado: 0 diferencias).
+- Los ADR necesitan su propio campo con el tipo de cambio y el ratio aplicados, igual
+  que `s9` hace con `valor_mep_dolarito`.
