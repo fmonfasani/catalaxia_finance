@@ -285,6 +285,19 @@ def build():
     else:
         print("  OK: Gate consistencia: 0 divergencias en valores duplicados")
 
+    # --- PARCHE 3b: marcar los periodos de perimetro mixto ---
+    # Un (cuit, period_end) alimentado por INDIVIDUAL y CONSOLIDADO a la vez
+    # produce ratios que combinan dos perimetros contables. No se corrige el
+    # valor: se DECLARA, para que el defecto sea visible en vez de invisible.
+    perim = defaultdict(set)
+    for f in filas_dedup:
+        if f[13]:
+            perim[(f[0], f[3])].add(f[13])
+    mixtos = {k for k, v in perim.items() if len(v) > 1}
+    filas_dedup = [tuple(f) + (1 if (f[0], f[3]) in mixtos else 0,) for f in filas_dedup]
+    n_mix = sum(1 for f in filas_dedup if f[14])
+    print(f"\n  Perimetro mixto: {len(mixtos)} periodos (cuit+cierre), {n_mix} filas marcadas")
+
     # --- Escribir cnv_estados_norm ---
     cur.execute("DROP TABLE IF EXISTS cnv_estados_norm")
     cur.execute("""
@@ -303,10 +316,11 @@ def build():
             fuente TEXT DEFAULT 'cnv-aif2',
             source_type TEXT,
             tipo_balance TEXT,
+            perimetro_mixto INTEGER DEFAULT 0,
             PRIMARY KEY (cuit, concepto, period_end, fecha_reexpresion, tipo_balance)
         )
     """)
-    cur.executemany("INSERT OR REPLACE INTO cnv_estados_norm VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)", filas_dedup)
+    cur.executemany("INSERT OR REPLACE INTO cnv_estados_norm VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", filas_dedup)
     con.commit()
     n_filas = len(filas_dedup)
     print(f"\n  -> cnv_estados_norm: {n_filas} filas escritas")
