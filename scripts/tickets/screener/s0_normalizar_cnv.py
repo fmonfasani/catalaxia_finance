@@ -130,7 +130,24 @@ def build():
     # 'MILLONES DE $') y `valor` queda expresado en pesos. Verificado: la serie de
     # TXAR/Assets es continua justo donde el factor salta de 1.000 a 1.000.000.
     # Ojo: el `ticker` de v2 es la razon social, no el simbolo -> se resuelve por CUIT.
-    cur.execute("SELECT ticker, cuit, concepto, period_end, tipo, valor, valor_comparativo, fecha_reexpresion, form, unidad_factor, accn, fuente FROM cnv_estados_v2 WHERE fuente='cnv-aif2'")
+    # PARCHE 3: se trae tipo_balance desde cnv_doc_meta (job8), que lo extrae del
+    # campo estructurado <propiedad claveinformativa="TipoBalance"> de cada
+    # documento CNV. Cobertura verificada: 100% de los 2.145 documentos.
+    try:
+        cur.execute("SELECT COUNT(*) FROM cnv_doc_meta")
+        hay_meta = cur.fetchone()[0] > 0
+    except sqlite3.OperationalError:
+        hay_meta = False
+    if not hay_meta:
+        print("  AVISO: falta cnv_doc_meta -> corre job8_doc_meta.py."
+              " tipo_balance quedara vacio.")
+    sel_tb = "COALESCE(m.tipo_balance,'')" if hay_meta else "''"
+    join_tb = "LEFT JOIN cnv_doc_meta m ON m.accn = e.accn" if hay_meta else ""
+    cur.execute(f"""SELECT e.ticker, e.cuit, e.concepto, e.period_end, e.tipo, e.valor,
+                           e.valor_comparativo, e.fecha_reexpresion, e.form,
+                           e.unidad_factor, e.accn, e.fuente, {sel_tb}
+                    FROM cnv_estados_v2 e {join_tb}
+                    WHERE e.fuente='cnv-aif2'""")
     rows = cur.fetchall()
     print(f"Filas cnv_estados_v2 (fuente=cnv-aif2): {len(rows)}")
 
@@ -140,7 +157,8 @@ def build():
     # con v2 en ninguna clave (cuit, concepto, period_end).
     try:
         cur.execute("""SELECT ticker, cuit, concepto, period_end, tipo, valor,
-                              valor_comparativo, fecha_reexpresion, form, escala, accn, fuente
+                              valor_comparativo, fecha_reexpresion, form, escala, accn, fuente,
+                              ''
                        FROM cnv_estados_norm WHERE source_type='BYMA'""")
         rows_byma = cur.fetchall()
     except sqlite3.OperationalError:
@@ -156,7 +174,7 @@ def build():
     # mas abajo ya prefiere CUIT (v2) sobre BYMA cuando hay conflicto, asi que la
     # precedencia queda garantizada sin tocar esa logica.
     for r, origen in ([(x, "CUIT") for x in rows] + [(x, "BYMA") for x in rows_byma]):
-        ticker_orig, cik_orig, concepto, pe, tipo, valor, vc, frexp, form, escala, accn, fuente = r
+        ticker_orig, cik_orig, concepto, pe, tipo, valor, vc, frexp, form, escala, accn, fuente, tipo_balance = r
 
         # v2 y las filas BYMA ya vienen con CUIT real en la 2a columna; la rama
         # historica 'BYMA-{TICKER}' solo aplicaba a la v1.
@@ -192,9 +210,12 @@ def build():
         #   - el gate de consistencia de mas abajo empieza a discriminar de verdad
         #   - el `ORDER BY fecha_reexpresion DESC` de s4.get_valor pasa a ordenar algo
         frexp = pe if frexp in (None, "") else frexp
+        # tipo_balance va al FINAL para no desplazar los indices que usa el dedup
+        # (source_type sigue siendo g[12]).
         filas_norm.append((cuit, ticker_canon, concepto, pe, tipo, valor,
                            vc if vc is not None else None,
-                           frexp, form, escala, accn, fuente, source_type))
+                           frexp, form, escala, accn, fuente, source_type,
+                           tipo_balance or ""))
 
     print(f"\n  Viejas (BYMA-*): {old} -> {old - len(orphan_old)} mapeadas, {len(orphan_old)} huerfanas")
     print(f"  Nuevas (CUIT):   {new} -> {new - len(orphan_new)} mapeadas, {len(orphan_new)} huerfanas")
@@ -212,7 +233,9 @@ def build():
     # --- Dedup ---
     grupos = defaultdict(list)
     for f in filas_norm:
-        key = (f[0], f[2], f[3], f[7] or "")
+        # PARCHE 3: el perimetro entra en la clave -> individual y consolidado
+        # dejan de pisarse entre si.
+        key = (f[0], f[2], f[3], f[7] or "", f[13] or "")
         grupos[key].append(f)
 
     filas_dedup = []
@@ -279,10 +302,11 @@ def build():
             accn TEXT,
             fuente TEXT DEFAULT 'cnv-aif2',
             source_type TEXT,
-            PRIMARY KEY (cuit, concepto, period_end, fecha_reexpresion)
+            tipo_balance TEXT,
+            PRIMARY KEY (cuit, concepto, period_end, fecha_reexpresion, tipo_balance)
         )
     """)
-    cur.executemany("INSERT OR REPLACE INTO cnv_estados_norm VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)", filas_dedup)
+    cur.executemany("INSERT OR REPLACE INTO cnv_estados_norm VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)", filas_dedup)
     con.commit()
     n_filas = len(filas_dedup)
     print(f"\n  -> cnv_estados_norm: {n_filas} filas escritas")
