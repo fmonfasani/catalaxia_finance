@@ -532,75 +532,69 @@ destructivo.
 Lo encontró la validación de coherencia interna: **de 452 papeles del S&P 500, solo 45
 reproducían `PER = Precio / EPS`**. Los de BYMA sí (21/21).
 
+### El diagnóstico correcto, tras dos intentos fallidos
+
+**Primera hipótesis** — «el PER usa `eps_ttm` y la columna `EPS` publica el anual».
+Parcialmente cierta, pero al aplicarla quedaban **102 papeles con desvío del 2-20 %**,
+que se atribuyeron a «una foto de `eps_ttm` distinta, revisar en origen». Eso era falso.
+
+**El diagnóstico real**: el PER del S&P 500 **no se calcula con el precio**.
+
 ```
-AAPL   PER = 37.89   Precio = 316.22   EPS = 7.46
-       Precio / EPS  = 42.39   (no da)
-       Precio / 8.30 = 38.10   (da: 8.30 es el eps_ttm de `ratios`)
+per = market_cap / netincome_ttm      467 de 489 cuadran
+per = precio / eps_ttm                0 cuadran
 ```
 
-El PER del S&P 500 sale de `ratios.per`, calculado con **eps_ttm**, mientras la columna
-`EPS` publica **eps_anual**. Ninguno está mal; faltaba **decir cuál es cuál**. Tal como
-estaba, la API exponía un PER que su consumidor no podía verificar — y al no cuadrar, la
-conclusión razonable es «estos datos no son confiables».
+Los dos caminos deberían dar lo mismo, pero solo si el recuento de acciones coincide, y
+no coincide: `market_cap` de yfinance usa las acciones en circulación **de hoy**, y
+`eps_ttm` de EDGAR el **promedio ponderado diluido del período**.
 
-### La solución: la que ya usaba `screener_gold`
-
-`screener_gold` tiene dos familias completas con su fecha de corte declarada
-(`periodo_cierre` / `ttm_cierre`, `per` / `per_ttm`). Se adopta el mismo criterio de
-forma **aditiva** — ningún valor publicado cambia:
-
-| Columna | Qué dice |
-|---|---|
-| `eps_ttm` | El EPS que realmente alimenta el PER |
-| `ttm_cierre` | Hasta qué fecha llega ese TTM |
-| `per_base` | Qué EPS usó el PER **de esa fila** |
-
-`per_base` importa porque el criterio cambia por grupo, y sin él el próximo que mire
-tiene que investigarlo desde cero.
-
-### Los cuatro valores de `per_base`
-
-| Valor | Papeles | Significado |
-|---|---|---|
-| `ttm` | 471 | PER = Precio / `eps_ttm` |
-| `anual` | 29 | PER = Precio / `EPS` (BYMA) |
-| `adr_local` | 10 | **PER compuesto**: precio del ADR en USD, EPS local en ARS, ratio y tipo de cambio. No se reproduce con las columnas publicadas |
-| `ttm_no_verificable` | 10 | El `eps_ttm` de `ratios` no reproduce el PER |
-
-### Hallazgo colateral: `ratios.eps_ttm` tiene basura
-
-Diez casos donde el `eps_ttm` es imposible:
-
-| Ticker | PER publicado | Precio / eps_ttm | eps_ttm |
+| Ticker | Acciones (mcap/precio) | Acciones (ni_ttm/eps_ttm) | Dif |
 |---|---|---|---|
-| MCD | 22,64 | 0,00 | **12.162.578** |
-| ERIE | 22,68 | 0,00 | **224.780** |
-| WAT | 82,42 | **68.953** | 0,0055 |
-| KLAC | 64,19 | 6,49 | 35,36 |
+| AVGO | 4.758 M | 4.882 M | 2,6 % |
+| AMZN | 10.757 M | 10.874 M | 1,1 % |
+| AAPL | 14.687 M | 14.768 M | 0,5 % |
 
-Se pone `eps_ttm = NULL` y `per_base = 'ttm_no_verificable'`. Misma política que `s9`:
-antes NULL que un número que engaña. **Queda la lista para arreglarlo en origen.**
+Esa diferencia se traslada íntegra al PER. **Los 102 «desvíos» no existían**: eran la
+distancia entre dos fórmulas igualmente válidas, no un defecto.
 
-### Cobertura final
+`market_cap / net income` es además la más robusta: no depende de que dos fuentes
+coincidan en cuántas acciones hay.
 
-| | Papeles |
+### La solución: publicar los insumos reales
+
+Aditivo, ningún valor publicado cambia:
+
+| Columna | Qué es |
 |---|---|
-| PER publicados | 495 |
-| **Verificables y cuadran (±2 %)** | **367 (74,1 %)** |
-| Verificables con desvío | 102 — *82 en 2-5 %, 18 en 5-10 %, 2 en 10-20 %* |
-| No verificable · `adr_local` | 10 |
-| No verificable · `ttm_no_verificable` | 10 |
-| No verificable · sin insumos | 6 |
+| `netincome_ttm` | El **denominador real** del PER |
+| `market_cap_ttm` | El **numerador real** |
+| `eps_ttm` | Informativo — **no** es el denominador |
+| `ttm_cierre` | Hasta qué fecha llega el TTM |
+| `per_base` | Con qué fórmula se calculó el PER **de esa fila** |
 
-Los 102 con desvío **no son redondeo**: el PER de `ratios` se calculó con una foto de
-`eps_ttm` que no coincide exactamente con la almacenada. Es un desajuste real, pequeño,
-y hay que revisarlo en origen. Se declara la banda en vez de taparlo con una etiqueta
-cómoda.
+| `per_base` | Papeles | Fórmula |
+|---|---|---|
+| `mcap_ni_ttm` | 490 | `market_cap / netincome_ttm` |
+| `anual` | 21 | `Precio / EPS` (BYMA) |
+| `adr_local` | 9 | Compuesto: precio USD, EPS ARS, ratio y tipo de cambio |
+| `ttm_no_verificable` | 1 | Los insumos no reproducen el PER |
 
-### Pendiente
+### Cobertura
 
-- Los 10 `eps_ttm` corruptos, en origen (`ratios`).
-- Los 102 con desvío 2-20 %: entender por qué `ratios.per` y `Precio / eps_ttm`
-  divergen si el precio es idéntico en ambas tablas (verificado: 0 diferencias).
-- Los ADR necesitan su propio campo con el tipo de cambio y el ratio aplicados, igual
-  que `s9` hace con `valor_mep_dolarito`.
+| | Antes | Después |
+|---|---|---|
+| Verificables y cuadran | 367 (74,1 %) | **485 (98,0 %)** |
+| Con desvío inexplicado | 102 | **0** |
+| No verificables | 26 | 10 |
+
+El único `ttm_no_verificable` es **BMA**: `netincome_ttm` en pesos y `market_cap` en
+dólares. Es un ADR mal clasificado, no un error de fórmula.
+
+### La lección
+
+Dos diagnósticos plausibles fallaron antes del correcto, y el segundo llegó a etiquetar
+102 casos como «diferencia de redondeo». Un 5 % no es redondeo. Lo que destapó el error
+fue **negarse a aceptar la etiqueta cómoda** y medir el factor implícito
+`PER × eps_ttm / precio`: al no ser constante (0,89-1,11) quedó claro que no era un
+desfase temporal sino dos definiciones distintas.
