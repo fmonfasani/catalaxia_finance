@@ -598,3 +598,71 @@ Dos diagnósticos plausibles fallaron antes del correcto, y el segundo llegó a 
 fue **negarse a aceptar la etiqueta cómoda** y medir el factor implícito
 `PER × eps_ttm / precio`: al no ser constante (0,89-1,11) quedó claro que no era un
 desfase temporal sino dos definiciones distintas.
+
+---
+
+## 7.13 Refresco de precios: la foto no bastaba
+
+### El intento fallido
+
+`precios` guarda una foto por ticker y `s3_precios` no tiene modo refresco. Se creó
+`s3c_refrescar_precios.py` para derivarla del último cierre de `precios_diarios`.
+Funcionó: 500 tickers pasaron al 20-ago.
+
+**Y rompió la coherencia.** MSFT quedó así:
+
+| | Precio | PER | market_cap |
+|---|---|---|---|
+| `precios` (fresco) | **481,15** | — | 3,574 e12 |
+| `ratios` (viejo) | 384,36 | 22,80 | 2,855 e12 |
+| **`screener` (publicado)** | **481,15** | **22,80** | 2,855 e12 |
+
+Precio de hoy con PER de hace seis semanas. **Peor que el problema original**: antes
+estaba desactualizado pero coherente; después quedó incoherente y de forma invisible.
+
+La causa: `s7_unificar` toma `per`, `p_book`, `p_sales` y `market_cap` **ya calculados
+de `ratios`**. Refrescar `precios` no toca `ratios`, así que solo cambió la columna
+`Precio`. Los «3.100 ratios sin cambio» que parecían buena señal eran la prueba de que
+ninguno se recalculó.
+
+### El arreglo correcto: refrescar `ratios` en origen
+
+La etapa TRANSFORM de `run_all`, con sus dos jobs que van **siempre juntos**:
+
+1. `calcular_ratios_base` — recrea `ratios` desde `facts`. **Dropea la columna `per`.**
+2. `precios_y_valuacion` — baja precios de yfinance y recrea `per`, `p_book`,
+   `p_sales`, `ev_ebitda`, `earnings_yield`, `fcf_yield`, `div_yield`.
+
+Correr uno sin el otro deja `ratios` sin `per` y rompe `s6`/`s7`. El propio `run_all`
+lo advierte en mayúsculas.
+
+### Dos cosas que aparecieron al hacerlo
+
+**Ninguno de los dos respetaba `SCREENER_DB`** — habrían escrito en producción, igual
+que pasó con `s6`/`s7`/`s9`. Van **13 scripts** aislados; el patrón se repite cada vez
+que se toca una parte nueva del pipeline.
+
+**La columna `mcap_metodo` (de `s3c`) rompió un `INSERT` posicional**:
+`INSERT INTO precios VALUES (?,?,?,?,?,?,?,?)` falló con *«table precios has 9 columns
+but 8 values were supplied»*. Se arregló nombrando las columnas, que es lo correcto: un
+`INSERT` posicional se rompe en silencio en cuanto la tabla cambia. Y se aprovechó para
+marcar el origen del `market_cap`: `yfinance` (bajado) frente a `escalado` (estimado
+por `s3c`).
+
+### Resultado
+
+| | |
+|---|---|
+| Papeles con precio del 20-ago | **558 de 559** |
+| `PER = market_cap / netincome_ttm` | **464 cuadran, 0 no** |
+| Filas / grupos | 572 · 499 sp500 · 56 byma · 17 adr |
+| `\|ROA\| > \|ROE\|` · precios negativos · PER absurdos | 0 · 0 · 0 |
+
+MSFT: precio 481,15 y **PER 28,53** — antes 22,80. Coherentes.
+
+### La lección
+
+Derivar la foto de la serie era el diseño correcto, pero **incompleto**: los ratios del
+S&P 500 no se derivan de `precios`, vienen pre-calculados de `ratios`. Refrescar una
+capa sin refrescar la que depende de ella produce un estado peor que no refrescar nada,
+porque la incoherencia no se ve.

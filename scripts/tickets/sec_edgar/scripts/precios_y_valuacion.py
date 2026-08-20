@@ -22,7 +22,11 @@ from pathlib import Path
 import yfinance as yf
 
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'data').is_dir())
-DB = ROOT / "data" / "screener.db"
+import os as _os
+# SCREENER_DB permite apuntar a una copia de prueba sin tocar produccion.
+# Debe estar en TODOS los scripts que escriben en la base: si uno solo no lo
+# respeta, escribe en la real aunque el resto corra sobre la copia.
+DB = ROOT / "data" / _os.environ.get("SCREENER_DB", "screener.db")
 
 PRICE_COLS = ["precio","market_cap","fx_a_usd","per","p_book","p_sales","ev_ebitda",
               "earnings_yield","fcf_yield","div_yield","flag_valuacion"]
@@ -97,8 +101,16 @@ def main():
         divs_u = (payout * ni_u) if (payout is not None and ni_u is not None) else None
         div_yield = (divs_u / mcap) if (divs_u is not None and mcap) else None
 
-        con.execute("INSERT OR REPLACE INTO precios VALUES (?,?,?,?,?,?,?,?)",
-                    (cik, tk, precio, mcap, d.get("yhigh"), d.get("ylow"), d.get("cur"), fecha))
+        # Columnas nombradas, no posicionales: `precios` gano una columna
+        # (mcap_metodo, de s3c) y un INSERT posicional se rompe en silencio en
+        # cuanto la tabla cambia. Aca el mcap viene bajado de yfinance, no
+        # estimado, asi que se marca como tal.
+        con.execute("""INSERT OR REPLACE INTO precios
+                       (cik, ticker, precio, market_cap, year_high, year_low,
+                        currency, fecha, mcap_metodo)
+                       VALUES (?,?,?,?,?,?,?,?,'yfinance')""",
+                    (cik, tk, precio, mcap, d.get("yhigh"), d.get("ylow"),
+                     d.get("cur"), fecha))
         con.execute(f"""UPDATE ratios SET precio=?, market_cap=?, fx_a_usd=?, per=?, p_book=?, p_sales=?,
             ev_ebitda=?, earnings_yield=?, fcf_yield=?, div_yield=?, flag_valuacion=? WHERE cik=?""",
             (precio, mcap, fx, per, p_book, p_sales, ev_ebitda, earnings_yield, fcf_yield, div_yield, flag, cik))
