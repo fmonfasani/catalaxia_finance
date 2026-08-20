@@ -26,7 +26,10 @@ from pathlib import Path
 from collections import defaultdict
 
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / "data").is_dir())
-DB = ROOT / "data" / "screener.db"
+import os as _os
+# Permite apuntar a una copia de prueba sin tocar produccion:
+#   set SCREENER_DB=screener.db.test   (o export en bash)
+DB = ROOT / "data" / _os.environ.get("SCREENER_DB", "screener.db")
 DATOSCNV = ROOT / "scripts" / "tickets" / "cnv" / "datos"
 EMPRESAS56 = DATOSCNV / "empresas.csv"
 SUBSET = DATOSCNV / "empresas_subset.csv"
@@ -121,19 +124,42 @@ def build():
     by_ticker, by_cuit = leer_mapping()
     print(f"\nMapping: {len(by_ticker)} tickers, {len(by_cuit)} CUITs")
 
-    # --- Leer cnv_estados (fuente=cnv-aif2) ---
-    cur.execute("SELECT ticker, cik, concepto, period_end, tipo, valor, valor_comparativo, fecha_reexpresion, form, escala, accn, fuente FROM cnv_estados WHERE fuente='cnv-aif2'")
+    # --- Leer cnv_estados_v2 (fuente=cnv-aif2) ---
+    # PARCHE 1: la v2 trae las unidades ya normalizadas (unidad_factor resuelve las
+    # cinco variantes de texto: '$', 'Miles de $', 'MILES DE $', 'Millones de $',
+    # 'MILLONES DE $') y `valor` queda expresado en pesos. Verificado: la serie de
+    # TXAR/Assets es continua justo donde el factor salta de 1.000 a 1.000.000.
+    # Ojo: el `ticker` de v2 es la razon social, no el simbolo -> se resuelve por CUIT.
+    cur.execute("SELECT ticker, cuit, concepto, period_end, tipo, valor, valor_comparativo, fecha_reexpresion, form, unidad_factor, accn, fuente FROM cnv_estados_v2 WHERE fuente='cnv-aif2'")
     rows = cur.fetchall()
-    print(f"Filas cnv_estados (fuente=cnv-aif2): {len(rows)}")
+    print(f"Filas cnv_estados_v2 (fuente=cnv-aif2): {len(rows)}")
+
+    # PARCHE 1b: las filas source_type='BYMA' de la normalizacion anterior aportan
+    # la punta reciente de la serie. Verificado: en los 46 tickers presentes en ambas
+    # vias, BYMA es mas nuevo en los 46 (BOLT adelanta 3 trimestres). No colisionan
+    # con v2 en ninguna clave (cuit, concepto, period_end).
+    try:
+        cur.execute("""SELECT ticker, cuit, concepto, period_end, tipo, valor,
+                              valor_comparativo, fecha_reexpresion, form, escala, accn, fuente
+                       FROM cnv_estados_norm WHERE source_type='BYMA'""")
+        rows_byma = cur.fetchall()
+    except sqlite3.OperationalError:
+        rows_byma = []          # primera corrida: aun no existe la tabla
+    print(f"Filas BYMA (punta reciente): {len(rows_byma)}")
 
     old, new = 0, 0
     orphan_old = []
     orphan_new = []
     filas_norm = []
 
-    for r in rows:
+    # PARCHE 1c: se recorren las dos fuentes con su origen explicito. El dedup de
+    # mas abajo ya prefiere CUIT (v2) sobre BYMA cuando hay conflicto, asi que la
+    # precedencia queda garantizada sin tocar esa logica.
+    for r, origen in ([(x, "CUIT") for x in rows] + [(x, "BYMA") for x in rows_byma]):
         ticker_orig, cik_orig, concepto, pe, tipo, valor, vc, frexp, form, escala, accn, fuente = r
 
+        # v2 y las filas BYMA ya vienen con CUIT real en la 2a columna; la rama
+        # historica 'BYMA-{TICKER}' solo aplicaba a la v1.
         ticker_from_cik = extraer_ticker_de_cik(cik_orig)
 
         if ticker_from_cik:
@@ -156,7 +182,16 @@ def build():
                 continue
             ticker_canon = mapping_ticker
 
-        source_type = "BYMA" if ticker_from_cik else "CUIT"
+        source_type = origen
+        # PARCHE 2: vintage_reexpresion = period_end.
+        # No se extrae del documento: es la regla NIC 29 / RT 6 -- cada cifra viene
+        # expresada en moneda de poder adquisitivo de su propia fecha de cierre.
+        # Verificado: cada documento de v2 aporta un unico period_end (2.145 docs).
+        # Al poblarla se activa maquinaria que ya existe y estaba dormida:
+        #   - la PK de cnv_estados_norm (que incluye fecha_reexpresion) deja de colapsar
+        #   - el gate de consistencia de mas abajo empieza a discriminar de verdad
+        #   - el `ORDER BY fecha_reexpresion DESC` de s4.get_valor pasa a ordenar algo
+        frexp = pe if frexp in (None, "") else frexp
         filas_norm.append((cuit, ticker_canon, concepto, pe, tipo, valor,
                            vc if vc is not None else None,
                            frexp, form, escala, accn, fuente, source_type))
@@ -209,7 +244,7 @@ def build():
             else:
                 filas_dedup.append(group[0])
 
-    total_antes = len(rows)
+    total_antes = len(rows) + len(rows_byma)   # PARCHE 1: ahora son dos fuentes
     total_despues = len(filas_dedup)
     pct_div = round(100 * len(divergencias) / max(dup_check, 1), 1)
     print(f"\n  Dedup: {total_antes} -> {total_despues} filas ({total_antes - total_despues} eliminadas, {dup_check} grupos con duplicados)")
