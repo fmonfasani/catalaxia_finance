@@ -298,6 +298,28 @@ def build():
     n_mix = sum(1 for f in filas_dedup if f[14])
     print(f"\n  Perimetro mixto: {len(mixtos)} periodos (cuit+cierre), {n_mix} filas marcadas")
 
+    # --- Gate de identidad contable: A = P + PN ---
+    # Si un estado no cierra, sus ratios no son confiables. No se repara (habria que
+    # inventar un factor) : se MARCA, para que s2 pueda excluirlo y para que el
+    # defecto sea visible. Caso tipico detectado: LONG, cuya serie individual salta
+    # ~100x entre 2020-03 y 2020-06 con la misma unidad declarada ('$').
+    saldo = defaultdict(dict)
+    for f in filas_dedup:
+        if f[2] in ("Assets", "Liabilities", "Equity") and f[5] is not None:
+            saldo[(f[0], f[3], f[13] or "")][f[2]] = f[5]
+    malos = {}
+    for k, d in saldo.items():
+        if len(d) == 3 and d["Assets"]:
+            desv = abs((d["Liabilities"] + d["Equity"]) - d["Assets"]) / abs(d["Assets"]) * 100
+            if desv >= 5:
+                malos[k] = round(desv, 2)
+    filas_dedup = [tuple(f) + (malos.get((f[0], f[3], f[13] or "")),) for f in filas_dedup]
+    n_cuar = sum(1 for f in filas_dedup if f[15] is not None)
+    print(f"  Gate identidad (A=P+PN): {len(malos)} estados fuera de tolerancia (>=5%),"
+          f" {n_cuar} filas marcadas")
+    for k, v in sorted(malos.items(), key=lambda x: -x[1])[:5]:
+        print(f"     cuit={k[0]} {k[1]} {k[2] or '(sin perimetro)'} desvio={v}%")
+
     # --- Escribir cnv_estados_norm ---
     cur.execute("DROP TABLE IF EXISTS cnv_estados_norm")
     cur.execute("""
@@ -317,10 +339,11 @@ def build():
             source_type TEXT,
             tipo_balance TEXT,
             perimetro_mixto INTEGER DEFAULT 0,
+            identidad_desvio_pct REAL,
             PRIMARY KEY (cuit, concepto, period_end, fecha_reexpresion, tipo_balance)
         )
     """)
-    cur.executemany("INSERT OR REPLACE INTO cnv_estados_norm VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", filas_dedup)
+    cur.executemany("INSERT OR REPLACE INTO cnv_estados_norm VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", filas_dedup)
     con.commit()
     n_filas = len(filas_dedup)
     print(f"\n  -> cnv_estados_norm: {n_filas} filas escritas")

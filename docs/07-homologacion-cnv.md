@@ -255,3 +255,59 @@ Cosas que costaron tiempo y conviene dejar escritas:
 - **La regla de selección de perímetro todavía no está en `s2`.** Mientras no esté,
   `s2` elegirá arbitrariamente entre los dos valores que ahora existen — el mismo
   problema cambiado de sitio.
+
+---
+
+## 7.8 Cierre de los tres pendientes (2026-08-20)
+
+### Unidades desconocidas: 1.030 → 0
+
+Las «unidades desconocidas» eran **todas `$` a secas** — el valor más frecuente
+(1.030 de 2.350 documentos), que significa pesos sin escalar. Caían en el
+`return None` de `factor_unidad()`, aunque el llamador les asignaba factor 1 igual.
+
+**Ningún dato estaba mal.** Lo que estaba mal era el flag: 1.030 falsas alarmas
+tapando cualquier caso real. Si mañana aparece un `Miles de U$S`, con el flag así no
+se veía.
+
+Reparto verificado tras el arreglo: factor 1 → 1.030 · factor 1.000 → 962 ·
+factor 1.000.000 → 358. **Desconocidas: 0.**
+
+### Regla de perímetro en `s2`
+
+Implementada en `perimetro_preferido()`: por cada `(cuit, period_end)` se elige un
+perímetro —el que contenga `Revenue`; a igualdad, el más completo— y se usan solo sus
+conceptos. `get_valor_historico()` lo resuelve **por período**, de modo que una serie
+puede cambiar de perímetro a lo largo del tiempo (aceptable) pero nunca mezclarlos
+dentro del mismo período (inaceptable).
+
+Resultado sobre los 72 tickers: **330 valores idénticos, 38 cambian, 27 aparecen**
+(por las filas recuperadas en `job5_v2`), 1 desaparece. 17 tickers afectados, ninguno
+perdido ni ganado.
+
+**Validación independiente** contra `CNV_roe` —el ROE que la propia empresa declara
+ante la CNV—: de los 6 ROE que cambiaron, **5 quedaron más cerca del auto-reporte** y
+1 más lejos. El caso más claro es CVH, que pasa de +0,0142 a **-0,0127** cuando la
+empresa declara **-0,01**: el signo estaba invertido.
+
+### Gate de identidad contable (A = P + PN)
+
+Implementado en `s0`: se calcula el desvío por `(cuit, period_end, tipo_balance)` y se
+marca en la columna `identidad_desvio_pct` todo lo que supere el 5 %.
+
+**10 estados fuera de tolerancia, 353 filas marcadas.** Los peores:
+
+| CUIT | Período | Perímetro | Desvío |
+|---|---|---|---|
+| 30704962807 | 2021-12-31 | INDIVIDUAL | 50,4 % |
+| 30500833781 (LONG) | 2020-09-30 | INDIVIDUAL | 36,5 % |
+| 30617442937 | 2024-03-31 | INDIVIDUAL | 35,8 % |
+| 30708544082 (HAVA) | 2025-09-30 | CONSOLIDADO | 33,8 % |
+
+**LONG concentra 6 de los 10.** Su serie individual salta ~100× entre 2020-03
+(Assets 2,2e+07) y 2020-06 (2,1e+09) **con la misma unidad declarada (`$`)**, y los
+fallos de identidad caen exactamente en esa transición. No se repara: hacerlo exigiría
+inventar un factor de escala. Se marca y `s2` puede excluirlo.
+
+Antes y después de esa ventana la identidad cierra al 0,0 %, así que el problema está
+acotado a 2019-12 / 2020-12.
