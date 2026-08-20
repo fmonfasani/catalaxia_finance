@@ -92,7 +92,11 @@ def factor_unidad(html):
     """
     m = re.search(r'UnidadMedida[^>]*>\s*([^<]+)', html)
     u = (m.group(1) if m else "").strip().lower()
-    if not u or "pesos" in u or "unidad" in u:
+    # '$' a secas es el valor mas frecuente (1.030 de 2.350 documentos) y significa
+    # pesos sin escalar. Antes caia en el return None y se contaba como "unidad
+    # desconocida", aunque el llamador le asignaba 1 igual: el dato salia bien pero
+    # el flag quedaba inservible, con 1.030 falsas alarmas tapando cualquier caso real.
+    if not u or u in ("$", "$.") or "pesos" in u or "unidad" in u:
         return 1
     if "millon" in u:
         return 1_000_000
