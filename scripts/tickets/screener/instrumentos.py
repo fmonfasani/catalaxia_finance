@@ -23,7 +23,11 @@ import sqlite3, csv, json
 from pathlib import Path
 
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / "data").is_dir())
-DB = ROOT / "data" / "screener.db"
+import os as _os
+# SCREENER_DB permite apuntar a una copia de prueba sin tocar produccion.
+# Debe estar en TODOS los scripts que escriben en la base: si uno solo no lo
+# respeta, escribe en la real aunque el resto corra sobre la copia.
+DB = ROOT / "data" / _os.environ.get("SCREENER_DB", "screener.db")
 OUT_CSV = ROOT / "data" / "instrumentos.csv"
 OUT_JSON = ROOT / "data" / "instrumentos.json"
 

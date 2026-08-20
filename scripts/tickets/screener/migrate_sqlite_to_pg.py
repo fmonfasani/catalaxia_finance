@@ -13,8 +13,11 @@ import os, sys, sqlite3
 from pathlib import Path
 
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / "data").is_dir())
-DB = ROOT / "data" / "screener.db"
-
+import os as _os
+# SCREENER_DB permite apuntar a una copia de prueba sin tocar produccion.
+# Debe estar en TODOS los scripts que escriben en la base: si uno solo no lo
+# respeta, escribe en la real aunque el resto corra sobre la copia.
+DB = ROOT / "data" / _os.environ.get("SCREENER_DB", "screener.db")
 try:
     import psycopg2
     import psycopg2.extras

@@ -1,10 +1,11 @@
 """Extract latest EEFF from CNV AIF2 for only-byma tickers and load to cnv_estados"""
 import csv, re, sqlite3, time, html as ihtml
+import os as _os
 from pathlib import Path
 import requests
 
 BASE = Path(r'D:\Software Development\Porfolio\catalaxia-cedears-prod')
-DB = BASE / 'data' / 'screener.db'
+DB = BASE / "data" / _os.environ.get("SCREENER_DB", "screener.db")
 H = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120",
      "Accept-Language": "es-AR"}
 

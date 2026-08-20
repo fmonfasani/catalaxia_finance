@@ -27,7 +27,9 @@ DELAY = 0.12
 
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'data').is_dir())
 DATA = ROOT / "data"
-DB = DATA / "screener.db"
+import os as _os
+# SCREENER_DB: apunta a una copia de prueba sin tocar produccion.
+DB = DATA / _os.environ.get("SCREENER_DB", "screener.db")
 CAT = DATA / "catalogo"
 RAW_SUBS = DATA / "raw" / "submissions"
 
