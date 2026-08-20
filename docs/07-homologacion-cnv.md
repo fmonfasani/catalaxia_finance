@@ -463,3 +463,64 @@ Durante la sesión se usó «producción» para dos cosas distintas:
 La API sigue sirviendo el esquema anterior (con `ccl`, `precio_fuente`,
 `precio_dif_iamc`; sin los campos MEP). Verificado el 2026-08-20: HTTP 200, 572
 empresas, 45 campos.
+
+---
+
+## 7.11 Serie diaria de precios (`s3b_precios_historicos.py`)
+
+`s3_precios` guarda **una foto por ticker** y solo baja los que **aún no están**
+(`NOT EXISTS`): no tiene modo refresco. Para actualizar hay que vaciar la tabla, y eso
+es destructivo — al hacerlo se borran también los 499 precios del S&P 500, que `s3` no
+repone porque su universo es solo el subset CNV (`mapa_entidades WHERE es_primario=1`).
+
+`s3b` resuelve el problema de raíz: guarda **los hechos** (la serie diaria) en vez de la
+foto, y la foto pasa a ser derivable. Es la misma idea del vintage: conservar el dato
+crudo y derivar lo demás.
+
+### La tabla
+
+```sql
+CREATE TABLE precios_diarios (
+    ticker TEXT, fecha TEXT,          -- una fila por (ticker, rueda)
+    open, high, low, close, adj_close, volume,
+    currency,                          -- ARS o USD, separadas
+    ticker_yf,                         -- que simbolo se consulto
+    fuente, ingested_at,               -- trazabilidad
+    PRIMARY KEY (ticker, fecha)
+);
+```
+
+### Resultado de la primera carga (9-jul → 20-ago 2026)
+
+| Grupo | Ruedas | Tickers |
+|---|---|---|
+| sp500 | 14.624 | **499 / 499** |
+| byma_only | 1.557 | 53 / 56 |
+| adr | 457 | 16 / 17 |
+| **Total** | **16.638** | **568 / 572** |
+
+Sin serie: `BOLT_2`, `DGCE`, `PATA_2`, `YPFLUZ` — sin símbolo válido en yfinance o sin
+operar.
+
+**Integridad**: 0 duplicados · 0 `high < low` · 0 `close` fuera de `[low, high]` ·
+0 volumen negativo · 4 `close` nulos (ruedas sin operaciones). Densidad consistente,
+~560 papeles por rueda, sin huecos.
+
+### Incremental de verdad
+
+Cada ticker arranca desde el día siguiente al último que ya tiene. Verificado: la
+segunda corrida bajó **0 ruedas**. No hace falta vaciar nada.
+
+### Qué habilita
+
+- **Precio en USD día a día**, con el MEP de *ese* día. Hoy los 56 locales usan un
+  único MEP para todos.
+- **PER histórico** de cualquier fecha: precio de ese día ÷ EPS del período vigente.
+- **Backtests sin sesgo de anticipación** — la pieza que faltaba del modelo bitemporal.
+
+### Pendiente
+
+`s4` sigue leyendo de `precios` (la foto), así que **el S&P 500 del screener sigue con
+el precio del 9 de julio** pese a tener serie hasta hoy. Derivar `precios` del último
+cierre de `precios_diarios` cierra el círculo y elimina de paso el problema del refresco
+destructivo.
