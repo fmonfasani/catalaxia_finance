@@ -198,3 +198,24 @@ descargar nada.
 **Análisis histórico** — como `financials_raw` guarda todo el historial, se
 puede calcular el PER de cualquier ticker en cualquier fecha pasada con un Job
 3 futuro, sin descargar nada nuevo.
+
+---
+
+## Job 5 v2 y Job 8 — cadena CNV
+
+Documentados aparte en [`07-homologacion-cnv.md`](07-homologacion-cnv.md).
+
+Lo mínimo que hay que saber para correrlos:
+
+- **`job5_v2_extract_eeff.py` necesita `--codigos`.** La whitelist por defecto
+  (`whitelist_eeff.csv`) solo cubre 630 de los 2.145 documentos reales; la correcta es
+  `whitelist_eeff_codigos.csv`, que cubre 2.144.
+- **`--max` es tope de peticiones de red, no de documentos.** `--max 0` corta en la
+  primera iteración aunque todo esté en caché.
+- **`--offline`** re-procesa solo los HTML ya guardados, sin tocar la red. Es lo que
+  hace falta cada vez que cambia el parser o la clave primaria.
+- **`SCREENER_DB`** (variable de entorno) permite apuntar a una copia de prueba:
+  `SCREENER_DB=screener.db.test python ...`
+- **`job8_doc_meta.py`** extrae de los HTML los campos que la CNV declara de forma
+  estructurada (`TipoBalance`, `FechaCierre`, `Moneda`, `NormasContablesAplicadas`) a
+  la tabla `cnv_doc_meta`. Offline. Debe correr **antes** de `s0`, que lo consume.

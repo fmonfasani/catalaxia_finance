@@ -100,3 +100,37 @@ cambiaría la arquitectura completa de Backend A y B.
 1. Schema de BD completo, con tipos, nullables y constraints (ver `migrations/001_initial_schema.sql`).
 2. Formato de `GET /api/jobs/{job_id}/status` — `processed`/`total` como números, no porcentaje (ver `docs/04-contrato-api.md`).
 3. Comportamiento ante fallo parcial de un job: **no se reinicia desde cero**, los tickers ya procesados quedan, solo se reintentan los fallidos en `job_errores`.
+
+---
+
+## Perímetro contable — por qué no vale «consolidado siempre»
+
+Ver [`07-homologacion-cnv.md`](07-homologacion-cnv.md) §7.3 para las cifras.
+
+Las empresas argentinas presentan ante la CNV estados **individuales** y
+**consolidados**, y ambos alimentan el screener. Se probaron tres reglas de selección:
+
+1. **«Consolidado siempre»** — medido: destruye el 73 % de los conceptos en los casos
+   mixtos (conserva 3.431 de 12.627).
+2. **«El más completo»** — parece razonable y es peor: en una holding elige el
+   individual (más conceptos) que es justo el perímetro sin operaciones. El
+   `MargenNeto` resultante divide el resultado de la holding entre las ventas del
+   grupo.
+3. **La adoptada: preferir el perímetro que contenga `Revenue`**, porque es el que
+   refleja la actividad económica real, y **agotar ese documento** en vez de
+   completarlo con el otro.
+
+La lección operativa: la regla 2 solo se descartó porque se midió antes de aplicarla.
+Los *dry runs* sobre una copia (`SCREENER_DB=screener.db.test`) son baratos y evitan
+migrar un error con cara de mejora.
+
+## Vintage de reexpresión — se deriva, no se extrae
+
+Bajo NIC 29 / RT 6 los estados se expresan en moneda de cierre del período presentado.
+Verificado: cada documento aporta un único `period_end`. Por lo tanto
+`vintage_reexpresion = period_end`, sin necesidad de leerlo del documento (donde, de
+hecho, no está: de 400 HTML muestreados, 1 menciona «reexpresión» y es prosa).
+
+Consecuencia: **una serie en pesos mezcla tantos vintages como períodos tenga** —
+hasta 34 en un solo ticker. Para comparar hay que reexpresar a un vintage común con el
+IPC (`job_vintage_homogenea.py`, 99,78 % de cobertura).
