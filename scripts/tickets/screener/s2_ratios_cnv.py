@@ -17,37 +17,111 @@ from pathlib import Path
 from collections import defaultdict
 
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / "data").is_dir())
-DB = ROOT / "data" / "screener.db"
+import os as _os
+DB = ROOT / "data" / _os.environ.get("SCREENER_DB", "screener.db")
+
+
+# ---------------------------------------------------------------------------
+# REGLA DE PERIMETRO CONTABLE
+# ---------------------------------------------------------------------------
+# Una empresa presenta ante la CNV estados INDIVIDUAL y CONSOLIDADO, y ambos
+# alimentan cnv_estados_norm. Combinar conceptos de los dos en un mismo ratio
+# produce numeros sin significado: en una holding, dividir el NetIncome
+# individual (resultado por participacion) entre el Revenue consolidado (ventas
+# del grupo) no es un margen.
+#
+# La regla: por cada (cuit, period_end) se elige UN perimetro y se usan SOLO sus
+# conceptos. Se prefiere el que contenga `Revenue`, porque es el que refleja la
+# actividad economica real -- en holdings eso da consolidado, que es el correcto.
+# Los conceptos que falten quedan sin dato; NO se rellenan con el otro perimetro.
+#
+# Se descartaron dos reglas antes de esta, y las dos parecian razonables:
+#   - "consolidado siempre": destruye el 73% de los conceptos en casos mixtos.
+#   - "el mas completo":     en una holding elige el individual, que es justo el
+#                            perimetro sin operaciones.
+# Ver docs/07-homologacion-cnv.md seccion 7.3.
+_PERIM_CACHE = {}
+
+
+def perimetro_preferido(cur, cuit, period_end):
+    """Perimetro a usar para ese cuit+periodo. None si ninguno esta declarado."""
+    k = (cuit, period_end)
+    if k in _PERIM_CACHE:
+        return _PERIM_CACHE[k]
+    cur.execute("""
+        SELECT tipo_balance,
+               SUM(CASE WHEN concepto='Revenue' AND valor IS NOT NULL THEN 1 ELSE 0 END) tiene_rev,
+               COUNT(DISTINCT concepto) n
+        FROM cnv_estados_norm
+        WHERE cuit=? AND period_end=? AND tipo_balance!=''
+        GROUP BY tipo_balance
+    """, (cuit, period_end))
+    filas = cur.fetchall()
+    if not filas:
+        elegido = None
+    elif len(filas) == 1:
+        elegido = filas[0][0]
+    else:
+        # 1o el que tenga Revenue; a igualdad, el mas completo
+        filas.sort(key=lambda f: (f[1], f[2]), reverse=True)
+        elegido = filas[0][0]
+    _PERIM_CACHE[k] = elegido
+    return elegido
+
+
+def _filtro_perim(cur, cuit, period_end):
+    """Devuelve (sql_extra, params) para restringir al perimetro elegido."""
+    p = perimetro_preferido(cur, cuit, period_end)
+    return (" AND tipo_balance=? ", [p]) if p else ("", [])
 
 
 def get_valor_por_cuit(cur, cuit, concepto, period_end=None):
-    """Obtener el valor mas reciente de un concepto para un CUIT."""
+    """Obtener el valor mas reciente de un concepto para un CUIT.
+
+    Restringido al perimetro elegido para ese periodo (ver perimetro_preferido).
+    """
     if period_end:
+        extra, pars = _filtro_perim(cur, cuit, period_end)
         cur.execute("""
             SELECT valor FROM cnv_estados_norm
-            WHERE cuit=? AND concepto=? AND period_end=?
+            WHERE cuit=? AND concepto=? AND period_end=?""" + extra + """
             ORDER BY fecha_reexpresion DESC
             LIMIT 1
-        """, (cuit, concepto, period_end))
+        """, [cuit, concepto, period_end] + pars)
     else:
+        # sin periodo fijo: se resuelve el mas reciente y se aplica su perimetro
         cur.execute("""
-            SELECT valor FROM cnv_estados_norm
-            WHERE cuit=? AND concepto=?
-            ORDER BY period_end DESC, fecha_reexpresion DESC
-            LIMIT 1
+            SELECT period_end FROM cnv_estados_norm
+            WHERE cuit=? AND concepto=? AND valor IS NOT NULL
+            ORDER BY period_end DESC LIMIT 1
         """, (cuit, concepto))
+        r = cur.fetchone()
+        if not r:
+            return None
+        return get_valor_por_cuit(cur, cuit, concepto, r[0])
     r = cur.fetchone()
     return r[0] if r else None
 
 
 def get_valor_historico(cur, cuit, concepto, years=5):
-    """Obtener valores historicos ordenados por period_end descendente."""
+    """Valores historicos por period_end descendente, coherentes por perimetro.
+
+    El perimetro se resuelve por periodo: una serie puede cambiar de perimetro a
+    lo largo del tiempo, y eso es aceptable mientras cada punto sea coherente
+    consigo mismo. Lo inaceptable es mezclarlos dentro del mismo periodo.
+    """
     cur.execute("""
-        SELECT period_end, valor FROM cnv_estados_norm
+        SELECT DISTINCT period_end FROM cnv_estados_norm
         WHERE cuit=? AND concepto=? AND valor IS NOT NULL
         ORDER BY period_end DESC
     """, (cuit, concepto))
-    return cur.fetchall()
+    periodos = [r[0] for r in cur.fetchall()]
+    out = []
+    for pe in periodos:
+        v = get_valor_por_cuit(cur, cuit, concepto, pe)
+        if v is not None:
+            out.append((pe, v))
+    return out
 
 
 def cargar_ipc():
