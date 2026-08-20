@@ -21,58 +21,13 @@ import os as _os
 DB = ROOT / "data" / _os.environ.get("SCREENER_DB", "screener.db")
 
 
-# ---------------------------------------------------------------------------
-# REGLA DE PERIMETRO CONTABLE
-# ---------------------------------------------------------------------------
-# Una empresa presenta ante la CNV estados INDIVIDUAL y CONSOLIDADO, y ambos
-# alimentan cnv_estados_norm. Combinar conceptos de los dos en un mismo ratio
-# produce numeros sin significado: en una holding, dividir el NetIncome
-# individual (resultado por participacion) entre el Revenue consolidado (ventas
-# del grupo) no es un margen.
-#
-# La regla: por cada (cuit, period_end) se elige UN perimetro y se usan SOLO sus
-# conceptos. Se prefiere el que contenga `Revenue`, porque es el que refleja la
-# actividad economica real -- en holdings eso da consolidado, que es el correcto.
-# Los conceptos que falten quedan sin dato; NO se rellenan con el otro perimetro.
-#
-# Se descartaron dos reglas antes de esta, y las dos parecian razonables:
-#   - "consolidado siempre": destruye el 73% de los conceptos en casos mixtos.
-#   - "el mas completo":     en una holding elige el individual, que es justo el
-#                            perimetro sin operaciones.
-# Ver docs/07-homologacion-cnv.md seccion 7.3.
-_PERIM_CACHE = {}
-
-
-def perimetro_preferido(cur, cuit, period_end):
-    """Perimetro a usar para ese cuit+periodo. None si ninguno esta declarado."""
-    k = (cuit, period_end)
-    if k in _PERIM_CACHE:
-        return _PERIM_CACHE[k]
-    cur.execute("""
-        SELECT tipo_balance,
-               SUM(CASE WHEN concepto='Revenue' AND valor IS NOT NULL THEN 1 ELSE 0 END) tiene_rev,
-               COUNT(DISTINCT concepto) n
-        FROM cnv_estados_norm
-        WHERE cuit=? AND period_end=? AND tipo_balance!=''
-        GROUP BY tipo_balance
-    """, (cuit, period_end))
-    filas = cur.fetchall()
-    if not filas:
-        elegido = None
-    elif len(filas) == 1:
-        elegido = filas[0][0]
-    else:
-        # 1o el que tenga Revenue; a igualdad, el mas completo
-        filas.sort(key=lambda f: (f[1], f[2]), reverse=True)
-        elegido = filas[0][0]
-    _PERIM_CACHE[k] = elegido
-    return elegido
+# Regla de perimetro contable: vive en _perimetro.py para que s2, s4 y s8
+# apliquen exactamente el mismo criterio. Ver docs/07-homologacion-cnv.md 7.3.
+from _perimetro import perimetro_preferido, filtro_sql as _filtro_perim_sql
 
 
 def _filtro_perim(cur, cuit, period_end):
-    """Devuelve (sql_extra, params) para restringir al perimetro elegido."""
-    p = perimetro_preferido(cur, cuit, period_end)
-    return (" AND tipo_balance=? ", [p]) if p else ("", [])
+    return _filtro_perim_sql(cur, cuit, period_end)
 
 
 def get_valor_por_cuit(cur, cuit, concepto, period_end=None):

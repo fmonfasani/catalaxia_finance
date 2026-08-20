@@ -140,7 +140,8 @@ CREATE TABLE IF NOT EXISTS cnv_estados_v2 (
     fuente             TEXT DEFAULT 'cnv-aif2',
     moneda             TEXT,
     unidad_medida      TEXT,
-    PRIMARY KEY (cuit, concepto, period_end, fecha_reexpresion)
+    tipo_balance       TEXT DEFAULT '',
+    PRIMARY KEY (cuit, concepto, period_end, fecha_reexpresion, tipo_balance)
 );
 
 -- ── cnv_estados_norm ─────────────────────────────────────────────────
@@ -158,7 +159,12 @@ CREATE TABLE IF NOT EXISTS cnv_estados_norm (
     accn               TEXT,
     fuente             TEXT DEFAULT 'cnv-aif2',
     source_type        TEXT,
-    PRIMARY KEY (cuit, concepto, period_end, fecha_reexpresion)
+    -- Perimetro contable: sin el en la PK, individual y consolidado colisionan.
+    -- Ver docs/07-homologacion-cnv.md
+    tipo_balance         TEXT DEFAULT '',
+    perimetro_mixto      INTEGER DEFAULT 0,
+    identidad_desvio_pct DOUBLE PRECISION,
+    PRIMARY KEY (cuit, concepto, period_end, fecha_reexpresion, tipo_balance)
 );
 
 -- ── cnv_estados_suspect ──────────────────────────────────────────────
@@ -354,3 +360,15 @@ CREATE TABLE IF NOT EXISTS descargas_log (
 );
 
 COMMIT;
+
+
+-- Metadatos declarados por la CNV en cada documento (salida de job8_doc_meta.py).
+-- TipoBalance tiene cobertura del 100%. Ver docs/07-homologacion-cnv.md
+CREATE TABLE IF NOT EXISTS cnv_doc_meta (
+    accn         TEXT PRIMARY KEY,
+    tipo_balance TEXT,
+    fecha_cierre TEXT,
+    moneda_cod   TEXT,
+    norma        TEXT,
+    parsed_at    TEXT
+);

@@ -20,7 +20,10 @@ from pathlib import Path
 from collections import defaultdict
 
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / "data").is_dir())
-DB = ROOT / "data" / "screener.db"
+import os as _os
+from _perimetro import perimetro_preferido
+from _precondiciones import requiere_columnas, requiere_filas
+DB = ROOT / "data" / _os.environ.get("SCREENER_DB", "screener.db")
 
 
 def ensure_columns(cur):
@@ -72,12 +75,29 @@ def load_valor_ar(cur, cuit, concepto):
     v2 = cur.fetchone()
 
     # Get latest 2 from norm (for sanity check)
+    # Regla de perimetro: se toman los 2 periodos mas recientes y de cada uno el
+    # valor del perimetro elegido. Ver _perimetro.py y docs/07-homologacion-cnv.md.
     cur.execute("""
-        SELECT period_end, valor FROM cnv_estados_norm
+        SELECT DISTINCT period_end FROM cnv_estados_norm
         WHERE cuit=? AND concepto=?
         ORDER BY period_end DESC LIMIT 2
     """, (cuit, concepto))
-    normas = cur.fetchall()
+    normas = []
+    for (_pe,) in cur.fetchall():
+        _p = perimetro_preferido(cur, cuit, _pe)
+        if _p:
+            cur.execute("""SELECT valor FROM cnv_estados_norm
+                           WHERE cuit=? AND concepto=? AND period_end=? AND tipo_balance=?
+                           ORDER BY fecha_reexpresion DESC LIMIT 1""",
+                        (cuit, concepto, _pe, _p))
+        else:
+            cur.execute("""SELECT valor FROM cnv_estados_norm
+                           WHERE cuit=? AND concepto=? AND period_end=?
+                           ORDER BY fecha_reexpresion DESC LIMIT 1""",
+                        (cuit, concepto, _pe))
+        _r = cur.fetchone()
+        if _r:
+            normas.append((_pe, _r[0]))
 
     use_norm = False
     if len(normas) >= 1:
@@ -342,6 +362,13 @@ def build():
 
     print("FASE 2 — Calidad de ratios (payout_status, EV/EBITDA, margen_operativo)")
     print("=" * 60)
+
+    # s8 lee columnas que crea s6 (fuente_fund, sector, es_financiera) y trabaja
+    # sobre el universo completo que arma s7. Sin esto el fallo es un IndexError
+    # cripitico al leer row["fuente_fund"].
+    requiere_columnas(cur, "screener",
+                      ["fuente_fund", "sector", "es_financiera"], "s6_ajustes")
+    requiere_filas(cur, "screener", 100, "s7_unificar")
 
     ensure_columns(cur)
 

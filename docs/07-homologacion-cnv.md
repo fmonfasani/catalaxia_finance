@@ -311,3 +311,90 @@ inventar un factor de escala. Se marca y `s2` puede excluirlo.
 
 Antes y después de esa ventana la identidad cierra al 0,0 %, así que el problema está
 acotado a 2019-12 / 2020-12.
+
+---
+
+## 7.9 Validación end-to-end del pipeline (2026-08-20)
+
+### Aislamiento: `SCREENER_DB` en los 11 scripts
+
+Al validar se descubrió por accidente —escribiendo sin querer en producción— que
+`SCREENER_DB` estaba solo en los scripts que se habían ido tocando. **`s3`, `s5`,
+`s6`, `s7` y `s9` apuntaban siempre a `data/screener.db`.**
+
+Correr el pipeline con la variable puesta ejecutaba una parte sobre la copia y otra
+sobre la base real. La lección quedó escrita en el comentario de cada script:
+
+> Debe estar en TODOS los scripts del pipeline: si uno solo no lo respeta, escribe en
+> la base real aunque el resto corra sobre la copia.
+
+Hoy los 11 la respetan: `s0` `s2` `s3` `s4` `s5` `s6` `s7` `s8` `s9` +
+`job5_v2_extract_eeff` y `job8_doc_meta`.
+
+### Precondiciones entre etapas
+
+El pipeline **ya era idempotente** (`s0`, `s2`, `s4` hacen DROP+CREATE; `s6`-`s9`
+usan `ALTER TABLE ADD COLUMN` + `UPDATE`). Lo que no tenía era **precondiciones
+verificadas**: `s8` lee `fuente_fund`, que crea `s6`, y no lo comprobaba. Si faltaba,
+el error era `IndexError: No item with that key` — que no dice qué falta ni qué hacer.
+
+`_precondiciones.py` lo convierte en una instrucción:
+
+```
+ERROR: a `screener` le faltan columnas: fuente_fund, sector, es_financiera
+Las crea s6_ajustes. Corré esa etapa primero.
+```
+
+**No se buscó independencia de orden**, y sería un error hacerlo: el orden es
+información sobre cómo se construyen los datos. Lo que estaba mal era que fuese
+implícito.
+
+### Resultado de la corrida completa sobre la copia
+
+Estructura **idéntica** a producción: 572 filas, 44 columnas, mismos tres grupos
+(499 sp500 · 56 byma_only · 17 adr). Ninguna columna de más ni de menos.
+
+| | Cantidad |
+|---|---|
+| Ratios idénticos | **4.694 (98 %)** |
+| Cambian de valor | 49 |
+| Aparecen (antes `null`) | 2 |
+| Desaparecen | 48 |
+| Papeles afectados | 58 de 572 |
+
+**Los 49 cambios de valor son correcciones de la mezcla de perímetros.** Los mayores:
+
+| Ticker | Ratio | Antes | Después |
+|---|---|---|---|
+| CVH | EPS | +157,06 | **−206,93** (de ganancia a pérdida) |
+| CTIO | ROE | −0,0014 | −0,0100 (7×) |
+| CTIO | PriceBook | 0,99 | 7,16 |
+| MIRG | MargenNeto | 4,31 % | 0,46 % |
+
+Validados contra `CNV_roe` (auto-reporte de la empresa): **5 de 6 quedaron más cerca**.
+
+### Los 48 que «desaparecen» no son una pérdida
+
+**46 de los 48 son del S&P 500**, que no pasa por CNV. La causa es otra: en la corrida
+accidental sobre producción **`s8_calidad` falló** mientras `s6`, `s7` y `s9`
+completaron. Producción quedó **sin la fase de calidad aplicada**:
+
+| | `payout_status` con valor |
+|---|---|
+| Producción | **73 / 572** |
+| Rama | **572 / 572** |
+
+`s8.apply_no_significativo()` anula ratios sin significado — un ROE o un P/B con
+patrimonio negativo es una división sin sentido. Los afectados lo confirman: AZO
+(−3.539 M), BA (−3.908 M), CAH (−3.213 M), DELL (−1.482 M). `flag_no_significativo`
+sube de 70 a 78: ocho papeles más correctamente marcados.
+
+Los 2 restantes sí son la regla de perímetro: `CVH` y `SUPV` pierden el PER porque su
+`EPS_diluido` solo existe en un perímetro distinto del elegido. **Queda sin dato en
+vez de mezclarse**, que es exactamente lo buscado.
+
+### Pendiente en producción
+
+Producción está hoy **sin la fase de calidad**: publica ROE y P/B de empresas con
+patrimonio negativo. Conviene correr `s8_calidad` allí, independientemente de lo que
+se decida con esta rama.
