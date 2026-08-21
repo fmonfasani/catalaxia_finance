@@ -17,6 +17,11 @@ Uso:  python s8_calidad.py
 from __future__ import annotations
 import sqlite3
 from pathlib import Path
+
+import sys as _sys_foco
+_sys_foco.path.insert(0, __import__('os').path.dirname(__import__('os').path.abspath(__file__)))
+from _foco import Foco  # noqa: E402
+_FOCO = Foco()
 from collections import defaultdict
 
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / "data").is_dir())
@@ -210,7 +215,9 @@ def compute_margen_operativo_cnv(oi, rev):
 def apply_no_significativo(cur):
     """Post-pass que aplica flag_no_significativo sobre TODAS las filas del screener.
     Corre después de s7 (donde se insertan las S&P), porque s4/s6 no cubren las S&P."""
-    cur.execute("SELECT cuit, ticker, grupo FROM screener ORDER BY grupo, ticker")
+    _FOCO.anuncia()
+    cur.execute("SELECT cuit, ticker, grupo FROM screener WHERE 1=1"
+                + _FOCO.sql("ticker") + " ORDER BY grupo, ticker", _FOCO.params())
     rows = cur.fetchall()
     updated = 0
     for r in rows:
@@ -393,7 +400,10 @@ def build():
 
     # Process each company
     stats = defaultdict(int)
-    cur.execute("SELECT * FROM screener ORDER BY grupo, ticker")
+    # el segundo bucle (payout/ev_ebitda/margen) tambien respeta el foco:
+    # sin esto, --ticker filtraba el primer bucle y recalculaba todo en el segundo.
+    cur.execute("SELECT * FROM screener WHERE 1=1" + _FOCO.sql("ticker")
+                + " ORDER BY grupo, ticker", _FOCO.params())
     rows = cur.fetchall()
     n = len(rows)
 

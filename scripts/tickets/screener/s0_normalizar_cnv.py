@@ -23,6 +23,11 @@ Idempotente: DROP/RECREATE sus tablas de salida.
 from __future__ import annotations
 import csv, sqlite3, re, sys
 from pathlib import Path
+
+import sys as _sys_foco
+_sys_foco.path.insert(0, __import__('os').path.dirname(__import__('os').path.abspath(__file__)))
+from _foco import Foco  # noqa: E402
+_FOCO = Foco()
 from collections import defaultdict
 
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / "data").is_dir())
@@ -420,6 +425,12 @@ def build():
         print(f"     cuit={k[0]} {k[1]} {k[2] or '(sin perimetro)'} desvio={v}%")
 
     # --- Escribir cnv_estados_norm ---
+
+    # s0 RECONSTRUYE su tabla: con --ticker no puede escribir, porque un
+    # DROP + CREATE con un solo papel dejaria la tabla con una fila y borraria
+    # los otros 571. Con foco funciona en modo diagnostico.
+    if _FOCO.exigir_lectura("s0_normalizar_cnv"):
+        return
     cur.execute("DROP TABLE IF EXISTS cnv_estados_norm")
     cur.execute("""
         CREATE TABLE cnv_estados_norm (

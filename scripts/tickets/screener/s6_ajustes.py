@@ -19,6 +19,11 @@ from __future__ import annotations
 import sqlite3, csv
 from pathlib import Path
 
+import sys as _sys_foco
+_sys_foco.path.insert(0, __import__('os').path.dirname(__import__('os').path.abspath(__file__)))
+from _foco import Foco  # noqa: E402
+_FOCO = Foco()
+
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / "data").is_dir())
 import os as _os
 # SCREENER_DB permite apuntar a una copia de prueba sin tocar produccion:
@@ -118,7 +123,9 @@ def main():
 
     # 2) bancos: flag + N/A ratios industriales
     n_bank = 0
-    for tk, cuit in cur.execute("SELECT ticker, cuit FROM screener").fetchall():
+    _FOCO.anuncia()
+    for tk, cuit in cur.execute("SELECT ticker, cuit FROM screener WHERE 1=1"
+                                + _FOCO.sql("ticker"), _FOCO.params()).fetchall():
         n = nom.get(cuit, "")
         if tk in BANK_TK or "banco" in n.lower() or "financ" in n.lower():
             cur.execute("UPDATE screener SET es_financiera=1 WHERE cuit=?", (cuit,))
@@ -130,7 +137,8 @@ def main():
         r = cur.execute("SELECT valor FROM cnv_estados_v2 WHERE cuit=? AND concepto=? ORDER BY period_end DESC LIMIT 1", (cuit, c)).fetchone()
         return r[0] if r else None
     n_roe = 0
-    for (cuit,) in cur.execute("SELECT cuit FROM screener WHERE ROE IS NULL").fetchall():
+    for (cuit,) in cur.execute("SELECT cuit FROM screener WHERE ROE IS NULL"
+                               + _FOCO.sql("ticker"), _FOCO.params()).fetchall():
         ni, eq, asset = v(cuit, "NetIncome"), v(cuit, "Equity"), v(cuit, "Assets")
         if ni is not None and eq and eq > 0:
             cur.execute("UPDATE screener SET ROE=?, ROA=? WHERE cuit=?",
@@ -138,7 +146,8 @@ def main():
 
     # 4) sector
     n_sec = 0
-    for cuit, esf in cur.execute("SELECT cuit, es_financiera FROM screener").fetchall():
+    for cuit, esf in cur.execute("SELECT cuit, es_financiera FROM screener WHERE 1=1"
+                                 + _FOCO.sql("ticker"), _FOCO.params()).fetchall():
         cur.execute("UPDATE screener SET sector=? WHERE cuit=?", (clasificar_sector(nom.get(cuit, ""), esf), cuit)); n_sec += 1
 
     con.commit()

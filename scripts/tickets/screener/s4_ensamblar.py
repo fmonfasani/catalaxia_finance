@@ -18,6 +18,11 @@ Reglas:
 from __future__ import annotations
 import sqlite3
 from pathlib import Path
+
+import sys as _sys_foco
+_sys_foco.path.insert(0, __import__('os').path.dirname(__import__('os').path.abspath(__file__)))
+from _foco import Foco  # noqa: E402
+_FOCO = Foco()
 from collections import defaultdict
 
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / "data").is_dir())
@@ -103,6 +108,11 @@ def get_payout_facts(cur, ticker, period_end):
 
 
 def build():
+    # RECONSTRUYE su tabla entera (DROP + CREATE). Con --ticker no puede
+    # escribir: dejaria la tabla con un papel y borraria los otros 571.
+    # Con foco corta aca y avisa; para reconstruir de verdad, sin --ticker.
+    if _FOCO.exigir_lectura("s4_ensamblar"):
+        return
     con = sqlite3.connect(DB)
     con.execute("PRAGMA journal_mode=WAL")
     con.execute("PRAGMA busy_timeout=60000")

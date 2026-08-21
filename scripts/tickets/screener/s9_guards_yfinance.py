@@ -44,6 +44,11 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
+import sys as _sys_foco
+_sys_foco.path.insert(0, __import__('os').path.dirname(__import__('os').path.abspath(__file__)))
+from _foco import Foco  # noqa: E402
+_FOCO = Foco()
+
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / "data").is_dir())
 import os as _os
 # SCREENER_DB permite apuntar a una copia de prueba sin tocar produccion:
@@ -140,7 +145,8 @@ def build(fetch_liquidez=True):
                       "cur": moneda, "fecha": (fecha or "")[:10]}
 
     byma = [r[0] for r in cur.execute(
-        "SELECT ticker FROM screener WHERE grupo='byma_only' ORDER BY ticker")]
+        "SELECT ticker FROM screener WHERE grupo='byma_only'"
+        + _FOCO.sql("ticker") + " ORDER BY ticker", _FOCO.params())]
 
     liq = {}
     if fetch_liquidez:
