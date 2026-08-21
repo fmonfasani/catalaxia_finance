@@ -14,11 +14,22 @@ TRES PROBLEMAS QUE ARREGLA, Y QUE RESULTARON SER EL MISMO NUDO
      lo que la del S&P 500: la columna esta en pesos.
 
   2. EL PERIODO NO ES UN AÑO
-     23 de las 56 apoyan sus ratios en un trimestre, no en un ejercicio. s2
-     elige "el period_end mas reciente" sin mirar el campo `tipo` (A=anual,
-     P=parcial), que existe y esta poblado. Al comparar contra el ejercicio,
-     6 empresas CAMBIAN DE SIGNO: A3, AGRO, CARC y GRIM figuran perdiendo y
-     ganaron; BOLT_2 y POLL al reves.
+     37 de las 56 apoyan sus ratios en un periodo INTERMEDIO, no en un
+     ejercicio: 15 acumulan solo 3 meses, 5 acumulan 6 y 17 acumulan 9. s2 elige
+     "el period_end mas reciente" sin preguntar cuando cierra el ejercicio.
+
+     Un cuarto de año publicado como si fuera un año: el PER sale unas cuatro
+     veces mas alto de lo que corresponde, y el numero es plausible, asi que no
+     se nota mirando.
+
+     OJO CON `cnv_estados_norm.tipo`: NO sirve para esto, aunque lo parezca.
+     job5 lo completa con una adivinanza --
+         if rev > 100_000_000_000: return "A"
+         if mes in (12, 5, 6):     return "A"
+         return "P"
+     "si factura mucho, es anual". Por eso Aluar tiene seis cierres marcados "A"
+     separados TRES MESES entre si. Una medicion basada en ese campo daba 23 de
+     56; con el calendario real son 37.
 
   3. LOS DOS SON EL MISMO NUDO
      Recalculando el PER-TTM con la capitalizacion correcta, AGRO pasa de 0,65
@@ -91,6 +102,8 @@ NUEVAS = [
     ("per_ttm_metodo",                    "text"),
     ("ttm_periodo_fin",                   "text"),
     ("periodo_tipo",                      "text"),
+    ("periodo_meses",                     "integer"),
+    ("fy_end_month",                      "integer"),
 ]
 
 # Estados de per_ttm en los que el PER NO se publica, y por que.
@@ -132,14 +145,34 @@ def main():
     print("=" * 66)
     print(f"  serie MEP: {ini} -> {fin}  ({n} ruedas)")
 
-    # tipo de periodo (A/P) de cada cierre, para poder DECLARARLO
-    def tipo_periodo(cuit, pe):
-        t = {r[0] for r in sl.execute(
-            "SELECT DISTINCT tipo FROM cnv_estados_norm WHERE cuit=? AND period_end=?",
-            (cuit, pe))}
-        if "A" in t:
-            return "anual"
-        return "parcial" if "P" in t else "desconocido"
+    # --- QUE PERIODO ES, segun la CNV y no segun una adivinanza ---------------
+    # NO se usa cnv_estados_norm.tipo. Ese campo lo pone job5 con esta regla:
+    #     if rev > 100_000_000_000: return "A"
+    #     if mes in (12, 5, 6):     return "A"
+    #     return "P"
+    # Es decir: "si factura mucho, es anual". Por eso Aluar tiene seis cierres
+    # marcados "A" separados TRES MESES entre si.
+    #
+    # La fuente autoritativa es fiscal_calendar, construido leyendo las paginas
+    # de la CNV, donde figura "PERIODICIDAD: 1" (anual) o "3" (trimestral) y la
+    # fecha de cierre. Cubre las 56 BYMA. Es la misma fuente que usa
+    # recompute_ttm para des-acumular, asi que ambos coinciden por construccion.
+    fcal = {cu: (fy, inc) for cu, fy, inc in sl.execute(
+        "SELECT cuit, fy_end_month, inconsistent FROM fiscal_calendar")}
+
+    def periodo_de(cuit, pe):
+        """(anual|intermedio|desconocido, meses_acumulados)."""
+        if not pe or cuit not in fcal:
+            return "desconocido", None
+        fy = fcal[cuit][0]
+        if fy is None:
+            return "desconocido", None
+        mes = int(pe[5:7])
+        if mes == fy:
+            return "anual", 12
+        # los parciales de la CNV son ACUMULADOS desde el inicio del ejercicio,
+        # asi que los meses transcurridos son la distancia al fin de ejercicio.
+        return "intermedio", (mes - fy) % 12
 
     filas = sl.execute("""
         SELECT s.ticker, s.cuit, s.ultimo_periodo, s.MarketCapUSD,
@@ -153,6 +186,7 @@ def main():
     print(f"  MEP para precios (hoy): {mep_hoy:,.2f} del {fecha_hoy}\n")
 
     datos, sin_mep_bal, con_per, sin_per = [], 0, 0, {}
+    rep, meses = {}, {}
     for tk, cuit, pe, mcap_ars, eps, ni, per, estado, metodo in filas:
         # 1. capitalizacion: precio de hoy -> MEP de hoy
         mcap_usd, _, _ = mep.convertir(mcap_ars, fecha_hoy)
@@ -171,11 +205,21 @@ def main():
             per_pub = (mcap_ars / ni) if (ni and ni > 0) else None
             if per_pub:
                 con_per += 1
+        ptipo, pmeses = periodo_de(cuit, pe)
+        rep[ptipo] = rep.get(ptipo, 0) + 1
+        if ptipo == "intermedio":
+            meses[pmeses] = meses.get(pmeses, 0) + 1
         datos.append((mcap_ars, mcap_usd, mep_hoy, fecha_hoy,
                       eps, eps_usd, ni, ni_usd, mep_bal, fbal,
                       per_pub, estado, metodo, pe,
-                      tipo_periodo(cuit, pe) if pe else None, tk))
+                      ptipo, pmeses, fcal.get(cuit, (None, None))[0], tk))
 
+    print(f"  periodo de cada fila (segun fiscal_calendar, NO segun `tipo`):")
+    for k, v in sorted(rep.items(), key=lambda x: -x[1]):
+        print(f"     {k:<14} {v:>3}")
+    for m, v in sorted(meses.items()):
+        print(f"        de los intermedios, {m:>2} meses acumulados: {v}")
+    print()
     print(f"  con PER publicable      : {con_per}")
     print(f"  sin PER, con motivo     : {sum(sin_per.values())}")
     for e, k in sorted(sin_per.items(), key=lambda x: -x[1]):
