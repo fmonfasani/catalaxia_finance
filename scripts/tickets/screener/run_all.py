@@ -164,6 +164,12 @@ def stage_assemble(log, results):
     # "unrecognized arguments". _run_module solo sustituye sys.argv si argv no es None.
     phases = [
         ("s0_normalizar_cnv", "build", "Normalizacion CNV", None),
+        # s1 va JUSTO despues de s0 y antes de cualquier cuenta: convierte cada
+        # hecho a dolares al MEP de su fecha y marca los que no son plausibles.
+        # Un numero sin su unidad no es un dato, y todo lo de abajo -- ratios,
+        # PER, contrastes -- da resultados plausibles y equivocados si la unidad
+        # esta mal. Es aditiva: no toca `valor`.
+        ("s1_bimoneda",       "main",  "Bimoneda + control de unidad", ["--corregir"]),
         ("s2_ratios_cnv",     "build", "Ratios CNV (IPC)", None),
         ("s3_precios",        "main",  "Precios yfinance", None),
         # s3b baja la serie diaria OHLC; s3c deriva de ella la foto de `precios`.
@@ -176,6 +182,10 @@ def stage_assemble(log, results):
         # s7b va despues de s7 (que inserta los S&P 500) y antes de s5 (export):
         # publica los insumos con los que se puede reproducir el PER.
         ("s7b_eps_base_per",  "main",  "PER reproducible (eps_ttm/per_base)", None),
+        # s7c despues de s7b: el crecimiento a 5 años necesita el calendario
+        # fiscal (capa 2), la unidad (capa 3) y la conversion (capa 4). Correrlo
+        # antes no da un resultado peor: da uno inventado con cara de dato.
+        ("s7c_cagr",          "main",  "Crecimiento 5 años en USD", []),
         ("s8_calidad",        "build", "Calidad (payout/EV/OpMargen)", None),
         ("s9_guards_yfinance", "build", "Guards yfinance + USD via MEP", None),
         ("cedear_ratios",     "build", "Ratios CEDEAR (Comafi)", None),
