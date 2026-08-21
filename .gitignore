@@ -33,14 +33,47 @@ scripts/**/__*.py
 scripts/demo_txar/
 
 # DB
-data/screener.db
+# La regla decia solo `data/screener.db`, el nombre exacto. Todo lo que orbita
+# alrededor quedaba expuesto a un `git add .`: la copia de pruebas
+# screener.db.test (858 MB), los backups, los -wal/-shm de SQLite y las demo_*.
+# Ninguna base esta versionada ni tiene por que estarlo.
+data/*.db
+data/*.db-*
+data/*.db.*
+data/*.sqlite*
 data/raw/
 
-# Materia prima descargada de la CNV: 25.426 documentos HTML.
+# Materia prima descargada de la CNV: 25.426 documentos HTML, 1,7 GB.
 # Son DATOS, no codigo -- se vuelven a bajar con los jobs y no tienen por que
 # viajar en el repositorio. Lo que se versiona es el script que los baja.
+#
+# Ademas hay un motivo de privacidad: el nombre del archivo lleva el CUIT y el
+# nombre completo de una persona fisica
+# (20309158955_GOMEZ_MANCUSO_JUAN_PABLO.html). En un repositorio publico eso no
+# entra, ni siquiera como nombre de archivo.
 scripts/tickets/cnv/**/*.html
 scripts/tickets/cnv/logs/
+
+# Indices intermedios del scraping CNV: 119 MB en total. Dicen que GUID
+# corresponde a que formulario y que links quedan por bajar -- se regeneran
+# corriendo los jobs, no son fuente. Un CSV de 30 MB commiteado no se saca
+# despues quitando el archivo: el blob se queda en el historial para siempre.
+scripts/tickets/cnv/debug/
+scripts/tickets/cnv/datos/guid_formtype.csv
+scripts/tickets/cnv/datos/whitelist_div.csv
+scripts/tickets/cnv/datos/whitelist_nuevos.csv
+scripts/tickets/cnv/datos/links*.csv
+scripts/tickets/cnv/datos/whitelist_eeff.csv
+# OJO: whitelist_eeff_codigos.csv (436 KB) NO se ignora -- es el que usa job5
+# con --codigos y cubre 2.144 de los 2.145 documentos. La regla de arriba dice
+# el nombre exacto justamente para no llevarselo por delante.
+!scripts/tickets/cnv/datos/whitelist_eeff_codigos.csv
+
+# Cache de descarga de EDGAR: 65 JSON crudos de la SEC (uno por CIK, ~19 MB).
+# Los baja 02_descargar_datos.py y se vuelven a pedir cuando hagan falta.
+# Los archivos sueltos de datos/ (company_tickers.json, los de errores) SI se
+# versionan: esos son indice y bitacora, no descarga.
+scripts/tickets/sec_edgar/datos/financials_sec/
 
 # Logs
 data/logs/
