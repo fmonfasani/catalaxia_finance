@@ -114,10 +114,27 @@ def main():
             resumen["sin_calendario"] += 1
             continue
         for cpt in ("Revenue", "NetIncome", "GrossProfit"):
+            # PERIMETRO: investing publica CONSOLIDADO. Contrastar contra
+            # nuestro individual metia un sesgo sistematico -- en el 72% de los
+            # casos que no cuadraban, lo nuestro era MAS CHICO, que es
+            # exactamente lo que pasa cuando el individual de una holding no
+            # incluye la facturacion de sus controladas.
+            #
+            # Medido, sobre las mismas comparaciones:
+            #     INDIVIDUAL    mediana 0,704   dentro de +/-25%: 42%
+            #     CONSOLIDADO   mediana 0,862   dentro de +/-25%: 67%
+            #
+            # Queda un 14% de residuo, asi que el perimetro explica el grueso
+            # pero no todo. Lo que reste no se atribuye a esto.
             nuestro = cur.execute(
                 """SELECT period_end, COALESCE(valor_corregido, valor)
                    FROM cnv_estados_norm
                    WHERE cuit=? AND concepto LIKE ? AND valor IS NOT NULL
+                     AND (tipo_balance='CONSOLIDADO' OR NOT EXISTS (
+                          SELECT 1 FROM cnv_estados_norm x
+                          WHERE x.cuit=cnv_estados_norm.cuit
+                            AND x.period_end=cnv_estados_norm.period_end
+                            AND x.tipo_balance='CONSOLIDADO'))
                    ORDER BY period_end""", (cuit, f"%{cpt}%")).fetchall()
             if len(nuestro) < 2:
                 continue
