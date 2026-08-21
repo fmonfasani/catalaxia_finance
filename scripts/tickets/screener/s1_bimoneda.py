@@ -75,10 +75,12 @@ DB = ROOT / "data" / os.environ.get("SCREENER_DB", "screener.db")
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _mep import MEP    # noqa: E402
 from _foco import Foco  # noqa: E402
+from _coherencia import por_empresa  # noqa: E402
 
 TABLA = "cnv_estados_norm"
 NUEVAS = [("valor_usd", "REAL"), ("mep_valor", "REAL"), ("mep_fecha", "TEXT"),
-          ("usd_desvio", "REAL"), ("usd_clase", "TEXT")]
+          ("usd_desvio", "REAL"), ("usd_clase", "TEXT"),
+          ("coherencia_falla", "TEXT")]
 
 # Los ratios CNV_* son cocientes y el EPS es por accion: no son importes, asi
 # que no se convierten ni se validan con la banda.
@@ -191,14 +193,43 @@ def main():
         con.close()
         return
 
-    # ------------------------------------------------------------ 3. GRABAR
+    # ------------------------------------------- 3. COHERENCIA INTERNA
+    # Complementa la banda y NO se superpone con ella. Medido sobre los 1.499
+    # documentos BYMA: la banda marca 151, la coherencia 111, y solo 38 caen en
+    # las dos. La coherencia AGREGA 73 documentos que la banda deja pasar
+    # limpios -- los rotos a medias, donde cada numero por separado es plausible
+    # pero se contradicen entre si (GBAN con Cash=948 y Assets=11).
+    #
+    # Son cocientes entre numeros del MISMO documento, asi que un error de
+    # escala que afecte a todo por igual se cancela en la division. Lo que
+    # sobrevive al cociente es justamente lo que esta mal a medias.
+    coh = {}
+    n_coh = 0
+    for cuit in {c_ for _, c_, *_ in filas}:
+        if not foco.alcanza(tick.get(cuit)):
+            continue
+        for pe, fallas in por_empresa(con, cuit).items():
+            coh[(cuit, pe)] = ";".join(f[0] for f in fallas)
+            n_coh += 1
+    print(f"\n  coherencia interna: {n_coh} documentos con alguna falla")
+    if n_coh:
+        _r = collections.Counter()
+        for v in coh.values():
+            for x in v.split(";"):
+                _r[x] += 1
+        for k, n in _r.most_common():
+            print(f"     {k:<22} {n:>4}")
+
+    # ------------------------------------------------------------ 4. GRABAR
+    ubic = {rid: (cu, pe) for rid, cu, _, pe, _ in filas}
     datos = []
     for usd, m, fm, _, motivo, rid in conv:
         d, cl = veredicto.get(rid, (None, motivo or "normal"))
-        datos.append((usd, m, fm, d, cl, rid))
+        datos.append((usd, m, fm, d, cl, coh.get(ubic.get(rid), None), rid))
     cur.executemany(
         f"""UPDATE {TABLA} SET valor_usd=?, mep_valor=?, mep_fecha=?,
-                               usd_desvio=?, usd_clase=? WHERE rowid=?""", datos)
+                               usd_desvio=?, usd_clase=?, coherencia_falla=?
+            WHERE rowid=?""", datos)
     con.commit()
     print(f"\n  {TABLA}: {len(datos)} filas con las dos monedas y su huella")
 
