@@ -76,11 +76,14 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _mep import MEP    # noqa: E402
 from _foco import Foco  # noqa: E402
 from _coherencia import por_empresa  # noqa: E402
+from _tramos import detectar as detectar_tramos  # noqa: E402
 
 TABLA = "cnv_estados_norm"
 NUEVAS = [("valor_usd", "REAL"), ("mep_valor", "REAL"), ("mep_fecha", "TEXT"),
           ("usd_desvio", "REAL"), ("usd_clase", "TEXT"),
-          ("coherencia_falla", "TEXT")]
+          ("coherencia_falla", "TEXT"),
+          ("valor_corregido", "REAL"), ("correccion_factor", "REAL"),
+          ("correccion_motivo", "TEXT")]
 
 # Los ratios CNV_* son cocientes y el EPS es por accion: no son importes, asi
 # que no se convierten ni se validan con la banda.
@@ -98,6 +101,8 @@ def main():
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--certificar", action="store_true")
     ap.add_argument("--ticker")
+    ap.add_argument("--corregir", action="store_true",
+                    help="aplica los tramos verificados a valor_corregido")
     a = ap.parse_args()
 
     foco = Foco()
@@ -193,7 +198,50 @@ def main():
         con.close()
         return
 
-    # ------------------------------------------- 3. COHERENCIA INTERNA
+    # ------------------------------------------------- 3. TRAMOS Y CORRECCION
+    # `valor` NO se toca nunca: es lo que dice el documento y tiene que quedar
+    # auditable. La correccion va a una columna gemela y el consumidor elige.
+    # Eso mantiene la propiedad que hace util a esta capa: es aditiva, y la
+    # marcha atras es ignorar columnas.
+    #
+    # Solo se corrigen TRAMOS -- bloques contiguos de periodos con el mismo
+    # desvio -- y solo los que pasan la comprobacion de que el factor de verdad
+    # devuelve los valores a su banda. Un tramo es mejor evidencia que una fila
+    # suelta: trece periodos seguidos desviados por el mismo factor no puede ser
+    # otra cosa que la unidad.
+    corr = {}
+    if a.corregir:
+        _L = sorted(math.log10(abs(x)) for _, _, _, _, x in
+                    [(0, 0, 0, 0, v) for (v,) in con.execute(
+                        f"SELECT valor_usd FROM {TABLA} "
+                        f"WHERE valor_usd IS NOT NULL AND valor_usd <> 0")])
+        _banda = (_L[int(len(_L) * 0.05)], _L[int(len(_L) * 0.95)])
+        n_tr = n_desc = 0
+        for cuit in {c_ for _, c_, *_ in filas}:
+            if not foco.alcanza(tick.get(cuit)):
+                continue
+            for t in detectar_tramos(con, cuit, banda=_banda):
+                if not t["consistente"]:
+                    n_desc += 1
+                    continue
+                n_tr += 1
+                for rid, v in con.execute(
+                        f"""SELECT rowid, valor FROM {TABLA}
+                            WHERE cuit=? AND period_end BETWEEN ? AND ?
+                              AND valor IS NOT NULL
+                              -- los ratios CNV_* son cocientes y el EPS es por
+                              -- accion: no llevan la escala del documento.
+                              -- Se filtra por prefijo y no con LIKE + ESCAPE,
+                              -- que se rompe al escapar la comilla.
+                              AND SUBSTR(concepto, 1, 4) NOT IN ('CNV_', 'EPS_')""",
+                        (cuit, t["desde"], t["hasta"])):
+                    corr[rid] = (v * t["factor"], t["factor"],
+                                 f"tramo {t['desde']}..{t['hasta']} "
+                                 f"(x{t['factor']:,.6g}, {t['periodos']} periodos)")
+        print(f"\n  tramos aplicados: {n_tr}   descartados: {n_desc}"
+              f"   filas corregidas: {len(corr)}")
+
+    # ------------------------------------------- 4. COHERENCIA INTERNA
     # Complementa la banda y NO se superpone con ella. Medido sobre los 1.499
     # documentos BYMA: la banda marca 151, la coherencia 111, y solo 38 caen en
     # las dos. La coherencia AGREGA 73 documentos que la banda deja pasar
@@ -220,15 +268,19 @@ def main():
         for k, n in _r.most_common():
             print(f"     {k:<22} {n:>4}")
 
-    # ------------------------------------------------------------ 4. GRABAR
+    # ------------------------------------------------------------ 5. GRABAR
     ubic = {rid: (cu, pe) for rid, cu, _, pe, _ in filas}
     datos = []
     for usd, m, fm, _, motivo, rid in conv:
         d, cl = veredicto.get(rid, (None, motivo or "normal"))
-        datos.append((usd, m, fm, d, cl, coh.get(ubic.get(rid), None), rid))
+        vc, cf, cm = corr.get(rid, (None, None, None))
+        datos.append((usd, m, fm, d, cl, coh.get(ubic.get(rid), None),
+                      vc, cf, cm, rid))
     cur.executemany(
         f"""UPDATE {TABLA} SET valor_usd=?, mep_valor=?, mep_fecha=?,
-                               usd_desvio=?, usd_clase=?, coherencia_falla=?
+                               usd_desvio=?, usd_clase=?, coherencia_falla=?,
+                               valor_corregido=?, correccion_factor=?,
+                               correccion_motivo=?
             WHERE rowid=?""", datos)
     con.commit()
     print(f"\n  {TABLA}: {len(datos)} filas con las dos monedas y su huella")
