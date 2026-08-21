@@ -111,11 +111,19 @@ def main():
                   f"{con_cal}/{byma} con calendario; {incons} marcados inconsistentes"))
 
     # 3 UNIDAD ---------------------------------------------------------------
+    # Mide hechos SIN RESPUESTA, no hechos dudosos. Un hecho dudoso al que ya se
+    # le propuso una correccion verificada esta resuelto aunque la duda sobre el
+    # documento siga: lo que falta saber es cuanto queda por decidir, no cuanto
+    # habia al principio. Con la otra medida el avance no se notaba nunca.
     hechos = q1(cur, "SELECT COUNT(*) FROM cnv_estados_norm WHERE valor_usd IS NOT NULL") or 0
     dudosos = q1(cur, """SELECT COUNT(*) FROM cnv_estados_norm
                          WHERE usd_clase IN ('unidad','no_unidad')""") or 0
-    filas.append(("3 UNIDAD", hechos - dudosos, hechos,
-                  f"{dudosos} hechos con la unidad en duda"))
+    resueltos = q1(cur, """SELECT COUNT(*) FROM cnv_estados_norm
+                           WHERE usd_clase IN ('unidad','no_unidad')
+                             AND valor_corregido IS NOT NULL""") or 0
+    pend = dudosos - resueltos
+    filas.append(("3 UNIDAD", hechos - pend, hechos,
+                  f"{pend} sin respuesta ({dudosos} dudosos, {resueltos} ya corregidos)"))
 
     # 4 MONEDA ---------------------------------------------------------------
     conv = q1(cur, "SELECT COUNT(*) FROM cnv_estados_norm WHERE valor_usd IS NOT NULL") or 0
