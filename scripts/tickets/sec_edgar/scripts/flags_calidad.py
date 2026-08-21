@@ -19,10 +19,11 @@ Agrega columnas flag_* (0/1) y una columna `flags` (texto, los activos separados
 por ';') a la tabla ratios.
 """
 from __future__ import annotations
+import os as _os
 import sqlite3
 from pathlib import Path
 
-DB = next(p for p in Path(__file__).resolve().parents if (p / 'data').is_dir()) / "data" / "screener.db"
+DB = next(p for p in Path(__file__).resolve().parents if (p / 'data').is_dir()) / "data" / _os.environ.get("SCREENER_DB", "screener.db")
 FLAG_COLS = ["flag_ni_fy","flag_roe_ns","flag_fx","flag_mktcap_rev"]
 
 

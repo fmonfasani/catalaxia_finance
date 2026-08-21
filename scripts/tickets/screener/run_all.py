@@ -15,7 +15,7 @@ Orquesta TODO el pipeline en el orden canonico:
     - precios_y_valuacion    (precios yfinance + per/p_book/p_sales/ev_ebitda)
       *** SIEMPRE van juntos: calcular_ratios_base BORRA la columna `per`, que
           precios_y_valuacion vuelve a crear. Correr uno sin el otro rompe s6/s7. ***
-  ASSEMBLE  : s0 -> s2 -> s3 -> s4 -> s6 -> s7 -> s8
+  ASSEMBLE  : s0 -> s2 -> s3 -> s4 -> s6 -> s7 -> s8 -> s9
   EXPORT    : s5 -> data/screener_export.csv
 
 Idempotente: cada stage reconstruye su salida; los pasos caros (EDGAR/CNV download)
@@ -166,7 +166,7 @@ def stage_assemble(log, results):
         ("s6_ajustes",        "main",  "Ajustes (ADR/bancos/sector)"),
         ("s7_unificar",       "build", "Unificar S&P desde EDGAR"),
         ("s8_calidad",        "build", "Calidad (payout/EV/OpMargen)"),
-        ("iamc_dual_price",   "build", "IAMC + Dual Price (ARS/USD)"),
+        ("s9_guards_yfinance", "build", "Guards yfinance + USD via MEP"),
         ("cedear_ratios",     "build", "Ratios CEDEAR (Comafi)"),
         ("jpm_adr",           "build", "Datos ADR (JPMorgan: CUSIP/level/div)"),
         ("instrumentos",      "build", "Tabla instrumentos (empresa 1:N)"),

@@ -4,12 +4,13 @@ para las 56 empresas BYMA.
 Carga a tabla cnv_estados con period_end real.
 """
 import csv, re, sqlite3, time, html as ihtml
+import os as _os
 from pathlib import Path
 from datetime import datetime
 import requests
 
 BASE = Path(__file__).resolve().parent.parent.parent.parent.parent
-DB = BASE / 'data' / 'screener.db'
+DB = BASE / "data" / _os.environ.get("SCREENER_DB", "screener.db")
 LINKS_REFINED = BASE / 'scripts' / 'tickets' / 'cnv' / 'datos' / 'links_eeff_refined.csv'
 LOG_FILE = BASE / 'data' / 'log_extract_masivo.txt'
 

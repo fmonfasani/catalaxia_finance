@@ -21,7 +21,9 @@ from pathlib import Path
 from collections import defaultdict
 
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / "data").is_dir())
-DB = ROOT / "data" / "screener.db"
+import os as _os
+from _perimetro import filtro_sql
+DB = ROOT / "data" / _os.environ.get("SCREENER_DB", "screener.db")
 
 # NOTA: UMBRAL_CNV desactivado. Los valores CNV_* son v1 stale y con v2
 # normalizado, los calculados son mas confiables. Ver _check_margen2.py.
@@ -29,11 +31,14 @@ UMBRAL_CNV = 9999  # desactivado
 
 
 def get_valor(cur, cuit, concepto, period_end):
+    # Regla de perimetro: un ratio no puede combinar conceptos individuales y
+    # consolidados. Ver _perimetro.py y docs/07-homologacion-cnv.md seccion 7.3.
+    extra, pars = filtro_sql(cur, cuit, period_end)
     cur.execute("""
         SELECT valor FROM cnv_estados_norm
-        WHERE cuit=? AND concepto=? AND period_end=?
+        WHERE cuit=? AND concepto=? AND period_end=?""" + extra + """
         ORDER BY fecha_reexpresion DESC LIMIT 1
-    """, (cuit, concepto, period_end))
+    """, [cuit, concepto, period_end] + pars)
     r = cur.fetchone()
     return r[0] if r else None
 

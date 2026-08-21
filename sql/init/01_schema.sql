@@ -140,7 +140,8 @@ CREATE TABLE IF NOT EXISTS cnv_estados_v2 (
     fuente             TEXT DEFAULT 'cnv-aif2',
     moneda             TEXT,
     unidad_medida      TEXT,
-    PRIMARY KEY (cuit, concepto, period_end, fecha_reexpresion)
+    tipo_balance       TEXT DEFAULT '',
+    PRIMARY KEY (cuit, concepto, period_end, fecha_reexpresion, tipo_balance)
 );
 
 -- ── cnv_estados_norm ─────────────────────────────────────────────────
@@ -158,7 +159,12 @@ CREATE TABLE IF NOT EXISTS cnv_estados_norm (
     accn               TEXT,
     fuente             TEXT DEFAULT 'cnv-aif2',
     source_type        TEXT,
-    PRIMARY KEY (cuit, concepto, period_end, fecha_reexpresion)
+    -- Perimetro contable: sin el en la PK, individual y consolidado colisionan.
+    -- Ver docs/07-homologacion-cnv.md
+    tipo_balance         TEXT DEFAULT '',
+    perimetro_mixto      INTEGER DEFAULT 0,
+    identidad_desvio_pct DOUBLE PRECISION,
+    PRIMARY KEY (cuit, concepto, period_end, fecha_reexpresion, tipo_balance)
 );
 
 -- ── cnv_estados_suspect ──────────────────────────────────────────────
@@ -324,7 +330,22 @@ CREATE TABLE IF NOT EXISTS screener (
     dr_level             TEXT,
     div_adr_12m          DOUBLE PRECISION,
     last_div_date        TEXT,
-    div_yield_adr        DOUBLE PRECISION
+    div_yield_adr        DOUBLE PRECISION,
+
+    -- Migracion IAMC -> MEP (s9_guards_yfinance). Sin estas columnas el
+    -- INSERT de migrate_sqlite_to_pg falla y, tras el TRUNCATE, la tabla
+    -- queda VACIA en produccion. Ver docs/07-homologacion-cnv.md
+    max_52w_ars_yfinance             DOUBLE PRECISION,
+    min_52w_ars_yfinance             DOUBLE PRECISION,
+    max_52w_usd_calc_mep_dolarito    DOUBLE PRECISION,
+    min_52w_usd_calc_mep_dolarito    DOUBLE PRECISION,
+    dif_max_52w_pct                  DOUBLE PRECISION,
+    dif_min_52w_pct                  DOUBLE PRECISION,
+    precio_usd_calc_mep_dolarito     DOUBLE PRECISION,
+    valor_mep_dolarito               DOUBLE PRECISION,
+    fecha_mep_dolarito               TEXT,
+    pct_ruedas_operadas              DOUBLE PRECISION,
+    guard_motivo                     TEXT
 );
 
 -- ── instrumentos ─────────────────────────────────────────────────────
@@ -354,3 +375,15 @@ CREATE TABLE IF NOT EXISTS descargas_log (
 );
 
 COMMIT;
+
+
+-- Metadatos declarados por la CNV en cada documento (salida de job8_doc_meta.py).
+-- TipoBalance tiene cobertura del 100%. Ver docs/07-homologacion-cnv.md
+CREATE TABLE IF NOT EXISTS cnv_doc_meta (
+    accn         TEXT PRIMARY KEY,
+    tipo_balance TEXT,
+    fecha_cierre TEXT,
+    moneda_cod   TEXT,
+    norma        TEXT,
+    parsed_at    TEXT
+);

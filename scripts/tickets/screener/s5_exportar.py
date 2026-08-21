@@ -15,7 +15,12 @@ from pathlib import Path
 from collections import defaultdict
 
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / "data").is_dir())
-DB = ROOT / "data" / "screener.db"
+import os as _os
+# SCREENER_DB permite apuntar a una copia de prueba sin tocar produccion:
+#   SCREENER_DB=screener.db.test python scripts/tickets/screener/run_all.py
+# Debe estar en TODOS los scripts del pipeline: si uno solo no lo respeta,
+# escribe en la base real aunque el resto corra sobre la copia.
+DB = ROOT / "data" / _os.environ.get("SCREENER_DB", "screener.db")
 OUT = ROOT / "data" / "screener_export.csv"
 OUT_JSON = ROOT / "data" / "screener_export.json"
 

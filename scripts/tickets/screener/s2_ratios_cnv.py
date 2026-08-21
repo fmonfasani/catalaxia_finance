@@ -17,37 +17,66 @@ from pathlib import Path
 from collections import defaultdict
 
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / "data").is_dir())
-DB = ROOT / "data" / "screener.db"
+import os as _os
+DB = ROOT / "data" / _os.environ.get("SCREENER_DB", "screener.db")
+
+
+# Regla de perimetro contable: vive en _perimetro.py para que s2, s4 y s8
+# apliquen exactamente el mismo criterio. Ver docs/07-homologacion-cnv.md 7.3.
+from _perimetro import perimetro_preferido, filtro_sql as _filtro_perim_sql
+
+
+def _filtro_perim(cur, cuit, period_end):
+    return _filtro_perim_sql(cur, cuit, period_end)
 
 
 def get_valor_por_cuit(cur, cuit, concepto, period_end=None):
-    """Obtener el valor mas reciente de un concepto para un CUIT."""
+    """Obtener el valor mas reciente de un concepto para un CUIT.
+
+    Restringido al perimetro elegido para ese periodo (ver perimetro_preferido).
+    """
     if period_end:
+        extra, pars = _filtro_perim(cur, cuit, period_end)
         cur.execute("""
             SELECT valor FROM cnv_estados_norm
-            WHERE cuit=? AND concepto=? AND period_end=?
+            WHERE cuit=? AND concepto=? AND period_end=?""" + extra + """
             ORDER BY fecha_reexpresion DESC
             LIMIT 1
-        """, (cuit, concepto, period_end))
+        """, [cuit, concepto, period_end] + pars)
     else:
+        # sin periodo fijo: se resuelve el mas reciente y se aplica su perimetro
         cur.execute("""
-            SELECT valor FROM cnv_estados_norm
-            WHERE cuit=? AND concepto=?
-            ORDER BY period_end DESC, fecha_reexpresion DESC
-            LIMIT 1
+            SELECT period_end FROM cnv_estados_norm
+            WHERE cuit=? AND concepto=? AND valor IS NOT NULL
+            ORDER BY period_end DESC LIMIT 1
         """, (cuit, concepto))
+        r = cur.fetchone()
+        if not r:
+            return None
+        return get_valor_por_cuit(cur, cuit, concepto, r[0])
     r = cur.fetchone()
     return r[0] if r else None
 
 
 def get_valor_historico(cur, cuit, concepto, years=5):
-    """Obtener valores historicos ordenados por period_end descendente."""
+    """Valores historicos por period_end descendente, coherentes por perimetro.
+
+    El perimetro se resuelve por periodo: una serie puede cambiar de perimetro a
+    lo largo del tiempo, y eso es aceptable mientras cada punto sea coherente
+    consigo mismo. Lo inaceptable es mezclarlos dentro del mismo periodo.
+    """
     cur.execute("""
-        SELECT period_end, valor FROM cnv_estados_norm
+        SELECT DISTINCT period_end FROM cnv_estados_norm
         WHERE cuit=? AND concepto=? AND valor IS NOT NULL
         ORDER BY period_end DESC
     """, (cuit, concepto))
-    return cur.fetchall()
+    periodos = [r[0] for r in cur.fetchall()]
+    out = []
+    for pe in periodos:
+        v = get_valor_por_cuit(cur, cuit, concepto, pe)
+        if v is not None:
+            out.append((pe, v))
+    return out
 
 
 def cargar_ipc():

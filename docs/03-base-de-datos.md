@@ -141,3 +141,38 @@ schema**. Una vez fijo:
 El archivo `../migrations/001_initial_schema.sql` es la fuente de verdad
 ejecutable. Si alguien necesita crear la base desde cero, ese archivo lo hace
 todo.
+
+---
+
+## Tablas de la cadena CNV
+
+Ver [`07-homologacion-cnv.md`](07-homologacion-cnv.md) para el detalle y las cifras.
+
+### `cnv_estados_v2` — extracción cruda de CNV
+
+```sql
+PRIMARY KEY (cuit, concepto, period_end, fecha_reexpresion, tipo_balance)
+```
+
+**`tipo_balance` es imprescindible en la clave.** Sin él, los documentos individual y
+consolidado del mismo cuit+periodo colisionan y el segundo se pierde en el
+`INSERT OR IGNORE`: 293 documentos quedaban mutilados y se descartaban 20.628 filas.
+
+### `cnv_doc_meta` — metadatos declarados por la CNV
+
+`(accn PK, tipo_balance, fecha_cierre, moneda_cod, norma, parsed_at)`. Salida de
+`job8_doc_meta.py`. Cobertura de `TipoBalance`: 100 % de los documentos.
+
+### `cnv_estados_norm` — normalizado que consume `s2`
+
+```sql
+PRIMARY KEY (cuit, concepto, period_end, fecha_reexpresion, tipo_balance)
+```
+
+Se alimenta de la **unión** de `cnv_estados_v2` (base histórica) y las filas
+`source_type='BYMA'` (punta reciente: son más nuevas en los 46 tickers que están en
+ambas vías). Lleva además `perimetro_mixto` (0/1), que marca los períodos alimentados
+por los dos perímetros a la vez.
+
+`fecha_reexpresion` se deriva: **es igual a `period_end`** (regla NIC 29). No estaba
+poblada y eso mantenía dormida la lógica de vintage que ya existía en `s0` y `s4`.

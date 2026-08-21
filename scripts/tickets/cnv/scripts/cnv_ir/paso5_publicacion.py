@@ -5,10 +5,11 @@ PASO 5 — PUBLICACION. Carga los registros normalizados (validados) a la tabla
 Cada dato queda con su fecha de re-expresion, fuente y metodo.
 """
 from __future__ import annotations
+import os as _os
 import sqlite3
 from pathlib import Path
 
-DB = next(p for p in Path(__file__).resolve().parents if (p / 'data').is_dir()) / "data" / "screener.db"
+DB = next(p for p in Path(__file__).resolve().parents if (p / 'data').is_dir()) / "data" / _os.environ.get("SCREENER_DB", "screener.db")
 
 
 def crear_tabla(con):

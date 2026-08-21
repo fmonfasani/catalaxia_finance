@@ -15,13 +15,14 @@ Uso:
   python procesar_cnv.py LEDE "https://...<UUID>" --cargar
 """
 from __future__ import annotations
+import os as _os
 import sys, re
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from parser_cnv_aif2 import extraer, validar, RATIOS_CNV
 
-DB = next(p for p in Path(__file__).resolve().parents if (p / 'data').is_dir()) / "data" / "screener.db"
+DB = next(p for p in Path(__file__).resolve().parents if (p / 'data').is_dir()) / "data" / _os.environ.get("SCREENER_DB", "screener.db")
 
 
 def ratios_propios(d):

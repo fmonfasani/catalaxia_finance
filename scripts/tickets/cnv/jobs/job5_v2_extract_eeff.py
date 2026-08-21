@@ -20,7 +20,7 @@ Uso:
     python job5_v2_extract_eeff.py --cuits empresas_subset.csv
 """
 from __future__ import annotations
-import csv, re, sys, time, sqlite3, html as ihtml
+import csv, os, re, sys, time, sqlite3, html as ihtml
 from pathlib import Path
 from datetime import datetime
 import requests
@@ -29,12 +29,27 @@ urllib3.disable_warnings()
 
 BASE = Path(__file__).resolve().parent.parent
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / "data").is_dir())
-DB = ROOT / "data" / "screener.db"
+DB = ROOT / "data" / os.environ.get("SCREENER_DB", "screener.db")
 WHITELIST = BASE / "datos" / "whitelist_eeff_codigos.csv" if "--codigos" in sys.argv else BASE / "datos" / "whitelist_eeff.csv"
 SUBSET = BASE / "datos" / "empresas_subset.csv"
 HTML_DIR = BASE / "eeff" / "eeff_html"
 DONE = ROOT / "data" / "log_job5_v2_done.txt"
 H = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120", "Accept-Language": "es-AR"}
+
+# --- FIX PERIMETRO -------------------------------------------------------
+# La CNV declara el perimetro contable en un campo estructurado del HTML.
+# Sin el, dos documentos del mismo cuit+periodo (individual y consolidado)
+# colisionan en la PRIMARY KEY y el segundo se pierde en el INSERT OR IGNORE.
+# Medido: 293 documentos quedaban mutilados y se descartaban 11.524 conceptos.
+_RX_TB = re.compile(r'claveinformativa="TipoBalance"[^>]*>([^<]{0,40})', re.I)
+_TB_NORM = {"individual": "INDIVIDUAL", "consolidado": "CONSOLIDADO"}
+
+
+def tipo_balance(html):
+    """'Individual'/'INDIVIDUAL' -> 'INDIVIDUAL'. Cadena vacia si no se declara."""
+    m = _RX_TB.search(html)
+    return _TB_NORM.get(m.group(1).strip().lower(), "") if m else ""
+
 
 def _mark_done(guid):
     with open(DONE, "a", encoding="utf-8") as fh:
@@ -77,7 +92,11 @@ def factor_unidad(html):
     """
     m = re.search(r'UnidadMedida[^>]*>\s*([^<]+)', html)
     u = (m.group(1) if m else "").strip().lower()
-    if not u or "pesos" in u or "unidad" in u:
+    # '$' a secas es el valor mas frecuente (1.030 de 2.350 documentos) y significa
+    # pesos sin escalar. Antes caia en el return None y se contaba como "unidad
+    # desconocida", aunque el llamador le asignaba 1 igual: el dato salia bien pero
+    # el flag quedaba inservible, con 1.030 falsas alarmas tapando cualquier caso real.
+    if not u or u in ("$", "$.") or "pesos" in u or "unidad" in u:
         return 1
     if "millon" in u:
         return 1_000_000
@@ -139,6 +158,9 @@ def main():
             print(f"  --whitelist {wp} not found, using default")
     sleep = float(args[args.index("--sleep") + 1]) if "--sleep" in args else 0.3
     mx = int(args[args.index("--max") + 1]) if "--max" in args else 10 ** 9
+    # --offline: re-procesa SOLO los HTML ya guardados en disco y no toca la red.
+    # Es lo que hace falta para re-extraer tras cambiar el parser o la PK.
+    offline = "--offline" in args
     r0, r1 = 0, 10 ** 9
     if "--rango" in args:
         i = args.index("--rango")
@@ -182,7 +204,8 @@ def main():
         fuente TEXT DEFAULT 'cnv-aif2',
         moneda TEXT,
         unidad_medida TEXT,
-        PRIMARY KEY (cuit, concepto, period_end, fecha_reexpresion)
+        tipo_balance TEXT DEFAULT '',
+        PRIMARY KEY (cuit, concepto, period_end, fecha_reexpresion, tipo_balance)
     )""")
     ses = requests.Session()
     ses.headers.update(H)
@@ -195,6 +218,10 @@ def main():
         html_path = HTML_DIR / f"{guid}.html"
 
         if guid in hechos:
+            skip += 1
+            continue
+
+        if offline and not html_path.exists():
             skip += 1
             continue
 
@@ -253,25 +280,26 @@ def main():
             cuit = row["cuit"].strip()
             ticker = cuit_a_ticker.get(cuit, row.get("empresa", ""))
 
+            tb = tipo_balance(html)
             for concepto, valor in datos.items():
                 cur.execute("""INSERT OR IGNORE INTO cnv_estados_v2
                     (ticker, cuit, concepto, period_end, tipo, valor,
                      valor_comparativo, fecha_reexpresion, form,
-                     unidad_factor, accn, fuente, moneda, unidad_medida)
-                    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                     unidad_factor, accn, fuente, moneda, unidad_medida, tipo_balance)
+                    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
                             (ticker, cuit, concepto, pe, tp, valor,
                              None, "", "EEFF", factor, guid, "cnv-aif2",
-                             moneda, unidad_medida))
+                             moneda, unidad_medida, tb))
                 dp += 1
             for concepto, valor in ratios.items():
                 cur.execute("""INSERT OR IGNORE INTO cnv_estados_v2
                     (ticker, cuit, concepto, period_end, tipo, valor,
                      valor_comparativo, fecha_reexpresion, form,
-                     unidad_factor, accn, fuente, moneda, unidad_medida)
-                    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                     unidad_factor, accn, fuente, moneda, unidad_medida, tipo_balance)
+                    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
                             (ticker, cuit, f"CNV_{concepto}", pe, tp, valor,
                              None, "", "EEFF", factor, guid, "cnv-aif2",
-                             moneda, unidad_medida))
+                             moneda, unidad_medida, tb))
                 dp += 1
             con.commit()
             ok += 1

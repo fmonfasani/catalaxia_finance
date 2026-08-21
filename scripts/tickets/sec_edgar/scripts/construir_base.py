@@ -35,7 +35,9 @@ FORMS_OK = {"10-K","10-K/A","10-Q","10-Q/A","20-F","20-F/A","40-F","40-F/A","6-K
 # Ver docs/screener/ y .gitignore (data/ no se versiona).
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'data').is_dir())
 DATA = ROOT / "data"
-DB = DATA / "screener.db"
+import os as _os
+# SCREENER_DB: apunta a una copia de prueba sin tocar produccion.
+DB = DATA / _os.environ.get("SCREENER_DB", "screener.db")
 CT = DATA / "catalogo" / "company_tickers.json"
 RAW_FACTS = DATA / "raw" / "companyfacts"
 RAW_SUBS = DATA / "raw" / "submissions"

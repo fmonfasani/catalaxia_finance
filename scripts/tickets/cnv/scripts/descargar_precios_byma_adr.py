@@ -8,7 +8,11 @@ from datetime import datetime
 import yfinance as yf
 
 BASE = Path(__file__).resolve().parent.parent.parent.parent.parent
-DB = BASE / "data" / "screener.db"
+import os as _os
+# SCREENER_DB permite apuntar a una copia de prueba sin tocar produccion.
+# Debe estar en TODOS los scripts que escriben en la base: si uno solo no lo
+# respeta, escribe en la real aunque el resto corra sobre la copia.
+DB = BASE / "data" / _os.environ.get("SCREENER_DB", "screener.db")
 LOG_FILE = BASE / "data" / "log_precios_byma_adr.txt"
 
 DELAY = 1.0  # seconds between tickers to avoid rate limiting

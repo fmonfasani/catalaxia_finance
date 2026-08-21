@@ -26,7 +26,10 @@ from pathlib import Path
 from collections import defaultdict
 
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / "data").is_dir())
-DB = ROOT / "data" / "screener.db"
+import os as _os
+# Permite apuntar a una copia de prueba sin tocar produccion:
+#   set SCREENER_DB=screener.db.test   (o export en bash)
+DB = ROOT / "data" / _os.environ.get("SCREENER_DB", "screener.db")
 DATOSCNV = ROOT / "scripts" / "tickets" / "cnv" / "datos"
 EMPRESAS56 = DATOSCNV / "empresas.csv"
 SUBSET = DATOSCNV / "empresas_subset.csv"
@@ -121,19 +124,60 @@ def build():
     by_ticker, by_cuit = leer_mapping()
     print(f"\nMapping: {len(by_ticker)} tickers, {len(by_cuit)} CUITs")
 
-    # --- Leer cnv_estados (fuente=cnv-aif2) ---
-    cur.execute("SELECT ticker, cik, concepto, period_end, tipo, valor, valor_comparativo, fecha_reexpresion, form, escala, accn, fuente FROM cnv_estados WHERE fuente='cnv-aif2'")
+    # --- Leer cnv_estados_v2 (fuente=cnv-aif2) ---
+    # PARCHE 1: la v2 trae las unidades ya normalizadas (unidad_factor resuelve las
+    # cinco variantes de texto: '$', 'Miles de $', 'MILES DE $', 'Millones de $',
+    # 'MILLONES DE $') y `valor` queda expresado en pesos. Verificado: la serie de
+    # TXAR/Assets es continua justo donde el factor salta de 1.000 a 1.000.000.
+    # Ojo: el `ticker` de v2 es la razon social, no el simbolo -> se resuelve por CUIT.
+    # PARCHE 3: se trae tipo_balance desde cnv_doc_meta (job8), que lo extrae del
+    # campo estructurado <propiedad claveinformativa="TipoBalance"> de cada
+    # documento CNV. Cobertura verificada: 100% de los 2.145 documentos.
+    try:
+        cur.execute("SELECT COUNT(*) FROM cnv_doc_meta")
+        hay_meta = cur.fetchone()[0] > 0
+    except sqlite3.OperationalError:
+        hay_meta = False
+    if not hay_meta:
+        print("  AVISO: falta cnv_doc_meta -> corre job8_doc_meta.py."
+              " tipo_balance quedara vacio.")
+    sel_tb = "COALESCE(m.tipo_balance,'')" if hay_meta else "''"
+    join_tb = "LEFT JOIN cnv_doc_meta m ON m.accn = e.accn" if hay_meta else ""
+    cur.execute(f"""SELECT e.ticker, e.cuit, e.concepto, e.period_end, e.tipo, e.valor,
+                           e.valor_comparativo, e.fecha_reexpresion, e.form,
+                           e.unidad_factor, e.accn, e.fuente, {sel_tb}
+                    FROM cnv_estados_v2 e {join_tb}
+                    WHERE e.fuente='cnv-aif2'""")
     rows = cur.fetchall()
-    print(f"Filas cnv_estados (fuente=cnv-aif2): {len(rows)}")
+    print(f"Filas cnv_estados_v2 (fuente=cnv-aif2): {len(rows)}")
+
+    # PARCHE 1b: las filas source_type='BYMA' de la normalizacion anterior aportan
+    # la punta reciente de la serie. Verificado: en los 46 tickers presentes en ambas
+    # vias, BYMA es mas nuevo en los 46 (BOLT adelanta 3 trimestres). No colisionan
+    # con v2 en ninguna clave (cuit, concepto, period_end).
+    try:
+        cur.execute("""SELECT ticker, cuit, concepto, period_end, tipo, valor,
+                              valor_comparativo, fecha_reexpresion, form, escala, accn, fuente,
+                              ''
+                       FROM cnv_estados_norm WHERE source_type='BYMA'""")
+        rows_byma = cur.fetchall()
+    except sqlite3.OperationalError:
+        rows_byma = []          # primera corrida: aun no existe la tabla
+    print(f"Filas BYMA (punta reciente): {len(rows_byma)}")
 
     old, new = 0, 0
     orphan_old = []
     orphan_new = []
     filas_norm = []
 
-    for r in rows:
-        ticker_orig, cik_orig, concepto, pe, tipo, valor, vc, frexp, form, escala, accn, fuente = r
+    # PARCHE 1c: se recorren las dos fuentes con su origen explicito. El dedup de
+    # mas abajo ya prefiere CUIT (v2) sobre BYMA cuando hay conflicto, asi que la
+    # precedencia queda garantizada sin tocar esa logica.
+    for r, origen in ([(x, "CUIT") for x in rows] + [(x, "BYMA") for x in rows_byma]):
+        ticker_orig, cik_orig, concepto, pe, tipo, valor, vc, frexp, form, escala, accn, fuente, tipo_balance = r
 
+        # v2 y las filas BYMA ya vienen con CUIT real en la 2a columna; la rama
+        # historica 'BYMA-{TICKER}' solo aplicaba a la v1.
         ticker_from_cik = extraer_ticker_de_cik(cik_orig)
 
         if ticker_from_cik:
@@ -156,10 +200,22 @@ def build():
                 continue
             ticker_canon = mapping_ticker
 
-        source_type = "BYMA" if ticker_from_cik else "CUIT"
+        source_type = origen
+        # PARCHE 2: vintage_reexpresion = period_end.
+        # No se extrae del documento: es la regla NIC 29 / RT 6 -- cada cifra viene
+        # expresada en moneda de poder adquisitivo de su propia fecha de cierre.
+        # Verificado: cada documento de v2 aporta un unico period_end (2.145 docs).
+        # Al poblarla se activa maquinaria que ya existe y estaba dormida:
+        #   - la PK de cnv_estados_norm (que incluye fecha_reexpresion) deja de colapsar
+        #   - el gate de consistencia de mas abajo empieza a discriminar de verdad
+        #   - el `ORDER BY fecha_reexpresion DESC` de s4.get_valor pasa a ordenar algo
+        frexp = pe if frexp in (None, "") else frexp
+        # tipo_balance va al FINAL para no desplazar los indices que usa el dedup
+        # (source_type sigue siendo g[12]).
         filas_norm.append((cuit, ticker_canon, concepto, pe, tipo, valor,
                            vc if vc is not None else None,
-                           frexp, form, escala, accn, fuente, source_type))
+                           frexp, form, escala, accn, fuente, source_type,
+                           tipo_balance or ""))
 
     print(f"\n  Viejas (BYMA-*): {old} -> {old - len(orphan_old)} mapeadas, {len(orphan_old)} huerfanas")
     print(f"  Nuevas (CUIT):   {new} -> {new - len(orphan_new)} mapeadas, {len(orphan_new)} huerfanas")
@@ -177,7 +233,9 @@ def build():
     # --- Dedup ---
     grupos = defaultdict(list)
     for f in filas_norm:
-        key = (f[0], f[2], f[3], f[7] or "")
+        # PARCHE 3: el perimetro entra en la clave -> individual y consolidado
+        # dejan de pisarse entre si.
+        key = (f[0], f[2], f[3], f[7] or "", f[13] or "")
         grupos[key].append(f)
 
     filas_dedup = []
@@ -209,7 +267,7 @@ def build():
             else:
                 filas_dedup.append(group[0])
 
-    total_antes = len(rows)
+    total_antes = len(rows) + len(rows_byma)   # PARCHE 1: ahora son dos fuentes
     total_despues = len(filas_dedup)
     pct_div = round(100 * len(divergencias) / max(dup_check, 1), 1)
     print(f"\n  Dedup: {total_antes} -> {total_despues} filas ({total_antes - total_despues} eliminadas, {dup_check} grupos con duplicados)")
@@ -226,6 +284,41 @@ def build():
         print("     (posible vintage de reexpresion distinto)")
     else:
         print("  OK: Gate consistencia: 0 divergencias en valores duplicados")
+
+    # --- PARCHE 3b: marcar los periodos de perimetro mixto ---
+    # Un (cuit, period_end) alimentado por INDIVIDUAL y CONSOLIDADO a la vez
+    # produce ratios que combinan dos perimetros contables. No se corrige el
+    # valor: se DECLARA, para que el defecto sea visible en vez de invisible.
+    perim = defaultdict(set)
+    for f in filas_dedup:
+        if f[13]:
+            perim[(f[0], f[3])].add(f[13])
+    mixtos = {k for k, v in perim.items() if len(v) > 1}
+    filas_dedup = [tuple(f) + (1 if (f[0], f[3]) in mixtos else 0,) for f in filas_dedup]
+    n_mix = sum(1 for f in filas_dedup if f[14])
+    print(f"\n  Perimetro mixto: {len(mixtos)} periodos (cuit+cierre), {n_mix} filas marcadas")
+
+    # --- Gate de identidad contable: A = P + PN ---
+    # Si un estado no cierra, sus ratios no son confiables. No se repara (habria que
+    # inventar un factor) : se MARCA, para que s2 pueda excluirlo y para que el
+    # defecto sea visible. Caso tipico detectado: LONG, cuya serie individual salta
+    # ~100x entre 2020-03 y 2020-06 con la misma unidad declarada ('$').
+    saldo = defaultdict(dict)
+    for f in filas_dedup:
+        if f[2] in ("Assets", "Liabilities", "Equity") and f[5] is not None:
+            saldo[(f[0], f[3], f[13] or "")][f[2]] = f[5]
+    malos = {}
+    for k, d in saldo.items():
+        if len(d) == 3 and d["Assets"]:
+            desv = abs((d["Liabilities"] + d["Equity"]) - d["Assets"]) / abs(d["Assets"]) * 100
+            if desv >= 5:
+                malos[k] = round(desv, 2)
+    filas_dedup = [tuple(f) + (malos.get((f[0], f[3], f[13] or "")),) for f in filas_dedup]
+    n_cuar = sum(1 for f in filas_dedup if f[15] is not None)
+    print(f"  Gate identidad (A=P+PN): {len(malos)} estados fuera de tolerancia (>=5%),"
+          f" {n_cuar} filas marcadas")
+    for k, v in sorted(malos.items(), key=lambda x: -x[1])[:5]:
+        print(f"     cuit={k[0]} {k[1]} {k[2] or '(sin perimetro)'} desvio={v}%")
 
     # --- Escribir cnv_estados_norm ---
     cur.execute("DROP TABLE IF EXISTS cnv_estados_norm")
@@ -244,10 +337,13 @@ def build():
             accn TEXT,
             fuente TEXT DEFAULT 'cnv-aif2',
             source_type TEXT,
-            PRIMARY KEY (cuit, concepto, period_end, fecha_reexpresion)
+            tipo_balance TEXT,
+            perimetro_mixto INTEGER DEFAULT 0,
+            identidad_desvio_pct REAL,
+            PRIMARY KEY (cuit, concepto, period_end, fecha_reexpresion, tipo_balance)
         )
     """)
-    cur.executemany("INSERT OR REPLACE INTO cnv_estados_norm VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)", filas_dedup)
+    cur.executemany("INSERT OR REPLACE INTO cnv_estados_norm VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", filas_dedup)
     con.commit()
     n_filas = len(filas_dedup)
     print(f"\n  -> cnv_estados_norm: {n_filas} filas escritas")

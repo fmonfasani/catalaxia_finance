@@ -32,7 +32,11 @@ import urllib3
 urllib3.disable_warnings()
 
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / "data").is_dir())
-DB = ROOT / "data" / "screener.db"
+import os as _os
+# SCREENER_DB permite apuntar a una copia de prueba sin tocar produccion.
+# Debe estar en TODOS los scripts que escriben en la base: si uno solo no lo
+# respeta, escribe en la real aunque el resto corra sobre la copia.
+DB = ROOT / "data" / _os.environ.get("SCREENER_DB", "screener.db")
 B = "https://api.markitdigital.com/jpmadr-public/v1/"
 H = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120",
      "Origin": "https://www.adr.com", "Referer": "https://www.adr.com/"}

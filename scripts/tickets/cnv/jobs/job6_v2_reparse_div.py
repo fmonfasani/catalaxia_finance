@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import os as _os
 import re, csv, sqlite3, html as html_mod
 from pathlib import Path
 from collections import defaultdict
 
 BASE = Path(__file__).resolve().parent.parent
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'data').is_dir())
-DB = ROOT / 'data' / 'screener.db'
+DB = ROOT / "data" / _os.environ.get("SCREENER_DB", "screener.db")
 WHITELIST = BASE / 'datos' / 'whitelist_div.csv'
 SUBSET = BASE / 'datos' / 'empresas_subset.csv'
 HTML_DIR = BASE / 'eeff' / 'div_html'
