@@ -1,0 +1,6 @@
+ticker,cuit,campo,accion,valor,motivo,verificado_con,fecha,vigente
+A3,30525698412,fy_end_month,fijar,6,"fiscal_calendar dice 12 por confundir el cierre de Q2 (31-dic) con cierre de ejercicio","FechaInicio=1-jul en los anuales 2024-06 y 2025-06 (12 meses). Ya documentado en scripts/pipeline/fix_manual.py",2026-08-21,1
+FIPL,30707429467,revenue,revisar,,"Revenue de 12 y 20 cuando el trimestre anterior fueron 5.384 millones. No es escala: multiplicar por un millon no lo acerca a nada razonable","Contraste contra el mismo periodo del anio anterior: ni el valor crudo ni el corregido caen en orden",2026-08-21,1
+CVH,30715591231,identidad,revisar,,"Activo != Pasivo + Patrimonio por 30,9%. Ademas tiene el mismo cierre (2025-06-30) declarado con factor 1 y con 1.000.000","Gate de identidad de s0. El caso del PN total ya esta tratado en fix_manual.py para 2024-12",2026-08-21,1
+HAVA,30678774495,identidad,revisar,,"Activo != Pasivo + Patrimonio por 33,8%","Gate de identidad de s0",2026-08-21,1
+LONG,30500064777,identidad,revisar,,"Activo != Pasivo + Patrimonio por 36,5%","Gate de identidad de s0",2026-08-21,1
