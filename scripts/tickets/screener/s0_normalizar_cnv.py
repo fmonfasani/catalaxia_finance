@@ -21,7 +21,7 @@ Proceso:
 Idempotente: DROP/RECREATE sus tablas de salida.
 """
 from __future__ import annotations
-import csv, sqlite3, re
+import csv, sqlite3, re, sys
 from pathlib import Path
 from collections import defaultdict
 
@@ -164,6 +164,105 @@ def build():
     except sqlite3.OperationalError:
         rows_byma = []          # primera corrida: aun no existe la tabla
     print(f"Filas BYMA (punta reciente): {len(rows_byma)}")
+
+    # --- PARCHE 5: la escala de las filas BYMA ------------------------------
+    # La extraccion de la CNV lee del documento si los numeros van en unidades,
+    # miles o millones. La fuente BYMA asume SIEMPRE escala 1, asi que las
+    # empresas que presentan en miles quedan divididas por mil y las que
+    # presentan en millones, por un millon. Y son los periodos MAS RECIENTES:
+    # el dato mas nuevo de cada empresa es el que mas riesgo tiene.
+    #
+    # Esto vive DENTRO de s0 y no como un arreglo posterior porque s0 hace
+    # DROP + CREATE de la tabla en cada corrida: un parche aplicado despues se
+    # pierde en la siguiente pasada.
+    #
+    # El factor se deduce del documento de la MISMA empresa mas proximo en
+    # fecha, no del "mas frecuente": las empresas cambian de unidad con la
+    # inflacion (CECO2 uso 1 hasta 2024-03 y 1.000 desde 2024-06), y la moda
+    # habria multiplicado por mil periodos viejos que estaban bien.
+    #
+    # IDEMPOTENTE: solo toca filas con escala 1. Una vez corregida, la fila
+    # queda con escala=1.000 (o 1.000.000) y una segunda corrida la saltea.
+    # SE DEDUCE, PERO NO SE ESCRIBE HASTA VERIFICARLO. La deduccion es la parte
+    # facil; la verificacion es la que decide. Sin ella, un documento roto por
+    # otro motivo (FIPL: ventas de 12 cuando el trimestre anterior fueron 5.384
+    # millones) se multiplica por un millon y pasa de estar mal a estar mal con
+    # mejor aspecto.
+    #
+    # La prueba es INDEPENDIENTE de como se dedujo el factor: el mismo periodo
+    # del año anterior. El valor corregido tiene que caer en el mismo orden de
+    # magnitud, y el sin corregir NO. Si el original ya estaba en orden, no
+    # habia nada que corregir; si el corregido tampoco entra, el problema no es
+    # de escala y no se toca.
+    _esc_ok = _esc_skip = _esc_rech = 0
+    _rechazados = []
+    try:
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        from _escala_byma import factores_declarados, vecino
+        _decl, _amb = factores_declarados(con)
+
+        # Revenue por (cuit, period_end) de las dos fuentes, para la prueba.
+        _rev = {}
+        for _src in (rows, rows_byma):
+            for _r in _src:
+                if _r[2] and "Revenue" in str(_r[2]) and _r[5] is not None:
+                    _k = (_r[1], _r[3])
+                    if abs(_r[5]) > abs(_rev.get(_k, 0)):
+                        _rev[_k] = _r[5]
+
+        def _verifica(cuit, pe, f):
+            """True solo si el factor explica la diferencia contra el año anterior."""
+            v = _rev.get((cuit, pe))
+            va = _rev.get((cuit, f"{int(pe[:4]) - 1}{pe[4:]}")) if pe else None
+            if not v or not va:
+                return False              # sin con que comparar -> no se toca
+            r_sin, r_con = abs(v / va), abs((v * f) / va)
+            return (0.2 < r_con < 5) and not (0.2 < r_sin < 5)
+
+        _dec = {}
+        for _cuit, _pe in {(r[1], r[3]) for r in rows_byma}:
+            if (_cuit, _pe) in _amb:
+                continue                  # dos factores para el mismo cierre
+            _f, _pv, _d = vecino(_decl, _cuit, _pe)
+            if not _f or _f == 1:
+                continue
+            if _verifica(_cuit, _pe, _f):
+                _dec[(_cuit, _pe)] = _f
+            else:
+                _esc_rech += 1
+                _rechazados.append((_cuit, _pe, _f))
+
+        _fix = []
+        for _i, _r in enumerate(rows_byma):
+            _k = (_r[1], _r[3])
+            if _r[9] not in (1, None, ""):
+                _esc_skip += 1
+                continue                  # ya corregida: idempotente
+            _f = _dec.get(_k)
+            if not _f or _r[5] is None:
+                continue
+            # Los ratios CNV_* son cocientes y el EPS es por accion: no llevan
+            # la escala del documento. Escalarlos los destruye.
+            _cpt = _r[2] or ""
+            if _cpt.startswith("CNV_") or _cpt.startswith("EPS_"):
+                continue
+            _l = list(_r)
+            _l[5] = _r[5] * _f            # valor
+            _l[9] = _f                    # escala
+            _fix.append((_i, tuple(_l)))
+        for _i, _t in _fix:
+            rows_byma[_i] = _t
+        _esc_ok = len(_fix)
+    except Exception as _e:               # nunca frenar s0 por esto
+        print(f"  AVISO: no se pudo deducir la escala BYMA ({_e}). "
+              f"Las filas quedan como vinieron.")
+    if _esc_ok or _esc_skip or _esc_rech:
+        print(f"  Escala BYMA: {_esc_ok} filas corregidas y verificadas, "
+              f"{_esc_skip} ya estaban, {_esc_rech} documentos RECHAZADOS")
+        for _cu, _pe, _f in _rechazados[:6]:
+            print(f"     rechazado {_cu} {_pe} (x{_f:,}): el factor no explica "
+                  f"la diferencia contra el año anterior")
+    # ------------------------------------------------------------------------
 
     old, new = 0, 0
     orphan_old = []
@@ -340,10 +439,17 @@ def build():
             tipo_balance TEXT,
             perimetro_mixto INTEGER DEFAULT 0,
             identidad_desvio_pct REAL,
+            escala_origen TEXT,
+            escala_revisar TEXT,
             PRIMARY KEY (cuit, concepto, period_end, fecha_reexpresion, tipo_balance)
         )
     """)
-    cur.executemany("INSERT OR REPLACE INTO cnv_estados_norm VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", filas_dedup)
+    cur.executemany(
+        "INSERT OR REPLACE INTO cnv_estados_norm "
+        "(cuit, ticker, concepto, period_end, tipo, valor, valor_comparativo,"
+        " fecha_reexpresion, form, escala, accn, fuente, source_type, tipo_balance,"
+        " perimetro_mixto, identidad_desvio_pct) "
+        "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", filas_dedup)
     con.commit()
     n_filas = len(filas_dedup)
     print(f"\n  -> cnv_estados_norm: {n_filas} filas escritas")

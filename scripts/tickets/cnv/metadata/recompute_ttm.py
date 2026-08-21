@@ -31,10 +31,22 @@ def qnum(month, fy):        # 1..4, con fy=mes de cierre => Q4
     return 4 - ((fy - month) % 12) // 3
 
 
+# TABLA DE LECTURA: cnv_estados_norm, no cnv_estados_v2.
+#
+# cnv_estados_v2 es SOLO la extraccion de la CNV. Las filas de la fuente BYMA
+# -- que son la punta reciente, el ultimo trimestre de cada empresa -- viven
+# unicamente en cnv_estados_norm, donde s0 une las dos vias. Comprobado: MIRG a
+# 2026-03-31 tiene 50 filas en `norm` y CERO en `v2`.
+#
+# Leyendo v2, el TTM nunca veia el trimestre mas reciente de ninguna empresa. No
+# es que lo usara mal: no lo usaba. Y por lo mismo, la correccion de escala de
+# las filas BYMA (parche 5 de s0) tampoco le llegaba.
+
+
 def series(cur, cuit, concepto):
     d = {}
     for pe, v in cur.execute(
-        "select period_end,valor from cnv_estados_v2 where cuit=? and concepto=? "
+        "select period_end,valor from cnv_estados_norm where cuit=? and concepto=? "
         "and valor is not null order by period_end", (cuit, concepto)):
         d[pe] = v
     return sorted(d.items())
@@ -63,7 +75,7 @@ def ttm_last4(ser, fy):
 
 def rev_concept(cur):
     for k in REV_CANDS:
-        if cur.execute("select 1 from cnv_estados_v2 where concepto=? limit 1", (k,)).fetchone():
+        if cur.execute("select 1 from cnv_estados_norm where concepto=? limit 1", (k,)).fetchone():
             return k
     return None
 
@@ -186,7 +198,7 @@ def main():
     con = sqlite3.connect(DB); cur = con.cursor()
     if not cur.execute("select 1 from sqlite_master where name='fiscal_calendar'").fetchone():
         sys.exit("Falta fiscal_calendar. Corre build_fiscal_calendar.py primero.")
-    dbmax = cur.execute("select max(period_end) from cnv_estados_v2 where concepto='NetIncome'").fetchone()[0]
+    dbmax = cur.execute("select max(period_end) from cnv_estados_norm where concepto='NetIncome'").fetchone()[0]
     revk = rev_concept(cur)
     if a.test:
         run_tests(cur, dbmax, revk); return
