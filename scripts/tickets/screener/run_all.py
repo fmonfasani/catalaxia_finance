@@ -158,21 +158,32 @@ def stage_transform(log, results, offline):
 
 def stage_assemble(log, results):
     log.log("\n=== STAGE 3/4: ASSEMBLE ===")
+    # (modulo, entry, etiqueta, argv)
+    # argv=[] es OBLIGATORIO en los modulos con argparse: sin eso su parse_args()
+    # ve el sys.argv de run_all (--offline, --skip-extract) y aborta con
+    # "unrecognized arguments". _run_module solo sustituye sys.argv si argv no es None.
     phases = [
-        ("s0_normalizar_cnv", "build", "Normalizacion CNV"),
-        ("s2_ratios_cnv",     "build", "Ratios CNV (IPC)"),
-        ("s3_precios",        "main",  "Precios yfinance"),
-        ("s4_ensamblar",      "build", "Ensamblar screener (AR)"),
-        ("s6_ajustes",        "main",  "Ajustes (ADR/bancos/sector)"),
-        ("s7_unificar",       "build", "Unificar S&P desde EDGAR"),
-        ("s8_calidad",        "build", "Calidad (payout/EV/OpMargen)"),
-        ("s9_guards_yfinance", "build", "Guards yfinance + USD via MEP"),
-        ("cedear_ratios",     "build", "Ratios CEDEAR (Comafi)"),
-        ("jpm_adr",           "build", "Datos ADR (JPMorgan: CUSIP/level/div)"),
-        ("instrumentos",      "build", "Tabla instrumentos (empresa 1:N)"),
+        ("s0_normalizar_cnv", "build", "Normalizacion CNV", None),
+        ("s2_ratios_cnv",     "build", "Ratios CNV (IPC)", None),
+        ("s3_precios",        "main",  "Precios yfinance", None),
+        # s3b baja la serie diaria OHLC; s3c deriva de ella la foto de `precios`.
+        # Van juntos y en este orden: s3c lee lo que s3b acaba de guardar.
+        ("s3b_precios_historicos", "main", "Serie diaria OHLC", []),
+        ("s3c_refrescar_precios",  "main", "Refrescar `precios` desde la serie", []),
+        ("s4_ensamblar",      "build", "Ensamblar screener (AR)", None),
+        ("s6_ajustes",        "main",  "Ajustes (ADR/bancos/sector)", None),
+        ("s7_unificar",       "build", "Unificar S&P desde EDGAR", None),
+        # s7b va despues de s7 (que inserta los S&P 500) y antes de s5 (export):
+        # publica los insumos con los que se puede reproducir el PER.
+        ("s7b_eps_base_per",  "main",  "PER reproducible (eps_ttm/per_base)", None),
+        ("s8_calidad",        "build", "Calidad (payout/EV/OpMargen)", None),
+        ("s9_guards_yfinance", "build", "Guards yfinance + USD via MEP", None),
+        ("cedear_ratios",     "build", "Ratios CEDEAR (Comafi)", None),
+        ("jpm_adr",           "build", "Datos ADR (JPMorgan: CUSIP/level/div)", None),
+        ("instrumentos",      "build", "Tabla instrumentos (empresa 1:N)", None),
     ]
-    for mod, entry, label in phases:
-        st, el = _run_module(mod, entry, log)
+    for mod, entry, label, argv in phases:
+        st, el = _run_module(mod, entry, log, argv=argv)
         results.append((f"assemble:{mod}", st, el))
         time.sleep(1.2)  # dar tiempo a que SQLite libere el lock entre fases
 

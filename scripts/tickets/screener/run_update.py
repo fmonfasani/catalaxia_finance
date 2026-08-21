@@ -569,7 +569,10 @@ def rebuild_screener(log):
         ("s6_ajustes", "main", "Ajustes (ADR/bancos/sector)"),
         ("s7_unificar", "build", "Unificar S&P desde EDGAR"),
         ("s8_calidad", "build", "Calidad (payout/EV/OpMargen)"),
-        ("iamc_dual_price", "build", "IAMC + Dual Price (ARS/USD)"),
+        # iamc_dual_price se elimino en la migracion IAMC -> MEP: el dolar de
+        # referencia ahora sale de dolarito_cotizaciones y la insercion de los
+        # BYMA que hacia este modulo se movio a s7_unificar. Dejar la fase aqui
+        # solo lograba que el pipeline reportara un FAILED perpetuo.
         ("cedear_ratios", "build", "Ratios CEDEAR (Comafi)"),
         ("jpm_adr", "build", "Datos ADR (JPMorgan: CUSIP/level/div)"),
         ("instrumentos", "build", "Tabla instrumentos (empresa 1:N)"),

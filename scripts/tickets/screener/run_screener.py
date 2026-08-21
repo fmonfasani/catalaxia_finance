@@ -47,7 +47,9 @@ def main():
         ("FASE 6 — Ajustes (ADR/bancos/sector)", "s6_ajustes", "main"),
         ("FASE 1 — Unificar (S&P desde EDGAR)",  "s7_unificar", "build"),
         ("FASE 2 — Calidad (payout/EV/OpMargen)", "s8_calidad",  "build"),
-        ("IAMC + Dual Price (ARS/USD)",   "iamc_dual_price",   "build"),
+        # iamc_dual_price ya no existe (migracion IAMC -> MEP). Ver run_all.py,
+        # que es el orquestador que se mantiene al dia: este esta congelado en
+        # julio y le faltan s3b, s3c, s7b y s9.
         ("Ratios CEDEAR (Comafi)",        "cedear_ratios",     "build"),
         ("Datos ADR (JPMorgan)",          "jpm_adr",           "build"),
         ("Tabla instrumentos (1:N)",      "instrumentos",      "build"),
