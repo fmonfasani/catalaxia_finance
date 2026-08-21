@@ -1,5 +1,10 @@
 # Entorno y config local
+# OJO: este repositorio es PUBLICO. Ningun token, clave ni contrasena va escrito
+# en el codigo -- se lee de .env, que nunca se versiona. Un secreto commiteado
+# sigue en el historial aunque despues se borre del archivo.
 .env
+.env.*
+!.env.example
 .claude/
 .opencode/
 
@@ -10,9 +15,32 @@ docs/screener/PLAN_5_FASES.md
 # Tests locales
 scripts/tests/
 
+# Scripts de exploracion y diagnostico puntual.
+# Se escriben para contestar UNA pregunta y despues no se vuelven a correr.
+# Se listan por prefijo y no como "todo lo que empieza con _", porque hay
+# modulos compartidos que si son de produccion (_perimetro, _precondiciones).
+scripts/**/_check*.py
+scripts/**/_probe*.py
+scripts/**/_tmp*.py
+scripts/**/_diag*.py
+scripts/**/_debug*.py
+scripts/**/_explorar*.py
+scripts/**/_search*.py
+scripts/**/_test*.py
+scripts/**/_download_*.py
+scripts/**/_validacion_*.py
+scripts/**/__*.py
+scripts/demo_txar/
+
 # DB
 data/screener.db
 data/raw/
+
+# Materia prima descargada de la CNV: 25.426 documentos HTML.
+# Son DATOS, no codigo -- se vuelven a bajar con los jobs y no tienen por que
+# viajar en el repositorio. Lo que se versiona es el script que los baja.
+scripts/tickets/cnv/**/*.html
+scripts/tickets/cnv/logs/
 
 # Logs
 data/logs/
