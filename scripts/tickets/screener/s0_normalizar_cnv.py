@@ -146,7 +146,20 @@ def build():
     if not hay_meta:
         print("  AVISO: falta cnv_doc_meta -> corre job8_doc_meta.py."
               " tipo_balance quedara vacio.")
-    sel_tb = "COALESCE(m.tipo_balance,'')" if hay_meta else "''"
+    # El tipo_balance vive en DOS lugares y hay que preferir el que exista.
+    # cnv_doc_meta (job8) es la fuente pensada, pero puede no estar construida.
+    # cnv_estados_v2 lo trae poblado al 100% de sus 102.323 filas porque job5 lo
+    # extrae del documento. Antes esta linea escribia '' cuando faltaba
+    # cnv_doc_meta -- aunque el dato estuviera al lado -- y dejaba la capa de
+    # perimetro en CERO sin avisar.
+    tiene_tb_v2 = "tipo_balance" in {r[1] for r in cur.execute(
+        "PRAGMA table_info(cnv_estados_v2)")}
+    if hay_meta:
+        sel_tb = "COALESCE(m.tipo_balance, e.tipo_balance, '')" if tiene_tb_v2             else "COALESCE(m.tipo_balance,'')"
+    else:
+        sel_tb = "COALESCE(e.tipo_balance,'')" if tiene_tb_v2 else "''"
+    if not hay_meta and tiene_tb_v2:
+        print("  tipo_balance: se toma de cnv_estados_v2 (falta cnv_doc_meta)")
     join_tb = "LEFT JOIN cnv_doc_meta m ON m.accn = e.accn" if hay_meta else ""
     cur.execute(f"""SELECT e.ticker, e.cuit, e.concepto, e.period_end, e.tipo, e.valor,
                            e.valor_comparativo, e.fecha_reexpresion, e.form,
