@@ -88,7 +88,12 @@ def derive_shares(cur, cuit):
 
 def compute(cur, dbmax, revk):
     fcal = {cu: fy for cu, fy in cur.execute("select cuit,fy_end_month from fiscal_calendar")}
-    uni = cur.execute("select cuit,ticker,ultimo_periodo,EPS,PER,precio_ars,MarketCapUSD from screener "
+    # `precio_ars` desaparecio en la migracion IAMC -> MEP (commit e88b450): era la
+    # columna de precio en pesos cuando el dolar de referencia salia de IAMC. Su
+    # equivalente hoy es `Precio`, que para byma_only es el precio nativo en ARS
+    # (Aluar 968,50; A3 3.425,00 -- los precios de pantalla en BYMA).
+    # Sin este cambio el script muere con "no such column: precio_ars".
+    uni = cur.execute("select cuit,ticker,ultimo_periodo,EPS,PER,Precio,MarketCapUSD from screener "
                       "where grupo='byma_only'").fetchall()
     rows = []
     for cuit, tk, up, eps, per, pxars, mcap in uni:
