@@ -132,12 +132,38 @@ def period_end(html):
     return None
 
 
-def tipo_periodo(rev, pe):
-    if rev and rev > 100_000_000_000:
-        return "A"
-    if pe and int(pe.split("-")[1]) in (12, 5, 6):
-        return "A"
-    return "P"
+# El documento declara su periodicidad en `PeriodoBalance`. Medido sobre los
+# 2.457 documentos de la whitelist: esta en el 100%, ninguno lo trae vacio.
+#   1 = anual        670 docs, cierres concentrados en diciembre (442) y junio (122)
+#   2 = semestral     23 docs, casi todos en junio (21)
+#   3 = trimestral  1753 docs, repartidos en septiembre, marzo, junio y diciembre
+#   4 / 5           11 docs en total, sin patron claro -> se tratan como parciales
+PERIODO_BALANCE = re.compile(
+    r'claveinformativa="PeriodoBalance"[^>]*>\s*([0-9]{1,2})', re.I)
+
+
+def tipo_periodo(html, pe=None):
+    """'A' si el documento declara ser anual, 'P' si no. None si no lo declara.
+
+    ANTES ESTO ADIVINABA, y por eso hay que mirarlo con cuidado al releer datos
+    viejos. La regla anterior era:
+
+        if rev > 100_000_000_000: return "A"      # "si factura mucho, es anual"
+        if mes in (12, 5, 6):     return "A"
+        return "P"
+
+    Consecuencia medida: Aluar quedaba con SEIS cierres marcados "A" separados
+    TRES MESES entre si (2026-03, 2025-12, 2025-09, 2025-06...), porque factura
+    por encima del umbral. Con ese campo, 23 de las 56 empresas BYMA parecian
+    apoyar sus ratios en un periodo parcial; con la periodicidad real son 37.
+
+    No se cae a la adivinanza si el campo falta: devuelve None y el periodo
+    queda sin declarar. Un dato ausente se puede detectar; uno inventado, no.
+    """
+    m = PERIODO_BALANCE.search(html or "")
+    if not m:
+        return None
+    return "A" if m.group(1).strip() == "1" else "P"
 
 
 def validar(d):
@@ -276,7 +302,8 @@ def main():
             if iv is not None and iv >= 5:
                 ident_bad += 1
 
-            tp = tipo_periodo(datos.get("Revenue"), pe)
+            # Se lee del documento (PeriodoBalance), no se deduce del monto.
+            tp = tipo_periodo(html, pe)
             cuit = row["cuit"].strip()
             ticker = cuit_a_ticker.get(cuit, row.get("empresa", ""))
 
