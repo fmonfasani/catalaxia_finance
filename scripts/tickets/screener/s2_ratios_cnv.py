@@ -15,6 +15,12 @@ from __future__ import annotations
 import sqlite3, math, csv
 from pathlib import Path
 
+import sys as _sys_ttm
+_sys_ttm.path.insert(0, __import__('os').path.dirname(__import__('os').path.abspath(__file__)))
+from _ttm import ttm as _ttm_flujo  # noqa: E402
+
+_FYCAL = {}
+
 import sys as _sys_foco
 _sys_foco.path.insert(0, __import__('os').path.dirname(__import__('os').path.abspath(__file__)))
 from _foco import Foco  # noqa: E402
@@ -224,6 +230,11 @@ def build():
             rechazados += 1
         return periodos[0][2]
 
+    # el TTM necesita saber cuando cierra el ejercicio de cada empresa
+    global _FYCAL
+    _FYCAL = {cu: fy for cu, fy in cur.execute(
+        "SELECT cuit, fy_end_month FROM fiscal_calendar")}
+
     entidades = []
     if rows:
         current = None
@@ -286,11 +297,34 @@ def build():
         prov = []
 
         # --- 1. ROE ---
-        ni = get_valor_por_cuit(cur, cuit, "NetIncome", ultimo)
+        # EL FLUJO VA A DOCE MESES; EL STOCK ES LA FOTO DEL CIERRE.
+        # Antes se tomaba NetIncome de UN periodo y se dividia por el patrimonio
+        # de todo el año. Si ese periodo era un trimestre, el ROE salia dividido
+        # por cuatro sin que se notara -- el numero seguia siendo plausible.
+        #
+        # Medido en tres cruces independientes: 37 papeles BYMA con
+        # `ultimo_periodo` intermedio, 12 ROE contradictorios entre tablas, y el
+        # cruce ADR (YPFD daba +0,038 con un trimestre y da -0,026 con el año,
+        # que es el signo que reporta EDGAR).
+        #
+        # `_ttm` DETECTA si la empresa acumula en vez de suponerlo: 66 de 71
+        # acumulan, 4 no y 1 es ambigua. Suponer costaba caro en las dos
+        # direcciones. Y si no puede armar el año, devuelve None con el motivo:
+        # un ROE sobre nueve meses es peor que un ROE ausente, porque el
+        # ausente se nota.
+        ni_periodo = get_valor_por_cuit(cur, cuit, "NetIncome", ultimo)
         eq = get_valor_por_cuit(cur, cuit, "Equity", ultimo)
         cnv_roe = get_valor_por_cuit(cur, cuit, "CNV_roe", ultimo)
+        _fy = _FYCAL.get(cuit)
+        ni, _vent, _met, _mot = _ttm_flujo(con, cuit, "NetIncome", _fy, hasta=ultimo)
+        if ni is None:
+            # sin doce meses armables se cae al valor del periodo, PERO se
+            # declara: quien lo consuma tiene que poder distinguir un ROE anual
+            # de uno calculado sobre lo que hubiera.
+            ni, _met = ni_periodo, f"periodo_unico({_mot})"
         roe = (ni / eq) if (ni is not None and eq and eq != 0) else None
-        prov.append(f"NetIncome={ni}, Equity={eq}")
+        prov.append(f"NetIncome={ni} [{_met}"
+                    + (f" {_vent[0]}..{_vent[1]}" if _vent else "") + f"], Equity={eq}")
 
         # --- 2. ROA ---
         assets = get_valor_por_cuit(cur, cuit, "Assets", ultimo)
