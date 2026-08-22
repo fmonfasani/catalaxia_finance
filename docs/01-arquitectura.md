@@ -89,3 +89,21 @@ Next.js 14 · TypeScript · Tailwind CSS · shadcn/ui · SWR · React Query
 
 Ver [`06-decisiones-tecnicas.md`](06-decisiones-tecnicas.md) para el detalle
 de cada decisión (TIKR vs SEC EDGAR, modo headed vs headless, etc).
+
+
+## Extraccion (ETL: la parte de Extract)
+
+Ver **[08-plan-extraccion.md](08-plan-extraccion.md)**.
+
+El trabajo de homologacion se concentro en Transform y funciono, pero Transform
+solo puede trabajar con lo que Extract le entrega. El plan cubre:
+
+- Los dos pipelines: **auditor general mensual** (mide todo el estado y lo
+  compara contra el mes anterior) y **actualizador diario** (solo trae lo nuevo).
+- Por que el cache de `construir_base.py` congela las descargas: es por empresa
+  y no por fecha, y con formularios anuales (20-F) deja a los ADR hasta doce
+  meses atras.
+- La **expectativa por empresa** (`_expectativa.py`): sin ella el auditor
+  reporta 500 falsos huecos; con ella quedan 11 reales.
+- La huella que falta en el hecho crudo: `accession`, `unidad`, `decimales`
+  y `es_restatement`.
