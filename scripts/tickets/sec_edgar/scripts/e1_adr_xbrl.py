@@ -121,9 +121,21 @@ CREATE TABLE IF NOT EXISTS {TABLA} (
     taxonomia     TEXT,
     tag           TEXT,
     concepto      TEXT,
-    unit          TEXT,
-    period_start  TEXT,
-    period_end    TEXT,
+    -- NOT NULL en TODA columna de la clave, y cadena vacia en vez de NULL.
+    --
+    -- SQLite no aplica unicidad cuando una columna de la clave es NULL: acepta
+    -- infinitas filas iguales sin protestar. Los hechos de balance (Assets,
+    -- Equity) son de fecha puntual y no tienen period_start, asi que iban NULL
+    -- y la clave no existia para ellos. Medido: la tabla paso de 36.241 a
+    -- 54.795 filas al correr el proceso dos veces, y `Assets` de BBAR quedo
+    -- cuatro veces. Los hechos de periodo (Revenue) nunca se duplicaron,
+    -- porque esos si traen fecha de inicio.
+    --
+    -- El NOT NULL es lo que hace que esto falle fuerte si alguien lo revierte,
+    -- en vez de volver a crecer en silencio.
+    unit          TEXT NOT NULL DEFAULT '',
+    period_start  TEXT NOT NULL DEFAULT '',
+    period_end    TEXT NOT NULL DEFAULT '',
     val           REAL,
     fy            INTEGER,
     fp            TEXT,
@@ -135,7 +147,7 @@ CREATE TABLE IF NOT EXISTS {TABLA} (
     n_dimensiones INTEGER,
     -- la firma `Eje=Miembro;...` ordenada. Va en la clave porque el CONTEO de
     -- dimensiones no distingue un segmento de otro (ver `parsear`).
-    dimensiones   TEXT,
+    dimensiones   TEXT NOT NULL DEFAULT '',
     -- `unit` va en la clave porque varios emisores publican la MISMA cifra en
     -- pesos y en dolares dentro del mismo balance (CAAP, VIST, TGS). Sin esto
     -- una moneda pisa a la otra. Y es justo el dato doble que buscabamos para
@@ -359,7 +371,8 @@ def main():
                 time.sleep(PAUSA)
 
             hechos = parsear(raw, inv)
-            filas = [(cik, tax, tag, cpt, unit, ini, fin, val,
+            # `or ''`: ninguna columna de la clave puede ir NULL (ver DDL).
+            filas = [(cik, tax, tag, cpt, unit or '', ini or '', fin, val,
                       int(fin[:4]) if fin else None, None, form, filed,
                       acc, dec, ndim, firma)
                      for tag, tax, cpt, unit, ini, fin, val, dec, ndim, firma
@@ -407,6 +420,24 @@ def main():
     print(f"\n  {TABLA}: {total} hechos cargados")
     n = cur.execute(f"SELECT COUNT(*), COUNT(DISTINCT cik) FROM {TABLA}").fetchone()
     print(f"  acumulado: {n[0]} hechos de {n[1]} emisores")
+
+    # IDEMPOTENCIA, COMPROBADA -- NO SUPUESTA
+    #   Correr esto dos veces tiene que dejar la tabla igual. La primera version
+    #   no lo cumplia (36.241 -> 54.795) y nada fallaba: SQLite acepta claves
+    #   duplicadas cuando una columna va NULL. Es el mismo modo de error que ya
+    #   nos costo tres bugs en este proyecto: codigo que no falla y devuelve mal.
+    #
+    #   Por eso se mide aca, en cada corrida, en vez de confiar en el DDL.
+    dup = cur.execute(
+        f"SELECT COUNT(*) FROM (SELECT 1 FROM {TABLA} "
+        f"GROUP BY cik, tag, period_start, period_end, dimensiones, unit, "
+        f"accession HAVING COUNT(*) > 1)").fetchone()[0]
+    if dup:
+        print(f"\n  NO IDEMPOTENTE: {dup} claves repetidas. La tabla crece en cada")
+        print(f"  corrida y cualquier suma sobre ella cuenta de mas. NO usar.")
+    else:
+        print(f"  idempotencia: 0 claves repetidas (correr de nuevo no cambia nada)")
+
     print("\n  `facts` NO se toco. Correr --certificar antes de unir.")
     con.close()
 
