@@ -19,6 +19,15 @@ import argparse, os, sqlite3, sys, datetime as dt
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", ".."))
 DB = os.path.join(ROOT, "data", _os.environ.get("SCREENER_DB", "screener.db"))
+
+# El criterio de perimetro es UNO SOLO para todo el pipeline. Se importa el que
+# ya usan s2, s4 y s8 en vez de copiarlo: dos copias divergen al primer cambio.
+sys.path.insert(0, os.path.join(ROOT, "scripts", "tickets", "screener"))
+try:
+    from _perimetro import filtro_sql as _filtro_perimetro
+except ImportError:                       # pragma: no cover
+    def _filtro_perimetro(cur, cuit, pe):
+        return ("", [])
 FRESH_MONTHS = 15
 REV_CANDS = ["Revenue", "Ventas", "IngresosOrdinarios"]
 
@@ -44,11 +53,45 @@ def qnum(month, fy):        # 1..4, con fy=mes de cierre => Q4
 
 
 def series(cur, cuit, concepto):
+    """Serie temporal de un concepto, con UN perimetro por periodo.
+
+    EL BUG QUE ESTO ARREGLA
+      Una empresa presenta INDIVIDUAL y CONSOLIDADO, y los dos van a
+      `cnv_estados_norm`. La version anterior hacia `d[pe] = v` sobre las dos
+      filas: ganaba la ultima que devolviera SQLite. No es que eligiera mal --
+      es que no elegia. El valor dependia del orden de lectura.
+
+      Medido sobre 11.154 valores de 6 conceptos: 1.709 cambian al aplicar el
+      perimetro (15%). El peor visto es un NetIncome que pasa de 2.050 a
+      2.058.095.000 -- el individual mal escalado le ganaba al consolidado.
+
+      Ese error no rompia nada: producia una serie plausible con periodos de
+      perimetros distintos mezclados, y de ahi salia el TTM y el PER.
+
+    La regla la decide `_perimetro`, que ya la comparten s2, s4 y s8. Prefiere
+    el perimetro que tenga Revenue -- en una holding eso da consolidado, que es
+    el correcto. No se rellena con el otro perimetro lo que falte en el elegido.
+    """
+    # fetchall() ANTES del bucle, y un cursor aparte para las consultas de
+    # adentro. Iterar un cursor mientras se le lanza otra consulta lo reinicia:
+    # el bucle corta en la primera vuelta y no falla -- devuelve una serie de un
+    # solo periodo. Costo la primera version de este arreglo: GRIM paso de 34
+    # periodos a 1 y el TTM quedo en `pocos_trimestres`. Es el mismo error que
+    # ya documenta auditor.py.
+    periodos = cur.execute(
+        "select distinct period_end from cnv_estados_norm where cuit=? "
+        "and concepto=? and valor is not null order by period_end",
+        (cuit, concepto)).fetchall()
+    aux = cur.connection.cursor()
     d = {}
-    for pe, v in cur.execute(
-        "select period_end,valor from cnv_estados_norm where cuit=? and concepto=? "
-        "and valor is not null order by period_end", (cuit, concepto)):
-        d[pe] = v
+    for (pe,) in periodos:
+        extra, pars = _filtro_perimetro(aux, cuit, pe)
+        r = aux.execute(
+            "select valor from cnv_estados_norm where cuit=? and concepto=? "
+            "and period_end=? and valor is not null" + extra,
+            [cuit, concepto, pe] + pars).fetchone()
+        if r:
+            d[pe] = r[0]
     return sorted(d.items())
 
 
