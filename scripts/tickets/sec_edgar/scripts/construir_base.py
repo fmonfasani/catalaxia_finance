@@ -227,13 +227,52 @@ def main():
     print(f"  BLOQUE 2 (facts) -> {DB.name}  | modo={modo}  | historia={ANIOS_HISTORIA}a (desde {CUTOFF})")
     print(f"  Universo: {len(universo)} empresas")
     print("="*64)
-    ya = {r[0] for r in con.execute("SELECT cik FROM empresas WHERE fecha_facts IS NOT NULL")}
+    # --- QUE SE SALTEA, Y POR QUE CAMBIO ------------------------------------
+    # Antes: `ya = CIKs con fecha_facts IS NOT NULL` -- se salteaba TODA empresa
+    # ya bajada, para siempre. El cache era POR EMPRESA y no por fecha.
+    #
+    # El daño depende del formulario. Un 10-Q trimestral deja un atraso maximo
+    # de tres meses; un 20-F ANUAL deja hasta DOCE. Medido el 2026-08-21: BBAR,
+    # LOMA, SUPV, TGS, PAM y CEPU presentaron el ejercicio 2025 en abril de 2026
+    # y seguiamos con 2024, aunque la ultima corrida fue en junio.
+    #
+    # Ahora la pregunta es "la baje DESPUES de que presentara algo nuevo?", y se
+    # responde con el indice de presentaciones de EDGAR que ya esta en disco
+    # (data/raw/submissions/, 8.020 archivos). Sale gratis y sin red.
+    #
+    # Detecto 54 empresas para rebajar, y no solo argentinas: tambien Citigroup
+    # y otras del S&P 500 con un trimestre de atraso.
+    import sys as _sys_c
+    _sys_c.path.insert(0, str(ROOT / "scripts" / "tickets" / "screener"))
+    try:
+        from _caducidad import hay_que_rebajar as _rebajar
+    except ImportError:
+        _rebajar = None
+        print("  AVISO: falta _caducidad.py -> se saltea todo lo ya bajado (cache viejo)")
 
-    stats = {"us-gaap":0,"ifrs-full":0,"sin-financials":0,"sin-cik":0,"skip":0}
+    ya = {r[0] for r in con.execute("SELECT cik FROM empresas WHERE fecha_facts IS NOT NULL")}
+    _ult = {r[0]: r[1] for r in con.execute(
+        "SELECT cik, MAX(period_end) FROM facts GROUP BY cik")}
+
+    def _saltear(cik):
+        """True si NO hay que bajarla."""
+        if cik not in ya:
+            return False                      # nunca se bajo
+        if _rebajar is None:
+            return True                       # sin el modulo, comportamiento viejo
+        r, _mot = _rebajar(str(ROOT), cik, _ult.get(cik))
+        # r is None -> no se pudo decidir. Se REBAJA: ante la duda, bajar es
+        # barato y quedarse con un dato viejo sin saberlo no lo es.
+        return r is False
+
+    stats = {"us-gaap":0,"ifrs-full":0,"sin-financials":0,"sin-cik":0,"skip":0,
+             "rebajada":0}
     n = len(universo)
     for i, (tk, cik, nombre) in enumerate(universo, 1):
-        if cik in ya:
+        if _saltear(cik):
             stats["skip"]+=1; continue
+        if cik in ya:
+            stats["rebajada"]+=1
         res = descargar_empresa(con, tk, cik, nombre)
         if res is None:
             print(f"  [{i:4}/{n}] {tk:<7} -> error/sin-facts"); stats["sin-financials"]+=1; continue
