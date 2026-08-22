@@ -41,6 +41,50 @@ app.add_middleware(
 )
 
 
+# --- handler global de errores con CORS ---
+# Starlette atrapa las excepciones no manejadas en ServerErrorMiddleware, que
+# corre POR FUERA del CORSMiddleware: esa respuesta 500 sale sin headers CORS y
+# el browser se lo muestra al JS como "Failed to fetch", ocultando el status
+# real. Devolvemos JSON con los headers puestos a mano para que el front pueda
+# leer el error.
+from fastapi import Request
+from fastapi.responses import JSONResponse
+from fastapi.exceptions import HTTPException as _HTTPException
+
+
+def _cors_headers(request: Request) -> dict:
+    origin = request.headers.get("origin", "*")
+    return {
+        "Access-Control-Allow-Origin": origin,
+        "Access-Control-Allow-Credentials": "true",
+        "Vary": "Origin",
+    }
+
+
+@app.exception_handler(_HTTPException)
+async def http_exception_con_cors(request: Request, exc: _HTTPException):
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={"error": exc.detail, "path": request.url.path},
+        headers=_cors_headers(request),
+    )
+
+
+@app.exception_handler(Exception)
+async def error_no_manejado_con_cors(request: Request, exc: Exception):
+    logger.exception("Error no manejado en %s %s", request.method, request.url.path)
+    return JSONResponse(
+        status_code=500,
+        content={
+            "error": "internal_error",
+            "tipo": type(exc).__name__,
+            "detalle": str(exc)[:300],
+            "path": request.url.path,
+        },
+        headers=_cors_headers(request),
+    )
+
+
 def get_db():
     """Crea conexión a PostgreSQL"""
     try:
@@ -97,7 +141,13 @@ def get_screener(
     conn = get_db()
     cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
 
-    query = "SELECT * FROM screener WHERE 1=1"
+        # Columnas FIJAS, no SELECT *. Los endpoints devuelven la fila tal cual
+    # (RealDictCursor, sin response_model), asi que los campos del JSON son
+    # las columnas de la tabla: con SELECT *, cualquier ADD COLUMN cambia el
+    # contrato publico de la API sin tocar Python. Estas son las 45 columnas
+    # que ya se servian al 2026-08-22; para publicar una nueva se agrega
+    # aca, a proposito.
+    query = "SELECT cuit, ticker, ultimo_periodo, grupo, roe, roa, margen_neto, deuda_ebitda, eps, fcf_ce, payout, cagr_eps_5y, cagr_flag, per, price_book, price_sales, precio, market_cap_usd, currency, max_52w, min_52w, flag_cnv_fallback, flag_no_significativo, dato_desactualizado, payout_source, provenance, es_financiera, sector, adr_ratio, fuente_fund, payout_status, ev_ebitda, margen_operativo, precio_ars, precio_usd, ccl, precio_dif_iamc, precio_fuente, cedear_ratio, cedear_x, cusip, dr_level, div_adr_12m, last_div_date, div_yield_adr FROM screener WHERE 1=1"
     params = []
 
     if grupo:
@@ -148,7 +198,7 @@ def get_screener_ticker(ticker: str):
     cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
 
     cursor.execute(
-        "SELECT * FROM screener WHERE ticker = %s",
+        "SELECT cuit, ticker, ultimo_periodo, grupo, roe, roa, margen_neto, deuda_ebitda, eps, fcf_ce, payout, cagr_eps_5y, cagr_flag, per, price_book, price_sales, precio, market_cap_usd, currency, max_52w, min_52w, flag_cnv_fallback, flag_no_significativo, dato_desactualizado, payout_source, provenance, es_financiera, sector, adr_ratio, fuente_fund, payout_status, ev_ebitda, margen_operativo, precio_ars, precio_usd, ccl, precio_dif_iamc, precio_fuente, cedear_ratio, cedear_x, cusip, dr_level, div_adr_12m, last_div_date, div_yield_adr FROM screener WHERE ticker = %s",
         (ticker.upper(),),
     )
     row = cursor.fetchone()
