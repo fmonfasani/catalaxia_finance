@@ -32,10 +32,26 @@ LA PREGUNTA CORRECTA
   CIK. La comprobacion sale gratis sobre lo que hay en disco.
 
 QUE FORMULARIOS CUENTAN
-  Solo los que traen estados contables. Un Form 4 -- compraventa de un
-  directivo -- se presenta todas las semanas y no aporta un solo numero
-  financiero: contarlo haria que TODA empresa figure siempre desactualizada, y
-  el aviso dejaria de significar algo.
+  Solo los que traen estados contables EN XBRL, que es lo que ingiere
+  companyfacts. Un Form 4 -- compraventa de un directivo -- se presenta todas
+  las semanas y no aporta un numero financiero.
+
+  EL 6-K QUEDO FUERA DEL DEFECTO, y costo una corrida entera descubrirlo. Un
+  6-K puede traer estados completos o ser un comunicado de prensa, y la mayoria
+  es lo segundo: BBAR presento 23 en 2026 y ninguno aporto un hecho. Contarlos
+  produjo 31 descargas que no trajeron una sola fila.
+
+  Se excluyo el caso obvio (Form 4) y se dejo pasar el sutil.
+
+LIMITE QUE ESTE MODULO NO PUEDE RESOLVER
+  Que una empresa haya presentado no garantiza que companyfacts lo haya
+  INGERIDO. Medido el 2026-08-21: BBAR figura con `filed` 2026-04-09 -- la
+  presentacion del ejercicio 2025 -- pero su ProfitLoss llega solo hasta
+  2024-12. El archivo esta al dia y los hechos no.
+
+  Ese caso no se detecta desde el indice de presentaciones: hace falta mirar los
+  periodos que trae companyfacts. Es la diferencia entre "presento" y "el dato
+  esta disponible por esta via".
 
 DOS NIVELES, Y CONVIENE USAR LOS DOS
   local   lee el indice cacheado. Instantaneo y sin red. Detecta a los que
@@ -51,12 +67,25 @@ import json
 import os
 from pathlib import Path
 
-# Formularios que traen estados contables. El resto se ignora.
+# Formularios que traen estados contables EN XBRL, que es lo que ingiere
+# companyfacts. El resto no aporta un hecho aunque se presente.
 FORMS_CONTABLES = {
     "10-K", "10-Q", "10-K/A", "10-Q/A",          # emisores de EE.UU.
     "20-F", "20-F/A", "40-F",                     # emisores extranjeros, anual
-    "6-K", "6-K/A",                               # extranjeros, intermedios
 }
+
+# EL 6-K ES AMBIGUO Y POR ESO VA APARTE
+#   Un 6-K puede traer estados contables completos o ser un comunicado de
+#   prensa. La mayoria es lo segundo: BBAR presento 23 en 2026 y NINGUNO aporto
+#   un hecho a companyfacts.
+#
+#   Contarlos como prueba de datos nuevos produjo 31 descargas que no trajeron
+#   una sola fila. Es el mismo ruido que se quiso evitar excluyendo los Form 4
+#   -- se excluyo el caso obvio y se dejo pasar el sutil.
+#
+#   Se separan: cuentan solo si se pide explicitamente, y quien los pida tiene
+#   que saber que la mayoria no va a aportar nada.
+FORMS_AMBIGUOS = {"6-K", "6-K/A"}
 
 RAW_SUBS = "data/raw/submissions"
 
@@ -77,12 +106,14 @@ def _ruta(root, cik):
     return Path(root) / RAW_SUBS / f"CIK{int(str(cik).lstrip('0') or 0):010d}.json"
 
 
-def ultima_presentacion(root, cik, forms=None):
+def ultima_presentacion(root, cik, forms=None, incluir_6k=False):
     """(fecha, form, accession, reportDate) de la ultima presentacion contable.
 
     Lee el indice CACHEADO. Devuelve (None,)*4 si no esta bajado.
+    incluir_6k: sumar los 6-K, sabiendo que la mayoria no aporta hechos.
     """
-    forms = forms or FORMS_CONTABLES
+    forms = forms or (FORMS_CONTABLES | FORMS_AMBIGUOS if incluir_6k
+                      else FORMS_CONTABLES)
     p = _ruta(root, cik)
     if p is None or not p.exists():
         return None, None, None, None
@@ -119,7 +150,7 @@ def edad_indice(root, cik):
     return max(fd) if fd else None
 
 
-def hay_que_rebajar(root, cik, nuestro_ultimo_reporte):
+def hay_que_rebajar(root, cik, nuestro_ultimo_reporte, incluir_6k=False):
     """(True|False|None, motivo).
 
     None cuando no se puede decidir -- indice ausente o sin presentaciones
@@ -128,7 +159,7 @@ def hay_que_rebajar(root, cik, nuestro_ultimo_reporte):
     """
     if not es_cik_sec(cik):
         return False, "no es un registrante de la SEC"
-    fd, form, acc, rd = ultima_presentacion(root, cik)
+    fd, form, acc, rd = ultima_presentacion(root, cik, incluir_6k=incluir_6k)
     if fd is None:
         return None, "sin indice de presentaciones"
     if not rd:
