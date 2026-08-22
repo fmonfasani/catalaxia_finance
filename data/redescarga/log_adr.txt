@@ -1,0 +1,18 @@
+================================================================
+  BLOQUE 2 (facts) -> screener.db  | modo=adr  | historia=6a (desde 2020-08-23)
+  Universo: 34 empresas
+================================================================
+  [   1/34] YPF     -> ifrs-full  242 tags,  3020 dp
+  [   2/34] GGAL    -> ifrs-full  192 tags,  3414 dp
+  [   3/34] BMA     -> ifrs-full  153 tags,  1473 dp
+  [   4/34] BBAR    -> ifrs-full  212 tags,  1945 dp
+  [   5/34] SUPV    -> ifrs-full  224 tags,  1910 dp
+  [  25/34] BSBR    -> ifrs-full  220 tags,  2754 dp
+
+----------------------------------------------------------------
+  Empresas en la base : 8077
+  Datapoints totales  : 4,604,742
+  Datapoints 'core'   : 607,366 (conceptos canonicos)
+  Por esquema         : {'ifrs-full': 31, 'skip': 3, 'rebajada': 31}
+
+  OK D:\Software Development\Porfolio\catalaxia-cedears-prod\data\screener.db
