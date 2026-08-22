@@ -219,3 +219,101 @@ Cada migración trae su marcha atrás escrita en el encabezado.
 7 DERIVADO     82,1%
 8 PUBLICADO    86,9%   497 de 572 con PER
 ```
+
+---
+
+# Segunda tanda — mismo día
+
+## `facts`: no eran 4,6 millones de filas, eran 3 empresas
+
+Comparando `max(filed)` por CIK: **606 iguales, 3 con local más nuevo, 0 con
+producción más nueva.**
+
+```
+TAP   (Molson Coors)    2026-02-18 -> 2026-08-06
+CAH   (Cardinal Health) 2026-02-05 -> 2026-08-11
+FISV  (Fiserv)          2026-05-06 -> 2026-08-07
+```
+
+Se sincronizaron esos 3 CIK, 25.407 filas. No la tabla entera.
+
+## La re-descarga había perdido historia
+
+Después de sincronizar, producción quedó con **1.483 filas más** que local.
+Comparar por `max(filed)` no dice nada de las cantidades.
+
+Local `facts` tenía 14.386 filas de Citigroup; `facts_pre_redescarga`, 14.994 —
+**con la misma fecha de presentación**. Perdidas 608, ganadas 0.
+
+Medido sobre los 10 CIK afectados:
+
+```
+filas perdidas               1.483
+con period_end > 2020-08-23      0
+period_end más alto perdido      2020-08-21
+```
+
+La re-descarga corrió con ventana `historia=6a (desde 2020-08-23)` y borró todo
+lo anterior. El corte cae **dos días** después del dato más nuevo que se perdió.
+
+Afectadas: C (608), VALE (469), PBR (395), y 7 más con 1-2 filas.
+
+Pega justo donde duele: CAGR de 5 años y ROE de 5 años necesitan esa historia.
+
+**Producción tenía la versión completa; local la había perdido.** Se reparó
+local desde `facts_pre_redescarga` — 1.483 filas restauradas. Las dos bases
+quedaron en 4.605.967.
+
+> Nota: `n_live_tup` de `pg_stat_user_tables` es una **estimación**. Decía
+> 4.603.445 cuando el `count(*)` daba 4.605.967. Para comparar conteos, `count`.
+
+## Seis empresas publicaban el precio de otra empresa
+
+`screener` en producción tenía el guard de moneda de s9 sin aplicar:
+
+| ticker | producción | correcto | qué era el precio malo |
+|---|---|---|---|
+| AGRO | USD 10 | ARS 40,20 | Adecoagro |
+| CELU | USD 0,75 | ARS 266,50 | Celularity |
+| COUR | USD 5,67 | ARS 3.400 | Coursera |
+| HAVA | USD 10,10 | ARS 5.260 | — |
+| INTR | USD 5,71 | ARS 295 | Inter&Co (ADR brasileño) |
+| BOLT | null | ARS 46,40 | — |
+
+HAVA publicaba **PER 92,05** calculado sobre el precio equivocado. El correcto
+es 32,24.
+
+Se actualizaron 44 columnas de `screener` por `cuit`, preservando las 12 que
+solo viven en producción — las mismas 12 que la migración 003 advierte que
+`migrate_sqlite_to_pg.py` vacía. Verificado después: `precio_ars` 568 filas,
+`cusip` 13 filas, intactas.
+
+## Error del proceso: se borraron 50 precios legítimos
+
+Al limpiar `precios` se usó el filtro `cik LIKE 'BYMA-%'` creyendo que esos CIK
+sintéticos eran todos de la colisión de tickers. **No lo eran**: 50 de esas 56
+filas eran precios legítimos en pesos (`BYMA-VALO` a 653,50 ARS, entre otros).
+Producción cayó de 679 a 623.
+
+Se restauró `precios` completo desde local (672 filas, 48 tickers con dos
+filas). Verificado: 672 = 672, 48 = 48.
+
+La lección es la de siempre en este proyecto: **el prefijo de un identificador
+no es una clasificación**. Lo que distinguía las filas malas era la moneda (USD
+en una empresa que cotiza en pesos), no el formato del CIK.
+
+## Estado al cierre
+
+```
+tabla                  local    producción
+cnv_estados_norm     106.421     106.421   =
+cnv_estados_v2       102.323     102.323   =
+facts              4.605.967   4.605.967   =
+precios                  672         672   =
+ratios                   609         609   =
+ratios_cnv                72          72   =
+screener                 572         572   =
+silver_norm            1.147       1.147   =
+```
+
+API: 10 de 11 endpoints en 200, 45 campos por fila.
