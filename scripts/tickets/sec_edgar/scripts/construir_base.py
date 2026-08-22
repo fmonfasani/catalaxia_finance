@@ -111,12 +111,24 @@ def cargar_mapa_cik():
     return m
 
 
-def get_json_cache(url, cache_path):
+def get_json_cache(url, cache_path, forzar=False):
     """Lee del cache crudo si existe; si no, descarga de SEC y lo guarda. El
     raw es la fuente de verdad: una vez bajado no se vuelve a pegar a SEC, asi
     la base se puede reconstruir (o cargar en Postgres) sin red. Devuelve
-    (data, era_cache)."""
-    if cache_path.exists():
+    (data, era_cache).
+
+    forzar=True IGNORA el cache y vuelve a pedirlo. Hace falta porque el cache
+    del disco NO tiene vencimiento: `_caducidad` decide bien QUE empresa esta
+    atrasada, pero si despues se lee el JSON de junio que hay en
+    data/raw/companyfacts/ se re-inserta el mismo dato viejo y la corrida
+    parece exitosa sin haber traido nada. Medido el 2026-08-21: el JSON
+    cacheado de SUPV llegaba hasta 2024-12-31 aunque su 20-F del 2026-04-08 ya
+    cubria el ejercicio 2025.
+
+    Si la red falla, se cae al cache en vez de devolver None: un dato viejo es
+    peor que uno nuevo, pero mucho mejor que borrar el que ya se tenia.
+    """
+    if cache_path.exists() and not forzar:
         try:
             return json.loads(cache_path.read_text(encoding="utf-8")), True
         except Exception:
@@ -130,12 +142,20 @@ def get_json_cache(url, cache_path):
         cache_path.write_text(json.dumps(data), encoding="utf-8")
         return data, False
     except Exception:
-        return None, False
+        pass
+    if forzar and cache_path.exists():
+        try:
+            return json.loads(cache_path.read_text(encoding="utf-8")), True
+        except Exception:
+            pass
+    return None, False
 
 
-def descargar_empresa(con, ticker, cik, nombre):
+def descargar_empresa(con, ticker, cik, nombre, forzar=False):
+    """forzar=True: la empresa viene marcada como atrasada, asi que su copia en
+    disco es justamente la que no sirve. Se vuelve a pedir a SEC."""
     # metadata (submissions) -- cacheada en data/raw/submissions/
-    sub, era_cache = get_json_cache(f"https://data.sec.gov/submissions/CIK{cik}.json", RAW_SUBS / f"CIK{cik}.json")
+    sub, era_cache = get_json_cache(f"https://data.sec.gov/submissions/CIK{cik}.json", RAW_SUBS / f"CIK{cik}.json", forzar)
     if not era_cache:
         time.sleep(DELAY)
     sub = sub or {}
@@ -143,7 +163,7 @@ def descargar_empresa(con, ticker, cik, nombre):
     pais = (sub.get("addresses",{}).get("business",{}) or {}).get("stateOrCountry") or sub.get("stateOfIncorporationDescription")
     fye = sub.get("fiscalYearEnd")
 
-    facts, era_cache = get_json_cache(f"https://data.sec.gov/api/xbrl/companyfacts/CIK{cik}.json", RAW_FACTS / f"CIK{cik}.json")
+    facts, era_cache = get_json_cache(f"https://data.sec.gov/api/xbrl/companyfacts/CIK{cik}.json", RAW_FACTS / f"CIK{cik}.json", forzar)
     if not era_cache:
         time.sleep(DELAY)
     if not facts:
@@ -271,9 +291,12 @@ def main():
     for i, (tk, cik, nombre) in enumerate(universo, 1):
         if _saltear(cik):
             stats["skip"]+=1; continue
-        if cik in ya:
+        # `rebajada` = ya estaba en la base y _caducidad dice que quedo vieja.
+        # Ese es exactamente el caso en que el JSON del disco tampoco sirve.
+        es_rebaja = cik in ya
+        if es_rebaja:
             stats["rebajada"]+=1
-        res = descargar_empresa(con, tk, cik, nombre)
+        res = descargar_empresa(con, tk, cik, nombre, forzar=es_rebaja)
         if res is None:
             print(f"  [{i:4}/{n}] {tk:<7} -> error/sin-facts"); stats["sin-financials"]+=1; continue
         esq, ntags, ndp = res
