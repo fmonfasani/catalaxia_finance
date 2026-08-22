@@ -1,0 +1,13 @@
+================================================================
+  BLOQUE 2 (facts) -> screener.db  | modo=sp500  | historia=6a (desde 2020-08-23)
+  Universo: 500 empresas
+================================================================
+  [ 425/500] TAP     -> us-gaap    371 tags,  8534 dp
+
+----------------------------------------------------------------
+  Empresas en la base : 8077
+  Datapoints totales  : 4,604,484
+  Datapoints 'core'   : 607,368 (conceptos canonicos)
+  Por esquema         : {'us-gaap': 4, 'sin-financials': 1, 'skip': 495, 'rebajada': 4}
+
+  OK D:\Software Development\Porfolio\catalaxia-cedears-prod\data\screener.db
