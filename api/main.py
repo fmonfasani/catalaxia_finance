@@ -331,8 +331,9 @@ def get_ratios_legacy(
     )
     rows = cursor.fetchall()
 
-    cursor.execute("SELECT COUNT(*) FROM silver_norm")
-    total = cursor.fetchone()[0]
+    cursor.execute("SELECT COUNT(*) AS n FROM silver_norm")
+    # RealDictCursor devuelve dict, no tupla: fetchone()[0] tira KeyError.
+    total = cursor.fetchone()["n"]
 
     cursor.close()
     conn.close()
