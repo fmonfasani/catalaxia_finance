@@ -41,6 +41,10 @@ PERIODICIDAD ESPERADA, que es lo que permite contar los huecos
 """
 from __future__ import annotations
 
+import sys as _sys_id
+_sys_id.path.insert(0, __import__('os').path.dirname(__import__('os').path.abspath(__file__)))
+from _identidad_adr import cik_de, espera_edgar  # noqa: E402
+
 # grupo -> (fuentes obligatorias, fuentes opcionales, periodos esperados por año)
 EXPECTATIVA = {
     "sp500":     ({"edgar"}, set(), 4),
@@ -49,9 +53,17 @@ EXPECTATIVA = {
 }
 
 
-def fuentes_esperadas(grupo):
-    """(obligatorias, opcionales). Grupo desconocido -> nada exigido."""
+def fuentes_esperadas(grupo, ticker=None):
+    """(obligatorias, opcionales). Grupo desconocido -> nada exigido.
+
+    Con `ticker` se afina: un ADR que no tiene registro propio en la SEC no
+    debe exigir EDGAR. YPF Luz es subsidiaria y no presenta alla; exigirselo
+    produce un falso faltante que despues alguien intenta "arreglar" bajando
+    algo que no existe.
+    """
     o, op, _ = EXPECTATIVA.get(grupo, (set(), set(), 0))
+    if ticker and not espera_edgar(ticker):
+        o = o - {"edgar"}
     return o, op
 
 
@@ -67,14 +79,11 @@ def fuentes_presentes(con, cuit, ticker):
         hay.add("cnv")
     # EDGAR SOLO por CIK. Por ticker da falsos positivos: `ratios` guarda
     # tambien filas de yfinance (grupo='byma_yf') con el ticker local.
-    if con.execute("SELECT 1 FROM facts WHERE cik=? LIMIT 1", (cuit,)).fetchone():
+    # El puente ticker local -> CIK vive en _identidad_adr: sin el, diez ADR
+    # figuraban "sin EDGAR" con los hechos bajados hace meses.
+    _cik = cik_de(ticker, con) or cuit
+    if con.execute("SELECT 1 FROM facts WHERE cik=? LIMIT 1", (_cik,)).fetchone():
         hay.add("edgar")
-    else:
-        r = con.execute("SELECT cik FROM ratios WHERE ticker=? AND grupo NOT LIKE 'byma_yf'",
-                        (ticker,)).fetchone()
-        if r and con.execute("SELECT 1 FROM facts WHERE cik=? LIMIT 1",
-                             (r[0],)).fetchone():
-            hay.add("edgar")
     if con.execute("SELECT 1 FROM ratios WHERE ticker=? AND grupo='byma_yf' LIMIT 1",
                    (ticker,)).fetchone():
         hay.add("yfinance")
@@ -83,6 +92,6 @@ def fuentes_presentes(con, cuit, ticker):
 
 def diagnostico(con, cuit, ticker, grupo):
     """(faltantes, presentes, extra). `extra` = fuentes que no se esperaban."""
-    oblig, opc = fuentes_esperadas(grupo)
+    oblig, opc = fuentes_esperadas(grupo, ticker)
     hay = fuentes_presentes(con, cuit, ticker)
     return oblig - hay, hay, hay - oblig - opc
