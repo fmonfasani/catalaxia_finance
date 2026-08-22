@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" targetNamespace="http://catalaxia/bpmn" id="defs_aud">
+  <bpmn:collaboration id="col_aud">
+    <bpmn:participant id="pool_aud" name="Auditor general (mensual)" processRef="aud"/>
+  </bpmn:collaboration>
+  <bpmn:process id="aud" isExecutable="false">
+    <bpmn:laneSet>
+      <bpmn:lane id="a_med" name="Medicion">
+        <bpmn:flowNodeRef>aud_n1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>aud_n2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>aud_n3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>aud_n4</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>aud_n5</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="a_cla" name="Clasificacion">
+        <bpmn:flowNodeRef>aud_n6</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>aud_n7</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>aud_n8</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>aud_n9</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>aud_n10</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="a_dec" name="Decision humana">
+        <bpmn:flowNodeRef>aud_n11</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>aud_n12</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="aud_n1" name="Primer dia del mes">
+      <bpmn:outgoing>aud_f1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="aud_n2" name="Cobertura
+contra la expectativa">
+      <bpmn:incoming>aud_f1</bpmn:incoming>
+      <bpmn:outgoing>aud_f2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="aud_n3" name="Completitud
+de periodos">
+      <bpmn:incoming>aud_f2</bpmn:incoming>
+      <bpmn:outgoing>aud_f3</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="aud_n4" name="Frescura
+y consistencia">
+      <bpmn:incoming>aud_f3</bpmn:incoming>
+      <bpmn:outgoing>aud_f4</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="aud_n5" name="Comparar contra
+la corrida anterior">
+      <bpmn:incoming>aud_f4</bpmn:incoming>
+      <bpmn:outgoing>aud_f5</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="aud_n6" name="Clasificar cada hueco
+por CAUSA">
+      <bpmn:incoming>aud_f5</bpmn:incoming>
+      <bpmn:outgoing>aud_f6</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="aud_n7" name="De que tipo?">
+      <bpmn:incoming>aud_f6</bpmn:incoming>
+      <bpmn:outgoing>aud_f7</bpmn:outgoing>
+      <bpmn:outgoing>aud_f8</bpmn:outgoing>
+      <bpmn:outgoing>aud_f9</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="aud_n8" name="Reprocesar el crudo
+(sin red)">
+      <bpmn:incoming>aud_f7</bpmn:incoming>
+      <bpmn:outgoing>aud_f10</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="aud_n9" name="Arreglar identidad
+(sin red)">
+      <bpmn:incoming>aud_f8</bpmn:incoming>
+      <bpmn:outgoing>aud_f11</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="aud_n10" name="Proponer descarga
+quirurgica">
+      <bpmn:incoming>aud_f9</bpmn:incoming>
+      <bpmn:outgoing>aud_f12</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:userTask id="aud_n11" name="Revisar el informe
+y autorizar">
+      <bpmn:incoming>aud_f10</bpmn:incoming>
+      <bpmn:incoming>aud_f11</bpmn:incoming>
+      <bpmn:incoming>aud_f12</bpmn:incoming>
+      <bpmn:outgoing>aud_f13</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="aud_n12" name="Auditoria cerrada">
+      <bpmn:incoming>aud_f13</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="aud_f1" sourceRef="aud_n1" targetRef="aud_n2"/>
+    <bpmn:sequenceFlow id="aud_f2" sourceRef="aud_n2" targetRef="aud_n3"/>
+    <bpmn:sequenceFlow id="aud_f3" sourceRef="aud_n3" targetRef="aud_n4"/>
+    <bpmn:sequenceFlow id="aud_f4" sourceRef="aud_n4" targetRef="aud_n5"/>
+    <bpmn:sequenceFlow id="aud_f5" sourceRef="aud_n5" targetRef="aud_n6"/>
+    <bpmn:sequenceFlow id="aud_f6" sourceRef="aud_n6" targetRef="aud_n7"/>
+    <bpmn:sequenceFlow id="aud_f7" name="en crudo sin parsear" sourceRef="aud_n7" targetRef="aud_n8"/>
+    <bpmn:sequenceFlow id="aud_f8" name="no asociado" sourceRef="aud_n7" targetRef="aud_n9"/>
+    <bpmn:sequenceFlow id="aud_f9" name="no descargado" sourceRef="aud_n7" targetRef="aud_n10"/>
+    <bpmn:sequenceFlow id="aud_f10" sourceRef="aud_n8" targetRef="aud_n11"/>
+    <bpmn:sequenceFlow id="aud_f11" sourceRef="aud_n9" targetRef="aud_n11"/>
+    <bpmn:sequenceFlow id="aud_f12" sourceRef="aud_n10" targetRef="aud_n11"/>
+    <bpmn:sequenceFlow id="aud_f13" sourceRef="aud_n11" targetRef="aud_n12"/>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="dia_aud">
+    <bpmndi:BPMNPlane id="pla_aud" bpmnElement="col_aud">
+      <bpmndi:BPMNShape id="sh_pool_aud" bpmnElement="pool_aud" isHorizontal="true">
+        <dc:Bounds x="20" y="50" width="2233.0" height="390"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_a_med" bpmnElement="a_med" isHorizontal="true">
+        <dc:Bounds x="50" y="50" width="2203.0" height="130"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_a_cla" bpmnElement="a_cla" isHorizontal="true">
+        <dc:Bounds x="50" y="180" width="2203.0" height="130"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_a_dec" bpmnElement="a_dec" isHorizontal="true">
+        <dc:Bounds x="50" y="310" width="2203.0" height="130"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_aud_n1" bpmnElement="aud_n1">
+        <dc:Bounds x="117" y="107" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_aud_n2" bpmnElement="aud_n2">
+        <dc:Bounds x="260" y="90" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_aud_n3" bpmnElement="aud_n3">
+        <dc:Bounds x="460" y="90" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_aud_n4" bpmnElement="aud_n4">
+        <dc:Bounds x="660" y="90" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_aud_n5" bpmnElement="aud_n5">
+        <dc:Bounds x="860" y="90" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_aud_n6" bpmnElement="aud_n6">
+        <dc:Bounds x="1060" y="220" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_aud_n7" bpmnElement="aud_n7">
+        <dc:Bounds x="1310" y="230" width="50" height="50"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_aud_n8" bpmnElement="aud_n8">
+        <dc:Bounds x="1460" y="220" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_aud_n9" bpmnElement="aud_n9">
+        <dc:Bounds x="1460" y="220" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_aud_n10" bpmnElement="aud_n10">
+        <dc:Bounds x="1660" y="220" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_aud_n11" bpmnElement="aud_n11">
+        <dc:Bounds x="1860" y="350" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_aud_n12" bpmnElement="aud_n12">
+        <dc:Bounds x="2117" y="367" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="ed_aud_f1" bpmnElement="aud_f1">
+        <di:waypoint x="153" y="125"/>
+        <di:waypoint x="260" y="125"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_aud_f2" bpmnElement="aud_f2">
+        <di:waypoint x="410" y="125"/>
+        <di:waypoint x="460" y="125"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_aud_f3" bpmnElement="aud_f3">
+        <di:waypoint x="610" y="125"/>
+        <di:waypoint x="660" y="125"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_aud_f4" bpmnElement="aud_f4">
+        <di:waypoint x="810" y="125"/>
+        <di:waypoint x="860" y="125"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_aud_f5" bpmnElement="aud_f5">
+        <di:waypoint x="1010" y="125"/>
+        <di:waypoint x="1135" y="125"/>
+        <di:waypoint x="1060" y="255"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_aud_f6" bpmnElement="aud_f6">
+        <di:waypoint x="1210" y="255"/>
+        <di:waypoint x="1310" y="255"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_aud_f7" bpmnElement="aud_f7">
+        <di:waypoint x="1360" y="255"/>
+        <di:waypoint x="1460" y="255"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_aud_f8" bpmnElement="aud_f8">
+        <di:waypoint x="1360" y="255"/>
+        <di:waypoint x="1460" y="255"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_aud_f9" bpmnElement="aud_f9">
+        <di:waypoint x="1360" y="255"/>
+        <di:waypoint x="1660" y="255"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_aud_f10" bpmnElement="aud_f10">
+        <di:waypoint x="1610" y="255"/>
+        <di:waypoint x="1935" y="255"/>
+        <di:waypoint x="1860" y="385"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_aud_f11" bpmnElement="aud_f11">
+        <di:waypoint x="1610" y="255"/>
+        <di:waypoint x="1935" y="255"/>
+        <di:waypoint x="1860" y="385"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_aud_f12" bpmnElement="aud_f12">
+        <di:waypoint x="1810" y="255"/>
+        <di:waypoint x="1935" y="255"/>
+        <di:waypoint x="1860" y="385"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_aud_f13" bpmnElement="aud_f13">
+        <di:waypoint x="2010" y="385"/>
+        <di:waypoint x="2117" y="385"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

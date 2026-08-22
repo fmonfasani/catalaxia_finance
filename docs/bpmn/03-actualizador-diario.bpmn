@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" targetNamespace="http://catalaxia/bpmn" id="defs_act">
+  <bpmn:collaboration id="col_act">
+    <bpmn:participant id="pool_act" name="Actualizador (diario)" processRef="act"/>
+  </bpmn:collaboration>
+  <bpmn:process id="act" isExecutable="false">
+    <bpmn:laneSet>
+      <bpmn:lane id="d_det" name="Deteccion">
+        <bpmn:flowNodeRef>act_n1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>act_n2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>act_n3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>act_n4</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="d_baj" name="Descarga">
+        <bpmn:flowNodeRef>act_n5</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>act_n6</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="d_pro" name="Proceso">
+        <bpmn:flowNodeRef>act_n7</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>act_n8</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>act_n9</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>act_n10</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>act_n11</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="act_n1" name="Todos los dias">
+      <bpmn:outgoing>act_f1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="act_n2" name="Leer indice de
+presentaciones">
+      <bpmn:incoming>act_f1</bpmn:incoming>
+      <bpmn:outgoing>act_f2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="act_n3" name="Hay algo nuevo?">
+      <bpmn:incoming>act_f2</bpmn:incoming>
+      <bpmn:outgoing>act_f3</bpmn:outgoing>
+      <bpmn:outgoing>act_f4</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="act_n4" name="Nada que hacer">
+      <bpmn:incoming>act_f3</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:task id="act_n5" name="Bajar SOLO esa
+presentacion">
+      <bpmn:incoming>act_f4</bpmn:incoming>
+      <bpmn:outgoing>act_f5</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="act_n6" name="Registrar en
+ingesta_log">
+      <bpmn:incoming>act_f5</bpmn:incoming>
+      <bpmn:outgoing>act_f6</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="act_n7" name="Reprocesar SOLO
+lo afectado">
+      <bpmn:incoming>act_f6</bpmn:incoming>
+      <bpmn:outgoing>act_f7</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="act_n8" name="Certificar que
+no rompio nada">
+      <bpmn:incoming>act_f7</bpmn:incoming>
+      <bpmn:outgoing>act_f8</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="act_n9" name="Certifica?">
+      <bpmn:incoming>act_f8</bpmn:incoming>
+      <bpmn:outgoing>act_f9</bpmn:outgoing>
+      <bpmn:outgoing>act_f10</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="act_n10" name="Revertir
+y avisar">
+      <bpmn:incoming>act_f9</bpmn:incoming>
+      <bpmn:outgoing>act_f11</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="act_n11" name="Base actualizada">
+      <bpmn:incoming>act_f10</bpmn:incoming>
+      <bpmn:incoming>act_f11</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="act_f1" sourceRef="act_n1" targetRef="act_n2"/>
+    <bpmn:sequenceFlow id="act_f2" sourceRef="act_n2" targetRef="act_n3"/>
+    <bpmn:sequenceFlow id="act_f3" name="no" sourceRef="act_n3" targetRef="act_n4"/>
+    <bpmn:sequenceFlow id="act_f4" name="si" sourceRef="act_n3" targetRef="act_n5"/>
+    <bpmn:sequenceFlow id="act_f5" sourceRef="act_n5" targetRef="act_n6"/>
+    <bpmn:sequenceFlow id="act_f6" sourceRef="act_n6" targetRef="act_n7"/>
+    <bpmn:sequenceFlow id="act_f7" sourceRef="act_n7" targetRef="act_n8"/>
+    <bpmn:sequenceFlow id="act_f8" sourceRef="act_n8" targetRef="act_n9"/>
+    <bpmn:sequenceFlow id="act_f9" name="no" sourceRef="act_n9" targetRef="act_n10"/>
+    <bpmn:sequenceFlow id="act_f10" name="si" sourceRef="act_n9" targetRef="act_n11"/>
+    <bpmn:sequenceFlow id="act_f11" sourceRef="act_n10" targetRef="act_n11"/>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="dia_act">
+    <bpmndi:BPMNPlane id="pla_act" bpmnElement="col_act">
+      <bpmndi:BPMNShape id="sh_pool_act" bpmnElement="pool_act" isHorizontal="true">
+        <dc:Bounds x="20" y="50" width="2033.0" height="390"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_d_det" bpmnElement="d_det" isHorizontal="true">
+        <dc:Bounds x="50" y="50" width="2003.0" height="130"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_d_baj" bpmnElement="d_baj" isHorizontal="true">
+        <dc:Bounds x="50" y="180" width="2003.0" height="130"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_d_pro" bpmnElement="d_pro" isHorizontal="true">
+        <dc:Bounds x="50" y="310" width="2003.0" height="130"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_act_n1" bpmnElement="act_n1">
+        <dc:Bounds x="117" y="107" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_act_n2" bpmnElement="act_n2">
+        <dc:Bounds x="260" y="90" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_act_n3" bpmnElement="act_n3">
+        <dc:Bounds x="510" y="100" width="50" height="50"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_act_n4" bpmnElement="act_n4">
+        <dc:Bounds x="717" y="107" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_act_n5" bpmnElement="act_n5">
+        <dc:Bounds x="660" y="220" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_act_n6" bpmnElement="act_n6">
+        <dc:Bounds x="860" y="220" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_act_n7" bpmnElement="act_n7">
+        <dc:Bounds x="1060" y="350" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_act_n8" bpmnElement="act_n8">
+        <dc:Bounds x="1260" y="350" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_act_n9" bpmnElement="act_n9">
+        <dc:Bounds x="1510" y="360" width="50" height="50"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_act_n10" bpmnElement="act_n10">
+        <dc:Bounds x="1660" y="350" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_act_n11" bpmnElement="act_n11">
+        <dc:Bounds x="1917" y="367" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="ed_act_f1" bpmnElement="act_f1">
+        <di:waypoint x="153" y="125"/>
+        <di:waypoint x="260" y="125"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_act_f2" bpmnElement="act_f2">
+        <di:waypoint x="410" y="125"/>
+        <di:waypoint x="510" y="125"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_act_f3" bpmnElement="act_f3">
+        <di:waypoint x="560" y="125"/>
+        <di:waypoint x="717" y="125"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_act_f4" bpmnElement="act_f4">
+        <di:waypoint x="560" y="125"/>
+        <di:waypoint x="735" y="125"/>
+        <di:waypoint x="660" y="255"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_act_f5" bpmnElement="act_f5">
+        <di:waypoint x="810" y="255"/>
+        <di:waypoint x="860" y="255"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_act_f6" bpmnElement="act_f6">
+        <di:waypoint x="1010" y="255"/>
+        <di:waypoint x="1135" y="255"/>
+        <di:waypoint x="1060" y="385"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_act_f7" bpmnElement="act_f7">
+        <di:waypoint x="1210" y="385"/>
+        <di:waypoint x="1260" y="385"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_act_f8" bpmnElement="act_f8">
+        <di:waypoint x="1410" y="385"/>
+        <di:waypoint x="1510" y="385"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_act_f9" bpmnElement="act_f9">
+        <di:waypoint x="1560" y="385"/>
+        <di:waypoint x="1660" y="385"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_act_f10" bpmnElement="act_f10">
+        <di:waypoint x="1560" y="385"/>
+        <di:waypoint x="1917" y="385"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_act_f11" bpmnElement="act_f11">
+        <di:waypoint x="1810" y="385"/>
+        <di:waypoint x="1917" y="385"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

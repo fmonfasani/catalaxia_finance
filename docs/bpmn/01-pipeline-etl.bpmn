@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" targetNamespace="http://catalaxia/bpmn" id="defs_etl">
+  <bpmn:collaboration id="col_etl">
+    <bpmn:participant id="pool_etl" name="Pipeline ETL - Catalaxia" processRef="etl"/>
+  </bpmn:collaboration>
+  <bpmn:process id="etl" isExecutable="false">
+    <bpmn:laneSet>
+      <bpmn:lane id="l_ext" name="1 Extraccion">
+        <bpmn:flowNodeRef>etl_n1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>etl_n2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>etl_n3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>etl_n4</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>etl_n5</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="l_nor" name="2 Normalizacion e identidad">
+        <bpmn:flowNodeRef>etl_n6</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>etl_n7</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="l_val" name="3 Unidad, moneda y validacion">
+        <bpmn:flowNodeRef>etl_n8</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>etl_n9</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>etl_n10</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>etl_n11</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="l_der" name="4 Derivacion">
+        <bpmn:flowNodeRef>etl_n12</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>etl_n13</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>etl_n14</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="l_pub" name="5 Publicacion">
+        <bpmn:flowNodeRef>etl_n15</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>etl_n16</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>etl_n17</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="etl_n1" name="Corrida del pipeline">
+      <bpmn:outgoing>etl_f1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="etl_n2" name="Bajar SEC EDGAR
+(construir_base)">
+      <bpmn:incoming>etl_f1</bpmn:incoming>
+      <bpmn:outgoing>etl_f2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="etl_n3" name="Presento algo nuevo?">
+      <bpmn:incoming>etl_f2</bpmn:incoming>
+      <bpmn:outgoing>etl_f3</bpmn:outgoing>
+      <bpmn:outgoing>etl_f4</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="etl_n4" name="Bajar CNV
+(job1..job8)">
+      <bpmn:incoming>etl_f3</bpmn:incoming>
+      <bpmn:outgoing>etl_f5</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="etl_n5" name="Bajar MEP
+(dolarito)">
+      <bpmn:incoming>etl_f4</bpmn:incoming>
+      <bpmn:incoming>etl_f5</bpmn:incoming>
+      <bpmn:outgoing>etl_f6</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="etl_n6" name="s0 Unir fuentes
+y resolver identidad">
+      <bpmn:incoming>etl_f6</bpmn:incoming>
+      <bpmn:outgoing>etl_f7</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="etl_n7" name="Calendario fiscal
+(s2a)">
+      <bpmn:incoming>etl_f7</bpmn:incoming>
+      <bpmn:outgoing>etl_f8</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="etl_n8" name="s1 Bimoneda
++ banda por concepto">
+      <bpmn:incoming>etl_f8</bpmn:incoming>
+      <bpmn:outgoing>etl_f9</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="etl_n9" name="Coherencia interna">
+      <bpmn:incoming>etl_f9</bpmn:incoming>
+      <bpmn:outgoing>etl_f10</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="etl_n10" name="Certifica?">
+      <bpmn:incoming>etl_f10</bpmn:incoming>
+      <bpmn:outgoing>etl_f11</bpmn:outgoing>
+      <bpmn:outgoing>etl_f12</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="etl_n11" name="Marcar y declarar
+lo que no cierra">
+      <bpmn:incoming>etl_f11</bpmn:incoming>
+      <bpmn:outgoing>etl_f13</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="etl_n12" name="s2 Ratios CNV
+(TTM)">
+      <bpmn:incoming>etl_f12</bpmn:incoming>
+      <bpmn:incoming>etl_f13</bpmn:incoming>
+      <bpmn:outgoing>etl_f14</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="etl_n13" name="s4/s7 Ensamblar
+y unificar">
+      <bpmn:incoming>etl_f14</bpmn:incoming>
+      <bpmn:outgoing>etl_f15</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="etl_n14" name="s7b PER
+s7c CAGR USD
+s7d dos fuentes">
+      <bpmn:incoming>etl_f15</bpmn:incoming>
+      <bpmn:outgoing>etl_f16</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="etl_n15" name="s8 Calidad
+s9 Guards">
+      <bpmn:incoming>etl_f16</bpmn:incoming>
+      <bpmn:outgoing>etl_f17</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="etl_n16" name="Publicar
+screener / screener_v2">
+      <bpmn:incoming>etl_f17</bpmn:incoming>
+      <bpmn:outgoing>etl_f18</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="etl_n17" name="Datos publicados">
+      <bpmn:incoming>etl_f18</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="etl_f1" sourceRef="etl_n1" targetRef="etl_n2"/>
+    <bpmn:sequenceFlow id="etl_f2" sourceRef="etl_n2" targetRef="etl_n3"/>
+    <bpmn:sequenceFlow id="etl_f3" name="si" sourceRef="etl_n3" targetRef="etl_n4"/>
+    <bpmn:sequenceFlow id="etl_f4" name="no, ya esta al dia" sourceRef="etl_n3" targetRef="etl_n5"/>
+    <bpmn:sequenceFlow id="etl_f5" sourceRef="etl_n4" targetRef="etl_n5"/>
+    <bpmn:sequenceFlow id="etl_f6" sourceRef="etl_n5" targetRef="etl_n6"/>
+    <bpmn:sequenceFlow id="etl_f7" sourceRef="etl_n6" targetRef="etl_n7"/>
+    <bpmn:sequenceFlow id="etl_f8" sourceRef="etl_n7" targetRef="etl_n8"/>
+    <bpmn:sequenceFlow id="etl_f9" sourceRef="etl_n8" targetRef="etl_n9"/>
+    <bpmn:sequenceFlow id="etl_f10" sourceRef="etl_n9" targetRef="etl_n10"/>
+    <bpmn:sequenceFlow id="etl_f11" name="hay dudas" sourceRef="etl_n10" targetRef="etl_n11"/>
+    <bpmn:sequenceFlow id="etl_f12" name="todo cierra" sourceRef="etl_n10" targetRef="etl_n12"/>
+    <bpmn:sequenceFlow id="etl_f13" sourceRef="etl_n11" targetRef="etl_n12"/>
+    <bpmn:sequenceFlow id="etl_f14" sourceRef="etl_n12" targetRef="etl_n13"/>
+    <bpmn:sequenceFlow id="etl_f15" sourceRef="etl_n13" targetRef="etl_n14"/>
+    <bpmn:sequenceFlow id="etl_f16" sourceRef="etl_n14" targetRef="etl_n15"/>
+    <bpmn:sequenceFlow id="etl_f17" sourceRef="etl_n15" targetRef="etl_n16"/>
+    <bpmn:sequenceFlow id="etl_f18" sourceRef="etl_n16" targetRef="etl_n17"/>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="dia_etl">
+    <bpmndi:BPMNPlane id="pla_etl" bpmnElement="col_etl">
+      <bpmndi:BPMNShape id="sh_pool_etl" bpmnElement="pool_etl" isHorizontal="true">
+        <dc:Bounds x="20" y="50" width="3433.0" height="650"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_l_ext" bpmnElement="l_ext" isHorizontal="true">
+        <dc:Bounds x="50" y="50" width="3403.0" height="130"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_l_nor" bpmnElement="l_nor" isHorizontal="true">
+        <dc:Bounds x="50" y="180" width="3403.0" height="130"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_l_val" bpmnElement="l_val" isHorizontal="true">
+        <dc:Bounds x="50" y="310" width="3403.0" height="130"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_l_der" bpmnElement="l_der" isHorizontal="true">
+        <dc:Bounds x="50" y="440" width="3403.0" height="130"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_l_pub" bpmnElement="l_pub" isHorizontal="true">
+        <dc:Bounds x="50" y="570" width="3403.0" height="130"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_etl_n1" bpmnElement="etl_n1">
+        <dc:Bounds x="117" y="107" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_etl_n2" bpmnElement="etl_n2">
+        <dc:Bounds x="260" y="90" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_etl_n3" bpmnElement="etl_n3">
+        <dc:Bounds x="510" y="100" width="50" height="50"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_etl_n4" bpmnElement="etl_n4">
+        <dc:Bounds x="660" y="90" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_etl_n5" bpmnElement="etl_n5">
+        <dc:Bounds x="860" y="90" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_etl_n6" bpmnElement="etl_n6">
+        <dc:Bounds x="1060" y="220" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_etl_n7" bpmnElement="etl_n7">
+        <dc:Bounds x="1260" y="220" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_etl_n8" bpmnElement="etl_n8">
+        <dc:Bounds x="1460" y="350" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_etl_n9" bpmnElement="etl_n9">
+        <dc:Bounds x="1660" y="350" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_etl_n10" bpmnElement="etl_n10">
+        <dc:Bounds x="1910" y="360" width="50" height="50"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_etl_n11" bpmnElement="etl_n11">
+        <dc:Bounds x="2060" y="350" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_etl_n12" bpmnElement="etl_n12">
+        <dc:Bounds x="2260" y="480" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_etl_n13" bpmnElement="etl_n13">
+        <dc:Bounds x="2460" y="480" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_etl_n14" bpmnElement="etl_n14">
+        <dc:Bounds x="2660" y="480" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_etl_n15" bpmnElement="etl_n15">
+        <dc:Bounds x="2860" y="610" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_etl_n16" bpmnElement="etl_n16">
+        <dc:Bounds x="3060" y="610" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sh_etl_n17" bpmnElement="etl_n17">
+        <dc:Bounds x="3317" y="627" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="ed_etl_f1" bpmnElement="etl_f1">
+        <di:waypoint x="153" y="125"/>
+        <di:waypoint x="260" y="125"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_etl_f2" bpmnElement="etl_f2">
+        <di:waypoint x="410" y="125"/>
+        <di:waypoint x="510" y="125"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_etl_f3" bpmnElement="etl_f3">
+        <di:waypoint x="560" y="125"/>
+        <di:waypoint x="660" y="125"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_etl_f4" bpmnElement="etl_f4">
+        <di:waypoint x="560" y="125"/>
+        <di:waypoint x="860" y="125"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_etl_f5" bpmnElement="etl_f5">
+        <di:waypoint x="810" y="125"/>
+        <di:waypoint x="860" y="125"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_etl_f6" bpmnElement="etl_f6">
+        <di:waypoint x="1010" y="125"/>
+        <di:waypoint x="1135" y="125"/>
+        <di:waypoint x="1060" y="255"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_etl_f7" bpmnElement="etl_f7">
+        <di:waypoint x="1210" y="255"/>
+        <di:waypoint x="1260" y="255"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_etl_f8" bpmnElement="etl_f8">
+        <di:waypoint x="1410" y="255"/>
+        <di:waypoint x="1535" y="255"/>
+        <di:waypoint x="1460" y="385"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_etl_f9" bpmnElement="etl_f9">
+        <di:waypoint x="1610" y="385"/>
+        <di:waypoint x="1660" y="385"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_etl_f10" bpmnElement="etl_f10">
+        <di:waypoint x="1810" y="385"/>
+        <di:waypoint x="1910" y="385"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_etl_f11" bpmnElement="etl_f11">
+        <di:waypoint x="1960" y="385"/>
+        <di:waypoint x="2060" y="385"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_etl_f12" bpmnElement="etl_f12">
+        <di:waypoint x="1960" y="385"/>
+        <di:waypoint x="2335" y="385"/>
+        <di:waypoint x="2260" y="515"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_etl_f13" bpmnElement="etl_f13">
+        <di:waypoint x="2210" y="385"/>
+        <di:waypoint x="2335" y="385"/>
+        <di:waypoint x="2260" y="515"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_etl_f14" bpmnElement="etl_f14">
+        <di:waypoint x="2410" y="515"/>
+        <di:waypoint x="2460" y="515"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_etl_f15" bpmnElement="etl_f15">
+        <di:waypoint x="2610" y="515"/>
+        <di:waypoint x="2660" y="515"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_etl_f16" bpmnElement="etl_f16">
+        <di:waypoint x="2810" y="515"/>
+        <di:waypoint x="2935" y="515"/>
+        <di:waypoint x="2860" y="645"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_etl_f17" bpmnElement="etl_f17">
+        <di:waypoint x="3010" y="645"/>
+        <di:waypoint x="3060" y="645"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="ed_etl_f18" bpmnElement="etl_f18">
+        <di:waypoint x="3210" y="645"/>
+        <di:waypoint x="3317" y="645"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
