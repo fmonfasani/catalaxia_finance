@@ -1,0 +1,67 @@
+{
+ "_meta": {
+  "generated_at": "2026-08-24 21:44 UTC",
+  "fase": "C2_REVIEW_RESOLUTION",
+  "golden_case": {
+   "entity_id": 70,
+   "ticker": "CEPU",
+   "cuit": "33650305499"
+  }
+ },
+ "checks": [
+  {
+   "check_id": "C2-CNV-001",
+   "nombre": "Discriminador pagina-empresa valida vs generica",
+   "status": "PASS",
+   "input_count": 9,
+   "output_count": 9,
+   "failure_count": 0,
+   "details": "Control positivo CEPU: 2.26 MB, CUIT presente, 1927 guids. Dudosos (8): shell identica de 40.720 bytes SIN el CUIT en el cuerpo y 0 guids. HTTP 200 NO implica existencia: el discriminador es presencia-del-CUIT-en-cuerpo (+bytes+guids)."
+  },
+  {
+   "check_id": "C2-CNV-002",
+   "nombre": "Hallazgo estructural: controladas sin perfil propio",
+   "status": "PASS",
+   "input_count": 20,
+   "output_count": 0,
+   "failure_count": 0,
+   "details": "NINGUNO de los CUITS de controladas tiene pagina empresa propia en CNV. La identidad de las controladas vive SOLO como metadata embebida en presentaciones de la controlante. Implicancia: el fetcher debe leer RELAC. desde el HTML de la controlante; no hay segunda fuente CNV."
+  },
+  {
+   "check_id": "C2-CNV-003",
+   "nombre": "Tipo de relacion CONTROLADA vs VINCULADA",
+   "status": "PASS",
+   "input_count": 1927,
+   "output_count": 80,
+   "failure_count": 0,
+   "details": "El HTML crudo distingue 'RELAC.: CONTROLADA' y 'RELAC.: VINCULADA'. Columna relacion del inventario C0: {'(vacio)': 1849, 'CONTROLADA': 51, 'VINCULADA': 27}. Pero 80 titulos mencionan VINCULADA frente a 27 filas con relacion=VINCULADA: el parser no extrajo relacion en clases no-EEFF. C3-prep: regenerar inventario propagando tipo de relacion y separar VINCULADAS (DGCE, Gas Cuyana, TMB)."
+  },
+  {
+   "check_id": "C2-CNV-004",
+   "nombre": "Siglas legacy mapeadas a grupos",
+   "status": "PASS",
+   "input_count": 102,
+   "output_count": 4,
+   "failure_count": 0,
+   "details": "4/4 siglas (CPR/CVO/TMB/PROENER) resueltas con evidencia de nombre de adjunto en visores legacy formTypeId 1001. Confianza MEDIA; CUIT permanece NULL."
+  },
+  {
+   "check_id": "C2-CNV-005",
+   "nombre": "Reviews actualizadas sin crear entidades",
+   "status": "PASS",
+   "input_count": 5,
+   "output_count": 5,
+   "failure_count": 0,
+   "details": "Estados finales: {'C1-R-001': 'OPEN', 'C1-R-002': 'OPEN', 'C1-R-003': 'RESOLVED', 'C1-R-004': 'PARTIAL', 'C1-R-005': 'OPEN'}. dim_entity/mapa_entidades SIN mutar."
+  }
+ ],
+ "veredicto": {
+  "fase": "C2",
+  "resultado": "PASS",
+  "siguiente": "READY_FOR_C3_FETCHER",
+  "condiciones": [
+   "R-001/R-002/R-005 requieren fuente externa a CNV (constancia AFIP) para cerrar",
+   "Regenerar inventario separando VINCULADA antes del primer fetch masivo (tarea C3-prep)"
+  ]
+ }
+}

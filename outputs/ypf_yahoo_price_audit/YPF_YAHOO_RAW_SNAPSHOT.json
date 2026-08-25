@@ -1,0 +1,493 @@
+{
+  "ticker_canonico": "YPFD",
+  "ticker_yahoo": "YPF",
+  "fetched_at_utc": "2026-08-23T18:17:04.674692+00:00",
+  "yfinance_version": "1.3.0",
+  "info": {
+    "address1": "Macacha GUeemes 515",
+    "address2": "Ciudad Autonoma de",
+    "city": "Buenos Aires",
+    "zip": "C1106BKK",
+    "country": "Argentina",
+    "phone": "54 11 5441 0000",
+    "website": "https://www.ypf.com",
+    "industry": "Oil & Gas Integrated",
+    "industryKey": "oil-gas-integrated",
+    "industryDisp": "Oil & Gas Integrated",
+    "sector": "Energy",
+    "sectorKey": "energy",
+    "sectorDisp": "Energy",
+    "longBusinessSummary": "YPF Sociedad Anónima, an energy company, engages in the oil and gas upstream and downstream activities in South America and Argentina. The company operates through the Upstream, Midstream and Downstream, LNG and Integrated Gas, and New Energies segments. It is involved in the exploration and exploitation of hydrocarbon fields and production of crude oil and natural gas; the refining, transportation and commercialization of refined products; the production, transportation, and commercialization of petrochemical products; the transportation and commercialization of crude oil; and the commercialization of specialties for the agribusiness industry, and of grains and their by-products. The company also offers fertilizers and crop protection products; flours, oils, and grains; asphalts; naphtha; and petroleum coke. In addition, it engages in the natural gas transportation and commercialization to third parties and to the Midstream and Downstream segments; the separation of natural gas liquids and their fractionation, and storage and transportation to produce ethane, propane, butane, and gasoline, as well as its commercialization; the development of liquefied natural gas liquefaction capacity; and power generation activities. The company was incorporated in 1977 and is based in Buenos Aires, Argentina.",
+    "companyOfficers": [
+      {
+        "maxAge": 1,
+        "name": "Mr. Horacio Daniel Marin",
+        "age": 62,
+        "title": "CEO & Non Independent Chairman",
+        "yearBorn": 1963,
+        "exercisedValue": 0,
+        "unexercisedValue": 0
+      },
+      {
+        "maxAge": 1,
+        "name": "Mr. Pedro Luis Kearney",
+        "age": 43,
+        "title": "Vice President of Finance",
+        "yearBorn": 1982,
+        "exercisedValue": 0,
+        "unexercisedValue": 0
+      },
+      {
+        "maxAge": 1,
+        "name": "Mr. Alejandro Luis Wyss",
+        "age": 57,
+        "title": "Technology Vice President",
+        "yearBorn": 1968,
+        "exercisedValue": 0,
+        "unexercisedValue": 0
+      },
+      {
+        "maxAge": 1,
+        "name": "Mr. Juan Jose Mata",
+        "age": 62,
+        "title": "Vice President of Administration & Reporting",
+        "yearBorn": 1963,
+        "exercisedValue": 0,
+        "unexercisedValue": 0
+      },
+      {
+        "maxAge": 1,
+        "name": "Ms. Maria De Las Mercedes Archimbal",
+        "age": 43,
+        "title": "Chief Compliance Officer",
+        "yearBorn": 1982,
+        "exercisedValue": 0,
+        "unexercisedValue": 0
+      },
+      {
+        "maxAge": 1,
+        "name": "Mr. German  Fernandez Lahore",
+        "age": 57,
+        "title": "Corporate Vice President of Legal Affairs",
+        "yearBorn": 1968,
+        "exercisedValue": 0,
+        "unexercisedValue": 0
+      },
+      {
+        "maxAge": 1,
+        "name": "Mr. Lisandro  Deleonardis",
+        "age": 51,
+        "title": "Public Affairs Vice President",
+        "yearBorn": 1974,
+        "exercisedValue": 0,
+        "unexercisedValue": 0
+      },
+      {
+        "maxAge": 1,
+        "name": "Mr. Guillermo Jose Garat",
+        "age": 47,
+        "title": "Vice President of Corporate Affairs, Communication & Marketing",
+        "yearBorn": 1978,
+        "exercisedValue": 0,
+        "unexercisedValue": 0
+      },
+      {
+        "maxAge": 1,
+        "name": "Ms. Florencia  Tiscornia",
+        "age": 51,
+        "title": "Vice President of People & Culture",
+        "yearBorn": 1974,
+        "exercisedValue": 0,
+        "unexercisedValue": 0
+      },
+      {
+        "maxAge": 1,
+        "name": "Mr. Santiago  Martinez Tanoira",
+        "age": 53,
+        "title": "Executive Vice President of LNG & Integrated Gas",
+        "yearBorn": 1972,
+        "exercisedValue": 0,
+        "unexercisedValue": 0
+      }
+    ],
+    "executiveTeam": [],
+    "maxAge": 86400,
+    "priceHint": 2,
+    "previousClose": 50.92,
+    "open": 51.05,
+    "dayLow": 50.7191,
+    "dayHigh": 51.94,
+    "regularMarketPreviousClose": 50.92,
+    "regularMarketOpen": 51.05,
+    "regularMarketDayLow": 50.7191,
+    "regularMarketDayHigh": 51.94,
+    "exDividendDate": 1562630400,
+    "payoutRatio": 0.0,
+    "fiveYearAvgDividendYield": 0.73,
+    "beta": -0.073,
+    "trailingPE": 27.079365,
+    "forwardPE": 9.000549,
+    "volume": 475120,
+    "regularMarketVolume": 475120,
+    "averageVolume": 1530716,
+    "averageVolume10days": 1189250,
+    "averageDailyVolume10Day": 1189250,
+    "bid": 50.41,
+    "ask": 52.0,
+    "bidSize": 800,
+    "askSize": 100,
+    "marketCap": 20066402304,
+    "nonDilutedMarketCap": 20066401366,
+    "fiftyTwoWeekLow": 22.82,
+    "fiftyTwoWeekHigh": 57.49,
+    "allTimeHigh": 69.98,
+    "allTimeLow": 2.25,
+    "fulldayPrice": 51.24,
+    "priceToSalesTrailing12Months": 0.00068638666,
+    "fiftyDayAverage": 49.613,
+    "twoHundredDayAverage": 42.54615,
+    "trailingAnnualDividendRate": 0.0,
+    "trailingAnnualDividendYield": 0.0,
+    "currency": "USD",
+    "tradeable": false,
+    "enterpriseValue": 12781535363072,
+    "profitMargins": 0.04003,
+    "floatShares": 160628945,
+    "sharesOutstanding": 392023246,
+    "sharesShort": 5407834,
+    "sharesShortPriorMonth": 5085242,
+    "sharesShortPreviousMonthDate": 1782777600,
+    "dateShortInterest": 1785456000,
+    "sharesPercentSharesOut": 0.0125,
+    "heldPercentInsiders": 0.00046,
+    "heldPercentInstitutions": 0.40433997,
+    "shortRatio": 3.91,
+    "impliedSharesOutstanding": 392075056,
+    "bookValue": 26.748478,
+    "priceToBook": 1.9133799,
+    "lastFiscalYearEnd": 1767139200,
+    "nextFiscalYearEnd": 1798675200,
+    "mostRecentQuarter": 1782777600,
+    "earningsQuarterlyGrowth": 25.479,
+    "netIncomeToCommon": 1170176999424,
+    "trailingEps": 1.89,
+    "forwardEps": 5.68632,
+    "pegRatio": 0.1,
+    "enterpriseToRevenue": 0.437,
+    "enterpriseToEbitda": 1.328,
+    "52WeekChange": 0.7003323,
+    "SandP52WeekChange": 0.19179821,
+    "lastDividendValue": 0.138,
+    "lastDividendDate": 1562630400,
+    "quoteType": "EQUITY",
+    "currentPrice": 51.18,
+    "targetHighPrice": 78.0,
+    "targetLowPrice": 48.0,
+    "targetMeanPrice": 59.48333,
+    "targetMedianPrice": 60.0,
+    "recommendationMean": 1.76923,
+    "recommendationKey": "buy",
+    "numberOfAnalystOpinions": 12,
+    "totalCash": 3655576059904,
+    "totalCashPerShare": 9294.323,
+    "ebitda": 9625785073664,
+    "totalDebt": 16019440533504,
+    "quickRatio": 0.649,
+    "currentRatio": 0.934,
+    "totalRevenue": 29234837848064,
+    "debtToEquity": 84.75,
+    "revenuePerShare": 74621.41,
+    "returnOnAssets": 0.083380006,
+    "returnOnEquity": 0.07255,
+    "grossProfits": 10418772770816,
+    "freeCashflow": 1244119564288,
+    "operatingCashflow": 10978225815552,
+    "earningsGrowth": 25.507,
+    "revenueGrowth": 0.722,
+    "grossMargins": 0.35638002,
+    "ebitdaMargins": 0.32926,
+    "operatingMargins": 0.27511,
+    "financialCurrency": "ARS",
+    "symbol": "YPF",
+    "language": "en-US",
+    "region": "US",
+    "typeDisp": "Equity",
+    "quoteSourceName": "Delayed Quote",
+    "triggerable": true,
+    "customPriceAlertConfidence": "HIGH",
+    "regularMarketChangePercent": 0.510609,
+    "regularMarketPrice": 51.18,
+    "exchange": "NYQ",
+    "messageBoardId": "finmb_382296",
+    "exchangeTimezoneName": "America/New_York",
+    "exchangeTimezoneShortName": "EDT",
+    "gmtOffSetMilliseconds": -14400000,
+    "market": "us_market",
+    "esgPopulated": false,
+    "corporateActions": [],
+    "postMarketTime": 1787355899,
+    "regularMarketTime": 1787342403,
+    "hasPrePostMarketData": true,
+    "firstTradeDateMilliseconds": 741360600000,
+    "postMarketChangePercent": 0.11723597,
+    "postMarketPrice": 51.24,
+    "postMarketChange": 0.060001373,
+    "regularMarketChange": 0.260002,
+    "regularMarketDayRange": "50.7191 - 51.94",
+    "fullExchangeName": "NYSE",
+    "averageDailyVolume3Month": 1530716,
+    "fiftyTwoWeekLowChange": 28.36,
+    "fiftyTwoWeekLowChangePercent": 1.2427696,
+    "fiftyTwoWeekRange": "22.82 - 57.49",
+    "fiftyTwoWeekHighChange": -6.3100014,
+    "fiftyTwoWeekHighChangePercent": -0.10975824,
+    "fiftyTwoWeekChangePercent": 70.033226,
+    "dividendDate": 1563408000,
+    "earningsTimestamp": 1786392000,
+    "marketState": "CLOSED",
+    "shortName": "YPF Sociedad Anonima",
+    "longName": "YPF Sociedad Anónima",
+    "earningsTimestampStart": 1793304000,
+    "earningsTimestampEnd": 1793304000,
+    "earningsCallTimestampStart": 1786453200,
+    "earningsCallTimestampEnd": 1786453200,
+    "isEarningsDateEstimate": false,
+    "epsTrailingTwelveMonths": 1.89,
+    "epsForward": 5.68632,
+    "epsCurrentYear": 6.49124,
+    "priceEpsCurrentYear": 7.884472,
+    "fiftyDayAverageChange": 1.5670013,
+    "fiftyDayAverageChangePercent": 0.03158449,
+    "twoHundredDayAverageChange": 8.63385,
+    "twoHundredDayAverageChangePercent": 0.20292905,
+    "sourceInterval": 15,
+    "exchangeDataDelayedBy": 0,
+    "averageAnalystRating": "1.8 - Buy",
+    "cryptoTradeable": false,
+    "trailingPegRatio": null
+  },
+  "fast_info": {
+    "currency": "USD",
+    "dayHigh": 51.939998626708984,
+    "dayLow": 50.709999084472656,
+    "exchange": "NYQ",
+    "fiftyDayAverage": 49.61300018310547,
+    "lastPrice": 51.18000030517578,
+    "lastVolume": 510000,
+    "marketCap": 20066401485.73181,
+    "open": 51.04999923706055,
+    "previousClose": 51.32,
+    "quoteType": "EQUITY",
+    "regularMarketPreviousClose": 50.91999816894531,
+    "shares": 392075056,
+    "tenDayAverageVolume": 1189250,
+    "threeMonthAverageVolume": 1525274,
+    "timezone": "America/New_York",
+    "twoHundredDayAverage": 42.54614995956421,
+    "yearChange": 0.7003322145033394,
+    "yearHigh": 57.4900016784668,
+    "yearLow": 22.81999969482422
+  },
+  "history_metadata": {
+    "currency": "USD",
+    "symbol": "YPF",
+    "exchangeName": "NYQ",
+    "fullExchangeName": "NYSE",
+    "instrumentType": "EQUITY",
+    "firstTradeDate": 741360600,
+    "regularMarketTime": 1787342403,
+    "hasPrePostMarketData": true,
+    "gmtoffset": -14400,
+    "timezone": "EDT",
+    "exchangeTimezoneName": "America/New_York",
+    "regularMarketPrice": 51.18,
+    "fiftyTwoWeekHigh": 57.49,
+    "fiftyTwoWeekLow": 22.82,
+    "regularMarketDayHigh": 51.94,
+    "regularMarketDayLow": 50.719,
+    "regularMarketVolume": 475120,
+    "longName": "YPF Sociedad Anónima",
+    "shortName": "YPF Sociedad Anonima",
+    "chartPreviousClose": 50.05,
+    "previousClose": 50.92,
+    "scale": 3,
+    "priceHint": 2,
+    "currentTradingPeriod": {
+      "pre": {
+        "timezone": "EDT",
+        "start": 1787299200,
+        "end": 1787319000,
+        "gmtoffset": -14400
+      },
+      "regular": {
+        "timezone": "EDT",
+        "start": 1787319000,
+        "end": 1787342400,
+        "gmtoffset": -14400
+      },
+      "post": {
+        "timezone": "EDT",
+        "start": 1787342400,
+        "end": 1787356800,
+        "gmtoffset": -14400
+      }
+    },
+    "tradingPeriods": {
+      "pre": [
+        [
+          {
+            "timezone": "EDT",
+            "start": 1786953600,
+            "end": 1786973400,
+            "gmtoffset": -14400
+          }
+        ],
+        [
+          {
+            "timezone": "EDT",
+            "start": 1787040000,
+            "end": 1787059800,
+            "gmtoffset": -14400
+          }
+        ],
+        [
+          {
+            "timezone": "EDT",
+            "start": 1787126400,
+            "end": 1787146200,
+            "gmtoffset": -14400
+          }
+        ],
+        [
+          {
+            "timezone": "EDT",
+            "start": 1787212800,
+            "end": 1787232600,
+            "gmtoffset": -14400
+          }
+        ],
+        [
+          {
+            "timezone": "EDT",
+            "start": 1787299200,
+            "end": 1787319000,
+            "gmtoffset": -14400
+          }
+        ]
+      ],
+      "post": [
+        [
+          {
+            "timezone": "EDT",
+            "start": 1786996800,
+            "end": 1787011200,
+            "gmtoffset": -14400
+          }
+        ],
+        [
+          {
+            "timezone": "EDT",
+            "start": 1787083200,
+            "end": 1787097600,
+            "gmtoffset": -14400
+          }
+        ],
+        [
+          {
+            "timezone": "EDT",
+            "start": 1787169600,
+            "end": 1787184000,
+            "gmtoffset": -14400
+          }
+        ],
+        [
+          {
+            "timezone": "EDT",
+            "start": 1787256000,
+            "end": 1787270400,
+            "gmtoffset": -14400
+          }
+        ],
+        [
+          {
+            "timezone": "EDT",
+            "start": 1787342400,
+            "end": 1787356800,
+            "gmtoffset": -14400
+          }
+        ]
+      ],
+      "regular": [
+        [
+          {
+            "timezone": "EDT",
+            "start": 1786973400,
+            "end": 1786996800,
+            "gmtoffset": -14400
+          }
+        ],
+        [
+          {
+            "timezone": "EDT",
+            "start": 1787059800,
+            "end": 1787083200,
+            "gmtoffset": -14400
+          }
+        ],
+        [
+          {
+            "timezone": "EDT",
+            "start": 1787146200,
+            "end": 1787169600,
+            "gmtoffset": -14400
+          }
+        ],
+        [
+          {
+            "timezone": "EDT",
+            "start": 1787232600,
+            "end": 1787256000,
+            "gmtoffset": -14400
+          }
+        ],
+        [
+          {
+            "timezone": "EDT",
+            "start": 1787319000,
+            "end": 1787342400,
+            "gmtoffset": -14400
+          }
+        ]
+      ]
+    },
+    "dataGranularity": "1h",
+    "range": "5d",
+    "validRanges": [
+      "1d",
+      "5d",
+      "1mo",
+      "3mo",
+      "6mo",
+      "1y",
+      "2y",
+      "5y",
+      "10y",
+      "ytd",
+      "max"
+    ],
+    "lastTrade": {
+      "Price": 51.24,
+      "Time": "2026-08-21T19:44:59-04:00"
+    }
+  },
+  "options_expirations": [
+    "2026-09-18",
+    "2026-10-16",
+    "2027-01-15",
+    "2027-03-19",
+    "2027-05-21",
+    "2027-08-20",
+    "2027-11-19",
+    "2028-01-21"
+  ]
+}

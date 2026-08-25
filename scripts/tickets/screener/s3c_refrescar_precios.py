@@ -51,6 +51,7 @@ ROOT = next(p for p in Path(__file__).resolve().parents if (p / "data").is_dir()
 DB = ROOT / "data" / os.environ.get("SCREENER_DB", "screener.db")
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _precondiciones import requiere_filas  # noqa: E402
+from s3_precios import ADR_YF  # noqa: E402  (mapeo CUIT -> simbolo yfinance)
 
 
 def main():
@@ -86,6 +87,23 @@ def main():
     ultimos = {t: (f, c) for t, f, c in cur.fetchall()}
     print(f"tickers con cierre en la serie: {len(ultimos)}")
 
+    # Apareo legacy de ADRs (hallazgo G1 del 2026-08-22): la foto `precios`
+    # guardo algunos ADRs bajo SIMBOLO yfinance ('YPF', 'CRESY', 'PAM'...),
+    # mientras `precios_diarios` usa el TICKER canonico del screener ('YPFD',
+    # 'CRES', 'PAMP'...). Sin este puente esas filas quedaban "sin serie
+    # diaria" y stale para siempre. Puente: screener.cuit -> ADR_YF -> simbolo.
+    alias_yf_a_canonico = {}
+    for _cuit, _sym in ADR_YF.items():
+        for (_tk,) in cur.execute(
+                "SELECT ticker FROM screener WHERE cuit=?", (_cuit,)).fetchall():
+            if _tk and _tk != _sym:
+                alias_yf_a_canonico.setdefault(_sym, set()).add(_tk)
+    n_alias = sum(1 for s in alias_yf_a_canonico if s not in ultimos
+                  and any(a in ultimos for a in alias_yf_a_canonico[s]))
+    if n_alias:
+        print(f"  apareo legacy ADR (simbolo yfinance -> ticker canonico): "
+              f"{n_alias} filas aplicables")
+
     cur.execute("SELECT cik, ticker, precio, market_cap, fecha FROM precios")
     actuales = cur.fetchall()
     print(f"filas en `precios`: {len(actuales)}\n")
@@ -93,10 +111,16 @@ def main():
     act = igual = sin_serie = sin_previo = 0
     sospechosos = []
     for cik, tk, pre_viejo, mcap_viejo, fecha_vieja in actuales:
-        if tk not in ultimos:
+        serie_tk = tk if tk in ultimos else None
+        if serie_tk is None:
+            for _alt in alias_yf_a_canonico.get(tk, ()):
+                if _alt in ultimos:
+                    serie_tk = _alt
+                    break
+        if serie_tk is None:
             sin_serie += 1
             continue
-        f_new, p_new = ultimos[tk]
+        f_new, p_new = ultimos[serie_tk]
         if (fecha_vieja or "")[:10] >= f_new:
             igual += 1
             continue

@@ -1,5 +1,7 @@
 # ❌ Scripts Fallidos: Scraping de Investing.com
 
+
+> **[HISTORICAL/ARCHIVED - 2026-08-22]** Experimentos archivados. Decisión vigente: investing.com SOLO como fuente secundaria de contraste con carga manual validada (EXTRACTION_SPECIFICATION.md par.2). Lección: EXT-NEW-009.
 Este directorio contiene todos los intentos de scraping de Investing.com que **NO funcionaron**.
 
 Se mantiene aquí como **referencia histórica** para que los colaboradores vean:

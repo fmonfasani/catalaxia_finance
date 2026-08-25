@@ -3,7 +3,16 @@
 > **Si sos un agente/dev retomando esto en otra máquina o IDE: leé este archivo primero.**
 > Te pone al día con el estado, lo que se logró, las limitaciones y el próximo paso.
 
-Última actualización: 2026-07 (post screener **v2**).
+Última actualización: 2026-08-22.
+
+> ⚠️ **Este doc describe el estado v2 (stale).** El estado vigente es:
+> [../../FASE2_PLAN_CONSOLIDACION.md](../../FASE2_PLAN_CONSOLIDACION.md) (oleadas O1–O5,
+> O1 completada; decisiones D1–D6 resueltas) y
+> [../../CONTRATO_TECNICO_EXTRACCION.md](../../CONTRATO_TECNICO_EXTRACCION.md)
+> (**GO total desde 2026-08-22**: precios refrescados al 2026-08-21, cache por fecha
+> con `--force-refresh`, run_manifest + ingesta_log; deuda P1 = G9 namespace precios,
+> capa única de fetching, ports de validación).
+> Prompts normativos guardados: `PROMPT_FASE_PIPELINE.md`, `PROMPT_CONTRATO_EXTRACCION.md`.
 
 ---
 

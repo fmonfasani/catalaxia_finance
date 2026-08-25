@@ -1,0 +1,96 @@
+{
+ "_meta": {
+  "generated_at": "2026-08-24 01:31 UTC",
+  "golden_case": {
+   "entity_id": 70,
+   "ticker": "CEPU",
+   "cuit": "33650305499",
+   "razon_social": "Central Puerto S.A.",
+   "cik_sec": "0001717161"
+  },
+  "fase": "C0_DISCOVERY"
+ },
+ "checks": [
+  {
+   "check_id": "C0-CNV-001",
+   "nombre": "Identity consistency",
+   "status": "PASS",
+   "input_count": 1,
+   "output_count": 1,
+   "failure_count": 0,
+   "details": "CUIT 33650305499 en pagina CNV == dim_entity.entity_id=70 (CEPU); title del visor confirma 'Central Puerto | 33650305499'"
+  },
+  {
+   "check_id": "C0-CNV-002",
+   "nombre": "Presentation discovery completeness",
+   "status": "PASS",
+   "input_count": 1847,
+   "output_count": 1860,
+   "failure_count": 0,
+   "details": "catalogo local 1847 guids; live unicos 1860 (filas 1927, duplicados benignos por seccion 'Ultima Informacion Recibida': 64); NUEVOS=13; DESAPARECIDOS=0"
+  },
+  {
+   "check_id": "C0-CNV-003",
+   "nombre": "Classification coverage",
+   "status": "PASS",
+   "input_count": 1927,
+   "output_count": 1927,
+   "failure_count": 0,
+   "details": "{'OTRO': 1026, 'EEFF_PROPIO': 149, 'ACTA_EECC': 57, 'INFORME_TRIMESTRAL_ON': 19, 'HECHO_RELEVANTE': 541, 'EEFF_CONTROLADA': 135}; OTRO=1026 son societaria/ON/etc. con seccion identificada"
+  },
+  {
+   "check_id": "C0-CNV-004",
+   "nombre": "EEFF metadata completeness",
+   "status": "WARN",
+   "input_count": 149,
+   "output_count": 129,
+   "failure_count": 20,
+   "details": "EEFF_PROPIO con fecha_cierre: 129/149; tipo_balance 149/149; periodicidad normalizada donde declarada"
+  },
+  {
+   "check_id": "C0-CNV-005",
+   "nombre": "Attachment download mechanism (E2E)",
+   "status": "PASS",
+   "input_count": 1,
+   "output_count": 1,
+   "failure_count": 0,
+   "details": "ValetKey(GetPublicValetKey)+POST DownloadBlob OK; PDF 22.347.603 bytes magic=%PDF; guardado en data/raw/cnv/golden_cepu/_test/"
+  },
+  {
+   "check_id": "C0-CNV-006",
+   "nombre": "Hash integrity vs hash declarado CNV",
+   "status": "WARN",
+   "input_count": 1,
+   "output_count": 1,
+   "failure_count": 1,
+   "details": "hash CNV declarado 4a2RVQd9LnaeK2XvcW0fgP9PoFbD4uMja8DZEZoraPk= != SHA256(b64) del archivo servido 8s1aVWF9CGVTAQJAKhCq1wBHEF8iqzWt8pMqBcwtjfI= (hex f2cd5a55617d0865...). Hipotesis: hash del original subido vs re-proceso del lado CNV. ACCION C3: conservar AMBOS hashes; nunca usar el hash CNV como idempotencia."
+  },
+  {
+   "check_id": "C0-CNV-007",
+   "nombre": "Consolidated/Individual separation",
+   "status": "PASS",
+   "input_count": 149,
+   "output_count": 149,
+   "failure_count": 0,
+   "details": "CONSOLIDADO=132 INDIVIDUAL=17 separables desde el titulo de la pagina empresa (sin descargar documentos)"
+  },
+  {
+   "check_id": "C0-CNV-008",
+   "nombre": "Periodicity identification",
+   "status": "PASS",
+   "input_count": 149,
+   "output_count": 114,
+   "failure_count": 35,
+   "details": "ANUAL=30 TRIMESTRAL=83 SEMESTRAL=4 SIN_DECLARAR=35 (legacy pre-NIIF)"
+  }
+ ],
+ "veredicto": {
+  "fase": "C0",
+  "resultado": "PASS",
+  "siguiente": "READY_FOR_C1",
+  "condiciones": [
+   "C0-CNV-006 queda como WARN documentado: resolver politica de hashes en C3",
+   "Legacy 1001 requiere pipeline documental aparte en C6 (adjuntos)"
+  ]
+ }
+}

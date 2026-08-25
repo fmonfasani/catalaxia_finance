@@ -1,0 +1,45 @@
+{
+  "ts": "2026-08-23T13:30:16",
+  "db": "D:\\Software Development\\Porfolio\\catalaxia-cedears-prod\\data\\screener.db",
+  "gate_ar": {
+    "comparados": 66,
+    "desvios": 13
+  },
+  "arbitro_roe": {
+    "DESVIO_INVESTING": 10,
+    "OK": 45,
+    "DISCREPANCIA_CNV": 10,
+    "DISCREPANCIA_CNV+DESVIO_INVESTING": 3,
+    "SIN_ARB": 4
+  },
+  "m3_bloqueantes": {
+    "M3-C1_balance": {
+      "OK": 1553,
+      "FALLA": 102,
+      "WARN": 192
+    },
+    "M3-C2_continuidad_yoy": {
+      "OK": 1235,
+      "FALLA": 21
+    },
+    "M3-C3_eps_dil": {
+      "OK": 1545,
+      "FALLA": 4
+    },
+    "M3-C4_pyl": {
+      "OK": 1589,
+      "FALLA": 6,
+      "N/A": 201
+    }
+  },
+  "m3_informativos": {
+    "M3-C5_ebitda_flag": {
+      "INFO_OK": 1033,
+      "INFO_DESVIA": 199
+    },
+    "M3-C6_cfo_flag": {
+      "INFO_DESVIA": 1095,
+      "INFO_OK": 305
+    }
+  }
+}

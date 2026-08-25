@@ -61,9 +61,23 @@ def dias(dp):
 
 
 def ttm_flujo(serie):
-    """TTM rodante: A) 4 Q consecutivos; B) Anual + parcial_FY_nuevo - mismo_parcial_anterior
-    (acepta Q1); C) ultimo anual. Devuelve (valor, estrategia)."""
-    if not serie: return None, None
+    """TTM rodante. Devuelve (valor, estrategia, desde, hasta).
+
+    DECLARA SU VENTANA, y no es un adorno: sin saber hasta que cierre llega un
+    TTM no se lo puede contrastar con nada. Al cruzar los ADR contra la CNV
+    aparecio que el ROE de GGAL daba 0,208 por EDGAR y 0,025 por CNV, y no habia
+    forma de saber si el desacuerdo era de dato o de calendario -- la unica
+    fecha guardada era `fecha`, que es cuando se bajo el archivo.
+
+    Es el mismo problema que la capa 2 resolvio del lado de la CNV: un numero
+    sin su periodo no se puede comparar.
+
+    Estrategias, en orden de preferencia:
+      A  cuatro trimestres consecutivos          ventana = inicio Q1 .. fin Q4
+      B  anual + parcial nuevo - mismo parcial   ventana = inicio anual .. fin parcial
+      C  el ultimo anual, sin rodar              ventana = el ejercicio
+    """
+    if not serie: return None, None, None, None
     quarters = [d for d in serie if dias(d) and 85 <= dias(d) <= 100]
     annuals = [d for d in serie if dias(d) and 355 <= dias(d) <= 380]
     quarters.sort(key=lambda x: x["end"], reverse=True)
@@ -74,7 +88,7 @@ def ttm_flujo(serie):
         for i in range(1,4):
             gap = (datetime.fromisoformat(asc[i]["start"]) - datetime.fromisoformat(asc[i-1]["end"])).days
             if gap < -5 or gap > 5: ok = False; break
-        if ok: return sum(q["val"] for q in c), "A"
+        if ok: return sum(q["val"] for q in c), "A", asc[0]["start"], asc[-1]["end"]
     # B generalizada
     if annuals:
         an = annuals[0]; an_end = datetime.fromisoformat(an["end"])
@@ -95,10 +109,11 @@ def ttm_flujo(serie):
                 dy = (pa_end - datetime.fromisoformat(d["end"])).days
                 if 350 <= dy <= 380 and abs(dd - pa_d) <= 7: prior = d; break
             if prior is not None:
-                return an["val"] + pa["val"] - prior["val"], "B"
+                return (an["val"] + pa["val"] - prior["val"], "B",
+                        an["start"], pa["end"])
     # C
-    if annuals: return annuals[0]["val"], "C"
-    return None, None
+    if annuals: return annuals[0]["val"], "C", annuals[0]["start"], annuals[0]["end"]
+    return None, None, None, None
 
 
 def ultimo(serie):
@@ -159,14 +174,18 @@ def conceptos_de(cur, cik):
 
 def calcular(cur, cik):
     C = conceptos_de(cur, cik)
-    rev, estr = ttm_flujo(C["Revenue"])
-    ni, ni_estr = ttm_flujo(C["NetIncome"])
-    opinc, _ = ttm_flujo(C["OperatingIncome"])
-    gp, _ = ttm_flujo(C["GrossProfit"])
-    da, _ = ttm_flujo(C["DA"])
-    cfo, _ = ttm_flujo(C["CFO"])
-    capex, _ = ttm_flujo(C["CapEx"])
-    divs, _ = ttm_flujo(C["Dividends"])
+    # La ventana del TTM se toma de NetIncome, que es el flujo que manda en los
+    # ratios (ROE, PER, margen). Si otro concepto arma su TTM con otra
+    # estrategia, su ventana puede diferir -- por eso se declara UNA, la del
+    # numerador principal, y no un promedio que no corresponderia a nada.
+    rev, estr, _, _ = ttm_flujo(C["Revenue"])
+    ni, ni_estr, ttm_desde, ttm_hasta = ttm_flujo(C["NetIncome"])
+    opinc, _, _, _ = ttm_flujo(C["OperatingIncome"])
+    gp, _, _, _ = ttm_flujo(C["GrossProfit"])
+    da, _, _, _ = ttm_flujo(C["DA"])
+    cfo, _, _, _ = ttm_flujo(C["CFO"])
+    capex, _, _, _ = ttm_flujo(C["CapEx"])
+    divs, _, _, _ = ttm_flujo(C["Dividends"])
 
     equity = equity_prom(C["Equity"]); assets = ultimo(C["Assets"]); cash = ultimo(C["Cash"])
     debt = ultimo(C["Debt"]); inv = ultimo(C["Inventory"]); recv = ultimo(C["Receivables"])
@@ -203,6 +222,11 @@ def calcular(cur, cik):
         "cagr_ni_5y": cagr(serie_anual(C["NetIncome"])),
         "cagr_equity_5y": cagr(serie_anual(C["Equity"])),
         "_ni_estrategia": ni_estr,
+        # LA VENTANA DEL TTM. Sin esto, un numero de EDGAR no se puede
+        # contrastar contra uno de la CNV: no se sabe si el desacuerdo es de
+        # dato o de calendario.
+        "_ttm_desde": ttm_desde,
+        "_ttm_hasta": ttm_hasta,
     }
     return r
 
@@ -222,7 +246,8 @@ def main():
     con.execute("DROP TABLE IF EXISTS ratios")
     defcols = ", ".join(f'"{c}" REAL' for c in cols_ratio + [c for c in cols_dbg if c != "_ni_estrategia"])
     con.execute(f"""CREATE TABLE ratios (cik TEXT PRIMARY KEY, ticker TEXT, nombre TEXT, esquema TEXT,
-        moneda TEXT, sector_gics TEXT, grupo TEXT, {defcols}, ni_estrategia TEXT, fecha TEXT)""")
+        moneda TEXT, sector_gics TEXT, grupo TEXT, {defcols}, ni_estrategia TEXT,
+        ttm_desde TEXT, ttm_hasta TEXT, fecha TEXT)""")
 
     meta = {r[0]: r[1:] for r in cur.execute("SELECT cik,ticker_ppal,nombre,esquema,moneda,sector_gics,grupo FROM empresas")}
     n_ok = 0
@@ -236,7 +261,8 @@ def main():
         vals = [cik, m[0], m[1], m[2], m[3], m[4], m[5]]
         vals += [r.get(c) for c in cols_ratio]
         vals += [r.get(c) for c in cols_dbg if c != "_ni_estrategia"]
-        vals += [r.get("_ni_estrategia"), fecha]
+        vals += [r.get("_ni_estrategia"), r.get("_ttm_desde"),
+                 r.get("_ttm_hasta"), fecha]
         ph = ",".join("?"*len(vals))
         con.execute(f"INSERT OR REPLACE INTO ratios VALUES ({ph})", vals)
         n_ok += 1

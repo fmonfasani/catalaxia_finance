@@ -1,0 +1,96 @@
+{
+ "_meta": {
+  "generated_at": "2026-08-24 12:10 UTC",
+  "fase": "C1_IDENTITY",
+  "golden_case": {
+   "entity_id": 70,
+   "ticker": "CEPU",
+   "cuit": "33650305499",
+   "razon_social": "CENTRAL PUERTO S.A.",
+   "cik_sec": "0001717161"
+  }
+ },
+ "checks": [
+  {
+   "check_id": "C1-CNV-001",
+   "nombre": "Puente identidad unico sin colisiones",
+   "status": "PASS",
+   "input_count": 1,
+   "output_count": 1,
+   "failure_count": 0,
+   "details": "cuit 33650305499 y cik 0001717161 aparecen UNICAMENTE en entity_id=70. Sin duplicados."
+  },
+  {
+   "check_id": "C1-CNV-002",
+   "nombre": "Coherencia multi-fuente del puente",
+   "status": "PASS",
+   "input_count": 4,
+   "output_count": 4,
+   "failure_count": 0,
+   "details": "CNV pagina empresa CUIT=33650305499; dim_entity.cuit=33650305499; mapa_entidades.cuit=33650305499; SEC empresas.cik=0001717161 (CENTRAL PUERTO S.A.); tickers SEC=[('CEPU', 'NYSE')]"
+  },
+  {
+   "check_id": "C1-CNV-003",
+   "nombre": "Nombre canonico + aliases",
+   "status": "PASS",
+   "input_count": 3,
+   "output_count": 3,
+   "failure_count": 0,
+   "details": "Canonico SEC: 'CENTRAL PUERTO S.A.'; variantes registradas como alias: 'Central Puerto' (display local), 'Central Puerto S.A.' (adjuntos CNV), 'Central Puerto | 33650305499' (title pagina CNV)"
+  },
+  {
+   "check_id": "C1-CNV-004",
+   "nombre": "Instrumentos y ratio ADR",
+   "status": "PASS",
+   "input_count": 2,
+   "output_count": 2,
+   "failure_count": 0,
+   "details": "CEPU/BYMA tipo=ordinaria ARS ratio=None; CEPU/NYSE/NASDAQ tipo=adr USD ratio=10.0. Ratio ADR=10 consistente con 10 acciones ordinarias por ADS."
+  },
+  {
+   "check_id": "C1-CNV-005",
+   "nombre": "Grupo y fiscal year consistentes",
+   "status": "PASS",
+   "input_count": 3,
+   "output_count": 3,
+   "failure_count": 0,
+   "details": "grupo=adr; fy_end_month=12; SEC fiscal_year_end=1231; cierres CNV anuales siempre 12-31"
+  },
+  {
+   "check_id": "C1-CNV-006",
+   "nombre": "Controladas: consolidacion por CUIT",
+   "status": "WARN",
+   "input_count": 135,
+   "output_count": 20,
+   "failure_count": 5,
+   "details": "135 filas controladas -> 20 CUITS distintos tras normalizar sufijos societarios. 57 filas sin CUIT parseable. Reviews abiertas: ['C1-R-001', 'C1-R-002', 'C1-R-003', 'C1-R-004', 'C1-R-005']"
+  },
+  {
+   "check_id": "C1-CNV-007",
+   "nombre": "Cobertura historica vinculable por identidad",
+   "status": "WARN",
+   "input_count": 1847,
+   "output_count": 107,
+   "failure_count": 80,
+   "details": "cnv_documents=1847 guids (catalogo viejo); inventario live=1860 (+13 nuevos, -0 muertos); cnv_filings parsed=107 (solo NIIF 2018+, min 2018-12-31, max 2026-03-31). El fetcher C3 regenera catalogo desde pagina empresa; la IDENTIDAD no depende de esto."
+  },
+  {
+   "check_id": "C1-CNV-008",
+   "nombre": "Seed declarativo generado sin mutar DB",
+   "status": "PASS",
+   "input_count": 1,
+   "output_count": 1,
+   "failure_count": 0,
+   "details": "data/catalogo/cnv_identity_seed_cepu.csv creado como artefacto declarativo; dim_entity/mapa_entencias SIN modificar (DB derivada; cambios estructurales van por migration engine/identity)"
+  }
+ ],
+ "veredicto": {
+  "fase": "C1",
+  "resultado": "PASS",
+  "siguiente": "READY_FOR_C2",
+  "condiciones": [
+   "C1-R-001..R-005 quedan en cola IDENTITY_REVIEWS; ninguna bloquea la identidad de CEPU",
+   "No se crean entidades nuevas para controladas hasta resolver R-001/R-002/R-005"
+  ]
+ }
+}

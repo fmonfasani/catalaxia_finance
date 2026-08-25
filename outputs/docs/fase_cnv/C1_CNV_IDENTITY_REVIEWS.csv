@@ -1,0 +1,6 @@
+﻿review_id,id_type,id_value,marketplace,candidates,reason,status,resolved_entity
+C1-R-001,CUIT,33677297579 | 30677297579,CNV,"[""CUIT:33677297579"", ""CUIT:30677297579""]",Mismo nombre 'PROENER S.A.U.' con DOS CUITS distintos (prefijo 33 vs 30). Posible doble registro AFIP o error de carga CNV. Verificar antes de crear entidades.,OPEN,
+C1-R-002,CUIT,30711900582 | 30711928576 | 30717065065,CNV,"[""CUIT:30711900582"", ""CUIT:30711928576"", ""CUIT:30717065065""]",Nombre casi identico 'VUELTA DE OBLIGADO S.A.' (con typo OGLIGADO) bajo TRES CUITS distintos. Determinar si son entidades juridicas separadas o errores de carga.,OPEN,
+C1-R-003,CUIT,30715163760,CNV,"[""CUIT:30715163760"", ""CUIT:30715562819""]",CUIT mayormente asociado a 'CP RENOVABLES S.A.' aparece 1 vez etiquetado 'VIENTOS LA GENOVEVA II SAU'. Mismatch nombre<->CUIT en fuente CNV.,OPEN,
+C1-R-004,CUIT,(vacio),CNV,[],57 presentaciones de controladas sin CUIT parseable en el titulo (formato RELAC. variante). Resolver parser en C2/C3; no bloquea identidad CEPU.,OPEN,
+C1-R-005,CUIT,30695541860,CNV,"[""CUIT:30657863056"", ""CUIT:30695541860""]","TGS (controlada publicada bajo perfil CEPU) YA EXISTE como entidad independiente (entity_id=53, ticker=TGNO4). CUIT dim_entity=30657863056 != CNV 30695541860: reconciliar.",OPEN,

@@ -1,0 +1,9 @@
+﻿scope,entity_key,field,value,source,evidence
+entity,CIK:0001717161,legal_name,CENTRAL PUERTO S.A.,SEC submissions,empresas.cik=0001717161
+entity,CIK:0001717161,cuit,33650305499,CNV pagina empresa,Empresa/33650305499 title
+entity,CIK:0001717161,display_name,Central Puerto,local dim_entity,dim_entity.entity_id=70
+identifier,CIK:0001717161,CIK,0001717161,SEC,ACTIVE
+identifier,CIK:0001717161,CUIT,33650305499,CNV,ACTIVE
+identifier,CIK:0001717161,TICKER,CEPU|BYMA,BYMA,ordinaria ARS ratio=NULL
+identifier,CIK:0001717161,TICKER,CEPU|NYSE,NYSE,ADR USD ratio=10
+identifier,CIK:0001717161,TICKER,_ADR_5499|LEGACY,mapa_entidades legacy,RETIRED placeholder pre-puente

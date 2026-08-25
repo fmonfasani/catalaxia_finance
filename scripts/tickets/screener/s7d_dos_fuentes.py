@@ -72,6 +72,8 @@ PUENTE = {
 }
 
 NUEVAS = [("roe_cnv", "REAL"), ("roe_edgar", "REAL"), ("roe_divergencia", "REAL"),
+          ("ventana_cnv", "TEXT"), ("ventana_edgar", "TEXT"),
+          ("ventanas_comparables", "INTEGER"),
           ("per_cnv", "REAL"), ("per_edgar", "REAL"), ("per_divergencia", "REAL"),
           ("ticker_sec", "TEXT"), ("dos_fuentes", "INTEGER")]
 
@@ -107,12 +109,12 @@ def main():
         con.commit()
 
     adr = cur.execute(
-        "SELECT ticker, cuit, ROE, PER FROM screener WHERE grupo='adr' ORDER BY ticker"
-    ).fetchall()
+        "SELECT ticker, cuit, ROE, PER, ultimo_periodo FROM screener "
+        "WHERE grupo='adr' ORDER BY ticker").fetchall()
     print(f"  ADR en el screener: {len(adr)}")
 
     datos, con_par, sin_par = [], [], []
-    for tk, cuit, roe_pub, per_pub in adr:
+    for tk, cuit, roe_pub, per_pub, up in adr:
         if not foco.alcanza(tk):
             continue
         sec = PUENTE.get(tk)
@@ -120,15 +122,34 @@ def main():
         r = cur.execute("SELECT ROE FROM ratios_cnv WHERE cuit=?", (cuit,)).fetchone()
         roe_cnv = r[0] if r else None
         # --- lado EDGAR: ratios, calculado desde companyfacts ----------------
-        e = cur.execute(
-            "SELECT _netincome_ttm, _equity, per FROM ratios WHERE ticker=?",
-            (sec,)).fetchone() if sec else None
+        # `per` la crea precios_y_valuacion DESPUES de calcular_ratios_base, que
+        # dropea la tabla. Si se corrio uno sin el otro, la columna no esta: se
+        # tolera en vez de fallar.
+        _tiene_per = "per" in {r[1] for r in cur.execute("PRAGMA table_info(ratios)")}
+        _sel = "_netincome_ttm, _equity, ttm_desde, ttm_hasta" + (", per" if _tiene_per else "")
+        e = cur.execute(f"SELECT {_sel} FROM ratios WHERE ticker=?",
+                        (sec,)).fetchone() if sec else None
         roe_edgar = (e[0] / e[1]) if (e and e[0] is not None and e[1]) else None
-        per_edgar = e[2] if e else None
+        per_edgar = (e[4] if (e and _tiene_per and len(e) > 4) else None)
 
+        # LAS VENTANAS TIENEN QUE COINCIDIR PARA QUE LA DIVERGENCIA SIGNIFIQUE ALGO
+        # Sin esto, la comparacion mezcla años. Medido: 32 empresas tienen su TTM
+        # de EDGAR parado en 2024-12 mientras la CNV va por 2025 -- y de ahi
+        # salian los "desacuerdos de 8 y 10 veces" que resultaron ser un año de
+        # diferencia, no un error de dato.
+        v_edgar = f"{e[2]}..{e[3]}" if (e and e[2] and e[3]) else None
+        v_cnv = up
+        comparables = 0
+        if e and e[3] and up:
+            # mismo cierre, con un mes de tolerancia por desfasajes de reporte
+            comparables = 1 if abs(
+                (int(e[3][:4]) - int(up[:4])) * 12 + int(e[3][5:7]) - int(up[5:7])
+            ) <= 1 else 0
         hay = roe_cnv is not None and roe_edgar is not None
         (con_par if hay else sin_par).append(tk)
-        datos.append((roe_cnv, roe_edgar, div(roe_cnv, roe_edgar),
+        datos.append((roe_cnv, roe_edgar,
+                      div(roe_cnv, roe_edgar) if comparables else None,
+                      v_cnv, v_edgar, comparables,
                       None, per_edgar, None,
                       sec, 1 if hay else 0, tk))
 
@@ -136,18 +157,26 @@ def main():
     print(f"  con una sola        : {len(sin_par)}   {' '.join(sorted(sin_par))}")
 
     if con_par:
-        print(f"\n  {'tk':<9}{'ticker SEC':<12}{'ROE CNV':>10}{'ROE EDGAR':>12}{'se apartan':>12}")
-        for d in sorted(datos, key=lambda x: -(x[2] or 0)):
-            if not d[7]:
+        n_comp = sum(1 for d in datos if d[5])
+        print(f"\n  con ventanas COMPARABLES: {n_comp} de {len(con_par)}")
+        print(f"  {'tk':<8}{'SEC':<7}{'ROE CNV':>9}{'ROE EDG':>9}  {'CNV hasta':<12}"
+              f"{'EDGAR hasta':<13}{'apartan':>10}")
+        for d in sorted(datos, key=lambda x: (-(x[5] or 0), -(x[2] or 0))):
+            if not d[10]:
                 continue
-            v = "signo opuesto" if d[2] == -1 else f"{d[2]:,.1f}x"
-            print(f"  {d[8]:<9}{str(d[6]):<12}{d[0]:>10.3f}{d[1]:>12.3f}{v:>12}")
+            v = ("-" if not d[5] else
+                 ("signo opuesto" if d[2] == -1 else f"{d[2]:,.1f}x"))
+            he = (d[4] or "")[-10:]
+            print(f"  {d[11]:<8}{str(d[9])[:6]:<7}{d[0]:>9.3f}{d[1]:>9.3f}  "
+                  f"{str(d[3]):<12}{he:<13}{v:>10}"
+                  + ("" if d[5] else "   VENTANAS DISTINTAS"))
 
     if a.dry_run:
         print("\n  (dry-run) no se escribio nada.")
         return
     cur.executemany(
         """UPDATE screener SET roe_cnv=?, roe_edgar=?, roe_divergencia=?,
+                               ventana_cnv=?, ventana_edgar=?, ventanas_comparables=?,
                                per_cnv=?, per_edgar=?, per_divergencia=?,
                                ticker_sec=?, dos_fuentes=? WHERE ticker=?""", datos)
     con.commit()

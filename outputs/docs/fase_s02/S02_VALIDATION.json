@@ -1,0 +1,349 @@
+{
+  "run_id": "33d234463f4341af9ad4931c67a3c561",
+  "git_commit": "f51043c213f39843c25f4739abbefab7072c46c8",
+  "mode": "FAST",
+  "scope": "FAST:YPF:v1",
+  "gate": "PASS",
+  "checks": [
+    {
+      "id": "C-S02-001",
+      "blocking": true,
+      "result": "PASS",
+      "detail": "conciliación expectedâ†’downloaded: plan=171 filas=171 fallidas_críticas=0 fallidas=0",
+      "evidence": {
+        "counts_by_result": {
+          "DOWNLOADED": 3,
+          "SIN_CAMBIOS": 168
+        },
+        "plan_expected": 171,
+        "log_rows": 171,
+        "failures": []
+      }
+    },
+    {
+      "id": "C-S02-002",
+      "blocking": true,
+      "result": "PASS",
+      "detail": "RAW persistido e integridad sha256 verificada re-leyendo disco: ok=171/171 mismatch=0 missing=0",
+      "evidence": {
+        "verified": 171,
+        "total_success": 171,
+        "hash_mismatches": [],
+        "missing_on_disk": [],
+        "warnings": []
+      }
+    },
+    {
+      "id": "C-S02-003",
+      "blocking": true,
+      "result": "PASS",
+      "detail": "vinculación completa entidadâ†’cikâ†’fuenteâ†’accessionâ†’urlâ†’shaâ†’run: violaciones=0 sobre 171 éxitos",
+      "evidence": {
+        "violations": []
+      }
+    },
+    {
+      "id": "C-S02-004",
+      "blocking": true,
+      "result": "PASS",
+      "detail": "cortesía SEC: secuencial sin paralelo, UA='Federico Monfasani fmonfasani@gmail.com', delay=0.35s, intervalo mínimo entre requests emitidos=0.343s",
+      "evidence": {
+        "requests_ok": 171,
+        "requests_emitidos": 171,
+        "min_interval_sec": 0.343,
+        "user_agent": "Federico Monfasani fmonfasani@gmail.com",
+        "max_attempts": 3
+      }
+    },
+    {
+      "id": "C-S02-005",
+      "blocking": true,
+      "result": "PASS",
+      "detail": "S01 consumido exclusivamente (entity_id=CIK:0000904851, CIK=0000904851); 0 URLs contienen CIKs del catálogo legacy prohibido",
+      "evidence": {
+        "entity_id": "CIK:0000904851",
+        "endpoints_scanned": 171,
+        "legacy_forbidden": [
+          "0001069595",
+          "0001082722",
+          "0001104659",
+          "0001113245"
+        ],
+        "legacy_hits": []
+      }
+    }
+  ],
+  "totals": {
+    "plan": 171,
+    "rows": 171,
+    "counts_by_result": {
+      "DOWNLOADED": 3,
+      "SIN_CAMBIOS": 168
+    },
+    "bytes_total": 233045152,
+    "by_kind": {
+      "SUBMISSIONS": 1,
+      "COMPANYFACTS": 1,
+      "SUBMISSIONS_PAGE": 1,
+      "FILING_INDEX": 27,
+      "DOC_HTM": 80,
+      "XBRL_PACKAGE_ZIP": 9,
+      "XBRL_OTHER": 4,
+      "FILING_SUMMARY": 8,
+      "XBRL_SCHEMA": 8,
+      "LINKBASE_CAL": 7,
+      "LINKBASE_DEF": 7,
+      "LINKBASE_LAB": 7,
+      "LINKBASE_PRE": 7,
+      "XBRL_INSTANCE": 4
+    }
+  },
+  "filings": [
+    {
+      "accession": "0001193125-26-126363",
+      "form": "20-F",
+      "filing_date": "2026-03-26",
+      "period": "2025-12-31",
+      "files_planned": 15,
+      "files_ok": 15,
+      "bytes": 30749814
+    },
+    {
+      "accession": "0001193125-25-067155",
+      "form": "20-F",
+      "filing_date": "2025-03-28",
+      "period": "2024-12-31",
+      "files_planned": 19,
+      "files_ok": 19,
+      "bytes": 29202349
+    },
+    {
+      "accession": "0001193125-24-114066",
+      "form": "20-F",
+      "filing_date": "2024-04-25",
+      "period": "2023-12-31",
+      "files_planned": 22,
+      "files_ok": 22,
+      "bytes": 30783187
+    },
+    {
+      "accession": "0001193125-23-097822",
+      "form": "20-F",
+      "filing_date": "2023-04-11",
+      "period": "2022-12-31",
+      "files_planned": 18,
+      "files_ok": 18,
+      "bytes": 30167397
+    },
+    {
+      "accession": "0001193125-22-111088",
+      "form": "20-F",
+      "filing_date": "2022-04-20",
+      "period": "2021-12-31",
+      "files_planned": 4,
+      "files_ok": 4,
+      "bytes": 1288966
+    },
+    {
+      "accession": "0001193125-21-125294",
+      "form": "20-F",
+      "filing_date": "2021-04-22",
+      "period": "2020-12-31",
+      "files_planned": 18,
+      "files_ok": 18,
+      "bytes": 32736767
+    },
+    {
+      "accession": "0001193125-20-119222",
+      "form": "20-F",
+      "filing_date": "2020-04-24",
+      "period": "2019-12-31",
+      "files_planned": 19,
+      "files_ok": 19,
+      "bytes": 33137732
+    },
+    {
+      "accession": "0001193125-19-096821",
+      "form": "20-F",
+      "filing_date": "2019-04-04",
+      "period": "2018-12-31",
+      "files_planned": 17,
+      "files_ok": 17,
+      "bytes": 22608689
+    },
+    {
+      "accession": "0001193125-18-127245",
+      "form": "20-F",
+      "filing_date": "2018-04-24",
+      "period": "2017-12-31",
+      "files_planned": 18,
+      "files_ok": 18,
+      "bytes": 21324571
+    },
+    {
+      "accession": "0001193125-17-115552",
+      "form": "20-F",
+      "filing_date": "2017-04-07",
+      "period": "2016-12-31",
+      "files_planned": 1,
+      "files_ok": 1,
+      "bytes": 3344
+    },
+    {
+      "accession": "0001193125-16-507875",
+      "form": "20-F",
+      "filing_date": "2016-03-17",
+      "period": "2015-12-31",
+      "files_planned": 1,
+      "files_ok": 1,
+      "bytes": 4795
+    },
+    {
+      "accession": "0001193125-15-111986",
+      "form": "20-F",
+      "filing_date": "2015-03-30",
+      "period": "2014-12-31",
+      "files_planned": 1,
+      "files_ok": 1,
+      "bytes": 2919
+    },
+    {
+      "accession": "0001193125-14-119270",
+      "form": "20-F",
+      "filing_date": "2014-03-28",
+      "period": "2013-12-31",
+      "files_planned": 1,
+      "files_ok": 1,
+      "bytes": 3224
+    },
+    {
+      "accession": "0001193125-13-178160",
+      "form": "20-F",
+      "filing_date": "2013-04-26",
+      "period": "2012-12-31",
+      "files_planned": 1,
+      "files_ok": 1,
+      "bytes": 2213
+    },
+    {
+      "accession": "0001208646-12-000138",
+      "form": "20-F",
+      "filing_date": "2012-05-16",
+      "period": "2011-12-31",
+      "files_planned": 1,
+      "files_ok": 1,
+      "bytes": 2192
+    },
+    {
+      "accession": "0001208646-11-000183",
+      "form": "20-F",
+      "filing_date": "2011-04-12",
+      "period": "2010-12-31",
+      "files_planned": 1,
+      "files_ok": 1,
+      "bytes": 4634
+    },
+    {
+      "accession": "0001193125-10-149744",
+      "form": "20-F",
+      "filing_date": "2010-06-29",
+      "period": "2009-12-31",
+      "files_planned": 1,
+      "files_ok": 1,
+      "bytes": 1807
+    },
+    {
+      "accession": "0001193125-09-141626",
+      "form": "20-F",
+      "filing_date": "2009-06-30",
+      "period": "2008-12-31",
+      "files_planned": 1,
+      "files_ok": 1,
+      "bytes": 1415
+    },
+    {
+      "accession": "0000950103-08-002589",
+      "form": "20-F/A",
+      "filing_date": "2008-10-20",
+      "period": "2007-12-31",
+      "files_planned": 1,
+      "files_ok": 1,
+      "bytes": 1162
+    },
+    {
+      "accession": "0000950103-08-001022",
+      "form": "20-F/A",
+      "filing_date": "2008-04-16",
+      "period": "2007-12-31",
+      "files_planned": 1,
+      "files_ok": 1,
+      "bytes": 971
+    },
+    {
+      "accession": "0000950103-08-001000",
+      "form": "20-F",
+      "filing_date": "2008-04-15",
+      "period": "2007-12-31",
+      "files_planned": 1,
+      "files_ok": 1,
+      "bytes": 1161
+    },
+    {
+      "accession": "0001193125-07-143924",
+      "form": "20-F",
+      "filing_date": "2007-06-27",
+      "period": "2006-12-31",
+      "files_planned": 1,
+      "files_ok": 1,
+      "bytes": 937
+    },
+    {
+      "accession": "0001193125-06-147059",
+      "form": "20-F",
+      "filing_date": "2006-07-14",
+      "period": "2005-12-31",
+      "files_planned": 1,
+      "files_ok": 1,
+      "bytes": 1219
+    },
+    {
+      "accession": "0001193125-05-135966",
+      "form": "20-F",
+      "filing_date": "2005-06-30",
+      "period": "2004-12-31",
+      "files_planned": 1,
+      "files_ok": 1,
+      "bytes": 1126
+    },
+    {
+      "accession": "0001047469-04-022346",
+      "form": "20-F",
+      "filing_date": "2004-07-01",
+      "period": "2003-12-31",
+      "files_planned": 1,
+      "files_ok": 1,
+      "bytes": 1074
+    },
+    {
+      "accession": "0001125282-03-004056",
+      "form": "20-F",
+      "filing_date": "2003-06-27",
+      "period": "2002-12-31",
+      "files_planned": 1,
+      "files_ok": 1,
+      "bytes": 663
+    },
+    {
+      "accession": "9999999997-02-037446",
+      "form": "20-F",
+      "filing_date": "2002-06-28",
+      "period": "2001-12-31",
+      "files_planned": 1,
+      "files_ok": 1,
+      "bytes": 563
+    }
+  ],
+  "taxonomies": [
+    "ypf"
+  ]
+}

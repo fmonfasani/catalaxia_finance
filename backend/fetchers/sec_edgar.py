@@ -130,15 +130,22 @@ def extraer_metricas(facts: dict, esquema: str = "us-gaap") -> dict:
     return resultado
 
 
-def descargar_empresa(cik: str, sec_user_agent: str = "Mozilla/5.0") -> dict:
+def descargar_empresa(cik: str, sec_user_agent: str) -> dict:
     """
     Descarga el JSON completo de companyfacts para un CIK y extrae métricas.
 
     Maneja el caso IFRS: si us-gaap está vacío, intenta ifrs-full
     automáticamente (empresas como Infosys que reportan 20-F).
     """
+    user_agent = (sec_user_agent or "").strip()
+    if not user_agent or user_agent.lower().startswith("mozilla/"):
+        raise ValueError(
+            "SEC EDGAR requiere un User-Agent real con nombre y contacto; "
+            "los valores vacios o genericos como Mozilla/5.0 no estan permitidos."
+        )
+
     url = SEC_FACTS_URL.format(cik=cik)
-    headers = {"User-Agent": sec_user_agent}
+    headers = {"User-Agent": user_agent}
 
     try:
         r = requests.get(url, headers=headers, timeout=30)

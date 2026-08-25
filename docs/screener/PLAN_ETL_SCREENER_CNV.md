@@ -1,5 +1,7 @@
 # Plan ETL — Screener de 13 ratios (fundamentales CNV + precios yfinance)
 
+
+> **[SUPERSEDED - 2026-08-22]** Plan v1, superado por `PLAN_V2_DATOS_CONFIABLES.md` (que corrige sus 8 problemas). Se conserva como origen histórico de los principios v2.
 > Objetivo: producir los **13 ratios × empresa argentina**, con los **7 fundamentales
 > desde CNV** (`cnv_estados`) y los **6 de precio desde yfinance**. Robusto, idempotente,
 > replicable y sistemático. Ver contexto en [00_VISION_GENERAL.md](00_VISION_GENERAL.md)

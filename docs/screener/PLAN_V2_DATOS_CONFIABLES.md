@@ -1,5 +1,7 @@
 # Plan v2 — Datos CNV confiables (re-extracción robusta)
 
+> **[EJECUTADO/HISTORICAL — 2026-08-22]** Este plan ya se implementó (job5_v2/job6_v2 + validación cross-período). Queda como registro de las fases y lecciones. Estado operativo vigente: [OPERACION.md](OPERACION.md) · auditoría: `EXTRACTION_KNOWLEDGE_BASE.md`.
+
 > Objetivo: **datos CNV con máxima integridad y consistencia** para el screener,
 > corrigiendo de raíz los 8 problemas que descubrimos en el v1. No es empezar de cero:
 > se conserva el descubrimiento (jobs 1-4) y se re-hace **solo la extracción** de forma

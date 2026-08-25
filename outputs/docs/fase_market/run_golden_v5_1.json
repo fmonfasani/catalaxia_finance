@@ -1,0 +1,202 @@
+[
+  {
+    "run_id": "golden-v5-83-20260824T222632563307Z",
+    "instrument_id": "83",
+    "ticker_yahoo": "YPFD.BA",
+    "status": "SIN_CAMBIOS",
+    "rows": 6634,
+    "min_date": "2000-01-03",
+    "max_date": "2026-08-24",
+    "raw_sha256": "968eebde9941748dac34ceab05aaafc0c6d05cc3e84532f85abd2f207ca08b8f",
+    "batch_hash": "192aa57329485470b2e91ba7e520bb478649519d5e9e832389036ea354a9a833",
+    "resumen": {
+      "total": 6634,
+      "por_tipo": {
+        "UNCHANGED": 6634
+      },
+      "por_motivo": {
+        "IDENTICAL": 6631,
+        "ADJ_NOISE": 3
+      },
+      "filas_escritas": 0,
+      "idempotente": true,
+      "cambios_no_benignos": 0,
+      "fechas_no_benignas": []
+    },
+    "gates": [
+      [
+        "C-MKT-001",
+        "VALID",
+        "entity_id=72 instrument_id=83 canonico=YPFD"
+      ],
+      [
+        "C-MKT-007",
+        "VALID",
+        "MAPPED 83 -> YPFD.BA"
+      ],
+      [
+        "C-MKT-002",
+        "VALID",
+        "yahoo yfinance@1.3.0 params={\"actions\": true, \"auto_adjust\": false, \"interval\": \"1d\", \"period\": \"max\"} intentos=1 filas=6634"
+      ],
+      [
+        "C-MKT-005",
+        "VALID",
+        "input sin fechas duplicadas (6634 ruedas)"
+      ],
+      [
+        "C-MKT-006",
+        "VALID",
+        "moneda=ARS coincide con market_instruments; exchange fuente=BUE"
+      ],
+      [
+        "C-MKT-008",
+        "VALID",
+        "tz_mercado=America/Argentina/Buenos_Aires rango=2000-01-03..2026-08-24 ruedas_finalizadas=6633 rueda_en_curso=1"
+      ],
+      [
+        "C-MKT-009",
+        "VALID",
+        "cero OHLC nulos; volumen_nulo=0"
+      ],
+      [
+        "C-MKT-004",
+        "WARNING",
+        "4 rueda(s) con OHLC incoherente EN ORIGEN (sha RAW 968eebde9941); ej=[('2007-10-12', 'LOW_GT_OPEN'), ('2007-10-25', 'LOW_GT_OPEN'), ('2011-05-03', 'HIGH_LT_CLOSE')]"
+      ],
+      [
+        "C-MKT-012",
+        "VALID",
+        "6634 fila(s) almacenadas: business_hash y full_hash reconstruibles al 100% desde market_price_daily"
+      ],
+      [
+        "C-MKT-010",
+        "VALID",
+        "3 rueda(s) con Adj Close dentro de tolerancia 1e-05 (recalculo float de la fuente): no se persisten"
+      ],
+      [
+        "C-MKT-013",
+        "VALID",
+        "corrida idempotente: 0 filas escritas sobre 6634 ruedas (UNCHANGED=6634)"
+      ],
+      [
+        "C-MKT-016",
+        "VALID",
+        "acciones corporativas: serie div=16 split=1 | tabla div=16 split=1"
+      ],
+      [
+        "C-MKT-014",
+        "VALID",
+        "snapshot persistido en market_snapshots (jamas en la serie historica)"
+      ],
+      [
+        "C-MKT-017",
+        "VALID",
+        "filas sin corrida de origen registrada: 0"
+      ]
+    ],
+    "faltantes": 0,
+    "error": null,
+    "tz": "America/Argentina/Buenos_Aires"
+  },
+  {
+    "run_id": "golden-v5-84-20260824T222644819597Z",
+    "instrument_id": "84",
+    "ticker_yahoo": "YPF",
+    "status": "SIN_CAMBIOS",
+    "rows": 8345,
+    "min_date": "1993-06-29",
+    "max_date": "2026-08-24",
+    "raw_sha256": "0c20878f9f0876cb571c5fcf5b32b0abf217aa4b55280da23f4a4ec30b5c89ac",
+    "batch_hash": "9ab08020d48e8bd6a401b6c7c66bccddef2db93056ed9a60f32bf5fe7117dbf0",
+    "resumen": {
+      "total": 8345,
+      "por_tipo": {
+        "UNCHANGED": 8345
+      },
+      "por_motivo": {
+        "IDENTICAL": 8311,
+        "ADJ_NOISE": 34
+      },
+      "filas_escritas": 0,
+      "idempotente": true,
+      "cambios_no_benignos": 0,
+      "fechas_no_benignas": []
+    },
+    "gates": [
+      [
+        "C-MKT-001",
+        "VALID",
+        "entity_id=72 instrument_id=84 canonico=YPFD"
+      ],
+      [
+        "C-MKT-007",
+        "VALID",
+        "MAPPED 84 -> YPF"
+      ],
+      [
+        "C-MKT-002",
+        "VALID",
+        "yahoo yfinance@1.3.0 params={\"actions\": true, \"auto_adjust\": false, \"interval\": \"1d\", \"period\": \"max\"} intentos=1 filas=8345"
+      ],
+      [
+        "C-MKT-005",
+        "VALID",
+        "input sin fechas duplicadas (8345 ruedas)"
+      ],
+      [
+        "C-MKT-006",
+        "VALID",
+        "moneda=USD coincide con market_instruments; exchange fuente=NYQ"
+      ],
+      [
+        "C-MKT-008",
+        "VALID",
+        "tz_mercado=America/New_York rango=1993-06-29..2026-08-24 ruedas_finalizadas=8344 rueda_en_curso=1"
+      ],
+      [
+        "C-MKT-009",
+        "VALID",
+        "cero OHLC nulos; volumen_nulo=0"
+      ],
+      [
+        "C-MKT-004",
+        "VALID",
+        "8345 ruedas con OHLC coherente"
+      ],
+      [
+        "C-MKT-012",
+        "VALID",
+        "8345 fila(s) almacenadas: business_hash y full_hash reconstruibles al 100% desde market_price_daily"
+      ],
+      [
+        "C-MKT-010",
+        "VALID",
+        "34 rueda(s) con Adj Close dentro de tolerancia 1e-05 (recalculo float de la fuente): no se persisten"
+      ],
+      [
+        "C-MKT-013",
+        "VALID",
+        "corrida idempotente: 0 filas escritas sobre 8345 ruedas (UNCHANGED=8345)"
+      ],
+      [
+        "C-MKT-016",
+        "VALID",
+        "acciones corporativas: serie div=58 split=0 | tabla div=58 split=0"
+      ],
+      [
+        "C-MKT-014",
+        "VALID",
+        "snapshot persistido en market_snapshots (jamas en la serie historica)"
+      ],
+      [
+        "C-MKT-017",
+        "VALID",
+        "filas sin corrida de origen registrada: 0"
+      ]
+    ],
+    "faltantes": 0,
+    "error": null,
+    "tz": "America/New_York"
+  }
+]

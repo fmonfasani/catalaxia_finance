@@ -111,7 +111,14 @@ def cargar_mapa_cik():
     return m
 
 
-def get_json_cache(url, cache_path, forzar=False):
+# Huella de descargas (contrato G4): si el registro esta conectado (ver main()),
+# cada intento queda en la tabla `ingesta_log` con respuesta HTTP, bytes, sha256
+# y si el contenido repite al anterior. Es aditivo: si falta, todo sigue igual.
+_LOG_REG = None   # registrar() de _ingesta_log
+_LOG_CON = None   # conexion sqlite donde vive la tabla ingesta_log
+
+
+def get_json_cache(url, cache_path, forzar=False, entidad=None):
     """Lee del cache crudo si existe; si no, descarga de SEC y lo guarda. El
     raw es la fuente de verdad: una vez bajado no se vuelve a pegar a SEC, asi
     la base se puede reconstruir (o cargar en Postgres) sin red. Devuelve
@@ -128,21 +135,41 @@ def get_json_cache(url, cache_path, forzar=False):
     Si la red falla, se cae al cache en vez de devolver None: un dato viejo es
     peor que uno nuevo, pero mucho mejor que borrar el que ya se tenia.
     """
+    t0 = time.perf_counter()
+
+    def _huella(respuesta=None, contenido=None, motivo=None):
+        if _LOG_REG is None or _LOG_CON is None:
+            return
+        try:
+            _LOG_REG(_LOG_CON, "sec_edgar", entidad,
+                     recurso=cache_path.parent.name, url=url,
+                     respuesta=respuesta, contenido=contenido,
+                     duracion_ms=int((time.perf_counter() - t0) * 1000),
+                     motivo=motivo)
+        except Exception:
+            pass  # el logging jamas rompe una descarga
+
     if cache_path.exists() and not forzar:
         try:
-            return json.loads(cache_path.read_text(encoding="utf-8")), True
+            data = json.loads(cache_path.read_text(encoding="utf-8"))
+            _huella(motivo="cache")
+            return data, True
         except Exception:
             pass
     try:
         r = requests.get(url, headers=H, timeout=30)
         if r.status_code != 200:
+            _huella(respuesta=r.status_code, motivo="http-no-200")
             return None, False
         data = r.json()
         cache_path.parent.mkdir(parents=True, exist_ok=True)
-        cache_path.write_text(json.dumps(data), encoding="utf-8")
+        texto = json.dumps(data)
+        cache_path.write_text(texto, encoding="utf-8")
+        _huella(respuesta=200, contenido=texto,
+                motivo="forzado" if forzar else "nuevo")
         return data, False
-    except Exception:
-        pass
+    except Exception as e:
+        _huella(respuesta=0, motivo=f"excepcion:{type(e).__name__}")
     if forzar and cache_path.exists():
         try:
             return json.loads(cache_path.read_text(encoding="utf-8")), True
@@ -155,7 +182,7 @@ def descargar_empresa(con, ticker, cik, nombre, forzar=False):
     """forzar=True: la empresa viene marcada como atrasada, asi que su copia en
     disco es justamente la que no sirve. Se vuelve a pedir a SEC."""
     # metadata (submissions) -- cacheada en data/raw/submissions/
-    sub, era_cache = get_json_cache(f"https://data.sec.gov/submissions/CIK{cik}.json", RAW_SUBS / f"CIK{cik}.json", forzar)
+    sub, era_cache = get_json_cache(f"https://data.sec.gov/submissions/CIK{cik}.json", RAW_SUBS / f"CIK{cik}.json", forzar, entidad=cik)
     if not era_cache:
         time.sleep(DELAY)
     sub = sub or {}
@@ -235,13 +262,27 @@ def universo_objetivo(con, modo):
 
 
 def main():
-    modo = sys.argv[1] if len(sys.argv) > 1 else "adr"
+    # argv: [modo] + flags. `--force-refresh` re-baja companyfacts de TODO el
+    # universo ignorando la decision por fecha (escape hatch explicito; la
+    # invalidacion normal es la de _caducidad).
+    pos = [a for a in sys.argv[1:] if not a.startswith("--")]
+    modo = pos[0] if pos else "adr"
     DATA.mkdir(parents=True, exist_ok=True)
     con = sqlite3.connect(DB, timeout=60)
     con.execute("PRAGMA busy_timeout=60000")   # concurrencia: espera si otro escribe
     try: con.execute("PRAGMA journal_mode=WAL")
     except Exception: pass
     crear_schema(con)
+    # Conectar el registro de ingesta (G4): tabla + registrar sobre la misma DB.
+    global _LOG_REG, _LOG_CON
+    try:
+        from _ingesta_log import crear as _ing_crear, registrar as _ing_registrar
+        _ing_crear(con); con.commit()
+        _LOG_REG = _ing_registrar
+        _LOG_CON = con
+    except ImportError:
+        print("  AVISO: sin _ingesta_log -> las descargas quedan sin huella "
+              "(tabla ingesta_log)")
     universo = universo_objetivo(con, modo)
     print("="*64)
     print(f"  BLOQUE 2 (facts) -> {DB.name}  | modo={modo}  | historia={ANIOS_HISTORIA}a (desde {CUTOFF})")
@@ -264,11 +305,17 @@ def main():
     # y otras del S&P 500 con un trimestre de atraso.
     import sys as _sys_c
     _sys_c.path.insert(0, str(ROOT / "scripts" / "tickets" / "screener"))
+    forzar_todo = "--force-refresh" in sys.argv
     try:
         from _caducidad import hay_que_rebajar as _rebajar
-    except ImportError:
-        _rebajar = None
-        print("  AVISO: falta _caducidad.py -> se saltea todo lo ya bajado (cache viejo)")
+    except ImportError as e:
+        # EXT-019, cierre final: antes el fallback ante un import fallido era
+        # "comportamiento viejo" (saltear todo lo bajado = cache eterno).
+        # Degradar silenciosamente a un estado conocido-roto ya no se permite.
+        raise SystemExit(
+            "BLOCK: falta scripts/tickets/screener/_caducidad.py. Sin ese "
+            "modulo la invalidacion de cache volveria a ser ETERNA (EXT-019) "
+            f"y no se baja nada. Detalle import: {e}")
 
     ya = {r[0] for r in con.execute("SELECT cik FROM empresas WHERE fecha_facts IS NOT NULL")}
     _ult = {r[0]: r[1] for r in con.execute(
@@ -276,10 +323,10 @@ def main():
 
     def _saltear(cik):
         """True si NO hay que bajarla."""
+        if forzar_todo:
+            return False                      # --force-refresh: rebaja total
         if cik not in ya:
             return False                      # nunca se bajo
-        if _rebajar is None:
-            return True                       # sin el modulo, comportamiento viejo
         r, _mot = _rebajar(str(ROOT), cik, _ult.get(cik))
         # r is None -> no se pudo decidir. Se REBAJA: ante la duda, bajar es
         # barato y quedarse con un dato viejo sin saberlo no lo es.
@@ -296,7 +343,8 @@ def main():
         es_rebaja = cik in ya
         if es_rebaja:
             stats["rebajada"]+=1
-        res = descargar_empresa(con, tk, cik, nombre, forzar=es_rebaja)
+        res = descargar_empresa(con, tk, cik, nombre,
+                                forzar=(es_rebaja or forzar_todo))
         if res is None:
             print(f"  [{i:4}/{n}] {tk:<7} -> error/sin-facts"); stats["sin-financials"]+=1; continue
         esq, ntags, ndp = res

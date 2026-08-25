@@ -7,7 +7,10 @@ Orquesta TODO el pipeline en el orden canonico:
     EXTRACT  -> TRANSFORM -> ASSEMBLE -> EXPORT
 
   EXTRACT   (red, lento):
-    - EDGAR : construir_base (companyfacts; SALTEA los CIK ya cacheados via fecha_facts)
+    - EDGAR : construir_base (companyfacts; invalidacion POR FECHA via _caducidad:
+              re-baja solo lo que la empresa presento despues de nuestra bajada.
+              EXT-019 cerrado: jamas "si tengo fecha_facts, salto". --force-refresh
+              fuerza la rebaja completa)
     - CNV   : job1..job7 discovery+extract (guardado por conectividad; skip si CNV caido)
     - ADR   : sec_adr_ratios (ratio ADR oficial del 20-F/F-6)
   TRANSFORM :
@@ -19,8 +22,9 @@ Orquesta TODO el pipeline en el orden canonico:
   EXPORT    : s5 -> data/screener_export.csv
 
 Idempotente: cada stage reconstruye su salida; los pasos caros (EDGAR/CNV download)
-saltean lo ya cacheado. Correrlo en una maquina limpia (con requirements.txt y la DB
-o el raw cache) reconstruye la base entera.
+solo piden lo que la fecha de filing indica novedoso (nunca "si ya tengo, salto").
+Correrlo en una maquina limpia (con requirements.txt y la DB o el raw cache)
+reconstruye la base entera.
 
 Uso:
   python run_all.py                     # todo (extract con cache -> transform -> assemble -> export)
@@ -29,6 +33,10 @@ Uso:
   python run_all.py --offline           # sin red: implica skip-extract; transform solo si hay red
   python run_all.py --only assemble     # corre un solo stage (extract|transform|assemble|export)
   python run_all.py --with-cnv-fresh    # ademas corre discovery CNV completo (job1..job7)
+  python run_all.py --force-refresh     # EXTRACT EDGAR: re-baja companyfacts completo
+
+Al terminar deja ademas un manifiesto: data/logs/runs/<run_id>.manifest.json
+(git sha, args, resultado por stage, hash del snapshot pre-run).
 
 Logging: data/logs/runall_YYYYMMDD_HHMMSS.log
 """
@@ -103,15 +111,18 @@ def _cnv_reachable():
 #  STAGES
 # ────────────────────────────────────────────────────────────
 
-def stage_extract(log, results, offline, with_cnv_fresh):
+def stage_extract(log, results, offline, with_cnv_fresh, force_refresh=False):
     log.log("\n=== STAGE 1/4: EXTRACT ===")
     if offline:
         log.log("  offline: se saltea la descarga (se usa raw/DB cacheado)")
         return
 
-    # EDGAR: companyfacts (construir_base saltea los CIK con fecha_facts != NULL)
+    # EDGAR: companyfacts. Invalidacion por fecha (_caducidad): cada CIK se
+    # compara contra lo que EL mismo presento; solo se re-baja lo novedoso.
+    # force_refresh agrega --force-refresh y re-baja todo el universo.
     for modo in ("us", "adr"):
-        st, el = _run_module("construir_base", "main", log, argv=[modo])
+        argv = [modo] + (["--force-refresh"] if force_refresh else [])
+        st, el = _run_module("construir_base", "main", log, argv=argv)
         results.append((f"extract:edgar-{modo}", st, el))
 
     # ADR ratios (20-F/F-6) — barato
@@ -214,6 +225,8 @@ def main():
     ap.add_argument("--skip-transform", action="store_true", help="No recalcular ratios")
     ap.add_argument("--offline", action="store_true", help="Sin red (implica skip-extract)")
     ap.add_argument("--with-cnv-fresh", action="store_true", help="Correr discovery CNV completo")
+    ap.add_argument("--force-refresh", action="store_true",
+                    help="EXTRACT EDGAR: re-bajar companyfacts de todo el universo (ignora cache por fecha)")
     ap.add_argument("--only", choices=["extract", "transform", "assemble", "export"],
                     help="Correr un solo stage")
     ap.add_argument("--quiet", action="store_true")
@@ -234,6 +247,7 @@ def main():
         log.close(); sys.exit(2)
 
     start_all = time.perf_counter()
+    started_iso = datetime.now().isoformat(timespec="seconds")
     results = []
 
     stages = ["extract", "transform", "assemble", "export"]
@@ -245,7 +259,8 @@ def main():
             if args.skip_extract:
                 log.log("\n=== STAGE 1/4: EXTRACT — SKIPPED (--skip-extract) ===")
             else:
-                stage_extract(log, results, args.offline, args.with_cnv_fresh)
+                stage_extract(log, results, args.offline, args.with_cnv_fresh,
+                              args.force_refresh)
         elif s == "transform":
             if args.skip_transform:
                 log.log("\n=== STAGE 2/4: TRANSFORM — SKIPPED (--skip-transform) ===")
@@ -280,6 +295,26 @@ def main():
             log.log(f"  *** ADVERTENCIA: se esperaban 572 filas, hay {n} ***")
     except Exception as e:
         log.log(f"  no se pudo verificar screener: {e}")
+
+    # manifiesto de la corrida (G4): etiqueta reproducible; si falla, no
+    # tira abajo la corrida.
+    try:
+        from _run_manifest import escribir as _manifesto
+        mp = _manifesto(
+            ROOT, started_iso=started_iso,
+            finished_iso=datetime.now().isoformat(timespec="seconds"),
+            duration_s=total,
+            args={"skip_extract": args.skip_extract,
+                  "skip_transform": args.skip_transform,
+                  "offline": args.offline,
+                  "with_cnv_fresh": args.with_cnv_fresh,
+                  "force_refresh": args.force_refresh,
+                  "only": args.only},
+            results=results, n_ok=n_ok, n_fail=n_fail, n_skip=n_skip,
+            logfile=str(log.logfile))
+        log.log(f"  manifest: {mp}")
+    except Exception as e:
+        log.log(f"  manifest ERROR (no fatal): {e}")
 
     logfile = log.close()
     print(f"\nLog: {logfile}")

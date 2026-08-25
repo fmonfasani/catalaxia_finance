@@ -1,0 +1,37 @@
+pipeline_version: s0-bootstrap-v1
+contract_versions:
+  state_schema: engine-state-v1
+  report: engine-report-v1
+modules:
+  - path: engine/__init__.py
+    clase: A
+    scope: UNIVERSAL
+  - path: engine/config.py
+    clase: A
+    scope: UNIVERSAL
+    notas: guarda EXT-010 anti-produccion (puerto 5432 bloqueado salvo ENGINE_ALLOW_PROD=1)
+  - path: engine/db.py
+    clase: A
+    scope: UNIVERSAL
+  - path: engine/states.py
+    clase: A
+    scope: UNIVERSAL
+  - path: engine/report.py
+    clase: A
+    scope: UNIVERSAL
+scripts:
+  - path: scripts/engine/s00_smoke.py
+    etapa: S00_bootstrap
+    clase: B
+migrations:
+  - path: migrations/engine/001_s00_bootstrap.sql
+    tablas:
+      - engine.runs
+      - engine.stage_runs
+      - engine.checkpoints
+      - engine.schema_migrations
+storage:
+  motor: postgresql
+  decision: D-002 (gate 2026-08-23)
+  dev_target: 127.0.0.1:5433/catalaxia (docker catalaxia-engine-dev)
+  prod_protegido: 127.0.0.1:5432/catalaxia (catalaxia-db, jamas escribir)

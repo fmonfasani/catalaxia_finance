@@ -182,6 +182,34 @@ def build():
         precios[r[0]] = {"precio": r[1], "mcap": r[2], "yhigh": r[3], "ylow": r[4], "cur": r[5]}
     print(f"precios: {len(precios)} tickers")
 
+    # --- G9: resolucion de identidad para precios -------------------------
+    # El ticker NO es la identidad: ratios_cnv puede traer claves sinteticas
+    # (_ADR_XXXX) mientras el precio vive bajo el ticker canonico o el simbolo
+    # yfinance del ADR. Cadena: CUIT -> dim_entity.ticker_canonico /
+    # ADR_YF[cuit] (dim_instrument es el puente formal BYMA <-> NYSE).
+    try:
+        from s3_precios import ADR_YF as _ADR_YF
+    except ImportError:
+        _ADR_YF = {}
+    canon_by_cuit = {}
+    try:
+        for _c, _t in cur.execute("SELECT cuit, ticker_canonico FROM dim_entity"):
+            if _t:
+                canon_by_cuit[str(_c)] = _t
+    except sqlite3.Error:
+        pass
+
+    def resolver_precio(cuit, ticker):
+        """Devuelve (simbolo_usado, fila_precios) probando la clave original,
+        el ticker canonico y el simbolo yfinance del ADR."""
+        for sym in (ticker, canon_by_cuit.get(str(cuit)), _ADR_YF.get(str(cuit))):
+            if not sym:
+                continue
+            p = precios.get(sym)
+            if p and p.get("precio") is not None:
+                return sym, p
+        return None, None
+
     # Pre-cache dividendos desde facts para todos los BYMA-* tickers
     print("\nCargando dividendos desde facts (BYMA-* yfinance)...")
     cur.execute("""
@@ -225,6 +253,9 @@ def build():
          cagr, cagr_flag,
          cnv_roe, cnv_roa, cnv_margen, cnv_deudae) = data
 
+        # G9: identidad de salida = ticker canonico del CUIT (nunca _ADR_XXXX)
+        ticker_out = canon_by_cuit.get(str(cuit)) or ticker
+
         items_prov = []
 
         # --- Fix #1: CNV_* fallback por diferencia ABSOLUTA > 0.05 ---
@@ -246,7 +277,7 @@ def build():
         deuda_ebitda = check_fallback(de_calc, cnv_deudae, "D/EBITDA")
 
         if flag_cnv_fb:
-            cnv_fallback_entities.add(ticker)
+            cnv_fallback_entities.add(ticker_out)
             for fb in fallbacks:
                 items_prov.append(f"{fb}(cnv_oficial)")
             items_prov.append("flag=cnv_fallback")
@@ -263,8 +294,10 @@ def build():
         # For each dividend, match NI at the SAME period_end (not ultimo).
         payout_final = None
         payout_src = None
-        if ticker in div_facts:
-            for d in div_facts[ticker]:
+        tk_div = next((t for t in (canon_by_cuit.get(str(cuit)), ticker)
+                       if t and t in div_facts), None)
+        if tk_div:
+            for d in div_facts[tk_div]:
                 div_pe = d["period_end"]
                 ni = get_valor(cur, cuit, "NetIncome", div_pe)
                 if ni and ni != 0:
@@ -300,8 +333,8 @@ def build():
         if fcf_ce is not None:
             items_prov.append("FCF/CE")
 
-        # Precio
-        p = precios.get(ticker)
+        # Precio (G9: resolucion alias-aware del simbolo)
+        sym_px, p = resolver_precio(cuit, ticker)
         if p:
             precio = p["precio"]
             mcap = p["mcap"]
@@ -311,6 +344,8 @@ def build():
             max52w = (yhigh / precio - 1) if yhigh and precio else None
             min52w = (precio / ylow - 1) if ylow and precio else None
             items_prov.append(f"Precio={cury}")
+            if sym_px and sym_px != ticker_out:
+                items_prov.append(f"Precio@{sym_px}")
             stats["con_precio"] += 1
         else:
             precio = mcap = cury = yhigh = ylow = max52w = min52w = None
@@ -397,7 +432,7 @@ def build():
         cur.execute("""
             INSERT OR REPLACE INTO screener
             VALUES (?,?,?,?, ?,?,?,?,?,?,?, ?,?, ?,?,?, ?,?,?, ?,?, ?,?, ?, ?, ?)
-        """, (cuit, ticker, ultimo, grupo,
+        """, (cuit, ticker_out, ultimo, grupo,
               roe, roa, margen, deuda_ebitda, eps, fcf_ce, payout_final,
               cagr, cagr_flag,
               per, pb, ps,
