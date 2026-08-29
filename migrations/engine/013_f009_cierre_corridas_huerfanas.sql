@@ -90,6 +90,5 @@ BEGIN
           'Auditar una por una antes de cerrar; no cerrarlas en bloque.', n;
     END IF;
 END $$;
-
-INSERT INTO engine.schema_migrations (filename)
-VALUES ('013_f009_cierre_corridas_huerfanas.sql') ON CONFLICT DO NOTHING;
+-- F-049: el auto-registro se retiro. `engine.schema_migrations` lo escribe
+-- UNICAMENTE el runner (engine/db.py). Ver docs/architecture/MIGRATIONS_CONTRACT.md.

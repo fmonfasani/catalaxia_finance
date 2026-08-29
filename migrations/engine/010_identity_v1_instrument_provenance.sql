@@ -11,6 +11,5 @@
 
 ALTER TABLE identity_v1.instrument
   ALTER COLUMN assertion_id SET NOT NULL;
-
-INSERT INTO engine.schema_migrations (filename)
-VALUES ('010_identity_v1_instrument_provenance.sql') ON CONFLICT DO NOTHING;
+-- F-049: el auto-registro se retiro. `engine.schema_migrations` lo escribe
+-- UNICAMENTE el runner (engine/db.py). Ver docs/architecture/MIGRATIONS_CONTRACT.md.

@@ -123,6 +123,5 @@ ALTER DEFAULT PRIVILEGES FOR ROLE catalaxia IN SCHEMA derived
     GRANT SELECT, INSERT, UPDATE ON TABLES TO catalaxia_engine;
 ALTER DEFAULT PRIVILEGES FOR ROLE catalaxia IN SCHEMA derived
     GRANT USAGE, SELECT ON SEQUENCES TO catalaxia_engine;
-
-INSERT INTO engine.schema_migrations (filename)
-VALUES ('014_s04_derived.sql') ON CONFLICT DO NOTHING;
+-- F-049: el auto-registro se retiro. `engine.schema_migrations` lo escribe
+-- UNICAMENTE el runner (engine/db.py). Ver docs/architecture/MIGRATIONS_CONTRACT.md.

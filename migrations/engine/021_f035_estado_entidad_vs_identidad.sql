@@ -83,6 +83,5 @@ $$ LANGUAGE plpgsql;
 CREATE TRIGGER tg_no_matar_entidad_con_identidad
     BEFORE UPDATE ON identity_v1.entity
     FOR EACH ROW EXECUTE FUNCTION identity_v1.fn_no_matar_entidad_con_identidad();
-
-INSERT INTO engine.schema_migrations (filename)
-VALUES ('021_f035_estado_entidad_vs_identidad.sql') ON CONFLICT DO NOTHING;
+-- F-049: el auto-registro se retiro. `engine.schema_migrations` lo escribe
+-- UNICAMENTE el runner (engine/db.py). Ver docs/architecture/MIGRATIONS_CONTRACT.md.

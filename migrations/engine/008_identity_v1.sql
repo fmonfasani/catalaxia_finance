@@ -361,6 +361,5 @@ INSERT INTO identity_v1.source (source_id, descripcion, authority_level, authori
   NULL, 'Capacidad PERMANENTE de Identity v1: CIK->LEI no tiene fuente primaria (G5).'),
  ('DERIVED_RULE',   'Regla derivada documentada', 'DISCOVERY_ONLY', NULL,
   NULL, 'p.ej. sufijo .BA de Yahoo. Nunca autoritativa.');
-
-INSERT INTO engine.schema_migrations (filename) VALUES ('008_identity_v1.sql')
-ON CONFLICT DO NOTHING;
+-- F-049: el auto-registro se retiro. `engine.schema_migrations` lo escribe
+-- UNICAMENTE el runner (engine/db.py). Ver docs/architecture/MIGRATIONS_CONTRACT.md.

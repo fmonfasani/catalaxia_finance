@@ -45,6 +45,5 @@ BEGIN
         RAISE EXCEPTION 'Quedan % corridas en RUNNING sin auditar.', n;
     END IF;
 END $$;
-
-INSERT INTO engine.schema_migrations (filename)
-VALUES ('018_f031_huerfanas_de_s03.sql') ON CONFLICT DO NOTHING;
+-- F-049: el auto-registro se retiro. `engine.schema_migrations` lo escribe
+-- UNICAMENTE el runner (engine/db.py). Ver docs/architecture/MIGRATIONS_CONTRACT.md.

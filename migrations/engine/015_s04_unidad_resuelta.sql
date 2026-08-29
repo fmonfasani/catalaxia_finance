@@ -38,6 +38,5 @@ ALTER TABLE derived.fact ADD CONSTRAINT ck_unidad_no_resuelta_declarada CHECK (
 
 CREATE INDEX IF NOT EXISTS ix_dfact_unidad_resuelta
     ON derived.fact (unidad_resuelta) WHERE NOT unidad_resuelta;
-
-INSERT INTO engine.schema_migrations (filename)
-VALUES ('015_s04_unidad_resuelta.sql') ON CONFLICT DO NOTHING;
+-- F-049: el auto-registro se retiro. `engine.schema_migrations` lo escribe
+-- UNICAMENTE el runner (engine/db.py). Ver docs/architecture/MIGRATIONS_CONTRACT.md.

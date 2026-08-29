@@ -105,6 +105,5 @@ ALTER TABLE identity_v1.assertion
 -- NOT VALID: hay 3 assertions GLEIF VERIFIED historicas sin source_facts
 -- (assertion_id 4, 8, 16). Son inmutables por tg_assertion_inmutable y no se
 -- reescribe el pasado para que encaje en un contrato nuevo. Igual que en F-036.
-
-INSERT INTO engine.schema_migrations (filename)
-VALUES ('024_f037_evidencia_estructurada_general.sql') ON CONFLICT DO NOTHING;
+-- F-049: el auto-registro se retiro. `engine.schema_migrations` lo escribe
+-- UNICAMENTE el runner (engine/db.py). Ver docs/architecture/MIGRATIONS_CONTRACT.md.

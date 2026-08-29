@@ -81,6 +81,5 @@ GRANT  UPDATE (valid_to, superseded_by) ON identity_v1.assertion TO catalaxia_en
 --    DESPUES: UPDATE solo sobre (preferred_name, country, updated_at)
 REVOKE UPDATE ON identity_v1.entity FROM catalaxia_engine;
 GRANT  UPDATE (preferred_name, country, updated_at) ON identity_v1.entity TO catalaxia_engine;
-
-INSERT INTO engine.schema_migrations (filename)
-VALUES ('022_f036_evidencia_estructurada.sql') ON CONFLICT DO NOTHING;
+-- F-049: el auto-registro se retiro. `engine.schema_migrations` lo escribe
+-- UNICAMENTE el runner (engine/db.py). Ver docs/architecture/MIGRATIONS_CONTRACT.md.

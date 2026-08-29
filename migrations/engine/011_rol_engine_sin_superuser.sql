@@ -75,6 +75,5 @@ ALTER DEFAULT PRIVILEGES FOR ROLE catalaxia IN SCHEMA engine, fetch_raw, parsed,
 --   SUPERUSER   sin el, `SET session_replication_role` falla y los triggers
 --               de F-015/F-017 dejan de ser opcionales
 -- ---------------------------------------------------------------------
-
-INSERT INTO engine.schema_migrations (filename)
-VALUES ('011_rol_engine_sin_superuser.sql') ON CONFLICT DO NOTHING;
+-- F-049: el auto-registro se retiro. `engine.schema_migrations` lo escribe
+-- UNICAMENTE el runner (engine/db.py). Ver docs/architecture/MIGRATIONS_CONTRACT.md.

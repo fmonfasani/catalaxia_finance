@@ -10,5 +10,5 @@ DO $$ DECLARE n int; BEGIN
   SELECT count(*) INTO n FROM engine.runs WHERE status='RUNNING';
   IF n > 0 THEN RAISE EXCEPTION 'Quedan % corridas RUNNING sin auditar.', n; END IF;
 END $$;
-INSERT INTO engine.schema_migrations (filename)
-VALUES ('020_huerfana_f028.sql') ON CONFLICT DO NOTHING;
+-- F-049: el auto-registro se retiro. `engine.schema_migrations` lo escribe
+-- UNICAMENTE el runner (engine/db.py). Ver docs/architecture/MIGRATIONS_CONTRACT.md.

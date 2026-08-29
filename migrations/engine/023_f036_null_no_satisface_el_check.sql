@@ -14,5 +14,5 @@ ALTER TABLE identity_v1.assertion
     OR (COALESCE(source_facts ->> 'registeredAt', '') IN ('RA000009', 'RA000010')
         AND COALESCE(source_facts ->> 'registeredAs', '') <> '')
   ) NOT VALID;
-INSERT INTO engine.schema_migrations (filename)
-VALUES ('023_f036_null_no_satisface_el_check.sql') ON CONFLICT DO NOTHING;
+-- F-049: el auto-registro se retiro. `engine.schema_migrations` lo escribe
+-- UNICAMENTE el runner (engine/db.py). Ver docs/architecture/MIGRATIONS_CONTRACT.md.

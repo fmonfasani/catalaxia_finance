@@ -36,6 +36,5 @@ END $$;
 
 -- el schema sigue siendo de catalaxia: la aplicacion no crea ni borra tablas
 GRANT USAGE ON SCHEMA parsed TO catalaxia_engine;
-
-INSERT INTO engine.schema_migrations (filename)
-VALUES ('019_parsed_owner_engine.sql') ON CONFLICT DO NOTHING;
+-- F-049: el auto-registro se retiro. `engine.schema_migrations` lo escribe
+-- UNICAMENTE el runner (engine/db.py). Ver docs/architecture/MIGRATIONS_CONTRACT.md.

@@ -19,6 +19,5 @@ ALTER DEFAULT PRIVILEGES FOR ROLE catalaxia IN SCHEMA parsed
 
 REVOKE UPDATE ON ALL SEQUENCES IN SCHEMA identity_v1, engine, fetch_raw, derived
     FROM catalaxia_engine;
-
-INSERT INTO engine.schema_migrations (filename)
-VALUES ('017_parsed_secuencias_reseteables.sql') ON CONFLICT DO NOTHING;
+-- F-049: el auto-registro se retiro. `engine.schema_migrations` lo escribe
+-- UNICAMENTE el runner (engine/db.py). Ver docs/architecture/MIGRATIONS_CONTRACT.md.

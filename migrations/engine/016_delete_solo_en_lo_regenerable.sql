@@ -32,6 +32,5 @@ ALTER DEFAULT PRIVILEGES FOR ROLE catalaxia IN SCHEMA parsed
 -- se reafirma lo que NO se otorga, para que quede en el registro
 REVOKE DELETE ON ALL TABLES IN SCHEMA identity_v1, engine, fetch_raw, derived
     FROM catalaxia_engine;
-
-INSERT INTO engine.schema_migrations (filename)
-VALUES ('016_delete_solo_en_lo_regenerable.sql') ON CONFLICT DO NOTHING;
+-- F-049: el auto-registro se retiro. `engine.schema_migrations` lo escribe
+-- UNICAMENTE el runner (engine/db.py). Ver docs/architecture/MIGRATIONS_CONTRACT.md.

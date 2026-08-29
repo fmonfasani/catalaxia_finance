@@ -268,6 +268,5 @@ CREATE TRIGGER tg_no_truncar_identifier BEFORE TRUNCATE ON identity_v1.identifie
     EXECUTE FUNCTION identity_v1.fn_prohibir_delete();
 CREATE TRIGGER tg_no_truncar_entity    BEFORE TRUNCATE ON identity_v1.entity
     EXECUTE FUNCTION identity_v1.fn_prohibir_delete();
-
-INSERT INTO engine.schema_migrations (filename) VALUES ('009_identity_v1_hardening.sql')
-ON CONFLICT DO NOTHING;
+-- F-049: el auto-registro se retiro. `engine.schema_migrations` lo escribe
+-- UNICAMENTE el runner (engine/db.py). Ver docs/architecture/MIGRATIONS_CONTRACT.md.
