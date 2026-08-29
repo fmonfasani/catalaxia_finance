@@ -2,8 +2,8 @@
   "version": "1.0.0",
   "fecha_utc": "2026-08-29T00:09:19.513466+00:00",
   "estado": "HOMOLOGATED_WITH_NOTES",
-  "git_commit": "444ee1ad0e1b092c79ce055ded0b993fbc55822d",
-  "nota": "Sin secretos ni credenciales. Solo codigo, migraciones, contratos y evidencia.",
+  "git_commit": "25756e1a47154797317cb2bceba03a416053ea36",
+  "nota": "Representa el arbol versionado en el commit de release. 413 archivos quedaron fuera por decision explicita: ver docs/release/_clasificacion.json.",
   "migrations": [
     {
       "path": "migrations/engine/001_s00_bootstrap.sql",
@@ -694,5 +694,8 @@
     "auditoria": 20,
     "evidencia": 7,
     "release": 6
-  }
+  },
+  "git_tag": "v1.0.0",
+  "archivos_en_el_commit": 706,
+  "archivos_del_release_en_este_commit": 148
 }

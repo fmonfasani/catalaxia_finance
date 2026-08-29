@@ -2257,3 +2257,35 @@ con su estado y sus hashes, o declarar explicitamente que el reporte JSON es el 
 canonico y que `market_raw_runs` solo cubre el golden case.
 
 **NO se corrige en este ciclo**: Market no se toca.
+
+---
+
+## F-048 · El release no estaba capturado en ningún commit — **CLOSED** (2026-08-29)
+
+`444ee1ad0e1b` ("establish core baseline", 25/08) era el punto de partida, no el
+release: le faltaban 108 de los 133 archivos del manifiesto, 27 de 32 migraciones y
+`engine/identity_v1.py`.
+
+**Causa doble:** la restricción «NO hacer commits» rigió todos los ciclos y se
+respetó; y `release_baseline.py` escribía `git rev-parse HEAD` bajo la clave
+`git_commit` sin verificar que el worktree estuviera limpio.
+
+**Cerrado** con el commit `25756e1a` y el tag `v1.0.0`: 148 archivos clasificados por
+rol (no por extensión), 413 excluidos por decisión explícita
+(`docs/release/_clasificacion.json`). Ver `docs/release/RELEASE_FREEZE_AUDIT.md`.
+
+## F-049 · El runner de migraciones no puede aplicar sus migraciones — **OPEN**
+
+Desde una base limpia, `engine.db.apply_migrations` falla en `008_identity_v1.sql`
+con `duplicate key`: 16 de las 29 migraciones se auto-registran en
+`engine.schema_migrations` con `ON CONFLICT`, y el runner las registra otra vez sin
+`ON CONFLICT`. Como corre en una sola transacción, **revierte todo**.
+
+Nunca se había visto porque esas 16 siempre se aplicaron a mano con `psql -f`. La
+base homologada está correcta; llegó ahí por el camino manual.
+
+**No afecta el sistema homologado** — no hay corrupción, pérdida ni bypass. **Bloquea
+la distribución**: un `git checkout v1.0.0` no reconstruye el schema.
+
+Registrado sin corregir. Detalle y correcciones propuestas en
+`docs/review/F049_FINDING.md`.

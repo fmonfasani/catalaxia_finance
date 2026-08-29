@@ -1,16 +1,24 @@
 # CATALAXIA V1.0
 ## HOMOLOGATED_WITH_NOTES
-## RELEASE_BLOCKED — F-048
+## RELEASE_BLOCKED — F-049
 
-> **Actualizado 2026-08-29 por la auditoria de release freeze.**
-> Este documento declaraba `RELEASE_READY`. La auditoria encontro que el commit
-> declarado (`444ee1ad0e1b`, del 25 de agosto, *"establish core baseline"*)
-> **no contiene V1**: faltan 108 de los 133 archivos del manifiesto, incluidas
-> 27 de 32 migraciones y `engine/identity_v1.py`.
+> **Actualizado 2026-08-29, ciclo de release freeze.**
 >
-> **La homologacion sigue siendo valida** — el baseline coincide con PostgreSQL
-> sin un solo delta y los 8 controles de integridad estan en cero. Lo que falta
-> es capturar el release en un commit. Ver `RELEASE_FREEZE_AUDIT.md` (F-048).
+> **F-048 CERRADO.** El release quedó capturado en el commit **`25756e1a`**, tag
+> **`v1.0.0`**, con los **148 archivos** de V1: las 29 migraciones de engine
+> registradas, las 3 de market, `engine/identity_v1.py`, `engine/hashout.py`, las
+> garantías F-035/036/037/044/045, 11 contratos, 23 auditorías y 14 tests. Ningún
+> artefacto ajeno: 413 archivos quedaron fuera por decisión explícita.
+>
+> **F-049 ABIERTO — bloquea la distribución, no el sistema.** La prueba de
+> reproducibilidad sobre base descartable reveló que el runner de migraciones **no
+> puede aplicar sus propias migraciones**: 16 de las 29 se auto-registran en
+> `engine.schema_migrations` con `ON CONFLICT`, y el runner las registra otra vez
+> **sin** `ON CONFLICT`. Choca contra su propia PK en `008` y, como corre en una
+> sola transacción, revierte todo. Nunca se había visto porque esas 16 siempre se
+> aplicaron a mano con `psql -f`.
+>
+> **La homologación sigue siendo válida.** Ver `docs/review/F049_FINDING.md`.
 
 **Versión:** 1.0.0 · **Fecha:** 2026-08-28
 **Instancia homologada:** `catalaxia-engine-dev` 127.0.0.1:5433
@@ -25,7 +33,9 @@
 |---|---|
 | Dictamen de homologación | **HOMOLOGATED_WITH_NOTES** (sin cambios) |
 | Blockers **funcionales** | **0** |
-| Release (auditado 2026-08-29) | **BLOCKED por F-048** — el commit declarado no contiene V1 |
+| Commit de release | **`25756e1a`** · tag **`v1.0.0`** · 148 archivos |
+| F-048 | **CLOSED** — el release ya esta capturado en un commit |
+| Release (auditado 2026-08-29) | **BLOCKED por F-049** — el runner no aplica sus migraciones desde cero |
 | Cambios de datos en este ciclo | **0** |
 | Cambios de schema en este ciclo | **0** |
 | Cambios en `data/raw` | **0** |
