@@ -1,16 +1,24 @@
-# CATALAXIA V1.0
+# CATALAXIA V1.0.1
 ## HOMOLOGATED_WITH_NOTES
-## RELEASE_BLOCKED — F-049
+## RELEASE_READY
 
 > **Actualizado 2026-08-29, ciclo de release freeze.**
 >
-> **F-048 CERRADO.** El release quedó capturado en el commit **`25756e1a`**, tag
-> **`v1.0.0`**, con los **148 archivos** de V1: las 29 migraciones de engine
+> **F-048 CERRADO.** El release quedó capturado en commit propio, con los
+> **148 archivos** de V1: las 29 migraciones de engine
 > registradas, las 3 de market, `engine/identity_v1.py`, `engine/hashout.py`, las
 > garantías F-035/036/037/044/045, 11 contratos, 23 auditorías y 14 tests. Ningún
 > artefacto ajeno: 413 archivos quedaron fuera por decisión explícita.
 >
-> **F-049 ABIERTO — bloquea la distribución, no el sistema.** La prueba de
+> **F-049 CERRADO (2026-08-29).** Se retiró el auto-registro de 16 migraciones:
+> `engine.schema_migrations` lo escribe únicamente el runner. Instalación desde
+> cero verificada sobre base descartable — 29/29 migraciones, 0 duplicados,
+> estructura idéntica a la homologada (15 triggers, 27 CHECKs, 11 índices).
+> Banco adversario 14/14, auditoría independiente 9/9. Ver `MIGRATIONS_CONTRACT.md`.
+>
+> **`v1.0.0` (6ac4859) no se movió.** El release distribuible es **`v1.0.1`**.
+>
+> El defecto original era: la prueba de
 > reproducibilidad sobre base descartable reveló que el runner de migraciones **no
 > puede aplicar sus propias migraciones**: 16 de las 29 se auto-registran en
 > `engine.schema_migrations` con `ON CONFLICT`, y el runner las registra otra vez
@@ -20,7 +28,7 @@
 >
 > **La homologación sigue siendo válida.** Ver `docs/review/F049_FINDING.md`.
 
-**Versión:** 1.0.0 · **Fecha:** 2026-08-28
+**Versión:** 1.0.1 · **Fecha:** 2026-08-29 (V1.0.0: 2026-08-28)
 **Instancia homologada:** `catalaxia-engine-dev` 127.0.0.1:5433
 **Baseline:** `docs/release/CATALAXIA_V1_BASELINE.json` (generado desde la base, no escrito a mano)
 **Manifiesto:** `docs/release/CATALAXIA_V1_MANIFEST.json`
@@ -33,9 +41,10 @@
 |---|---|
 | Dictamen de homologación | **HOMOLOGATED_WITH_NOTES** (sin cambios) |
 | Blockers **funcionales** | **0** |
-| Commit de release | **`25756e1a`** · tag **`v1.0.0`** · 148 archivos |
+| Commit de release | **`v1.0.1`** · 148 archivos de V1 + fix de F-049 |
 | F-048 | **CLOSED** — el release ya esta capturado en un commit |
-| Release (auditado 2026-08-29) | **BLOCKED por F-049** — el runner no aplica sus migraciones desde cero |
+| F-049 | **CLOSED** — instalación desde cero verificada |
+| Release | **READY** · tag **`v1.0.1`** |
 | Cambios de datos en este ciclo | **0** |
 | Cambios de schema en este ciclo | **0** |
 | Cambios en `data/raw` | **0** |

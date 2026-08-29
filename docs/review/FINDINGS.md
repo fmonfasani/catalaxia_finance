@@ -2289,3 +2289,22 @@ la distribución**: un `git checkout v1.0.0` no reconstruye el schema.
 
 Registrado sin corregir. Detalle y correcciones propuestas en
 `docs/review/F049_FINDING.md`.
+
+## F-049 — **CLOSED** (2026-08-29)
+
+Corregido eligiendo la opción B del contrato: se retiró el auto-registro de las 16
+migraciones. `engine.schema_migrations` lo escribe **únicamente el runner**.
+
+**Por qué B y no añadir `ON CONFLICT` al runner:** el auto-registro existía para
+soportar `psql -f`, que **no funciona sobre base limpia** — la tabla de registro la
+crea el runner. Mantenerlo era sostener una promesa que el sistema no cumple. Y
+`001`–`007` y `026`–`031` nunca se auto-registraron: el patrón histórico ya había
+elegido dueño único.
+
+**Verificado desde cero** sobre base descartable: 29/29 migraciones, 0 duplicados,
+estructura idéntica a la homologada (15 triggers, 27 CHECKs, 11 índices únicos).
+Banco adversario **14/14**, auditoría independiente **9/9**. Base homologada
+**DELTA = 0**. Suite **198/198**.
+
+`v1.0.0` no se movió; el release distribuible es **`v1.0.1`**.
+Contrato: `docs/architecture/MIGRATIONS_CONTRACT.md`.

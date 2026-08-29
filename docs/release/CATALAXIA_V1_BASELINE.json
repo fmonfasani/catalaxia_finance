@@ -1,9 +1,9 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "fecha_utc": "2026-08-29T00:09:19.513466+00:00",
   "estado_homologacion": "HOMOLOGATED_WITH_NOTES",
   "instancia": "catalaxia_engine@127.0.0.1:5433/catalaxia mode=FAST prod=False",
-  "git_commit": "25756e1a47154797317cb2bceba03a416053ea36",
+  "git_commit": "5e380ee7255cc40f35bf259799f4a36af12fab0f",
   "identity": {
     "entities": 525,
     "entities_por_estado": {
@@ -770,7 +770,8 @@
       "F-040",
       "F-042",
       "F-045",
-      "F-048"
+      "F-048",
+      "F-049"
     ],
     "CLOSED_WITH_NOTES": [
       "F-041",
@@ -786,12 +787,9 @@
     ],
     "NO_REPRODUCIBLE": [
       "F-027"
-    ],
-    "BLOQUEA_RELEASE": [
-      "F-049"
     ]
   },
-  "git_tag": "v1.0.0",
+  "git_tag": "v1.0.1",
   "release_commit_verificado": true,
-  "nota_git": "F-048 CERRADO: este commit contiene los 148 archivos de V1. El anterior (444ee1ad) era el baseline del 25/08 y no los tenia."
+  "nota_git": "v1.0.0 (6ac4859) quedo intacto: contiene V1 pero no se instala desde cero. v1.0.1 agrega el fix de F-049 -- unico cambio: retirar el auto-registro de 16 migraciones. Sin cambios funcionales ni de datos."
 }

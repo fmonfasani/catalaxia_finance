@@ -1,8 +1,8 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "fecha_utc": "2026-08-29T00:09:19.513466+00:00",
   "estado": "HOMOLOGATED_WITH_NOTES",
-  "git_commit": "25756e1a47154797317cb2bceba03a416053ea36",
+  "git_commit": "5e380ee7255cc40f35bf259799f4a36af12fab0f",
   "nota": "Representa el arbol versionado en el commit de release. 413 archivos quedaron fuera por decision explicita: ver docs/release/_clasificacion.json.",
   "migrations": [
     {
@@ -695,7 +695,7 @@
     "evidencia": 7,
     "release": 6
   },
-  "git_tag": "v1.0.0",
-  "archivos_en_el_commit": 706,
+  "git_tag": "v1.0.1",
+  "archivos_en_el_commit": 710,
   "archivos_del_release_en_este_commit": 148
 }
