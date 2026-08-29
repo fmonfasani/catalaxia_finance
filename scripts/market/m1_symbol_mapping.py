@@ -10,6 +10,12 @@ Reglas:
   * tipo ordinario  -> instrument_type=LOCAL, ticker_yahoo = ticker + '.BA'
   * CERO mappings inventados: si no se puede derivar -> UNMAPPED
   * ticker_yahoo repetido entre instrumentos distintos -> CONFLICT/AMBIGUOUS
+
+F-014: ademas de ticker_canonico (clave del EMISOR, sin cambios de significado),
+puebla venue_ticker (simbolo de ESTA fila en su exchange) via
+`f014_venue_ticker.derivar_venue_ticker()`, exclusivamente desde
+`dim_instrument.ticker` -- nunca desde `dim_entity.ticker_canonico`. Ver
+outputs/docs/fase_market/F014_VENUE_TICKER_CONTRACT.md.
 """
 from __future__ import annotations
 
@@ -28,14 +34,17 @@ SQLITE = ROOT / "data" / "screener.db"
 BYMA_MERCADOS = {"BYMA", "BYMA/BOLSAS", "PANEL GENERAL"}
 
 
-def pg_conn():
-    return psycopg2.connect(
-        host=os.environ.get("DB_HOST", "localhost"),
-        port=int(os.environ.get("DB_PORT", "5432")),
-        dbname=os.environ.get("DB_NAME", "catalaxia"),
-        user=os.environ.get("DB_USER", "catalaxia"),
-        password=os.environ.get("DB_PASSWORD", "catalaxia"),
-    )
+import market_db
+import f014_venue_ticker as venue
+
+
+def pg_conn(*, write: bool = False):
+    """Conexion a PostgreSQL a traves de la guarda F-001 (market_db).
+
+    SOLO LECTURA por defecto. Escribir exige `write=True` en el call site y, si
+    el destino es el puerto 5432, ademas `MARKET_ALLOW_PROD_WRITE=1`.
+    """
+    return market_db.connect(None, write=write)
 
 
 def derivar(ticker: str, mercado: str, tipo: str):
@@ -74,14 +83,17 @@ def main():
     for iid, eid, canon, cuit, grupo, tick, merc, tipo, moneda, ratio in filas:
         itype, tyahoo, nota = derivar(tick, merc, tipo)
         status = "MAPPED" if tyahoo else "UNMAPPED"
+        exchange = ("NYSE" if itype == "ADR" else "BUE" if itype == "LOCAL" else None) if itype else None
+        vr = venue.derivar_venue_ticker(canon, tick, exchange)
         regs.append(dict(
             instrument_id=str(iid), entity_id=str(eid),
             ticker_canonico=(canon or tick or "").strip(),
-            instrument_type=itype, exchange=("NYSE" if itype == "ADR" else "BUE" if itype == "LOCAL" else None) if itype else None,
+            instrument_type=itype, exchange=exchange,
             country="AR", currency=(moneda or "").strip().upper() or None,
             security_type=(tipo or "").strip() or None,
             ratio_adr=ratio, ticker_yahoo=tyahoo, status=status,
             conflict_detail=nota,
+            venue_ticker=vr.venue_ticker, venue_ticker_source=vr.venue_ticker_source,
         ))
         if tyahoo:
             por_yahoo.setdefault(tyahoo, []).append(str(iid))
@@ -95,22 +107,26 @@ def main():
                     r["conflict_detail"] = f"simbolo compartido con {','.join(i for i in iids if i != r['instrument_id'])}"
 
     now = datetime.now(timezone.utc)
-    conn = pg_conn()
+    conn = pg_conn(write=True)          # escribe market_symbol_mappings
     cur = conn.cursor()
     psycopg2.extras.execute_values(cur, """
         INSERT INTO market_instruments
             (instrument_id, entity_id, ticker_canonico, instrument_type, exchange,
-             country, currency, security_type, ratio_adr, source, active)
+             country, currency, security_type, ratio_adr, source, active,
+             venue_ticker, venue_ticker_source)
         VALUES %s
         ON CONFLICT (instrument_id) DO UPDATE SET
             entity_id=EXCLUDED.entity_id, ticker_canonico=EXCLUDED.ticker_canonico,
             instrument_type=EXCLUDED.instrument_type, exchange=EXCLUDED.exchange,
             currency=EXCLUDED.currency, security_type=EXCLUDED.security_type,
-            ratio_adr=EXCLUDED.ratio_adr, updated_at=now()
+            ratio_adr=EXCLUDED.ratio_adr, updated_at=now(),
+            venue_ticker=EXCLUDED.venue_ticker,
+            venue_ticker_source=EXCLUDED.venue_ticker_source
     """, [(
         r["instrument_id"], r["entity_id"], r["ticker_canonico"],
         r["instrument_type"] or "OTHER", r["exchange"], r["country"],
         r["currency"], r["security_type"], r["ratio_adr"], "dim_instrument", True,
+        r["venue_ticker"], r["venue_ticker_source"],
     ) for r in regs], page_size=500)
 
     psycopg2.extras.execute_values(cur, """
@@ -135,9 +151,13 @@ def main():
     from collections import Counter
     c_status = Counter(r["status"] for r in regs)
     c_tipo = Counter(r["instrument_type"] or "?" for r in regs)
+    diverge = [r for r in regs if r["venue_ticker"] and r["venue_ticker"] != r["ticker_canonico"]]
     print(f"instrumentos procesados : {len(regs)}")
     print("por estado              :", dict(c_status))
     print("por tipo                :", dict(c_tipo))
+    print(f"venue_ticker != ticker_canonico (F-014): {len(diverge)}")
+    for r in sorted(diverge, key=lambda r: r["instrument_id"]):
+        print(f"  {r['instrument_id']:>6} canonico={r['ticker_canonico']:<8} venue_ticker={r['venue_ticker']}")
     unmapped = [r for r in regs if r["status"] == "UNMAPPED"]
     conflicts = [r for r in regs if r["status"] == "CONFLICT"]
     if unmapped:

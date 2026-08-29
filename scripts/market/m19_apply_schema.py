@@ -14,14 +14,16 @@ HERE = Path(__file__).resolve().parent
 SQL = HERE / "market_schema.sql"
 
 
-def get_conn():
-    return psycopg2.connect(
-        host=os.environ.get("DB_HOST", "localhost"),
-        port=int(os.environ.get("DB_PORT", "5432")),
-        dbname=os.environ.get("DB_NAME", "catalaxia"),
-        user=os.environ.get("DB_USER", "catalaxia"),
-        password=os.environ.get("DB_PASSWORD", "catalaxia"),
-    )
+import market_db
+
+
+def get_conn(*, write: bool = True):
+    """Conexion a PostgreSQL a traves de la guarda F-001 (market_db).
+
+    SOLO LECTURA por defecto. Escribir exige `write=True` en el call site y, si
+    el destino es el puerto 5432, ademas `MARKET_ALLOW_PROD_WRITE=1`.
+    """
+    return market_db.connect(None, write=write)
 
 
 def main():

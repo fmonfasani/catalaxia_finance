@@ -1,0 +1,125 @@
+{
+  "catalogo": {
+    "checks": [
+      [
+        "ck_cuit_exige_evidencia_estructurada",
+        false
+      ],
+      [
+        "ck_politica_estructural_cik_lei",
+        true
+      ]
+    ],
+    "triggers": [
+      [
+        "tg_fuente_autoritativa_para_el_tipo",
+        true
+      ],
+      [
+        "tg_identifier_coherente_con_assertion",
+        true
+      ]
+    ],
+    "grants_source": [
+      "SELECT"
+    ]
+  },
+  "estado_1_politica_intacta": {
+    "LEGACY_DIM_ENTITY->CIK": {
+      "entro": false,
+      "garantia": "La fuente LEGACY_DIM_ENTITY es CORROBORATING : no puede esta"
+    },
+    "CNV_PORTAL->CIK": {
+      "entro": false,
+      "garantia": "La fuente CNV_PORTAL es DISCOVERY_ONLY : no puede establecer"
+    },
+    "DERIVED_RULE->LEI": {
+      "entro": false,
+      "garantia": "La fuente DERIVED_RULE es DISCOVERY_ONLY : no puede establec"
+    },
+    "LEGACY_DIM_ENTITY->LEI": {
+      "entro": false,
+      "garantia": "La fuente LEGACY_DIM_ENTITY es CORROBORATING : no puede esta"
+    },
+    "LEGACY_DIM_ENTITY->CUIT": {
+      "entro": false,
+      "garantia": "La fuente LEGACY_DIM_ENTITY es CORROBORATING : no puede esta"
+    },
+    "CNV_PORTAL->CUIT": {
+      "entro": false,
+      "garantia": "La fuente CNV_PORTAL es DISCOVERY_ONLY : no puede establecer"
+    }
+  },
+  "politica_restaurada": true,
+  "estado_2_politica_adulterada": {
+    "LEGACY_DIM_ENTITY->CIK": {
+      "entro": false,
+      "garantia": "ck_politica_estructural_cik_lei"
+    },
+    "CNV_PORTAL->CIK": {
+      "entro": false,
+      "garantia": "ck_politica_estructural_cik_lei"
+    },
+    "DERIVED_RULE->LEI": {
+      "entro": false,
+      "garantia": "ck_politica_estructural_cik_lei"
+    },
+    "LEGACY_DIM_ENTITY->LEI": {
+      "entro": false,
+      "garantia": "ck_politica_estructural_cik_lei"
+    },
+    "LEGACY_DIM_ENTITY->CUIT": {
+      "entro": false,
+      "garantia": "ck_cuit_exige_evidencia_estructurada"
+    },
+    "CNV_PORTAL->CUIT": {
+      "entro": false,
+      "garantia": "ck_cuit_exige_evidencia_estructurada"
+    }
+  },
+  "estado_3_owner": {
+    "LEGACY_DIM_ENTITY->CIK": {
+      "entro": false,
+      "garantia": "ck_politica_estructural_cik_lei"
+    },
+    "CNV_PORTAL->CIK": {
+      "entro": false,
+      "garantia": "ck_politica_estructural_cik_lei"
+    },
+    "DERIVED_RULE->LEI": {
+      "entro": false,
+      "garantia": "ck_politica_estructural_cik_lei"
+    },
+    "LEGACY_DIM_ENTITY->LEI": {
+      "entro": false,
+      "garantia": "ck_politica_estructural_cik_lei"
+    },
+    "LEGACY_DIM_ENTITY->CUIT": {
+      "entro": false,
+      "garantia": "ck_cuit_exige_evidencia_estructurada"
+    },
+    "CNV_PORTAL->CUIT": {
+      "entro": false,
+      "garantia": "ck_cuit_exige_evidencia_estructurada"
+    }
+  },
+  "bypass_por_update": {
+    "assertion.source_id": "(psycopg2.errors.InsufficientPrivilege) permission denied fo",
+    "assertion.left_ref": "(psycopg2.errors.InsufficientPrivilege) permission denied fo",
+    "assertion.status": "(psycopg2.errors.InsufficientPrivilege) permission denied fo",
+    "identifier.id_type": "(psycopg2.errors.InsufficientPrivilege) permission denied fo",
+    "identifier.is_authoritative": "(psycopg2.errors.InsufficientPrivilege) permission denied fo"
+  },
+  "preguntas": {
+    "1_politica_adulterada_produce_CIK_incorrecto": false,
+    "2_politica_adulterada_produce_LEI_incorrecto": false,
+    "3_politica_adulterada_produce_CUIT_incorrecto": false,
+    "4_lo_puede_hacer_catalaxia_engine": false,
+    "5_lo_puede_hacer_el_owner": false,
+    "6_la_garantia_depende_de_python": false,
+    "7_la_garantia_depende_de_tabla_mutable": false,
+    "8_bypass_por_INSERT": false,
+    "9_bypass_por_UPDATE": false
+  },
+  "dictamen": "CLOSED"
+}

@@ -4,9 +4,22 @@
 Cada corrida de pytest levanta una base PostgreSQL descartable
 (`catalaxia_market_test`) con el DDL real de `market_schema.sql`, y un RAW
 base descartable bajo data/raw/_test/. Cero red: la fuente es FixtureSource.
+
+Destino de test (fix de la regresion F-001, ver
+outputs/docs/fase_market/F001_REGRESION_TEST_MATRIX.md): DEV (`DB_PORT=5433`,
+contenedor `catalaxia-engine-dev`) por defecto, nunca produccion -- mismo
+patron que `engine/config.py` ya usa para SEC/CNV (`ENGINE_DB_PORT` default
+"5433"). El override de `DB_HOST`/`DB_PORT` es TRANSITORIO (context manager
+`_target_dev()`), scoped a las llamadas que crean/pueblan la base de test --
+NO se deja pisado en `os.environ` para el resto del proceso de pytest. Motivo
+concreto: `tests/test_f014_venue_ticker.py` corre en el mismo proceso y
+necesita leer produccion real (5432) a proposito (evidencia post-migracion
+013); un `os.environ.setdefault` a nivel de modulo lo hubiera roto en
+silencio (encontrado y corregido en esta misma pasada).
 """
 from __future__ import annotations
 
+import contextlib
 import os
 import shutil
 import sys
@@ -29,18 +42,39 @@ from market_source import FetchResult            # noqa: E402
 ROOT = eng.ROOT
 TEST_DB = os.environ.get("MARKET_TEST_DB", "catalaxia_market_test")
 RAW_TEST_BASE = ROOT / "data" / "raw" / "_test"
+DEV_HOST = os.environ.get("MARKET_TEST_DB_HOST", "localhost")
+DEV_PORT = os.environ.get("MARKET_TEST_DB_PORT", "5433")
 
 TZ_BUE = ZoneInfo("America/Argentina/Buenos_Aires")
 TZ_NY = ZoneInfo("America/New_York")
 
 
+@contextlib.contextmanager
+def _target_dev():
+    """Fuerza DB_HOST/DB_PORT a dev SOLO durante el bloque -- restaura lo que
+    hubiera antes al salir. No usar `setdefault`: eso mutaria el proceso
+    entero de pytest, incluidos modulos de test que a proposito necesitan
+    otro destino (ver docstring del archivo)."""
+    previos = {k: os.environ.get(k) for k in ("DB_HOST", "DB_PORT")}
+    os.environ["DB_HOST"] = DEV_HOST
+    os.environ["DB_PORT"] = DEV_PORT
+    try:
+        yield
+    finally:
+        for k, v in previos.items():
+            if v is None:
+                os.environ.pop(k, None)
+            else:
+                os.environ[k] = v
+
+
 def _admin_conn():
-    c = psycopg2.connect(
-        host=os.environ.get("DB_HOST", "localhost"),
-        port=int(os.environ.get("DB_PORT", "5432")),
-        dbname="postgres",
-        user=os.environ.get("DB_USER", "catalaxia"),
-        password=os.environ.get("DB_PASSWORD", "catalaxia"))
+    with _target_dev():
+        c = psycopg2.connect(
+            host=os.environ["DB_HOST"], port=int(os.environ["DB_PORT"]),
+            dbname="postgres",
+            user=os.environ.get("DB_USER", "catalaxia"),
+            password=os.environ.get("DB_PASSWORD", "catalaxia"))
     c.autocommit = True
     return c
 
@@ -55,7 +89,11 @@ def db():
     cur.execute(f'CREATE DATABASE "{TEST_DB}"')
     adm.close()
 
-    conn = eng.pg_conn(TEST_DB)
+    # write=True: crea el esquema de test. Nunca dispara la guarda F-001
+    # (MarketProdWriteBlocked) porque, dentro de `_target_dev()`, DB_PORT=5433
+    # no es "produccion" para `market_db.es_produccion()`.
+    with _target_dev():
+        conn = eng.pg_conn(TEST_DB, write=True)
     ddl = (MARKET_DIR / "market_schema.sql").read_text(encoding="utf-8")
     with conn.cursor() as c:
         c.execute(ddl)

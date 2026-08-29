@@ -526,10 +526,16 @@ def parse_unit(el: etree._Element) -> ParsedUnit:
     ref = el.get("id") or ""
     div = el.find(f"{{{XBRLI_NS}}}divide")
     if div is not None:
+        # F-026: los elementos se llaman unitNumerator / unitDenominator en la
+        # especificacion XBRL 2.1, no numerator / denominator. Con los nombres
+        # equivocados findall no encontraba nada y las 32 unidades DIVIDED
+        # quedaban con numerator=[] y denominator=[], perdiendo la unidad de
+        # 436 hechos (precios por accion y por barril). El dato SI estaba en el
+        # RAW: verificado en 28/28 unidades resolubles.
         num = [m.text.strip() for m
-               in div.findall(f"{{{XBRLI_NS}}}numerator/{{{XBRLI_NS}}}measure") if m.text]
+               in div.findall(f"{{{XBRLI_NS}}}unitNumerator/{{{XBRLI_NS}}}measure") if m.text]
         den = [m.text.strip() for m
-               in div.findall(f"{{{XBRLI_NS}}}denominator/{{{XBRLI_NS}}}measure") if m.text]
+               in div.findall(f"{{{XBRLI_NS}}}unitDenominator/{{{XBRLI_NS}}}measure") if m.text]
         return ParsedUnit(ref, "DIVIDED", [], num, den)
     measures = [m.text.strip() for m in el.findall(f"{{{XBRLI_NS}}}measure") if m.text]
     return ParsedUnit(ref, "SIMPLE", measures, [], [])

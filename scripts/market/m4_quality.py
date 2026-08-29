@@ -46,14 +46,16 @@ ROOT = next(p for p in Path(__file__).resolve().parents if (p / "data").is_dir()
 SEV_ORDER = {"VALID": 0, "NOT_APPLICABLE": 0, "WARNING": 1, "INVALID": 2}
 
 
-def pg_conn(dbname=None):
-    return psycopg2.connect(
-        host=os.environ.get("DB_HOST", "localhost"),
-        port=int(os.environ.get("DB_PORT", "5432")),
-        dbname=dbname or os.environ.get("DB_NAME", "catalaxia"),
-        user=os.environ.get("DB_USER", "catalaxia"),
-        password=os.environ.get("DB_PASSWORD", "catalaxia"),
-    )
+import market_db
+
+
+def pg_conn(dbname=None, *, write: bool = False):
+    """Conexion a PostgreSQL a traves de la guarda F-001 (market_db).
+
+    SOLO LECTURA por defecto. Escribir exige `write=True` en el call site y, si
+    el destino es el puerto 5432, ademas `MARKET_ALLOW_PROD_WRITE=1`.
+    """
+    return market_db.connect(dbname, write=write)
 
 
 class Bateria:
@@ -396,7 +398,7 @@ def main():
     ap.add_argument("--dbname")
     args = ap.parse_args()
 
-    conn = pg_conn(args.dbname)
+    conn = pg_conn(args.dbname, write=True)   # escribe market_data_quality
     run_id = f"quality-{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}"
     b = Bateria(conn, run_id)
     if args.instruments:

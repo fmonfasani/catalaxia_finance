@@ -1,0 +1,790 @@
+{
+  "version": "1.0.0",
+  "fecha_utc": "2026-08-29T00:09:19.513466+00:00",
+  "estado_homologacion": "HOMOLOGATED_WITH_NOTES",
+  "instancia": "catalaxia_engine@127.0.0.1:5433/catalaxia mode=FAST prod=False",
+  "git_commit": "444ee1ad0e1b092c79ce055ded0b993fbc55822d",
+  "identity": {
+    "entities": 525,
+    "entities_por_estado": {
+      "ACTIVE": 513,
+      "MERGED": 8,
+      "PROVISIONAL": 4
+    },
+    "assertions": 614,
+    "assertions_por_status": {
+      "CANDIDATE": 73,
+      "REVIEW_REQUIRED": 9,
+      "VERIFIED": 532
+    },
+    "assertions_superseded": 6,
+    "identifiers_total": 583,
+    "identifiers_vigentes": 574,
+    "identifiers_autoritativos_vigentes": 520,
+    "identifiers_retired": 6,
+    "por_tipo_vigente": {
+      "CIK_autoritativo": 513,
+      "CNV_ENTITY_ID_candidato": 1,
+      "CUIT_candidato": 53,
+      "CUIT_autoritativo": 3,
+      "LEI_autoritativo": 4
+    },
+    "reviews_total": 14,
+    "reviews_open": 11,
+    "conflicts": 1,
+    "sources": [
+      [
+        "AFIP",
+        "AUTHORITATIVE",
+        "{CUIT}"
+      ],
+      [
+        "CNV_PORTAL",
+        "DISCOVERY_ONLY",
+        "{}"
+      ],
+      [
+        "DERIVED_RULE",
+        "DISCOVERY_ONLY",
+        "{}"
+      ],
+      [
+        "GLEIF",
+        "AUTHORITATIVE",
+        "{LEI,CUIT}"
+      ],
+      [
+        "HUMAN",
+        "AUTHORITATIVE",
+        "{}"
+      ],
+      [
+        "LEGACY_DIM_ENTITY",
+        "CORROBORATING",
+        "{}"
+      ],
+      [
+        "MARKET_CATALOG",
+        "CORROBORATING",
+        "{}"
+      ],
+      [
+        "SEC_20F",
+        "AUTHORITATIVE",
+        "{CIK,CUIT}"
+      ],
+      [
+        "SEC_REGISTRY",
+        "AUTHORITATIVE",
+        "{CIK}"
+      ]
+    ],
+    "bridges": {
+      "verified": 3,
+      "candidate": 4,
+      "ratificados": [
+        [
+          "CIK:SEC:0000904851",
+          "LEI:GLEIF:5493003N7447U18U5U53",
+          "Federico"
+        ],
+        [
+          "CIK:SEC:0000931427",
+          "LEI:GLEIF:5299002TRC7IFQYSW596",
+          "Federico"
+        ],
+        [
+          "CIK:SEC:0001717161",
+          "LEI:GLEIF:2549005JLIWQ6B7VNR38",
+          "Federico"
+        ]
+      ]
+    }
+  },
+  "sec": {
+    "filings_pre_xbrl": 18,
+    "filings_con_xbrl_parseados": 9,
+    "filings_normalizados_s04": 9,
+    "parsed_facts": 67084,
+    "parsed_contexts": 23478,
+    "parsed_units": 369,
+    "parsed_units_divided": 44,
+    "parsed_units_divided_sin_num_den": 0,
+    "parsed_concepts": 13412,
+    "parsed_facts_sin_source_hash": 0,
+    "derived_fact": 47930,
+    "derived_normalize_conflict": 1180,
+    "derived_sin_source_fact_ids": 0,
+    "derived_fact_key_duplicados": 0,
+    "checkpoints_por_stage": {
+      "C3_CNV_fetch": 3,
+      "S00_bootstrap": 1,
+      "S01_identity": 1,
+      "S02_fetch": 1,
+      "S03_parse": 1,
+      "S04_normalize": 4
+    },
+    "checkpoints_en_corrida_no_ok": 0
+  },
+  "hashout": {
+    "parsed.facts": {
+      "digest": "d9e5a5006bd6f12fde6de2192d70002177ab22af3c2db5bfdae93553f8537a64",
+      "determinista": true
+    },
+    "parsed.contexts": {
+      "digest": "a4eca172f53faa86442483f9069d7cef0659396809f7405f843356eb1301341f",
+      "determinista": true
+    },
+    "parsed.units": {
+      "digest": "3b5faf99e75ca3c24b7d0f37eb24371b322698544069ccc3f70fbcf871732d46",
+      "determinista": true
+    },
+    "parsed.concepts": {
+      "digest": "f4cae32bea1b0e7df150d7554fb4f5ef03681956c05ab54bc2684fced5649c1c",
+      "determinista": true
+    },
+    "derived.fact": {
+      "digest": "ba5e99020b05fd24cf1ac3893bfe020ccb7c31e80c001c65176275c10bd60617",
+      "determinista": true
+    }
+  },
+  "cnv": {
+    "empresas_con_datos": 3,
+    "presentaciones_guid_unicos": 9165,
+    "filas_totales_versionadas_por_corrida": 21528,
+    "artefactos": 3511,
+    "por_empresa": [
+      [
+        "30546689979",
+        4919,
+        2
+      ],
+      [
+        "30657862068",
+        2385,
+        1
+      ],
+      [
+        "33650305499",
+        1861,
+        5
+      ]
+    ],
+    "nota_grano": "UNIQUE(run_id,guid): RAW inmutable versionado por corrida. Contar filas sobreestima la cobertura por el numero de corridas."
+  },
+  "lifecycle": {
+    "runs_por_estado": {
+      "ABORTED": 132,
+      "BLOCKED": 48,
+      "OK": 61
+    },
+    "runs_running": 0
+  },
+  "integridad": {
+    "cik_autoritativo_duplicado": 0,
+    "entidad_con_dos_cik_autoritativos": 0,
+    "identifiers_huerfanos": 0,
+    "contaminacion_de_tipo": 0,
+    "entidades_muertas_con_identidad": 0,
+    "verified_sin_evidencia": 0,
+    "human_decision_firmada_por_proceso": 0,
+    "assertions_autoritativas_sin_left_ref_F046": 6,
+    "cik_autoritativo_sin_source_facts_F041": 1
+  },
+  "seguridad": {
+    "triggers_activos": [
+      [
+        "assertion",
+        "tg_assertion_inmutable"
+      ],
+      [
+        "assertion",
+        "tg_fuente_autoritativa_para_el_tipo"
+      ],
+      [
+        "assertion",
+        "tg_no_borrar_assertion"
+      ],
+      [
+        "assertion",
+        "tg_no_truncar_assertion"
+      ],
+      [
+        "conflict",
+        "tg_no_borrar_conflict"
+      ],
+      [
+        "conflict",
+        "tg_no_truncar_conflict"
+      ],
+      [
+        "entity",
+        "tg_no_matar_entidad_con_identidad"
+      ],
+      [
+        "entity",
+        "tg_no_truncar_entity"
+      ],
+      [
+        "identifier",
+        "tg_identidad_exige_entidad_viva"
+      ],
+      [
+        "identifier",
+        "tg_identifier_autoritativo"
+      ],
+      [
+        "identifier",
+        "tg_identifier_coherente_con_assertion"
+      ],
+      [
+        "identifier",
+        "tg_no_borrar_identifier"
+      ],
+      [
+        "identifier",
+        "tg_no_truncar_identifier"
+      ],
+      [
+        "review",
+        "tg_no_borrar_review"
+      ],
+      [
+        "review",
+        "tg_no_truncar_review"
+      ]
+    ],
+    "checks": [
+      [
+        "identity_v1.assertion",
+        "assertion_confidence_check",
+        true
+      ],
+      [
+        "identity_v1.assertion",
+        "assertion_method_check",
+        true
+      ],
+      [
+        "identity_v1.assertion",
+        "assertion_status_check",
+        true
+      ],
+      [
+        "identity_v1.assertion",
+        "assertion_subject_type_check",
+        true
+      ],
+      [
+        "identity_v1.assertion",
+        "ck_authoritative_metodo",
+        true
+      ],
+      [
+        "identity_v1.assertion",
+        "ck_bridge_dos_extremos",
+        true
+      ],
+      [
+        "identity_v1.assertion",
+        "ck_cuit_exige_evidencia_estructurada",
+        false
+      ],
+      [
+        "identity_v1.assertion",
+        "ck_humano_exige_autor",
+        true
+      ],
+      [
+        "identity_v1.assertion",
+        "ck_humano_no_es_proceso",
+        true
+      ],
+      [
+        "identity_v1.assertion",
+        "ck_politica_estructural_cik_lei",
+        true
+      ],
+      [
+        "identity_v1.assertion",
+        "ck_supersede_no_circular",
+        true
+      ],
+      [
+        "identity_v1.assertion",
+        "ck_verified_exige_evidencia",
+        true
+      ],
+      [
+        "identity_v1.assertion",
+        "ck_vigencia_coherente",
+        true
+      ],
+      [
+        "identity_v1.conflict",
+        "ck_conflict_resolucion",
+        true
+      ],
+      [
+        "identity_v1.conflict",
+        "conflict_state_check",
+        true
+      ],
+      [
+        "identity_v1.entity",
+        "ck_merged_coherente",
+        true
+      ],
+      [
+        "identity_v1.entity",
+        "entity_entity_key_check",
+        true
+      ],
+      [
+        "identity_v1.entity",
+        "entity_entity_status_check",
+        true
+      ],
+      [
+        "identity_v1.identifier",
+        "ck_formato_identificador",
+        true
+      ],
+      [
+        "identity_v1.identifier",
+        "ck_ticker_no_autoritativo",
+        true
+      ],
+      [
+        "identity_v1.identifier",
+        "identifier_id_type_check",
+        true
+      ],
+      [
+        "identity_v1.identifier",
+        "identifier_status_check",
+        true
+      ],
+      [
+        "identity_v1.instrument",
+        "ck_ratio_obligatorio",
+        true
+      ],
+      [
+        "identity_v1.instrument",
+        "instrument_instrument_type_check",
+        true
+      ],
+      [
+        "identity_v1.review",
+        "ck_cierre_exige_reviewer",
+        true
+      ],
+      [
+        "identity_v1.review",
+        "review_status_check",
+        true
+      ],
+      [
+        "identity_v1.source",
+        "source_authority_level_check",
+        true
+      ]
+    ],
+    "indices_unicos": [
+      [
+        "assertion",
+        "assertion_pkey"
+      ],
+      [
+        "conflict",
+        "conflict_pkey"
+      ],
+      [
+        "entity",
+        "entity_pkey"
+      ],
+      [
+        "identifier",
+        "identifier_pkey"
+      ],
+      [
+        "identifier",
+        "ux_entity_un_autoritativo_por_tipo"
+      ],
+      [
+        "identifier",
+        "ux_identifier_autoritativo_unico"
+      ],
+      [
+        "instrument",
+        "instrument_pkey"
+      ],
+      [
+        "instrument_symbol",
+        "instrument_symbol_pkey"
+      ],
+      [
+        "instrument_symbol",
+        "ux_symbol_vigente"
+      ],
+      [
+        "review",
+        "review_pkey"
+      ],
+      [
+        "source",
+        "source_pkey"
+      ]
+    ],
+    "grants_update_por_columna": [
+      [
+        "assertion",
+        "superseded_by"
+      ],
+      [
+        "assertion",
+        "valid_to"
+      ],
+      [
+        "conflict",
+        "candidate_entity_keys"
+      ],
+      [
+        "conflict",
+        "conflict_id"
+      ],
+      [
+        "conflict",
+        "created_at"
+      ],
+      [
+        "conflict",
+        "detected_by"
+      ],
+      [
+        "conflict",
+        "id_namespace"
+      ],
+      [
+        "conflict",
+        "id_type"
+      ],
+      [
+        "conflict",
+        "id_value"
+      ],
+      [
+        "conflict",
+        "reason"
+      ],
+      [
+        "conflict",
+        "resolution_assertion_id"
+      ],
+      [
+        "conflict",
+        "resolved_at"
+      ],
+      [
+        "conflict",
+        "state"
+      ],
+      [
+        "entity",
+        "country"
+      ],
+      [
+        "entity",
+        "preferred_name"
+      ],
+      [
+        "entity",
+        "updated_at"
+      ],
+      [
+        "identifier",
+        "status"
+      ],
+      [
+        "identifier",
+        "valid_to"
+      ],
+      [
+        "instrument",
+        "assertion_id"
+      ],
+      [
+        "instrument",
+        "created_at"
+      ],
+      [
+        "instrument",
+        "currency"
+      ],
+      [
+        "instrument",
+        "entity_key"
+      ],
+      [
+        "instrument",
+        "exchange"
+      ],
+      [
+        "instrument",
+        "instrument_key"
+      ],
+      [
+        "instrument",
+        "instrument_type"
+      ],
+      [
+        "instrument",
+        "ratio_underlying"
+      ],
+      [
+        "instrument",
+        "status"
+      ],
+      [
+        "instrument",
+        "valid_from"
+      ],
+      [
+        "instrument",
+        "valid_to"
+      ],
+      [
+        "instrument_symbol",
+        "id_namespace"
+      ],
+      [
+        "instrument_symbol",
+        "instrument_key"
+      ],
+      [
+        "instrument_symbol",
+        "symbol"
+      ],
+      [
+        "instrument_symbol",
+        "symbol_id"
+      ],
+      [
+        "instrument_symbol",
+        "valid_from"
+      ],
+      [
+        "instrument_symbol",
+        "valid_to"
+      ],
+      [
+        "review",
+        "candidate_identifiers"
+      ],
+      [
+        "review",
+        "created_at"
+      ],
+      [
+        "review",
+        "decision"
+      ],
+      [
+        "review",
+        "decision_reason"
+      ],
+      [
+        "review",
+        "entity_key"
+      ],
+      [
+        "review",
+        "evidence"
+      ],
+      [
+        "review",
+        "reason"
+      ],
+      [
+        "review",
+        "resolution_assertion_id"
+      ],
+      [
+        "review",
+        "resolved_at"
+      ],
+      [
+        "review",
+        "review_id"
+      ],
+      [
+        "review",
+        "reviewer"
+      ],
+      [
+        "review",
+        "status"
+      ],
+      [
+        "v_entity_resolution",
+        "cik"
+      ],
+      [
+        "v_entity_resolution",
+        "conflictos_abiertos"
+      ],
+      [
+        "v_entity_resolution",
+        "cuit"
+      ],
+      [
+        "v_entity_resolution",
+        "entity_key"
+      ],
+      [
+        "v_entity_resolution",
+        "lei"
+      ],
+      [
+        "v_entity_resolution",
+        "n_autoritativos"
+      ],
+      [
+        "v_entity_resolution",
+        "preferred_name"
+      ],
+      [
+        "v_entity_resolution",
+        "reviews_abiertas"
+      ]
+    ],
+    "grants_tabla_source": [
+      [
+        "catalaxia_engine",
+        "SELECT"
+      ]
+    ]
+  },
+  "migrations_aplicadas": [
+    "001_s00_bootstrap.sql",
+    "002_s01_identity.sql",
+    "003_s02_fetch.sql",
+    "004_s03_parse.sql",
+    "005_c3_cnv_fetch.sql",
+    "006_s03_context_unit_indexes.sql",
+    "007_c3_idempotencia_canonica.sql",
+    "008_identity_v1.sql",
+    "009_identity_v1_hardening.sql",
+    "010_identity_v1_instrument_provenance.sql",
+    "011_rol_engine_sin_superuser.sql",
+    "013_f009_cierre_corridas_huerfanas.sql",
+    "014_s04_derived.sql",
+    "015_s04_unidad_resuelta.sql",
+    "016_delete_solo_en_lo_regenerable.sql",
+    "017_parsed_secuencias_reseteables.sql",
+    "018_f031_huerfanas_de_s03.sql",
+    "019_parsed_owner_engine.sql",
+    "020_huerfana_f028.sql",
+    "021_f035_estado_entidad_vs_identidad.sql",
+    "022_f036_evidencia_estructurada.sql",
+    "023_f036_null_no_satisface_el_check.sql",
+    "024_f037_evidencia_estructurada_general.sql",
+    "026_f039_dominio_relacion_cnv.sql",
+    "027_f039_autorreferencia.sql",
+    "028_f040_cierre_huerfanas_c3.sql",
+    "029_f042_source_facts_inmutable.sql",
+    "030_f045_coherencia_assertion_identifier.sql",
+    "031_f044_politica_estructural_cik_lei.sql"
+  ],
+  "market": {
+    "instrumentos": 584,
+    "con_venue_ticker": 584,
+    "venue_divergente_de_canonico": 6,
+    "divergentes_detalle": [
+      [
+        "59",
+        "CRES",
+        "CRESY",
+        "NYSE"
+      ],
+      [
+        "66",
+        "TGSU2",
+        "TGS",
+        "NYSE"
+      ],
+      [
+        "68",
+        "PAMP",
+        "PAM",
+        "NYSE"
+      ],
+      [
+        "70",
+        "IRSA",
+        "IRS",
+        "NYSE"
+      ],
+      [
+        "78",
+        "TECO2",
+        "TEO",
+        "NYSE"
+      ],
+      [
+        "84",
+        "YPFD",
+        "YPF",
+        "NYSE"
+      ]
+    ],
+    "m23_stage": "smoke-real-2026-08-28",
+    "m23_filas": 591,
+    "m23_instrumentos": 584,
+    "m23_success": 577,
+    "m23_failed": 14,
+    "m23_success_con_sha256": 577,
+    "m23_run_id_duplicados": 0,
+    "failed_con_error_empty_F043": 14,
+    "status_empty_emitido_F043": 0,
+    "failed_declarando_datos": 0,
+    "raw_instrumentos_en_disco": 577,
+    "raw_history_csv": 598,
+    "raw_meta_json": 598
+  },
+  "findings": {
+    "CLOSED": [
+      "F-009",
+      "F-024",
+      "F-026",
+      "F-028",
+      "F-029",
+      "F-031",
+      "F-032",
+      "F-034",
+      "F-035",
+      "F-036",
+      "F-037",
+      "F-038",
+      "F-040",
+      "F-042",
+      "F-045"
+    ],
+    "CLOSED_WITH_NOTES": [
+      "F-041",
+      "F-044",
+      "F-046",
+      "F-047"
+    ],
+    "OPEN_POST_V1": [
+      "F-043"
+    ],
+    "MITIGADO": [
+      "F-014"
+    ],
+    "NO_REPRODUCIBLE": [
+      "F-027"
+    ]
+  }
+}

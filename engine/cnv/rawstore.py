@@ -40,6 +40,45 @@ def sha256_b64(content: bytes) -> str:
     return base64.b64encode(hashlib.sha256(content).digest()).decode()
 
 
+# Decision (2026-08-25, C2->C3 execution session): EMPRESA_PAGE and VISOR embed
+# per-request randomness BY SERVER DESIGN, confirmed with a real byte-diff between
+# two live fetches of the same URL minutes apart:
+#   - EMPRESA_PAGE: cache-busting `?v=<random-guid>` query-strings on static
+#     asset <link>/<script> tags (CSS/JS versioning), regenerated every request.
+#   - VISOR: an ASP.NET anti-forgery `RequestVerificationToken` hidden input,
+#     cryptographically random per request/session (a security feature, not
+#     business content).
+# Because of this, sha256-of-raw-bytes can NEVER match across two fetches of
+# these two artifact kinds, so it cannot answer "did the substantive content
+# change" (used by the C-C3-006 idempotency gate). RAW storage keeps hashing
+# and addressing by the FULL raw bytes exactly as before (this function does
+# NOT touch what gets written to disk or how) -- this is a SEPARATE hash used
+# only to decide whether re-fetching produced the same substantive content.
+# Scoped narrowly to these 2 confirmed noise patterns; anything else differing
+# still counts as a real change.
+_RE_ASSET_CACHEBUST = re.compile(
+    rb"(\?v=)[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}")
+_RE_ANTIFORGERY_TOKEN = re.compile(
+    rb'(name="RequestVerificationToken"\s+value=")[^"]+(")')
+
+CANONICALIZABLE_KINDS = ("EMPRESA_PAGE", "VISOR")
+
+
+def canonicalize(content: bytes, kind: str) -> bytes:
+    """Strips the 2 confirmed per-request-random patterns, if applicable to `kind`."""
+    if kind not in CANONICALIZABLE_KINDS:
+        return content
+    canon = _RE_ASSET_CACHEBUST.sub(rb"\1CANON", content)
+    canon = _RE_ANTIFORGERY_TOKEN.sub(rb"\1CANON\2", canon)
+    return canon
+
+
+def canonical_sha256(content: bytes, kind: str) -> str:
+    """Idempotency hash: same value iff substantive content matches, ignoring the
+    2 known-volatile patterns above. NOT used for RAW storage/addressing."""
+    return sha256_bytes(canonicalize(content, kind))
+
+
 def safe_name(name: str, max_len: int = 80) -> str:
     stem = SAFE.sub("_", name).strip("_")
     return stem[:max_len] or "sin_nombre"

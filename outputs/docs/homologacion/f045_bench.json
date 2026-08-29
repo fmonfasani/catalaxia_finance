@@ -1,0 +1,304 @@
+{
+  "rol": "catalaxia_engine@127.0.0.1:5433/catalaxia mode=FAST prod=False",
+  "total": 14,
+  "ok": 14,
+  "bypass": 0,
+  "otra_barrera": 0,
+  "ataques": [
+    {
+      "id": "A1",
+      "ataque": "LEGACY_DIM_ENTITY (CORROBORATING) establece CUIT, sin left_ref",
+      "garantia_esperada": "F045:left_ref_obligatorio",
+      "sql": [
+        "INSERT INTO identity_v1.assertion (subject_type, entity_key, left_ref, method, confidence, status, source_id, source_record, evidence, resolved_by, source_facts) VALUES ('ENTITY_IDENTIFIER', :k, :lr, 'REGISTRY', 'AUTHORITATIVE', 'VERIFIED', :src, 'artefacto-ataque', 'cita del ataque A1', 'proc:f045_bench', CAST(:f AS jsonb)) RETURNING assertion_id",
+        "INSERT INTO identity_v1.identifier (entity_key, id_type, id_namespace, id_value, is_authoritative, status, assertion_id) VALUES (:k, :t, :ns, :v, TRUE, 'ACTIVE', :a)"
+      ],
+      "params": {
+        "source_id": "LEGACY_DIM_ENTITY",
+        "left_ref": null,
+        "facts": null,
+        "id_type": "CUIT",
+        "id_namespace": "AFIP",
+        "id_value": "30999999995"
+      },
+      "resultado": "RECHAZADO",
+      "garantia_real": "F045:left_ref_obligatorio",
+      "mensaje": "(psycopg2.errors.RaiseException) F-045: la assertion 1580 no declara que identificador establece (left_ref NULL) y se la usa para el autoritativo CUIT",
+      "veredicto": "OK"
+    },
+    {
+      "id": "A2",
+      "ataque": "DERIVED_RULE (DISCOVERY_ONLY) establece CUIT, sin left_ref",
+      "garantia_esperada": "F045:left_ref_obligatorio",
+      "sql": [
+        "INSERT INTO identity_v1.assertion (subject_type, entity_key, left_ref, method, confidence, status, source_id, source_record, evidence, resolved_by, source_facts) VALUES ('ENTITY_IDENTIFIER', :k, :lr, 'REGISTRY', 'AUTHORITATIVE', 'VERIFIED', :src, 'artefacto-ataque', 'cita del ataque A2', 'proc:f045_bench', CAST(:f AS jsonb)) RETURNING assertion_id",
+        "INSERT INTO identity_v1.identifier (entity_key, id_type, id_namespace, id_value, is_authoritative, status, assertion_id) VALUES (:k, :t, :ns, :v, TRUE, 'ACTIVE', :a)"
+      ],
+      "params": {
+        "source_id": "DERIVED_RULE",
+        "left_ref": null,
+        "facts": null,
+        "id_type": "CUIT",
+        "id_namespace": "AFIP",
+        "id_value": "30999999995"
+      },
+      "resultado": "RECHAZADO",
+      "garantia_real": "F045:left_ref_obligatorio",
+      "mensaje": "(psycopg2.errors.RaiseException) F-045: la assertion 1581 no declara que identificador establece (left_ref NULL) y se la usa para el autoritativo CUIT",
+      "veredicto": "OK"
+    },
+    {
+      "id": "A3",
+      "ataque": "CNV_PORTAL (DISCOVERY_ONLY) establece CUIT, sin left_ref",
+      "garantia_esperada": "F045:left_ref_obligatorio",
+      "sql": [
+        "INSERT INTO identity_v1.assertion (subject_type, entity_key, left_ref, method, confidence, status, source_id, source_record, evidence, resolved_by, source_facts) VALUES ('ENTITY_IDENTIFIER', :k, :lr, 'REGISTRY', 'AUTHORITATIVE', 'VERIFIED', :src, 'artefacto-ataque', 'cita del ataque A3', 'proc:f045_bench', CAST(:f AS jsonb)) RETURNING assertion_id",
+        "INSERT INTO identity_v1.identifier (entity_key, id_type, id_namespace, id_value, is_authoritative, status, assertion_id) VALUES (:k, :t, :ns, :v, TRUE, 'ACTIVE', :a)"
+      ],
+      "params": {
+        "source_id": "CNV_PORTAL",
+        "left_ref": null,
+        "facts": null,
+        "id_type": "CUIT",
+        "id_namespace": "AFIP",
+        "id_value": "30999999995"
+      },
+      "resultado": "RECHAZADO",
+      "garantia_real": "F045:left_ref_obligatorio",
+      "mensaje": "(psycopg2.errors.RaiseException) F-045: la assertion 1582 no declara que identificador establece (left_ref NULL) y se la usa para el autoritativo CUIT",
+      "veredicto": "OK"
+    },
+    {
+      "id": "A4",
+      "ataque": "assertion SEC_20F que declara CIK, reutilizada para establecer CUIT",
+      "garantia_esperada": "F045:left_ref_coincide",
+      "sql": [
+        "INSERT INTO identity_v1.assertion (subject_type, entity_key, left_ref, method, confidence, status, source_id, source_record, evidence, resolved_by, source_facts) VALUES ('ENTITY_IDENTIFIER', :k, :lr, 'REGISTRY', 'AUTHORITATIVE', 'VERIFIED', :src, 'artefacto-ataque', 'cita del ataque A4', 'proc:f045_bench', CAST(:f AS jsonb)) RETURNING assertion_id",
+        "INSERT INTO identity_v1.identifier (entity_key, id_type, id_namespace, id_value, is_authoritative, status, assertion_id) VALUES (:k, :t, :ns, :v, TRUE, 'ACTIVE', :a)"
+      ],
+      "params": {
+        "source_id": "SEC_20F",
+        "left_ref": "CIK:SEC:0009999993",
+        "facts": "{\"accession\": \"0000000000-00-000000\", \"seccion\": \"Item 4.A\"}",
+        "id_type": "CUIT",
+        "id_namespace": "AFIP",
+        "id_value": "30999999995"
+      },
+      "resultado": "RECHAZADO",
+      "garantia_real": "F045:left_ref_coincide",
+      "mensaje": "(psycopg2.errors.RaiseException) F-045: tipo declarado distinto del real. La assertion 1583 declara CIK:SEC:0009999993, pero se la usa para establecer",
+      "veredicto": "OK"
+    },
+    {
+      "id": "A5",
+      "ataque": "source_id correcto (GLEIF) pero left_ref NULL",
+      "garantia_esperada": "F045:left_ref_obligatorio",
+      "sql": [
+        "INSERT INTO identity_v1.assertion (subject_type, entity_key, left_ref, method, confidence, status, source_id, source_record, evidence, resolved_by, source_facts) VALUES ('ENTITY_IDENTIFIER', :k, :lr, 'REGISTRY', 'AUTHORITATIVE', 'VERIFIED', :src, 'artefacto-ataque', 'cita del ataque A5', 'proc:f045_bench', CAST(:f AS jsonb)) RETURNING assertion_id",
+        "INSERT INTO identity_v1.identifier (entity_key, id_type, id_namespace, id_value, is_authoritative, status, assertion_id) VALUES (:k, :t, :ns, :v, TRUE, 'ACTIVE', :a)"
+      ],
+      "params": {
+        "source_id": "GLEIF",
+        "left_ref": null,
+        "facts": "{\"registeredAt\": \"RA000009\", \"registeredAs\": \"x\"}",
+        "id_type": "CUIT",
+        "id_namespace": "AFIP",
+        "id_value": "30999999995"
+      },
+      "resultado": "RECHAZADO",
+      "garantia_real": "F045:left_ref_obligatorio",
+      "mensaje": "(psycopg2.errors.RaiseException) F-045: la assertion 1584 no declara que identificador establece (left_ref NULL) y se la usa para el autoritativo CUIT",
+      "veredicto": "OK"
+    },
+    {
+      "id": "A6",
+      "ataque": "left_ref apunta a un identificador de OTRO valor/namespace",
+      "garantia_esperada": "F045:left_ref_coincide",
+      "sql": [
+        "INSERT INTO identity_v1.assertion (subject_type, entity_key, left_ref, method, confidence, status, source_id, source_record, evidence, resolved_by, source_facts) VALUES ('ENTITY_IDENTIFIER', :k, :lr, 'REGISTRY', 'AUTHORITATIVE', 'VERIFIED', :src, 'artefacto-ataque', 'cita del ataque A6', 'proc:f045_bench', CAST(:f AS jsonb)) RETURNING assertion_id",
+        "INSERT INTO identity_v1.identifier (entity_key, id_type, id_namespace, id_value, is_authoritative, status, assertion_id) VALUES (:k, :t, :ns, :v, TRUE, 'ACTIVE', :a)"
+      ],
+      "params": {
+        "source_id": "GLEIF",
+        "left_ref": "CUIT:AFIP:30546689979",
+        "facts": "{\"registeredAt\": \"RA000009\", \"registeredAs\": \"x\"}",
+        "id_type": "CUIT",
+        "id_namespace": "AFIP",
+        "id_value": "30999999995"
+      },
+      "resultado": "RECHAZADO",
+      "garantia_real": "F045:left_ref_coincide",
+      "mensaje": "(psycopg2.errors.RaiseException) F-045: tipo declarado distinto del real. La assertion 1585 declara CUIT:AFIP:30546689979, pero se la usa para estable",
+      "veredicto": "OK"
+    },
+    {
+      "id": "A9",
+      "ataque": "SEC_REGISTRY (autoritativa para CIK) intenta establecer CUIT",
+      "garantia_esperada": "fuente_autoritativa_para_el_tipo",
+      "sql": [
+        "INSERT INTO identity_v1.assertion (subject_type, entity_key, left_ref, method, confidence, status, source_id, source_record, evidence, resolved_by, source_facts) VALUES ('ENTITY_IDENTIFIER', :k, :lr, 'REGISTRY', 'AUTHORITATIVE', 'VERIFIED', :src, 'artefacto-ataque', 'cita del ataque A9', 'proc:f045_bench', CAST(:f AS jsonb)) RETURNING assertion_id",
+        "INSERT INTO identity_v1.identifier (entity_key, id_type, id_namespace, id_value, is_authoritative, status, assertion_id) VALUES (:k, :t, :ns, :v, TRUE, 'ACTIVE', :a)"
+      ],
+      "params": {
+        "source_id": "SEC_REGISTRY",
+        "left_ref": "CUIT:AFIP:30999999995",
+        "facts": "{\"cik_str\": 1}",
+        "id_type": "CUIT",
+        "id_namespace": "AFIP",
+        "id_value": "30999999995"
+      },
+      "resultado": "RECHAZADO",
+      "garantia_real": "fuente_autoritativa_para_el_tipo",
+      "mensaje": "(psycopg2.errors.RaiseException) La fuente SEC_REGISTRY es autoritativa para {CIK} pero NO para CUIT . No puede establecer CUIT:AFIP:30999999995 . La ",
+      "veredicto": "OK"
+    },
+    {
+      "id": "A10",
+      "ataque": "GLEIF (autoritativa para LEI/CUIT) intenta establecer CIK",
+      "garantia_esperada": "fuente_autoritativa_para_el_tipo",
+      "sql": [
+        "INSERT INTO identity_v1.assertion (subject_type, entity_key, left_ref, method, confidence, status, source_id, source_record, evidence, resolved_by, source_facts) VALUES ('ENTITY_IDENTIFIER', :k, :lr, 'REGISTRY', 'AUTHORITATIVE', 'VERIFIED', :src, 'artefacto-ataque', 'cita del ataque A10', 'proc:f045_bench', CAST(:f AS jsonb)) RETURNING assertion_id",
+        "INSERT INTO identity_v1.identifier (entity_key, id_type, id_namespace, id_value, is_authoritative, status, assertion_id) VALUES (:k, :t, :ns, :v, TRUE, 'ACTIVE', :a)"
+      ],
+      "params": {
+        "source_id": "GLEIF",
+        "left_ref": "CIK:SEC:0009999993",
+        "facts": "{\"registeredAt\": \"RA000009\"}",
+        "id_type": "CIK",
+        "id_namespace": "SEC",
+        "id_value": "0009999993"
+      },
+      "resultado": "RECHAZADO",
+      "garantia_real": "fuente_autoritativa_para_el_tipo",
+      "mensaje": "(psycopg2.errors.RaiseException) La fuente GLEIF es autoritativa para {LEI,CUIT} pero NO para CIK . No puede establecer CIK:SEC:0009999993 . La autori",
+      "veredicto": "OK"
+    },
+    {
+      "id": "A11",
+      "ataque": "el CUIT de CEPU atribuido a otra entidad (contaminacion)",
+      "garantia_esperada": "ux_identifier_autoritativo_unico",
+      "sql": [
+        "INSERT INTO identity_v1.assertion (subject_type, entity_key, left_ref, method, confidence, status, source_id, source_record, evidence, resolved_by, source_facts) VALUES ('ENTITY_IDENTIFIER', :k, :lr, 'REGISTRY', 'AUTHORITATIVE', 'VERIFIED', :src, 'artefacto-ataque', 'cita del ataque A11', 'proc:f045_bench', CAST(:f AS jsonb)) RETURNING assertion_id",
+        "INSERT INTO identity_v1.identifier (entity_key, id_type, id_namespace, id_value, is_authoritative, status, assertion_id) VALUES (:k, :t, :ns, :v, TRUE, 'ACTIVE', :a)"
+      ],
+      "params": {
+        "source_id": "GLEIF",
+        "left_ref": "CUIT:AFIP:33650305499",
+        "facts": "{\"registeredAt\": \"RA000009\", \"registeredAs\": \"x\"}",
+        "id_type": "CUIT",
+        "id_namespace": "AFIP",
+        "id_value": "33650305499"
+      },
+      "resultado": "RECHAZADO",
+      "garantia_real": "ux_identifier_autoritativo_unico",
+      "mensaje": "(psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint \"ux_identifier_autoritativo_unico\"",
+      "veredicto": "OK"
+    },
+    {
+      "id": "A12",
+      "ataque": "el CIK de YPF designando tambien a otra entidad",
+      "garantia_esperada": "ux_identifier_autoritativo_unico",
+      "sql": [
+        "INSERT INTO identity_v1.assertion (subject_type, entity_key, left_ref, method, confidence, status, source_id, source_record, evidence, resolved_by, source_facts) VALUES ('ENTITY_IDENTIFIER', :k, :lr, 'REGISTRY', 'AUTHORITATIVE', 'VERIFIED', :src, 'artefacto-ataque', 'cita del ataque A12', 'proc:f045_bench', CAST(:f AS jsonb)) RETURNING assertion_id",
+        "INSERT INTO identity_v1.identifier (entity_key, id_type, id_namespace, id_value, is_authoritative, status, assertion_id) VALUES (:k, :t, :ns, :v, TRUE, 'ACTIVE', :a)"
+      ],
+      "params": {
+        "source_id": "SEC_REGISTRY",
+        "left_ref": "CIK:SEC:0000904851",
+        "facts": "{\"cik_str\": 904851}",
+        "id_type": "CIK",
+        "id_namespace": "SEC",
+        "id_value": "0000904851"
+      },
+      "resultado": "RECHAZADO",
+      "garantia_real": "ux_identifier_autoritativo_unico",
+      "mensaje": "(psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint \"ux_identifier_autoritativo_unico\"",
+      "veredicto": "OK"
+    },
+    {
+      "id": "A1b",
+      "ataque": "LEGACY_DIM_ENTITY establece CUIT, con left_ref correcto",
+      "garantia_esperada": "fuente_autoritativa_para_el_tipo",
+      "sql": [
+        "INSERT INTO identity_v1.assertion (subject_type, entity_key, left_ref, method, confidence, status, source_id, source_record, evidence, resolved_by, source_facts) VALUES ('ENTITY_IDENTIFIER', :k, :lr, 'REGISTRY', 'AUTHORITATIVE', 'VERIFIED', :src, 'artefacto-ataque', 'cita del ataque A1b', 'proc:f045_bench', CAST(:f AS jsonb)) RETURNING assertion_id",
+        "INSERT INTO identity_v1.identifier (entity_key, id_type, id_namespace, id_value, is_authoritative, status, assertion_id) VALUES (:k, :t, :ns, :v, TRUE, 'ACTIVE', :a)"
+      ],
+      "params": {
+        "source_id": "LEGACY_DIM_ENTITY",
+        "left_ref": "CUIT:AFIP:30999999995",
+        "facts": null,
+        "id_type": "CUIT",
+        "id_namespace": "AFIP",
+        "id_value": "30999999995"
+      },
+      "resultado": "RECHAZADO",
+      "garantia_real": "fuente_autoritativa_para_el_tipo",
+      "mensaje": "(psycopg2.errors.RaiseException) La fuente LEGACY_DIM_ENTITY es CORROBORATING : no puede establecer el identificador CUIT:AFIP:30999999995 . Una fuent",
+      "veredicto": "OK"
+    },
+    {
+      "id": "A2b",
+      "ataque": "DERIVED_RULE establece CUIT, con left_ref correcto",
+      "garantia_esperada": "fuente_autoritativa_para_el_tipo",
+      "sql": [
+        "INSERT INTO identity_v1.assertion (subject_type, entity_key, left_ref, method, confidence, status, source_id, source_record, evidence, resolved_by, source_facts) VALUES ('ENTITY_IDENTIFIER', :k, :lr, 'REGISTRY', 'AUTHORITATIVE', 'VERIFIED', :src, 'artefacto-ataque', 'cita del ataque A2b', 'proc:f045_bench', CAST(:f AS jsonb)) RETURNING assertion_id",
+        "INSERT INTO identity_v1.identifier (entity_key, id_type, id_namespace, id_value, is_authoritative, status, assertion_id) VALUES (:k, :t, :ns, :v, TRUE, 'ACTIVE', :a)"
+      ],
+      "params": {
+        "source_id": "DERIVED_RULE",
+        "left_ref": "CUIT:AFIP:30999999995",
+        "facts": null,
+        "id_type": "CUIT",
+        "id_namespace": "AFIP",
+        "id_value": "30999999995"
+      },
+      "resultado": "RECHAZADO",
+      "garantia_real": "fuente_autoritativa_para_el_tipo",
+      "mensaje": "(psycopg2.errors.RaiseException) La fuente DERIVED_RULE es DISCOVERY_ONLY : no puede establecer el identificador CUIT:AFIP:30999999995 . Una fuente qu",
+      "veredicto": "OK"
+    },
+    {
+      "id": "A3b",
+      "ataque": "CNV_PORTAL establece CUIT, con left_ref correcto",
+      "garantia_esperada": "fuente_autoritativa_para_el_tipo",
+      "sql": [
+        "INSERT INTO identity_v1.assertion (subject_type, entity_key, left_ref, method, confidence, status, source_id, source_record, evidence, resolved_by, source_facts) VALUES ('ENTITY_IDENTIFIER', :k, :lr, 'REGISTRY', 'AUTHORITATIVE', 'VERIFIED', :src, 'artefacto-ataque', 'cita del ataque A3b', 'proc:f045_bench', CAST(:f AS jsonb)) RETURNING assertion_id",
+        "INSERT INTO identity_v1.identifier (entity_key, id_type, id_namespace, id_value, is_authoritative, status, assertion_id) VALUES (:k, :t, :ns, :v, TRUE, 'ACTIVE', :a)"
+      ],
+      "params": {
+        "source_id": "CNV_PORTAL",
+        "left_ref": "CUIT:AFIP:30999999995",
+        "facts": null,
+        "id_type": "CUIT",
+        "id_namespace": "AFIP",
+        "id_value": "30999999995"
+      },
+      "resultado": "RECHAZADO",
+      "garantia_real": "fuente_autoritativa_para_el_tipo",
+      "mensaje": "(psycopg2.errors.RaiseException) La fuente CNV_PORTAL es DISCOVERY_ONLY : no puede establecer el identificador CUIT:AFIP:30999999995 . Una fuente que ",
+      "veredicto": "OK"
+    },
+    {
+      "id": "A14",
+      "ataque": "la assertion de OTRA entidad usada para anclar la propia",
+      "garantia_esperada": "F045:misma_entidad",
+      "sql": [
+        "INSERT INTO identity_v1.assertion (subject_type, entity_key, left_ref, method, confidence, status, source_id, source_record, evidence, resolved_by, source_facts) VALUES ('ENTITY_IDENTIFIER', :k, :lr, 'REGISTRY', 'AUTHORITATIVE', 'VERIFIED', :src, 'artefacto-ataque', 'cita del ataque A14', 'proc:f045_bench', CAST(:f AS jsonb)) RETURNING assertion_id",
+        "INSERT INTO identity_v1.identifier (entity_key, id_type, id_namespace, id_value, is_authoritative, status, assertion_id) VALUES (:k, :t, :ns, :v, TRUE, 'ACTIVE', :a)"
+      ],
+      "params": {
+        "source_id": "SEC_REGISTRY",
+        "left_ref": "CIK:SEC:0009999993",
+        "facts": "{\"cik_str\": 9999993}",
+        "entity_key": "OTRA",
+        "id_type": "CIK",
+        "id_namespace": "SEC",
+        "id_value": "0009999993"
+      },
+      "resultado": "RECHAZADO",
+      "garantia_real": "F045:misma_entidad",
+      "mensaje": "(psycopg2.errors.RaiseException) F-045: la assertion 1593 afirma sobre la entidad E01M15GGGGGGGGGGGGGGGGGGGGG y se la usa para anclar la entidad E01M1",
+      "veredicto": "OK"
+    }
+  ]
+}

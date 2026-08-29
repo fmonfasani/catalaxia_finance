@@ -1,0 +1,2817 @@
+{
+  "release": [
+    {
+      "path": "docs/architecture/BACKFILL_CIK_GATE.md",
+      "origen": "untracked",
+      "motivo": "contratos y diseno"
+    },
+    {
+      "path": "docs/architecture/BACKFILL_READINESS.md",
+      "origen": "untracked",
+      "motivo": "contratos y diseno"
+    },
+    {
+      "path": "docs/architecture/CROSS_WORKSTREAM_GATE.md",
+      "origen": "untracked",
+      "motivo": "contratos y diseno"
+    },
+    {
+      "path": "docs/architecture/F024_CONTRATO.md",
+      "origen": "untracked",
+      "motivo": "contratos y diseno"
+    },
+    {
+      "path": "docs/architecture/F037_CONTRATO.md",
+      "origen": "untracked",
+      "motivo": "contratos y diseno"
+    },
+    {
+      "path": "docs/architecture/F038_CONTRATO.md",
+      "origen": "untracked",
+      "motivo": "contratos y diseno"
+    },
+    {
+      "path": "docs/architecture/F039_CONTRATO.md",
+      "origen": "untracked",
+      "motivo": "contratos y diseno"
+    },
+    {
+      "path": "docs/architecture/F040_HALLAZGO.md",
+      "origen": "untracked",
+      "motivo": "contratos y diseno"
+    },
+    {
+      "path": "docs/architecture/F041_CONTRACT.md",
+      "origen": "untracked",
+      "motivo": "contratos y diseno"
+    },
+    {
+      "path": "docs/architecture/F041_GATE.md",
+      "origen": "untracked",
+      "motivo": "contratos y diseno"
+    },
+    {
+      "path": "docs/architecture/F041_HALLAZGO.md",
+      "origen": "untracked",
+      "motivo": "contratos y diseno"
+    },
+    {
+      "path": "docs/architecture/F044_CONTRACT.md",
+      "origen": "untracked",
+      "motivo": "contratos y diseno"
+    },
+    {
+      "path": "docs/architecture/F045_CONTRACT.md",
+      "origen": "untracked",
+      "motivo": "contratos y diseno"
+    },
+    {
+      "path": "docs/architecture/HASH_OUT_CONTRACT.md",
+      "origen": "untracked",
+      "motivo": "contratos y diseno"
+    },
+    {
+      "path": "docs/architecture/IDENTITY_ARCHITECTURE_V1.md",
+      "origen": "untracked",
+      "motivo": "contratos y diseno"
+    },
+    {
+      "path": "docs/architecture/IDENTITY_BACKFILL_CIK_CONTRACT.md",
+      "origen": "untracked",
+      "motivo": "contratos y diseno"
+    },
+    {
+      "path": "docs/architecture/IDENTITY_BACKFILL_CONTRACT.md",
+      "origen": "untracked",
+      "motivo": "contratos y diseno"
+    },
+    {
+      "path": "docs/architecture/IDENTITY_DECISION_RECORD.md",
+      "origen": "untracked",
+      "motivo": "contratos y diseno"
+    },
+    {
+      "path": "docs/architecture/IDENTITY_V1_IMPLEMENTATION.md",
+      "origen": "untracked",
+      "motivo": "contratos y diseno"
+    },
+    {
+      "path": "docs/architecture/IDENTITY_V1_MIGRATION_PLAN.md",
+      "origen": "untracked",
+      "motivo": "contratos y diseno"
+    },
+    {
+      "path": "docs/architecture/IDENTITY_V1_SCHEMA.md",
+      "origen": "untracked",
+      "motivo": "contratos y diseno"
+    },
+    {
+      "path": "docs/architecture/S04_CONTRACT.md",
+      "origen": "untracked",
+      "motivo": "contratos y diseno"
+    },
+    {
+      "path": "docs/architecture/SYSTEM_HOMOLOGATION_BLOCKERS.md",
+      "origen": "untracked",
+      "motivo": "contratos y diseno"
+    },
+    {
+      "path": "docs/architecture/SYSTEM_HOMOLOGATION_MATRIX.md",
+      "origen": "untracked",
+      "motivo": "contratos y diseno"
+    },
+    {
+      "path": "docs/architecture/SYSTEM_HOMOLOGATION_REPORT.md",
+      "origen": "untracked",
+      "motivo": "contratos y diseno"
+    },
+    {
+      "path": "docs/release/CATALAXIA_V1_BASELINE.json",
+      "origen": "untracked",
+      "motivo": "baseline, manifest, release docs"
+    },
+    {
+      "path": "docs/release/CATALAXIA_V1_MANIFEST.json",
+      "origen": "untracked",
+      "motivo": "baseline, manifest, release docs"
+    },
+    {
+      "path": "docs/release/CATALAXIA_V1_RELEASE.md",
+      "origen": "untracked",
+      "motivo": "baseline, manifest, release docs"
+    },
+    {
+      "path": "docs/release/CATALAXIA_V1_RELEASE_CHECKLIST.md",
+      "origen": "untracked",
+      "motivo": "baseline, manifest, release docs"
+    },
+    {
+      "path": "docs/release/POST_V1_BACKLOG.md",
+      "origen": "untracked",
+      "motivo": "baseline, manifest, release docs"
+    },
+    {
+      "path": "docs/release/RELEASE_FREEZE_AUDIT.md",
+      "origen": "untracked",
+      "motivo": "baseline, manifest, release docs"
+    },
+    {
+      "path": "docs/release/_checklist.json",
+      "origen": "untracked",
+      "motivo": "baseline, manifest, release docs"
+    },
+    {
+      "path": "docs/release/_clasificacion.json",
+      "origen": "untracked",
+      "motivo": "baseline, manifest, release docs"
+    },
+    {
+      "path": "docs/release/_release_files.txt",
+      "origen": "untracked",
+      "motivo": "baseline, manifest, release docs"
+    },
+    {
+      "path": "docs/review/CNV_REVIEW.md",
+      "origen": "untracked",
+      "motivo": "auditorias y findings"
+    },
+    {
+      "path": "docs/review/CROSS_WORKSTREAM_REVIEW.md",
+      "origen": "untracked",
+      "motivo": "auditorias y findings"
+    },
+    {
+      "path": "docs/review/F044_AUDIT.md",
+      "origen": "untracked",
+      "motivo": "auditorias y findings"
+    },
+    {
+      "path": "docs/review/F044_GATE.md",
+      "origen": "untracked",
+      "motivo": "auditorias y findings"
+    },
+    {
+      "path": "docs/review/F045_GATE.md",
+      "origen": "untracked",
+      "motivo": "auditorias y findings"
+    },
+    {
+      "path": "docs/review/F046_FINDING.md",
+      "origen": "untracked",
+      "motivo": "auditorias y findings"
+    },
+    {
+      "path": "docs/review/FINDINGS.md",
+      "origen": "untracked",
+      "motivo": "auditorias y findings"
+    },
+    {
+      "path": "docs/review/HOMOLOGATION_FINAL_GATE.md",
+      "origen": "untracked",
+      "motivo": "auditorias y findings"
+    },
+    {
+      "path": "docs/review/HOMOLOGATION_FINAL_REPORT.md",
+      "origen": "untracked",
+      "motivo": "auditorias y findings"
+    },
+    {
+      "path": "docs/review/HOMOLOGATION_FINDINGS.md",
+      "origen": "untracked",
+      "motivo": "auditorias y findings"
+    },
+    {
+      "path": "docs/review/IDENTITY_V1_CERTIFICATION.md",
+      "origen": "untracked",
+      "motivo": "auditorias y findings"
+    },
+    {
+      "path": "docs/review/IDENTITY_V1_CERTIFICATION_R2.md",
+      "origen": "untracked",
+      "motivo": "auditorias y findings"
+    },
+    {
+      "path": "docs/review/IDENTITY_V1_TEST_REPORT.md",
+      "origen": "untracked",
+      "motivo": "auditorias y findings"
+    },
+    {
+      "path": "docs/review/INTEGRATION_REVIEW.md",
+      "origen": "untracked",
+      "motivo": "auditorias y findings"
+    },
+    {
+      "path": "docs/review/MARKET_REVIEW.md",
+      "origen": "untracked",
+      "motivo": "auditorias y findings"
+    },
+    {
+      "path": "docs/review/PRE_HOMOLOGATION_FINDINGS.md",
+      "origen": "untracked",
+      "motivo": "auditorias y findings"
+    },
+    {
+      "path": "docs/review/PRE_HOMOLOGATION_GATE.md",
+      "origen": "untracked",
+      "motivo": "auditorias y findings"
+    },
+    {
+      "path": "docs/review/REVIEW_GATE.md",
+      "origen": "untracked",
+      "motivo": "auditorias y findings"
+    },
+    {
+      "path": "docs/review/S04_ENABLEMENT_GATE.md",
+      "origen": "untracked",
+      "motivo": "auditorias y findings"
+    },
+    {
+      "path": "docs/review/SEC_REVIEW.md",
+      "origen": "untracked",
+      "motivo": "auditorias y findings"
+    },
+    {
+      "path": "docs/review/identity_v1_audit.sql",
+      "origen": "untracked",
+      "motivo": "auditorias y findings"
+    },
+    {
+      "path": "docs/review/identity_v1_audit_pass2.sql",
+      "origen": "untracked",
+      "motivo": "auditorias y findings"
+    },
+    {
+      "path": "docs/review/identity_v1_audit_pass3.sql",
+      "origen": "untracked",
+      "motivo": "auditorias y findings"
+    },
+    {
+      "path": "engine/hashout.py",
+      "origen": "untracked",
+      "motivo": "codigo del engine"
+    },
+    {
+      "path": "engine/identity_v1.py",
+      "origen": "untracked",
+      "motivo": "codigo del engine"
+    },
+    {
+      "path": "migrations/engine/006_s03_context_unit_indexes.sql",
+      "origen": "untracked",
+      "motivo": "schema de V1"
+    },
+    {
+      "path": "migrations/engine/007_c3_idempotencia_canonica.sql",
+      "origen": "untracked",
+      "motivo": "schema de V1"
+    },
+    {
+      "path": "migrations/engine/008_identity_v1.sql",
+      "origen": "untracked",
+      "motivo": "schema de V1"
+    },
+    {
+      "path": "migrations/engine/009_identity_v1_hardening.sql",
+      "origen": "untracked",
+      "motivo": "schema de V1"
+    },
+    {
+      "path": "migrations/engine/010_identity_v1_instrument_provenance.sql",
+      "origen": "untracked",
+      "motivo": "schema de V1"
+    },
+    {
+      "path": "migrations/engine/011_rol_engine_sin_superuser.sql",
+      "origen": "untracked",
+      "motivo": "schema de V1"
+    },
+    {
+      "path": "migrations/engine/013_f009_cierre_corridas_huerfanas.sql",
+      "origen": "untracked",
+      "motivo": "schema de V1"
+    },
+    {
+      "path": "migrations/engine/014_s04_derived.sql",
+      "origen": "untracked",
+      "motivo": "schema de V1"
+    },
+    {
+      "path": "migrations/engine/015_s04_unidad_resuelta.sql",
+      "origen": "untracked",
+      "motivo": "schema de V1"
+    },
+    {
+      "path": "migrations/engine/016_delete_solo_en_lo_regenerable.sql",
+      "origen": "untracked",
+      "motivo": "schema de V1"
+    },
+    {
+      "path": "migrations/engine/017_parsed_secuencias_reseteables.sql",
+      "origen": "untracked",
+      "motivo": "schema de V1"
+    },
+    {
+      "path": "migrations/engine/018_f031_huerfanas_de_s03.sql",
+      "origen": "untracked",
+      "motivo": "schema de V1"
+    },
+    {
+      "path": "migrations/engine/019_parsed_owner_engine.sql",
+      "origen": "untracked",
+      "motivo": "schema de V1"
+    },
+    {
+      "path": "migrations/engine/020_huerfana_f028.sql",
+      "origen": "untracked",
+      "motivo": "schema de V1"
+    },
+    {
+      "path": "migrations/engine/021_f035_estado_entidad_vs_identidad.sql",
+      "origen": "untracked",
+      "motivo": "schema de V1"
+    },
+    {
+      "path": "migrations/engine/022_f036_evidencia_estructurada.sql",
+      "origen": "untracked",
+      "motivo": "schema de V1"
+    },
+    {
+      "path": "migrations/engine/023_f036_null_no_satisface_el_check.sql",
+      "origen": "untracked",
+      "motivo": "schema de V1"
+    },
+    {
+      "path": "migrations/engine/024_f037_evidencia_estructurada_general.sql",
+      "origen": "untracked",
+      "motivo": "schema de V1"
+    },
+    {
+      "path": "migrations/engine/026_f039_dominio_relacion_cnv.sql",
+      "origen": "untracked",
+      "motivo": "schema de V1"
+    },
+    {
+      "path": "migrations/engine/027_f039_autorreferencia.sql",
+      "origen": "untracked",
+      "motivo": "schema de V1"
+    },
+    {
+      "path": "migrations/engine/028_f040_cierre_huerfanas_c3.sql",
+      "origen": "untracked",
+      "motivo": "schema de V1"
+    },
+    {
+      "path": "migrations/engine/029_f042_source_facts_inmutable.sql",
+      "origen": "untracked",
+      "motivo": "schema de V1"
+    },
+    {
+      "path": "migrations/engine/030_f045_coherencia_assertion_identifier.sql",
+      "origen": "untracked",
+      "motivo": "schema de V1"
+    },
+    {
+      "path": "migrations/engine/031_f044_politica_estructural_cik_lei.sql",
+      "origen": "untracked",
+      "motivo": "schema de V1"
+    },
+    {
+      "path": "migrations/market/012_rol_market_readonly.sql",
+      "origen": "untracked",
+      "motivo": "schema de V1"
+    },
+    {
+      "path": "migrations/market/013_venue_ticker.sql",
+      "origen": "untracked",
+      "motivo": "schema de V1"
+    },
+    {
+      "path": "migrations/market/025_f038_invariantes_corrida.sql",
+      "origen": "untracked",
+      "motivo": "schema de V1"
+    },
+    {
+      "path": "outputs/docs/homologacion/audit_f044.json",
+      "origen": "untracked",
+      "motivo": "evidencia citada por el release"
+    },
+    {
+      "path": "outputs/docs/homologacion/audit_f045.json",
+      "origen": "untracked",
+      "motivo": "evidencia citada por el release"
+    },
+    {
+      "path": "outputs/docs/homologacion/f044_bench.json",
+      "origen": "untracked",
+      "motivo": "evidencia citada por el release"
+    },
+    {
+      "path": "outputs/docs/homologacion/f045_bench.json",
+      "origen": "untracked",
+      "motivo": "evidencia citada por el release"
+    },
+    {
+      "path": "outputs/docs/homologacion/homologacion_final.json",
+      "origen": "untracked",
+      "motivo": "evidencia citada por el release"
+    },
+    {
+      "path": "outputs/docs/homologacion/pre_homologacion.json",
+      "origen": "untracked",
+      "motivo": "evidencia citada por el release"
+    },
+    {
+      "path": "outputs/docs/homologacion/rutas_prohibidas.json",
+      "origen": "untracked",
+      "motivo": "evidencia citada por el release"
+    },
+    {
+      "path": "scripts/engine/audit_backfill_cik.py",
+      "origen": "untracked",
+      "motivo": "pipeline SEC/CNV/Identity y auditorias"
+    },
+    {
+      "path": "scripts/engine/audit_cross_cnv.py",
+      "origen": "untracked",
+      "motivo": "pipeline SEC/CNV/Identity y auditorias"
+    },
+    {
+      "path": "scripts/engine/audit_f041.py",
+      "origen": "untracked",
+      "motivo": "pipeline SEC/CNV/Identity y auditorias"
+    },
+    {
+      "path": "scripts/engine/audit_f044.py",
+      "origen": "untracked",
+      "motivo": "pipeline SEC/CNV/Identity y auditorias"
+    },
+    {
+      "path": "scripts/engine/audit_f045.py",
+      "origen": "untracked",
+      "motivo": "pipeline SEC/CNV/Identity y auditorias"
+    },
+    {
+      "path": "scripts/engine/audit_pre_homologacion.py",
+      "origen": "untracked",
+      "motivo": "pipeline SEC/CNV/Identity y auditorias"
+    },
+    {
+      "path": "scripts/engine/backfill_cik.py",
+      "origen": "untracked",
+      "motivo": "pipeline SEC/CNV/Identity y auditorias"
+    },
+    {
+      "path": "scripts/engine/c3_identity_link.py",
+      "origen": "untracked",
+      "motivo": "pipeline SEC/CNV/Identity y auditorias"
+    },
+    {
+      "path": "scripts/engine/f024_bma.py",
+      "origen": "untracked",
+      "motivo": "pipeline SEC/CNV/Identity y auditorias"
+    },
+    {
+      "path": "scripts/engine/f041_reafirmacion.py",
+      "origen": "untracked",
+      "motivo": "pipeline SEC/CNV/Identity y auditorias"
+    },
+    {
+      "path": "scripts/engine/f044_bench.py",
+      "origen": "untracked",
+      "motivo": "pipeline SEC/CNV/Identity y auditorias"
+    },
+    {
+      "path": "scripts/engine/f045_bench.py",
+      "origen": "untracked",
+      "motivo": "pipeline SEC/CNV/Identity y auditorias"
+    },
+    {
+      "path": "scripts/engine/homologacion_final.py",
+      "origen": "untracked",
+      "motivo": "pipeline SEC/CNV/Identity y auditorias"
+    },
+    {
+      "path": "scripts/engine/homologacion_rutas_prohibidas.py",
+      "origen": "untracked",
+      "motivo": "pipeline SEC/CNV/Identity y auditorias"
+    },
+    {
+      "path": "scripts/engine/identity_v1_adversario.py",
+      "origen": "untracked",
+      "motivo": "pipeline SEC/CNV/Identity y auditorias"
+    },
+    {
+      "path": "scripts/engine/identity_v1_backfill_piloto.py",
+      "origen": "untracked",
+      "motivo": "pipeline SEC/CNV/Identity y auditorias"
+    },
+    {
+      "path": "scripts/engine/identity_v1_pilot.py",
+      "origen": "untracked",
+      "motivo": "pipeline SEC/CNV/Identity y auditorias"
+    },
+    {
+      "path": "scripts/engine/identity_v1_ratificar.py",
+      "origen": "untracked",
+      "motivo": "pipeline SEC/CNV/Identity y auditorias"
+    },
+    {
+      "path": "scripts/engine/impacto_y_byma.py",
+      "origen": "untracked",
+      "motivo": "pipeline SEC/CNV/Identity y auditorias"
+    },
+    {
+      "path": "scripts/engine/release_baseline.py",
+      "origen": "untracked",
+      "motivo": "pipeline SEC/CNV/Identity y auditorias"
+    },
+    {
+      "path": "scripts/engine/release_clasificar.py",
+      "origen": "untracked",
+      "motivo": "pipeline SEC/CNV/Identity y auditorias"
+    },
+    {
+      "path": "scripts/engine/s04_normalize.py",
+      "origen": "untracked",
+      "motivo": "pipeline SEC/CNV/Identity y auditorias"
+    },
+    {
+      "path": "scripts/engine/smoke_cross_cnv.py",
+      "origen": "untracked",
+      "motivo": "pipeline SEC/CNV/Identity y auditorias"
+    },
+    {
+      "path": "scripts/market/f014_venue_ticker.py",
+      "origen": "untracked",
+      "motivo": "Market homologado (M23, F-014, gate F-001)"
+    },
+    {
+      "path": "scripts/market/m6_scale.py",
+      "origen": "untracked",
+      "motivo": "Market homologado (M23, F-014, gate F-001)"
+    },
+    {
+      "path": "scripts/market/market_db.py",
+      "origen": "untracked",
+      "motivo": "Market homologado (M23, F-014, gate F-001)"
+    },
+    {
+      "path": "scripts/market/tests/test_f014_venue_ticker.py",
+      "origen": "untracked",
+      "motivo": "Market homologado (M23, F-014, gate F-001)"
+    },
+    {
+      "path": "scripts/market/tests/test_m23_checkpoint.py",
+      "origen": "untracked",
+      "motivo": "Market homologado (M23, F-014, gate F-001)"
+    },
+    {
+      "path": "tests/test_backfill_cik_adversarial.py",
+      "origen": "untracked",
+      "motivo": "suite de V1"
+    },
+    {
+      "path": "tests/test_cnv_identity_link.py",
+      "origen": "untracked",
+      "motivo": "suite de V1"
+    },
+    {
+      "path": "tests/test_engine_cnv.py",
+      "origen": "untracked",
+      "motivo": "suite de V1"
+    },
+    {
+      "path": "tests/test_engine_run_lifecycle.py",
+      "origen": "untracked",
+      "motivo": "suite de V1"
+    },
+    {
+      "path": "tests/test_f032_no_duplicacion.py",
+      "origen": "untracked",
+      "motivo": "suite de V1"
+    },
+    {
+      "path": "tests/test_f035_entidad_muerta.py",
+      "origen": "untracked",
+      "motivo": "suite de V1"
+    },
+    {
+      "path": "tests/test_f038_traza_corrida.py",
+      "origen": "untracked",
+      "motivo": "suite de V1"
+    },
+    {
+      "path": "tests/test_f040_lifecycle_c3.py",
+      "origen": "untracked",
+      "motivo": "suite de V1"
+    },
+    {
+      "path": "tests/test_f041_reafirmacion.py",
+      "origen": "untracked",
+      "motivo": "suite de V1"
+    },
+    {
+      "path": "tests/test_hashout.py",
+      "origen": "untracked",
+      "motivo": "suite de V1"
+    },
+    {
+      "path": "tests/test_identity_v1.py",
+      "origen": "untracked",
+      "motivo": "suite de V1"
+    },
+    {
+      "path": "tests/test_market_prod_guard.py",
+      "origen": "untracked",
+      "motivo": "suite de V1"
+    },
+    {
+      "path": "tests/test_s04_normalize.py",
+      "origen": "untracked",
+      "motivo": "suite de V1"
+    },
+    {
+      "path": "engine/cnv/rawstore.py",
+      "origen": "modificado",
+      "motivo": "codigo del engine"
+    },
+    {
+      "path": "engine/config.py",
+      "origen": "modificado",
+      "motivo": "codigo del engine"
+    },
+    {
+      "path": "engine/db.py",
+      "origen": "modificado",
+      "motivo": "codigo del engine"
+    },
+    {
+      "path": "engine/xbrlparse.py",
+      "origen": "modificado",
+      "motivo": "codigo del engine"
+    },
+    {
+      "path": "scripts/engine/c3_cnv_fetch.py",
+      "origen": "modificado",
+      "motivo": "pipeline SEC/CNV/Identity y auditorias"
+    },
+    {
+      "path": "scripts/engine/s03_parse_ypf.py",
+      "origen": "modificado",
+      "motivo": "pipeline SEC/CNV/Identity y auditorias"
+    },
+    {
+      "path": "scripts/market/m19_apply_schema.py",
+      "origen": "modificado",
+      "motivo": "Market homologado (M23, F-014, gate F-001)"
+    },
+    {
+      "path": "scripts/market/m1_symbol_mapping.py",
+      "origen": "modificado",
+      "motivo": "Market homologado (M23, F-014, gate F-001)"
+    },
+    {
+      "path": "scripts/market/m2_fetch_engine.py",
+      "origen": "modificado",
+      "motivo": "Market homologado (M23, F-014, gate F-001)"
+    },
+    {
+      "path": "scripts/market/m4_quality.py",
+      "origen": "modificado",
+      "motivo": "Market homologado (M23, F-014, gate F-001)"
+    },
+    {
+      "path": "scripts/market/m5_golden_case.py",
+      "origen": "modificado",
+      "motivo": "Market homologado (M23, F-014, gate F-001)"
+    },
+    {
+      "path": "scripts/market/market_schema.sql",
+      "origen": "modificado",
+      "motivo": "Market homologado (M23, F-014, gate F-001)"
+    },
+    {
+      "path": "scripts/market/tests/conftest.py",
+      "origen": "modificado",
+      "motivo": "Market homologado (M23, F-014, gate F-001)"
+    },
+    {
+      "path": "tests/test_s03_xbrlparse.py",
+      "origen": "modificado",
+      "motivo": "suite de V1"
+    }
+  ],
+  "exclude": [
+    {
+      "path": ".vscode/settings.json",
+      "origen": "untracked",
+      "motivo": "config personal del editor"
+    },
+    {
+      "path": "CHANGELOG_PRODUCCION.md",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "DASHBOARD_PRODUCCION_README.md",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "DEPLOYMENT_INSTRUCTIONS.md",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "DEPLOY_README.md",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "Dashboard_GRIM_completo.xlsx",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "Dashboard_GRIM_v2.xlsx",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "EJECUTAR_EN_SERVIDOR.sh",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "EJECUTAR_MIGRACION.md",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "ESTETICA_FINAL_v3.md",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "FASE2_PLAN_CONSOLIDACION.md",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "INSTRUCCIONES_DEPLOYMENT.txt",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "LISTO_PARA_DESPLEGAR.md",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "PLAN_MIGRACION_SCREENER_V2.md",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "README_FINAL.md",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "REFACTOR_ESTETICA_v2.md",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "START_HERE.md",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "STATUS_SCREENER_V2.txt",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "_legacy/Engine/js/fb.viewmodel.js",
+      "origen": "untracked",
+      "motivo": "codigo de un proyecto anterior"
+    },
+    {
+      "path": "audit_cnv_coverage.py",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "catalaxia_pre_restructure.patch",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "catalaxia_status_before_restructure.txt",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "catalaxia_status_current.txt",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "catalaxia_untracked_before_restructure.txt",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "dashboard_dinamico.html",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "dashboard_dinamico_v2.html",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "dashboard_estatico.html",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "dashboard_estatico_v2.html",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "dashboard_estatico_v3.html",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "dashboard_final.html",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "dashboard_final_v2.html",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "dashboard_produccion.html",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "data/Catalaxia_datos_organizados.xlsx",
+      "origen": "untracked",
+      "motivo": "datos, backups y xlsx; data/raw no se versiona"
+    },
+    {
+      "path": "data/PIPELINE_VALIDATION_SPECIFICATION.docx",
+      "origen": "untracked",
+      "motivo": "datos, backups y xlsx; data/raw no se versiona"
+    },
+    {
+      "path": "data/PIPELINE_VALIDATION_SPECIFICATION.md",
+      "origen": "untracked",
+      "motivo": "datos, backups y xlsx; data/raw no se versiona"
+    },
+    {
+      "path": "data/PLAN_DETALLADO_CATALAXIA_FINANCE.docx",
+      "origen": "untracked",
+      "motivo": "datos, backups y xlsx; data/raw no se versiona"
+    },
+    {
+      "path": "data/PLAN_DETALLADO_CATALAXIA_FINANCE.md",
+      "origen": "untracked",
+      "motivo": "datos, backups y xlsx; data/raw no se versiona"
+    },
+    {
+      "path": "data/auditoria_edgar_cnv.xlsx",
+      "origen": "untracked",
+      "motivo": "datos, backups y xlsx; data/raw no se versiona"
+    },
+    {
+      "path": "data/audits/YPF_EDGAR_FULL_DATA_AUDIT.xlsx",
+      "origen": "untracked",
+      "motivo": "datos, backups y xlsx; data/raw no se versiona"
+    },
+    {
+      "path": "data/audits/~$YPF_EDGAR_FULL_DATA_AUDIT.xlsx",
+      "origen": "untracked",
+      "motivo": "datos, backups y xlsx; data/raw no se versiona"
+    },
+    {
+      "path": "data/backups/snapshot_byma_20260822_002540.db",
+      "origen": "untracked",
+      "motivo": "datos, backups y xlsx; data/raw no se versiona"
+    },
+    {
+      "path": "data/backups/snapshot_byma_20260822_003832.db",
+      "origen": "untracked",
+      "motivo": "datos, backups y xlsx; data/raw no se versiona"
+    },
+    {
+      "path": "data/backups/snapshot_byma_20260822_004618.db",
+      "origen": "untracked",
+      "motivo": "datos, backups y xlsx; data/raw no se versiona"
+    },
+    {
+      "path": "data/backups/snapshot_byma_baseline_20260822_002540.json",
+      "origen": "untracked",
+      "motivo": "datos, backups y xlsx; data/raw no se versiona"
+    },
+    {
+      "path": "data/backups/snapshot_byma_baseline_20260822_004618.json",
+      "origen": "untracked",
+      "motivo": "datos, backups y xlsx; data/raw no se versiona"
+    },
+    {
+      "path": "data/dolar/rava/DOLAR CCL - Cotizaciones historicas.csv",
+      "origen": "untracked",
+      "motivo": "datos, backups y xlsx; data/raw no se versiona"
+    },
+    {
+      "path": "data/dolar/rava/DOLAR MEP - Cotizaciones historicas.csv",
+      "origen": "untracked",
+      "motivo": "datos, backups y xlsx; data/raw no se versiona"
+    },
+    {
+      "path": "data/dolar/rava/Dolar A3500.xlsx",
+      "origen": "untracked",
+      "motivo": "datos, backups y xlsx; data/raw no se versiona"
+    },
+    {
+      "path": "data/log_job5_v2_done.txt",
+      "origen": "untracked",
+      "motivo": "datos, backups y xlsx; data/raw no se versiona"
+    },
+    {
+      "path": "data/tabla_acciones_fundamentals.xlsx",
+      "origen": "untracked",
+      "motivo": "datos, backups y xlsx; data/raw no se versiona"
+    },
+    {
+      "path": "deploy.py",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "deploy_production.sh",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "docs/DEPLOYMENT_SCREENER_V2.md",
+      "origen": "untracked",
+      "motivo": "documento fuera del release tecnico"
+    },
+    {
+      "path": "docs/libro/Catalaxia_Economia_Software_v2.pptx",
+      "origen": "untracked",
+      "motivo": "material editorial"
+    },
+    {
+      "path": "docs/libro/Catalaxia_La_Economia_del_Software.pptx",
+      "origen": "untracked",
+      "motivo": "material editorial"
+    },
+    {
+      "path": "docs/libro/Economia_del_Software_Libro.pdf",
+      "origen": "untracked",
+      "motivo": "material editorial"
+    },
+    {
+      "path": "docs/masterclass/Economia_del_Software_Masterclass.pptx",
+      "origen": "untracked",
+      "motivo": "material de formacion"
+    },
+    {
+      "path": "docs/pdfs/746322.pdf",
+      "origen": "untracked",
+      "motivo": "material editorial"
+    },
+    {
+      "path": "docs/pdfs/Propuesta_webshooks_Catalaxia_v4.1.pptx",
+      "origen": "untracked",
+      "motivo": "material editorial"
+    },
+    {
+      "path": "docs/pdfs/Propuesta_webshooks_Catalaxia_v4.pptx",
+      "origen": "untracked",
+      "motivo": "material editorial"
+    },
+    {
+      "path": "docs/producto/screener.html",
+      "origen": "untracked",
+      "motivo": "material de producto"
+    },
+    {
+      "path": "docs/proyecto/00_INDICE_Y_PLAN.md",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/01_ALCANCE_Y_DOD.md",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/02_ROLES_RACI.md",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/03_ARQUITECTURA_Y_BD.md",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/04_CONTRATO_API.md",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/05_SETUP_DEV.md",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/06_INFRA_DEPLOY_VPS.md",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/07_PLAN_ENTREGAS_SEMANAL.md",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/08_ESTANDARES_TRABAJO.md",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/09_COORDINACION_CLIENTE.md",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/10_QA_Y_RIESGOS.md",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/AUDITORIA_investing_vs_certificado.md",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/BACKLOG.md",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/Backlog_Catalaxia_Sprints.xlsx",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/CATALOGO_datos.md",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/CONCEPTOS_canonicos.md",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/CONTRATO_datos.md",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/Cobertura_Ratios_Catalaxia.xlsx",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/DISENO_implementacion.md",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/ETL_PIPELINE_COMPLETO.md",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/Kickoff_Equipo_Catalaxia.pptx",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/METODOLOGIA_extraccion.md",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/METODOLOGIA_validacion.md",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/Manual_Catalaxia_docgen.docx",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/Propuesta_webshooks_Catalaxia_v4.1.pptx",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/Propuesta_webshooks_Catalaxia_v4.pptx",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/RECONCILIACION_metodo.md",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/RECONCILIACION_resultados.md",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/Ratios_Completo_Catalaxia.xlsx",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/Ratios_TTM_vs_Screener.xlsx",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/Tags_Crudos_Catalaxia.xlsx",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/depuracion_byma.md",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/generar_backlog_excel.py",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/generar_cobertura_ratios.py",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/generar_kickoff_equipo.py",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/generar_propuesta_v4.py",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/generar_ratios_completo.py",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/generar_tags_crudos.py",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/infra/.env.example",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/infra/backend.Dockerfile",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/infra/docker-compose.yml",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/infra/nginx-catalaxia.conf",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/jira/GUIA_JIRA.md",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/proyecto/jira/jira_import.csv",
+      "origen": "untracked",
+      "motivo": "notas de proyecto, no del release tecnico"
+    },
+    {
+      "path": "docs/webshooks/Informe_Investigacion_CEDEARs.pptx",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/Propuesta_webshooks_Catalaxia_v0.1.pptx",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/Propuesta_webshooks_Catalaxia_v2.0.pdf",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand-kit/GUIA_ESTILO_WEBSHOOKS.md",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand-kit/README.md",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand-kit/build_docx.py",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand-kit/plantilla_webshooks.md",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand-kit/reference.docx",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand-kit/webshooks_docx.py",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand/README.md",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand/components/README.md",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand/components/components.py",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand/components/examples/ejemplo-flow.png",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand/components/examples/ejemplo-flow.svg",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand/components/examples/ejemplo-pipeline.png",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand/components/examples/ejemplo-pipeline.svg",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand/components/examples/ejemplo-timeline.png",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand/components/examples/ejemplo-timeline.svg",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand/logo/_contact-sheet.png",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand/logo/webshooks-appicon-512.png",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand/logo/webshooks-favicon.ico",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand/logo/webshooks-logo-horizontal-color.png",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand/logo/webshooks-logo-horizontal-onnavy.png",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand/logo/webshooks-logo-horizontal-onwhite.jpg",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand/logo/webshooks-mark-color.png",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand/logo/webshooks-wordmark-color.png",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand/logo/webshooks-wordmark-color.svg",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand/logo/webshooks-wordmark-navy.png",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand/logo/webshooks-wordmark-white.png",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand/logo/webshooks-wordmark-white.svg",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand/templates/README.md",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand/templates/ejemplo_propuesta.pptx",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand/templates/ejemplo_propuesta.py",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand/templates/webshooks_pptx.py",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand/theme_webshooks.json",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "docs/webshooks/brand/tools/logo_gen.py",
+      "origen": "untracked",
+      "motivo": "material ajeno a V1"
+    },
+    {
+      "path": "investing_home.png",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "lib/jquery-file-download/jquery.fileDownload.js",
+      "origen": "untracked",
+      "motivo": "vendored JS ajeno a V1"
+    },
+    {
+      "path": "migration.log",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "outputs/docs/architecture/Catalaxia_Prompts_Maestros_Ejecucion.docx",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_cnv/C3_CNV_FETCH_REPORT.md",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_cnv/C3_CNV_INVENTORY.csv",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_cnv/C3_CNV_MANIFEST.csv",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_cnv/C3_CNV_PROVENANCE.jsonl",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_cnv/C3_CNV_REVIEW_QUEUE.csv",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_cnv/C3_CNV_STAGE_REPORT_run1_PASS.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_cnv/C3_CNV_STAGE_REPORT_run2_rerun_BLOCK_idempotencia.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_cnv/C3_CNV_STAGE_REPORT_run3_invalid_cuit_BLOCK.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_cnv/C3_CNV_STAGE_REPORT_run6_rerun_PASS_fixed.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_cnv/C3_CNV_VALIDATION.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/BYMA_BLOCKED_DOSSIER.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/audit_backfill_cik.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/audit_cross_cnv.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/audit_f041.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/backfill_cik_apply.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/backfill_cik_dryrun.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/backfill_cik_inventory.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/backfill_piloto_0857217f5130.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/backfill_piloto_0e972d5c0ea9.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/backfill_piloto_11f6e84b8176.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/backfill_piloto_1206c7aa158a.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/backfill_piloto_1cf7eb0e8385.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/backfill_piloto_2393abdebfff.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/backfill_piloto_24de7546a09c.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/backfill_piloto_36ad5467b026.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/backfill_piloto_515c697c87ff.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/backfill_piloto_70c70f82aee1.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/backfill_piloto_9a4474fdaa46.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/backfill_piloto_9f9ef46e1836.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/backfill_piloto_aa9be05c212c.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/backfill_piloto_aae33ecd2705.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/backfill_piloto_c83e12bfbd2d.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/backfill_piloto_cd77cf6272c0.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/backfill_piloto_e32c4f6590ca.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/backfill_piloto_f530a6e0ff69.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/dossier_ratificacion.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/dossier_ratificacion_ciclo6.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/f041_clasificacion.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/f041_reafirmacion.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/impacto_cross_workstream.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/smoke_TGSU2.log",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/smoke_YPF.log",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/smoke_cross_cnv_GGAL.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/smoke_cross_cnv_TGSU2.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_identity/smoke_cross_cnv_YPF.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_market/F001_REGRESION_TEST_MATRIX.md",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_market/F013_M23_CHECKPOINT_CONTRACT.md",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_market/F014_VENUE_TICKER_CONTRACT.md",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_market/golden/CHECKPOINT.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_market/golden/MANIFEST.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_market/golden/MARKET_GOLDEN_CASE.md",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_market/golden/csv/cambios.csv",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_market/golden/csv/gates.csv",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_market/golden/csv/provenance.csv",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_market/golden/csv/serie_83_YPFD_BA.csv",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_market/golden/csv/serie_84_YPF.csv",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_market/golden/market_fingerprint_report.md",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_market/golden/market_golden_case.xlsx",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_market/golden/market_idempotency_report.md",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_market/golden/market_provenance.md",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_market/golden/market_validation_report.md",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_market/run_golden_v5_3.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_market/scale/m23-full-2026-08-28.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_market/scale/smoke-real-2026-08-28.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_s03/S03_EXECUTION_LOG_2026-08-25.md",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_s03/S03_MANIFEST.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_s03/S03_PARSE_REPORT.md",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_s03/S03_VALIDATION.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_s03/S03_YPF_PARSE_AUDIT.xlsx",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_s04/s04_report_1acf829139c84db7.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_s04/s04_report_6371a6ce53b046be.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_s04/s04_report_6dbd49f845b1439e.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_s04/s04_report_6e03a395756d4933.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_s04/s04_report_72f2e7c2297d44f0.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_s04/s04_report_a3274bdc5c3f429f.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_s04/s04_report_d44e1ac16e72449b.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/docs/fase_s04/s04_report_f86d23ed49bd4854.json",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/ypf_financial_derivation/YPF_EDGAR_FINANCIAL_DERIVATION_MATRIX.xlsx",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "outputs/ypf_financial_derivation/~$YPF_EDGAR_FINANCIAL_DERIVATION_MATRIX.xlsx",
+      "origen": "untracked",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "scratchpad/audit_cnv_html.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/audit_db_agg.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/audit_db_schema.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/audit_edgar_conceptos.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/audit_edgar_raw.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/build_excel_audit.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c0_anatomy.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c0_blob_ctx.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c0_blob_debug.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c0_blob_e2e.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c0_blob_js.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c0_blob_test.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c0_clasifica.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c0_compara.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c0_empresa_page.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c0_entregables.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c0_fin_section.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c0_final.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c0_getpublicblob.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c0_parse_empresa.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c0_probe_live.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c0_sinclasif.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c0_titulos.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c0_uploader_js.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c0_visor_muestras.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c1_evidencia.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c1_identidad.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c2_entregables.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c2_evidencia.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c2_evidencia2.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c2_visores.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c3_runs/run1_first.log",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c3_runs/run2_rerun.log",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c3_runs/run3_invalid_cuit.log",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c3_runs/run4_baseline_canonical.log",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c3_runs/run5_checkpoint_reuse_fix.log",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/c3_runs/run6_rerun_canonical_fix.log",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/db_probe.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/diag_formato_cnv.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/dolarito_inspect.html",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/explore_facts_xbrl.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/inspect_cnv_html.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/inspect_cnv_scan.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/inspect_cnv_scan2.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/inventario_cnv.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/probe_cepu.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/probe_fuertes.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/probe_raw_edgar.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/probe_schema.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/probe_tabs.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/test_doc_ticker.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/tmp/c0_presentations_final.json",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/tmp/c0_presentations_parsed.json",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/tmp/c0_presentations_v2.json",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/tmp/c0_presentations_v3.json",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/tmp/c2_evidencia.json",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/tmp/c2_evidencia2.json",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/tmp/c2_visores_siglas.json",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/tmp/c3_probe_viewer.html",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/tmp/cepu_empresa_page.html",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/tmp/cepu_viewer_eeff_moderno.html",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/tmp/cepu_viewer_sample.html",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/tmp/cnv_html_scan.json",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/tmp/db_aggregates.json",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/tmp/edgar_conceptos_full.json",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/tmp/edgar_inventory.json",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/verify_excel.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/xbrlparse_v2_backup.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/01_descargar.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/01b_descargar_xbrlzip.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/02_parsear.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/03_analizar.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/04_build_derivation.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/04_excel.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/05_build_deliverables.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/out/_meta.json",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/out/cambios_tag_grupos.csv",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/out/catalaxia_13.csv",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/out/companyfacts_concepts.csv",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/out/companyfacts_obs.csv",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/out/contextos.csv",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/out/coverage.csv",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/out/dimensiones.csv",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/out/extractor_gaps_full.csv",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/out/extractor_vs_edgar.csv",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/out/filings.csv",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/out/financial_variables.csv",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/out/historico_tags.csv",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/out/matrix_summary.json",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/out/method_tag_mapping.csv",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/out/metricas_extractor_estado.csv",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/out/nonnumeric.csv",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/out/observaciones.csv",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/out/provenance_inputs.csv",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/out/ratio_catalog.csv",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/out/ratio_inputs.csv",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/out/ratio_methods.csv",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/out/relaciones_xbrl.csv",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/out/resumen_numeros.json",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/out/tags.csv",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/out/tags_schema_extension.csv",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/out/taxonomias.csv",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/out/unidades.csv",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_edgar_audit/out/validity.csv",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_yahoo_audit/build_audit.py",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_yahoo_audit/yf_cache/cookies.db",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "scratchpad/ypf_yahoo_audit/yf_cache/tkr-tz.db",
+      "origen": "untracked",
+      "motivo": "scratchpad de trabajo"
+    },
+    {
+      "path": "screener.html",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "screener_v2.html",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "screener_v3.html",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "scripts/docgen/README.md",
+      "origen": "untracked",
+      "motivo": "generacion de documentos, ajena a V1"
+    },
+    {
+      "path": "scripts/docgen/build.py",
+      "origen": "untracked",
+      "motivo": "generacion de documentos, ajena a V1"
+    },
+    {
+      "path": "scripts/docgen/cli.py",
+      "origen": "untracked",
+      "motivo": "generacion de documentos, ajena a V1"
+    },
+    {
+      "path": "scripts/docgen/pyproject.toml",
+      "origen": "untracked",
+      "motivo": "generacion de documentos, ajena a V1"
+    },
+    {
+      "path": "scripts/docgen/requirements.txt",
+      "origen": "untracked",
+      "motivo": "generacion de documentos, ajena a V1"
+    },
+    {
+      "path": "scripts/docgen/src/docgen/assets/asset_manager.py",
+      "origen": "untracked",
+      "motivo": "generacion de documentos, ajena a V1"
+    },
+    {
+      "path": "scripts/docgen/src/docgen/parser/markdown_parser.py",
+      "origen": "untracked",
+      "motivo": "generacion de documentos, ajena a V1"
+    },
+    {
+      "path": "scripts/docgen/src/docgen/renderer/inline.py",
+      "origen": "untracked",
+      "motivo": "generacion de documentos, ajena a V1"
+    },
+    {
+      "path": "scripts/docgen/src/docgen/renderer/markdown_renderer.py",
+      "origen": "untracked",
+      "motivo": "generacion de documentos, ajena a V1"
+    },
+    {
+      "path": "scripts/docgen/src/docgen/theme/theme_manager.py",
+      "origen": "untracked",
+      "motivo": "generacion de documentos, ajena a V1"
+    },
+    {
+      "path": "scripts/docgen/src/docgen/word/docx_builder.py",
+      "origen": "untracked",
+      "motivo": "generacion de documentos, ajena a V1"
+    },
+    {
+      "path": "scripts/docgen/tests/conftest.py",
+      "origen": "untracked",
+      "motivo": "generacion de documentos, ajena a V1"
+    },
+    {
+      "path": "scripts/docgen/tests/test_docgen_runtime.py",
+      "origen": "untracked",
+      "motivo": "generacion de documentos, ajena a V1"
+    },
+    {
+      "path": "scripts/docgen/theme.json",
+      "origen": "untracked",
+      "motivo": "generacion de documentos, ajena a V1"
+    },
+    {
+      "path": "scripts/tickets/cnv/_audit_html.py",
+      "origen": "untracked",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/cnv/_audit_v2.py",
+      "origen": "untracked",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/cnv/_build_codigos_whitelist.py",
+      "origen": "untracked",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/cnv/_doble_nelson.py",
+      "origen": "untracked",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/cnv/_migrar_v2_a_cnv.py",
+      "origen": "untracked",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/cnv/_test_cuits.csv",
+      "origen": "untracked",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/cnv/datos/html_descargados/manifest.csv",
+      "origen": "untracked",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/cnv/eeff/_count_forms.py",
+      "origen": "untracked",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/cnv/eeff/_find_div_forms.py",
+      "origen": "untracked",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/cnv/eeff/_parse_div.py",
+      "origen": "untracked",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/cnv/eeff/_scan_div.py",
+      "origen": "untracked",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/debug/011f7166-2ad5-4b61-bf05-63ed96370e58.html",
+      "origen": "untracked",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/screener/_diagnostico/METR_2020-12-31.html",
+      "origen": "untracked",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/screener/_diagnostico/METR_2021-12-31.html",
+      "origen": "untracked",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/screener/_diagnostico/METR_2024-12-31.html",
+      "origen": "untracked",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/screener/_diagnostico/METR_2025-12-31.html",
+      "origen": "untracked",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/screener/_diagnostico/MOLA_2024-03-31.html",
+      "origen": "untracked",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/screener/_diagnostico/MOLA_2026-03-31.html",
+      "origen": "untracked",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/screener/_diagnostico/TXAR_2020-12-31.html",
+      "origen": "untracked",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/screener/_diagnostico/TXAR_2021-12-31.html",
+      "origen": "untracked",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/screener/_diagnostico/TXAR_2024-12-31.html",
+      "origen": "untracked",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/screener/_diagnostico/TXAR_2025-12-31.html",
+      "origen": "untracked",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/screener/_o2_validaciones.py",
+      "origen": "untracked",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/screener/_refresh_rangos_52w.py",
+      "origen": "untracked",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/screener/_retry52w_ba.py",
+      "origen": "untracked",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/screener/_run_manifest.py",
+      "origen": "untracked",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "test_local.py",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "tmp_byma3.py",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "tmp_byma_audit.py",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "~$Seguimiento.xlsx",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "~$Seguimiento_original.xlsx",
+      "origen": "untracked",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "outputs/docs/fase_market/MARKET_MASTER_PLAN.md",
+      "origen": "modificado",
+      "motivo": "outputs de fase, reproducibles con los scripts"
+    },
+    {
+      "path": "screener_final.html",
+      "origen": "modificado",
+      "motivo": "artefacto en la raiz (dashboards, deploys, xlsx, tmp)"
+    },
+    {
+      "path": "scripts/pipeline/arbitro.py",
+      "origen": "modificado",
+      "motivo": "pipeline legacy, fuera del alcance de V1"
+    },
+    {
+      "path": "scripts/pipeline/f2_adr.py",
+      "origen": "modificado",
+      "motivo": "pipeline legacy, fuera del alcance de V1"
+    },
+    {
+      "path": "scripts/pipeline/f6_sec.py",
+      "origen": "modificado",
+      "motivo": "pipeline legacy, fuera del alcance de V1"
+    },
+    {
+      "path": "scripts/pipeline/fetch_dgce.py",
+      "origen": "modificado",
+      "motivo": "pipeline legacy, fuera del alcance de V1"
+    },
+    {
+      "path": "scripts/pipeline/fix_escala_anchor.py",
+      "origen": "modificado",
+      "motivo": "pipeline legacy, fuera del alcance de V1"
+    },
+    {
+      "path": "scripts/pipeline/fix_manual.py",
+      "origen": "modificado",
+      "motivo": "pipeline legacy, fuera del alcance de V1"
+    },
+    {
+      "path": "scripts/pipeline/fix_mapeo.py",
+      "origen": "modificado",
+      "motivo": "pipeline legacy, fuera del alcance de V1"
+    },
+    {
+      "path": "scripts/pipeline/fix_single_doc.py",
+      "origen": "modificado",
+      "motivo": "pipeline legacy, fuera del alcance de V1"
+    },
+    {
+      "path": "scripts/pipeline/gen_screener_html.py",
+      "origen": "modificado",
+      "motivo": "pipeline legacy, fuera del alcance de V1"
+    },
+    {
+      "path": "scripts/pipeline/reextract_consolidado.py",
+      "origen": "modificado",
+      "motivo": "pipeline legacy, fuera del alcance de V1"
+    },
+    {
+      "path": "scripts/pipeline/scoreboard.py",
+      "origen": "modificado",
+      "motivo": "pipeline legacy, fuera del alcance de V1"
+    },
+    {
+      "path": "scripts/pipeline/sec_adr_validar.py",
+      "origen": "modificado",
+      "motivo": "pipeline legacy, fuera del alcance de V1"
+    },
+    {
+      "path": "scripts/pipeline/triangulacion.py",
+      "origen": "modificado",
+      "motivo": "pipeline legacy, fuera del alcance de V1"
+    },
+    {
+      "path": "scripts/tickets/cnv/scripts/analizar_potencial_fuentes2.py",
+      "origen": "modificado",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/cnv/scripts/check_adr_cnv_source.py",
+      "origen": "modificado",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/cnv/scripts/check_adr_edgar.py",
+      "origen": "modificado",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/cnv/scripts/check_adr_tags.py",
+      "origen": "modificado",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/cnv/scripts/check_cnv_adr_map.py",
+      "origen": "modificado",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/cnv/scripts/check_cnv_ratios.py",
+      "origen": "modificado",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/cnv/scripts/check_data_coverage.py",
+      "origen": "modificado",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/cnv/scripts/check_tables.py",
+      "origen": "modificado",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/cnv/scripts/comparar_13_ratios.py",
+      "origen": "modificado",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/cnv/scripts/contar_cnv_tags.py",
+      "origen": "modificado",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/cnv/scripts/cruce_adr_final.py",
+      "origen": "modificado",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/cnv/scripts/cruce_adr_payout.py",
+      "origen": "modificado",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/cnv/scripts/cruce_cnv_yfinance.py",
+      "origen": "modificado",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/cnv/scripts/cruce_cnv_yfinance_v2.py",
+      "origen": "modificado",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/cnv/scripts/derivar_dividendos_re.py",
+      "origen": "modificado",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/cnv/scripts/dividend_search_deep.py",
+      "origen": "modificado",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/cnv/scripts/verificar_13_ratios.py",
+      "origen": "modificado",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/cnv/scripts/verificar_carga_142_487.py",
+      "origen": "modificado",
+      "motivo": "scripts ad-hoc de tickets"
+    },
+    {
+      "path": "scripts/tickets/cnv/scripts/verificar_precios_byma.py",
+      "origen": "modificado",
+      "motivo": "scripts ad-hoc de tickets"
+    }
+  ],
+  "sin_clasificar": [],
+  "borrados_no_incluidos": [
+    "data/log_bloque1.txt",
+    "data/log_bloque2.txt",
+    "data/log_precios.txt"
+  ]
+}

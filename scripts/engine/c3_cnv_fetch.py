@@ -13,6 +13,7 @@ Uso:
 from __future__ import annotations
 
 import argparse
+from collections import Counter
 import csv
 import hashlib
 import json
@@ -31,7 +32,7 @@ from engine.cnv import CNV_ADAPTER_VERSION
 from engine.cnv import discovery as disc
 from engine.cnv import validate as val
 from engine.cnv.client import CnvClient, RateLimiter, DEFAULT_DELAYS
-from engine.cnv.rawstore import RawStore, sha256_b64, sha256_bytes
+from engine.cnv.rawstore import RawStore, canonical_sha256, sha256_b64, sha256_bytes
 from engine.report import StageReport, utc_now_iso
 from engine.states import GateStatus, StageState, assert_transition
 
@@ -127,6 +128,9 @@ class Manifest:
                hash_cnv: str | None = None, parent_kind: str | None = None,
                parent_key: str | None = None, result: str, fail_reason: str | None = None) -> dict:
         sha_b64 = stored.sha256_b64 if stored else None
+        # Idempotencia canonica (decision 2026-08-25): hash separado del RAW,
+        # excluye solo el ruido confirmado de EMPRESA_PAGE/VISOR. Ver rawstore.py.
+        canon_sha = canonical_sha256(res.content, kind) if res.content else None
         row = {
             "run_id": self.run_id, "stage_run_id": self.stage_run_id, "stage_id": STAGE_ID,
             "entity_key": self.ident["entity_key"], "cuit": self.ident["cuit"], "source": "CNV",
@@ -136,6 +140,7 @@ class Manifest:
             "http_status": res.http_status, "content_type": res.content_type,
             "bytes": stored.bytes if stored else (res.bytes or None),
             "sha256": stored.sha256 if stored else None, "sha256_b64": sha_b64,
+            "canonical_sha256": canon_sha,
             "hash_cnv": hash_cnv,
             "hash_cnv_match": (hash_cnv == sha_b64) if (hash_cnv and sha_b64) else None,
             "raw_path": stored.rel_path if stored else None,
@@ -160,20 +165,21 @@ class Manifest:
         payload = {k: row[k] for k in (
             "run_id", "stage_run_id", "stage_id", "entity_key", "cuit", "source", "artifact_kind",
             "artifact_key", "parent_kind", "parent_key", "endpoint", "http_method", "critical",
-            "http_status", "content_type", "bytes", "sha256", "sha256_b64", "hash_cnv",
-            "hash_cnv_match", "raw_path", "duplicate_of", "attempts", "elapsed_ms", "result",
-            "validation_status", "validation_failed", "validation", "fail_reason")}
+            "http_status", "content_type", "bytes", "sha256", "sha256_b64", "canonical_sha256",
+            "hash_cnv", "hash_cnv_match", "raw_path", "duplicate_of", "attempts", "elapsed_ms",
+            "result", "validation_status", "validation_failed", "validation", "fail_reason")}
         with self.engine.begin() as conn:
             conn.execute(text("""
                 INSERT INTO fetch_raw.cnv_download_log
                 (run_id, stage_run_id, stage_id, entity_key, cuit, source, artifact_kind,
                  artifact_key, parent_kind, parent_key, endpoint, http_method, critical,
-                 http_status, content_type, bytes, sha256, sha256_b64, hash_cnv, hash_cnv_match,
-                 raw_path, duplicate_of, attempts, elapsed_ms, result, validation_status,
-                 validation_failed, validation, fail_reason)
+                 http_status, content_type, bytes, sha256, sha256_b64, canonical_sha256,
+                 hash_cnv, hash_cnv_match, raw_path, duplicate_of, attempts, elapsed_ms, result,
+                 validation_status, validation_failed, validation, fail_reason)
                 VALUES (:run_id,:stage_run_id,:stage_id,:entity_key,:cuit,:source,:artifact_kind,
                  :artifact_key,:parent_kind,:parent_key,:endpoint,:http_method,:critical,
-                 :http_status,:content_type,:bytes,:sha256,:sha256_b64,:hash_cnv,:hash_cnv_match,
+                 :http_status,:content_type,:bytes,:sha256,:sha256_b64,:canonical_sha256,
+                 :hash_cnv,:hash_cnv_match,
                  :raw_path,:duplicate_of,:attempts,:elapsed_ms,:result,:validation_status,
                  :validation_failed, CAST(:validation AS JSONB), :fail_reason)
             """), payload)
@@ -182,20 +188,21 @@ class Manifest:
         with self.engine.begin() as conn:
             conn.execute(text("""
                 INSERT INTO fetch_raw.cnv_artifact
-                (cuit, entity_key, artifact_kind, artifact_key, sha256, sha256_b64, bytes,
-                 content_type, nombre, raw_path, endpoint, hash_cnv, hash_cnv_match,
-                 parent_kind, parent_key, first_seen_run, last_seen_run)
-                VALUES (:cuit,:entity_key,:artifact_kind,:artifact_key,:sha256,:sha256_b64,:bytes,
-                 :content_type,:nombre,:raw_path,:endpoint,:hash_cnv,:hash_cnv_match,
-                 :parent_kind,:parent_key,:run_id,:run_id)
+                (cuit, entity_key, artifact_kind, artifact_key, sha256, sha256_b64,
+                 canonical_sha256, bytes, content_type, nombre, raw_path, endpoint, hash_cnv,
+                 hash_cnv_match, parent_kind, parent_key, first_seen_run, last_seen_run)
+                VALUES (:cuit,:entity_key,:artifact_kind,:artifact_key,:sha256,:sha256_b64,
+                 :canonical_sha256,:bytes,:content_type,:nombre,:raw_path,:endpoint,:hash_cnv,
+                 :hash_cnv_match,:parent_kind,:parent_key,:run_id,:run_id)
                 ON CONFLICT (artifact_kind, artifact_key, sha256) DO UPDATE
                    SET last_seen_run = EXCLUDED.last_seen_run,
                        last_seen_at = now(),
+                       canonical_sha256 = EXCLUDED.canonical_sha256,
                        times_seen = fetch_raw.cnv_artifact.times_seen + 1
             """), {k: row[k] for k in (
                 "cuit", "entity_key", "artifact_kind", "artifact_key", "sha256", "sha256_b64",
-                "bytes", "content_type", "nombre", "raw_path", "endpoint", "hash_cnv",
-                "hash_cnv_match", "parent_kind", "parent_key", "run_id")})
+                "canonical_sha256", "bytes", "content_type", "nombre", "raw_path", "endpoint",
+                "hash_cnv", "hash_cnv_match", "parent_kind", "parent_key", "run_id")})
 
 
 # ---------------------------------------------------------------- fetch ------
@@ -293,9 +300,26 @@ def main() -> int:
     for f in ident["findings"]:
         print(f"[identity][HALLAZGO] {f}")
 
-    run = edb.start_run(engine, settings, PIPELINE_VERSION)
+    # F-040: las huerfanas se ven al ARRANCAR, como en el resto de las etapas.
+    huerfanas = edb.corridas_huerfanas(engine)
+    if huerfanas:
+        print(f"[huerfanas] {len(huerfanas)} corridas previas quedaron en RUNNING:")
+        for h in huerfanas[:5]:
+            print(f"   {h['run_id'][:12]} {h['pipeline_version']} hace {h['horas']}h")
+
+    # F-040: el cierre va en `finally` (run_scope). Antes, `start_run` abria
+    # aca y `finish_run` cerraba 350 lineas mas abajo: cualquier excepcion en
+    # el medio dejaba la corrida en RUNNING para siempre. Paso tres veces el
+    # 2026-08-28. Es el mismo patron que F-031 aplico a S03.
+    with edb.run_scope(engine, settings, PIPELINE_VERSION) as run:
+        print(f"[run] run_id={run.run_id} git={run.git_commit} "
+              f"scope={args.scope} rerun={args.rerun}")
+        return _correr(engine, settings, run, args, cuit, ident)
+
+
+def _correr(engine, settings, run, args, cuit, ident) -> int:
+    """Cuerpo de la corrida. Fija `run.status`; NUNCA llama a finish_run."""
     started = utc_now_iso()
-    print(f"[run] run_id={run.run_id} git={run.git_commit} scope={args.scope} rerun={args.rerun}")
 
     prev, cur = None, StageState.PLANNED
     for nxt in (StageState.READY, StageState.RUNNING):
@@ -492,25 +516,66 @@ def build_checks(mf, store, client, presentaciones, plan, engine, run_id, ident,
     escritos = [r for r in persisted if r["result"] == "DOWNLOADED"]
     sin_cambios = [r for r in persisted if r["result"] == "SIN_CAMBIOS"]
     if args.rerun:
-        idem_ok = not escritos
-        detalle = (f"rerun idempotente: escrituras nuevas={len(escritos)} (esperado 0), "
-                   f"SIN_CAMBIOS={len(sin_cambios)}/{len(persisted)}")
+        # Decision 2026-08-25: EMPRESA_PAGE/VISOR jamas repiten bytes crudos (ver
+        # rawstore.canonical_sha256), asi que "escrituras nuevas" ya NO mide
+        # idempotencia para ellos. Se compara contra el hash CANONICO de la
+        # corrida previa mas reciente para la misma (kind,key); BLOB/VALET_KEY
+        # no se ven afectados (su canonico == su sha256 crudo).
+        with engine.connect() as conn:
+            comparacion = conn.execute(text("""
+                SELECT cur.artifact_kind, cur.artifact_key,
+                       cur.canonical_sha256 AS cur_canon, prev.canonical_sha256 AS prev_canon
+                FROM fetch_raw.cnv_download_log cur
+                LEFT JOIN LATERAL (
+                    SELECT canonical_sha256
+                    FROM fetch_raw.cnv_download_log p
+                    WHERE p.artifact_kind = cur.artifact_kind AND p.artifact_key = cur.artifact_key
+                      AND p.run_id <> cur.run_id AND p.downloaded_at < cur.downloaded_at
+                    ORDER BY p.downloaded_at DESC LIMIT 1
+                ) prev ON true
+                WHERE cur.run_id = :run_id AND cur.canonical_sha256 IS NOT NULL
+            """), {"run_id": run_id}).mappings().all()
+        con_precedente = [r for r in comparacion if r["prev_canon"] is not None]
+        sin_precedente = [r for r in comparacion if r["prev_canon"] is None]
+        cambios_reales = [r for r in con_precedente if r["prev_canon"] != r["cur_canon"]]
+        idem_ok = not cambios_reales
+        detalle = (f"rerun idempotente por hash CANONICO (excluye ruido confirmado de "
+                   f"cache-busting/anti-forgery, no bytes crudos): comparados contra corrida "
+                   f"previa={len(con_precedente)}/{len(comparacion)}, sin_precedente={len(sin_precedente)}, "
+                   f"identicos en sustancia={len(con_precedente) - len(cambios_reales)}, "
+                   f"cambios reales={len(cambios_reales)} (esperado 0); "
+                   f"escrituras RAW nuevas={len(escritos)} de todos modos -- eso ya NO es lo que "
+                   f"este check mide, ver KNOWN ISSUES de idempotencia estructural")
+        evidencia = {"store_stats": store.stats, "rerun": args.rerun,
+                     "comparados_previa": len(con_precedente), "sin_precedente": len(sin_precedente),
+                     "cambios_reales": [{"kind": r["artifact_kind"], "key": r["artifact_key"]}
+                                        for r in cambios_reales][:10]}
     else:
         idem_ok = True
         detalle = (f"primera pasada: escritos={len(escritos)} reutilizados={len(sin_cambios)}; "
                    f"RAW direccionado por contenido, 0 sobreescrituras "
                    f"(bytes nuevos={store.stats['bytes_written']})")
+        evidencia = {"store_stats": store.stats, "rerun": args.rerun,
+                     "nuevos": [r["artifact_key"] for r in escritos][:10]}
     checks.append({"id": "C-C3-006", "blocking": True, "result": "PASS" if idem_ok else "FAIL",
-                   "detail": detalle,
-                   "evidence": {"store_stats": store.stats, "rerun": args.rerun,
-                                "nuevos": [r["artifact_key"] for r in escritos][:10]}})
+                   "detail": detalle, "evidence": evidencia})
 
     reviews = load_open_reviews()
-    estados = {r.get("review_id") or r.get("review"): (r.get("estado_c2") or r.get("estado"))
+    # Columnas reales de C2_CNV_IDENTITY_REVIEWS_V2.csv: review_id,...,status_prev,status,...
+    # (nombres en ingles). "estado"/"estado_c2" nunca existieron: sin este fallback
+    # la comparacion de abajo siempre veia None y pasaba en falso vacio.
+    estados = {r.get("review_id") or r.get("review"): (r.get("status") or r.get("estado_c2") or r.get("estado"))
                for r in reviews}
     cerradas = [rid for rid in REVIEWS_NO_CERRABLES
                 if estados.get(rid) and estados[rid] not in ("OPEN", "PARTIAL")]
     rel_declaradas = [p for p in presentaciones if p.relacion]
+    # F-039: el desglose se deriva de lo que la CNV declara, no de una lista
+    # cableada. La version anterior sumaba solo CONTROLADA y VINCULADA, asi que
+    # con YPF informaba "declaradas=584 (244+338)" -- los 2 CONTROLANTE
+    # desaparecian del informe sin que nada fallara. Un desglose que no cierra
+    # contra su propio total es un hallazgo perdido.
+    desglose_relaciones = ", ".join(
+        f"{v}={n}" for v, n in sorted(Counter(p.relacion for p in rel_declaradas).items()))
     rel_asumidas = [p for p in presentaciones
                     if p.relacion and p.relacion_origen != "DECLARADA"]
     subsidiarias_sin_relacion = [p for p in presentaciones
@@ -520,8 +585,7 @@ def build_checks(mf, store, client, presentaciones, plan, engine, run_id, ident,
         "id": "C-C3-007", "blocking": True, "result": "PASS" if ident_ok else "FAIL",
         "detail": f"identidad no inventada: reviews no cerrables intactas={len(REVIEWS_NO_CERRABLES) - len(cerradas)}"
                   f"/{len(REVIEWS_NO_CERRABLES)}; relaciones declaradas={len(rel_declaradas)} "
-                  f"(CONTROLADA={sum(1 for p in rel_declaradas if p.relacion=='CONTROLADA')}, "
-                  f"VINCULADA={sum(1 for p in rel_declaradas if p.relacion=='VINCULADA')}); "
+                  f"({desglose_relaciones}); "
                   f"0 relaciones asumidas; 0 entidades creadas por C3",
         "evidence": {"reviews_estado": estados, "cerradas_indebidamente": cerradas,
                      "relaciones_asumidas": [p.guid for p in rel_asumidas][:10],
@@ -607,14 +671,27 @@ def _close_stage(engine, run, cur, gate, blocked, checks, mf, started, settings,
                           "WHERE run_id=:run AND stage_id=:s)"),
                      {"r": report.to_json(), "g": gate.value, "run": run.run_id, "s": STAGE_ID})
         if gate is not GateStatus.BLOCK:
-            checkpoint_id = uuid.uuid4().hex
-            conn.execute(text("INSERT INTO engine.checkpoints (checkpoint_id, stage_id, run_id, "
-                              "input_hash, code_version, contract_version, artifact_ref) "
-                              "VALUES (:cid,:s,:r,:ih,:cv,:ctv,:ref)"),
-                         {"cid": checkpoint_id, "s": STAGE_ID, "r": run.run_id, "ih": report.hash_in,
-                          "cv": PIPELINE_VERSION, "ctv": "fetch_raw.cnv-v1",
-                          "ref": "pg://fetch_raw.cnv_* + fs://data/raw/engine/cnv"})
-    edb.finish_run(engine, run.run_id, "OK" if gate is not GateStatus.BLOCK else "BLOCKED")
+            # ux_checkpoints_reuse es UNIQUE(stage_id,input_hash,code_version,contract_version):
+            # dos corridas PASS/WARNING para la MISMA entidad (mismo hash_in, que depende solo de
+            # entity_key+cuit) deben REUSAR el checkpoint existente, no insertar uno nuevo -- eso
+            # es lo que el nombre del indice ya declaraba. Antes de este fix, la segunda corrida
+            # exitosa para el mismo CUIT crasheaba con IntegrityError sin manejar el conflicto
+            # (confirmado reproduciendolo: run4 crasheo asi al re-correr sobre CEPU sin --rerun).
+            new_checkpoint_id = uuid.uuid4().hex
+            checkpoint_id = conn.execute(text("""
+                INSERT INTO engine.checkpoints (checkpoint_id, stage_id, run_id,
+                    input_hash, code_version, contract_version, artifact_ref)
+                VALUES (:cid,:s,:r,:ih,:cv,:ctv,:ref)
+                ON CONFLICT (stage_id, input_hash, code_version, contract_version)
+                DO UPDATE SET run_id = EXCLUDED.run_id, artifact_ref = EXCLUDED.artifact_ref
+                RETURNING checkpoint_id
+            """), {"cid": new_checkpoint_id, "s": STAGE_ID, "r": run.run_id, "ih": report.hash_in,
+                   "cv": PIPELINE_VERSION, "ctv": "fetch_raw.cnv-v1",
+                   "ref": "pg://fetch_raw.cnv_* + fs://data/raw/engine/cnv"}).scalar_one()
+    # F-040: la etapa DECLARA el estado; el cierre lo hace `run_scope` en su
+    # `finally`. Llamar a finish_run desde aca era lo que dejaba la corrida
+    # abierta cuando el proceso moria antes de llegar a esta linea.
+    run.status = "OK" if gate is not GateStatus.BLOCK else "BLOCKED"
     return checkpoint_id
 
 

@@ -1,0 +1,147 @@
+[
+  {
+    "check": "cik_autoritativo_duplicado",
+    "ok": true,
+    "detalle": "0"
+  },
+  {
+    "check": "entidad_con_dos_cik_autoritativos",
+    "ok": true,
+    "detalle": "0"
+  },
+  {
+    "check": "identifiers_huerfanos",
+    "ok": true,
+    "detalle": "0"
+  },
+  {
+    "check": "contaminacion_de_tipo",
+    "ok": true,
+    "detalle": "0"
+  },
+  {
+    "check": "entidades_muertas_con_identidad",
+    "ok": true,
+    "detalle": "0"
+  },
+  {
+    "check": "verified_sin_evidencia",
+    "ok": true,
+    "detalle": "0"
+  },
+  {
+    "check": "human_decision_firmada_por_proceso",
+    "ok": true,
+    "detalle": "0"
+  },
+  {
+    "check": "entities == baseline",
+    "ok": true,
+    "detalle": "525"
+  },
+  {
+    "check": "assertions == baseline",
+    "ok": true,
+    "detalle": "614"
+  },
+  {
+    "check": "CIK autoritativos == baseline",
+    "ok": true,
+    "detalle": "513"
+  },
+  {
+    "check": "CUIT autoritativos == 3",
+    "ok": true,
+    "detalle": "3"
+  },
+  {
+    "check": "bridges VERIFIED == 3",
+    "ok": true,
+    "detalle": "3"
+  },
+  {
+    "check": "0 corridas RUNNING",
+    "ok": true,
+    "detalle": "0"
+  },
+  {
+    "check": "SEC S03: units DIVIDED sin num/den == 0",
+    "ok": true,
+    "detalle": ""
+  },
+  {
+    "check": "SEC S04: fact_key duplicados == 0",
+    "ok": true,
+    "detalle": ""
+  },
+  {
+    "check": "SEC: checkpoints en corrida no-OK == 0",
+    "ok": true,
+    "detalle": ""
+  },
+  {
+    "check": "CNV: alcance explicito (3 empresas)",
+    "ok": true,
+    "detalle": "3 con CUIT ratificado"
+  },
+  {
+    "check": "0 migraciones pendientes (engine)",
+    "ok": true,
+    "detalle": "29/29"
+  },
+  {
+    "check": "15 triggers activos",
+    "ok": true,
+    "detalle": "15"
+  },
+  {
+    "check": "27 CHECKs",
+    "ok": true,
+    "detalle": "27"
+  },
+  {
+    "check": "hashout determinista 5/5",
+    "ok": true,
+    "detalle": ""
+  },
+  {
+    "check": "Market: 584 instrumentos con venue_ticker",
+    "ok": true,
+    "detalle": "584"
+  },
+  {
+    "check": "Market: M23 577 SUCCESS todas con sha256",
+    "ok": true,
+    "detalle": "577"
+  },
+  {
+    "check": "Market: 0 FAILED declarando datos",
+    "ok": true,
+    "detalle": ""
+  },
+  {
+    "check": "0 cambios en data/raw",
+    "ok": true,
+    "detalle": "sin modificaciones"
+  },
+  {
+    "check": "entregable CATALAXIA_V1_BASELINE.json",
+    "ok": true,
+    "detalle": ""
+  },
+  {
+    "check": "entregable CATALAXIA_V1_MANIFEST.json",
+    "ok": true,
+    "detalle": ""
+  },
+  {
+    "check": "entregable CATALAXIA_V1_RELEASE.md",
+    "ok": true,
+    "detalle": ""
+  },
+  {
+    "check": "entregable POST_V1_BACKLOG.md",
+    "ok": true,
+    "detalle": ""
+  }
+]

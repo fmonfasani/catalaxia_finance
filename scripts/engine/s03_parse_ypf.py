@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import sys
 import time
 import tracemalloc
@@ -16,7 +17,8 @@ sys.path.insert(0, str(REPO_ROOT))
 from sqlalchemy import text  # noqa: E402
 from psycopg2.extras import execute_values  # noqa: E402
 
-from engine import db as edb  # noqa: E402
+from engine import db as edb
+from engine import hashout  # noqa: E402
 from engine.config import load_settings  # noqa: E402
 from engine.fetch import RAW_ROOT, sha256_bytes  # noqa: E402
 from engine.identity import resolve_golden_ypf  # noqa: E402
@@ -70,8 +72,8 @@ ERR_COLS = ("run_id", "entity_id", "accession_number", "source_file", "severity"
 JSONB_TEMPLATES = {
     "parsed.facts": "(" + "%s," * 26 + "%s::jsonb," + "%s," * 6 + "%s)",
     "parsed.contexts": "(" + "%s," * 10 + "%s::jsonb,%s::jsonb," + "%s," * 3 + "%s)",
-    "parsed.units": "(" + "%s," * 5 + "%s::jsonb,%s::jsonb,%s::jsonb,%s,%s)",
-    "parsed.pre_xbrl_filings": "(" + "%s," * 10 + "%s::jsonb," + "%s," * 3 + "%s)",
+    "parsed.units": "(" + "%s," * 5 + "%s::jsonb,%s::jsonb,%s::jsonb,%s,%s,%s)",
+    "parsed.pre_xbrl_filings": "(" + "%s," * 10 + "%s::jsonb," + "%s," * 2 + "%s)",
     "parsed.companyfacts_compare": "(%s,%s,%s,%s,%s,%s,%s,%s,%s::jsonb,%s,%s,%s,%s)",
 }
 PARSED_TABLES = ("parsed.facts", "parsed.contexts", "parsed.units", "parsed.concepts",
@@ -237,11 +239,11 @@ def parse_filing(acc: str, bucket: dict, run, stage_run_id: int) -> dict:
                 not any(s in (c.taxonomy or "") for s in STANDARD_HINTS),
                 c.taxonomy, src)
 
-    def rel_row(rel, src):
+    def rel_row(rel, src, src_hash):
         return (run.run_id, run.entity_id, acc, rel.linkbase, rel.role, rel.from_qname,
                 rel.to_qname, rel.arc_role, rel.weight, rel.order_num, rel.label_type,
                 rel.lang, rel.label_text, rel.preferred_sign, rel.dimension_qname,
-                rel.member_qname, src)
+                rel.member_qname, src, src_hash)
 
     for r in sorted(bucket["files"], key=lambda x: x["request_kind"]):
         kind = r["request_kind"]
@@ -278,8 +280,9 @@ def parse_filing(acc: str, bucket: dict, run, stage_run_id: int) -> dict:
                                 out["concept_rows"].append(concept_row(c, f"{src_name}!{m}"))
                         elif low.endswith(("_pre.xml", "_cal.xml", "_defr.xml", "_def.xml", "_lab.xml")):
                             out["metrics"]["linkbases"] += 1
+                            m_hash = sha256_bytes(mdata)
                             for rel in parse_linkbase_bytes(mdata, Path(m).name):
-                                out["rel_rows"].append(rel_row(rel, f"{src_name}!{m}"))
+                                out["rel_rows"].append(rel_row(rel, f"{src_name}!{m}", m_hash))
             elif kind == "XBRL_INSTANCE":
                 if consume_instance(data, "XBRL_INSTANCE", src_name, r["raw_path"], r["sha256"]):
                     out["metrics"]["instances"] += 1
@@ -290,7 +293,7 @@ def parse_filing(acc: str, bucket: dict, run, stage_run_id: int) -> dict:
             elif kind in {"LINKBASE_PRE", "LINKBASE_CAL", "LINKBASE_DEF", "LINKBASE_LAB"}:
                 out["metrics"]["linkbases"] += 1
                 for rel in parse_linkbase_bytes(data, src_name):
-                    out["rel_rows"].append(rel_row(rel, src_name))
+                    out["rel_rows"].append(rel_row(rel, src_name, r["sha256"]))
             elif kind == "FILING_INDEX":
                 out["metrics"]["indexes"] += 1
             out["metrics"]["payload_files"] += 1
@@ -320,15 +323,49 @@ def parse_filing(acc: str, bucket: dict, run, stage_run_id: int) -> dict:
 
 
 def main() -> int:
+    """Envoltorio: setup + ciclo de vida GARANTIZADO (F-031).
+
+    S03 usaba `start_run` al principio y `finish_run` suelto al final. Cualquier
+    excepcion en el medio —y hubo cinco en esta serie: permisos de DDL, permisos
+    de DELETE, permisos de secuencia, statement_timeout, ANALYZE salteado— dejaba
+    la corrida en RUNNING para siempre. Ocho corridas huerfanas en total.
+
+    `run_scope()` pone el cierre en `finally`: si el cuerpo levanta, la corrida
+    queda ABORTED con `finished_at`. Es el mismo patron que S04, que corrio
+    siete veces en la misma serie sin dejar una sola huerfana.
+
+    No se toca el parsing, la normalizacion ni los contratos de datos: el cuerpo
+    de la etapa se movio entero a `_etapa`, sin reindentar ni reordenar nada.
+    """
     settings = load_settings()
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     print(f"[config] target={settings.describe()} scope=GOLDEN_CASE:YPF:{STAGE_ID}")
     engine = edb.get_engine(settings)
-    applied = edb.apply_migrations(engine)
+    applied = edb.apply_migrations(engine, settings=settings)
     print(f"[migrations] aplicadas ahora: {applied or '(ninguna nueva)'}")
 
-    run = edb.start_run(engine, settings, PIPELINE_VERSION)
-    print(f"[run] run_id={run.run_id} git={run.git_commit}")
+    huerfanas = edb.corridas_huerfanas(engine)
+    if huerfanas:
+        print(f"BLOCK · F-009: hay {len(huerfanas)} corrida(s) huerfana(s). "
+              "Cerrarlas antes de generar mas.")
+        for h in huerfanas:
+            print(f"   {h['run_id']} {h['pipeline_version']} {h['horas']} h")
+        return 1
+
+    with edb.run_scope(engine, settings, PIPELINE_VERSION) as run:
+        print(f"[run] run_id={run.run_id} git={run.git_commit}")
+        return _etapa(engine, settings, run)
+
+
+def _etapa(engine, settings, run) -> int:
+    """Cuerpo de la etapa. Identico al que estaba en `main`, sin cambios."""
+    # Mecanismo de PRUEBA del ciclo de vida (F-031): permite provocar un fallo
+    # en un punto conocido para verificar que la corrida quede ABORTED.
+    # No altera el parsing ni los datos.
+    punto_falla = os.environ.get("S03_SIMULAR_FALLO")
+    if punto_falla == "INICIO":
+        raise RuntimeError("fallo simulado (F-031): antes de parsear")
+
     prev_state: StageState | None = None
     cur_state = StageState.PLANNED
     for nxt in (StageState.READY, StageState.RUNNING):
@@ -385,6 +422,7 @@ def main() -> int:
             n_facts = insert_many(cur, "parsed.facts", FACT_COLS, res["facts_rows"])
             insert_many(cur, "parsed.contexts", CTX_COLS, res["ctx_rows"])
             insert_many(cur, "parsed.units", UNIT_COLS, res["unit_rows"])
+            insert_many(cur, "parsed.link_relations", REL_COLS, res["rel_rows"])
             print(f"[filing] {res['meta'].get('form')} {acc} -> {res['outcome']} facts={n_facts} "
                   f"ctx={len(res['ctx_rows'])} units={len(res['unit_rows'])} "
                   f"rels={len(res['rel_rows'])} inline={res['metrics']['inline_docs']} t={res['seconds']}s")
@@ -434,7 +472,7 @@ def main() -> int:
                              j(cf["unit_kinds"]) if cf and cf["unit_kinds"] else None,
                              cf["first_period"] if cf else None, cf["last_period"] if cf else None,
                              fa["obs"] if fa else None, "; ".join(notes_parts) or None))
-        insert_many(conn, "parsed.companyfacts_compare", CMP_COLS, cmp_rows)
+        insert_many(cur, "parsed.companyfacts_compare", CMP_COLS, cmp_rows)
 
         for res in filing_results:
             if res["outcome"] == "PRE_XBRL":
@@ -448,7 +486,7 @@ def main() -> int:
                     sum(r["bytes"] or 0 for r in buckets[res["acc"]]["files"]),
                     "PRE_XBRL",
                     "era sin XBRL estructurado (FY2001-FY2017): documento preservado en RAW, sin hechos parseables; NO se intento conversion automatica HTML->XBRL"))
-        insert_many(conn, "parsed.pre_xbrl_filings", PX_COLS, px_rows)
+        insert_many(cur, "parsed.pre_xbrl_filings", PX_COLS, px_rows)
 
         for res in filing_results:
             for e in res["errors"]:
@@ -457,7 +495,49 @@ def main() -> int:
         for b in files_bad:
             err_rows.append((run.run_id, ent["entity_id"], b.get("acc"), b["raw_path"],
                              "ERROR", b["reason"], "input RAW corrompido o ausente"))
-        insert_many(conn, "parsed.parse_errors", ERR_COLS, err_rows)
+        insert_many(cur, "parsed.parse_errors", ERR_COLS, err_rows)
+        raw.commit()
+
+        # F-028 — ANALYZE despues del replace-all, antes de validar.
+        #
+        # S03 vacia parsed.* y recarga ~67k filas. Las estadisticas del planner
+        # quedan describiendo las filas viejas, y la validacion de integridad
+        # facts<->contexts elige un plan que se pasa del statement_timeout:
+        #     QueryCanceled: canceling statement due to statement timeout
+        # La corrida moria DESPUES de haber escrito todo, y el trabajo se perdia.
+        #
+        # ANALYZE sobre los 8 objetos tarda ~3 s. Subir el timeout habria tapado
+        # el sintoma dejando el plan malo.
+        t_analyze = time.perf_counter()
+        cur.execute("SELECT now()")
+        t0_db = cur.fetchone()[0]
+        for table in PARSED_TABLES:
+            cur.execute(f"ANALYZE {table}")
+        raw.commit()
+
+        # ANALYZE sin privilegio NO falla: emite
+        #     WARNING: permission denied to analyze "facts", skipping it
+        # y devuelve exito. Un script que no mira los warnings cree que
+        # analizo. Se verifica contra pg_stat_user_tables que las estadisticas
+        # se hayan actualizado de verdad, y se aborta si no.
+        cur.execute(
+            "SELECT relname FROM pg_stat_user_tables "
+            " WHERE schemaname='parsed' AND relname = ANY(%s) "
+            "   AND (last_analyze IS NULL OR last_analyze < %s)",
+            ([t.split('.', 1)[1] for t in PARSED_TABLES], t0_db))
+        sin_analizar = [r[0] for r in cur.fetchall()]
+        if sin_analizar:
+            raise RuntimeError(
+                f"F-028: ANALYZE no se aplico sobre {sin_analizar}. "
+                "Postgres saltea con warning cuando el rol no es dueño de la tabla; "
+                "verificar el OWNER (migracion 019).")
+        print(f"[analyze] estadisticas actualizadas y VERIFICADAS sobre "
+              f"{len(PARSED_TABLES)} tablas t={round(time.perf_counter() - t_analyze, 2)}s")
+    except Exception:
+        raw.rollback()
+        raise
+    finally:
+        raw.close()
 
     _cur_alloc, peak_alloc = tracemalloc.get_traced_memory()
     tracemalloc.stop()
@@ -499,6 +579,11 @@ def main() -> int:
 
     dangling_ctx = dangling_unit = prov_viol = 0
     with engine.connect() as conn:
+        # Bulk insert recien commiteado: sin esto el planner usa estadisticas
+        # viejas/inexistentes y el NOT EXISTS de abajo cae a seq scan pese a
+        # los indices de 006_s03_context_unit_indexes.sql, superando el
+        # statement_timeout de 120s (visto en corridas reales sobre ~67k facts).
+        conn.execute(text("ANALYZE parsed.facts, parsed.contexts, parsed.units"))
         dangling_ctx = conn.execute(text("""
             SELECT count(*) FROM parsed.facts f
              WHERE f.run_id=:r AND f.context_id IS NOT NULL
@@ -630,19 +715,43 @@ def main() -> int:
     )
     report.validate()
 
+    # F-029 — hash_out basado en CONTENIDO, no en conteos.
+    # `hashout-v1` (los 5 conteos) queda como `hash_out_v1` para poder contrastar
+    # con los checkpoints historicos, pero el hash que representa la salida de la
+    # etapa pasa a ser el digest de contenido. Ver docs/architecture/HASH_OUT_CONTRACT.md
+    with engine.connect() as conn:
+        h2 = hashout.hash_out(conn, list(PARSED_TABLES[:5]))
+    report_json = json.loads(report.to_json())
+    report_json["integrity"]["hash_out_v1"] = report_json["integrity"]["hash_out"]
+    report_json["integrity"]["hash_out"] = h2["hash_out"]
+    report_json["integrity"]["hash_spec"] = h2["hash_spec"]
+    report_json["integrity"]["por_tabla"] = h2["por_tabla"]
+    print(f"[hash_out] {h2['hash_spec']} = {h2['hash_out']}")
+
     with engine.begin() as conn:
         conn.execute(text("UPDATE engine.stage_runs SET report = CAST(:r AS JSONB), finished_at=now(), "
                           "gate_status=:g WHERE id=(SELECT max(id) FROM engine.stage_runs "
                           "WHERE run_id=:run AND stage_id=:s)"),
-                     {"r": report.to_json(), "g": gate.value, "run": run.run_id, "s": STAGE_ID})
+                     {"r": json.dumps(report_json, ensure_ascii=False), "g": gate.value,
+                      "run": run.run_id, "s": STAGE_ID})
         if gate is not GateStatus.BLOCK:
+            # ON CONFLICT sobre ux_checkpoints_reuse: re-corrida con mismo
+            # input+code+contract es un "checkpoint hit" por diseño
+            # (STAGE_GRAPH.md S4), no un error. parsed.* ya es replace-all,
+            # asi que el checkpoint debe apuntar a la corrida mas reciente.
             conn.execute(text("INSERT INTO engine.checkpoints "
                               "(checkpoint_id, stage_id, run_id, input_hash, code_version, contract_version, artifact_ref) "
-                              "VALUES (:cid,:s,:r,:ih,:cv,:ctv,:ref)"),
+                              "VALUES (:cid,:s,:r,:ih,:cv,:ctv,:ref) "
+                              "ON CONFLICT (stage_id, input_hash, code_version, contract_version) "
+                              "DO UPDATE SET checkpoint_id=EXCLUDED.checkpoint_id, run_id=EXCLUDED.run_id, "
+                              "artifact_ref=EXCLUDED.artifact_ref, created_at=now()"),
                          {"cid": run.run_id[:16] + "-s03", "s": STAGE_ID, "r": run.run_id,
                           "ih": report.hash_in, "cv": PIPELINE_VERSION, "ctv": "parsed-v1",
                           "ref": "pg://parsed.* + fs://outputs/docs/fase_s03"})
-    edb.finish_run(engine, run.run_id, "OK" if gate is GateStatus.PASS else "BLOCKED")
+    # F-031: el estado lo fija el cuerpo y lo PERSISTE run_scope en su `finally`.
+    run.status = "OK" if gate is GateStatus.PASS else "BLOCKED"
+    if punto_falla == "FIN":
+        raise RuntimeError("fallo simulado (F-031): despues del checkpoint")
 
     validation = {
         "run_id": run.run_id, "git_commit": run.git_commit, "mode": settings.mode,
@@ -695,7 +804,7 @@ def write_outputs(run, filing_results, px_rows, cmp_rows, err_rows, checks,
     ws = wb.create_sheet("01_Summary")
     ws.append(["metrica", "valor"])
     for k, v in metrics.items():
-        ws.append([k, v])
+        ws.append([k, j(v) if isinstance(v, (dict, list)) else v])
 
     ws = wb.create_sheet("02_Filings")
     ws.append(["accession", "form", "filing_date", "period", "outcome", "facts",

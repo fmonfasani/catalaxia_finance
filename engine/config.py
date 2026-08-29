@@ -28,11 +28,28 @@ class Settings:
     db_password: str
     mode: str
     allow_prod: bool
+    admin_user: str = "catalaxia"
+    admin_password: str = ""
 
     @property
     def url(self) -> str:
         return (
             f"postgresql+psycopg2://{self.db_user}:{self.db_password}"
+            f"@{self.db_host}:{self.db_port}/{self.db_name}"
+        )
+
+    @property
+    def admin_url(self) -> str:
+        """Conexion privilegiada. SOLO migraciones y arnes de tests.
+
+        F-025: la aplicacion corre como `catalaxia_engine`, que no es
+        superusuario y por lo tanto NO puede desactivar los triggers de
+        inmutabilidad (F-015) ni de no-borrado (F-017). Aplicar DDL y limpiar
+        el schema en los tests si requieren privilegio; son operaciones
+        administrativas y se hacen por esta via, explicitamente.
+        """
+        return (
+            f"postgresql+psycopg2://{self.admin_user}:{self.admin_password}"
             f"@{self.db_host}:{self.db_port}/{self.db_name}"
         )
 
@@ -50,10 +67,14 @@ def load_settings() -> Settings:
         db_host=env.get("ENGINE_DB_HOST", "127.0.0.1"),
         db_port=env.get("ENGINE_DB_PORT", "5433"),
         db_name=env.get("ENGINE_DB_NAME", "catalaxia"),
-        db_user=env.get("ENGINE_DB_USER", "catalaxia"),
+        # F-025: la aplicacion NO corre como superusuario. Ver migracion 011.
+        db_user=env.get("ENGINE_DB_USER", "catalaxia_engine"),
         db_password=env.get("ENGINE_DB_PASSWORD", env.get("POSTGRES_PASSWORD", "")),
         mode=env.get("ENGINE_MODE", "FAST").upper(),
         allow_prod=env.get("ENGINE_ALLOW_PROD", "0") == "1",
+        admin_user=env.get("ENGINE_ADMIN_DB_USER", "catalaxia"),
+        admin_password=env.get("ENGINE_ADMIN_DB_PASSWORD",
+                               env.get("POSTGRES_PASSWORD", "")),
     )
     if settings.mode not in {"FAST", "FULL", "AUDIT"}:
         raise ValueError(f"ENGINE_MODE invalido: {settings.mode}")

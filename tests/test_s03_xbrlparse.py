@@ -34,8 +34,8 @@ INSTANCE_FULL = f"""<?xml version="1.0" encoding="UTF-8"?>
     <xbrli:period><xbrli:instant>2025-12-31</xbrli:instant></xbrli:period>
     <xbrli:scenario>
       <ypf:SegmentAxis dimension="ypf:SegmentAxis"/>
-      <xbrldi:explicitMember xmlns:xbrldi="http://xbrl.org/2005/xbrldt" dimension="us-gaap:StatementBusinessSegmentsAxis">ypf:UpstreamMember</xbrldi:explicitMember>
-      <xbrldi:typedMember xmlns:xbrldi="http://xbrl.org/2005/xbrldt" dimension="ypf:ContractTypeTypedAxis"><ypf:ContractType>Petrol</ypf:ContractType></xbrldi:typedMember>
+      <xbrldi:explicitMember xmlns:xbrldi="http://xbrl.org/2006/xbrldi" dimension="us-gaap:StatementBusinessSegmentsAxis">ypf:UpstreamMember</xbrldi:explicitMember>
+      <xbrldi:typedMember xmlns:xbrldi="http://xbrl.org/2006/xbrldi" dimension="ypf:ContractTypeTypedAxis"><ypf:ContractType>Petrol</ypf:ContractType></xbrldi:typedMember>
     </xbrli:scenario>
   </xbrli:context>
   <xbrli:unit id="u_bbl">
@@ -43,8 +43,8 @@ INSTANCE_FULL = f"""<?xml version="1.0" encoding="UTF-8"?>
   </xbrli:unit>
   <xbrli:unit id="u_per">
     <xbrli:divide>
-      <xbrli:numerator><xbrli:measure>iso4217:USD</xbrli:measure></xbrli:numerator>
-      <xbrli:denominator><xbrli:measure>xbrli:shares</xbrli:measure></xbrli:denominator>
+      <xbrli:unitNumerator><xbrli:measure>iso4217:USD</xbrli:measure></xbrli:unitNumerator>
+      <xbrli:unitDenominator><xbrli:measure>xbrli:shares</xbrli:measure></xbrli:unitDenominator>
     </xbrli:divide>
   </xbrli:unit>
   <us-gaap:Assets contextRef="c_inst" unitRef="u_bbl" decimals="-6">12345000000</us-gaap:Assets>
@@ -127,6 +127,11 @@ class TestInstance:
         assert u.measures == ["iso4217:USD"]
 
     def test_unidad_dividida(self):
+        """F-026: el fixture decia <numerator>/<denominator>, que NO existen en
+        XBRL 2.1. Compartia el error con el parser, asi que este test daba PASS
+        validando el comportamiento equivocado — por eso el bug sobrevivio a
+        18/18 tests en la auditoria del ciclo 2. Ahora usa los nombres reales.
+        """
         u = self.res.units["u_per"]
         assert u.unit_type == "DIVIDED"
         assert u.numerator == ["iso4217:USD"]
@@ -243,3 +248,57 @@ class TestCompanyFacts:
 def test_smoke_parse(content, ok):
     res = parse_instance_bytes(content.encode() if isinstance(content, str) else content)
     assert (res.stats.get("facts", 0) > 0) is ok or bool(res.errors) != ok
+
+
+# ===========================================================================
+# F-026 — unidades DIVIDED: unitNumerator / unitDenominator
+# ===========================================================================
+def test_f026_unidad_divided_extrae_numerador_y_denominador():
+    """Los elementos se llaman unitNumerator/unitDenominator, no numerator.
+
+    Con los nombres equivocados `findall` devolvia vacio en silencio y las 32
+    unidades DIVIDED de YPF perdian su composicion, dejando 436 hechos
+    (precios por accion y por barril) sin unidad resoluble.
+    """
+    from lxml import etree
+    from engine.xbrlparse import XBRLI_NS, parse_unit
+
+    xml = f"""<unit xmlns="{XBRLI_NS}" id="iso4217_ARS_per_shares">
+        <divide>
+          <unitNumerator><measure>iso4217:ARS</measure></unitNumerator>
+          <unitDenominator><measure>shares</measure></unitDenominator>
+        </divide>
+      </unit>"""
+    u = parse_unit(etree.fromstring(xml))
+    assert u.unit_type == "DIVIDED"
+    assert u.numerator == ["iso4217:ARS"], "el numerador no se extrajo"
+    assert u.denominator == ["shares"], "el denominador no se extrajo"
+
+
+def test_f026_unidad_simple_no_se_rompe():
+    from lxml import etree
+    from engine.xbrlparse import XBRLI_NS, parse_unit
+
+    xml = f'<unit xmlns="{XBRLI_NS}" id="U1"><measure>iso4217:USD</measure></unit>'
+    u = parse_unit(etree.fromstring(xml))
+    assert (u.unit_type, u.measures, u.numerator, u.denominator) == \
+           ("SIMPLE", ["iso4217:USD"], [], [])
+
+
+def test_f026_contra_el_raw_real_de_ypf():
+    """Sobre el XBRL original, no un fixture."""
+    from pathlib import Path
+
+    from lxml import etree
+    from engine.xbrlparse import XBRLI_NS, parse_unit
+
+    raw = (Path(__file__).resolve().parents[1] / "data" / "raw" / "edgar_pilot_ypf" /
+           "filings" / "000119312518127245" / "ypf-20171231.xml")
+    if not raw.exists():
+        pytest.skip("RAW no disponible")
+    divididas = [parse_unit(el) for el in etree.parse(str(raw)).getroot()
+                 .findall(f"{{{XBRLI_NS}}}unit")]
+    divididas = [u for u in divididas if u.unit_type == "DIVIDED"]
+    assert divididas, "el RAW de YPF tiene unidades DIVIDED"
+    for u in divididas:
+        assert u.numerator and u.denominator, f"{u.unit_ref} quedo sin partes"
