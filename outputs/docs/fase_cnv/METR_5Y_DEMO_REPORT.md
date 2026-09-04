@@ -395,8 +395,13 @@ FY2021.
 
 * re-ingesta canónica: `0 insertados · 4.648 reusados`, digest
   `9134ba5fc0849c34db66494c324f25b4` antes y después;
-* salidas: los 5 archivos **byte-idénticos** entre dos corridas
+* salidas: los 4 CSV y el JSON, **byte-idénticos** entre dos corridas
   (`METR_5Y_DEMO.csv` md5 `b58079cd02750bf1db04ac8c7aa4f7af`).
+
+El `.xlsx` es la excepción y conviene decirlo con precisión: **no** es
+byte-idéntico, porque openpyxl escribe la fecha de creación dentro del zip. Su
+**contenido sí lo es** — 1.746 celdas comparadas entre dos reconstrucciones, 0
+diferencias. La idempotencia es de los datos; el envoltorio lleva un reloj.
 
 **Reconstruible desde checkpoints**: la ingesta lleva
 `input_checkpoint_id = c4-30657863676` y `run_id` por corrida. Se reconstruyó de
