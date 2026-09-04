@@ -1,0 +1,45 @@
+fy,ratio,categoria,formula,motivo
+2021,net_income_growth,growth,c.resultado_neto / p.resultado_neto - 1,"NO_SIGNIFICATIVO: base del ejercicio anterior p.resultado_neto = -5,400,659,000.0000 <= 0"
+2021,eps_growth,growth,c.eps_basico / p.eps_basico - 1,NO_SIGNIFICATIVO: base del ejercicio anterior p.eps_basico = -9.6100 <= 0
+2021,fcf_growth,growth,c.fcf / p.fcf - 1,INPUT_FALTANTE: c.fcf
+2021,fcf_margin,margin,c.fcf / c.ingresos,INPUT_FALTANTE: c.fcf
+2021,roic,return,c.resultado_operativo * (1 - c.tasa_impositiva_efectiva) / (c.deuda_financiera_total + c.patrimonio),"NO_SIGNIFICATIVO: denominador c.resultado_operativo = -2,159,025,000.0000 <= 0"
+2021,interest_coverage,leverage,c.resultado_operativo / abs(c.costo_financiero),"NO_SIGNIFICATIVO: denominador c.resultado_operativo = -2,159,025,000.0000 <= 0"
+2021,fcf_to_debt,leverage,c.fcf / c.deuda_financiera_total,INPUT_FALTANTE: c.fcf
+2021,fcf_yield,cashflow,c.fcf / m.market_cap,INPUT_FALTANTE: c.fcf
+2021,fcf_to_net_income,cashflow,c.fcf / c.resultado_neto,INPUT_FALTANTE: c.fcf
+2021,pe,valuation,m.price / c.eps_basico,NO_SIGNIFICATIVO: denominador c.eps_basico = -7.7200 <= 0
+2021,price_to_fcf,valuation,m.market_cap / c.fcf,INPUT_FALTANTE: c.fcf
+2021,ev_to_ebit,valuation,m.ev / c.resultado_operativo,"NO_SIGNIFICATIVO: denominador c.resultado_operativo = -2,159,025,000.0000 <= 0"
+2021,fcf_to_ev,valuation,c.fcf / m.ev,INPUT_FALTANTE: c.fcf
+2021,effective_tax_rate,efficiency,-c.impuesto / c.resultado_antes_impuestos,"NO_SIGNIFICATIVO: denominador c.resultado_antes_impuestos = -616,380,000.0000 <= 0"
+2022,net_income_growth,growth,c.resultado_neto / p.resultado_neto - 1,"NO_SIGNIFICATIVO: base del ejercicio anterior p.resultado_neto = -4,368,710,000.0000 <= 0"
+2022,eps_growth,growth,c.eps_basico / p.eps_basico - 1,NO_SIGNIFICATIVO: base del ejercicio anterior p.eps_basico = -7.7200 <= 0
+2022,fcf_growth,growth,c.fcf / p.fcf - 1,INPUT_FALTANTE: c.fcf
+2022,fcf_margin,margin,c.fcf / c.ingresos,INPUT_FALTANTE: c.fcf
+2022,fcf_to_debt,leverage,c.fcf / c.deuda_financiera_total,INPUT_FALTANTE: c.fcf
+2022,fcf_yield,cashflow,c.fcf / m.market_cap,INPUT_FALTANTE: c.fcf
+2022,fcf_to_net_income,cashflow,c.fcf / c.resultado_neto,INPUT_FALTANTE: c.fcf
+2022,price_to_fcf,valuation,m.market_cap / c.fcf,INPUT_FALTANTE: c.fcf
+2022,fcf_to_ev,valuation,c.fcf / m.ev,INPUT_FALTANTE: c.fcf
+2023,fcf_growth,growth,c.fcf / p.fcf - 1,INPUT_FALTANTE: c.fcf
+2023,fcf_margin,margin,c.fcf / c.ingresos,INPUT_FALTANTE: c.fcf
+2023,fcf_to_debt,leverage,c.fcf / c.deuda_financiera_total,INPUT_FALTANTE: c.fcf
+2023,fcf_yield,cashflow,c.fcf / m.market_cap,INPUT_FALTANTE: c.fcf
+2023,fcf_to_net_income,cashflow,c.fcf / c.resultado_neto,INPUT_FALTANTE: c.fcf
+2023,price_to_fcf,valuation,m.market_cap / c.fcf,INPUT_FALTANTE: c.fcf
+2023,fcf_to_ev,valuation,c.fcf / m.ev,INPUT_FALTANTE: c.fcf
+2024,fcf_growth,growth,c.fcf / p.fcf - 1,INPUT_FALTANTE: c.fcf
+2024,fcf_margin,margin,c.fcf / c.ingresos,INPUT_FALTANTE: c.fcf
+2024,fcf_to_debt,leverage,c.fcf / c.deuda_financiera_total,INPUT_FALTANTE: c.fcf
+2024,fcf_yield,cashflow,c.fcf / m.market_cap,INPUT_FALTANTE: c.fcf
+2024,fcf_to_net_income,cashflow,c.fcf / c.resultado_neto,INPUT_FALTANTE: c.fcf
+2024,price_to_fcf,valuation,m.market_cap / c.fcf,INPUT_FALTANTE: c.fcf
+2024,fcf_to_ev,valuation,c.fcf / m.ev,INPUT_FALTANTE: c.fcf
+2025,fcf_growth,growth,c.fcf / p.fcf - 1,INPUT_FALTANTE: c.fcf
+2025,fcf_margin,margin,c.fcf / c.ingresos,INPUT_FALTANTE: c.fcf
+2025,fcf_to_debt,leverage,c.fcf / c.deuda_financiera_total,INPUT_FALTANTE: c.fcf
+2025,fcf_yield,cashflow,c.fcf / m.market_cap,INPUT_FALTANTE: c.fcf
+2025,fcf_to_net_income,cashflow,c.fcf / c.resultado_neto,INPUT_FALTANTE: c.fcf
+2025,price_to_fcf,valuation,m.market_cap / c.fcf,INPUT_FALTANTE: c.fcf
+2025,fcf_to_ev,valuation,c.fcf / m.ev,INPUT_FALTANTE: c.fcf
