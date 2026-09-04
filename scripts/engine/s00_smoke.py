@@ -28,13 +28,32 @@ def main() -> int:
     applied = edb.apply_migrations(engine)
     print(f"[migrations] aplicadas ahora: {applied or '(ninguna nueva)'}")
 
-    run = edb.start_run(engine, settings, PIPELINE_VERSION)
-    print(f"[run] run_id={run.run_id} git={run.git_commit}")
+
+    # F-050: el cierre va en `finally` (run_scope). Antes, `start_run` abria
+    # aca y `finish_run` cerraba decenas de lineas mas abajo: cualquier
+    # excepcion en el medio dejaba la corrida en RUNNING para siempre. Es el
+    # mismo patron que F-031 aplico a S03 y F-040 a C3.
+    huerfanas = edb.corridas_huerfanas(engine)
+    if huerfanas:
+        print(f"[huerfanas] {len(huerfanas)} corridas previas quedaron en RUNNING:")
+        for h in huerfanas[:5]:
+            print(f"   {h['run_id'][:12]} {h['pipeline_version']} hace {h['horas']}h")
+    with edb.run_scope(engine, settings, PIPELINE_VERSION) as run:
+        print(f"[run] run_id={run.run_id} git={run.git_commit}")
+        return _correr(engine, settings, run)
+
+
+def _correr(engine, settings, run) -> int:
+    """Cuerpo de la etapa. Fija `run.status`; NUNCA llama a finish_run (F-050)."""
 
     checks: list[dict] = []
     with engine.connect() as conn:
         mig = conn.execute(
-            text("SELECT count(*) FROM engine.schema_migrations WHERE filename = '001_s00_bootstrap.sql'")
+            # F-051: el runner registra con prefijo de directorio
+            # (`engine/001_…`). Se aceptan AMBOS formatos: las bases anteriores
+            # a F-051 guardan el nombre desnudo. Ver MIGRATIONS_CONTRACT.md.
+            text("SELECT count(*) FROM engine.schema_migrations "
+                 " WHERE filename IN ('001_s00_bootstrap.sql', 'engine/001_s00_bootstrap.sql')")
         ).scalar_one()
         checks.append({"id": "C-S00-001", "result": "PASS" if mig == 1 else "FAIL", "blocking": True,
                        "detail": f"schema_migrations registra 001_s00_bootstrap.sql ({mig})"})
@@ -103,8 +122,7 @@ def main() -> int:
                 },
             )
 
-    final_status = "OK" if gate is GateStatus.PASS else "BLOCKED"
-    edb.finish_run(engine, run.run_id, final_status)
+    run.status = "OK" if gate is GateStatus.PASS else "BLOCKED"
 
     print(report.to_json())
     print("--- conciliacion ---")

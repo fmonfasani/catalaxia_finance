@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import re
@@ -26,6 +27,14 @@ SCRIPT = "scripts/engine/s02_fetch_ypf.py"
 OUT_DIR = REPO_ROOT / "outputs" / "docs" / "fase_s02"
 SCOPE_RULE = "FAST:YPF:v1"
 GOLDEN_CIK = "0000904851"
+# El emisor y el formulario dejan de estar fijados en el codigo. Los defaults
+# reproducen exactamente el comportamiento homologado (YPF, 20-F, sin tope);
+# `--cik/--forms/--max-filings` permiten ingerir el resto del universo.
+#
+# El formulario NO es un detalle: un emisor extranjero presenta 20-F y uno
+# domestico 10-K. Con el filtro fijo en 20-F, AAPL/MSFT/NVDA daban 0 filings.
+FORMS = ("20-F", "20-F/A")
+MAX_FILINGS = 0          # 0 = sin tope
 LEGACY_FORBIDDEN_CIKS = {"0001104659", "0001069595", "0001113245", "0001082722"}
 DATA_SEC = "https://data.sec.gov"
 ARCHIVES = "https://www.sec.gov/Archives/edgar/data"
@@ -92,7 +101,7 @@ def parse_submissions(payload: dict) -> tuple[list[dict], list[str]]:
     for block in blocks:
         for i, acc in enumerate(block.get("accessionNumber", [])):
             form = block.get("form", [""] * len(block.get("accessionNumber", [])))[i]
-            if form not in ("20-F", "20-F/A"):
+            if form not in FORMS:
                 continue
             filings[acc] = {
                 "acc": acc,
@@ -199,6 +208,21 @@ def run_item(log: Log, fetcher: Fetcher, ent: dict, item: dict) -> dict:
 
 
 def main() -> int:
+    global GOLDEN_CIK, FORMS, MAX_FILINGS, SCOPE_RULE
+    ap = argparse.ArgumentParser(description="S02 fetch SEC (por CIK)")
+    ap.add_argument("--cik", default=GOLDEN_CIK, help="CIK objetivo, 10 digitos")
+    ap.add_argument("--forms", default=",".join(FORMS),
+                    help="formularios anuales a ingerir (20-F para emisores extranjeros, "
+                         "10-K para domesticos)")
+    ap.add_argument("--max-filings", type=int, default=MAX_FILINGS,
+                    help="tope de filings mas recientes; 0 = todos")
+    args = ap.parse_args()
+    GOLDEN_CIK = args.cik.zfill(10)
+    FORMS = tuple(f.strip() for f in args.forms.split(",") if f.strip())
+    MAX_FILINGS = args.max_filings
+    if GOLDEN_CIK != "0000904851":
+        SCOPE_RULE = f"FAST:CIK{GOLDEN_CIK}:{'|'.join(FORMS)}:v1"
+
     settings = load_settings()
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     print(f"[config] target={settings.describe()} scope={SCOPE_RULE}")
@@ -206,8 +230,23 @@ def main() -> int:
     applied = edb.apply_migrations(engine)
     print(f"[migrations] aplicadas ahora: {applied or '(ninguna nueva)'}")
 
-    run = edb.start_run(engine, settings, PIPELINE_VERSION)
-    print(f"[run] run_id={run.run_id} git={run.git_commit}")
+
+    # F-050: el cierre va en `finally` (run_scope). Antes, `start_run` abria
+    # aca y `finish_run` cerraba decenas de lineas mas abajo: cualquier
+    # excepcion en el medio dejaba la corrida en RUNNING para siempre. Es el
+    # mismo patron que F-031 aplico a S03 y F-040 a C3.
+    huerfanas = edb.corridas_huerfanas(engine)
+    if huerfanas:
+        print(f"[huerfanas] {len(huerfanas)} corridas previas quedaron en RUNNING:")
+        for h in huerfanas[:5]:
+            print(f"   {h['run_id'][:12]} {h['pipeline_version']} hace {h['horas']}h")
+    with edb.run_scope(engine, settings, PIPELINE_VERSION) as run:
+        print(f"[run] run_id={run.run_id} git={run.git_commit}")
+        return _correr(engine, settings, run)
+
+
+def _correr(engine, settings, run) -> int:
+    """Cuerpo de la etapa. Fija `run.status`; NUNCA llama a finish_run (F-050)."""
 
     prev_state: StageState | None = None
     cur = StageState.PLANNED
@@ -265,6 +304,10 @@ def main() -> int:
 
     warnings_list: list[str] = []
     filings = sorted(filings_by_acc.values(), key=lambda f: f["filing_date"], reverse=True)
+    if MAX_FILINGS and len(filings) > MAX_FILINGS:
+        print(f"[scope] {len(filings)} filings encontrados; se ingieren los "
+              f"{MAX_FILINGS} mas recientes (--max-filings)")
+        filings = filings[:MAX_FILINGS]
     for f in filings:
         acc_nd = f["acc_nodash"]
         idx_item = {"kind": "FILING_INDEX", "critical": True, "acc": f["acc"], "form": f["form"],
@@ -417,7 +460,7 @@ def main() -> int:
                           "ih": report.hash_in, "cv": PIPELINE_VERSION, "ctv": "fetch_raw-v1",
                           "ref": "pg://fetch_raw.download_log + fs://data/raw/engine"})
 
-    edb.finish_run(engine, run.run_id, "OK" if gate is not GateStatus.BLOCK else "BLOCKED")
+    run.status = "OK" if gate is not GateStatus.BLOCK else "BLOCKED"
 
     filings_summary = []
     for f in filings:
