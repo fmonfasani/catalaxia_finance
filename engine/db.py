@@ -13,7 +13,7 @@ from sqlalchemy import create_engine, text
 from sqlalchemy.engine import Engine
 
 from engine.config import REPO_ROOT, Settings, load_settings
-from engine.states import GateStatus, StageState
+from engine.states import GateStatus, StageState, TRANSITIONS
 
 MIGRATIONS_DIR = REPO_ROOT / "migrations" / "engine"
 
@@ -149,8 +149,46 @@ def finish_run(engine: Engine, run_id: str, status: str) -> None:
         )
 
 
+def abort_stage_if_open(engine: Engine, run_id: str, stage_id: str) -> bool:
+    """F10: cierra la etapa como ABORTED si quedo sin evidencia por una excepcion.
+
+    El defecto que esto corrige: `run_scope` siempre cerro el *run* ante una
+    excepcion, pero nunca la *etapa*. Si el cuerpo moria entre "escribi RUNNING"
+    y "escribi el tramo terminal", la fila de `stage_runs` quedaba en RUNNING
+    para siempre, aunque `engine.runs` ya dijera ABORTED. Encontrado en F9: 16
+    residuos historicos, todos de tests, todos con el run padre ya cerrado.
+
+    Solo escribe si el ULTIMO estado conocido de (run_id, stage_id) todavia
+    admite una transicion a ABORTED (`TRANSITIONS` en `engine/states.py`): un
+    estado con evidencia propia (PASSED/CHECKPOINTED/CERTIFIED/FAILED) nunca se
+    sobreescribe — ABORTED significa "murio sin decir nada", no "lo tapamos".
+    Idempotente: si ya no hay transicion valida (porque ya quedo ABORTED, o
+    porque alcanzo a dejar evidencia), no escribe nada y devuelve False. No
+    toca ninguna fila existente: `stage_runs` es un log append-only, esto solo
+    agrega una fila nueva cuando corresponde.
+    """
+    with engine.begin() as conn:
+        row = conn.execute(text(
+            "SELECT state FROM engine.stage_runs"
+            " WHERE run_id = :r AND stage_id = :s"
+            " ORDER BY id DESC LIMIT 1"),
+            {"r": run_id, "s": stage_id}).first()
+    if row is None:
+        return False        # la etapa nunca escribio una transicion: nada que cerrar
+    try:
+        ultimo = StageState(row[0])
+    except ValueError:
+        return False         # estado desconocido en la fila; no se toca (defensivo)
+    if StageState.ABORTED not in TRANSITIONS.get(ultimo, set()):
+        return False          # ya terminal (con o sin evidencia): no se sobreescribe
+    record_stage_transition(engine, run_id, stage_id, prev_state=ultimo,
+                            new_state=StageState.ABORTED)
+    return True
+
+
 @contextmanager
-def run_scope(engine: Engine, settings: Settings, pipeline_version: str):
+def run_scope(engine: Engine, settings: Settings, pipeline_version: str,
+              run_id: str | None = None, stage_id: str | None = None):
     """Corrida con cierre GARANTIZADO. Obligatorio para S04 en adelante.
 
     F-009 (causa raiz): en s03/c3 las transiciones PASSED y CHECKPOINTED se
@@ -163,21 +201,53 @@ def run_scope(engine: Engine, settings: Settings, pipeline_version: str):
     ABORTED con su motivo; si sale limpio, queda con el status que el cuerpo
     haya fijado via `handle.status`, o OK por defecto.
 
-        with run_scope(engine, settings, PIPELINE_VERSION) as run:
+        with run_scope(engine, settings, PIPELINE_VERSION, stage_id=STAGE_ID) as run:
             ...
             run.status = "BLOCKED" if gate is GateStatus.BLOCK else "OK"
+
+    R4 — E2E mode (opt-in):
+        Si run_id se proporciona (usar en modo orquestador E2E), no abre corrida
+        nueva ni la cierra en el finally. El run ya existe en engine.runs (creado
+        por el orquestador). Cada etapa registra su stage_run bajo ese run_id
+        compartido. El orquestador es el único dueño del cierre del run.
+
+    F10 — `stage_id` (opt-in, retrocompatible: default None = comportamiento
+    identico al anterior): si se pasa, ante una excepcion se cierra tambien la
+    ETAPA (`abort_stage_if_open`), sea cual sea el modo de `run_id`. El cierre
+    de etapa es independiente de quien sea dueño del cierre del *run* — un
+    orquestador puede ser dueño del run compartido y aun asi cada etapa sigue
+    siendo dueña de su propio cierre de etapa.
     """
-    run = start_run(engine, settings, pipeline_version)
+    if run_id is None:
+        run = start_run(engine, settings, pipeline_version)
+    else:
+        # E2E mode: run ya existe. Validar y reutilizar.
+        with engine.connect() as conn:
+            row = conn.execute(text(
+                "SELECT run_id, mode, pipeline_version, git_commit FROM engine.runs "
+                " WHERE run_id = :r"), {"r": run_id}).mappings().first()
+        if row is None:
+            raise ValueError(f"run_id {run_id} no existe en engine.runs")
+        run = RunHandle(
+            run_id=run_id,
+            mode=row["mode"],
+            pipeline_version=row["pipeline_version"],
+            git_commit=row["git_commit"],
+        )
     run.status = None
     try:
         yield run
     except BaseException as e:
         try:
-            finish_run(engine, run.run_id, "ABORTED")
+            if stage_id is not None:
+                abort_stage_if_open(engine, run.run_id, stage_id)
+            if run_id is None:
+                finish_run(engine, run.run_id, "ABORTED")
         finally:
             raise e
     else:
-        finish_run(engine, run.run_id, run.status or "OK")
+        if run_id is None:
+            finish_run(engine, run.run_id, run.status or "OK")
 
 
 def corridas_huerfanas(engine: Engine, horas: float = 6.0) -> list[dict]:

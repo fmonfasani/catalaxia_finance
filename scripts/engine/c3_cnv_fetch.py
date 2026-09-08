@@ -311,7 +311,7 @@ def main() -> int:
     # aca y `finish_run` cerraba 350 lineas mas abajo: cualquier excepcion en
     # el medio dejaba la corrida en RUNNING para siempre. Paso tres veces el
     # 2026-08-28. Es el mismo patron que F-031 aplico a S03.
-    with edb.run_scope(engine, settings, PIPELINE_VERSION) as run:
+    with edb.run_scope(engine, settings, PIPELINE_VERSION, stage_id=STAGE_ID) as run:
         print(f"[run] run_id={run.run_id} git={run.git_commit} "
               f"scope={args.scope} rerun={args.rerun}")
         return _correr(engine, settings, run, args, cuit, ident)

@@ -38,7 +38,7 @@ def main() -> int:
         print(f"[huerfanas] {len(huerfanas)} corridas previas quedaron en RUNNING:")
         for h in huerfanas[:5]:
             print(f"   {h['run_id'][:12]} {h['pipeline_version']} hace {h['horas']}h")
-    with edb.run_scope(engine, settings, PIPELINE_VERSION) as run:
+    with edb.run_scope(engine, settings, PIPELINE_VERSION, stage_id=STAGE_ID) as run:
         print(f"[run] run_id={run.run_id} git={run.git_commit}")
         return _correr(engine, settings, run)
 

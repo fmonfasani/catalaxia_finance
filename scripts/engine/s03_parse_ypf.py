@@ -352,7 +352,7 @@ def main() -> int:
             print(f"   {h['run_id']} {h['pipeline_version']} {h['horas']} h")
         return 1
 
-    with edb.run_scope(engine, settings, PIPELINE_VERSION) as run:
+    with edb.run_scope(engine, settings, PIPELINE_VERSION, stage_id=STAGE_ID) as run:
         print(f"[run] run_id={run.run_id} git={run.git_commit}")
         return _etapa(engine, settings, run)
 

@@ -538,7 +538,7 @@ def main() -> int:
           f"status {s03['status']})\n")
 
     # ---- run_scope: el cierre va en finally (F-009) --------------------
-    with edb.run_scope(engine, settings, PIPELINE_VERSION) as run:
+    with edb.run_scope(engine, settings, PIPELINE_VERSION, stage_id=STAGE_ID) as run:
         prev = None
         for st in (StageState.READY, StageState.RUNNING):
             edb.record_stage_transition(engine, run.run_id, STAGE_ID, prev, st)
