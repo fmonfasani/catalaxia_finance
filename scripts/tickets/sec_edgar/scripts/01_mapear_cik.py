@@ -26,7 +26,7 @@ HEADERS = {
 }
 
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'data').is_dir())
-TICKETS_XLSX = ROOT / "Tickets.xlsx"
+TICKETS_XLSX = ROOT / "data" / "Tickets.xlsx"
 DATOS_DIR = Path(__file__).resolve().parent.parent / "datos"
 CACHE_FILE = DATOS_DIR / "company_tickers.json"
 OUT_CON_CIK = DATOS_DIR / "tickets_con_cik.csv"

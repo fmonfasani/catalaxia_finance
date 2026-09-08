@@ -41,7 +41,7 @@ from pathlib import Path
 ENCODING = "cp1252"  # el csv viene de un Excel guardado en Windows, no UTF-8
 
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'data').is_dir())
-CSV_PATH = ROOT / "informe_seguimiento_detallado.xlsx - Investing_Ratios.csv"
+CSV_PATH = ROOT / "docs" / "informe_seguimiento_detallado.xlsx - Investing_Ratios.csv"
 TMP_PATH = CSV_PATH.with_suffix(".tmp.csv")
 RATIOS_CSV = Path(__file__).resolve().parent.parent / "datos" / "ratios_tickets.csv"
 

@@ -153,7 +153,7 @@ def generate_excel(commits):
     fases = fases.reset_index()
 
     # Guardar en Excel
-    excel_path = 'Seguimiento.xlsx'
+    excel_path = 'docs/Seguimiento.xlsx'
 
     with pd.ExcelWriter(excel_path, engine='openpyxl') as writer:
         # Sheet 1: Tareas

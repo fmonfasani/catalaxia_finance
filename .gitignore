@@ -84,3 +84,12 @@ __pycache__/
 *.pyo
 
 
+
+# Limpieza 2026-09-04: basura de working directory que un `git add -A`
+# agarraría sin querer. No son secretos ni datos sensibles, son ruido.
+*.rar
+~$*.xlsx
+~$*.docx
+~$*.pptx
+.vscode/
+scratchpad/

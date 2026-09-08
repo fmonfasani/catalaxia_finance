@@ -33,7 +33,7 @@ from pathlib import Path
 import openpyxl
 
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'data').is_dir())
-XLSX_PATH = ROOT / "informe_seguimiento_detallado.xlsx"
+XLSX_PATH = ROOT / "docs" / "informe_seguimiento_detallado.xlsx"
 TMP_PATH = ROOT / "informe_seguimiento_detallado.tmp.xlsx"
 RATIOS_JSON = Path(__file__).resolve().parent.parent / "datos" / "ratios_tickets.json"
 SHEET_NAME = "estadisticas_outliers"
