@@ -1,0 +1,32 @@
+# Imagen del runtime del pipeline ENGINE (S00→C12). NO es un servicio
+# long-running: se lanza por corrida con `docker compose --profile run-e2e
+# run --rm engine`. Ver docs/review/26_F12_ARCHITECTURE_DECISION.md.
+#
+# A diferencia del Dockerfile raiz (screener) usa su propio lockfile con solo
+# las dependencias del engine (F12): sqlalchemy, psycopg2, requests, lxml,
+# openpyxl. Sin fastapi/uvicorn (la API tiene su propia imagen) y sin las
+# dependencias del pipeline legacy de Windows.
+FROM python:3.12-slim
+
+WORKDIR /app
+
+# Framework de XBRL y parse
+COPY requirements-engine.txt ./
+RUN pip install --no-cache-dir -r requirements-engine.txt
+
+# Solo lo que el engine necesita en runtime. data/ y outputs/ se montan como
+# volumenes: cache RAW de SEC (data/raw/engine), sqlite legado (screener.db,
+# lectura), salidas c10/c11/reports.
+COPY engine/ ./engine/
+COPY scripts/engine/ ./scripts/engine/
+COPY migrations/ ./migrations/
+
+RUN mkdir -p data/raw/engine data/logs outputs/e2e
+
+# Los scripts del engine viven en scripts/engine/ pero importan el paquete
+# `engine` desde la raiz del repo (engine/config.py, engine/db.py, ...).
+ENV PYTHONPATH=/app
+
+# Entrypoint UNICO de la cadena certificada. Los argumentos que le siguen al
+# nombre de la imagen se pasan al entrypoint (p.ej. `--mode FULL`).
+ENTRYPOINT ["python", "scripts/engine/run_e2e_certified.py"]

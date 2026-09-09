@@ -1,0 +1,15 @@
+# Lockfile especifico del pipeline ENGINE (S00-S04, ratio_engine, C10-C12).
+# F12 (ADR 26): NO reutilizar ciegamente `requirements.txt` ni
+# `backend/requirements.txt`. Verificado contra imports reales:
+#   - sqlalchemy        -> engine/db.py, c10/c11/publisher, s00-s04
+#   - psycopg2-binary   -> s03_parse_ypf (execute_values), engine/config url
+#   - requests          -> engine/fetch.py (descarga SEC EDGAR)
+#   - lxml              -> engine/xbrlparse.py (parse XBRL)
+#   - openpyxl          -> s03_parse_ypf (auditoria xlsx)
+# NO incluye fastapi/uvicorn (imagen `api`, usa requirements.txt raiz) ni
+# yfinance/pandas (pipeline legacy, NO containerizado: Windows Task Scheduler).
+sqlalchemy==2.0.36
+psycopg2-binary==2.9.9
+requests==2.32.3
+lxml==5.2.2
+openpyxl==3.1.5

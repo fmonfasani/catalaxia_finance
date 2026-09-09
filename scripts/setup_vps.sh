@@ -27,12 +27,16 @@ echo ""
 # ── 1. Verificar prerequisitos ──────────────────────────────────────
 echo "[1/8] Verificando prerequisitos..."
 
-for cmd in docker docker-compose git; do
+for cmd in docker git; do
     if ! command -v $cmd &>/dev/null; then
         echo "ERROR: $cmd no instalado"
         exit 1
     fi
 done
+if ! docker compose version &>/dev/null; then
+    echo "ERROR: el plugin 'docker compose' (v2) no esta disponible"
+    exit 1
+fi
 echo "  Docker: $(docker --version)"
 echo "  Compose: $(docker compose version)"
 echo "  Git: $(git --version)"
@@ -103,23 +107,34 @@ echo ""
 echo "[6/8] Migrando datos desde SQLite..."
 SCREENER_DB="${DATA_DIR}/screener.db"
 if [ -f "${SCREENER_DB}" ]; then
-    echo "  screener.db encontrado, migrando a PostgreSQL..."
-    docker compose run --rm -e DB_TYPE=postgresql \
-        -e DB_HOST=db -e DB_PORT=5432 \
-        -e DB_NAME=${DB_NAME} -e DB_USER=${DB_USER} \
-        -e POSTGRES_PASSWORD=${POSTGRES_PASSWORD} \
-        pipeline python scripts/tickets/screener/migrate_sqlite_to_pg.py
-    echo "  Migracion completada"
+    # G-019: migrate_sqlite_to_pg hace TRUNCATE+INSERT+swap y en produccion
+    # existente VACIARIA 12 columnas (ccl, precio_ars, ...). ver
+    # scripts/deploy/sincronizar_a_produccion.py y migrations/003.
+    # Por eso solo se corre contra una DB vacia (bootstrap real).
+    FILAS=$(docker compose exec -T db psql -U "${DB_USER}" -d "${DB_NAME}" -tAc "SELECT count(*) FROM screener" 2>/dev/null || echo "error")
+    if [ -n "${FILAS}" ] && [ "${FILAS}" != "0" ] && [ "${FILAS}" != "error" ]; then
+        echo "  ATENCION: PostgreSQL ya tiene ${FILAS} filas en screener."
+        echo "  Se OMITE migrate_sqlite_to_pg (riesgo de vaciar columnas de produccion)."
+        echo "  Para sync selectivo usar: docker compose run --rm migrate ... (o sincronizar_a_produccion.py en dev)."
+    else
+        echo "  screener.db encontrado y DB vacia — migrando a PostgreSQL..."
+        docker compose run --rm -e DB_TYPE=postgresql \
+            -e DB_HOST=db -e DB_PORT=5432 \
+            -e DB_NAME=${DB_NAME} -e DB_USER=${DB_USER} \
+            -e POSTGRES_PASSWORD=${POSTGRES_PASSWORD} \
+            migrate
+        echo "  Migracion completada"
+    fi
 else
     echo "  No hay screener.db — se correra pipeline completo luego"
 fi
 echo "  OK"
 
-# ── 7. Probar pipeline ─────────────────────────────────────────────
+# ── 7. Probar pipeline certificado (engine S00→C11) ─────────────────
 echo ""
-echo "[7/8] Probando pipeline (modo rebuild)..."
-docker compose run --rm pipeline python scripts/tickets/screener/run_update.py --rebuild --quiet
-echo "  Pipeline OK"
+echo "[7/8] Probando pipeline certificado (engine, modo FAST)..."
+docker compose --profile run-e2e run --rm engine
+echo "  Engine OK (corrida gratuita en modo FAST)"
 
 # ── 8. Configurar cron jobs ─────────────────────────────────────────
 echo ""
@@ -142,6 +157,13 @@ cat > "${CRON_FILE}" <<'CRON'
 
 # Backup diario: DB + exports (030hs todos los dias)
 0 3 * * * root /infra/projects/0009-catalaxia/scripts/backup.sh >> /infra/projects/0009-catalaxia/logs/cron_backup.log 2>&1
+
+# Engine certificado (S00→C11): FAST diario 06hs (tras la corrida yfinance de las 18hs)
+# El advisory lock de run_e2e_certified.py evita corridas superpuestas.
+30 6 * * 1-5 root cd /infra/projects/0009-catalaxia && /usr/bin/docker compose --profile run-e2e run --rm engine >> /infra/projects/0009-catalaxia/logs/cron_engine.log 2>&1
+
+# Engine certificado: FULL trimestral (1ro de Jan/Abr/Jul/Oct 07hs)
+0 7 1 1,4,7,10 * root cd /infra/projects/0009-catalaxia && /usr/bin/docker compose --profile run-e2e run --rm engine --mode FULL >> /infra/projects/0009-catalaxia/logs/cron_engine_full.log 2>&1
 CRON
 
 chmod 644 "${CRON_FILE}"
@@ -162,8 +184,9 @@ echo "  Logs:       ${LOG_DIR}"
 echo ""
 echo "  Comandos utiles:"
 echo "    docker compose -f ${PROJECT_DIR}/docker-compose.yml up -d db       # iniciar solo DB"
-echo "    docker compose -f ${PROJECT_DIR}/docker-compose.yml run --rm pipeline python scripts/tickets/screener/run_all.py  # rebuild completo"
-echo "    docker compose -f ${PROJECT_DIR}/docker-compose.yml run --rm pipeline python scripts/tickets/screener/run_update.py --daily  # daily update"
+echo "    docker compose -f ${PROJECT_DIR}/docker-compose.yml run --rm pipeline python scripts/tickets/screener/run_all.py  # rebuild completo (legacy)"
+echo "    docker compose -f ${PROJECT_DIR}/docker-compose.yml run --rm pipeline python scripts/tickets/screener/run_update.py --daily  # daily update (legacy)"
+echo "    docker compose --profile run-e2e -f ${PROJECT_DIR}/docker-compose.yml run --rm engine --mode FULL  # engine FULL manual"
 echo "    ${PROJECT_DIR}/scripts/backup.sh  # backup manual"
 echo ""
 echo "  Para exportar la DB local a PostgreSQL:"

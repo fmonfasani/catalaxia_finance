@@ -217,4 +217,46 @@ docker-compose exec -T db psql -U catalaxia catalaxia < catalaxia_backup.sql
 
 ---
 
+## Pipeline ENGINE certificado (S00→C12) — run por corrida
+
+El runtime productivo del engine (ver `docs/review/26_F12_ARCHITECTURE_DECISION.md`,
+"Execution chain") se lanza en su propio contenedor, imagen `Dockerfile.engine`,
+y **no** se prende con `docker compose up` (profile `run-e2e`). Un solo comando
+aplica migraciones pendientes (vía administrativa, F-025), encadena
+S00→S04 → ratio_engine → C10 → C11 → C12 con abort-on-fail, y deja un report
+JSON en `outputs/e2e/`:
+
+```bash
+# Modo FAST (default) — cadena completa hasta C11, C12 queda en SKIPPED si
+# no se declara el destino de integración (ENGINE_PUBLISH_SOURCE).
+docker compose --profile run-e2e run --rm engine
+
+# Modo completo
+docker compose --profile run-e2e run --rm engine --mode FULL
+
+# Con C12 (publicación a staging): definir el origen antes de correr
+ENGINE_PUBLISH_SOURCE=derived.fact docker compose --profile run-e2e run --rm engine
+```
+
+Guardas y exit codes (entrypoint `scripts/engine/run_e2e_certified.py`):
+
+- `0` cadena PASS/CERTIFICADA (o C12_SKIPPED declarado).
+- `1` cadena abortada (BLOCK / NEGADA / publish fallido / migraciones).
+- `2` EXT-010 (destino 5432 sin `ENGINE_ALLOW_PROD=1` explícito) o error de uso.
+- `3` lock ocupado: otra corrida de la cadena sigue activa (advisory lock de PG,
+  vale entre contenedores/hosts que compartan la base).
+
+La cadena se agenda en el VPS con cron (no es un servicio long-running):
+
+```bash
+# /etc/cron.d/catalaxia-engine (requiere .env en /opt/catalaxia)
+30 6 * * 1-5 deploy   cd /opt/catalaxia && docker compose --profile run-e2e run --rm engine >> data/logs/engine_e2e.log 2>&1
+```
+
+Los datos de trabajo (`data/raw/engine`, `data/screener.db` de solo lectura) y
+los outputs se montan como volúmenes (`./data`, `./outputs`). El rol de
+aplicación sigue siendo `catalaxia_engine` (F-025); la migración `035` habilita
+su LOGIN y el entrypoint asigna la password por bootstrap administrativo con la
+misma variable `ENGINE_ADMIN_DB_PASSWORD` que usa para migrar.
+
 **Preguntas?** Revisar logs con `docker-compose logs -f`

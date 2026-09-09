@@ -99,5 +99,41 @@ services:
       - ./public:/usr/share/nginx/html:ro
     command: nginx -g 'daemon off;'
 
+# Pipeline ENGINE certificado (S00→C12). No es un servicio permanente:
+  # se ejecuta por corrida y sale.
+  #   docker compose --profile run-e2e run --rm engine                  # FAST
+  #   docker compose --profile run-e2e run --rm engine --mode FULL
+  # Ver docs/DEPLOY_HETZNER.md · engine.
+  engine:
+    build:
+      context: .
+      dockerfile: Dockerfile.engine
+    image: catalaxia-engine
+    profiles: ["run-e2e"]
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      ENGINE_DB_HOST: db
+      ENGINE_DB_PORT: "5432"
+      ENGINE_DB_NAME: catalaxia
+      # F-025: la aplicacion NO corre como superusuario (migracion 011).
+      ENGINE_DB_USER: catalaxia_engine
+      ENGINE_DB_PASSWORD: ${POSTGRES_PASSWORD}
+      # Via administrativa SOLO para migraciones y bootstrap del rol.
+      ENGINE_ADMIN_DB_USER: catalaxia
+      ENGINE_ADMIN_DB_PASSWORD: ${POSTGRES_PASSWORD}
+      # EXT-010: `catalaxia_engine` en puerto 5432 dentro de compose ES el
+      # destino productivo declarado, no un accidente: se habilita explicito.
+      ENGINE_ALLOW_PROD: "1"
+      ENGINE_MODE: ${ENGINE_MODE:-FAST}
+      ENGINE_STATEMENT_TIMEOUT_MS: ${ENGINE_STATEMENT_TIMEOUT_MS:-300000}
+      TZ: America/Argentina/Buenos_Aires
+    volumes:
+      # Cache RAW de SEC (data/raw/engine) + sqlite legado (screener.db,
+      # solo lectura) + outputs de c10/c11/reports.
+      - ./data:/app/data
+      - ./outputs:/app/outputs
+
 volumes:
   pgdata:
