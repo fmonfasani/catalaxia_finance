@@ -84,6 +84,28 @@ jobs:
           path: artifacts/fx_44q/FRED/
           if-no-files-found: warn
 
+  a3500-schema-diagnostic:
+    name: A3500 raw schema diagnostic (isolated)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: python -m pip install requests
+      - name: Capture bounded A3500 response sample
+        run: python scripts/fx_research/diagnose_a3500_schema.py
+      - name: Upload A3500 diagnostic artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fx-research-44q-a3500-schema
+          path: artifacts/fx_44q/A3500_DIAGNOSTIC/
+          if-no-files-found: warn
+
   bcra-extraction:
     name: BCRA acquisition and diagnostics (deferred)
     runs-on: ubuntu-latest
