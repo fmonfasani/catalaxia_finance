@@ -38,9 +38,7 @@ jobs:
           http_code=""
           if getent ahosts "$HOST" > /tmp/dns.txt 2>&1; then
             dns="OK"
-            # A root-path 403/404 still demonstrates DNS + TLS/HTTP reachability.
-            http_code=$(curl --silent --show-error --location --connect-timeout 10 --max-time 25 \
-              -o /tmp/body.txt -w '%{http_code}' "https://${HOST}/" 2>/tmp/curl-error.txt || true)
+            http_code=$(curl --silent --show-error --location --connect-timeout 10 --max-time 25 -o /tmp/body.txt -w '%{http_code}' "https://${HOST}/" 2>/tmp/curl-error.txt || true)
             if [[ "$http_code" =~ ^[0-9]{3}$ ]]; then status="HTTP_REACHABLE"; else status="HTTPS_FAILED"; fi
           else
             status="DNS_FAILED"
@@ -48,16 +46,11 @@ jobs:
           python - "$SOURCE" "$HOST" "$dns" "$status" "$http_code" <<'PY'
           import json, pathlib, sys, datetime
           source, host, dns, status, http_code = sys.argv[1:]
-          out = {
-              "source": source, "host": host, "dns": dns,
-              "status": status, "http_status": http_code or None,
-              "checked_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
-              "scope": "connectivity preflight only; not data extraction or source validation"
-          }
-          path = pathlib.Path("artifacts/fx_44q") / source / "preflight.json"
-          path.parent.mkdir(parents=True, exist_ok=True)
-          path.write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
-          print(json.dumps(out, indent=2))
+          out = {"source":source,"host":host,"dns":dns,"status":status,"http_status":http_code or None,"checked_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat(),"scope":"connectivity preflight only; not data extraction or source validation"}
+          path=pathlib.Path("artifacts/fx_44q")/source/"preflight.json"
+          path.parent.mkdir(parents=True,exist_ok=True)
+          path.write_text(json.dumps(out,indent=2)+"\n",encoding="utf-8")
+          print(json.dumps(out,indent=2))
           PY
           cat /tmp/dns.txt 2>/dev/null || true
           cat /tmp/curl-error.txt 2>/dev/null || true
@@ -69,11 +62,9 @@ jobs:
           path: artifacts/fx_44q/${{ matrix.source }}/
           if-no-files-found: warn
 
-  bcra-extraction:
-    name: BCRA acquisition and diagnostics
+  fred-extraction:
+    name: FRED raw series acquisition
     runs-on: ubuntu-latest
-    needs: source-preflight
-    if: always()
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -82,15 +73,20 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install pandas requests pytest
-      - name: Run BCRA research extractor
-        run: python scripts/fx_research/run_fx_44q.py
-      - name: Upload BCRA research artifacts
+        run: python -m pip install requests
+      - name: Acquire FRED series (raw only)
+        run: python scripts/fx_research/extract_fred.py
+      - name: Upload FRED artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: fx-research-44q-bcra
-          path: artifacts/fx_44q/
+          name: fx-research-44q-fred
+          path: artifacts/fx_44q/FRED/
           if-no-files-found: warn
+
+  bcra-extraction:
+    name: BCRA acquisition and diagnostics (deferred)
+    runs-on: ubuntu-latest
+    if: false
+    steps:
+      - run: echo "BCRA deferred by project decision; no extraction executed."
