@@ -9,8 +9,71 @@ permissions:
   contents: read
 
 jobs:
-  fx-research:
+  source-preflight:
+    name: Preflight - ${{ matrix.source }}
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - source: BCRA
+            host: api.bcra.gob.ar
+          - source: ArgentinaDatos
+            host: api.argentinadatos.com
+          - source: Dolarito
+            host: api.dolarito.ar
+          - source: FRED
+            host: fred.stlouisfed.org
+    steps:
+      - name: Check DNS and HTTPS endpoint
+        shell: bash
+        env:
+          SOURCE: ${{ matrix.source }}
+          HOST: ${{ matrix.host }}
+        run: |
+          set -uo pipefail
+          mkdir -p "artifacts/fx_44q/${SOURCE}"
+          status="UNKNOWN"
+          dns="FAILED"
+          http_code=""
+          if getent ahosts "$HOST" > /tmp/dns.txt 2>&1; then
+            dns="OK"
+            # A root-path 403/404 still demonstrates DNS + TLS/HTTP reachability.
+            http_code=$(curl --silent --show-error --location --connect-timeout 10 --max-time 25 \
+              -o /tmp/body.txt -w '%{http_code}' "https://${HOST}/" 2>/tmp/curl-error.txt || true)
+            if [[ "$http_code" =~ ^[0-9]{3}$ ]]; then status="HTTP_REACHABLE"; else status="HTTPS_FAILED"; fi
+          else
+            status="DNS_FAILED"
+          fi
+          python - "$SOURCE" "$HOST" "$dns" "$status" "$http_code" <<'PY'
+          import json, pathlib, sys, datetime
+          source, host, dns, status, http_code = sys.argv[1:]
+          out = {
+              "source": source, "host": host, "dns": dns,
+              "status": status, "http_status": http_code or None,
+              "checked_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+              "scope": "connectivity preflight only; not data extraction or source validation"
+          }
+          path = pathlib.Path("artifacts/fx_44q") / source / "preflight.json"
+          path.parent.mkdir(parents=True, exist_ok=True)
+          path.write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps(out, indent=2))
+          PY
+          cat /tmp/dns.txt 2>/dev/null || true
+          cat /tmp/curl-error.txt 2>/dev/null || true
+      - name: Upload source preflight
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fx-preflight-${{ matrix.source }}
+          path: artifacts/fx_44q/${{ matrix.source }}/
+          if-no-files-found: warn
+
+  bcra-extraction:
+    name: BCRA acquisition and diagnostics
+    runs-on: ubuntu-latest
+    needs: source-preflight
+    if: always()
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -22,49 +85,12 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pandas requests pytest
-      - name: Runner DNS and HTTPS preflight
-        shell: bash
-        run: |
-          set -uo pipefail
-          hosts=(api.bcra.gob.ar www.bcra.gob.ar api.argentinadatos.com api.dolarito.ar fred.stlouisfed.org)
-          failed=0
-          for host in "${hosts[@]}"; do
-            echo "=== DNS: $host ==="
-            resolved=0
-            for attempt in 1 2 3 4 5; do
-              if getent ahosts "$host"; then resolved=1; break; fi
-              echo "DNS attempt $attempt failed for $host; retrying"
-              sleep $((attempt * 2))
-            done
-            if [[ "$resolved" -ne 1 ]]; then
-              echo "DNS_FAILED host=$host"
-              failed=1
-              continue
-            fi
-            https_ok=0
-            for attempt in 1 2 3 4 5; do
-              if curl --fail --silent --show-error --location --connect-timeout 10 --max-time 25 "https://$host/" -o /dev/null; then
-                https_ok=1; break
-              fi
-              echo "HTTPS attempt $attempt failed for $host; retrying"
-              sleep $((attempt * 2))
-            done
-            if [[ "$https_ok" -ne 1 ]]; then
-              echo "HTTPS_FAILED host=$host"
-              failed=1
-            else
-              echo "HOST_OK host=$host"
-            fi
-          done
-          if [[ "$failed" -ne 0 ]]; then
-            echo "Preflight detected one or more unavailable hosts; acquisition step will still attempt available sources."
-          fi
-      - name: Run FX 44Q research
+      - name: Run BCRA research extractor
         run: python scripts/fx_research/run_fx_44q.py
-      - name: Upload research artifacts
+      - name: Upload BCRA research artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: fx-research-44q-results
+          name: fx-research-44q-bcra
           path: artifacts/fx_44q/
           if-no-files-found: warn
