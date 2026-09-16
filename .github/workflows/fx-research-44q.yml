@@ -22,10 +22,49 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pandas requests pytest
+      - name: Runner DNS and HTTPS preflight
+        shell: bash
+        run: |
+          set -uo pipefail
+          hosts=(api.bcra.gob.ar www.bcra.gob.ar api.argentinadatos.com api.dolarito.ar fred.stlouisfed.org)
+          failed=0
+          for host in "${hosts[@]}"; do
+            echo "=== DNS: $host ==="
+            resolved=0
+            for attempt in 1 2 3 4 5; do
+              if getent ahosts "$host"; then resolved=1; break; fi
+              echo "DNS attempt $attempt failed for $host; retrying"
+              sleep $((attempt * 2))
+            done
+            if [[ "$resolved" -ne 1 ]]; then
+              echo "DNS_FAILED host=$host"
+              failed=1
+              continue
+            fi
+            https_ok=0
+            for attempt in 1 2 3 4 5; do
+              if curl --fail --silent --show-error --location --connect-timeout 10 --max-time 25 "https://$host/" -o /dev/null; then
+                https_ok=1; break
+              fi
+              echo "HTTPS attempt $attempt failed for $host; retrying"
+              sleep $((attempt * 2))
+            done
+            if [[ "$https_ok" -ne 1 ]]; then
+              echo "HTTPS_FAILED host=$host"
+              failed=1
+            else
+              echo "HOST_OK host=$host"
+            fi
+          done
+          if [[ "$failed" -ne 0 ]]; then
+            echo "Preflight detected one or more unavailable hosts; acquisition step will still attempt available sources."
+          fi
       - name: Run FX 44Q research
         run: python scripts/fx_research/run_fx_44q.py
       - name: Upload research artifacts
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: fx-research-44q-results
           path: artifacts/fx_44q/
+          if-no-files-found: warn
