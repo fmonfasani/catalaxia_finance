@@ -1,6 +1,8 @@
 name: FX Research 44Q
 
 on:
+  push:
+    branches: [research/fx-44q]
   workflow_dispatch:
 
 permissions:
@@ -12,36 +14,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          pip install pandas requests
-
-      - name: Verify repository and FX collectors
-        run: |
-          python --version
-          test -f scripts/dolares/fetch_dolarito_historico.py
-
-      - name: Run tests
-        run: |
-          if [ -d tests ]; then python -m pytest -q; else echo 'No tests directory present'; fi
-
-      - name: Publish execution metadata
-        run: |
-          mkdir -p artifacts
-          git rev-parse HEAD > artifacts/commit_sha.txt
-          printf 'research_branch=%s\n' '${{ github.ref_name }}' > artifacts/run_context.txt
-          printf 'objective=44 quarters; A3500, OFICIAL, MEP, CCL\n' >> artifacts/run_context.txt
-
-      - name: Upload artifacts
+          pip install pandas requests pytest
+      - name: Run FX 44Q research
+        run: python scripts/fx_research/run_fx_44q.py
+      - name: Upload research artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: fx-research-44q-metadata
-          path: artifacts/
+          name: fx-research-44q-results
+          path: artifacts/fx_44q/
