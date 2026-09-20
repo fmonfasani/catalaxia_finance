@@ -1,0 +1,160 @@
+{
+  "fingerprint_ahora": {
+    "entities": 525,
+    "identifiers": 574,
+    "assertions": 608,
+    "cuit_verified": 3,
+    "cnv_artifact": 3957,
+    "cnv_download_log": 3958,
+    "cnv_runs": 50,
+    "runs_running": 0
+  },
+  "declarado_antes": {
+    "cnv_artifact": 3955,
+    "cnv_download_log": 3956,
+    "cnv_runs": 49,
+    "entities": 525,
+    "identifiers": 574,
+    "assertions": 608,
+    "cuit_verified": 3,
+    "runs_running": 0
+  },
+  "delta": {
+    "cnv_artifact": 2,
+    "cnv_download_log": 2,
+    "cnv_runs": 1,
+    "entities": 0,
+    "identifiers": 0,
+    "assertions": 0,
+    "cuit_verified": 0,
+    "runs_running": 0
+  },
+  "corrida": {
+    "run_id": "d63aba1b809c429ba2952d20ac90620f",
+    "pipeline": "cnv-fetch-v1",
+    "status": "OK",
+    "started_at": "2026-09-01 17:59:44.891869+00",
+    "finished_at": "2026-09-01 18:00:38.177157+00",
+    "git": "e9d794b85a487d461018f243066293168638012c"
+  },
+  "artefactos": [
+    {
+      "cuit": "30546689979",
+      "entity_key": "E01M0X99C8F87H9TH9N39H2D1NW",
+      "kind": "EMPRESA_PAGE",
+      "key": "30546689979",
+      "sha256": "33a658641a4140aec543fc363450ff0178251f5fadcaf13e1de5864530118be1",
+      "bytes": "5902281",
+      "raw_path": "CUIT30546689979/empresa/33a658641a4140ae.html",
+      "ts": "2026-09-01 18:00:25.11542+00"
+    },
+    {
+      "cuit": "30546689979",
+      "entity_key": "E01M0X99C8F87H9TH9N39H2D1NW",
+      "kind": "VISOR",
+      "key": "b4d03927-961c-4220-b62a-88193d18f929",
+      "sha256": "8ed1146358d69ccdf48cdf848531cb885a207fb9f786be6239c524673b71b0fd",
+      "bytes": "63140",
+      "raw_path": "CUIT30546689979/visor/b4d03927-961c-4220-b62a-88193d18f929/8ed1146358d69ccd.html",
+      "ts": "2026-09-01 18:00:37.529199+00"
+    }
+  ],
+  "download_log": {
+    "filas": 2,
+    "cuits": 1,
+    "resultados": "DOWNLOADED",
+    "http": "200"
+  },
+  "otros_workstreams": "135077|88789|4799938|1027",
+  "hashes_verificados": {
+    "ok": 2,
+    "faltan": [],
+    "difieren": []
+  },
+  "autorizacion": [
+    {
+      "status": "VERIFIED",
+      "method": "REGISTRY",
+      "resolved_by": "proc:gleif_fetch",
+      "evidence": "AFIP (RA000009) registeredAs=30-54668997-9",
+      "entity_key": "E01M0X99C8F87H9TH9N39H2D1NW"
+    }
+  ],
+  "endpoints": [
+    "https://aif2.cnv.gov.ar/presentations/publicview/b4d03927-961c-4220-b62a-88193d18f929",
+    "https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/30546689979"
+  ],
+  "controles": [
+    {
+      "control": "1.1 · el cambio es EXACTAMENTE +1 run, +2 artefactos, +2 logs",
+      "ok": true,
+      "detalle": "sin desvios"
+    },
+    {
+      "control": "2.1 · la corrida cerro correctamente",
+      "ok": true,
+      "detalle": "status=OK finished_at=2026-09-01 18:00:38.177157+00"
+    },
+    {
+      "control": "2.2 · no quedan corridas RUNNING",
+      "ok": true,
+      "detalle": "0"
+    },
+    {
+      "control": "2.3 · Identity NO fue modificada",
+      "ok": true,
+      "detalle": "entities=0 identifiers=0 assertions=0 cuit_verified=0"
+    },
+    {
+      "control": "2.4 · todos los artefactos son del MISMO CUIT",
+      "ok": true,
+      "detalle": "{'30546689979'}"
+    },
+    {
+      "control": "2.5 · todos comparten el mismo entity_key",
+      "ok": true,
+      "detalle": "{'E01M0X99C8F87H9TH9N39H2D1NW'}"
+    },
+    {
+      "control": "2.6 · sin artefactos duplicados en toda la tabla",
+      "ok": true,
+      "detalle": "0"
+    },
+    {
+      "control": "2.7 · cada artefacto tiene su fila de descarga",
+      "ok": true,
+      "detalle": "0 sin correspondencia"
+    },
+    {
+      "control": "2.8 · provenance completa en los artefactos nuevos",
+      "ok": true,
+      "detalle": "0 incompletos"
+    },
+    {
+      "control": "2.9 · el sha256 de cada artefacto coincide con el archivo en disco",
+      "ok": true,
+      "detalle": "2/2 verificados · faltan 0 · difieren 0"
+    },
+    {
+      "control": "3.1 · el CUIT tenia una assertion VERIFIED vigente",
+      "ok": true,
+      "detalle": "1 assertion(es) VERIFIED para el CUIT 30546689979"
+    },
+    {
+      "control": "3.2 · el entity_key del artefacto coincide con el de Identity",
+      "ok": true,
+      "detalle": "artefacto={'E01M0X99C8F87H9TH9N39H2D1NW'} identity=E01M0X99C8F87H9TH9N39H2D1NW"
+    },
+    {
+      "control": "3.3 · ninguna descarga de esa corrida pertenece a otro CUIT",
+      "ok": true,
+      "detalle": "0 ajenas"
+    },
+    {
+      "control": "3.4 · todos los endpoints son de CNV",
+      "ok": true,
+      "detalle": "2 endpoints"
+    }
+  ],
+  "veredicto": "INCIDENTE_CONTROLADO_SIN_CORRUPCION"
+}

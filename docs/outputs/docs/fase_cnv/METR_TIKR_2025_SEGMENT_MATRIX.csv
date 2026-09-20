@@ -1,0 +1,19 @@
+metric,segment,tikr_value,catalaxia_value,difference,classification,explanation
+Operating Revenue,Segment Total,"1,217,305","1,217,305",+0,MATCH_EXACT,el 'Segment Total' de TIKR es el CONSOLIDADO de la CNV
+Operating Revenue,Eliminations,"-51,223",,,CATALAXIA_MISSING_INPUT,la CNV no publica eliminaciones de consolidacion
+Operating Revenue,MetroENERGY Marketing,"309,208",,,CATALAXIA_MISSING_INPUT,"solo es derivable NETO de eliminaciones: CONSOLIDADO - INDIVIDUAL = 257,985, que es MetroENERGY + eliminaciones. Por separado, no"
+Operating Revenue,MetroGAS Distribution,"959,320","959,320",+0,MATCH_EXACT,el segmento MetroGAS Distribution coincide EXACTAMENTE con el perimetro INDIVIDUAL de la CNV
+Operating Income,Segment Total,"196,311","196,311",+0,MATCH_EXACT,el 'Segment Total' de TIKR es el CONSOLIDADO de la CNV
+Operating Income,Eliminations,"-34,718",,,CATALAXIA_MISSING_INPUT,la CNV no publica eliminaciones de consolidacion
+Operating Income,MetroENERGY Marketing,"55,896",,,CATALAXIA_MISSING_INPUT,"solo es derivable NETO de eliminaciones: CONSOLIDADO - INDIVIDUAL = 21,178, que es MetroENERGY + eliminaciones. Por separado, no"
+Operating Income,MetroGAS Distribution,"175,133","175,133",+0,MATCH_EXACT,el segmento MetroGAS Distribution coincide EXACTAMENTE con el perimetro INDIVIDUAL de la CNV
+Net Income Common Stockholders,Segment Total,"132,483","132,483",+0,MATCH_EXACT,el 'Segment Total' de TIKR es el CONSOLIDADO de la CNV
+Net Income Common Stockholders,Eliminations,"-34,718",,,CATALAXIA_MISSING_INPUT,la CNV no publica eliminaciones de consolidacion
+Net Income Common Stockholders,MetroENERGY Marketing,"36,545",,,CATALAXIA_MISSING_INPUT,"solo es derivable NETO de eliminaciones: CONSOLIDADO - INDIVIDUAL = 1,827, que es MetroENERGY + eliminaciones. Por separado, no"
+Net Income Common Stockholders,MetroGAS Distribution,"130,656","130,656",+0,MATCH_EXACT,el segmento MetroGAS Distribution coincide EXACTAMENTE con el perimetro INDIVIDUAL de la CNV
+Total Assets,Segment Total,"1,390,076","1,390,076",+0,MATCH_EXACT,el 'Segment Total' de TIKR es el CONSOLIDADO de la CNV
+Total Assets,Eliminations,"-47,889",,,CATALAXIA_MISSING_INPUT,la CNV no publica eliminaciones de consolidacion
+Total Assets,MetroENERGY Marketing,"82,089",,,CATALAXIA_MISSING_INPUT,"solo es derivable NETO de eliminaciones: CONSOLIDADO - INDIVIDUAL = 34,200, que es MetroENERGY + eliminaciones. Por separado, no"
+Total Assets,MetroGAS Distribution,"1,355,876","1,355,876",+0,MATCH_EXACT,el segmento MetroGAS Distribution coincide EXACTAMENTE con el perimetro INDIVIDUAL de la CNV
+Geographic,Argentina Revenue,"1,217,305","1,217,305",+0,MATCH_EXACT,METR opera solo en Argentina: el geografico es el total
+Geographic,Argentina Total Non-Current Assets,"1,059,430","1,059,430",+0,MATCH_EXACT,idem

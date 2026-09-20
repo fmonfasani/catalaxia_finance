@@ -1,0 +1,66 @@
+{
+  "veredicto": "CLOSED_WITH_NOTES",
+  "controles": {
+    "las 6 re-afirmadas verifican contra su artefacto": {
+      "ok": true,
+      "detalle": "6/6"
+    },
+    "las 6 assertions historicas siguen existiendo": {
+      "ok": true,
+      "detalle": "6"
+    },
+    "cada historica conserva su provenance original": {
+      "ok": true,
+      "detalle": ""
+    },
+    "cada historica quedo cerrada y encadenada": {
+      "ok": true,
+      "detalle": ""
+    },
+    "ninguna historica fue firmada por f041": {
+      "ok": true,
+      "detalle": ""
+    },
+    "los 6 identifiers viejos quedaron RETIRED con fecha": {
+      "ok": true,
+      "detalle": "6"
+    },
+    "cada CIK designa la MISMA entidad que antes": {
+      "ok": true,
+      "detalle": "[]"
+    },
+    "ninguna re-afirmacion sin artefacto y sha256": {
+      "ok": true,
+      "detalle": "0"
+    },
+    "la re-afirmacion no cambio fuente, registro, entidad ni metodo": {
+      "ok": true,
+      "detalle": "0"
+    },
+    "la deuda es exactamente 1 y es la de SEC_20F": {
+      "ok": true,
+      "detalle": "[(1, 'SEC_20F', '0000904851')]"
+    },
+    "CUIT autoritativos siguen siendo 3": {
+      "ok": true,
+      "detalle": ""
+    },
+    "entidades sin cambio (525)": {
+      "ok": true,
+      "detalle": ""
+    },
+    "CIK autoritativos sin cambio (513)": {
+      "ok": true,
+      "detalle": ""
+    },
+    "cero corridas RUNNING": {
+      "ok": true,
+      "detalle": ""
+    },
+    "el trigger de inmutabilidad cubre source_facts (F-042)": {
+      "ok": true,
+      "detalle": ""
+    }
+  },
+  "hallazgos": []
+}

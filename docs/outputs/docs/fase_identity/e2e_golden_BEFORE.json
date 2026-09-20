@@ -1,0 +1,28 @@
+{
+  "target": "catalaxia_engine@127.0.0.1:5433/catalaxia mode=FAST prod=False",
+  "port": "5433",
+  "is_prod": false,
+  "identity_v1": {
+    "entity": 8004,
+    "identifier": 8021,
+    "assertion": 8041,
+    "review": 4,
+    "conflict": 4
+  },
+  "derived_fact": 47930,
+  "derived_distinct_runs": 47930,
+  "parsed_facts": 67084,
+  "huerfanas": 0,
+  "hashes_antes": {
+    "e2e_orchestrator.py": "6511d37d166fb95f",
+    "db.py": "NO",
+    "s00_smoke.py": "db4088a7b7450d39",
+    "s01_identity.py": "f5e94449d6b51188",
+    "s02_fetch_ypf.py": "8ab8cdb99b7eaff8",
+    "s03_parse_ypf.py": "3c58fed711f64948",
+    "s04_normalize.py": "19c69981dcf4bf36",
+    "c11_certificar.py": "8fe6c25e1f6c5969"
+  },
+  "raw_catalog_sha16": "bf83a6d3c92cfd32",
+  "download_log": 187
+}

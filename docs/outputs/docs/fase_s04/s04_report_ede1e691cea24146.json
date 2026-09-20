@@ -1,0 +1,96 @@
+{
+  "stage": "S04_normalize",
+  "run_id": "ede1e691cea24146b4f390694c5a020e",
+  "mode": "FAST",
+  "started_at": "2026-09-07T02:14:13.610247+00:00",
+  "finished_at": "2026-09-07T02:17:10.050298+00:00",
+  "input": {
+    "checkpoint_id": "S03E2E:ede1e691cea24146b4f390694c5a020e",
+    "rows": 67084,
+    "stage": "S03_parse",
+    "run_id": "ede1e691cea24146b4f390694c5a020e"
+  },
+  "coverage": {
+    "expected": 67084,
+    "parsed": 47930,
+    "rejected": 19154,
+    "by_reason": {}
+  },
+  "integrity": {
+    "hash_in": "5d1c9bc3fb653cd523a2123951b870eecc489219e1fbb8c081daf9d7561e88b0",
+    "hash_out": "3c4b8e303e852a3b63612226450d0cec88f77c6dfb98eb5f391aa5e991dff61b",
+    "hash_out_v1": "22b83280b2e67071a2706db4354e5f85cc06f2848d3ce45f573b8902f4c2cfdd",
+    "hash_spec": "hashout-v2",
+    "por_tabla": {
+      "derived.fact": "fcbdc5f1801c7f72faa5298da8d0d7dacf76890cfa74768cdc702a3329310fef"
+    }
+  },
+  "gate": {
+    "status": "PASS",
+    "reasons": [],
+    "checks": [
+      {
+        "id": "C-S04-001",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-002",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-003",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-004",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-005",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-006",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-007",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-008",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-009",
+        "result": "PASS"
+      }
+    ]
+  },
+  "nulls": {
+    "count": 0,
+    "by_null_reason": {
+      "sin_contexto": 0,
+      "sin_entidad": 0
+    }
+  },
+  "code": {
+    "git_commit": "2993918fd268d0ffa9184815626fa4e438a46327",
+    "parser_version": "s04_normalize_v1",
+    "script": "scripts/engine/s04_normalize.py",
+    "normalizer_version": "s04_normalize_v1"
+  },
+  "coverage_detail": {
+    "grupos": 47930,
+    "emitidos": 47930,
+    "sin_contexto": 0,
+    "sin_entidad": 0,
+    "sin_unidad": 0,
+    "unidad_no_resuelta": 0,
+    "desempates": {
+      "IDENTICO": 18753,
+      "POR_PRECISION": 100,
+      "UNICO": 29077
+    }
+  }
+}

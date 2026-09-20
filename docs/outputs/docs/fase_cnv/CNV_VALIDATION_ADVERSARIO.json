@@ -1,0 +1,72 @@
+[
+  {
+    "ataque": "1",
+    "nombre": "CUIT con digito verificador invalido",
+    "resultado": "RECHAZADO",
+    "barrera": "identity_v1.assert_identifier() -> cuit_valido() (modulo 11)",
+    "detalle": "CUIT 30546689970 no pasa el digito verificador (modulo 11)"
+  },
+  {
+    "ataque": "2",
+    "nombre": "CUIT ya autoritativo de OTRA entidad (CEPU) atribuido a YPF",
+    "resultado": "RECHAZADO",
+    "barrera": "ux_identifier_autoritativo_unico + identity_v1.assert_identifier()",
+    "detalle": "CUIT:AFIP:33650305499 pertenece a E01M0X99DQ7P5TQ4Z6Z58RC5PB3. Un identificador autoritativo no puede designar dos entidades. (conflict_id=31)"
+  },
+  {
+    "ataque": "3",
+    "nombre": "Macro Bank Inc. (BMA): fetch sin CUIT verificado",
+    "resultado": "CORRECTAMENTE BLOQUEADO",
+    "barrera": "ausencia de identifier CUIT en identity_v1 (F-024: el legacy tiene un CIK mal cargado en la columna cuit, nunca promovido)",
+    "detalle": "identity_v1.identifier para E01M14AP85T67281AA83Z87FMEJ: CUIT=0, LEI=0 (LEI=0 porque F-024/review 17 declara AMBIGUO: GLEIF devuelve 2 LEI vigentes para Banco Macro). Conclusion: no hay CUIT que pasar a c3_cnv_fetch.py sin inventarlo. No se intento ningun --cuit para BMA en Fase D."
+  },
+  {
+    "ataque": "4",
+    "nombre": "ticker/valor no-CUIT pasado como --cuit ('YPF')",
+    "resultado": "RECHAZADO",
+    "barrera": "c3_cnv_fetch.py: val.normalize_cuit() + chequeo de 11 digitos, antes de tocar red o identity_v1",
+    "detalle": "CUIT invalido: 'YPF'"
+  },
+  {
+    "ataque": "4",
+    "nombre": "ticker/valor no-CUIT pasado como --cuit ('GGAL.BA')",
+    "resultado": "RECHAZADO",
+    "barrera": "c3_cnv_fetch.py: val.normalize_cuit() + chequeo de 11 digitos, antes de tocar red o identity_v1",
+    "detalle": "CUIT invalido: 'GGAL.BA'"
+  },
+  {
+    "ataque": "4",
+    "nombre": "ticker/valor no-CUIT pasado como --cuit ('12345')",
+    "resultado": "RECHAZADO",
+    "barrera": "c3_cnv_fetch.py: val.normalize_cuit() + chequeo de 11 digitos, antes de tocar red o identity_v1",
+    "detalle": "CUIT invalido: '12345'"
+  },
+  {
+    "ataque": "6",
+    "nombre": "atribucion CNV<->Identity por coincidencia de nombre",
+    "resultado": "ESTRUCTURALMENTE IMPOSIBLE",
+    "barrera": "revisión estática: c3_cnv_fetch.py, c3_identity_link.py y engine/identity_v1.py resuelven exclusivamente por CIK/CUIT/LEI vigentes (entity_of()); ningún camino de código compara preferred_name contra el CUIT/CIK entrante",
+    "detalle": "0/3 archivos con algún patrón de matching por nombre (esperado 0)"
+  },
+  {
+    "ataque": "10",
+    "nombre": "reescribir evidence de la assertion vigente del CUIT de YPF (id 345)",
+    "resultado": "RECHAZADO",
+    "barrera": "identity_v1.assertion: trigger tg_assertion_inmutable (F-015)",
+    "detalle": "permission denied for table assertion"
+  },
+  {
+    "ataque": "11a",
+    "nombre": "borrar una fila de fetch_raw.cnv_download_log (DELETE)",
+    "resultado": "RECHAZADO",
+    "barrera": "privilegios de rol: catalaxia_engine NO tiene DELETE en fetch_raw (migracion 011)",
+    "detalle": "permission denied for table cnv_download_log"
+  },
+  {
+    "ataque": "11b",
+    "nombre": "falsificar el sha256 de una fila ya persistida (UPDATE)",
+    "resultado": "*** SIN BARRERA ***",
+    "barrera": "ninguna: catalaxia_engine SÍ tiene UPDATE en fetch_raw.* (migracion 011, a diferencia de identity_v1 que sí tiene triggers de inmutabilidad)",
+    "detalle": "el UPDATE se aplicó sin excepción. Mitigación parcial: el auditor independiente (AUD-HASH-001) recalcula el sha256 desde el archivo en disco y detectaría la discrepancia en la SIGUIENTE auditoría, pero nada en la base impide la escritura en el momento en que ocurre."
+  }
+]

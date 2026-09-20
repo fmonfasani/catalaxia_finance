@@ -1,0 +1,28 @@
+SMOKE CROSS-WORKSTREAM · YPF · CIK 0000904851
+  catalaxia_engine@127.0.0.1:5433/catalaxia mode=FAST prod=False
+
+  identity_v1
+    entity_key  E01M0X99C8F87H9TH9N39H2D1NW
+    LEI         5493003N7447U18U5U53
+    bridge      assertion #342 ratificado por Federico (STRONG)
+    CUIT        30546689979
+
+  CNV antes   {'presentaciones_por_cuit': 4919, 'presentaciones_por_entity_key': 0}
+
+  fetch CNV con CUIT 30546689979 (scope FINANCIERO) ...
+    por resultado           = {'DOWNLOADED': 1782}
+    gate                    = PASS  checkpoint=077ce1f935e1497e81e45f2bbfb1288c
+      [PASS ] C-C3-001 � conciliacion plan->manifest: esperados=1782 filas=1782 ok=1782 review=0 fallidos=0 criticos_fallidos=0
+      [PASS ] C-C3-002 � integridad RAW re-leyendo disco: verificados=1782/1782 mismatch=0 faltantes=0
+      [PASS ] C-C3-003 � provenance completa entidad->cuit->url->sha->raw->run->padre: filas persistidas=1782 incompletas=0 sin_padre=0
+      [PASS ] C-C3-004 � validacion de contenido: 0 artefactos aceptados con validacion != VALID (aceptados=1782, en revision=0, HTTP 200 rechazados por contenido=0)
+      [PASS ] C-C3-005 � rate limiting por host respetado: intervalos minimos observados={'www.cnv.gov.ar': None, 'aif2.cnv.gov.ar': 0.796, 'blob.cnv.gov.ar': None} vs configu
+      [PASS ] C-C3-006 � primera pasada: escritos=1782 reutilizados=0; RAW direccionado por contenido, 0 sobreescrituras (bytes nuevos=114299736)
+      [PASS ] C-C3-007 � identidad no inventada: reviews no cerrables intactas=3/3; relaciones declaradas=584 (CONTROLADA=244, VINCULADA=338); 0 relaciones asumidas; 0 entidad
+      [PASS ] C-C3-008 � doble hash de adjuntos (C0-CNV-006): comparados=0 coinciden=0. El hash declarado por CNV NO se usa para idempotencia; la integridad la da el SHA-256 p
+      [PASS ] C-C3-009 � deteccion de duplicados: filas (kind,key,sha) repetidas en el manifest=0; contenidos identicos detectados bajo claves distintas=0 (se registran, no se
+      [PASS ] C-C3-010 � scope: 100% de las 1782 descargas pertenecen al perfil CUIT 30546689979; 0 requests a SEC/mercado/otras empresas
+
+  CNV despues {'presentaciones_por_cuit': 9838, 'presentaciones_por_entity_key': 0}
+
+  evidencia -> outputs\docs\fase_identity\smoke_cross_cnv_YPF.json

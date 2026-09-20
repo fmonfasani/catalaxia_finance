@@ -1,0 +1,86 @@
+version: "3.9"
+
+# docker-compose.yml — PRODUCCIÓN
+# Usa imágenes pre-buildeadas desde GitHub Container Registry.
+# No buildea desde source (eso lo hace GitHub Actions).
+#
+# Variables requeridas en .env:
+#   POSTGRES_PASSWORD, API_SECRET_KEY, NEXTAUTH_SECRET,
+#   STRIPE_SECRET_KEY, GHCR_IMAGE
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: catalaxia
+      POSTGRES_USER: catalaxia
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U catalaxia"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - internal
+
+  api:
+    image: ghcr.io/${GHCR_IMAGE}/api:${IMAGE_TAG:-latest}
+    restart: always
+    environment:
+      DATABASE_URL: postgresql://catalaxia:${POSTGRES_PASSWORD}@db:5432/catalaxia
+      SECRET_KEY: ${API_SECRET_KEY}
+      LOG_LEVEL: info
+      ENVIRONMENT: production
+    ports:
+      - "8100:8100"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8100/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  screener:
+    image: ghcr.io/${GHCR_IMAGE}/screener:${IMAGE_TAG:-latest}
+    restart: always
+    environment:
+      NEXT_PUBLIC_API_URL: ${API_URL:-https://api.catalaxia.webshooks.com}
+      NEXTAUTH_URL: ${SCREENER_URL:-https://screener.catalaxia.com}
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
+      STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY}
+      NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ${STRIPE_PUBLISHABLE_KEY}
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+    networks:
+      - internal
+
+  catalaxia:
+    image: ghcr.io/${GHCR_IMAGE}/catalaxia:${IMAGE_TAG:-latest}
+    restart: always
+    environment:
+      NEXT_PUBLIC_API_URL: ${API_URL:-https://api.catalaxia.webshooks.com}
+      NEXTAUTH_URL: ${CATALAXIA_URL:-https://catalaxia.webshooks.com}
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
+    ports:
+      - "3001:3000"
+    depends_on:
+      - api
+    networks:
+      - internal
+
+volumes:
+  pgdata:
+    driver: local
+
+networks:
+  internal:
+    driver: bridge

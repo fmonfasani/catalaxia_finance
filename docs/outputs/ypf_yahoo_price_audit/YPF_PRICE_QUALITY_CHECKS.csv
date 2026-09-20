@@ -1,0 +1,13 @@
+﻿check,actual,expected,status,notes
+Filas OHLC,8344,> 0,OK,Ruedas devueltas por period=max.
+Fechas duplicadas,0,0,OK,La clave debe ser ticker+fecha.
+NULL Open,0,0,OK,Yahoo puede omitir campos en ruedas anómalas.
+NULL High,0,0,OK,Yahoo puede omitir campos en ruedas anómalas.
+NULL Low,0,0,OK,Yahoo puede omitir campos en ruedas anómalas.
+NULL Close,0,0,OK,Yahoo puede omitir campos en ruedas anómalas.
+NULL Adj Close,0,0,OK,Yahoo puede omitir campos en ruedas anómalas.
+NULL Volume,0,0,OK,Yahoo puede omitir campos en ruedas anómalas.
+Invariantes OHLC violadas,0,0,OK,High debe ser >= O/L/C y Low <= O/H/C.
+Valores negativos OHLCV,0,0,OK,Precios y volumen no deben ser negativos.
+Primera rueda,1993-06-29,fecha mínima Yahoo,INFO,Inicio real observado para el ADR YPF.
+Última rueda,2026-08-21,última rueda disponible,INFO,No equivale necesariamente a fecha calendario actual.

@@ -1,0 +1,709 @@
+{
+  "_meta": {
+    "cuits_auditados": [
+      "30546689979",
+      "33650305499",
+      "99999999999",
+      "30657862068"
+    ],
+    "db": "catalaxia_engine@127.0.0.1:5433/catalaxia mode=FAST prod=False",
+    "veredicto_global": "FAIL"
+  },
+  "resultados": [
+    {
+      "cuit": "30546689979",
+      "checks": [
+        {
+          "id": "AUD-CUIT-001",
+          "result": "PASS",
+          "detalle": "digito verificador AFIP: digito verificador coincide",
+          "evidencia": {}
+        },
+        {
+          "id": "AUD-IDENT-001",
+          "result": "PASS",
+          "detalle": "identity_v1 conoce este CUIT en 9 fila(s) (8 vigentes, 1 autoritativas)",
+          "evidencia": {
+            "detalle_vigentes": [
+              {
+                "entity_key": "E01M0X99C8F87H9TH9N39H2D1NW",
+                "preferred_name": "YPF SOCIEDAD ANONIMA",
+                "id_type": "CUIT",
+                "id_namespace": "AFIP",
+                "is_authoritative": false,
+                "id_status": "ACTIVE",
+                "valid_to": null,
+                "confidence": "WEAK",
+                "a_status": "CANDIDATE",
+                "method": "REGISTRY",
+                "source_id": "LEGACY_DIM_ENTITY"
+              },
+              {
+                "entity_key": "E01M0X99C8F87H9TH9N39H2D1NW",
+                "preferred_name": "YPF SOCIEDAD ANONIMA",
+                "id_type": "CUIT",
+                "id_namespace": "AFIP",
+                "is_authoritative": true,
+                "id_status": "ACTIVE",
+                "valid_to": null,
+                "confidence": "AUTHORITATIVE",
+                "a_status": "VERIFIED",
+                "method": "REGISTRY",
+                "source_id": "GLEIF"
+              },
+              {
+                "entity_key": "E01M0X99C8F87H9TH9N39H2D1NW",
+                "preferred_name": "YPF SOCIEDAD ANONIMA",
+                "id_type": "CUIT",
+                "id_namespace": "AFIP",
+                "is_authoritative": false,
+                "id_status": "ACTIVE",
+                "valid_to": null,
+                "confidence": "WEAK",
+                "a_status": "CANDIDATE",
+                "method": "REGISTRY",
+                "source_id": "LEGACY_DIM_ENTITY"
+              },
+              {
+                "entity_key": "E01M0X99C8F87H9TH9N39H2D1NW",
+                "preferred_name": "YPF SOCIEDAD ANONIMA",
+                "id_type": "CUIT",
+                "id_namespace": "AFIP",
+                "is_authoritative": false,
+                "id_status": "ACTIVE",
+                "valid_to": null,
+                "confidence": "WEAK",
+                "a_status": "CANDIDATE",
+                "method": "REGISTRY",
+                "source_id": "LEGACY_DIM_ENTITY"
+              },
+              {
+                "entity_key": "E01M0X99C8F87H9TH9N39H2D1NW",
+                "preferred_name": "YPF SOCIEDAD ANONIMA",
+                "id_type": "CUIT",
+                "id_namespace": "AFIP",
+                "is_authoritative": false,
+                "id_status": "ACTIVE",
+                "valid_to": null,
+                "confidence": "WEAK",
+                "a_status": "CANDIDATE",
+                "method": "REGISTRY",
+                "source_id": "LEGACY_DIM_ENTITY"
+              },
+              {
+                "entity_key": "E01M0X99C8F87H9TH9N39H2D1NW",
+                "preferred_name": "YPF SOCIEDAD ANONIMA",
+                "id_type": "CUIT",
+                "id_namespace": "AFIP",
+                "is_authoritative": false,
+                "id_status": "ACTIVE",
+                "valid_to": null,
+                "confidence": "WEAK",
+                "a_status": "CANDIDATE",
+                "method": "REGISTRY",
+                "source_id": "LEGACY_DIM_ENTITY"
+              },
+              {
+                "entity_key": "E01M0X99C8F87H9TH9N39H2D1NW",
+                "preferred_name": "YPF SOCIEDAD ANONIMA",
+                "id_type": "CUIT",
+                "id_namespace": "AFIP",
+                "is_authoritative": false,
+                "id_status": "ACTIVE",
+                "valid_to": null,
+                "confidence": "WEAK",
+                "a_status": "CANDIDATE",
+                "method": "REGISTRY",
+                "source_id": "LEGACY_DIM_ENTITY"
+              },
+              {
+                "entity_key": "E01M0X99C8F87H9TH9N39H2D1NW",
+                "preferred_name": "YPF SOCIEDAD ANONIMA",
+                "id_type": "CUIT",
+                "id_namespace": "AFIP",
+                "is_authoritative": false,
+                "id_status": "ACTIVE",
+                "valid_to": null,
+                "confidence": "WEAK",
+                "a_status": "CANDIDATE",
+                "method": "REGISTRY",
+                "source_id": "LEGACY_DIM_ENTITY"
+              }
+            ]
+          }
+        },
+        {
+          "id": "AUD-IDENT-002",
+          "result": "PASS",
+          "detalle": "el CUIT no apunta a mas de una entidad vigente: 1 distinta(s)",
+          "evidencia": {
+            "entidades": [
+              "E01M0X99C8F87H9TH9N39H2D1NW"
+            ]
+          }
+        },
+        {
+          "id": "AUD-CANT-001",
+          "result": "FAIL",
+          "detalle": "manifest DB=2492 vs archivos en disco=55 bajo data/raw/engine/cnv/CUIT30546689979/",
+          "evidencia": {
+            "manifest": 2492,
+            "disco": 55
+          }
+        },
+        {
+          "id": "AUD-CANT-002",
+          "result": "PASS",
+          "detalle": "discovery registrado: 19676 filas / 4919 guids unicos en 4 corrida(s) — informativo, no bloqueante",
+          "evidencia": {}
+        },
+        {
+          "id": "AUD-DUP-001",
+          "result": "PASS",
+          "detalle": "duplicados (kind,key,sha256) dentro de este CUIT: 0",
+          "evidencia": {}
+        },
+        {
+          "id": "AUD-HASH-001",
+          "result": "FAIL",
+          "detalle": "sha256 recalculado desde disco: 55/2492 coinciden, 0 mismatch, 2437 faltantes",
+          "evidencia": {
+            "mismatches": [],
+            "faltantes": [
+              "CUIT30546689979/empresa/746b00f5fd2f9120.html",
+              "CUIT30546689979/empresa/18abeada3af556e4.html",
+              "CUIT30546689979/empresa/abeef70549448f3c.html",
+              "CUIT30546689979/visor/876da274-443c-4203-ade9-98628b4b1ae9/7327bcb2c4a4a186.html",
+              "CUIT30546689979/visor/80dbba22-06de-4c73-91d3-6d430e94250a/7b41ddc184c50e02.html",
+              "CUIT30546689979/visor/5ca5f23e-08c7-4abb-af13-ba45d2a9dfbb/78fa1fad008a0b1e.html",
+              "CUIT30546689979/visor/61f66d12-3f36-43c3-9a11-3872160e34cf/0e630e6c2bf2f2ff.html",
+              "CUIT30546689979/visor/8eda6aa7-22d5-4f76-9867-cbab91d88bee/5be99ab564d78891.html",
+              "CUIT30546689979/visor/08dace0f-8dcd-4ae8-b822-537642c335c0/f447a2996be35105.html",
+              "CUIT30546689979/visor/d22408b1-570d-49d0-9ed2-c526d283a6a8/f880d9570c91415a.html"
+            ]
+          }
+        },
+        {
+          "id": "AUD-PROV-001",
+          "result": "PASS",
+          "detalle": "provenance completa (entity_key,cuit,endpoint,raw_path,run_id): 2492/2492 completas",
+          "evidencia": {
+            "incompletas": []
+          }
+        },
+        {
+          "id": "AUD-PROV-002",
+          "result": "PASS",
+          "detalle": "el CUIT de la fila coincide con el CUIT{n} de su raw_path: 2492/2492 coherentes",
+          "evidencia": {
+            "incoherentes": []
+          }
+        },
+        {
+          "id": "AUD-ATRIB-001",
+          "result": "PASS",
+          "detalle": "0 corridas de este CUIT mezclaron otro CUIT: 6 corrida(s) revisada(s), 0 fila(s) ajenas encontradas",
+          "evidencia": {
+            "ajenos": []
+          }
+        }
+      ],
+      "gate": "FAIL"
+    },
+    {
+      "cuit": "33650305499",
+      "checks": [
+        {
+          "id": "AUD-CUIT-001",
+          "result": "PASS",
+          "detalle": "digito verificador AFIP: digito verificador coincide",
+          "evidencia": {}
+        },
+        {
+          "id": "AUD-IDENT-001",
+          "result": "PASS",
+          "detalle": "identity_v1 conoce este CUIT en 10 fila(s) (9 vigentes, 1 autoritativas)",
+          "evidencia": {
+            "detalle_vigentes": [
+              {
+                "entity_key": "E01M0X99DQ7P5TQ4Z6Z58RC5PB3",
+                "preferred_name": "CENTRAL PUERTO S.A.",
+                "id_type": "CNV_ENTITY_ID",
+                "id_namespace": "CNV",
+                "is_authoritative": false,
+                "id_status": "ACTIVE",
+                "valid_to": null,
+                "confidence": "WEAK",
+                "a_status": "CANDIDATE",
+                "method": "REGISTRY",
+                "source_id": "CNV_PORTAL"
+              },
+              {
+                "entity_key": "E01M0X99DQ7P5TQ4Z6Z58RC5PB3",
+                "preferred_name": "CENTRAL PUERTO S.A.",
+                "id_type": "CUIT",
+                "id_namespace": "AFIP",
+                "is_authoritative": true,
+                "id_status": "ACTIVE",
+                "valid_to": null,
+                "confidence": "AUTHORITATIVE",
+                "a_status": "VERIFIED",
+                "method": "REGISTRY",
+                "source_id": "GLEIF"
+              },
+              {
+                "entity_key": "E01M0X99DQ7P5TQ4Z6Z58RC5PB3",
+                "preferred_name": "CENTRAL PUERTO S.A.",
+                "id_type": "CUIT",
+                "id_namespace": "AFIP",
+                "is_authoritative": false,
+                "id_status": "ACTIVE",
+                "valid_to": null,
+                "confidence": "WEAK",
+                "a_status": "CANDIDATE",
+                "method": "REGISTRY",
+                "source_id": "LEGACY_DIM_ENTITY"
+              },
+              {
+                "entity_key": "E01M0X99DQ7P5TQ4Z6Z58RC5PB3",
+                "preferred_name": "CENTRAL PUERTO S.A.",
+                "id_type": "CUIT",
+                "id_namespace": "AFIP",
+                "is_authoritative": false,
+                "id_status": "ACTIVE",
+                "valid_to": null,
+                "confidence": "WEAK",
+                "a_status": "CANDIDATE",
+                "method": "REGISTRY",
+                "source_id": "LEGACY_DIM_ENTITY"
+              },
+              {
+                "entity_key": "E01M0X99DQ7P5TQ4Z6Z58RC5PB3",
+                "preferred_name": "CENTRAL PUERTO S.A.",
+                "id_type": "CUIT",
+                "id_namespace": "AFIP",
+                "is_authoritative": false,
+                "id_status": "ACTIVE",
+                "valid_to": null,
+                "confidence": "WEAK",
+                "a_status": "CANDIDATE",
+                "method": "REGISTRY",
+                "source_id": "LEGACY_DIM_ENTITY"
+              },
+              {
+                "entity_key": "E01M0X99DQ7P5TQ4Z6Z58RC5PB3",
+                "preferred_name": "CENTRAL PUERTO S.A.",
+                "id_type": "CUIT",
+                "id_namespace": "AFIP",
+                "is_authoritative": false,
+                "id_status": "ACTIVE",
+                "valid_to": null,
+                "confidence": "WEAK",
+                "a_status": "CANDIDATE",
+                "method": "REGISTRY",
+                "source_id": "LEGACY_DIM_ENTITY"
+              },
+              {
+                "entity_key": "E01M0X99DQ7P5TQ4Z6Z58RC5PB3",
+                "preferred_name": "CENTRAL PUERTO S.A.",
+                "id_type": "CUIT",
+                "id_namespace": "AFIP",
+                "is_authoritative": false,
+                "id_status": "ACTIVE",
+                "valid_to": null,
+                "confidence": "WEAK",
+                "a_status": "CANDIDATE",
+                "method": "REGISTRY",
+                "source_id": "LEGACY_DIM_ENTITY"
+              },
+              {
+                "entity_key": "E01M0X99DQ7P5TQ4Z6Z58RC5PB3",
+                "preferred_name": "CENTRAL PUERTO S.A.",
+                "id_type": "CUIT",
+                "id_namespace": "AFIP",
+                "is_authoritative": false,
+                "id_status": "ACTIVE",
+                "valid_to": null,
+                "confidence": "WEAK",
+                "a_status": "CANDIDATE",
+                "method": "REGISTRY",
+                "source_id": "LEGACY_DIM_ENTITY"
+              },
+              {
+                "entity_key": "E01M0X99DQ7P5TQ4Z6Z58RC5PB3",
+                "preferred_name": "CENTRAL PUERTO S.A.",
+                "id_type": "CUIT",
+                "id_namespace": "AFIP",
+                "is_authoritative": false,
+                "id_status": "ACTIVE",
+                "valid_to": null,
+                "confidence": "WEAK",
+                "a_status": "CANDIDATE",
+                "method": "REGISTRY",
+                "source_id": "LEGACY_DIM_ENTITY"
+              }
+            ]
+          }
+        },
+        {
+          "id": "AUD-IDENT-002",
+          "result": "PASS",
+          "detalle": "el CUIT no apunta a mas de una entidad vigente: 1 distinta(s)",
+          "evidencia": {
+            "entidades": [
+              "E01M0X99DQ7P5TQ4Z6Z58RC5PB3"
+            ]
+          }
+        },
+        {
+          "id": "AUD-CANT-001",
+          "result": "FAIL",
+          "detalle": "manifest DB=391 vs archivos en disco=7 bajo data/raw/engine/cnv/CUIT33650305499/",
+          "evidencia": {
+            "manifest": 391,
+            "disco": 7
+          }
+        },
+        {
+          "id": "AUD-CANT-002",
+          "result": "PASS",
+          "detalle": "discovery registrado: 9305 filas / 1861 guids unicos en 5 corrida(s) — informativo, no bloqueante",
+          "evidencia": {}
+        },
+        {
+          "id": "AUD-DUP-001",
+          "result": "PASS",
+          "detalle": "duplicados (kind,key,sha256) dentro de este CUIT: 0",
+          "evidencia": {}
+        },
+        {
+          "id": "AUD-HASH-001",
+          "result": "FAIL",
+          "detalle": "sha256 recalculado desde disco: 7/391 coinciden, 0 mismatch, 384 faltantes",
+          "evidencia": {
+            "mismatches": [],
+            "faltantes": [
+              "CUIT33650305499/empresa/3150c7cdc642ef4d.html",
+              "CUIT33650305499/visor/8f4b2c34-0205-44da-a28a-f8102fdd56bf/499bdcdd54a8a196.html",
+              "CUIT33650305499/visor/49c3d7da-48f1-4b2a-a5ad-97b1e8b38715/6e634c829ecf78ca.html",
+              "CUIT33650305499/visor/d2714a78-ca16-458e-a2bd-0dcf72701221/cf7f5ed6aef4805b.html",
+              "CUIT33650305499/visor/3f01938e-744c-4ce8-ab35-c5b2663b2d72/f83e976cd67faf95.html",
+              "CUIT33650305499/visor/807e20af-2731-4fc9-8dcc-efa6febb617a/f7afcef12f6df8ae.html",
+              "CUIT33650305499/visor/71a8c974-d232-4f1a-9c3a-0b1fe7bd7e58/10078e483af5ac84.html",
+              "CUIT33650305499/visor/8376fa49-ac56-4787-ab6a-052e0fb7d9af/0d52cb6b415af98b.html",
+              "CUIT33650305499/visor/87a44923-8f5f-4947-b376-7d1adb1c21ef/a15072bfb6ceff63.html",
+              "CUIT33650305499/visor/e3dd2246-071b-4a94-8949-e90ea0a857d5/30f1749c74417fb1.html"
+            ]
+          }
+        },
+        {
+          "id": "AUD-PROV-001",
+          "result": "PASS",
+          "detalle": "provenance completa (entity_key,cuit,endpoint,raw_path,run_id): 391/391 completas",
+          "evidencia": {
+            "incompletas": []
+          }
+        },
+        {
+          "id": "AUD-PROV-002",
+          "result": "PASS",
+          "detalle": "el CUIT de la fila coincide con el CUIT{n} de su raw_path: 391/391 coherentes",
+          "evidencia": {
+            "incoherentes": []
+          }
+        },
+        {
+          "id": "AUD-ATRIB-001",
+          "result": "PASS",
+          "detalle": "0 corridas de este CUIT mezclaron otro CUIT: 21 corrida(s) revisada(s), 0 fila(s) ajenas encontradas",
+          "evidencia": {
+            "ajenos": []
+          }
+        }
+      ],
+      "gate": "FAIL"
+    },
+    {
+      "cuit": "99999999999",
+      "checks": [
+        {
+          "id": "AUD-CUIT-001",
+          "result": "FAIL",
+          "detalle": "digito verificador AFIP: digito verificador esperado=5 declarado=9",
+          "evidencia": {}
+        },
+        {
+          "id": "AUD-IDENT-001",
+          "result": "FAIL",
+          "detalle": "identity_v1 conoce este CUIT en 0 fila(s) (0 vigentes, 0 autoritativas)",
+          "evidencia": {
+            "detalle_vigentes": []
+          }
+        },
+        {
+          "id": "AUD-IDENT-002",
+          "result": "PASS",
+          "detalle": "el CUIT no apunta a mas de una entidad vigente: 0 distinta(s)",
+          "evidencia": {
+            "entidades": []
+          }
+        },
+        {
+          "id": "AUD-CANT-001",
+          "result": "PASS",
+          "detalle": "manifest DB=0 vs archivos en disco=0 bajo data/raw/engine/cnv/CUIT99999999999/",
+          "evidencia": {
+            "manifest": 0,
+            "disco": 0
+          }
+        },
+        {
+          "id": "AUD-CANT-002",
+          "result": "PASS",
+          "detalle": "discovery registrado: 0 filas / 0 guids unicos en 0 corrida(s) — informativo, no bloqueante",
+          "evidencia": {}
+        },
+        {
+          "id": "AUD-DUP-001",
+          "result": "PASS",
+          "detalle": "duplicados (kind,key,sha256) dentro de este CUIT: 0",
+          "evidencia": {}
+        },
+        {
+          "id": "AUD-HASH-001",
+          "result": "PASS",
+          "detalle": "sha256 recalculado desde disco: 0/0 coinciden, 0 mismatch, 0 faltantes",
+          "evidencia": {
+            "mismatches": [],
+            "faltantes": []
+          }
+        },
+        {
+          "id": "AUD-PROV-001",
+          "result": "PASS",
+          "detalle": "provenance completa (entity_key,cuit,endpoint,raw_path,run_id): 0/0 completas",
+          "evidencia": {
+            "incompletas": []
+          }
+        },
+        {
+          "id": "AUD-PROV-002",
+          "result": "PASS",
+          "detalle": "el CUIT de la fila coincide con el CUIT{n} de su raw_path: 0/0 coherentes",
+          "evidencia": {
+            "incoherentes": []
+          }
+        },
+        {
+          "id": "AUD-ATRIB-001",
+          "result": "PASS",
+          "detalle": "0 corridas de este CUIT mezclaron otro CUIT: 1 corrida(s) revisada(s), 0 fila(s) ajenas encontradas",
+          "evidencia": {
+            "ajenos": []
+          }
+        }
+      ],
+      "gate": "FAIL"
+    },
+    {
+      "cuit": "30657862068",
+      "checks": [
+        {
+          "id": "AUD-CUIT-001",
+          "result": "PASS",
+          "detalle": "digito verificador AFIP: digito verificador coincide",
+          "evidencia": {}
+        },
+        {
+          "id": "AUD-IDENT-001",
+          "result": "PASS",
+          "detalle": "identity_v1 conoce este CUIT en 9 fila(s) (8 vigentes, 1 autoritativas)",
+          "evidencia": {
+            "detalle_vigentes": [
+              {
+                "entity_key": "E01M0X99G29RBSSFSGAM5S1QZMT",
+                "preferred_name": "TRANSPORTADORA DE GAS DEL SUR S.A.",
+                "id_type": "CUIT",
+                "id_namespace": "AFIP",
+                "is_authoritative": false,
+                "id_status": "ACTIVE",
+                "valid_to": null,
+                "confidence": "WEAK",
+                "a_status": "CANDIDATE",
+                "method": "REGISTRY",
+                "source_id": "LEGACY_DIM_ENTITY"
+              },
+              {
+                "entity_key": "E01M0X99G29RBSSFSGAM5S1QZMT",
+                "preferred_name": "TRANSPORTADORA DE GAS DEL SUR S.A.",
+                "id_type": "CUIT",
+                "id_namespace": "AFIP",
+                "is_authoritative": true,
+                "id_status": "ACTIVE",
+                "valid_to": null,
+                "confidence": "AUTHORITATIVE",
+                "a_status": "VERIFIED",
+                "method": "REGISTRY",
+                "source_id": "GLEIF"
+              },
+              {
+                "entity_key": "E01M0X99G29RBSSFSGAM5S1QZMT",
+                "preferred_name": "TRANSPORTADORA DE GAS DEL SUR S.A.",
+                "id_type": "CUIT",
+                "id_namespace": "AFIP",
+                "is_authoritative": false,
+                "id_status": "ACTIVE",
+                "valid_to": null,
+                "confidence": "WEAK",
+                "a_status": "CANDIDATE",
+                "method": "REGISTRY",
+                "source_id": "LEGACY_DIM_ENTITY"
+              },
+              {
+                "entity_key": "E01M0X99G29RBSSFSGAM5S1QZMT",
+                "preferred_name": "TRANSPORTADORA DE GAS DEL SUR S.A.",
+                "id_type": "CUIT",
+                "id_namespace": "AFIP",
+                "is_authoritative": false,
+                "id_status": "ACTIVE",
+                "valid_to": null,
+                "confidence": "WEAK",
+                "a_status": "CANDIDATE",
+                "method": "REGISTRY",
+                "source_id": "LEGACY_DIM_ENTITY"
+              },
+              {
+                "entity_key": "E01M0X99G29RBSSFSGAM5S1QZMT",
+                "preferred_name": "TRANSPORTADORA DE GAS DEL SUR S.A.",
+                "id_type": "CUIT",
+                "id_namespace": "AFIP",
+                "is_authoritative": false,
+                "id_status": "ACTIVE",
+                "valid_to": null,
+                "confidence": "WEAK",
+                "a_status": "CANDIDATE",
+                "method": "REGISTRY",
+                "source_id": "LEGACY_DIM_ENTITY"
+              },
+              {
+                "entity_key": "E01M0X99G29RBSSFSGAM5S1QZMT",
+                "preferred_name": "TRANSPORTADORA DE GAS DEL SUR S.A.",
+                "id_type": "CUIT",
+                "id_namespace": "AFIP",
+                "is_authoritative": false,
+                "id_status": "ACTIVE",
+                "valid_to": null,
+                "confidence": "WEAK",
+                "a_status": "CANDIDATE",
+                "method": "REGISTRY",
+                "source_id": "LEGACY_DIM_ENTITY"
+              },
+              {
+                "entity_key": "E01M0X99G29RBSSFSGAM5S1QZMT",
+                "preferred_name": "TRANSPORTADORA DE GAS DEL SUR S.A.",
+                "id_type": "CUIT",
+                "id_namespace": "AFIP",
+                "is_authoritative": false,
+                "id_status": "ACTIVE",
+                "valid_to": null,
+                "confidence": "WEAK",
+                "a_status": "CANDIDATE",
+                "method": "REGISTRY",
+                "source_id": "LEGACY_DIM_ENTITY"
+              },
+              {
+                "entity_key": "E01M0X99G29RBSSFSGAM5S1QZMT",
+                "preferred_name": "TRANSPORTADORA DE GAS DEL SUR S.A.",
+                "id_type": "CUIT",
+                "id_namespace": "AFIP",
+                "is_authoritative": false,
+                "id_status": "ACTIVE",
+                "valid_to": null,
+                "confidence": "WEAK",
+                "a_status": "CANDIDATE",
+                "method": "REGISTRY",
+                "source_id": "LEGACY_DIM_ENTITY"
+              }
+            ]
+          }
+        },
+        {
+          "id": "AUD-IDENT-002",
+          "result": "PASS",
+          "detalle": "el CUIT no apunta a mas de una entidad vigente: 1 distinta(s)",
+          "evidencia": {
+            "entidades": [
+              "E01M0X99G29RBSSFSGAM5S1QZMT"
+            ]
+          }
+        },
+        {
+          "id": "AUD-CANT-001",
+          "result": "FAIL",
+          "detalle": "manifest DB=1036 vs archivos en disco=344 bajo data/raw/engine/cnv/CUIT30657862068/",
+          "evidencia": {
+            "manifest": 1036,
+            "disco": 344
+          }
+        },
+        {
+          "id": "AUD-CANT-002",
+          "result": "PASS",
+          "detalle": "discovery registrado: 11925 filas / 2385 guids unicos en 5 corrida(s) — informativo, no bloqueante",
+          "evidencia": {}
+        },
+        {
+          "id": "AUD-DUP-001",
+          "result": "PASS",
+          "detalle": "duplicados (kind,key,sha256) dentro de este CUIT: 0",
+          "evidencia": {}
+        },
+        {
+          "id": "AUD-HASH-001",
+          "result": "FAIL",
+          "detalle": "sha256 recalculado desde disco: 344/1036 coinciden, 0 mismatch, 692 faltantes",
+          "evidencia": {
+            "mismatches": [],
+            "faltantes": [
+              "CUIT30657862068/empresa/3c9a0ccbc24a4b8d.html",
+              "CUIT30657862068/visor/6b503428-7bac-4896-9404-513a49c31c4c/8bc8f0af38ec3469.html",
+              "CUIT30657862068/visor/f929c3f4-03cb-4dae-a8e2-cf157be31914/a697e8d242844381.html",
+              "CUIT30657862068/visor/b4f0cbcc-1320-4f07-bb8d-c6390b17f78d/0f7480006ad1dffb.html",
+              "CUIT30657862068/visor/83871b22-1a91-4082-bee5-002dff3e1cf1/f517c193d3323e27.html",
+              "CUIT30657862068/visor/4cac77ca-df31-42ec-98f1-6ca6ad8b2ee7/4cf46a7d069b743f.html",
+              "CUIT30657862068/visor/cbefa9e2-2e76-4a7b-81a4-afc4db7dc1e0/9c1a1c81f3efb772.html",
+              "CUIT30657862068/visor/5b21c739-fcc0-4c17-9101-fe166f12c60e/1618c46723afffec.html",
+              "CUIT30657862068/visor/4995e5b7-b10b-4561-b8fd-d7146fe1688f/78f936d84057abf2.html",
+              "CUIT30657862068/visor/9bb0061e-18d0-4a85-90d2-eb956ff1ccc3/4300a0e4f16cfea7.html"
+            ]
+          }
+        },
+        {
+          "id": "AUD-PROV-001",
+          "result": "PASS",
+          "detalle": "provenance completa (entity_key,cuit,endpoint,raw_path,run_id): 1036/1036 completas",
+          "evidencia": {
+            "incompletas": []
+          }
+        },
+        {
+          "id": "AUD-PROV-002",
+          "result": "PASS",
+          "detalle": "el CUIT de la fila coincide con el CUIT{n} de su raw_path: 1036/1036 coherentes",
+          "evidencia": {
+            "incoherentes": []
+          }
+        },
+        {
+          "id": "AUD-ATRIB-001",
+          "result": "PASS",
+          "detalle": "0 corridas de este CUIT mezclaron otro CUIT: 5 corrida(s) revisada(s), 0 fila(s) ajenas encontradas",
+          "evidencia": {
+            "ajenos": []
+          }
+        }
+      ],
+      "gate": "FAIL"
+    }
+  ]
+}

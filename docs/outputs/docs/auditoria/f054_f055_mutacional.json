@@ -1,0 +1,80 @@
+{
+  "ok": false,
+  "escenarios": [
+    {
+      "escenario": "M0 · la copia arranca sin contaminacion",
+      "ok": true,
+      "detalle": "ajenos=0 colgados=0 de 135,077"
+    },
+    {
+      "escenario": "M1 · con G1+G2: re-parsear CEPU no contamina a los otros 7",
+      "ok": true,
+      "detalle": "S03=0 S04=0 ajenos=0 colgados=0"
+    },
+    {
+      "escenario": "M2 · sin G1 ni G2: la CONTAMINACION historica reaparece",
+      "ok": true,
+      "detalle": "2,791 punteros de CEPU resuelven a hechos de TGS (total ajenos en la base: 2,791)"
+    },
+    {
+      "escenario": "M3 · sin G1 pero con G2: punteros COLGADOS, sin mezcla",
+      "ok": true,
+      "detalle": "ajenos=0 colgados=135,077 de 135,077"
+    },
+    {
+      "escenario": "M4a · con G1 sin G2 y franja libre: NO falla, pero el id ya no es unico en el tiempo",
+      "ok": true,
+      "detalle": "rc=0 CEPU quedo en 1-2791; la PK no intervino"
+    },
+    {
+      "escenario": "M4b · con G1 sin G2 y rangos que se pisan: la PK rechaza (fallo RUIDOSO)",
+      "ok": true,
+      "detalle": "rc=1 secuencia forzada a 15632 · pk_violada=True"
+    },
+    {
+      "escenario": "M5 · un replace-all de GGAL no cambia el duenio de un fact_id de YPF",
+      "ok": true,
+      "detalle": "0000904851 -> 0000904851"
+    },
+    {
+      "escenario": "A1 · permutar el ORDEN de las dimensiones",
+      "ok": true,
+      "detalle": "esperado: NO debe generar conflicto · real: equivalentes (n=0)"
+    },
+    {
+      "escenario": "A2 · duplicado IDENTICO del contexto",
+      "ok": true,
+      "detalle": "esperado: NO debe generar conflicto · real: equivalentes (n=0)"
+    },
+    {
+      "escenario": "A3 · cambiar un MIEMBRO de dimension",
+      "ok": true,
+      "detalle": "esperado: DEBE generar conflicto · real: conflicto (n=1)"
+    },
+    {
+      "escenario": "A4 · cambiar el PERIODO (end_date + 1 dia)",
+      "ok": true,
+      "detalle": "esperado: DEBE generar conflicto · real: conflicto (n=1)"
+    },
+    {
+      "escenario": "A5 · cambiar DURATION por INSTANT",
+      "ok": true,
+      "detalle": "esperado: DEBE generar conflicto · real: conflicto (n=1)"
+    },
+    {
+      "escenario": "A6 · cambiar la ENTIDAD del contexto",
+      "ok": false,
+      "detalle": "esperado: DEBE generar conflicto · real: equivalentes (n=0)"
+    },
+    {
+      "escenario": "A7 · agregar una dimension mas",
+      "ok": true,
+      "detalle": "esperado: DEBE generar conflicto · real: conflicto (n=1)"
+    },
+    {
+      "escenario": "Z · la base homologada no cambio durante el banco",
+      "ok": true,
+      "detalle": "135077|88789|8|47684 -> 135077|88789|8|47684"
+    }
+  ]
+}

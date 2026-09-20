@@ -1,0 +1,105 @@
+empresa,ratio,estado,valor,periodo,moneda,fuente,provenance,metodo,motivo
+YPFD,P/E,NULL_VALIDO,,2025-12-31,USD,market_price_daily + derived.fact,,precio/ratio_adr/EPS,"EPS=-2.11 <= 0 (ejercicio con perdida) — regla IAMC: P/E queda NULL, nunca negativo"
+YPFD,EPS,CALCULADO,-2.11,2025-12-31,USD,SEC EDGAR / derived.fact,"tag=BasicEarningsLossPerShare, accession=0001193125-26-126363",tag directo o resultado_neto/acciones_promedio,
+YPFD,P/B,NO_IMPLEMENTADO,,,,,,"declarado en RATIO_CONTRACT.md, sin cablear",no existe codigo que lo calcule; los facts de patrimonio/ingresos SI estan disponibles
+YPFD,P/S,NO_IMPLEMENTADO,,,,,,"declarado en RATIO_CONTRACT.md, sin cablear",no existe codigo que lo calcule; los facts de patrimonio/ingresos SI estan disponibles
+YPFD,ROE,CALCULADO,-0.074792,2025-12-31,USD,SEC EDGAR / derived.fact,ProfitLossAttributableToOwnersOfParent/Equity [USD] accession 0001193125-26-126363,resultado_neto/patrimonio,
+YPFD,ROA,CALCULADO,-0.028058,2025-12-31,USD,SEC EDGAR / derived.fact,ProfitLossAttributableToOwnersOfParent/Assets [USD] accession 0001193125-26-126363,resultado_neto/activo_total,
+YPFD,D/E,CALCULADO,1.66561,2025-12-31,USD,SEC EDGAR / derived.fact,Liabilities/Equity [USD] accession 0001193125-26-126363,pasivo_total/patrimonio,
+YPFD,Current Ratio,CALCULADO,0.870214,2025-12-31,USD,SEC EDGAR / derived.fact,CurrentAssets/CurrentLiabilities [USD] accession 0001193125-26-126363,activo_corriente/pasivo_corriente,
+YPFD,Quick Ratio,CALCULADO,0.675803,2025-12-31,USD,SEC EDGAR / derived.fact,(CurrentAssets-Inventories)/CurrentLiabilities [USD] accession 0001193125-26-126363,activo_corriente/pasivo_corriente - existencias,
+YPFD,Gross Margin,CALCULADO,0.276453,2025-12-31,USD,SEC EDGAR / derived.fact,GrossProfit/Revenue [USD] accession 0001193125-26-126363,resultado_bruto/ingresos,
+YPFD,Operating Margin,CALCULADO,0.094319,2025-12-31,USD,SEC EDGAR / derived.fact,ProfitLossFromOperatingActivities/Revenue [USD] accession 0001193125-26-126363,resultado_operativo/ingresos,
+YPFD,Net Margin,CALCULADO,-0.044775,2025-12-31,USD,SEC EDGAR / derived.fact,ProfitLossAttributableToOwnersOfParent/Revenue [USD] accession 0001193125-26-126363,resultado_neto/ingresos,
+YPFD,EV/EBITDA,NO_IMPLEMENTADO,,,,,,ninguno: no hay concepto EBITDA/EV declarado en ratio_defs.py,"CORRECCION vs. ciclo anterior: SI existen tags candidatos de D&A para esta empresa en derived.fact (verificado por consulta directa 2026-09-01); el bloqueo es de codigo (no implementado), no de dato ausente"
+CEPU,P/E,CALCULADO,9.3925,2025-12-31,ARS,market_price_daily + derived.fact,"precio 2166.00000000 ARS / ratio_adr 1.0 / EPS 230.61 (BasicEarningsLossPerShare, accession 0001292814-26-002446)",precio/ratio_adr/EPS,
+CEPU,EPS,CALCULADO,230.61,2025-12-31,ARS,SEC EDGAR / derived.fact,"tag=BasicEarningsLossPerShare, accession=0001292814-26-002446",tag directo o resultado_neto/acciones_promedio,
+CEPU,P/B,NO_IMPLEMENTADO,,,,,,"declarado en RATIO_CONTRACT.md, sin cablear",no existe codigo que lo calcule; los facts de patrimonio/ingresos SI estan disponibles
+CEPU,P/S,NO_IMPLEMENTADO,,,,,,"declarado en RATIO_CONTRACT.md, sin cablear",no existe codigo que lo calcule; los facts de patrimonio/ingresos SI estan disponibles
+CEPU,ROE,CALCULADO,0.132392,2025-12-31,ARS,SEC EDGAR / derived.fact,ProfitLossAttributableToOwnersOfParent/Equity [ARS] accession 0001292814-26-002446,resultado_neto/patrimonio,
+CEPU,ROA,CALCULADO,0.09438,2025-12-31,ARS,SEC EDGAR / derived.fact,ProfitLossAttributableToOwnersOfParent/Assets [ARS] accession 0001292814-26-002446,resultado_neto/activo_total,
+CEPU,D/E,CALCULADO,0.402762,2025-12-31,ARS,SEC EDGAR / derived.fact,Liabilities/Equity [ARS] accession 0001292814-26-002446,pasivo_total/patrimonio,
+CEPU,Current Ratio,CALCULADO,1.772771,2025-12-31,ARS,SEC EDGAR / derived.fact,CurrentAssets/CurrentLiabilities [ARS] accession 0001292814-26-002446,activo_corriente/pasivo_corriente,
+CEPU,Quick Ratio,CALCULADO,1.703427,2025-12-31,ARS,SEC EDGAR / derived.fact,(CurrentAssets-Inventories)/CurrentLiabilities [ARS] accession 0001292814-26-002446,activo_corriente/pasivo_corriente - existencias,
+CEPU,Gross Margin,CALCULADO,0.35806,2025-12-31,ARS,SEC EDGAR / derived.fact,GrossProfit/Revenue [ARS] accession 0001292814-26-002446,resultado_bruto/ingresos,
+CEPU,Operating Margin,CALCULADO,0.337494,2025-12-31,ARS,SEC EDGAR / derived.fact,ProfitLossFromOperatingActivities/Revenue [ARS] accession 0001292814-26-002446,resultado_operativo/ingresos,
+CEPU,Net Margin,CALCULADO,0.315607,2025-12-31,ARS,SEC EDGAR / derived.fact,ProfitLossAttributableToOwnersOfParent/Revenue [ARS] accession 0001292814-26-002446,resultado_neto/ingresos,
+CEPU,EV/EBITDA,NO_IMPLEMENTADO,,,,,,ninguno: no hay concepto EBITDA/EV declarado en ratio_defs.py,"CORRECCION vs. ciclo anterior: SI existen tags candidatos de D&A para esta empresa en derived.fact (verificado por consulta directa 2026-09-01); el bloqueo es de codigo (no implementado), no de dato ausente"
+TGSU2,P/E,CALCULADO,16.2854,2025-12-31,ARS,market_price_daily + derived.fact,"precio 9105.00000000 ARS / ratio_adr 1.0 / EPS 559.09 (BasicEarningsLossPerShare, accession 0001140361-26-016167)",precio/ratio_adr/EPS,
+TGSU2,EPS,CALCULADO,559.09,2025-12-31,ARS,SEC EDGAR / derived.fact,"tag=BasicEarningsLossPerShare, accession=0001140361-26-016167",tag directo o resultado_neto/acciones_promedio,
+TGSU2,P/B,NO_IMPLEMENTADO,,,,,,"declarado en RATIO_CONTRACT.md, sin cablear",no existe codigo que lo calcule; los facts de patrimonio/ingresos SI estan disponibles
+TGSU2,P/S,NO_IMPLEMENTADO,,,,,,"declarado en RATIO_CONTRACT.md, sin cablear",no existe codigo que lo calcule; los facts de patrimonio/ingresos SI estan disponibles
+TGSU2,ROE,CALCULADO,0.134552,2025-12-31,ARS,SEC EDGAR / derived.fact,ProfitLossAttributableToOwnersOfParent/Equity [ARS] accession 0001140361-26-016167,resultado_neto/patrimonio,
+TGSU2,ROA,CALCULADO,0.077732,2025-12-31,ARS,SEC EDGAR / derived.fact,ProfitLossAttributableToOwnersOfParent/Assets [ARS] accession 0001140361-26-016167,resultado_neto/activo_total,
+TGSU2,D/E,CALCULADO,0.73096,2025-12-31,ARS,SEC EDGAR / derived.fact,Liabilities/Equity [ARS] accession 0001140361-26-016167,pasivo_total/patrimonio,
+TGSU2,Current Ratio,NO_CALCULABLE,,2025-12-31,,SEC EDGAR / derived.fact,,activo_corriente/pasivo_corriente,"falta numerador: ninguno de ['CurrentAssets', 'AssetsCurrent'] presente"
+TGSU2,Quick Ratio,NO_CALCULABLE,,2025-12-31,,SEC EDGAR / derived.fact,,activo_corriente/pasivo_corriente - existencias,"falta numerador: ninguno de ['CurrentAssets', 'AssetsCurrent'] presente"
+TGSU2,Gross Margin,CALCULADO,0.542383,2025-12-31,ARS,SEC EDGAR / derived.fact,GrossProfit/Revenue [ARS] accession 0001140361-26-016167,resultado_bruto/ingresos,
+TGSU2,Operating Margin,CALCULADO,0.408852,2025-12-31,ARS,SEC EDGAR / derived.fact,ProfitLossFromOperatingActivities/Revenue [ARS] accession 0001140361-26-016167,resultado_operativo/ingresos,
+TGSU2,Net Margin,CALCULADO,0.244597,2025-12-31,ARS,SEC EDGAR / derived.fact,ProfitLossAttributableToOwnersOfParent/Revenue [ARS] accession 0001140361-26-016167,resultado_neto/ingresos,
+TGSU2,EV/EBITDA,NO_IMPLEMENTADO,,,,,,ninguno: no hay concepto EBITDA/EV declarado en ratio_defs.py,"CORRECCION vs. ciclo anterior: SI existen tags candidatos de D&A para esta empresa en derived.fact (verificado por consulta directa 2026-09-01); el bloqueo es de codigo (no implementado), no de dato ausente"
+GGAL,P/E,CALCULADO,51.9324,2025-12-31,ARS,market_price_daily + derived.fact,"precio 6880.00000000 ARS / ratio_adr 1.0 / EPS 132.48 (BasicEarningsLossPerShare, accession 0001114700-26-000038)",precio/ratio_adr/EPS,
+GGAL,EPS,CALCULADO,132.48,2025-12-31,ARS,SEC EDGAR / derived.fact,"tag=BasicEarningsLossPerShare, accession=0001114700-26-000038",tag directo o resultado_neto/acciones_promedio,
+GGAL,P/B,NO_IMPLEMENTADO,,,,,,"declarado en RATIO_CONTRACT.md, sin cablear",no existe codigo que lo calcule; los facts de patrimonio/ingresos SI estan disponibles
+GGAL,P/S,NO_IMPLEMENTADO,,,,,,"declarado en RATIO_CONTRACT.md, sin cablear",no existe codigo que lo calcule; los facts de patrimonio/ingresos SI estan disponibles
+GGAL,ROE,CALCULADO,0.027388,2025-12-31,ARS,SEC EDGAR / derived.fact,ProfitLossAttributableToOwnersOfParent/Equity [ARS] accession 0001114700-26-000038,resultado_neto/patrimonio,
+GGAL,ROA,CALCULADO,0.004654,2025-12-31,ARS,SEC EDGAR / derived.fact,ProfitLossAttributableToOwnersOfParent/Assets [ARS] accession 0001114700-26-000038,resultado_neto/activo_total,
+GGAL,D/E,CALCULADO,4.885523,2025-12-31,ARS,SEC EDGAR / derived.fact,Liabilities/Equity [ARS] accession 0001114700-26-000038,pasivo_total/patrimonio,
+GGAL,Current Ratio,NO_CALCULABLE,,2025-12-31,,SEC EDGAR / derived.fact,,activo_corriente/pasivo_corriente,"falta numerador: ninguno de ['CurrentAssets', 'AssetsCurrent'] presente"
+GGAL,Quick Ratio,NO_CALCULABLE,,2025-12-31,,SEC EDGAR / derived.fact,,activo_corriente/pasivo_corriente - existencias,"falta numerador: ninguno de ['CurrentAssets', 'AssetsCurrent'] presente"
+GGAL,Gross Margin,NO_CALCULABLE,,2025-12-31,,SEC EDGAR / derived.fact,,resultado_bruto/ingresos,falta numerador: ninguno de ['GrossProfit'] presente
+GGAL,Operating Margin,NO_CALCULABLE,,2025-12-31,,SEC EDGAR / derived.fact,,resultado_operativo/ingresos,"falta denominador: ninguno de ['Revenue', 'RevenueFromContractsWithCustomers', 'RevenueFromContractWithCustomerExcludingAssessedTax', 'RevenueFromContractWithCustomerIncludingAssessedTax', 'Revenues'] presente"
+GGAL,Net Margin,NO_CALCULABLE,,2025-12-31,,SEC EDGAR / derived.fact,,resultado_neto/ingresos,"falta denominador: ninguno de ['Revenue', 'RevenueFromContractsWithCustomers', 'RevenueFromContractWithCustomerExcludingAssessedTax', 'RevenueFromContractWithCustomerIncludingAssessedTax', 'Revenues'] presente"
+GGAL,EV/EBITDA,NO_IMPLEMENTADO,,,,,,ninguno: no hay concepto EBITDA/EV declarado en ratio_defs.py,"CORRECCION vs. ciclo anterior: SI existen tags candidatos de D&A para esta empresa en derived.fact (verificado por consulta directa 2026-09-01); el bloqueo es de codigo (no implementado), no de dato ausente"
+BMA,P/E,BLOQUEADO,,2025-12-31,ARS,market_price_daily + derived.fact,,precio/ratio_adr/EPS,1 instrumento(s) de mercado existen pero ninguno esta enlazado en identity_v1.instrument — el precio no se puede atribuir a esta entidad
+BMA,EPS,CALCULADO,452.7535,2025-12-31,ARS,SEC EDGAR / derived.fact,"tag=BasicEarningsLossPerShare, accession=0001193125-26-163876",tag directo o resultado_neto/acciones_promedio,
+BMA,P/B,NO_IMPLEMENTADO,,,,,,"declarado en RATIO_CONTRACT.md, sin cablear",no existe codigo que lo calcule; los facts de patrimonio/ingresos SI estan disponibles
+BMA,P/S,NO_IMPLEMENTADO,,,,,,"declarado en RATIO_CONTRACT.md, sin cablear",no existe codigo que lo calcule; los facts de patrimonio/ingresos SI estan disponibles
+BMA,ROE,CALCULADO,0.055305,2025-12-31,ARS,SEC EDGAR / derived.fact,ProfitLossAttributableToOwnersOfParent/Equity [ARS] accession 0001193125-26-163876,resultado_neto/patrimonio,
+BMA,ROA,CALCULADO,0.012457,2025-12-31,ARS,SEC EDGAR / derived.fact,ProfitLossAttributableToOwnersOfParent/Assets [ARS] accession 0001193125-26-163876,resultado_neto/activo_total,
+BMA,D/E,CALCULADO,3.439625,2025-12-31,ARS,SEC EDGAR / derived.fact,Liabilities/Equity [ARS] accession 0001193125-26-163876,pasivo_total/patrimonio,
+BMA,Current Ratio,NO_CALCULABLE,,2025-12-31,,SEC EDGAR / derived.fact,,activo_corriente/pasivo_corriente,"falta numerador: ninguno de ['CurrentAssets', 'AssetsCurrent'] presente"
+BMA,Quick Ratio,NO_CALCULABLE,,2025-12-31,,SEC EDGAR / derived.fact,,activo_corriente/pasivo_corriente - existencias,"falta numerador: ninguno de ['CurrentAssets', 'AssetsCurrent'] presente"
+BMA,Gross Margin,NO_CALCULABLE,,2025-12-31,,SEC EDGAR / derived.fact,,resultado_bruto/ingresos,falta numerador: ninguno de ['GrossProfit'] presente
+BMA,Operating Margin,NO_CALCULABLE,,2025-12-31,,SEC EDGAR / derived.fact,,resultado_operativo/ingresos,"falta denominador: ninguno de ['Revenue', 'RevenueFromContractsWithCustomers', 'RevenueFromContractWithCustomerExcludingAssessedTax', 'RevenueFromContractWithCustomerIncludingAssessedTax', 'Revenues'] presente"
+BMA,Net Margin,NO_CALCULABLE,,2025-12-31,,SEC EDGAR / derived.fact,,resultado_neto/ingresos,"falta denominador: ninguno de ['Revenue', 'RevenueFromContractsWithCustomers', 'RevenueFromContractWithCustomerExcludingAssessedTax', 'RevenueFromContractWithCustomerIncludingAssessedTax', 'Revenues'] presente"
+BMA,EV/EBITDA,NO_IMPLEMENTADO,,,,,,ninguno: no hay concepto EBITDA/EV declarado en ratio_defs.py,"CORRECCION vs. ciclo anterior: SI existen tags candidatos de D&A para esta empresa en derived.fact (verificado por consulta directa 2026-09-01); el bloqueo es de codigo (no implementado), no de dato ausente"
+AAPL,P/E,CALCULADO,42.0,2025-09-27,USD,market_price_daily + derived.fact,"precio 314.57998700 USD / ratio_adr 1.0 / EPS 7.49 (EarningsPerShareBasic, accession 0000320193-25-000079)",precio/ratio_adr/EPS,
+AAPL,EPS,CALCULADO,7.49,2025-09-27,USD,SEC EDGAR / derived.fact,"tag=EarningsPerShareBasic, accession=0000320193-25-000079",tag directo o resultado_neto/acciones_promedio,
+AAPL,P/B,NO_IMPLEMENTADO,,,,,,"declarado en RATIO_CONTRACT.md, sin cablear",no existe codigo que lo calcule; los facts de patrimonio/ingresos SI estan disponibles
+AAPL,P/S,NO_IMPLEMENTADO,,,,,,"declarado en RATIO_CONTRACT.md, sin cablear",no existe codigo que lo calcule; los facts de patrimonio/ingresos SI estan disponibles
+AAPL,ROE,CALCULADO,1.51913,2025-09-27,USD,SEC EDGAR / derived.fact,NetIncomeLoss/StockholdersEquity [USD] accession 0000320193-25-000079,resultado_neto/patrimonio,
+AAPL,ROA,CALCULADO,0.311796,2025-09-27,USD,SEC EDGAR / derived.fact,NetIncomeLoss/Assets [USD] accession 0000320193-25-000079,resultado_neto/activo_total,
+AAPL,D/E,CALCULADO,3.872187,2025-09-27,USD,SEC EDGAR / derived.fact,Liabilities/StockholdersEquity [USD] accession 0000320193-25-000079,pasivo_total/patrimonio,
+AAPL,Current Ratio,CALCULADO,0.893293,2025-09-27,USD,SEC EDGAR / derived.fact,AssetsCurrent/LiabilitiesCurrent [USD] accession 0000320193-25-000079,activo_corriente/pasivo_corriente,
+AAPL,Quick Ratio,CALCULADO,0.85877,2025-09-27,USD,SEC EDGAR / derived.fact,(AssetsCurrent-InventoryNet)/LiabilitiesCurrent [USD] accession 0000320193-25-000079,activo_corriente/pasivo_corriente - existencias,
+AAPL,Gross Margin,CALCULADO,0.469052,2025-09-27,USD,SEC EDGAR / derived.fact,GrossProfit/RevenueFromContractWithCustomerExcludingAssessedTax [USD] accession 0000320193-25-000079,resultado_bruto/ingresos,
+AAPL,Operating Margin,CALCULADO,0.319708,2025-09-27,USD,SEC EDGAR / derived.fact,OperatingIncomeLoss/RevenueFromContractWithCustomerExcludingAssessedTax [USD] accession 0000320193-25-000079,resultado_operativo/ingresos,
+AAPL,Net Margin,CALCULADO,0.269151,2025-09-27,USD,SEC EDGAR / derived.fact,NetIncomeLoss/RevenueFromContractWithCustomerExcludingAssessedTax [USD] accession 0000320193-25-000079,resultado_neto/ingresos,
+AAPL,EV/EBITDA,NO_IMPLEMENTADO,,,,,,ninguno: no hay concepto EBITDA/EV declarado en ratio_defs.py,"CORRECCION vs. ciclo anterior: SI existen tags candidatos de D&A para esta empresa en derived.fact (verificado por consulta directa 2026-09-01); el bloqueo es de codigo (no implementado), no de dato ausente"
+MSFT,P/E,CALCULADO,28.0589,2026-06-30,USD,market_price_daily + derived.fact,"precio 505.05999800 USD / ratio_adr 1.0 / EPS 18.0 (EarningsPerShareBasic, accession 0001193125-26-323660)",precio/ratio_adr/EPS,
+MSFT,EPS,CALCULADO,18.0,2026-06-30,USD,SEC EDGAR / derived.fact,"tag=EarningsPerShareBasic, accession=0001193125-26-323660",tag directo o resultado_neto/acciones_promedio,
+MSFT,P/B,NO_IMPLEMENTADO,,,,,,"declarado en RATIO_CONTRACT.md, sin cablear",no existe codigo que lo calcule; los facts de patrimonio/ingresos SI estan disponibles
+MSFT,P/S,NO_IMPLEMENTADO,,,,,,"declarado en RATIO_CONTRACT.md, sin cablear",no existe codigo que lo calcule; los facts de patrimonio/ingresos SI estan disponibles
+MSFT,ROE,CALCULADO,0.302335,2026-06-30,USD,SEC EDGAR / derived.fact,NetIncomeLoss/StockholdersEquity [USD] accession 0001193125-26-323660,resultado_neto/patrimonio,
+MSFT,ROA,CALCULADO,0.176362,2026-06-30,USD,SEC EDGAR / derived.fact,NetIncomeLoss/Assets [USD] accession 0001193125-26-323660,resultado_neto/activo_total,
+MSFT,D/E,CALCULADO,0.714282,2026-06-30,USD,SEC EDGAR / derived.fact,Liabilities/StockholdersEquity [USD] accession 0001193125-26-323660,pasivo_total/patrimonio,
+MSFT,Current Ratio,CALCULADO,1.230327,2026-06-30,USD,SEC EDGAR / derived.fact,AssetsCurrent/LiabilitiesCurrent [USD] accession 0001193125-26-323660,activo_corriente/pasivo_corriente,
+MSFT,Quick Ratio,CALCULADO,1.222052,2026-06-30,USD,SEC EDGAR / derived.fact,(AssetsCurrent-InventoryNet)/LiabilitiesCurrent [USD] accession 0001193125-26-323660,activo_corriente/pasivo_corriente - existencias,
+MSFT,Gross Margin,CALCULADO,0.679441,2026-06-30,USD,SEC EDGAR / derived.fact,GrossProfit/RevenueFromContractWithCustomerExcludingAssessedTax [USD] accession 0001193125-26-323660,resultado_bruto/ingresos,
+MSFT,Operating Margin,CALCULADO,0.467808,2026-06-30,USD,SEC EDGAR / derived.fact,OperatingIncomeLoss/RevenueFromContractWithCustomerExcludingAssessedTax [USD] accession 0001193125-26-323660,resultado_operativo/ingresos,
+MSFT,Net Margin,CALCULADO,0.403054,2026-06-30,USD,SEC EDGAR / derived.fact,NetIncomeLoss/RevenueFromContractWithCustomerExcludingAssessedTax [USD] accession 0001193125-26-323660,resultado_neto/ingresos,
+MSFT,EV/EBITDA,NO_IMPLEMENTADO,,,,,,ninguno: no hay concepto EBITDA/EV declarado en ratio_defs.py,"CORRECCION vs. ciclo anterior: SI existen tags candidatos de D&A para esta empresa en derived.fact (verificado por consulta directa 2026-09-01); el bloqueo es de codigo (no implementado), no de dato ausente"
+NVDA,P/E,CALCULADO,46.2434,2026-01-25,USD,market_price_daily + derived.fact,"precio 227.97999600 USD / ratio_adr 1.0 / EPS 4.93 (EarningsPerShareBasic, accession 0001045810-26-000021)",precio/ratio_adr/EPS,
+NVDA,EPS,CALCULADO,4.93,2026-01-25,USD,SEC EDGAR / derived.fact,"tag=EarningsPerShareBasic, accession=0001045810-26-000021",tag directo o resultado_neto/acciones_promedio,
+NVDA,P/B,NO_IMPLEMENTADO,,,,,,"declarado en RATIO_CONTRACT.md, sin cablear",no existe codigo que lo calcule; los facts de patrimonio/ingresos SI estan disponibles
+NVDA,P/S,NO_IMPLEMENTADO,,,,,,"declarado en RATIO_CONTRACT.md, sin cablear",no existe codigo que lo calcule; los facts de patrimonio/ingresos SI estan disponibles
+NVDA,ROE,CALCULADO,0.763333,2026-01-25,USD,SEC EDGAR / derived.fact,NetIncomeLoss/StockholdersEquity [USD] accession 0001045810-26-000021,resultado_neto/patrimonio,
+NVDA,ROA,CALCULADO,0.580586,2026-01-25,USD,SEC EDGAR / derived.fact,NetIncomeLoss/Assets [USD] accession 0001045810-26-000021,resultado_neto/activo_total,
+NVDA,D/E,CALCULADO,0.314763,2026-01-25,USD,SEC EDGAR / derived.fact,Liabilities/StockholdersEquity [USD] accession 0001045810-26-000021,pasivo_total/patrimonio,
+NVDA,Current Ratio,CALCULADO,3.905264,2026-01-25,USD,SEC EDGAR / derived.fact,AssetsCurrent/LiabilitiesCurrent [USD] accession 0001045810-26-000021,activo_corriente/pasivo_corriente,
+NVDA,Quick Ratio,CALCULADO,3.23981,2026-01-25,USD,SEC EDGAR / derived.fact,(AssetsCurrent-InventoryNet)/LiabilitiesCurrent [USD] accession 0001045810-26-000021,activo_corriente/pasivo_corriente - existencias,
+NVDA,Gross Margin,CALCULADO,0.710681,2026-01-25,USD,SEC EDGAR / derived.fact,GrossProfit/Revenues [USD] accession 0001045810-26-000021,resultado_bruto/ingresos,
+NVDA,Operating Margin,CALCULADO,0.603817,2026-01-25,USD,SEC EDGAR / derived.fact,OperatingIncomeLoss/Revenues [USD] accession 0001045810-26-000021,resultado_operativo/ingresos,
+NVDA,Net Margin,CALCULADO,0.556025,2026-01-25,USD,SEC EDGAR / derived.fact,NetIncomeLoss/Revenues [USD] accession 0001045810-26-000021,resultado_neto/ingresos,
+NVDA,EV/EBITDA,NO_IMPLEMENTADO,,,,,,ninguno: no hay concepto EBITDA/EV declarado en ratio_defs.py,"CORRECCION vs. ciclo anterior: SI existen tags candidatos de D&A para esta empresa en derived.fact (verificado por consulta directa 2026-09-01); el bloqueo es de codigo (no implementado), no de dato ausente"

@@ -1,0 +1,80 @@
+﻿familia,ratio,variante,formula,periodo,unidad,valor,calculable,canonicidad,motivo,inputs
+CRECIMIENTO,Revenue Growth,YoY,(Revenue[FY]/Revenue[FY-1])-1,2025-12-31,fraccion,0.018699,SI,EXPERIMENTAL,,Revenue FY y FY-1
+CRECIMIENTO,Net Income Growth,YoY,(NetIncome[FY]/NetIncome[FY-1])-1,2025-12-31,fraccion,0.232904,SI,EXPERIMENTAL,,NetIncome FY y FY-1
+CRECIMIENTO,EPS Growth,YoY,(EPS[FY]/EPS[FY-1])-1,2025-12-31,fraccion,0.234818,SI,EXPERIMENTAL,,EPS FY y FY-1
+CRECIMIENTO,EBIT Growth,YoY,(OperatingIncome[FY]/OperatingIncome[FY-1])-1,2025-12-31,fraccion,0.377302,SI,EXPERIMENTAL,,OperatingIncome FY y FY-1
+CRECIMIENTO,EBITDA Growth,YoY,(EBITDA[FY]/EBITDA[FY-1])-1,2025-12-31,fraccion,0.338393,SI,EXPERIMENTAL,,"OperatingIncome + D&A, FY y FY-1"
+CRECIMIENTO,FCF Growth,YoY,(FCF[FY]/FCF[FY-1])-1,2025-12-31,fraccion,0.117064,SI,EXPERIMENTAL,,"CFO-CapEx, FY y FY-1"
+CRECIMIENTO,Revenue CAGR 3Y,3 anios,(Rev[FY]/Rev[FY-3])^(1/3)-1,2025-12-31,fraccion,0.036890,SI,EXPERIMENTAL,,Revenue 2022 y 2025
+CRECIMIENTO,EPS CAGR 3Y,3 anios,(EPS[FY]/EPS[FY-3])^(1/3)-1,2025-12-31,fraccion,0.115045,SI,EXPERIMENTAL,,EPS 2022 y 2025
+CRECIMIENTO,Revenue CAGR 5Y,5 anios,(Rev[FY]/Rev[FY-5])^(1/5)-1,2025-12-31,fraccion,0.077462,SI,EXPERIMENTAL,,Revenue 2020 y 2025
+CRECIMIENTO,EPS CAGR 5Y,5 anios,(EPS[FY]/EPS[FY-5])^(1/5)-1,2025-12-31,fraccion,0.111234,SI,EXPERIMENTAL,,EPS 2020 y 2025
+CRECIMIENTO,Revenue CAGR 10Y,10 anios,(Rev[FY]/Rev[FY-10])^(1/10)-1,2025-12-31,fraccion,,NO,EXPERIMENTAL,falta Revenue en 2015-12-31 (tag Revenues solo desde 2018),Revenue 2015 y 2025
+CRECIMIENTO,EPS CAGR 10Y,10 anios,(EPS[FY]/EPS[FY-10])^(1/10)-1,2025-12-31,fraccion,0.060819,SI,EXPERIMENTAL,,EPS 2015 y 2025
+MARGENES,Gross Margin,GrossProfit/Revenue,GrossProfit / Revenue,2025-12-31,fraccion,0.616257,SI,EXPERIMENTAL,,"GrossProfit, Revenue"
+MARGENES,Gross Margin,(Rev-COGS)/Revenue,(Revenue - COGS) / Revenue,2025-12-31,fraccion,0.616257,SI,EXPERIMENTAL,,"Revenue, COGS"
+MARGENES,EBITDA Margin,EBIT+D&A,(OperatingIncome + D&A) / Revenue,2025-12-31,fraccion,0.308963,SI,EXPERIMENTAL,,"OperatingIncome, D&A, Revenue"
+MARGENES,EBIT Margin,OperatingIncome,OperatingIncome / Revenue,2025-12-31,fraccion,0.287061,SI,EXPERIMENTAL,,"OperatingIncome, Revenue"
+MARGENES,Operating Margin,= EBIT Margin,OperatingIncome / Revenue,2025-12-31,fraccion,0.287061,SI,EXPERIMENTAL,,"OperatingIncome, Revenue"
+MARGENES,Net Margin,NI controladora,NetIncomeLoss / Revenue,2025-12-31,fraccion,0.273399,SI,EXPERIMENTAL,,"NetIncome, Revenue"
+MARGENES,Net Margin,NI incl. NCI,ProfitLoss / Revenue,2025-12-31,fraccion,0.274024,SI,EXPERIMENTAL,,"ProfitLoss, Revenue"
+MARGENES,FCF Margin,CFO-CapEx,(CFO - CapEx) / Revenue,2025-12-31,fraccion,0.110469,SI,EXPERIMENTAL,,"CFO, CapEx, Revenue"
+RETORNOS,ROE,NI / Equity cierre,NetIncome / StockholdersEquity,2025-12-31,fraccion,0.407442,SI,EXPERIMENTAL,,"NetIncome, Equity[FY]"
+RETORNOS,ROE,NI / Equity promedio,"NetIncome / avg(Equity[FY],Equity[FY-1])",2025-12-31,fraccion,0.459693,SI,EXPERIMENTAL,,"NetIncome, Equity FY y FY-1"
+RETORNOS,ROE,NI incl NCI / Equity incl NCI,ProfitLoss / EquityInclNCI,2025-12-31,fraccion,0.383282,SI,EXPERIMENTAL,,"ProfitLoss, EquityInclNCI"
+RETORNOS,ROA,NI / Assets cierre,NetIncome / Assets,2025-12-31,fraccion,0.125048,SI,EXPERIMENTAL,,"NetIncome, Assets"
+RETORNOS,ROA,NI / Assets promedio,NetIncome / avg(Assets),2025-12-31,fraccion,0.127646,SI,EXPERIMENTAL,,"NetIncome, Assets FY y FY-1"
+RETORNOS,ROIC,NOPAT / (Debt+Equity-Cash),EBIT*(1-tasa) / (Debt + Equity - Cash),2025-12-31,fraccion,,NO,EXPERIMENTAL,sin tag de deuda en 2025 (LongTermDebt* desaparece del principal desde 2024),"OperatingIncome, EffectiveTaxRate, Debt, Equity, Cash"
+RETORNOS,ROCE,EBIT / (Assets - LiabCurrent),OperatingIncome / (Assets - LiabilitiesCurrent),2025-12-31,fraccion,0.164745,SI,EXPERIMENTAL,,"OperatingIncome, Assets, LiabilitiesCurrent"
+RETORNOS,FCF on Capital Employed,FCF / (Assets-LiabCurrent),(CFO-CapEx) / (Assets - LiabilitiesCurrent),2025-12-31,fraccion,0.063399,SI,EXPERIMENTAL,,"CFO, CapEx, Assets, LiabilitiesCurrent"
+ENDEUDAMIENTO,Debt/Equity,deuda financiera,Debt / StockholdersEquity,2025-12-31,veces,,NO,EXPERIMENTAL,sin tag de deuda financiera en 2025,"Debt, Equity"
+ENDEUDAMIENTO,Liabilities/Equity,pasivo total derivado,(LiabilitiesAndEquity - EquityInclNCI) / Equity,2025-12-31,veces,2.192825,SI,EXPERIMENTAL,,"LiabilitiesAndStockholdersEquity, EquityInclNCI, Equity"
+ENDEUDAMIENTO,Debt/EBITDA,deuda bruta,Debt / EBITDA,2025-12-31,veces,,NO,EXPERIMENTAL,sin tag de deuda financiera en 2025,"Debt, EBITDA"
+ENDEUDAMIENTO,Net Debt/EBITDA,deuda neta,(Debt - Cash) / EBITDA,2025-12-31,veces,,NO,EXPERIMENTAL,sin tag de deuda financiera en 2025,"Debt, Cash, EBITDA"
+ENDEUDAMIENTO,Interest Coverage,EBIT/intereses,OperatingIncome / InterestExpense,2025-12-31,veces,8.320435,SI,EXPERIMENTAL,,"OperatingIncome, InterestExpense"
+ENDEUDAMIENTO,Interest Coverage,EBITDA/intereses,EBITDA / InterestExpense,2025-12-31,veces,8.955260,SI,EXPERIMENTAL,,"EBITDA, InterestExpense"
+ENDEUDAMIENTO,FCF/Debt,-,(CFO-CapEx) / Debt,2025-12-31,veces,,NO,EXPERIMENTAL,sin tag de deuda financiera en 2025,"CFO, CapEx, Debt"
+ENDEUDAMIENTO,CFO/Debt,-,CFO / Debt,2025-12-31,veces,,NO,EXPERIMENTAL,sin tag de deuda financiera en 2025,"CFO, Debt"
+LIQUIDEZ,Current Ratio,-,AssetsCurrent / LiabilitiesCurrent,2025-12-31,veces,1.458766,SI,EXPERIMENTAL,,"AssetsCurrent, LiabilitiesCurrent"
+LIQUIDEZ,Quick Ratio,(AC-Inv)/PC,(AssetsCurrent - Inventory) / LiabilitiesCurrent,2025-12-31,veces,1.250834,SI,EXPERIMENTAL,,"AssetsCurrent, Inventory, LiabilitiesCurrent"
+LIQUIDEZ,Quick Ratio,(Cash+Recv)/PC,(Cash + Receivables) / LiabilitiesCurrent,2025-12-31,veces,0.625347,SI,EXPERIMENTAL,,"Cash, Receivables, LiabilitiesCurrent"
+LIQUIDEZ,Cash Ratio,-,Cash / LiabilitiesCurrent,2025-12-31,veces,0.482590,SI,EXPERIMENTAL,,"Cash, LiabilitiesCurrent"
+CASH FLOW,FCF,CFO - CapEx,CFO - CapEx,2025-12-31,moneda,5296000000.000000,SI,EXPERIMENTAL,,"CFO, CapEx"
+CASH FLOW,FCF,CFO + CFI,CFO + CFI (definicion BYMA del proyecto),2025-12-31,moneda,7341000000.000000,SI,EXPERIMENTAL,,"CFO, CFI"
+CASH FLOW,FCF/Net Income,-,(CFO-CapEx) / NetIncome,2025-12-31,veces,0.404059,SI,EXPERIMENTAL,,"CFO, CapEx, NetIncome"
+CASH FLOW,CFO/Revenue,-,CFO / Revenue,2025-12-31,fraccion,0.154523,SI,EXPERIMENTAL,,"CFO, Revenue"
+VALUACION,EPS,basico reportado,EarningsPerShareBasic,2025-12-31,moneda_por_accion,3.050000,SI,CANONICO (eps_v1),,EarningsPerShareBasic
+VALUACION,EPS,diluido reportado,EarningsPerShareDiluted,2025-12-31,moneda_por_accion,3.040000,SI,EXPERIMENTAL,,EarningsPerShareDiluted
+VALUACION,EPS,derivado NI/acciones,NetIncome / WeightedAvgShares,2025-12-31,moneda_por_accion,3.046014,SI,EXPERIMENTAL,,"NetIncome, WeightedAvgShares"
+VALUACION,P/E,FY EPS basico,close / EPS,2025-12-31,veces,29.199999,SI,EXPERIMENTAL,,"close 2026-08-27, EPS 2025-12-31"
+VALUACION,P/E,FY EPS diluido,close / EPSDiluted,2025-12-31,veces,29.296052,SI,EXPERIMENTAL,,"close, EPSDiluted"
+VALUACION,P/B,Equity controladora,close / (Equity / acciones),2025-12-31,veces,11.940557,SI,EXPERIMENTAL,,"close, Equity, DilutedShares (promedio ponderado — NO es el conteo de cierre)"
+VALUACION,P/B,Equity incl NCI,close / (EquityInclNCI / acciones),2025-12-31,veces,11.206879,SI,EXPERIMENTAL,,"close, EquityInclNCI, DilutedShares (promedio ponderado — NO es el conteo de cierre)"
+VALUACION,P/S,-,MarketCap / Revenue,2025-12-31,veces,8.012260,SI,EXPERIMENTAL,,"MarketCap, Revenue"
+VALUACION,P/FCF,-,MarketCap / FCF,2025-12-31,veces,72.529413,SI,EXPERIMENTAL,,"MarketCap, FCF"
+VALUACION,P/CFO,-,MarketCap / CFO,2025-12-31,veces,51.851481,SI,EXPERIMENTAL,,"MarketCap, CFO"
+VALUACION,EV/Revenue,-,EV / Revenue,2025-12-31,veces,,NO,EXPERIMENTAL,EV requiere deuda; sin tag de deuda financiera en 2025,"EV, Revenue"
+VALUACION,EV/EBIT,-,EV / OperatingIncome,2025-12-31,veces,,NO,EXPERIMENTAL,EV requiere deuda; sin tag de deuda financiera en 2025,"EV, OperatingIncome"
+VALUACION,EV/EBITDA,-,EV / EBITDA,2025-12-31,veces,,NO,EXPERIMENTAL,EV requiere deuda; sin tag de deuda financiera en 2025,"EV, EBITDA"
+VALUACION,FCF/EV,-,FCF / EV,2025-12-31,veces,,NO,EXPERIMENTAL,EV requiere deuda; sin tag de deuda en 2025,"FCF, EV"
+VALUACION,FCF Yield,FCF/MarketCap,(CFO-CapEx) / MarketCap,2025-12-31,fraccion,0.013788,SI,EXPERIMENTAL,,"FCF, MarketCap"
+VALUACION,Market Cap,-,close x acciones,2025-12-31,moneda,384115771374.000000,SI,EXPERIMENTAL,,"close, DilutedShares (promedio ponderado — NO es el conteo de cierre)"
+VALUACION,Enterprise Value,-,MarketCap + Debt - Cash,2025-12-31,moneda,,NO,EXPERIMENTAL,sin tag de deuda financiera en 2025,"MarketCap, Debt, Cash"
+DIVIDENDOS,Payout,Dividendos/NetIncome,PaymentsOfDividends / NetIncome,2025-12-31,fraccion,0.669795,SI,EXPERIMENTAL,,"PaymentsOfDividends, NetIncome"
+DIVIDENDOS,Payout,DPS/EPS,DPS / EPS,2025-12-31,fraccion,0.668852,SI,EXPERIMENTAL,,"DPS, EPS"
+DIVIDENDOS,Dividend Yield,DPS/precio,DPS / close,2025-12-31,fraccion,0.022906,SI,EXPERIMENTAL,,"DPS, close 2026-08-27"
+DIVIDENDOS,Dividend/FCF,-,PaymentsOfDividends / FCF,2025-12-31,fraccion,1.657666,SI,EXPERIMENTAL,,"PaymentsOfDividends, CFO, CapEx"
+MERCADO,Precio,cierre,market_price_daily.close,2026-08-27,moneda,89.059998,SI,EXPERIMENTAL,,instrumento 354
+MERCADO,Maximo 52s,-,max(high) 52 semanas,2026-08-27,moneda,92.489998,SI,EXPERIMENTAL,,market_price_daily
+MERCADO,Minimo 52s,-,min(low) 52 semanas,2026-08-27,moneda,65.349998,SI,EXPERIMENTAL,,market_price_daily
+MERCADO,Distancia al maximo 52s,-,(close/max52)-1,2026-08-27,fraccion,-0.037085,SI,EXPERIMENTAL,,"close, max52"
+MERCADO,Distancia al minimo 52s,-,(close/min52)-1,2026-08-27,fraccion,0.362816,SI,EXPERIMENTAL,,"close, min52"
+OTROS,Equity Ratio,-,Equity / Assets,2025-12-31,fraccion,0.306909,SI,EXPERIMENTAL,,"Equity, Assets"
+OTROS,Asset Turnover,-,Revenue / Assets,2025-12-31,veces,0.457382,SI,EXPERIMENTAL,,"Revenue, Assets"
+OTROS,Inventory Turnover,-,COGS / Inventory,2025-12-31,veces,4.157514,SI,EXPERIMENTAL,,"COGS, Inventory"
+OTROS,DSO,-,Receivables x 365 / Revenue,2025-12-31,dias,23.129889,SI,EXPERIMENTAL,,"Receivables, Revenue"
+OTROS,CapEx/Revenue,-,CapEx / Revenue,2025-12-31,fraccion,0.044054,SI,EXPERIMENTAL,,"CapEx, Revenue"
+OTROS,Effective Tax Rate,declarado,EffectiveIncomeTaxRateContinuingOperations,2025-12-31,fraccion,0.179000,SI,EXPERIMENTAL,,tag directo
+OTROS,Effective Tax Rate,calculado,IncomeTax / PretaxIncome,2025-12-31,fraccion,0.178835,SI,EXPERIMENTAL,,"IncomeTax, PretaxIncome"
+OTROS,OCF/Net Income,-,CFO / NetIncome,2025-12-31,veces,0.565194,SI,EXPERIMENTAL,,"CFO, NetIncome"
+OTROS,BVPS,-,Equity / acciones,2025-12-31,moneda_por_accion,7.458613,SI,EXPERIMENTAL,,"Equity, DilutedShares (promedio ponderado — NO es el conteo de cierre)"

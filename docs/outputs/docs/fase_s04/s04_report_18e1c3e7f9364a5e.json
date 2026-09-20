@@ -1,0 +1,87 @@
+{
+  "stage": "S04_normalize",
+  "run_id": "18e1c3e7f9364a5e8ca2a4b87a66bcbc",
+  "mode": "FAST",
+  "started_at": "2026-08-31T21:54:56.907689+00:00",
+  "finished_at": "2026-08-31T21:55:37.617069+00:00",
+  "code": {
+    "script": "scripts/engine/s04_normalize.py",
+    "normalizer_version": "s04_normalize_v1",
+    "git_commit": "e9d794b85a487d461018f243066293168638012c"
+  },
+  "input": {
+    "stage": "S03_parse",
+    "checkpoint_id": "d4f4e76de7c44ac6-s03",
+    "run_id": "d4f4e76de7c44ac6bbf098da038362da",
+    "rows": 30898
+  },
+  "coverage": {
+    "grupos": 14111,
+    "emitidos": 9196,
+    "sin_contexto": 10278,
+    "sin_entidad": 0,
+    "sin_unidad": 0,
+    "unidad_no_resuelta": 0,
+    "desempates": {
+      "POR_FACT_ID": 2807,
+      "POR_PRECISION": 6124,
+      "IDENTICO": 265
+    }
+  },
+  "integrity": {
+    "hash_in": "5a7ae6e413c05257677c698c4107df38b2a2e0bad78bd71e866a75af14a5c175",
+    "hash_out": "ff0af4c16ee9d01a71932de7f9849df0e6beb1b97f571d2d325e4e98ee1aee74",
+    "hash_out_v1": "d330571515fd72283f45df029eacd7819007cb1540298cfee2492393008302e6",
+    "hash_spec": "hashout-v2",
+    "por_tabla": {
+      "derived.fact": "9701bd038e1aefbd66f53a8eb616981114bdacdbdcc2ef7e30d85a053354e7ec"
+    }
+  },
+  "nulls": {
+    "count": 10278
+  },
+  "gate": {
+    "status": "BLOCK",
+    "checks": [
+      {
+        "id": "C-S04-001",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-002",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-003",
+        "result": "FAIL"
+      },
+      {
+        "id": "C-S04-004",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-005",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-006",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-007",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-008",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-009",
+        "result": "PASS"
+      }
+    ],
+    "reasons": [
+      "contextos contradictorios: 3281"
+    ]
+  }
+}

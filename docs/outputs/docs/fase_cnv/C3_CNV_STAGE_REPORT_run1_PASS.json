@@ -1,0 +1,96 @@
+{
+  "code": {
+    "script": "scripts/engine/c3_cnv_fetch.py",
+    "git_commit": "444ee1ad0e1b092c79ce055ded0b993fbc55822d",
+    "parser_version": "cnv-fetch-v1"
+  },
+  "gate": {
+    "checks": [
+      {
+        "id": "C-C3-001",
+        "detail": "conciliacion plan->manifest: esperados=75 filas=75 ok=75 review=0 fallidos=0 criticos_fallidos=0",
+        "result": "PASS",
+        "blocking": true
+      },
+      {
+        "id": "C-C3-002",
+        "detail": "integridad RAW re-leyendo disco: verificados=75/75 mismatch=0 faltantes=0",
+        "result": "PASS",
+        "blocking": true
+      },
+      {
+        "id": "C-C3-003",
+        "detail": "provenance completa entidad->cuit->url->sha->raw->run->padre: filas persistidas=75 incompletas=0 sin_padre=0",
+        "result": "PASS",
+        "blocking": true
+      },
+      {
+        "id": "C-C3-004",
+        "detail": "validacion de contenido: 0 artefactos aceptados con validacion != VALID (aceptados=75, en revision=0, HTTP 200 rechazados por contenido=0)",
+        "result": "PASS",
+        "blocking": true
+      },
+      {
+        "id": "C-C3-005",
+        "detail": "rate limiting por host respetado: intervalos minimos observados={'www.cnv.gov.ar': None, 'aif2.cnv.gov.ar': 0.796, 'blob.cnv.gov.ar': None} vs configurados={'www.cnv.gov.ar': 2.0, 'aif2.cnv.gov.ar': 0.8, 'blob.cnv.gov.ar': 1.0}",
+        "result": "PASS",
+        "blocking": true
+      },
+      {
+        "id": "C-C3-006",
+        "detail": "primera pasada: escritos=75 reutilizados=0; RAW direccionado por contenido, 0 sobreescrituras (bytes nuevos=10248839)",
+        "result": "PASS",
+        "blocking": true
+      },
+      {
+        "id": "C-C3-007",
+        "detail": "identidad no inventada: reviews no cerrables intactas=3/3; relaciones declaradas=78 (CONTROLADA=51, VINCULADA=27); 0 relaciones asumidas; 0 entidades creadas por C3",
+        "result": "PASS",
+        "blocking": true
+      },
+      {
+        "id": "C-C3-008",
+        "detail": "doble hash de adjuntos (C0-CNV-006): comparados=0 coinciden=0. El hash declarado por CNV NO se usa para idempotencia; la integridad la da el SHA-256 propio",
+        "result": "PASS",
+        "blocking": false
+      },
+      {
+        "id": "C-C3-009",
+        "detail": "deteccion de duplicados: filas (kind,key,sha) repetidas en el manifest=0; contenidos identicos detectados bajo claves distintas=0 (se registran, no se re-persisten)",
+        "result": "PASS",
+        "blocking": true
+      },
+      {
+        "id": "C-C3-010",
+        "detail": "scope: 100% de las 75 descargas pertenecen al perfil CUIT 33650305499; 0 requests a SEC/mercado/otras empresas",
+        "result": "PASS",
+        "blocking": true
+      }
+    ],
+    "status": "PASS",
+    "reasons": []
+  },
+  "mode": "FAST",
+  "input": {
+    "rows": 1,
+    "checkpoint_id": "C2:reviews-resolution-v1"
+  },
+  "nulls": {
+    "count": 0,
+    "by_null_reason": {}
+  },
+  "stage": "C3_CNV_fetch",
+  "run_id": "5460d7b5db794d88baef2e8966dd72be",
+  "coverage": {
+    "parsed": 75,
+    "expected": 75,
+    "rejected": 0,
+    "by_reason": {}
+  },
+  "integrity": {
+    "hash_in": "6481ba5ade1e0bab73346388c92897d409a38dd38023a3a02c454de14eaac44d",
+    "hash_out": "29cc520e4cfa973e10480da1b5f7282dc91fe157ef0f6448271640ef2c63ddf3"
+  },
+  "started_at": "2026-08-25T04:27:08.543035+00:00",
+  "finished_at": "2026-08-25T04:29:00.837560+00:00"
+}

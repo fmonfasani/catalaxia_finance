@@ -1,0 +1,19 @@
+ratio,familia,estado,insumos_faltantes,motivo
+current_ratio,contable,INPUTS_DISPONIBLES,,
+quick_ratio,contable,INPUTS_DISPONIBLES,,
+cash_ratio,contable,INPUTS_DISPONIBLES,,
+debt_to_equity,contable,INPUTS_DISPONIBLES,,
+borrowings_to_equity,contable,INPUTS_DISPONIBLES,,
+equity_ratio,contable,INPUTS_DISPONIBLES,,
+roe,contable,INPUTS_DISPONIBLES,,
+roa,contable,INPUTS_DISPONIBLES,,
+net_margin,contable,INPUTS_DISPONIBLES,,
+gross_margin,contable,INPUTS_DISPONIBLES,,
+operating_margin,contable,INPUTS_DISPONIBLES,,
+interest_coverage,contable,INPUTS_DISPONIBLES,,
+effective_tax_rate,contable,INPUTS_DISPONIBLES,,
+ocf_to_net_income,contable,INPUTS_DISPONIBLES,,
+eps,motor homologado,NOT_CALCULABLE,,el motor esta homologado solo para el universo SEC: ciks_del_universo filtra cik IS NOT NULL
+pe,motor homologado,NOT_CALCULABLE,,el motor esta homologado solo para el universo SEC: ciks_del_universo filtra cik IS NOT NULL
+pb,motor homologado,NOT_CALCULABLE,,el motor esta homologado solo para el universo SEC: ciks_del_universo filtra cik IS NOT NULL
+ev_sales,motor homologado,NOT_CALCULABLE,,el motor esta homologado solo para el universo SEC: ciks_del_universo filtra cik IS NOT NULL

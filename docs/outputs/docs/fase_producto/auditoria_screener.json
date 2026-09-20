@@ -1,0 +1,80 @@
+{
+  "ok": false,
+  "controles": [
+    {
+      "control": "A1 · ratios contables recalculados",
+      "ok": true,
+      "detalle": "38 reproducidos, 0 divergentes "
+    },
+    {
+      "control": "B1 · todo insumo respaldado en derived.fact",
+      "ok": true,
+      "detalle": "0 sin respaldo "
+    },
+    {
+      "control": "C1 · P/E recalculado desde precio y EPS de la base",
+      "ok": true,
+      "detalle": "2 reproducidos "
+    },
+    {
+      "control": "C2 · EPS <= 0 produce NULL, nunca un P/E negativo",
+      "ok": true,
+      "detalle": "empresas con EPS<=0: ['YPFD']"
+    },
+    {
+      "control": "D1 · ningun ratio mezcla monedas",
+      "ok": true,
+      "detalle": "0 mezclados "
+    },
+    {
+      "control": "D2 · numerador y denominador del mismo filing",
+      "ok": true,
+      "detalle": "0 cruzan filings "
+    },
+    {
+      "control": "E1 · cada insumo llega a parsed.facts con su source_hash",
+      "ok": false,
+      "detalle": "53 cadenas completas, 36 rotas ['CEPU/effective_tax_rate: parsed.fact 696 sin ese source_hash', 'CEPU/effective_tax_rate: parsed.fact 693 sin ese source_hash', 'CEPU/ocf_to_net_income: parsed.fact 1085 sin ese source_hash']"
+    },
+    {
+      "control": "F1 · todo NO_CALCULABLE declara motivo",
+      "ok": true,
+      "detalle": "0 sin motivo"
+    },
+    {
+      "control": "F2 · toda empresa sin fila declara motivo",
+      "ok": true,
+      "detalle": "0"
+    },
+    {
+      "control": "F3 · los REVIEW_REQUIRED no se presentan como calculados",
+      "ok": true,
+      "detalle": "['effective_tax_rate', 'ocf_to_net_income']"
+    },
+    {
+      "control": "G1 · se detecto mas de una taxonomia en el universo",
+      "ok": true,
+      "detalle": "['IFRS+US-GAAP', 'ifrs-full']"
+    },
+    {
+      "control": "G · YPFD namespaces",
+      "ok": true,
+      "detalle": "41"
+    },
+    {
+      "control": "G · CEPU namespaces",
+      "ok": true,
+      "detalle": "5"
+    },
+    {
+      "control": "G · TGSU2 namespaces",
+      "ok": true,
+      "detalle": "10"
+    },
+    {
+      "control": "H1 · empresas con fundamentals en base == filas con datos",
+      "ok": true,
+      "detalle": "3 CIK con facts, 3 filas OK"
+    }
+  ]
+}

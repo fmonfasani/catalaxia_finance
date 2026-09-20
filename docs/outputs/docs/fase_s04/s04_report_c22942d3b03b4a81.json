@@ -1,0 +1,87 @@
+{
+  "stage": "S04_normalize",
+  "run_id": "c22942d3b03b4a819aa0d9606928d3fd",
+  "mode": "FAST",
+  "started_at": "2026-08-31T22:11:45.045808+00:00",
+  "finished_at": "2026-08-31T22:11:51.791996+00:00",
+  "code": {
+    "script": "scripts/engine/s04_normalize.py",
+    "normalizer_version": "s04_normalize_v1",
+    "git_commit": "e9d794b85a487d461018f243066293168638012c"
+  },
+  "input": {
+    "stage": "S03_parse",
+    "checkpoint_id": "2547f3d89f0548ce-s03",
+    "run_id": "2547f3d89f0548ce9ffca67d519d647c",
+    "rows": 4516
+  },
+  "coverage": {
+    "grupos": 2085,
+    "emitidos": 2069,
+    "sin_contexto": 32,
+    "sin_entidad": 0,
+    "sin_unidad": 0,
+    "unidad_no_resuelta": 0,
+    "desempates": {
+      "POR_PRECISION": 1688,
+      "POR_FACT_ID": 226,
+      "IDENTICO": 155
+    }
+  },
+  "integrity": {
+    "hash_in": "513475412da814b7fb237302dd99f98d22a0bf5d46ec39d75ec8bd88b11c7d32",
+    "hash_out": "aca67560297fac7bef9b5617edd486e6dad9d17df4ec346332e66c0843f281e0",
+    "hash_out_v1": "ea8ef58221f44d48bbc5d18592e0c6a58de4b6e02977149059bc5b08820c597b",
+    "hash_spec": "hashout-v2",
+    "por_tabla": {
+      "derived.fact": "25a5b36ea084a1c7bba12aa83beb99f07bfb4faaa6333f54679d46d106ec5984"
+    }
+  },
+  "nulls": {
+    "count": 32
+  },
+  "gate": {
+    "status": "BLOCK",
+    "checks": [
+      {
+        "id": "C-S04-001",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-002",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-003",
+        "result": "FAIL"
+      },
+      {
+        "id": "C-S04-004",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-005",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-006",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-007",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-008",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-009",
+        "result": "PASS"
+      }
+    ],
+    "reasons": [
+      "contextos contradictorios: 8"
+    ]
+  }
+}

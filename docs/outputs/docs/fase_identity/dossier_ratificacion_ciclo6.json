@@ -1,0 +1,80 @@
+[
+  {
+    "slug": "YPF",
+    "cik": "0000904851",
+    "lei": "5493003N7447U18U5U53",
+    "sec": {
+      "nombre": "YPF SOCIEDAD ANONIMA",
+      "tickers": [
+        "YPF"
+      ],
+      "exchanges": [
+        "NYSE"
+      ],
+      "sic": "2911 Petroleum Refining",
+      "domicilio": "AVENIDA PTE R SAENZ 777-8 PISO, BUENOS AIRES 1364 AR",
+      "ubicacion": "data/raw/submissions/CIK0000904851.json",
+      "filing": "20-F 2017-04-07 accession 0001193125-17-115552"
+    },
+    "gleif": {
+      "nombre": "YPF Sociedad Anonima",
+      "jurisdiction": "AR",
+      "registeredAt": "RA000009",
+      "registeredAs": "30-54668997-9",
+      "domicilio": "Guemes, Macacha, Boulevard 515, Buenos Aires, AR",
+      "ubicacion": "https://api.gleif.org/api/v1/lei-records/5493003N7447U18U5U53"
+    }
+  },
+  {
+    "slug": "CEPU",
+    "cik": "0001717161",
+    "lei": "2549005JLIWQ6B7VNR38",
+    "sec": {
+      "nombre": "CENTRAL PUERTO S.A.",
+      "tickers": [
+        "CEPU"
+      ],
+      "exchanges": [
+        "NYSE"
+      ],
+      "sic": "4911 Electric Services",
+      "domicilio": "AV. T&#1086;MAS ALVA EDISON 2701, BUENOS AIRES",
+      "ubicacion": "data/raw/submissions/CIK0001717161.json",
+      "filing": "sin 20-F materializado; CIK desde SEC submissions"
+    },
+    "gleif": {
+      "nombre": "CENTRAL PUERTO S A",
+      "jurisdiction": "AR",
+      "registeredAt": "RA000009",
+      "registeredAs": "33-65030549-9",
+      "domicilio": "Av. Thomas Edison, 2701 Darsena, E Terminal 6, Buenos Aires, AR",
+      "ubicacion": "https://api.gleif.org/api/v1/lei-records/2549005JLIWQ6B7VNR38"
+    }
+  },
+  {
+    "slug": "TGSU2",
+    "cik": "0000931427",
+    "lei": "5299002TRC7IFQYSW596",
+    "sec": {
+      "nombre": "GAS TRANSPORTER OF THE SOUTH INC",
+      "tickers": [
+        "TGS"
+      ],
+      "exchanges": [
+        "NYSE"
+      ],
+      "sic": "4922 Natural Gas Transmission",
+      "domicilio": "CECILIA GRIERSON 355 26TH FLR, ARGENTINA",
+      "ubicacion": "data/raw/submissions/CIK0000931427.json",
+      "filing": "sin 20-F materializado; CIK desde SEC submissions"
+    },
+    "gleif": {
+      "nombre": "Transportadora de Gas del Sur S.A.",
+      "jurisdiction": "AR",
+      "registeredAt": "RA000010",
+      "registeredAs": "30-65786206-8",
+      "domicilio": "Cecilia Grierson 355 , 26th floor, Buenos Aires, AR",
+      "ubicacion": "https://api.gleif.org/api/v1/lei-records/5299002TRC7IFQYSW596"
+    }
+  }
+]

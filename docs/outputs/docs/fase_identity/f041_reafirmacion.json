@@ -1,0 +1,78 @@
+{
+  "run": "f041-reafirmacion-v1",
+  "reafirmadas": [
+    {
+      "cik": "0001717161",
+      "nombre": "CENTRAL PUERTO S.A.",
+      "assertion_vieja": 5,
+      "assertion_nueva": 1387,
+      "identifier_viejo": 4,
+      "identifier_nuevo": 1253,
+      "artefacto": "data/raw/submissions/CIK0001717161.json"
+    },
+    {
+      "cik": "0001114700",
+      "nombre": "GRUPO FINANCIERO GALICIA S.A.",
+      "assertion_vieja": 10,
+      "assertion_nueva": 1388,
+      "identifier_viejo": 8,
+      "identifier_nuevo": 1254,
+      "artefacto": "data/raw/submissions/CIK0001114700.json"
+    },
+    {
+      "cik": "0000931427",
+      "nombre": "TRANSPORTADORA DE GAS DEL SUR S.A.",
+      "assertion_vieja": 13,
+      "assertion_nueva": 1389,
+      "identifier_viejo": 10,
+      "identifier_nuevo": 1255,
+      "artefacto": "data/raw/submissions/CIK0000931427.json"
+    },
+    {
+      "cik": "0000320193",
+      "nombre": "Apple Inc.",
+      "assertion_vieja": 205,
+      "assertion_nueva": 1390,
+      "identifier_viejo": 113,
+      "identifier_nuevo": 1256,
+      "artefacto": "data/raw/submissions/CIK0000320193.json"
+    },
+    {
+      "cik": "0000789019",
+      "nombre": "MICROSOFT CORP",
+      "assertion_vieja": 207,
+      "assertion_nueva": 1391,
+      "identifier_viejo": 114,
+      "identifier_nuevo": 1257,
+      "artefacto": "data/raw/submissions/CIK0000789019.json"
+    },
+    {
+      "cik": "0001045810",
+      "nombre": "NVIDIA CORP",
+      "assertion_vieja": 209,
+      "assertion_nueva": 1392,
+      "identifier_viejo": 115,
+      "identifier_nuevo": 1258,
+      "artefacto": "data/raw/submissions/CIK0001045810.json"
+    }
+  ],
+  "deuda": [
+    {
+      "assertion_id": 1,
+      "cik": "0000904851",
+      "clase": "C_NO_ESTRUCTURABLE",
+      "motivo": "el documento 20-F nunca se archivo. Solo existe data\\raw\\engine\\CIK0000904851\\filings\\000119312517115552\\index.json, que lista los archivos del directorio pero NO declara el CIK ni el form: el CIK vive en la ruta de SEC, no en el contenido. Estructurar desde ahi seria inferir.",
+      "corroboracion_independiente": {
+        "fuente": "SEC_REGISTRY",
+        "artefacto": "data/raw/submissions/CIK0000904851.json",
+        "declara": {
+          "accession": "0001193125-17-115552",
+          "form": "20-F",
+          "filingDate": "2017-04-07",
+          "cik": "0000904851"
+        },
+        "nota": "El hecho es cierto y verificable, pero por una fuente DISTINTA de la que esta assertion declara. Usarla aca cambiaria que la sostiene."
+      }
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+[config] target=catalaxia_engine@127.0.0.1:5433/e2e_final mode=FAST prod=False scope=FAST:YPF:v1
+[migrations] aplicadas ahora: (ninguna nueva)
+[run] run_id=1281d6d5b081480288362194059868f0 git=e9d794b85a487d461018f243066293168638012c
+[identity] CIK:0000904851 | YPF SOCIEDAD ANONIMA | tickers=[('YPFD', 'BYMA'), ('YPF', 'US')]
+[discovery] 20-F encontrados=16 páginas submissions extra=1
+[filing] 20-F 0001193125-26-126363 filed=2026-03-26 period=2025-12-31 archivos=14 xbrl=True
+[filing] 20-F 0001193125-25-067155 filed=2025-03-28 period=2024-12-31 archivos=18 xbrl=True
+[filing] 20-F 0001193125-24-114066 filed=2024-04-25 period=2023-12-31 archivos=21 xbrl=True
+[filing] 20-F 0001193125-23-097822 filed=2023-04-11 period=2022-12-31 archivos=17 xbrl=True
+[filing] 20-F 0001193125-22-111088 filed=2022-04-20 period=2021-12-31 archivos=19 xbrl=True
+[filing] 20-F 0001193125-21-125294 filed=2021-04-22 period=2020-12-31 archivos=17 xbrl=True
+[filing] 20-F 0001193125-20-119222 filed=2020-04-24 period=2019-12-31 archivos=18 xbrl=True
+[filing] 20-F 0001193125-19-096821 filed=2019-04-04 period=2018-12-31 archivos=16 xbrl=True
+[filing] 20-F 0001193125-18-127245 filed=2018-04-24 period=2017-12-31 archivos=17 xbrl=True
+[filing] 20-F 0001193125-17-115552 filed=2017-04-07 period=2016-12-31 archivos=10 xbrl=False [era sin XBRL: solo index por diseño]
+[filing] 20-F 0001193125-16-507875 filed=2016-03-17 period=2015-12-31 archivos=10 xbrl=False [era sin XBRL: solo index por diseño]
+[filing] 20-F 0001193125-15-111986 filed=2015-03-30 period=2014-12-31 archivos=12 xbrl=False [era sin XBRL: solo index por diseño]
+[filing] 20-F 0001193125-14-119270 filed=2014-03-28 period=2013-12-31 archivos=10 xbrl=False [era sin XBRL: solo index por diseño]
+[filing] 20-F 0001193125-13-178160 filed=2013-04-26 period=2012-12-31 archivos=9 xbrl=False [era sin XBRL: solo index por diseño]
+[filing] 20-F 0001208646-12-000138 filed=2012-05-16 period=2011-12-31 archivos=12 xbrl=False [era sin XBRL: solo index por diseño]
+[filing] 20-F 0001208646-11-000183 filed=2011-04-12 period=2010-12-31 archivos=12 xbrl=False [era sin XBRL: solo index por diseño]
+[filing] 20-F 0001193125-10-149744 filed=2010-06-29 period=2009-12-31 archivos=12 xbrl=False [era sin XBRL: solo index por diseño]
+[filing] 20-F 0001193125-09-141626 filed=2009-06-30 period=2008-12-31 archivos=10 xbrl=False [era sin XBRL: solo index por diseño]
+[filing] 20-F/A 0000950103-08-002589 filed=2008-10-20 period=2007-12-31 archivos=7 xbrl=False [era sin XBRL: solo index por diseño]
+[filing] 20-F/A 0000950103-08-001022 filed=2008-04-16 period=2007-12-31 archivos=7 xbrl=False [era sin XBRL: solo index por diseño]
+[filing] 20-F 0000950103-08-001000 filed=2008-04-15 period=2007-12-31 archivos=7 xbrl=False [era sin XBRL: solo index por diseño]
+[filing] 20-F 0001193125-07-143924 filed=2007-06-27 period=2006-12-31 archivos=6 xbrl=False [era sin XBRL: solo index por diseño]
+[filing] 20-F 0001193125-06-147059 filed=2006-07-14 period=2005-12-31 archivos=9 xbrl=False [era sin XBRL: solo index por diseño]
+[filing] 20-F 0001193125-05-135966 filed=2005-06-30 period=2004-12-31 archivos=8 xbrl=False [era sin XBRL: solo index por diseño]
+[filing] 20-F 0001047469-04-022346 filed=2004-07-01 period=2003-12-31 archivos=7 xbrl=False [era sin XBRL: solo index por diseño]
+[filing] 20-F 0001125282-03-004056 filed=2003-06-27 period=2002-12-31 archivos=2 xbrl=False [era sin XBRL: solo index por diseño]
+[filing] 20-F 9999999997-02-037446 filed=2002-06-28 period=2001-12-31 archivos=2 xbrl=False [era sin XBRL: solo index por diseño]
+{
+  "gate": "PASS",
+  "plan": 187,
+  "rows": 187,
+  "counts": {
+    "DOWNLOADED": 187
+  },
+  "bytes_total": 266540101,
+  "kinds": {
+    "SUBMISSIONS": 1,
+    "COMPANYFACTS": 1,
+    "SUBMISSIONS_PAGE": 1,
+    "FILING_INDEX": 27,
+    "DOC_HTM": 89,
+    "XBRL_PACKAGE_ZIP": 9,
+    "XBRL_OTHER": 5,
+    "FILING_SUMMARY": 9,
+    "XBRL_SCHEMA": 9,
+    "LINKBASE_CAL": 8,
+    "LINKBASE_DEF": 8,
+    "LINKBASE_LAB": 8,
+    "LINKBASE_PRE": 8,
+    "XBRL_INSTANCE": 4
+  },
+  "filings": 27,
+  "taxonomies": [
+    "ypf"
+  ]
+}
+--- conciliacion ---
+rows_expected = 187
+rows_ok       = 187
+rows_failed   = 0 
+gate          = PASS

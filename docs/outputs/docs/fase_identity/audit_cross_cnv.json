@@ -1,0 +1,84 @@
+{
+  "YPF": {
+    "cik": "0000904851",
+    "cuit": "30546689979",
+    "entity_key": "E01M0X99C8F87H9TH9N39H2D1NW",
+    "bridge_ratificado_por": "Federico",
+    "raw_archivos": [],
+    "presentaciones_en_raw": 0,
+    "guids_en_db": 4919,
+    "corridas": 2,
+    "filas_db_todas_las_corridas": 9838,
+    "clase": "-",
+    "motivo": "4919 presentaciones (GUIDs unicos) cargadas",
+    "relaciones": {
+      "CONTROLADA": 244,
+      "CONTROLANTE": 2,
+      "VINCULADA": 338,
+      "AUSENTE": 4335
+    },
+    "autorreferencias": 18
+  },
+  "TGSU2": {
+    "cik": "0000931427",
+    "cuit": "30657862068",
+    "entity_key": "E01M0X99G29RBSSFSGAM5S1QZMT",
+    "bridge_ratificado_por": "Federico",
+    "raw_archivos": [],
+    "presentaciones_en_raw": 0,
+    "guids_en_db": 2385,
+    "corridas": 1,
+    "filas_db_todas_las_corridas": 2385,
+    "clase": "-",
+    "motivo": "2385 presentaciones (GUIDs unicos) cargadas",
+    "relaciones": {
+      "CONTROLADA": 47,
+      "VINCULADA": 73,
+      "AUSENTE": 2265
+    },
+    "autorreferencias": 0
+  },
+  "CEPU": {
+    "cik": "0001717161",
+    "cuit": "33650305499",
+    "entity_key": "E01M0X99DQ7P5TQ4Z6Z58RC5PB3",
+    "bridge_ratificado_por": "Federico",
+    "raw_archivos": [
+      "3ac9cc69bbb092f0.html",
+      "af05519c546cdfa4.html",
+      "c475d0e886ffeb80.html",
+      "f02ebce45f57769e.html"
+    ],
+    "presentaciones_en_raw": 1862,
+    "guids_en_db": 1861,
+    "corridas": 5,
+    "filas_db_todas_las_corridas": 9305,
+    "clase": "-",
+    "motivo": "1861 presentaciones (GUIDs unicos) cargadas",
+    "relaciones": {
+      "CONTROLADA": 51,
+      "VINCULADA": 27,
+      "AUSENTE": 1783
+    },
+    "autorreferencias": 0
+  },
+  "GGAL": {
+    "cik": "0001071371",
+    "cuit": null,
+    "entity_key": null,
+    "bridge_ratificado_por": null,
+    "raw_archivos": [],
+    "presentaciones_en_raw": 0,
+    "guids_en_db": 0,
+    "corridas": 0,
+    "filas_db_todas_las_corridas": 0,
+    "clase": "D",
+    "motivo": "Identity v1 no pudo resolver el CUIT; bloqueo antes de consultar"
+  },
+  "_controles": {
+    "cuits_en_cnv_sin_identidad": [],
+    "relaciones_fuera_del_dominio": [],
+    "autorreferencias_sin_marcar": 0,
+    "cuit_no_autoritativo_usado": 0
+  }
+}

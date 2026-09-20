@@ -1,0 +1,200 @@
+{
+  "fase_C_engine": [
+    {
+      "id": "A1",
+      "ataque": "inventar CIK desde fuente no autoritativa",
+      "esperada": "tg_fuente_autoritativa_para_el_tipo",
+      "real": "tg_fuente_autoritativa_para_el_tipo",
+      "veredicto": "OK"
+    },
+    {
+      "id": "A2",
+      "ataque": "inventar LEI desde fuente no autoritativa",
+      "esperada": "tg_fuente_autoritativa_para_el_tipo",
+      "real": "tg_fuente_autoritativa_para_el_tipo",
+      "veredicto": "OK"
+    },
+    {
+      "id": "A3",
+      "ataque": "inventar CUIT desde fuente no autoritativa",
+      "esperada": "tg_fuente_autoritativa_para_el_tipo",
+      "real": "tg_fuente_autoritativa_para_el_tipo",
+      "veredicto": "OK"
+    },
+    {
+      "id": "A4",
+      "ataque": "convertir CIK en CUIT (assertion de CIK usada para CUIT)",
+      "esperada": "tg_identifier_coherente(left_ref_coincide)",
+      "real": "tg_identifier_coherente(left_ref_coincide)",
+      "veredicto": "OK"
+    },
+    {
+      "id": "A5",
+      "ataque": "CORROBORATING como autoridad (LEGACY -> CIK, left_ref ok)",
+      "esperada": "tg_fuente_autoritativa_para_el_tipo",
+      "real": "tg_fuente_autoritativa_para_el_tipo",
+      "veredicto": "OK"
+    },
+    {
+      "id": "A6",
+      "ataque": "left_ref NULL",
+      "esperada": "tg_identifier_coherente(left_ref_obligatorio)",
+      "real": "tg_identifier_coherente(left_ref_obligatorio)",
+      "veredicto": "OK"
+    },
+    {
+      "id": "A7",
+      "ataque": "left_ref apuntando a otro identificador",
+      "esperada": "tg_identifier_coherente(left_ref_coincide)",
+      "real": "tg_identifier_coherente(left_ref_coincide)",
+      "veredicto": "OK"
+    },
+    {
+      "id": "A8",
+      "ataque": "assertion de otra entidad",
+      "esperada": "tg_identifier_coherente(misma_entidad)",
+      "real": "tg_identifier_coherente(misma_entidad)",
+      "veredicto": "OK"
+    },
+    {
+      "id": "A9",
+      "ataque": "promover CANDIDATE a autoritativo",
+      "esperada": "tg_identifier_autoritativo",
+      "real": "tg_identifier_autoritativo",
+      "veredicto": "OK"
+    },
+    {
+      "id": "A10",
+      "ataque": "alterar source_id de assertion historica",
+      "esperada": "GRANT_de_columna",
+      "real": "GRANT_de_columna",
+      "veredicto": "OK"
+    },
+    {
+      "id": "A11",
+      "ataque": "alterar id_type de un identificador",
+      "esperada": "GRANT_de_columna",
+      "real": "GRANT_de_columna",
+      "veredicto": "OK"
+    },
+    {
+      "id": "A12",
+      "ataque": "alterar left_ref",
+      "esperada": "GRANT_de_columna",
+      "real": "GRANT_de_columna",
+      "veredicto": "OK"
+    },
+    {
+      "id": "A13",
+      "ataque": "modificar provenance (evidence)",
+      "esperada": "GRANT_de_columna",
+      "real": "GRANT_de_columna",
+      "veredicto": "OK"
+    },
+    {
+      "id": "A14",
+      "ataque": "borrar assertion historica",
+      "esperada": "GRANT_de_columna",
+      "real": "GRANT_de_columna",
+      "veredicto": "OK"
+    },
+    {
+      "id": "A15",
+      "ataque": "el CUIT de CEPU sobre otra entidad",
+      "esperada": "ux_identifier_autoritativo_unico",
+      "real": "ux_identifier_autoritativo_unico",
+      "veredicto": "OK"
+    },
+    {
+      "id": "A16",
+      "ataque": "el CIK de YPF sobre otra entidad",
+      "esperada": "ux_identifier_autoritativo_unico",
+      "real": "ux_identifier_autoritativo_unico",
+      "veredicto": "OK"
+    },
+    {
+      "id": "C1",
+      "ataque": "entidad MERGED adquiriendo identidad",
+      "esperada": "tg_identidad_exige_entidad_viva",
+      "real": "tg_identidad_exige_entidad_viva",
+      "veredicto": "OK"
+    },
+    {
+      "id": "C2",
+      "ataque": "matar una entidad que sostiene identidad",
+      "esperada": "tg_no_matar_entidad_con_identidad",
+      "real": "GRANT_de_columna",
+      "veredicto": "OTRA_BARRERA"
+    },
+    {
+      "id": "C3",
+      "ataque": "reabrir una assertion cerrada",
+      "esperada": "GRANT_de_columna",
+      "real": "GRANT_de_columna",
+      "veredicto": "OK"
+    }
+  ],
+  "fase_C_owner_politica_adulterada": [
+    {
+      "id": "A1",
+      "ataque": "inventar CIK desde fuente no autoritativa",
+      "esperada": "tg_fuente_autoritativa_para_el_tipo",
+      "real": "ck_politica_estructural_cik_lei",
+      "veredicto": "OTRA_BARRERA"
+    },
+    {
+      "id": "A2",
+      "ataque": "inventar LEI desde fuente no autoritativa",
+      "esperada": "tg_fuente_autoritativa_para_el_tipo",
+      "real": "ck_politica_estructural_cik_lei",
+      "veredicto": "OTRA_BARRERA"
+    },
+    {
+      "id": "A3",
+      "ataque": "inventar CUIT desde fuente no autoritativa",
+      "esperada": "tg_fuente_autoritativa_para_el_tipo",
+      "real": "ck_cuit_exige_evidencia_estructurada",
+      "veredicto": "OTRA_BARRERA"
+    },
+    {
+      "id": "A4",
+      "ataque": "convertir CIK en CUIT (assertion de CIK usada para CUIT)",
+      "esperada": "tg_identifier_coherente(left_ref_coincide)",
+      "real": "tg_identifier_coherente(left_ref_coincide)",
+      "veredicto": "OK"
+    },
+    {
+      "id": "A5",
+      "ataque": "CORROBORATING como autoridad (LEGACY -> CIK, left_ref ok)",
+      "esperada": "tg_fuente_autoritativa_para_el_tipo",
+      "real": "ck_politica_estructural_cik_lei",
+      "veredicto": "OTRA_BARRERA"
+    },
+    {
+      "id": "A6",
+      "ataque": "left_ref NULL",
+      "esperada": "tg_identifier_coherente(left_ref_obligatorio)",
+      "real": "tg_identifier_coherente(left_ref_obligatorio)",
+      "veredicto": "OK"
+    }
+  ],
+  "fase_D_mutaciones": {
+    "tg_identifier_coherente_con_assertion (F-045)": [
+      "A4",
+      "A6",
+      "A7",
+      "A8"
+    ],
+    "ck_politica_estructural_cik_lei (F-044)": [],
+    "ck_cuit_exige_evidencia_estructurada (F-036/037)": [],
+    "ux_identifier_autoritativo_unico (unicidad)": [
+      "A15",
+      "A16"
+    ],
+    "tg_assertion_inmutable (inmutabilidad)": [
+      "A13",
+      "C3"
+    ],
+    "tg_identidad_exige_entidad_viva (lifecycle)": []
+  }
+}

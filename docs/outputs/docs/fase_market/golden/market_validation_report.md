@@ -1,0 +1,53 @@
+# VALIDATION REPORT — Market Data
+
+**Veredicto: PASS_WITH_WARNINGS**
+
+Severidades: `VALID` cumple · `WARNING` cumple con observacion (tipicamente defecto de la fuente, no del pipeline) · `INVALID` bloquea · `NOT_APPLICABLE` no corresponde en este estado.
+
+| severidad | gates |
+|---|---|
+| VALID | 29 |
+| WARNING | 6 |
+
+## Resultado por gate
+
+| gate | instrumento | severidad | detalle |
+|---|---|---|---|
+| C-MKT-001 | — | VALID | instrumentos con precios sin identidad=[]; identidades sin entity_id=0 |
+| C-MKT-007 | — | VALID | mappings por estado={'MAPPED': 584}; simbolos MAPPED compartidos=[] (total 0) |
+| C-MKT-015 | — | VALID | archivos RAW verificados=26/26; ausentes=0 []; alterados=0 [] |
+| C-MKT-002 | — | VALID | corridas por estado={'SUCCESS': 20}; sin fuente/version/params=0 |
+| C-MKT-017 | — | VALID | filas sin corrida registrada=0; filas cuya corrida no tiene RAW archivado=0 |
+| C-MKT-012 | 83 | VALID | filas=6634; full_hash reconstruido != persistido en 0 fila(s) []; business_hash derivable de las columnas persistidas |
+| C-MKT-005 | 83 | VALID | filas=6634 fechas_distintas=6634 |
+| C-MKT-006 | 83 | VALID | moneda en la serie={'ARS': 6634}; identidad=ARS |
+| C-MKT-008 | 83 | VALID | tz_mercado=America/Argentina/Buenos_Aires; ruedas por estado={'FINALIZED': 6634}; rango=2000-01-03..2026-08-24 |
+| C-MKT-009 | 83 | VALID | OHLC nulos=0 []; volumen nulo=0 |
+| C-MKT-004 | 83 | WARNING | filas=6634; incoherencias=4; reproducidas byte a byte en el RAW (defecto de la fuente)=4; introducidas por el pipeline=0 []; ej=[('2007-10-12', 'LOW_GT_OPEN'), ('2007-10-25', 'LOW_GT_OPEN'), ('2011-05-03', 'HIGH_LT_CLOSE')] |
+| C-MKT-003 | 83 | VALID | anos cubiertos=27 (2000..2026); ruedas=6634; gaps>12h=0 top=[] |
+| C-MKT-011 | 83 | VALID | ultimo_cierre=2026-08-24 close=8175.0 estado_sesion=FINALIZED dias_atras=1 cutoff=2026-08-25 |
+| C-MKT-016 | 83 | VALID | serie: dividendos=16 splits=1 / market_corporate_actions: dividendos=16 splits=1 |
+| C-MKT-010 | 83 | VALID | tolerancia relativa=1e-05; filas escritas por ruido de Adj Close=0 (debe ser 0: el ruido no persiste) |
+| C-MKT-013 | 83 | VALID | ultima corrida=golden-v5-retest5-83-20260825T042727797783Z estado=SIN_CAMBIOS; cambios registrados=ninguno; no benignos=0 |
+| C-MKT-014 | 83 | VALID | snapshots=5 en market_snapshots; la serie historica no contiene campos de snapshot |
+| C-MKT-017 | 83 | VALID | filas por corrida de origen={'golden-retest4-83-20260824T214742Z': 6634} |
+| C-MKT-012 | 84 | VALID | filas=8345; full_hash reconstruido != persistido en 0 fila(s) []; business_hash derivable de las columnas persistidas |
+| C-MKT-005 | 84 | VALID | filas=8345 fechas_distintas=8345 |
+| C-MKT-006 | 84 | VALID | moneda en la serie={'USD': 8345}; identidad=USD |
+| C-MKT-008 | 84 | VALID | tz_mercado=America/New_York; ruedas por estado={'FINALIZED': 8345}; rango=1993-06-29..2026-08-24 |
+| C-MKT-009 | 84 | VALID | OHLC nulos=0 []; volumen nulo=0 |
+| C-MKT-004 | 84 | VALID | filas=8345 sin incoherencias OHLC |
+| C-MKT-003 | 84 | VALID | anos cubiertos=34 (1993..2026); ruedas=8345; gaps>12h=0 top=[] |
+| C-MKT-011 | 84 | VALID | ultimo_cierre=2026-08-24 close=51.279999 estado_sesion=FINALIZED dias_atras=1 cutoff=2026-08-25 |
+| C-MKT-016 | 84 | VALID | serie: dividendos=58 splits=0 / market_corporate_actions: dividendos=58 splits=0 |
+| C-MKT-010 | 84 | VALID | tolerancia relativa=1e-05; filas escritas por ruido de Adj Close=0 (debe ser 0: el ruido no persiste) |
+| C-MKT-013 | 84 | WARNING | ultima corrida=golden-v5-retest5-84-20260825T042739898974Z estado=SUCCESS; cambios registrados=[('CHANGED', 'VOLUME_RESTATEMENT', 1)]; no benignos=[('CHANGED', 'VOLUME_RESTATEMENT', 1)] |
+| C-MKT-014 | 84 | VALID | snapshots=5 en market_snapshots; la serie historica no contiene campos de snapshot |
+| C-MKT-017 | 84 | VALID | filas por corrida de origen={'golden-retest4-84-20260824T214752Z': 8344, 'golden-v5-retest5-84-20260825T042739898974Z': 1} |
+
+## Estado por instrumento
+
+| instrumento | resumen |
+|---|---|
+| 83 | {"filas": 6634, "rango": "2000-01-03..2026-08-24", "ultimo_close": 8175.0, "gaps": 0, "incoherencias_ohlc": 4, "hash_mismatch": 0} |
+| 84 | {"filas": 8345, "rango": "1993-06-29..2026-08-24", "ultimo_close": 51.279999, "gaps": 0, "incoherencias_ohlc": 0, "hash_mismatch": 0} |

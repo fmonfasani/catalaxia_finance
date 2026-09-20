@@ -1,0 +1,41 @@
+{
+  "veredicto": "CLOSED",
+  "respuestas": {
+    "3b. ninguna migracion se auto-registra": {
+      "ok": true,
+      "detalle": "0"
+    },
+    "3c. el runner es el unico escritor del registro": {
+      "ok": true,
+      "detalle": "1 INSERT en engine/db.py"
+    },
+    "1. el release se instala desde cero": {
+      "ok": true,
+      "detalle": "29 migraciones (esperadas 29)"
+    },
+    "3. registradas exactamente una vez": {
+      "ok": true,
+      "detalle": "registradas=29 duplicados=0"
+    },
+    "2. se puede repetir": {
+      "ok": true,
+      "detalle": "0 re-aplicadas"
+    },
+    "5. estado final determinista (== homologada)": {
+      "ok": true,
+      "detalle": "nueva=('15', '27', '11', '9') homologada=('15', '27', '11', '9')"
+    },
+    "4. un fallo produce rollback correcto": {
+      "ok": true,
+      "detalle": "objeto huerfano=f tabla_registro=f"
+    },
+    "6. la base homologada no fue modificada": {
+      "ok": true,
+      "detalle": "525|614|29|0"
+    },
+    "7. el tag v1.0.1 contiene la correccion": {
+      "ok": true,
+      "detalle": "tag en HEAD: v1.0.1"
+    }
+  }
+}

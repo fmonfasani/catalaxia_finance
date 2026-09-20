@@ -1,0 +1,87 @@
+{
+  "stage": "S04_normalize",
+  "run_id": "8e51deb0c73a42ddb4a57e39fd5cf5f4",
+  "mode": "FAST",
+  "started_at": "2026-08-31T22:00:00.577970+00:00",
+  "finished_at": "2026-08-31T22:00:09.257989+00:00",
+  "code": {
+    "script": "scripts/engine/s04_normalize.py",
+    "normalizer_version": "s04_normalize_v1",
+    "git_commit": "e9d794b85a487d461018f243066293168638012c"
+  },
+  "input": {
+    "stage": "S03_parse",
+    "checkpoint_id": "2bc4cdd89c984cf3-s03",
+    "run_id": "2bc4cdd89c984cf395b5d1911f5b4680",
+    "rows": 7396
+  },
+  "coverage": {
+    "grupos": 3460,
+    "emitidos": 3180,
+    "sin_contexto": 560,
+    "sin_entidad": 0,
+    "sin_unidad": 0,
+    "unidad_no_resuelta": 0,
+    "desempates": {
+      "POR_FACT_ID": 203,
+      "POR_PRECISION": 2611,
+      "IDENTICO": 366
+    }
+  },
+  "integrity": {
+    "hash_in": "6d775d5d8e2069e2950ccaa1c1084b4f860956be3439f05d2ef6b2bc4261c722",
+    "hash_out": "c3993424b2dd8650028c0f81086f5b2e64fd74477c6a4870aa7e18335f7d12ca",
+    "hash_out_v1": "00ff95912ad840af385d4cce8a05beaa7d44412d8d065f328f49a119fe779730",
+    "hash_spec": "hashout-v2",
+    "por_tabla": {
+      "derived.fact": "c3c6a9bd39ab9148c6969e7a0417a4724f24d7114e8dd1be4bc61069e9895d1a"
+    }
+  },
+  "nulls": {
+    "count": 560
+  },
+  "gate": {
+    "status": "BLOCK",
+    "checks": [
+      {
+        "id": "C-S04-001",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-002",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-003",
+        "result": "FAIL"
+      },
+      {
+        "id": "C-S04-004",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-005",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-006",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-007",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-008",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-009",
+        "result": "PASS"
+      }
+    ],
+    "reasons": [
+      "contextos contradictorios: 141"
+    ]
+  }
+}

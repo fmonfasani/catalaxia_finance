@@ -1,0 +1,82 @@
+codigo,concepto,label,familia,freq_metr_valor,freq_metr_nil,freq_corpus,pct_corpus,tipo_economico,unidad,period_kind,saldo_o_flujo,es_subtotal,es_ratio,equivalente_conceptual,incorporado_en,razon,obs_antes,obs_despues,obs_nil
+1110100,PPE,PROPIEDADES PLANTAS Y EQUIPOS,BALANCE,60,0,,,ACTIVO,iso4217:ARS,INSTANT,saldo,False,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+1110200,Intangibles,ACTIVOS INTANGIBLES,BALANCE,60,0,,,ACTIVO,iso4217:ARS,INSTANT,saldo,False,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+1111999,ReceivablesNoCorrientes,CUENTAS POR COBRAR NO CORRIENTES,BALANCE,0,60,,,ACTIVO,iso4217:ARS,INSTANT,saldo,False,False,Receivables (corriente),F-063,completa el par corriente/no corriente de créditos,0,0,60
+1112400,ActivosFinancierosNoCorrientes,ACTIVOS FINANCIEROS NO CORRIENTES,BALANCE,58,2,1152,15%,ACTIVO,iso4217:ARS,INSTANT,saldo,False,False,—,F-063,activo financiero no corriente: insumo de deuda neta y liquidez,0,58,2
+1112500,OtrosActivosNoFinancierosNoCorrientes,OTROS ACTIVOS NO FINANCIEROS NO CORRIENTES,BALANCE,60,0,2083,26%,ACTIVO,iso4217:ARS,INSTANT,saldo,False,False,—,F-063,cierra el desglose del activo no corriente,0,60,0
+1119999,AssetsNonCurrent,ACTIVO NO CORRIENTE,BALANCE,60,0,,,ACTIVO,iso4217:ARS,INSTANT,saldo,True,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+1120100,Inventory,INVENTARIOS CORRIENTES,BALANCE,32,28,,,ACTIVO,iso4217:ARS,INSTANT,saldo,False,False,—,vocabulario original,vocabulario original del extractor,29,32,28
+1121999,Receivables,CUENTAS POR COBRAR CORRIENTES,BALANCE,60,0,,,ACTIVO,iso4217:ARS,INSTANT,saldo,False,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+1122300,ActivosFinancierosCorrientes,ACTIVOS FINANCIEROS CORRIENTES,BALANCE,56,4,1909,24%,ACTIVO,iso4217:ARS,INSTANT,saldo,False,False,Cash (parcial),F-063,"activo financiero corriente: distinto de efectivo, entra en liquidez",0,56,4
+1122400,OtrosActivosNoFinancierosCorrientes,OTROS ACTIVOS NO FINANCIEROS CORRIENTES,BALANCE,4,56,2198,28%,ACTIVO,iso4217:ARS,INSTANT,saldo,False,False,—,F-063,cierra el desglose del activo corriente,0,4,56
+1122500,Cash,EFECTIVO Y EQUIVALENTES A EFECTIVO,BALANCE,60,0,,,ACTIVO,iso4217:ARS,INSTANT,saldo,False,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+1139999,AssetsCurrent,ACTIVO CORRIENTE,BALANCE,60,0,,,ACTIVO,iso4217:ARS,INSTANT,saldo,True,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+1999999,Assets,TOTAL DEL ACTIVO,BALANCE,60,0,,,ACTIVO,iso4217:ARS,INSTANT,saldo,True,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+2210300,AjusteDeCapital,AJUSTE DE CAPITAL,EQUITY,60,0,2375,30%,PASIVO_O_PN,iso4217:ARS,INSTANT,saldo,False,False,Capital (parcial),F-063,componente del patrimonio bajo IAS 29; sin él el PN no descompone,0,60,0
+2210500,AportesNoCapitalizados,APORTES NO CAPITALIZADOS O CONTRIBUCIONES DE CAPITAL,EQUITY,0,60,,,PASIVO_O_PN,iso4217:ARS,INSTANT,saldo,False,False,—,F-063,aportes no capitalizados: componente del patrimonio,0,0,60
+2210900,OtrosConceptosDelCapital,OTROS CONCEPTOS DEL CAPITAL,EQUITY,0,60,,,PASIVO_O_PN,iso4217:ARS,INSTANT,saldo,False,False,—,F-063,otros conceptos del capital: componente del patrimonio,0,0,60
+2210999,Capital,CAPITAL,EQUITY,60,0,,,PASIVO_O_PN,iso4217:ARS,INSTANT,saldo,False,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+2211100,ReservaLegal,RESERVA LEGAL,EQUITY,56,4,2155,27%,PASIVO_O_PN,iso4217:ARS,INSTANT,saldo,False,False,Reservas (agregado),F-063,desglosa la reserva legal del total de reservas,0,56,4
+2211200,OtrasReservas,OTRAS RESERVAS,EQUITY,56,4,2112,27%,PASIVO_O_PN,iso4217:ARS,INSTANT,saldo,False,False,Reservas (agregado),F-063,desglosa el resto de reservas,0,56,4
+2211300,InteresesNoControlantes,INTERESES NO CONTROLANTES,BALANCE,30,30,967,12%,PASIVO_O_PN,iso4217:ARS,INSTANT,saldo,False,False,—,F-063,participación no controlante: explica CONSOLIDADO − INDIVIDUAL,0,30,30
+2211999,Reservas,GANANCIAS RESERVADAS,EQUITY,56,4,,,PASIVO_O_PN,iso4217:ARS,INSTANT,saldo,False,False,—,vocabulario original,vocabulario original del extractor,52,56,4
+2212999,ResultadosNoAsignados,RESULTADOS NO ASIGNADOS,EQUITY,60,0,,,PASIVO_O_PN,iso4217:ARS,INSTANT,saldo,False,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+2213999,ResultadosIntegralesAcumulados,RESULTADOS INTEGRALES,BALANCE,9,51,1318,17%,PASIVO_O_PN,iso4217:ARS,INSTANT,saldo,False,False,—,F-063,resultados integrales acumulados dentro del PN,0,9,51
+2299999,Equity,TOTAL PATRIMONIO NETO,EQUITY,60,0,,,PASIVO_O_PN,iso4217:ARS,INSTANT,saldo,True,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+2311999,PayablesNoCorrientes,CUENTAS POR PAGAR NO CORRIENTES,BALANCE,34,26,979,12%,PASIVO_O_PN,iso4217:ARS,INSTANT,saldo,False,False,Payables (corriente),F-063,completa el par corriente/no corriente de cuentas a pagar,0,34,26
+2312200,PasivosImpuestosNoCorrientes,PASIVOS POR IMPUESTOS NO CORRIENTES,TAX,51,9,2049,26%,PASIVO_O_PN,iso4217:ARS,INSTANT,saldo,False,False,—,F-063,pasivo por impuesto diferido: insumo de deuda ajustada,0,51,9
+2312300,DebtNonCurrent,PASIVOS FINANCIEROS NO CORRIENTES,DEBT,60,0,,,PASIVO_O_PN,iso4217:ARS,INSTANT,saldo,False,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+2312400,OtrosPasivosNoFinancierosNoCorrientes,OTROS PASIVOS NO FINANCIEROS NO CORRIENTES,DEBT,60,0,1812,23%,PASIVO_O_PN,iso4217:ARS,INSTANT,saldo,False,False,—,F-063,cierra el desglose del pasivo no corriente,0,60,0
+2319999,LiabilitiesNonCurrent,PASIVO NO CORRIENTE,BALANCE,60,0,,,PASIVO_O_PN,iso4217:ARS,INSTANT,saldo,True,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+2321999,Payables,CUENTAS POR PAGAR CORRIENTES,BALANCE,60,0,,,PASIVO_O_PN,iso4217:ARS,INSTANT,saldo,False,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+2322100,PasivosImpuestosCorrientes,PASIVOS POR IMPUESTOS CORRIENTES,TAX,60,0,2122,27%,PASIVO_O_PN,iso4217:ARS,INSTANT,saldo,False,False,—,F-063,impuestos a pagar corrientes: distinto de deuda financiera,0,60,0
+2322200,DebtCurrent,PASIVOS FINANCIEROS CORRIENTES,DEBT,60,0,,,PASIVO_O_PN,iso4217:ARS,INSTANT,saldo,False,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+2322300,OtrosPasivosNoFinancierosCorrientes,OTROS PASIVOS NO FINANCIEROS CORRIENTES,DEBT,4,56,2228,28%,PASIVO_O_PN,iso4217:ARS,INSTANT,saldo,False,False,—,F-063,cierra el desglose del pasivo corriente,0,4,56
+2339999,LiabilitiesCurrent,PASIVO CORRIENTE,BALANCE,60,0,,,PASIVO_O_PN,iso4217:ARS,INSTANT,saldo,True,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+2399999,Liabilities,TOTAL DEL PASIVO,BALANCE,60,0,,,PASIVO_O_PN,iso4217:ARS,INSTANT,saldo,True,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+2999999,PasivoYPatrimonio,TOTAL DEL PASIVO Y PATRIMONIO NETO,EQUITY,60,0,2494,31%,PASIVO_O_PN,iso4217:ARS,INSTANT,saldo,True,False,Assets (contraparte),F-063,subtotal de CONTROL: permite verificar Activo = Pasivo + PN,0,60,0
+3000100,Revenue,INGRESOS DE ACTIVIDADES ORDINARIAS,INCOME_STATEMENT,60,0,,,RESULTADO,iso4217:ARS,DURATION,flujo,False,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+3000200,COGS,COSTO DE VENTAS Y/O SERVICIOS,INCOME_STATEMENT,60,0,,,RESULTADO,iso4217:ARS,DURATION,flujo,False,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+3009999,GrossProfit,GANANCIA (PERDIDA) BRUTA,INCOME_STATEMENT,60,0,,,RESULTADO,iso4217:ARS,DURATION,flujo,True,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+3011100,OtrosIngresos,OTROS INGRESOS,INCOME_STATEMENT,47,13,1481,19%,RESULTADO,iso4217:ARS,DURATION,flujo,False,False,—,F-063,otros ingresos operativos: parte del resultado operativo,0,47,13
+3011200,GastosComercializacion,GASTOS DE COMERCIALIZACION Y/O DISTRIBUCION,INCOME_STATEMENT,58,2,1862,23%,RESULTADO,iso4217:ARS,DURATION,flujo,False,False,—,F-063,gasto de comercialización: componente de SG&A,0,58,2
+3011300,GastosAdministracion,OTROS GASTOS DE ADMINISTRACION,INCOME_STATEMENT,60,0,2385,30%,RESULTADO,iso4217:ARS,DURATION,flujo,False,False,—,F-063,gasto de administración: componente de SG&A,0,60,0
+3011301,HonorariosDirectores,HONORARIOS A DIRECTORES Y SINDICOS,INCOME_STATEMENT,58,2,1815,23%,RESULTADO,iso4217:ARS,DURATION,flujo,False,False,—,F-063,honorarios a directores: componente de SG&A,0,58,2
+3011400,OtrosGastosOperativos,OTROS GASTOS OPERATIVOS,INCOME_STATEMENT,47,13,1284,16%,RESULTADO,iso4217:ARS,DURATION,flujo,False,False,—,F-063,otros gastos operativos: completa el desglose operativo,0,47,13
+3011600,DA,DEPRECIACIONES Y AMORTIZACIONES,INCOME_STATEMENT,56,4,,,RESULTADO,iso4217:ARS,DURATION,flujo,False,False,—,vocabulario original,vocabulario original del extractor,52,56,4
+3019999,OperatingIncome,GANANCIA (PERDIDA) DE ACTIVIDADES OPERATIVAS,INCOME_STATEMENT,60,0,,,RESULTADO,iso4217:ARS,DURATION,flujo,True,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+3021400,IngresosFinancieros,INGRESOS FINANCIEROS,INCOME_STATEMENT,60,0,,,RESULTADO,iso4217:ARS,DURATION,flujo,False,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+3021500,InterestExpense,COSTOS FINANCIEROS,INCOME_STATEMENT,60,0,,,RESULTADO,iso4217:ARS,DURATION,flujo,False,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+3021800,RECPAM,RECPAM,INCOME_STATEMENT,58,0,,,RESULTADO,iso4217:ARS,DURATION,flujo,False,False,—,vocabulario original,vocabulario original del extractor,54,58,0
+3021900,OtrosResultados,OTROS RESULTADOS,INCOME_STATEMENT,0,60,,,RESULTADO,iso4217:ARS,DURATION,flujo,False,False,—,F-063,otros resultados no operativos,0,0,60
+3029999,PretaxIncome,GANANCIA (PERDIDA) ANTES DE IMPUESTOS,TAX,60,0,,,RESULTADO,iso4217:ARS,DURATION,flujo,True,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+3031100,IncomeTax,INGRESO (GASTO) POR IMPUESTOS A LAS GANANCIAS,TAX,60,0,,,RESULTADO,iso4217:ARS,DURATION,flujo,False,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+3032000,ResultadoOperacionesDiscontinuadas,GANANCIA (PERDIDA) DEL PERIODO / EJERCICIO OPERACIONES CONTINUADAS,INCOME_STATEMENT,18,0,437,6%,RESULTADO,iso4217:ARS,DURATION,flujo,False,False,NetIncome (parcial),F-063,resultado de operaciones discontinuadas,0,18,0
+3041000,ResultadoPeriodoOperacionesDiscontinuadas,GANANCIA (PERDIDA) DEL PERIODO / EJERCICIO OPERACIONES DISCONTINUADAS,INCOME_STATEMENT,0,18,,,RESULTADO,iso4217:ARS,DURATION,flujo,False,False,—,F-063,resultado del período por operaciones discontinuadas,0,0,18
+3049999,NetIncome,GANANCIA (PERDIDA) DEL PERIODO / EJERCICIO,INCOME_STATEMENT,60,0,,,RESULTADO,iso4217:ARS,DURATION,flujo,True,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+3061999,OtroResultadoIntegral,OTRO RESULTADO INTEGRAL DEL EJERCICIO / PERIODO,INCOME_STATEMENT,18,42,1471,19%,RESULTADO,iso4217:ARS,DURATION,flujo,False,False,ResultadoIntegral (parcial),F-063,otro resultado integral del período,0,18,42
+3099999,ResultadoIntegral,RESULTADO INTEGRAL TOTAL DEL EJERCICIO / PERIODO,INCOME_STATEMENT,60,0,,,RESULTADO,iso4217:ARS,DURATION,flujo,True,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+3240000,CashFlowNeto,INCREMENTO (DISMINUCION) NETA DE EFECTIVO Y EQUIVALENTES,CASH_FLOW,60,0,,,FLUJO_DE_EFECTIVO,iso4217:ARS,DURATION,flujo,False,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+3241100,CF_Operativo,TOTAL CAMBIOS EN ACTIVOS Y PASIVOS OPERATIVOS,CASH_FLOW,60,0,,,FLUJO_DE_EFECTIVO,iso4217:ARS,DURATION,flujo,False,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+3241200,CF_Inversion,TOTAL DE ACTIVIDADES DE INVERSION,CASH_FLOW,60,0,,,FLUJO_DE_EFECTIVO,iso4217:ARS,DURATION,flujo,False,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+3241300,CF_Financiacion,TOTAL DE ACTIVIDADES DE FINANCIACION,CASH_FLOW,60,0,,,FLUJO_DE_EFECTIVO,iso4217:ARS,DURATION,flujo,False,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+8000000,EPS_basico,GANANCIA (PERDIDA) BASICA POR ACCION,EPS,60,0,,,POR_ACCION,iso4217:ARS/xbrli:shares,DURATION,flujo,False,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+8000001,EPS_diluido,GANANCIAS (PERDIDA) DILUIDA POR ACCION,EPS,55,5,,,POR_ACCION,iso4217:ARS/xbrli:shares,DURATION,flujo,False,False,—,vocabulario original,vocabulario original del extractor,51,55,5
+8000002,PatrimonioAperturaEjercicio,TOTAL PATRIMONIO NETO DEL EJERCICIO ANTERIOR,OTHER,53,7,2367,30%,PATRIMONIO_APERTURA,iso4217:ARS,INSTANT,saldo,False,False,—,F-063,patrimonio de apertura ya reexpresado: habilita ROE promedio,0,53,7
+8000003,EBIT,EBIT,EQUITY,60,0,,,RESULTADO_CALCULADO,iso4217:ARS,DURATION,flujo,False,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+8000004,EBITDA,EBITDA,EQUITY,60,0,,,RESULTADO_CALCULADO,iso4217:ARS,DURATION,flujo,False,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+8000005,WorkingCapital,CAPITAL DE TRABAJO,EQUITY,60,0,,,CAPITAL_DE_TRABAJO,iso4217:ARS,INSTANT,saldo,False,False,—,vocabulario original,vocabulario original del extractor,56,60,0
+8000006,CNV_liquidez,LIQUIDEZ,LIQUIDITY,60,0,,,RATIO_PUBLICADO,xbrli:pure,MIXTO,cociente,False,True,—,vocabulario original,vocabulario original del extractor,56,60,0
+8000007,CNV_solvencia,SOLVENCIA,LEVERAGE,60,0,,,RATIO_PUBLICADO,xbrli:pure,MIXTO,cociente,False,True,—,vocabulario original,vocabulario original del extractor,56,60,0
+8000008,CNV_inmovilizacion_capital,INMOVILIZACION DEL CAPITAL,OTHER,60,0,2405,30%,RATIO_PUBLICADO,xbrli:pure,MIXTO,cociente,False,True,—,F-063,ratio publicado por el emisor: inmovilización del capital,0,60,0
+8000009,CNV_roe,RENTABILIDAD PATRIMONIO NETO,PROFITABILITY,60,0,,,RATIO_PUBLICADO,xbrli:pure,MIXTO,cociente,False,True,—,vocabulario original,vocabulario original del extractor,56,60,0
+8000010,CNV_roa,RENTABILIDAD DEL ACTIVO,PROFITABILITY,60,0,,,RATIO_PUBLICADO,xbrli:pure,MIXTO,cociente,False,True,—,vocabulario original,vocabulario original del extractor,56,60,0
+8000011,CNV_endeudamiento,ENDEUDAMIENTO,LEVERAGE,60,0,,,RATIO_PUBLICADO,xbrli:pure,MIXTO,cociente,False,True,—,vocabulario original,vocabulario original del extractor,56,60,0
+8000012,CNV_endeudamiento_corto_plazo,ENDEUDAMIENTO A CORTO PLAZO,LEVERAGE,60,0,2189,28%,RATIO_PUBLICADO,xbrli:pure,MIXTO,cociente,False,True,—,F-063,ratio publicado por el emisor: endeudamiento de corto plazo,0,60,0
+8000013,CNV_apalancamiento,APALANCAMIENTO,LEVERAGE,60,0,,,RATIO_PUBLICADO,xbrli:pure,MIXTO,cociente,False,True,—,vocabulario original,vocabulario original del extractor,56,60,0
+8000014,CNV_margen_neto,MARGEN NETO / VENTAS,PROFITABILITY,60,0,,,RATIO_PUBLICADO,xbrli:pure,MIXTO,cociente,False,True,—,vocabulario original,vocabulario original del extractor,56,60,0
+8000015,CNV_deuda_fin_ebitda,DEUDA FINANCIERA / EBITDA,LEVERAGE,60,0,,,RATIO_PUBLICADO,xbrli:pure,MIXTO,cociente,False,True,—,vocabulario original,vocabulario original del extractor,56,60,0
+8000016,CNV_ebitda_costos_fin,EBITDA / COSTOS FINANCIEROS,LEVERAGE,60,0,,,RATIO_PUBLICADO,xbrli:pure,MIXTO,cociente,False,True,—,vocabulario original,vocabulario original del extractor,56,60,0
+8000027,CNV_prueba_acida,PRUEBA ACIDA,LIQUIDITY,18,0,,,RATIO_PUBLICADO,xbrli:pure,MIXTO,cociente,False,True,—,vocabulario original,vocabulario original del extractor,17,18,0
+8000028,CNV_cobertura_intereses,COBERTURA DE GASTOS FINANCIEROS,LEVERAGE,18,0,,,RATIO_PUBLICADO,xbrli:pure,MIXTO,cociente,False,True,—,vocabulario original,vocabulario original del extractor,17,18,0
+8000029,CNV_rotacion_activos,ROTACION DE ACTIVOS,EFFICIENCY,18,0,,,RATIO_PUBLICADO,xbrli:pure,MIXTO,cociente,False,True,—,vocabulario original,vocabulario original del extractor,17,18,0

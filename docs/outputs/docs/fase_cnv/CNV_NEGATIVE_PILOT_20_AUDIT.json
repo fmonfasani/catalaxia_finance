@@ -1,0 +1,47 @@
+{
+  "concurrencia": "5756       06:13 /usr/lib/postgresql/16/bin/psql -U catalaxia -d postgres -t -A -v ON_ERROR_STOP=1 -c CREATE D",
+  "fingerprint_antes": {
+    "entities": 525,
+    "identifiers": 574,
+    "assertions": 608,
+    "cuit_verified": 3,
+    "cnv_artifact": 3955,
+    "cnv_download_log": 3956,
+    "cnv_runs": 49,
+    "runs_running": 0
+  },
+  "fingerprint_despues": {
+    "entities": 525,
+    "identifiers": 574,
+    "assertions": 608,
+    "cuit_verified": 3,
+    "cnv_artifact": 3957,
+    "cnv_download_log": 3958,
+    "cnv_runs": 50,
+    "runs_running": 0
+  },
+  "delta": {
+    "entities": 0,
+    "identifiers": 0,
+    "assertions": 0,
+    "cuit_verified": 0,
+    "cnv_artifact": 2,
+    "cnv_download_log": 2,
+    "cnv_runs": 1,
+    "runs_running": 0
+  },
+  "raw_antes": [
+    443,
+    83987980
+  ],
+  "raw_despues": [
+    445,
+    89953920
+  ],
+  "delta_cero": false,
+  "bloqueados": 0,
+  "universo": 20,
+  "abrieron_corrida": 1,
+  "hicieron_request": 1,
+  "exito": false
+}

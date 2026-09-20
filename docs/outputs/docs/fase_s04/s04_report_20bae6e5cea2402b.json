@@ -1,0 +1,84 @@
+{
+  "stage": "S04_normalize",
+  "run_id": "20bae6e5cea2402baa04d3faa2a36c98",
+  "mode": "FAST",
+  "started_at": "2026-08-31T22:10:57.878771+00:00",
+  "finished_at": "2026-08-31T22:11:15.580470+00:00",
+  "code": {
+    "script": "scripts/engine/s04_normalize.py",
+    "normalizer_version": "s04_normalize_v1",
+    "git_commit": "e9d794b85a487d461018f243066293168638012c"
+  },
+  "input": {
+    "stage": "S03_parse",
+    "checkpoint_id": "52b9dc58125349c3-s03",
+    "run_id": "52b9dc58125349c3b33573cf6ae526c6",
+    "rows": 9182
+  },
+  "coverage": {
+    "grupos": 8737,
+    "emitidos": 8737,
+    "sin_contexto": 0,
+    "sin_entidad": 0,
+    "sin_unidad": 0,
+    "unidad_no_resuelta": 0,
+    "desempates": {
+      "UNICO": 8354,
+      "IDENTICO": 383
+    }
+  },
+  "integrity": {
+    "hash_in": "88837bea992e29dc715d50115672220336836c0e72eb1c2307a2b123bb5ecd66",
+    "hash_out": "88392f1914ae4d42d564891092d5ee81e899d6337930e8d7531349b7561fb77a",
+    "hash_out_v1": "934927817ebe6b753bdcbc104f377e8a30dc5a697489d6658ec858545ce3e666",
+    "hash_spec": "hashout-v2",
+    "por_tabla": {
+      "derived.fact": "0f49de646df59d31cc4f1a20afb97494353b13eea8f62e0e2917e91764db5b7b"
+    }
+  },
+  "nulls": {
+    "count": 0
+  },
+  "gate": {
+    "status": "PASS",
+    "checks": [
+      {
+        "id": "C-S04-001",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-002",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-003",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-004",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-005",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-006",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-007",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-008",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-009",
+        "result": "PASS"
+      }
+    ],
+    "reasons": []
+  }
+}

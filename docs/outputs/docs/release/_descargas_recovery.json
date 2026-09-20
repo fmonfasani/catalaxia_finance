@@ -1,0 +1,32 @@
+{
+  "requests": 3,
+  "registro": [
+    {
+      "archivo": "data/raw/catalogo_edgar/company_tickers_2026-08-31.json",
+      "bytes": 795179,
+      "sha256": "bf83a6d3c92cfd32211e60521861d7b0fb0ae8cf321284d4e66d01ef295ec051",
+      "url": "https://www.sec.gov/files/company_tickers.json",
+      "segundos": 0.67,
+      "motivo": "catalogo SEC (insumo clase B, sin descargador oficial)",
+      "estado": "OK"
+    },
+    {
+      "archivo": "data/raw/submissions/CIK0000034088.json",
+      "bytes": 162232,
+      "sha256": "7918818ea3045fb09fbb18d67537909a28feb245d693d0bd7cd3bc30b16ea3db",
+      "url": "https://data.sec.gov/submissions/CIK0000034088.json",
+      "segundos": 0.48,
+      "motivo": "EXXON MOBIL",
+      "estado": "OK"
+    },
+    {
+      "archivo": "data/raw/submissions/CIK0000712515.json",
+      "bytes": 157851,
+      "sha256": "07a8720a99f7e4c1eeda9dca8ddb0a325dd6e3e61b10f9477124d7871c52aeb2",
+      "url": "https://data.sec.gov/submissions/CIK0000712515.json",
+      "segundos": 0.02,
+      "motivo": "ELECTRONIC ARTS",
+      "estado": "OK"
+    }
+  ]
+}

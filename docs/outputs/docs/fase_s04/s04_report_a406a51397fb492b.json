@@ -1,0 +1,86 @@
+{
+  "stage": "S04_normalize",
+  "run_id": "a406a51397fb492bbab6a0d88f1d13ca",
+  "mode": "FAST",
+  "started_at": "2026-09-04T17:32:29.993251+00:00",
+  "finished_at": "2026-09-04T17:34:06.596765+00:00",
+  "code": {
+    "script": "scripts/engine/s04_normalize.py",
+    "normalizer_version": "s04_normalize_v1",
+    "git_commit": "57edebb1a0621a4dd4feb228639ae48e8d876966"
+  },
+  "input": {
+    "stage": "S03_parse",
+    "checkpoint_id": "fd5175bfada742d1-s03",
+    "run_id": "fd5175bfada742d1ada435ec872e3ef0",
+    "rows": 90398
+  },
+  "coverage": {
+    "grupos": 45113,
+    "emitidos": 45113,
+    "sin_contexto": 0,
+    "sin_entidad": 0,
+    "sin_unidad": 0,
+    "unidad_no_resuelta": 0,
+    "desempates": {
+      "IDENTICO": 26172,
+      "POR_FACT_ID": 3113,
+      "UNICO": 3082,
+      "POR_PRECISION": 12746
+    }
+  },
+  "integrity": {
+    "hash_in": "c80f4c011fcf654bccf5ac2fadebb00067cd778b158fdcdd11da543e5eb26580",
+    "hash_out": "b602b2d483ca185b5eba52869fd41444f37e74e2d6d2e9149f2c2cf41ccd4766",
+    "hash_out_v1": "5556ba9ae0be5effb247359b176f4834f3658e9951944c36308a33fa91e65a06",
+    "hash_spec": "hashout-v2",
+    "por_tabla": {
+      "derived.fact": "5cdedbc41773d20e540fab50315340aecaab91565a15d797ea5ce376ac2e3c4a"
+    }
+  },
+  "nulls": {
+    "count": 0
+  },
+  "gate": {
+    "status": "PASS",
+    "checks": [
+      {
+        "id": "C-S04-001",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-002",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-003",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-004",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-005",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-006",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-007",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-008",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-009",
+        "result": "PASS"
+      }
+    ],
+    "reasons": []
+  }
+}

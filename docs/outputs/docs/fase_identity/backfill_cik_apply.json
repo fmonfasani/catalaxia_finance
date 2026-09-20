@@ -1,0 +1,4657 @@
+{
+  "modo": "APLICAR",
+  "run_id": "e42a536b217a4d5599d1be2cc43d6e18",
+  "procesados": 512,
+  "acciones": {
+    "CREADA": 512
+  },
+  "identifier_status": {
+    "VERIFIED": 512
+  },
+  "errores": [],
+  "antes": {
+    "entidades": 0,
+    "identifiers_vigentes": 0,
+    "identifiers_autoritativos": 0,
+    "cik_autoritativos": 0,
+    "cuit_autoritativos": 0,
+    "assertions": 0,
+    "reviews_open": 0,
+    "conflicts": 0
+  },
+  "despues": {
+    "entidades": 512,
+    "identifiers_vigentes": 525,
+    "identifiers_autoritativos": 512,
+    "cik_autoritativos": 512,
+    "cuit_autoritativos": 0,
+    "assertions": 525,
+    "reviews_open": 0,
+    "conflicts": 0
+  },
+  "hash_antes": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "hash_despues": "0d44892218ecd68aa8a0f3ff66287d59b9899dd36fff5afa15d235f3b22e3b69",
+  "eventos": [
+    {
+      "entity_id": 58,
+      "cik": "0001034957",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5D7VV2RZYG5M1059GGD",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null,
+      "cuit_legacy_status": "CANDIDATE"
+    },
+    {
+      "entity_id": 59,
+      "cik": "0001711375",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5EB0KQ6WQQNPRZMRD1R",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null,
+      "cuit_legacy_status": "CANDIDATE"
+    },
+    {
+      "entity_id": 60,
+      "cik": "0001762506",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5F1SCA8BPJMZNTA6K5A",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null,
+      "cuit_legacy_status": "CANDIDATE"
+    },
+    {
+      "entity_id": 62,
+      "cik": "0000931427",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5FQWW6R3Z5CYNJGV4ST",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null,
+      "cuit_legacy_status": "CANDIDATE"
+    },
+    {
+      "entity_id": 63,
+      "cik": "0001469395",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5GA1YZ7WXN41WMENX8Z",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null,
+      "cuit_legacy_status": "CANDIDATE"
+    },
+    {
+      "entity_id": 64,
+      "cik": "0000933267",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5GSMS4GCPJTXKZD38H4",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null,
+      "cuit_legacy_status": "CANDIDATE"
+    },
+    {
+      "entity_id": 65,
+      "cik": "0001114700",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5HGF643JX86EHJE5Q8R",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null,
+      "cuit_legacy_status": "CANDIDATE"
+    },
+    {
+      "entity_id": 66,
+      "cik": "0001517399",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5J6P1AVS5SYK33TZ21Z",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null,
+      "cuit_legacy_status": "CANDIDATE"
+    },
+    {
+      "entity_id": 67,
+      "cik": "0000913059",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5JTVZE411RWKM5Q98PC",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null,
+      "cuit_legacy_status": "CANDIDATE"
+    },
+    {
+      "entity_id": 68,
+      "cik": "0000932470",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5KCZM8W485MEEY5TTGS",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null,
+      "cuit_legacy_status": "CANDIDATE"
+    },
+    {
+      "entity_id": 70,
+      "cik": "0001717161",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5KXG426K688KK8J82CR",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null,
+      "cuit_legacy_status": "CANDIDATE"
+    },
+    {
+      "entity_id": 72,
+      "cik": "0000904851",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5MGRKX805AB2NT53H63",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null,
+      "cuit_legacy_status": "CANDIDATE"
+    },
+    {
+      "entity_id": 73,
+      "cik": "0001090872",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5N72BYBS04T9N74SZZ3",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 74,
+      "cik": "0000320193",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5NSWWQKA9J0YVZYXB26",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 75,
+      "cik": "0001551152",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5P84MJ0HWCKMXQ65M96",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 76,
+      "cik": "0001559720",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5PQK3BMNNPQXGABVYYK",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 77,
+      "cik": "0000001800",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5Q4E2HXV87TS3PB1GBY",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 78,
+      "cik": "0000947484",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5QJ0W0YVPPXP74J20S1",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 79,
+      "cik": "0001467373",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5R1FNBHNKKRX9G77VSX",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 80,
+      "cik": "0000796343",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5RFZ37X6W8FSDGFTJEW",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 81,
+      "cik": "0000006281",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5RY8FQS3RCCF0MCP7Q4",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 82,
+      "cik": "0000007084",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5SB6GD047XVPSD6040S",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 83,
+      "cik": "0000008670",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5SSKBBFM4WZZ10E5WK0",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 84,
+      "cik": "0000769397",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5T51J8VSP0X20YBBPT6",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 85,
+      "cik": "0001002910",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5TRKJTXTF3DBMWCWYZ4",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 86,
+      "cik": "0000004904",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5V4VY87W130G30PRECY",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 87,
+      "cik": "0000874761",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5VG056GNSNSY5AF4SJ3",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 88,
+      "cik": "0000004977",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5VV71RGDHXDSX0QY8J7",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 89,
+      "cik": "0000005272",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5WJJ5GMY1QKVR5W3KN7",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 90,
+      "cik": "0001267238",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5XKM8DZFBGRQDQNJ1AE",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 91,
+      "cik": "0000354190",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5YAFSPFQ5YM31CC6W01",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 92,
+      "cik": "0001086222",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5YVRE527GTFBEBFESFV",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 93,
+      "cik": "0000915913",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5Z8DRV2E3Q4VRRTEFZ1",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 94,
+      "cik": "0001097149",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM5ZMVECY8SJSQKWGNDX4",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 95,
+      "cik": "0000899051",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM601G89GZ23818K1KE34",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 96,
+      "cik": "0001579241",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM60FB8B0EDY24477C8TG",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 97,
+      "cik": "0000006951",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM60X0NAR7GJJT2DGMZEK",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 98,
+      "cik": "0001748790",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM619FT0YYAQEZVJQ90D5",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 99,
+      "cik": "0000002488",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM61PQADSF0RF8RWBMV1F",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 100,
+      "cik": "0001037868",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6250GDTR8H6NYPA3DSC",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 101,
+      "cik": "0000318154",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM62MV1M33YHGH3TWGF1J",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 102,
+      "cik": "0000820027",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM633F90R10AN4YRQJ8XT",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 103,
+      "cik": "0001053507",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM63HTXHJR93RVSK6QJPR",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 104,
+      "cik": "0001018724",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM63ZCE8VMM5NJ88NGT6H",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 105,
+      "cik": "0001596532",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM64GMV0Q4S84K0Q0BAXZ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 106,
+      "cik": "0000315293",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM64YZTJ9TCEG65DKPV0S",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 107,
+      "cik": "0000091142",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM65B4M79DSG0YWXAMFVQ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 108,
+      "cik": "0001841666",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM65QTAMX9Z2KFBD70ZB5",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 109,
+      "cik": "0000002969",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM665XJ19FBJZFE7H8KXK",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 110,
+      "cik": "0000820313",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM66M071G9XKX4TPED192",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 111,
+      "cik": "0001858681",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM673YA8D20J7B2XVVBFK",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 112,
+      "cik": "0001751008",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM67FYMZYJJR40FQZRK54",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 113,
+      "cik": "0001521332",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM67VNZR6Z2XDX7FYDHRZ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 114,
+      "cik": "0001035443",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM68AV8CFSHSEKE1FEAY1",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 115,
+      "cik": "0001176948",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM68REW8CSCFVXE5F4F4A",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 116,
+      "cik": "0000731802",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM695MAPR4VPFZ2NVWJ69",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 117,
+      "cik": "0000915912",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM69GBNMBZWWN0ZQ8P0WT",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 118,
+      "cik": "0001730168",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM69YJ8R3SZ386JCBFH58",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 119,
+      "cik": "0000008818",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6AB279DBWFP03G2FHJ5",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 120,
+      "cik": "0001410636",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6AQVBMDG5BW3SDAYMT6",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 121,
+      "cik": "0001069183",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6B34FA7ZHPY27XDDT96",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 122,
+      "cik": "0000004962",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6BG1P71594NF5720CDJ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 123,
+      "cik": "0000866787",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6BZGQ863ZHFAW86FSGB",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 124,
+      "cik": "0000012927",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6CDSBY71PGXN8RGMFZ9",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 125,
+      "cik": "0000070858",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6CS5T307R8S4J709BD6",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 126,
+      "cik": "0000009389",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6D5M8TXNRM7RHCXYZSX",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 127,
+      "cik": "0000010456",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6DV9WP01FAZXCB8DERT",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 128,
+      "cik": "0000764478",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6EGSS8SSSBXTW2A6VDT",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 129,
+      "cik": "0000010795",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6F2PTF9NQKPATPBY0C5",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 130,
+      "cik": "0000038777",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6FHEJNMBTR3RB5RZ5T8",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 131,
+      "cik": "0000014693",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6G4QZ1BEM10QQGRYDD1",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 132,
+      "cik": "0001996862",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6H3WVBATWJ2D5E5BW89",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 133,
+      "cik": "0000875045",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6HXQYKBDGA1WH05GXGF",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 134,
+      "cik": "0001075531",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6JM7AVZ30H2A2Z38C5J",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 135,
+      "cik": "0001701605",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6K6H2S6A1BRAWAV0DMB",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 136,
+      "cik": "0001316835",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6KR0PXDZ9TNYG1K16KJ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 137,
+      "cik": "0002012383",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6MBKQDH0NS080Q8MBSV",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 138,
+      "cik": "0000014272",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6N079A00RXT1RZ64WNN",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 139,
+      "cik": "0001390777",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6NJPCXRWZETCPVHW4BM",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 140,
+      "cik": "0001383312",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6P449WBSX8D9M7EPGSX",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 141,
+      "cik": "0001067983",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6PMJAH89P8QM9A2B54J",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 142,
+      "cik": "0000079282",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6Q68SFY3DBQQRJXMRAD",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 143,
+      "cik": "0000885725",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6QQP7YWKHRTE21S7C5E",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 144,
+      "cik": "0001393818",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6RFY3C2ZZ9WP6ZN7T8C",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 145,
+      "cik": "0001037540",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6S64052ENVMCTN3BZP6",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 146,
+      "cik": "0000831001",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6T0N38M1MR3WQH7JPPY",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 147,
+      "cik": "0000023217",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6TNMGN943ZZTCYF05PT",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 148,
+      "cik": "0000721371",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6V9WZ0H769E5K3XM0RE",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 149,
+      "cik": "0001783180",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6W6NVYH6CTNSJYV3GMC",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 150,
+      "cik": "0000726958",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6WKKM7E01MD84K7MX41",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 151,
+      "cik": "0000018230",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6X13M3RCB5WSR2SRGY3",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 152,
+      "cik": "0000896159",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6XGGN14B365CQE3GPMD",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 153,
+      "cik": "0001374310",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6Y1J9SQET6GCBRATVYE",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 154,
+      "cik": "0001138118",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6YGF9XYYSDVG181X4D9",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 155,
+      "cik": "0001051470",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6YXC6GPMYJ1VBJ5TVBX",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 156,
+      "cik": "0000815097",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6ZAVERFD1E65ECR7QDN",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 157,
+      "cik": "0000813672",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM6ZP9VHEEN2DJAXJQNGZ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 158,
+      "cik": "0001402057",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM704GHX400K0ANDKZQ9P",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 159,
+      "cik": "0001868275",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM70G1PSD2CVHJ3295RT0",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 160,
+      "cik": "0001324404",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM70X91KH2TR5Q5DVHSCJ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 161,
+      "cik": "0000759944",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM719E499NY2XV9FA6B8J",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 162,
+      "cik": "0000313927",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM71S7FGEZZAEG5GRX6EJ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 163,
+      "cik": "0001043277",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM72F8YZ4YNAEA4HY3CV9",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 164,
+      "cik": "0001091667",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM732H26HF3B58QNV3ARF",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 165,
+      "cik": "0001739940",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM73H2NR0NA1F9117ZTHP",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 166,
+      "cik": "0000936395",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM73Y5WM99KYR7TV6Q39T",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 167,
+      "cik": "0000020286",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM74CXEYSD4DNKHPCDKKM",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 168,
+      "cik": "0000021665",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM74T05ADSYFJM3W4Z1R9",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 169,
+      "cik": "0000021076",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM759FT4GKNEPXMPDKNEN",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 170,
+      "cik": "0001166691",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM75Q7VK6CYTNHTCRK7X8",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 171,
+      "cik": "0001156375",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM764WYA38MJ1MXJR7Z3P",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 172,
+      "cik": "0001058090",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM76G25PZ8KFJGHR222AA",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 173,
+      "cik": "0000026172",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM76W9P11J8PS7FXDPMNX",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 174,
+      "cik": "0000811156",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM779ESQ8E655YQGFTYD1",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 175,
+      "cik": "0001071739",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM77NYP4RHDKT6S1QD742",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 176,
+      "cik": "0001130310",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM782R83CSM0MFJ6A5WCW",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 177,
+      "cik": "0000927628",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM78FYDPHWT2ZBH4HHCKQ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 178,
+      "cik": "0000820318",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM78WPH7FCJ9NEPCHZRQM",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 179,
+      "cik": "0001679788",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM799W5CRHD2DVXD2C9QK",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 180,
+      "cik": "0000711404",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM79Q01W8G6P7KXVPEHJ0",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 181,
+      "cik": "0001163165",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7A48GQ64RBK2KEXJPQ9",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 182,
+      "cik": "0001140859",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7AHWQ428FYPXAAH20AQ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 183,
+      "cik": "0000909832",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7AYR3718Q4PAJ33YHNT",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 184,
+      "cik": "0001175454",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7BC06XVNQC2RS4Q5G29",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 185,
+      "cik": "0000900075",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7BT05XRF1V6N94WSK11",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 186,
+      "cik": "0000906345",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7C7V1AFXESZK2R2BNK0",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 187,
+      "cik": "0000849395",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7CP5A15M56FEVEK5H0Y",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 188,
+      "cik": "0001100682",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7D4QJEBP7AYJ38P0VC0",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 189,
+      "cik": "0001108524",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7DHAMKHSBGPFSYJAJDF",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 190,
+      "cik": "0001535527",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7DZFY5MEGGF8A6Q5E4Z",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 191,
+      "cik": "0000858877",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7ED88V2X1G32Z1STP46",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 192,
+      "cik": "0001057352",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7ET8JF8HWPRQGDHWJZD",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 193,
+      "cik": "0000277948",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7F8XSKNDC0GQ429G6Q1",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 194,
+      "cik": "0000723254",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7FMKN4TSN39SJ2YSAJB",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 195,
+      "cik": "0001058290",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7G0PASHNN7P974AM8VE",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 196,
+      "cik": "0001755672",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7GDQ9XCJC5XGQGMW8PB",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 197,
+      "cik": "0001690820",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7GTVW3Y970W1SY0N56J",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 198,
+      "cik": "0000064803",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7HAW7TVK5SV2T05KS4H",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 199,
+      "cik": "0000093410",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7HTX5MBAESZY8143E63",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 200,
+      "cik": "0000715957",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7J66F0PPM43VR9ZY0GE",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 201,
+      "cik": "0000027904",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7JJBY8CP9R0NCN34W4H",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 202,
+      "cik": "0001792789",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7JYFRS7BGX934X7GZEK",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 203,
+      "cik": "0001666700",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7KA4D117K6D207M7QSM",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 204,
+      "cik": "0001561550",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7KPAXW1J5KT51YA310H",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 205,
+      "cik": "0000315189",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7M251YXTN5DVAQ8A8ZE",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 206,
+      "cik": "0000910521",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7MEFCERJDNMME60X05M",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 207,
+      "cik": "0001571996",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7MTKEKX58HFE2DHGGJA",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 208,
+      "cik": "0000029534",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7N6E9CQ0T9EK5XRDFST",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 209,
+      "cik": "0001022079",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7NM0D0D1JHHT949BBKS",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 210,
+      "cik": "0000882184",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7P1STYHVV7481B139DP",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 211,
+      "cik": "0000313616",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7PD337VQEWCRNJAYWT2",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 212,
+      "cik": "0001744489",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7PRZW1TA0G9EC1M8FTF",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 213,
+      "cik": "0001297996",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7Q4WDZG5ASAE92MGN2G",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 214,
+      "cik": "0000935703",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7QFR75GQXQEB9NKAQW5",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 215,
+      "cik": "0000765880",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7QV2GD1SP5990PWFFJ4",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 216,
+      "cik": "0000029905",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7R7AZD0GCYZZMS6SAP3",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 217,
+      "cik": "0001751788",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7RNW8CCKNQ6G2Q5CT8T",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 218,
+      "cik": "0001286681",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7S3XVAYHTCA4J7HMMQE",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 219,
+      "cik": "0000940944",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7SGHGX91NKGXZ2WYJS3",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 220,
+      "cik": "0000936340",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7SXKQPTZR9R6G4YVH0X",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 221,
+      "cik": "0001326160",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7TAZAHKYMAKEFS1QVHQ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 222,
+      "cik": "0000927066",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7TQD7CFH21073PH5F7E",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 223,
+      "cik": "0001090012",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7V3TSVCCN0BFJY5WASQ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 224,
+      "cik": "0001093557",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7VFKRTYPWF1PVHZBV3Q",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 225,
+      "cik": "0000712515",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7VXTCTD1G6MTMPH5THG",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 226,
+      "cik": "0001065088",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7W92PK03M2JCGWEVZH0",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 227,
+      "cik": "0000031462",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7WNY81F417V9TEMWKVJ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 228,
+      "cik": "0001047862",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7X3AEZ5V3PK0D3FBYPN",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 229,
+      "cik": "0000033185",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7XF25QXHX7JAVPCVZ8M",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 230,
+      "cik": "0001095073",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7XVFH4R0T068RY71RK6",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 231,
+      "cik": "0000827052",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7Y70XA861Q6TMZVQGEG",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 232,
+      "cik": "0001001250",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7YJEKSACHJZGW910W0T",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 233,
+      "cik": "0001156039",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7YY84Z3NTKWRX7VDJD9",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 234,
+      "cik": "0000105634",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7ZA8P8SYD9DQ3Q2C3AT",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 235,
+      "cik": "0000032604",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM7ZP7K064F9H1W6WQ05K",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 236,
+      "cik": "0000821189",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM803CKNZDCDRX1TT0CYQ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 237,
+      "cik": "0001101239",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM80GYGH6E3D1TV0WX62W",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 238,
+      "cik": "0000906107",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM80W2F6P9WZN2A104FT1",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 239,
+      "cik": "0000033213",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM818DCMAVY7A0QS70A46",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 240,
+      "cik": "0000922621",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM81M7JYWXKVQH730MGJ6",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 241,
+      "cik": "0000072741",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM81Z4RZ3Y3F5TP9NREG9",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 242,
+      "cik": "0000920522",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM82BZBV9M1X5862CZWP4",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 243,
+      "cik": "0001551182",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM82Q6KXVT08GWDWT5C0V",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 244,
+      "cik": "0000065984",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM835X1A14YRCDBVT7R5J",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 245,
+      "cik": "0001711269",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM83KR4MJ1A1RX7JHAXY1",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 246,
+      "cik": "0001099800",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM83ZMF5Z4PZJ1MA0GYYQ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 247,
+      "cik": "0001109357",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM84DZ2V0TSVSWFMCWHED",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 248,
+      "cik": "0000895126",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM84TJ0S4GYGSSS0NVE7K",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 249,
+      "cik": "0000746515",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM856MC5KXEJCJMGE7WMN",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 250,
+      "cik": "0001324424",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM85H3F1SHTNVGY9N537R",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 251,
+      "cik": "0001289490",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM85XE7HW6VCSWK2E29WJ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 252,
+      "cik": "0000037996",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM869W1N86XTJVEX32AVV",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 253,
+      "cik": "0001539838",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM86P3SGWPBAYNR7P1YC9",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 254,
+      "cik": "0000815556",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM872G7QCSXFA9RQ1QWY3",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 255,
+      "cik": "0000831259",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM87FBEBS5ADZ2ENN4TSN",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 256,
+      "cik": "0001013237",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM87WQSA1SF7GJ62BDYRN",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 257,
+      "cik": "0001048911",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8885HPPHPZQBMHRH4RK",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 258,
+      "cik": "0001031296",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM88PRGY6AYKBWTNQE2QK",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 259,
+      "cik": "0001048695",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM891R9Q9G8E6YNHAKPQ4",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 260,
+      "cik": "0000814547",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM89FND028XPR1Z4WVSHS",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 261,
+      "cik": "0001136893",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM89TS8BT26FN2K861FX1",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 262,
+      "cik": "0000798354",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8A6DXS6S3YFMZC261X4",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 263,
+      "cik": "0000035527",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8AMZ9PGJ2HFCMKK3CD5",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 264,
+      "cik": "0001035983",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8B0JHE06NCQYH7F564H",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 265,
+      "cik": "0000866374",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8BD4E1TQZVWB9BBNJ8P",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 266,
+      "cik": "0001754301",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8BTHKMAP1K4TZQBNHKR",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 267,
+      "cik": "0000034903",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8C5Q1ADHJFK7GJTDD4H",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 268,
+      "cik": "0001274494",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8CH3B72V2QQVKZYKJBE",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 269,
+      "cik": "0001262039",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8CXP2GFN8FAVH4FQ04S",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 270,
+      "cik": "0001659166",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8D8HBJG93JE484YAZ18",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 271,
+      "cik": "0000040533",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8DPNWWZJMRF5S68JCKY",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 272,
+      "cik": "0001609711",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8E2HZQJS75VCHR2TNP7",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 273,
+      "cik": "0000040545",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8EFZN7GV3JJDAZX61FG",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 274,
+      "cik": "0001932393",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8ET6B4R812R3461CANP",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 275,
+      "cik": "0000849399",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8F714XBRM9H163R9SGH",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 276,
+      "cik": "0001996810",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8FK5DY2VG6763H4QK21",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 277,
+      "cik": "0000882095",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8FZ1E7R0WF5WQG8ZPA5",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 278,
+      "cik": "0000040704",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8GBKM1H6XD814KB6KSD",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 279,
+      "cik": "0000320335",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8GTB89YABKN3B00FV9V",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 280,
+      "cik": "0000024741",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8HBYYZP1KSEPAF21K7H",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 281,
+      "cik": "0001467858",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8HX2MNARQGCV9TMG4Z7",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 282,
+      "cik": "0001474735",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8JC3CWE8H61XYQ04YZ5",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 283,
+      "cik": "0001652044",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8JTZEGNA627DY9RCG9J",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 284,
+      "cik": "0000040987",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8K8G6WWWSXAGZD2TXFT",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 285,
+      "cik": "0001123360",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8KPWDG8HKWKKHBAYD2F",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 286,
+      "cik": "0001121788",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8M4M82FAGWAHBGB4M1W",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 287,
+      "cik": "0000886982",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8MK0N9NCQ7WRGT61N22",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 288,
+      "cik": "0000277135",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8N0F2C1898Q0C2VJQ97",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 289,
+      "cik": "0000045012",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8ND42Q5ZR2JFEJ2NZ8F",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 290,
+      "cik": "0000046080",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8NTKATWFSPAF4HEGSF2",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 291,
+      "cik": "0000049196",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8P8RNWM85DGDMZAECXP",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 292,
+      "cik": "0000860730",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8PNGXBWYFQG199JFT34",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 293,
+      "cik": "0000354950",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8Q2Z5SQ4QY9W66TCDGB",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 294,
+      "cik": "0000874766",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8QPHJ6QD4S6C6ZF2RQ4",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 295,
+      "cik": "0001501585",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8R32MW327H834098Y5F",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 296,
+      "cik": "0001585689",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8RE76KD20V1VAYBD8G6",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 297,
+      "cik": "0000773840",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8RVCF4JGWYZVQ1PZ755",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 298,
+      "cik": "0001783879",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8S7W3DTYP3DZQGTR4RC",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 299,
+      "cik": "0001645590",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8SMEBX7NE1PJNAMMX9T",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 300,
+      "cik": "0000047217",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8T1TM43JD9FDEW1HYGT",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 301,
+      "cik": "0000048465",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8TDDMRJ5CWVZSDRASNN",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 302,
+      "cik": "0001000228",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8TT0W0S9FBBZZ9RWT3H",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 303,
+      "cik": "0001070750",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8V6B3S5SG2C67BFW8VJ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 304,
+      "cik": "0000047111",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8VJKP440GM26HCWY9TG",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 305,
+      "cik": "0000048898",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8VY86QATV0158SA0JCB",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 306,
+      "cik": "0000049071",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8WA5B6GNF3MXV85ABCD",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 307,
+      "cik": "0000004281",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8WPBYG7X8EZTYJ1RP2G",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 308,
+      "cik": "0001381197",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8X1TYB31ESK3JJ6K8K3",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 309,
+      "cik": "0000051143",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8XCP0JGJF8T9WHX23YK",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 310,
+      "cik": "0001571949",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8XRPVXZZ5FH741NPPFW",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 311,
+      "cik": "0000874716",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8Y54S0DH38MHVRV1JND",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 312,
+      "cik": "0000832101",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8YJMJKX7G99FZ1DPDDX",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 313,
+      "cik": "0000051253",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8YYY19V1QA8TFJZRZZS",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 314,
+      "cik": "0000879169",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8ZBGAFE4XXC63DAYCNT",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 315,
+      "cik": "0000050863",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM8ZPNFN14JHC8VFX12QR",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 316,
+      "cik": "0000896878",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM901K1AARJS6NBTB30YY",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 317,
+      "cik": "0001687229",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM90DXMJ60K5E4X46DJDB",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 318,
+      "cik": "0000051434",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM90TBFQ3Z38WCEJPD4DP",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 319,
+      "cik": "0001478242",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9157PZFCE4WH3D15B0Y",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 320,
+      "cik": "0001699150",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM91JWBAJYGRY3XTVKK0E",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 321,
+      "cik": "0001020569",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM91X8RQ8XYK4H2HGGYCP",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 322,
+      "cik": "0001035267",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM92BDKS38REG44XHZXGC",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 323,
+      "cik": "0000749251",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM92RN0X5MVZ4SX98ZMN0",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 324,
+      "cik": "0000049826",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM934P4B59S6YWS6RF370",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 325,
+      "cik": "0000914208",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM93G6HG6TDX0Y4WR5MNC",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 326,
+      "cik": "0000052988",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM93RE72VDK655XW67P45",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 327,
+      "cik": "0000728535",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM948P8GHY4WPMGQ5W41B",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 328,
+      "cik": "0000898293",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM94KKK3P01SN8YW68FSY",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 329,
+      "cik": "0000833444",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM94Z319YV4BC02Y2NF55",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 330,
+      "cik": "0000779152",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM959VKH1RDNGGQTDGTK3",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 331,
+      "cik": "0000200406",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM95HHV99ZX8D312A09SJ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 332,
+      "cik": "0000019617",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM963J71814T5XWYE9SMC",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 333,
+      "cik": "0001418135",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM96HZSTPZVTBQAXP2Z9D",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 334,
+      "cik": "0000091576",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM96W22Q5V6XWBMZ0YW99",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 335,
+      "cik": "0001601046",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM977HYFPDR2EP17Z9H2H",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 336,
+      "cik": "0001637459",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM97JM1XCXHVSDYSWTDFF",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 337,
+      "cik": "0000879101",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM980RCRB35F12JAEEJS4",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 338,
+      "cik": "0001404912",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM98CSEGNQ60Q76BMMWKQ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 339,
+      "cik": "0000319201",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM98Q4ACVMBMF7DB133YX",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 340,
+      "cik": "0000055785",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9922PSYCK57B3KB2PEP",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 341,
+      "cik": "0001506307",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM99E52HXYS94AAGK9E1M",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 342,
+      "cik": "0000021344",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM99VF4CD0N81A1PW66EA",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 343,
+      "cik": "0000056873",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9A9VXDVPR1NHR6S4EJJ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 344,
+      "cik": "0001944048",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9AP95VC9JT8DVMR8SHH",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 345,
+      "cik": "0000060086",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9B4MN526B0AZ7HJS3Q0",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 346,
+      "cik": "0001336920",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9BH2730BZQCSH902WVY",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 347,
+      "cik": "0000920760",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9BZMAH4A76N8R8A0H6P",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 348,
+      "cik": "0000920148",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9CACVQCC8WQTRB34DE9",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 349,
+      "cik": "0000202058",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9CP31WWJMT8F3AC6EM4",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 350,
+      "cik": "0001069202",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9D5DT8FA44ASSRRACS2",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 351,
+      "cik": "0001707925",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9DK4YJS2YXXJJGPV1MA",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 352,
+      "cik": "0001633978",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9E45FCAVRPR5JNZBEA9",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 353,
+      "cik": "0000059478",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9EHF06TCYBMGJA69H80",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 354,
+      "cik": "0000936468",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9F1HPPYDWQMPEZ7G4H6",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 355,
+      "cik": "0000352541",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9FE8S0RTRJH0HQAZXGQ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 356,
+      "cik": "0000060667",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9G2WCR6M300FKMD3N5A",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 357,
+      "cik": "0000707549",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9GMXST1WBFSDHV3YB2V",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 358,
+      "cik": "0001397187",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9HBEWK70SDXYJ2DRNAD",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 359,
+      "cik": "0000092380",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9HZ4VVE72XQ074VMY46",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 360,
+      "cik": "0001300514",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9JFVX3CBPCRJ25WD17W",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 361,
+      "cik": "0001489393",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9JW6JMPFNN61DSHAAA1",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 362,
+      "cik": "0001335258",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9K9QM7F4N0VK49SVVSY",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 363,
+      "cik": "0001141391",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9KMQ8TKSNHC1PV890V7",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 364,
+      "cik": "0000912595",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9M02YQPRD10Y577GHDD",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 365,
+      "cik": "0001048286",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9MCXZ1DHA65CVAAQGVB",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 366,
+      "cik": "0000062996",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9MSGDE6RW8ZA5HTAJHD",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 367,
+      "cik": "0000063908",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9N6DW209SDFRW21T4C9",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 368,
+      "cik": "0000827054",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9NHPCA98MW5118XKDKT",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 369,
+      "cik": "0000927653",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9NZD9KHBNPVQBQCTTVV",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 370,
+      "cik": "0001059556",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9PB64NEYVYA5Y0AJJKB",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 371,
+      "cik": "0001103982",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9PQARA3664FEWHY9CJP",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 372,
+      "cik": "0001613103",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9Q5AC84H566ETS5XTYE",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 373,
+      "cik": "0001099219",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9QJKN50C6DH0QE0SYDG",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 374,
+      "cik": "0001326801",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9QY79YVM8R455HR4SXD",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 375,
+      "cik": "0000789570",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9RDQ4JKQH8TX9MF2GFM",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 376,
+      "cik": "0000063754",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9S303JNABFN27BYMBDT",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 377,
+      "cik": "0000916076",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9SRSYX4EHTKGJK0XX84",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 378,
+      "cik": "0000066740",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9TD4HSKXP0MMR47V51Z",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 379,
+      "cik": "0000865752",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9V56JYGV5263VKB0S6Y",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 380,
+      "cik": "0000764180",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9VWWMXNNE6VHB45GZ7R",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 381,
+      "cik": "0001285785",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9WK16E6BRXT57WJJFTH",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 382,
+      "cik": "0001510295",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9X8NCB9Y2DBRZKJ33HW",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 383,
+      "cik": "0001280452",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9YD0A5G6M0APPVB5SCR",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 384,
+      "cik": "0000310158",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQM9ZAGT6WFDN60PSVK18G",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 385,
+      "cik": "0001682852",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMA09PZ18KJAZVTN48V8Y",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 386,
+      "cik": "0000062709",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMA15H2QCGXBQ74551VZM",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 387,
+      "cik": "0001835632",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMA25CMEN3B8NZPENN7EE",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 388,
+      "cik": "0000895421",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMA2TCJ0Z80M78Y2THZTQ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 389,
+      "cik": "0001408198",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMA3MH1E1EA6P8C0KD3A5",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 390,
+      "cik": "0000789019",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMA44P7YP6A6A1RH7C1MW",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 391,
+      "cik": "0000068505",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMA4J411JSZAKAKH3SBH6",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 392,
+      "cik": "0000036270",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMA52XYX4PMFTNNT9GQWN",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 393,
+      "cik": "0001037646",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMA5M1FPR31SJABSMPC62",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 394,
+      "cik": "0000723125",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMA66NA37GQEC03TTFEGG",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 395,
+      "cik": "0001513761",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMA6TN82AMKSAMB2081CF",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 396,
+      "cik": "0001120193",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMA7GNVZYT118S0KYH6N9",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 397,
+      "cik": "0000072331",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMA7YV8RS3T7YF76PWCRP",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 398,
+      "cik": "0000753308",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMA8FMBKRDY61N77Z6P3X",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 399,
+      "cik": "0001164727",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMA90KJZSG7FPH8Y2B4FD",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 400,
+      "cik": "0001065280",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMA9FHJ17BX6CG8WFDJX9",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 401,
+      "cik": "0001111711",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMA9ZJW6HN4AYWHYSWZKZ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 402,
+      "cik": "0000320187",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAACW4WYFJAGD1GP7RV7",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 403,
+      "cik": "0001133421",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAATV12YE8T8M6HMDSY4",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 404,
+      "cik": "0001373715",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAB8NDCPM2E2AC2B74NM",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 405,
+      "cik": "0001013871",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMABN3JDGJ8BDR9B29AVY",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 406,
+      "cik": "0000702165",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAC2021AGWQXYRZD7EAJ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 407,
+      "cik": "0001002047",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMACFBQEP3NA0QWTT19G1",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 408,
+      "cik": "0000073124",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMACWCG3EPSYGESVDMG28",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 409,
+      "cik": "0000073309",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAD93B3YCQ8S5T8DBJ79",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 410,
+      "cik": "0001045810",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMADQHV1VHRVXB9S2PKEW",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 411,
+      "cik": "0000906163",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAE1EWVGF23313E90PDN",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 412,
+      "cik": "0001564708",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAEM3MH0SANNWD4V9626",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 413,
+      "cik": "0001413447",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAF1JQ5ZWZ0HWV3K0A8G",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 414,
+      "cik": "0000726728",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAFRY7RQPZZ9ZZKC49J8",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 415,
+      "cik": "0000878927",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAG9RMRGP2EMB3T4YTDA",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 416,
+      "cik": "0001039684",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAGNPPER5JT9AY5XKFY2",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 417,
+      "cik": "0000029989",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAH2BAXVK47BQ5Y962HF",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 418,
+      "cik": "0001097864",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAHHB4170KSK47599TY2",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 419,
+      "cik": "0001341439",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAJ0DYF9F44744ZR7E6H",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 420,
+      "cik": "0000898173",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAJCFSNVPSB0M8DXR8CC",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 421,
+      "cik": "0001781335",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAJP7Q7K8GMXHV3WKF77",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 422,
+      "cik": "0000797468",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAK4C2D97WD3TRMBFRQZ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 423,
+      "cik": "0001327567",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAKFSE95WVQ7ENKRSJMQ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 424,
+      "cik": "0000723531",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAKV3DRXAXG5502YQ7DA",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 425,
+      "cik": "0000075362",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAM7EPP3MBT6AQ7A7GW2",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 426,
+      "cik": "0001004980",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAMJWBS30W680YRYV00Y",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 427,
+      "cik": "0000788784",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAMWR1FJ18JT2MKGXC0V",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 428,
+      "cik": "0000077476",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAN7J5RYACE86SJNX1Y6",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 429,
+      "cik": "0000078003",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMANJ71MGPN1TFY4A687C",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 430,
+      "cik": "0001126328",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMANW1RKANM0DN3P7YDF6",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 431,
+      "cik": "0000080424",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAP8AXBCZ1GCZYKS6F5F",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 432,
+      "cik": "0000080661",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAPK920TQCDGACVJARH8",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 433,
+      "cik": "0000076334",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAPX07GGKWZC7MH2D12Q",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 434,
+      "cik": "0000822416",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAQ82P85KDNSF4GT42AB",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 435,
+      "cik": "0000075677",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAQH1ADSZ5W0QDJYYE7Q",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 436,
+      "cik": "0001045609",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAQZNVN6D7AZNEN8CEW4",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 437,
+      "cik": "0001321655",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMARB6VREP8NS4N5GA8T5",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 438,
+      "cik": "0001413329",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMARRGHESCFVP2EZVX07D",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 439,
+      "cik": "0000713676",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAS226FCW8ZHQGZH63Z2",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 440,
+      "cik": "0000077360",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMASDDAYA1MKN172QF3YP",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 441,
+      "cik": "0000764622",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMASRQA2TZB4VKR43AH49",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 442,
+      "cik": "0001145197",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAT24W9P9B536RSZ737Q",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 443,
+      "cik": "0000079879",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMATG06KT1RVJ19RJT7EZ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 444,
+      "cik": "0000922224",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMATWQJBC4T44X3P5J7BN",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 445,
+      "cik": "0001137774",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAV7R9XREN8JZ4TVXC73",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 446,
+      "cik": "0001393311",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAVE4T7B3AQ3328EFJ32",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 447,
+      "cik": "0002041610",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAVXPWEAHEWMV7KF3TAY",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 448,
+      "cik": "0001534701",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAW8QDCJC1HMNVJ6PA5S",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 449,
+      "cik": "0000857005",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAWMCSEDJ8T61MS03J87",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 450,
+      "cik": "0001050915",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAWZNR3P0RGNJYGREWD4",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 451,
+      "cik": "0001633917",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAXB5NB4C6XKHXZGD4M0",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 452,
+      "cik": "0002058873",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAXPGZZ3BSD30ACJN8Z3",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 453,
+      "cik": "0000804328",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAY4F1W7CY44HP3TDM20",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 454,
+      "cik": "0000884887",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAYG7EKF69T4A190W6K8",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 455,
+      "cik": "0000910606",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAYVB15P6AE4DB2QCFPK",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 456,
+      "cik": "0000872589",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAZ7RR2FN1XD0PK6Y7BA",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 457,
+      "cik": "0001281761",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAZMT0DHKXGND0FRYXC6",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 458,
+      "cik": "0000720005",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMAZZR8XDZ589W90F9RCC",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 459,
+      "cik": "0001037038",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMB0CZS4531JFZ3R5KEN2",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 460,
+      "cik": "0000943819",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMB0V82CAQEYEPWTR4T4K",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 461,
+      "cik": "0001024478",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMB1CEETG5K03A4ACGZT1",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 462,
+      "cik": "0000084839",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMB1S5DNNFEHGN17HYAN9",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 463,
+      "cik": "0000882835",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMB280VJT60K2EWJFDVN5",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 464,
+      "cik": "0000745732",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMB2PFWASC7C6QD7R8G3J",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 465,
+      "cik": "0001060391",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMB3224AJA35SJHYN8XQA",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 466,
+      "cik": "0000101829",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMB3EQTENXEJPEG9D9X0T",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 467,
+      "cik": "0000031791",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMB3VVQYTMCF17JDGMS1V",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 468,
+      "cik": "0001415404",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMB48CTCQM9VPNNYM8ZT1",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 469,
+      "cik": "0001034054",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMB4RHJWVQYGNJ0QPT1HG",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 470,
+      "cik": "0000829224",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMB57M00DPDY53GEDF90F",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 471,
+      "cik": "0000316709",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMB5MRP6D233VVQ51WCNV",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 472,
+      "cik": "0000089800",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMB60GK0RMA80MEB9X5RP",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 473,
+      "cik": "0000091419",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMB6DJMX2KSSNF7X534ZM",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 474,
+      "cik": "0000087347",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMB6T5HDGCVB9XKXXHCJS",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 475,
+      "cik": "0001375365",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMB76ZC1Y6V566CCCVQZE",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 476,
+      "cik": "0000091440",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMB7KC4QHVBRXJKQT9JVN",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 477,
+      "cik": "0002023554",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMB7ZGZMW60J7NXR5QV2T",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 478,
+      "cik": "0000883241",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMB8CG185EHAG8B0TZJ8C",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 479,
+      "cik": "0000092122",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMB8RN00DDWXQZ3YXVAM0",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 480,
+      "cik": "0001964738",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMB95CAG4MB383EXZZSWD",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 481,
+      "cik": "0001063761",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMB9KDM6PJ7SWST96F6NR",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 482,
+      "cik": "0000064040",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMBA0Y631F7YS9MC4TF2Z",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 483,
+      "cik": "0001032208",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMBACTDQRKMBJ9KPKG48C",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 484,
+      "cik": "0001757898",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMBV3EP51WGQMP058216V",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 485,
+      "cik": "0001022671",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMBVG5K3ZTF3K8AFACBEQ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 486,
+      "cik": "0000093751",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMBVX54G3A03H441Z32V2",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 487,
+      "cik": "0001137789",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMBWAJ0BA14BGGX9KRZFX",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 488,
+      "cik": "0000016918",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMBWQDHTWJZ0MW91DWSC7",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 489,
+      "cik": "0002005951",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMBX44343EF4G24DTR7YK",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 490,
+      "cik": "0000093556",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMBXHRP95XVD4GM224MEG",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 491,
+      "cik": "0000004127",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMBXYY5NZ9V7PPDR66VX7",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 492,
+      "cik": "0001601712",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMBY9FTVG485QFR8FQ242",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 493,
+      "cik": "0000310764",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMBYPCKG6GS9H3MK39H0S",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 494,
+      "cik": "0000096021",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMBZ2B0T16GEK3MW8PZVM",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 495,
+      "cik": "0000732717",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMBZFTYJJMV2CJ51WCRY8",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 496,
+      "cik": "0000024545",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMBZW61Z2BTJRV95Z2C15",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 497,
+      "cik": "0001260221",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMC081XE8524NSGVT87HP",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 498,
+      "cik": "0001094285",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMC0NJ6K3Z24XAKM62JXK",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 499,
+      "cik": "0000842023",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMC12TKR2234WR5DHNMNR",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 500,
+      "cik": "0001385157",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMC1F9EXKNPZG82H9M042",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 501,
+      "cik": "0000097210",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMC1VDBGYKSSDQW47RM47",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 502,
+      "cik": "0000092230",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMC27809CVYVE6JQ3HJCJ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 503,
+      "cik": "0000027419",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMC2HSP5ZGAR2PZ0QBMD3",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 504,
+      "cik": "0000109198",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMC2WC13B2NTMVQAXGM5N",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 505,
+      "cik": "0001973266",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMC37XF5KTWBXC5C3C34D",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 506,
+      "cik": "0000097745",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMC3MJZW3R16ZG3GE3HT5",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 507,
+      "cik": "0001283699",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMC3ZAEX9DX2Y61X51QN2",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 508,
+      "cik": "0001811074",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMC4CG35150ZFYP5EMSZB",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 509,
+      "cik": "0001116132",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMC4RX9HE79PPF9JMQCT4",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 510,
+      "cik": "0001389170",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMC53RMM3R1853SAB2J88",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 511,
+      "cik": "0000864749",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMC5ERYKEASVM6YX9MZSN",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 512,
+      "cik": "0001113169",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMC5RK93F7N399388K5BG",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 513,
+      "cik": "0000086312",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMC6909QBK94TY36775BA",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 514,
+      "cik": "0000916365",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMC6NRAAZR73SG286E9AE",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 515,
+      "cik": "0001318605",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMC71J7DZGA0XRM620SBX",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 516,
+      "cik": "0000100493",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMC7D3QFNH3WCFV471FD4",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 517,
+      "cik": "0001466258",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMC7VBNQRAJMJ9S9KG7NB",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 518,
+      "cik": "0001671933",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMC8885R550540H1TT2WQ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 519,
+      "cik": "0000946581",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMC8MC6CJ8DKEQ6X75873",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 520,
+      "cik": "0000097476",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMC90Q93E9P97C40AB3EC",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 521,
+      "cik": "0000217346",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMC9DX6MVXTPMZV3JDXEM",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 522,
+      "cik": "0000860731",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMC9S0Y3V1S223AFAQTTZ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 523,
+      "cik": "0000100517",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCA4F7FBKEP5M822TFSM",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 524,
+      "cik": "0001543151",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCAHN0WSS0PKYE9F0DDN",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 525,
+      "cik": "0000074208",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCAVME54B7FPERN2AKJF",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 526,
+      "cik": "0000352915",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCBB3RQHTJ92HK8BCQHT",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 527,
+      "cik": "0001403568",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCBQ5QVR1VJ0RQD9WQ4K",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 528,
+      "cik": "0000731766",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCC3KWKEYWK9REB1DY3X",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 529,
+      "cik": "0000100885",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCCF3TD1E2NCXK6GD2C3",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 530,
+      "cik": "0001090727",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCCVENGNVR43JZDNST6V",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 531,
+      "cik": "0001067701",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCD753MAT07WDRBC67P1",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 532,
+      "cik": "0000036104",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCDMVPSETWS1RJJAQ0T8",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 533,
+      "cik": "0001403161",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCE0HQN6QWR7HG8ENRZP",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 534,
+      "cik": "0001393052",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCEAC19CS6GMAQDHGJN5",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 535,
+      "cik": "0001705696",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCEN92306B4DJSEH4JCB",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 536,
+      "cik": "0001035002",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCF059BE66EVYED1Q4MK",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 537,
+      "cik": "0001967680",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCFD6Z9QMFTMEA27FAWR",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 538,
+      "cik": "0001396009",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCFQ7RT6WDMDHWXQMZNS",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 539,
+      "cik": "0001442145",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCG2EBQ0JBV2HVP3MPHF",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 540,
+      "cik": "0001014473",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCGD41NV3EPPE7Y06MEW",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 541,
+      "cik": "0001674101",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCGRJ8N3B0S1JF94ZAY8",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 542,
+      "cik": "0000875320",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCH40B9R64MWWN9TQ921",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 543,
+      "cik": "0001692819",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCHGPWNHNB40NS32KY6Q",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 544,
+      "cik": "0000740260",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCHXF0Y1AEJEAZ7ZY368",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 545,
+      "cik": "0001792044",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCJAAY2PBQ4GZ8RR5N2N",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 546,
+      "cik": "0000732712",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCJN343GRA058A8X73P7",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 547,
+      "cik": "0000943452",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCK291GGB9JRKJ0G7KNZ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 548,
+      "cik": "0001000697",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCKET2E9F3HCD8JTFK04",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 549,
+      "cik": "0001437107",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCKS8NT3TZX0G7XZ5EXC",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 550,
+      "cik": "0001327811",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCM5TETFH68WFYTHE2BM",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 551,
+      "cik": "0000106040",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCMMTK81E6EXH32WM09C",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 552,
+      "cik": "0000783325",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCN0GBNMCGYDS8X8W9E8",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 553,
+      "cik": "0000766704",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCNDQD0PR4WK2DHRX1X4",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 554,
+      "cik": "0000072971",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCNTCCXDZTC92AGGXB6X",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 555,
+      "cik": "0000823768",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCP59E3BCFPPHMYS8GCV",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 556,
+      "cik": "0000107263",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCPMYS7MD1JSFKS8RTGV",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 557,
+      "cik": "0000104169",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCQ5CQ1SR62BWND4H9FB",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 558,
+      "cik": "0000011544",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCQJ227JR5MD6GBV00TN",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 559,
+      "cik": "0000719955",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCQYXPPJXB08NGGMVKNG",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 560,
+      "cik": "0000105770",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCRBHME5PPCE921BC52B",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 561,
+      "cik": "0001140536",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCRQ7280NCRJMJMEV36S",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 562,
+      "cik": "0000106535",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCS3G6CQTA70GVETNTS7",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 563,
+      "cik": "0001174922",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCSG84Q2FAKVAVDQXV0M",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 564,
+      "cik": "0000072903",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCSW8C52KM0KYYRV8X0J",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 565,
+      "cik": "0000034088",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCTBNZ5V73WHJSPVYW0W",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 566,
+      "cik": "0001524472",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCTP7Y62D6DG1E9TKWVY",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 567,
+      "cik": "0001512673",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCV3S0DJ6J3735ZNC83C",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 568,
+      "cik": "0001041061",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCVFGHVVK2KV6ERTN2KC",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 569,
+      "cik": "0001136869",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCVVM6B71BR4N24TMQ3J",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 570,
+      "cik": "0000877212",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCW71GWXN6PF3E5NGKJJ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 571,
+      "cik": "0001555280",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCWMHGQQKAB9NXVREW53",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 573,
+      "cik": "0001395213",
+      "accion": "CREADA",
+      "entity_key": "E01M1PQMCX0CANDDH40KWKHNBAX",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null,
+      "cuit_legacy_status": "CANDIDATE"
+    }
+  ]
+}

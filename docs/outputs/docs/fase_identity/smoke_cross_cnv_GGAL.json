@@ -1,0 +1,13 @@
+{
+  "ticker": "GGAL",
+  "ts_utc": "2026-08-28T15:14:40.544508+00:00",
+  "resolucion_identity": {
+    "cik": "0001071371",
+    "entity_key": null,
+    "lei": null,
+    "cuit": null,
+    "bridge": null,
+    "bloqueo": "no hay entidad anclada en ese CIK autoritativo"
+  },
+  "cnv": null
+}

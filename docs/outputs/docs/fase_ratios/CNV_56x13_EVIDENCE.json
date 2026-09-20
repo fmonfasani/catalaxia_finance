@@ -1,0 +1,37 @@
+{
+  "universo": 56,
+  "cuits_distintos": 56,
+  "celdas": 728,
+  "estados": {
+    "IDENTITY_BLOCKED": 242,
+    "LEGACY_ONLY": 486
+  },
+  "validacion": {
+    "CONTRACT_ONLY": 186,
+    "NOT_VALIDATED": 56,
+    "LEGACY_ONLY": 486
+  },
+  "provenance": {
+    "NONE": 728
+  },
+  "discrepancias": [],
+  "legacy_only_por_ratio": {
+    "gross_margin": 49,
+    "operating_margin": 49,
+    "net_margin": 55,
+    "roe": 52,
+    "roa": 56,
+    "pe": 34,
+    "pb": 49,
+    "ps": 52,
+    "ev_ebitda": 40,
+    "eps": 50
+  },
+  "identidad": {
+    "en_identity_v1": 0,
+    "autoritativos": 0,
+    "con_cik": 0,
+    "con_instrumento": 0,
+    "con_cnv_artifacts": 0
+  }
+}

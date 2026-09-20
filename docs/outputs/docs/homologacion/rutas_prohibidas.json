@@ -1,0 +1,115 @@
+{
+  "total": 18,
+  "entraron": 1,
+  "errores_de_prueba": 0,
+  "ataques": [
+    {
+      "n": 1,
+      "ataque": "inventar un CUIT sin fuente autoritativa (DERIVED_RULE)",
+      "resultado": "RECHAZADO",
+      "detalle": "(psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint \"ux_entity_un_autoritativo_por_tipo\""
+    },
+    {
+      "n": "1b",
+      "ataque": "inventar un CUIT desde LEGACY_DIM_ENTITY (CORROBORATING)",
+      "resultado": "RECHAZADO",
+      "detalle": "(psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint \"ux_entity_un_autoritativo_por_tipo\""
+    },
+    {
+      "n": "1c",
+      "ataque": "CUIT autoritativo SIN evidencia estructurada",
+      "resultado": "RECHAZADO",
+      "detalle": "(psycopg2.errors.CheckViolation) new row for relation \"identifier\" violates check constraint \"ck_formato_identificador\""
+    },
+    {
+      "n": 2,
+      "ataque": "declarar el CIK de BMA como si fuera un CUIT (F-024)",
+      "resultado": "RECHAZADO",
+      "detalle": "(psycopg2.errors.CheckViolation) new row for relation \"identifier\" violates check constraint \"ck_formato_identificador\""
+    },
+    {
+      "n": 3,
+      "ataque": "elevar LEGACY_DIM_ENTITY a fuente AUTHORITATIVE",
+      "resultado": "ENTRO",
+      "detalle": "la base ACEPTO la escritura"
+    },
+    {
+      "n": "3b",
+      "ataque": "promover a autoritativo un identificador CANDIDATE existente",
+      "resultado": "RECHAZADO",
+      "detalle": "(psycopg2.errors.RaiseException) Identificador CUIT:AFIP:30546689979 no puede ser autoritativo: la assertion 193 es status=CANDIDA"
+    },
+    {
+      "n": 4,
+      "ataque": "fusionar (MERGED) una entidad que tiene identidad autoritativa",
+      "resultado": "RECHAZADO",
+      "detalle": "(psycopg2.errors.RaiseException) La entidad E01M0X99C8F87H9TH9N39H2D1NW sostiene 3 identificador(es) autoritativo(s) vigente(s): n"
+    },
+    {
+      "n": "4b",
+      "ataque": "dar identidad autoritativa a una entidad DISSOLVED",
+      "resultado": "RECHAZADO",
+      "detalle": "(psycopg2.errors.RaiseException) La entidad E01M15AAAAAAAAAAAAAAAAAAAAA esta en estado DISSOLVED: no puede adquirir el identificad"
+    },
+    {
+      "n": 5,
+      "ataque": "el mismo CIK autoritativo designando DOS entidades",
+      "resultado": "RECHAZADO_POR_OTRA_COSA",
+      "detalle": "(psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint \"ux_entity_un_autoritativo_por_tipo\""
+    },
+    {
+      "n": "5b",
+      "ataque": "una entidad con DOS CIK autoritativos vigentes",
+      "resultado": "RECHAZADO",
+      "detalle": "(psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint \"ux_entity_un_autoritativo_por_tipo\""
+    },
+    {
+      "n": 6,
+      "ataque": "editar `evidence` de una assertion historica",
+      "resultado": "RECHAZADO",
+      "detalle": "(psycopg2.errors.RaiseException) Assertion 1: los hechos afirmados son inmutables (status=VERIFIED valid_to=<NULL>). Para corregir"
+    },
+    {
+      "n": "6b",
+      "ataque": "F-042: mutar `source_facts` de una assertion historica",
+      "resultado": "RECHAZADO",
+      "detalle": "(psycopg2.errors.RaiseException) Assertion 308: los hechos afirmados son inmutables (status=VERIFIED valid_to=<NULL>). Para correg"
+    },
+    {
+      "n": "6c",
+      "ataque": "F-042: BORRAR `source_facts` existentes",
+      "resultado": "RECHAZADO",
+      "detalle": "(psycopg2.errors.RaiseException) Assertion 308: los hechos afirmados son inmutables (status=VERIFIED valid_to=<NULL>). Para correg"
+    },
+    {
+      "n": "6d",
+      "ataque": "borrar una assertion vigente",
+      "resultado": "RECHAZADO",
+      "detalle": "(psycopg2.errors.RaiseException) DELETE prohibido en identity_v1.assertion: la procedencia no se borra. Cierre el registro (valid_"
+    },
+    {
+      "n": "6e",
+      "ataque": "reabrir una assertion ya cerrada",
+      "resultado": "RECHAZADO",
+      "detalle": "(psycopg2.errors.RaiseException) Assertion 5 ya fue cerrada el 2026-08-28 19:16:27.884213+00: no puede reabrirse ni re-fecharse."
+    },
+    {
+      "n": 7,
+      "ataque": "el CUIT de CEPU atribuido a YPF (el error historico)",
+      "resultado": "RECHAZADO_POR_OTRA_COSA",
+      "detalle": "(psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint \"ux_entity_un_autoritativo_por_tipo\""
+    },
+    {
+      "n": "7b",
+      "ataque": "un TICKER declarado como identidad juridica",
+      "resultado": "RECHAZADO",
+      "detalle": "(psycopg2.errors.CheckViolation) new row for relation \"identifier\" violates check constraint \"ck_ticker_no_autoritativo\""
+    },
+    {
+      "n": "7c",
+      "ataque": "un bridge VERIFIED firmado por un proceso",
+      "resultado": "RECHAZADO",
+      "detalle": "(psycopg2.errors.CheckViolation) new row for relation \"assertion\" violates check constraint \"ck_authoritative_metodo\""
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "ticker": "METR",
+  "cuit": "30657863676",
+  "entity_id": "CUIT:30657863676",
+  "entity_key": "EY9TRR9RPRVSV916PD0CB9Z93NT",
+  "ejercicio": "2024",
+  "generado_utc": "2026-09-03T11:09:47.763233+00:00",
+  "base": {
+    "nombre": "cnvmig",
+    "puerto": "5433"
+  },
+  "documentos": {
+    "n": 7,
+    "sha256": {
+      "06093afc-5dc9-49d0-92d7-b4e9f9504edc": "7eedd615b7ef4f243fdfa0f331dcbe7f24fe8f80d5888b309f99a3cce1bd5dc0",
+      "59698907-ef5a-4d0a-908e-12e4e3fb9b20": "1d454d6ffb1ca3b77d0ebdab745947f4e5f8436b153fa05eefc17d71c670bb2e",
+      "92d95754-b799-48f1-a8f9-e494fad4a260": "c8f31a0d27565a5605acae869afe2e389267fb685210090dd1335077f4bdbdca",
+      "e6adb3a8-3875-4f0e-9607-38349f5b8b2c": "e278bb6ab48dc90bf2bdc659da93bbba90e1a580eb025f93f6967ef6fdbb33a3",
+      "bb72f25a-74bd-4f8f-bf75-925754a15626": "6653d951e4910ac04934611309143a876926901ae8c44e29325d6b64b1ec74a2",
+      "89e96a2b-946e-4def-85b2-b69f0739bc16": "469b6c565a2a63e4a205750758fecbe1ce7776ea71e67b3e6b938ce49edc55c4",
+      "94ca9025-5acc-4530-a3a8-ea083acbe280": "36a65e866cdbfa8fa95194824bdef7edd926cce11910a2544dddc6d2dc3876a8"
+    },
+    "digest": "27a779def75d99c0e8208f7af432cf8943e76b8b60f414df82069a5389de4e22"
+  },
+  "facts": {
+    "n": 203,
+    "conceptos": [
+      "Assets",
+      "AssetsCurrent",
+      "AssetsNonCurrent",
+      "CF_Operativo",
+      "COGS",
+      "Cash",
+      "CashFlowNeto",
+      "DebtCurrent",
+      "DebtNonCurrent",
+      "EPS_basico",
+      "EPS_diluido",
+      "Equity",
+      "GrossProfit",
+      "IncomeTax",
+      "IngresosFinancieros",
+      "Intangibles",
+      "InterestExpense",
+      "Liabilities",
+      "LiabilitiesCurrent",
+      "LiabilitiesNonCurrent",
+      "NetIncome",
+      "OperatingIncome",
+      "PPE",
+      "PatrimonioAperturaEjercicio",
+      "Payables",
+      "PretaxIncome",
+      "RECPAM",
+      "Receivables",
+      "Revenue"
+    ],
+    "digest_fact_key": "2324f732c8dcd39fa3ef1d9f12f356840321d9b49b9055d72216f0159eae12ea",
+    "digest_econ_key": "ecd38d81a23c295302f2b64e9b7f61a1e5700fa1d40aeab978f51027301c2bc6",
+    "digest_valores": "ff30bc8c1b2b437707ffb998c8eecf3523a156d2f3310c5d4858982f32129030"
+  },
+  "ratios": {
+    "n": 77,
+    "calculados": 70,
+    "digest": "250ceb4bfc6adcc632286dad9ae89993b2417149e9c327dbbc914ec0dabf73e3"
+  }
+}

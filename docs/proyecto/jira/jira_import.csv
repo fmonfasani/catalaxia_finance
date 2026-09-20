@@ -1,0 +1,42 @@
+Issue Type,Summary,Epic Name,Epic Link,Assignee,Sprint,Story Points,Component,Labels,Priority
+Epic,Infra & Deploy (VPS),Infra,,Federico,,,Infra,infra,High
+Epic,Datos & Base de datos,Datos,,Federico,,,Datos,datos,High
+Epic,Backend API REST,Backend,,Mateo,,,Backend,backend,High
+Epic,Jobs & Scheduler,Jobs,,Mateo,,,Backend,jobs,Medium
+Epic,Frontend Screener,Screener,,Joaquin,,,Frontend-Screener,frontend,High
+Epic,Frontend Detalle,Detalle,,Aldana,,,Frontend-Detalle,frontend,High
+Epic,QA & Entrega,QA,,Federico,,,QA,qa,High
+Story,Definir contrato de API + entregar mocks (dia 1),,Backend,Federico,Sprint 1,3,Backend,"contrato,dia1",Highest
+Story,Esquema PostgreSQL (empresas + instrumentos),,Datos,Federico,Sprint 1,3,Datos,datos,High
+Story,Migrar/cargar 572 empresas + 733 instrumentos a Postgres,,Datos,Federico,Sprint 1,5,Datos,datos,High
+Story,Configurar Postgres en la VPS + backups diarios,,Infra,Federico,Sprint 1,3,Infra,infra,High
+Story,Deploy API base + HTTPS (nginx/certbot) + CORS,,Infra,Federico,Sprint 1,5,Infra,infra,High
+Story,Scaffold FastAPI + conexion Postgres async,,Backend,Mateo,Sprint 1,3,Backend,backend,High
+Story,GET /empresas + GET /cobertura + /health,,Backend,Mateo,Sprint 1,5,Backend,backend,High
+Story,Scaffold Next.js + layout (sidebar/topbar),,Screener,Joaquin,Sprint 1,3,Frontend-Screener,frontend,High
+Story,Tabla screener contra mocks del contrato,,Screener,Joaquin,Sprint 1,3,Frontend-Screener,frontend,Medium
+Story,Base del front + ruta detalle contra mocks,,Detalle,Aldana,Sprint 1,3,Frontend-Detalle,frontend,Medium
+Story,"Componentes base (cards, chips, tabla)",,Detalle,Aldana,Sprint 1,2,Frontend-Detalle,frontend,Medium
+Story,GET /empresas/{id} (fundamentales + instrumentos anidados),,Backend,Mateo,Sprint 2,5,Backend,backend,High
+Story,GET /instrumentos con filtros + paginacion,,Backend,Mateo,Sprint 2,3,Backend,backend,Medium
+Story,Verificar 733 instrumentos + dividendos ADR en Postgres,,Datos,Federico,Sprint 2,3,Datos,datos,Medium
+Story,Asistir a frontends a consumir la VPS (CORS/staging),,Infra,Federico,Sprint 2,2,Infra,infra,High
+Story,Screener contra API real + toggle ARS/USD,,Screener,Joaquin,Sprint 2,5,Frontend-Screener,frontend,High
+Story,Sorting + paginacion server-side (screener),,Screener,Joaquin,Sprint 2,2,Frontend-Screener,frontend,Medium
+Story,Detalle contra API real + panel de instrumentos,,Detalle,Aldana,Sprint 2,5,Frontend-Detalle,frontend,High
+Story,"Filtros compuestos en /empresas (per, roe, solo_limpias)",,Backend,Mateo,Sprint 3,3,Backend,backend,High
+Story,POST /jobs/{tipo} + GET /jobs/{id}/status,,Jobs,Mateo,Sprint 3,3,Backend,jobs,Medium
+Story,Scheduler de jobs en la VPS (precios/financials),,Jobs,Federico,Sprint 3,3,Infra,jobs,Medium
+Story,Filtros min/max + filtro por flag de calidad,,Screener,Joaquin,Sprint 3,3,Frontend-Screener,frontend,High
+Story,Export CSV del screener,,Screener,Joaquin,Sprint 3,2,Frontend-Screener,frontend,Medium
+Story,Panel de jobs en vivo (polling),,Screener,Joaquin,Sprint 3,3,Frontend-Screener,frontend,Medium
+Story,Dividendos ADR + yield (detalle),,Detalle,Aldana,Sprint 3,3,Frontend-Detalle,frontend,Medium
+Story,Vista CEDEAR (precio con ratio de conversion),,Detalle,Aldana,Sprint 3,3,Frontend-Detalle,frontend,High
+Story,Comparador (mismo universo) + chips de provenance,,Detalle,Aldana,Sprint 3,3,Frontend-Detalle,frontend,Medium
+Story,Tests de endpoints + manejo de errores,,Backend,Mateo,Sprint 4,3,Backend,qa,High
+Story,openapi.json documentado,,Backend,Mateo,Sprint 4,2,Backend,backend,Medium
+Story,Hardening infra + backups verificados + deploy prod,,Infra,Federico,Sprint 4,3,Infra,infra,High
+Story,QA de integracion end-to-end (checklist),,QA,Federico,Sprint 4,3,QA,qa,Highest
+Story,Estados vacio/loading/error + responsive (screener),,Screener,Joaquin,Sprint 4,3,Frontend-Screener,qa,High
+Story,Estados + responsive + disclaimers (detalle),,Detalle,Aldana,Sprint 4,3,Frontend-Detalle,qa,High
+Story,Walkthrough de entrega + README de operacion,,QA,Federico,Sprint 4,2,QA,entrega,High

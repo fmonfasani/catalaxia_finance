@@ -1,0 +1,141 @@
+{
+  "veredicto": "CLOSED",
+  "hallazgos": [],
+  "respuestas": {
+    "triggers_activos": [
+      "tg_assertion_inmutable",
+      "tg_fuente_autoritativa_para_el_tipo",
+      "tg_identidad_exige_entidad_viva",
+      "tg_identifier_autoritativo",
+      "tg_identifier_coherente_con_assertion",
+      "tg_no_borrar_assertion",
+      "tg_no_borrar_conflict",
+      "tg_no_borrar_identifier",
+      "tg_no_borrar_review",
+      "tg_no_matar_entidad_con_identidad",
+      "tg_no_truncar_assertion",
+      "tg_no_truncar_conflict",
+      "tg_no_truncar_entity",
+      "tg_no_truncar_identifier",
+      "tg_no_truncar_review"
+    ],
+    "grants_update": {
+      "assertion": "superseded_by,valid_to",
+      "identifier": "status,valid_to"
+    },
+    "1_inventar_cuit": {
+      "caminos_probados": 10,
+      "abiertos": 0,
+      "detalle": [
+        [
+          "LEGACY_DIM_ENTITY",
+          null,
+          false,
+          "(psycopg2.errors.RaiseException) F-045: la assertion 1594 no declara que identificador establece (left_ref NULL) y se la usa para el autorit"
+        ],
+        [
+          "LEGACY_DIM_ENTITY",
+          "CUIT:AFIP:30999999995",
+          false,
+          "assertion: (psycopg2.errors.RaiseException) La fuente LEGACY_DIM_ENTITY es CORROBORATING : no puede establecer el identificador CUIT:AFIP:30999999995 ."
+        ],
+        [
+          "DERIVED_RULE",
+          null,
+          false,
+          "(psycopg2.errors.RaiseException) F-045: la assertion 1596 no declara que identificador establece (left_ref NULL) y se la usa para el autorit"
+        ],
+        [
+          "DERIVED_RULE",
+          "CUIT:AFIP:30999999995",
+          false,
+          "assertion: (psycopg2.errors.RaiseException) La fuente DERIVED_RULE es DISCOVERY_ONLY : no puede establecer el identificador CUIT:AFIP:30999999995 . Una"
+        ],
+        [
+          "CNV_PORTAL",
+          null,
+          false,
+          "(psycopg2.errors.RaiseException) F-045: la assertion 1598 no declara que identificador establece (left_ref NULL) y se la usa para el autorit"
+        ],
+        [
+          "CNV_PORTAL",
+          "CUIT:AFIP:30999999995",
+          false,
+          "assertion: (psycopg2.errors.RaiseException) La fuente CNV_PORTAL es DISCOVERY_ONLY : no puede establecer el identificador CUIT:AFIP:30999999995 . Una f"
+        ],
+        [
+          "SEC_REGISTRY",
+          null,
+          false,
+          "(psycopg2.errors.RaiseException) F-045: la assertion 1600 no declara que identificador establece (left_ref NULL) y se la usa para el autorit"
+        ],
+        [
+          "SEC_REGISTRY",
+          "CUIT:AFIP:30999999995",
+          false,
+          "assertion: (psycopg2.errors.RaiseException) La fuente SEC_REGISTRY es autoritativa para {CIK} pero NO para CUIT . No puede establecer CUIT:AFIP:3099999"
+        ],
+        [
+          "GLEIF",
+          null,
+          false,
+          "(psycopg2.errors.RaiseException) F-045: la assertion 1602 no declara que identificador establece (left_ref NULL) y se la usa para el autorit"
+        ],
+        [
+          "GLEIF",
+          "CUIT:AFIP:30999999995",
+          false,
+          "assertion: (psycopg2.errors.CheckViolation) new row for relation \"assertion\" violates check constraint \"ck_cuit_exige_evidencia_estructurada\""
+        ]
+      ]
+    },
+    "2_cik_a_cuit": {
+      "entro": false,
+      "mensaje": "(psycopg2.errors.RaiseException) F-045: tipo declarado distinto del real. La assertion 1604 declara CIK:SEC:0009999995, pero se la usa para "
+    },
+    "3_corroborating_establece": {
+      "entro": false,
+      "mensaje": "(psycopg2.errors.RaiseException) La fuente LEGACY_DIM_ENTITY es CORROBORATING : no puede establecer el identificador CIK:SEC:0009999995 . Un"
+    },
+    "4_left_ref_null": {
+      "entro": false,
+      "mensaje": "(psycopg2.errors.RaiseException) F-045: la assertion 1606 no declara que identificador establece (left_ref NULL) y se la usa para el autorit"
+    },
+    "5_cambiar_tipo_por_update": {
+      "identifier.id_type": {
+        "entro": false,
+        "mensaje": "(psycopg2.errors.InsufficientPrivilege) permission denied for table identifier"
+      },
+      "identifier.id_value": {
+        "entro": false,
+        "mensaje": "(psycopg2.errors.InsufficientPrivilege) permission denied for table identifier"
+      },
+      "identifier.assertion_id": {
+        "entro": false,
+        "mensaje": "(psycopg2.errors.InsufficientPrivilege) permission denied for table identifier"
+      },
+      "identifier.is_authoritative": {
+        "entro": false,
+        "mensaje": "(psycopg2.errors.InsufficientPrivilege) permission denied for table identifier"
+      },
+      "assertion.left_ref": {
+        "entro": false,
+        "mensaje": "(psycopg2.errors.InsufficientPrivilege) permission denied for table assertion"
+      },
+      "assertion.source_id": {
+        "entro": false,
+        "mensaje": "(psycopg2.errors.InsufficientPrivilege) permission denied for table assertion"
+      }
+    },
+    "6_promover_sin_evidencia": {
+      "gleif_cuit_sin_facts": {
+        "assertion": false,
+        "mensaje": "(psycopg2.errors.CheckViolation) new row for relation \"assertion\" violates check constraint \"ck_cuit_exige_evidencia_estructurada\""
+      },
+      "candidate_como_autoritativo": {
+        "entro": false,
+        "mensaje": "(psycopg2.errors.RaiseException) Identificador CIK:SEC:0009999995 no puede ser autoritativo: la assertion 1608 es status=CANDIDATE confidenc"
+      }
+    }
+  }
+}

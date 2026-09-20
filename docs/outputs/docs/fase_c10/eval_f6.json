@@ -1,0 +1,93 @@
+{
+  "c10_version": "c10_evaluate_v1",
+  "scope": "all",
+  "evaluated_at": "2026-09-07T23:09:18.911840+00:00",
+  "verdict": "WARN",
+  "invariants": [
+    {
+      "id": "SEC_GATES",
+      "result": "PASS",
+      "evidence": {
+        "runs": 2,
+        "stages": [
+          "S00_bootstrap",
+          "S01_identity",
+          "S02_fetch",
+          "S03_parse",
+          "S04_normalize"
+        ]
+      }
+    },
+    {
+      "id": "IDENTITY",
+      "result": "PASS",
+      "evidence": {
+        "ciks": [
+          "0000904851",
+          "0000021344"
+        ]
+      }
+    },
+    {
+      "id": "PROVENANCE",
+      "result": "PASS",
+      "evidence": {
+        "ciks": [
+          "0000904851",
+          "0000021344"
+        ]
+      }
+    },
+    {
+      "id": "NO_DANGLING",
+      "result": "PASS",
+      "evidence": {
+        "dangling": 0
+      }
+    },
+    {
+      "id": "NO_ORPHAN_ENTITY",
+      "result": "PASS",
+      "evidence": {
+        "ciks": [
+          "0000904851",
+          "0000021344"
+        ]
+      }
+    },
+    {
+      "id": "BRIDGE",
+      "result": "PASS",
+      "evidence": {
+        "tickers": [
+          "YPFD",
+          "KO"
+        ]
+      }
+    },
+    {
+      "id": "SEPARATION",
+      "result": "PASS",
+      "evidence": {}
+    },
+    {
+      "id": "NO_CROSS_OVERWRITE",
+      "result": "PASS",
+      "evidence": {
+        "nota": "estructural via SEPARATION",
+        "ciks": [
+          "0000904851",
+          "0000021344"
+        ]
+      }
+    },
+    {
+      "id": "CNV_SCOPE",
+      "result": "WARN",
+      "evidence": {
+        "motor_runs": 0,
+        "nota": "cadena SQLite productiva por cron; sin artefactos PG DEV"
+      }
+    }
+  ]
+}

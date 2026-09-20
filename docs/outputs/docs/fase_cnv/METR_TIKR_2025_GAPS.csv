@@ -1,0 +1,153 @@
+category,tikr_metric,catalaxia_concept_or_formula,catalaxia_value_fy2025_consolidado,fact_key,econ_key,raw_sha256,coverage,note
+income,Revenue,Revenue,1217305000000.0,e270dfb8681a133b088b38a677bdc3bb0e828d1072f208a50c6df247160a57f3,9b0c12ce7825100d46e6c61bd80a26cd40f563064472e3ba56eb67be18e1a7c6,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,codigo 3000100
+income,Total Revenue,Revenue,1217305000000.0,e270dfb8681a133b088b38a677bdc3bb0e828d1072f208a50c6df247160a57f3,9b0c12ce7825100d46e6c61bd80a26cd40f563064472e3ba56eb67be18e1a7c6,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,un solo renglon de ingresos en CNV
+income,Operating Expenses,,,,,,CATALAXIA_MISSING_INPUT,COGS existe; el desglose de gastos operativos no
+income,Operating Income,OperatingIncome,196311000000.0,48726288530510679d4707d7f0317184303b5263a16a9391da61955f51447a02,a034a0e772fe25d86936045eae0b0151da51c5c7161764f4a6db88243519f60c,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,"codigo 3019999; segment-sum = 370373218000 vs canonical consolidated = 196311000000; discrepancy UNRESOLVED; see METR_TIKR_2025_PROVENANCE entry 'OperatingIncome_segmented_sum'"
+income,Interest Expense,InterestExpense,-52522000000.0,48f0e17716c29665ad2b41309442597aa4466b4f70470556191a65a4ca8c10f6,965fe43d03fa812accb588c9b54a1dc192c333b5c0986c4e5438851e104c3762,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,codigo 3021500
+income,Interest Income,,,,,,CATALAXIA_MISSING_INPUT,IngresosFinancieros agrega intereses y otros
+income,FX Gains/Losses,,,,,,CATALAXIA_MISSING_INPUT,no desagregado en el plan de cuentas CNV
+income,Other Non-Operating Income/Expense,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+income,EBT excl. unusual items,,,,,,CATALAXIA_MISSING_INPUT,requiere identificar partidas inusuales
+income,Gain/Loss on investments,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+income,Asset impairment/devaluation,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+income,Legal settlements,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+income,Other unusual items,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+income,EBT incl. extraordinary items,PretaxIncome,191623000000.0,8129789310e04955db63fa95a337d126b2047646eae109f5460d73feb1fa96d5,f685504983ec3b34585d54425e197c243cff52d44cc4eabf4c4044ced8c3cb85,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,codigo 3029999
+income,Income Tax Expense,IncomeTax,-59140000000.0,f39d952405ee1c7e5665f9c833c1da2c65c641d30011d0db3b99a08e9b9e9447,32717963e2e7929fb8ad58f03dd6d04424346d621f0fa85ce4e16565b4660108,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,codigo 3031100
+income,Income from Continuing Operations,,,,,,CATALAXIA_MISSING_INPUT,CNV no separa operaciones discontinuadas
+income,Net Income Company,NetIncome,132483000000.0,2f7d72b238de410b7aaf1ba5481999e6e1101af2c727cbc225b6621526fd7a4f,66d469d1afa31447a424d8a7bed7f24c41f89af8dd376cbdc8d6aa308ecbc330,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,codigo 3049999
+income,Minority Interest,,,,,,CATALAXIA_MISSING_INPUT,NO existe como concepto; ver informe §4
+income,Net Income,,,,,,CATALAXIA_MISSING_INPUT,requiere Minority Interest
+income,Net Income Common Stockholders,,,,,,CATALAXIA_MISSING_INPUT,requiere Minority Interest
+income,EPS diluted,EPS_diluido,229.62,c2426ba3a0adf125d63f7382101a6935e1e053db9c7b7e7dba6714537f2da1c7,a6c055423e726a536d26cf47492f75cd6e472d3bbded24e3144e071aebacff5a,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,codigo 8000001
+income,EPS basic,EPS_basico,229.62,3a1e8a0b22ca92873bb19b3d152657bd70dce8153976d889a566402f7704ff73,2f8439843c38e6a9c38a174901fc334c7d65a8201e87255b3276292bb59cf3e5,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,codigo 8000000
+income,Weighted average diluted shares,,,,,,CATALAXIA_MISSING_INPUT,no publicado; derivable solo si NetIncome/EPS fuera exacto
+income,Weighted average basic shares,,,,,,CATALAXIA_MISSING_INPUT,idem
+income,EBITDA,EBITDA,256694000000.0,cd65d303f911d8667c16ae7f3ceb868b1997fcc9bd41305be5c08e75b65e0dcc,aeecde6f4210b6c8c4f41751a4567beb24bf9588f8d1c7a37acaa81ab6441966,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,"codigo 8000004, publicado por la CNV"
+income,EBITDAR,,,,,,CATALAXIA_MISSING_INPUT,requiere separar alquileres
+income,Effective Tax Rate,IncomeTax/PretaxIncome,,,,,DERIVABLE,derivable
+balance,Cash & Equivalents,Cash,116132000000.0,ee2242f1cd02d32e5189012fec19aef2de5f1bb25573191c96091d90d0f6c13a,1c9bcfcf2e9da9716e6fac984449246a2b2212bfe769b2c3240b898dcec4e52b,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,codigo 1122500
+balance,Short-Term Investments,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+balance,Accounts Receivable,Receivables,199890000000.0,3b6d60605463f3615d192d57218738e5702340580c9724db01f969e9016d01d3,9d48215960ef026ee37faa46dd63c8d0df98761462067da56db2cc9880c9a2e8,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,codigo 1121999 (agrega comerciales y otros)
+balance,Other Receivables,,,,,,CATALAXIA_MISSING_INPUT,Receivables no esta desagregado
+balance,Inventory,Inventory,,,,,CATALAXIA_MISSING_INPUT,codigo 1120100 · el concepto no esta en FY2025 CONSOLIDADO
+balance,Prepaid Expenses,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+balance,Other Current Assets,,,,,,CATALAXIA_MISSING_INPUT,"derivable por residuo, no publicado"
+balance,Total Current Assets,AssetsCurrent,330646000000.0,62b3446c7eac0dfd3853dfe39cdf499d58f317e5d71570c577fde161df141738,6583fb765f7453fedca0c7edc2a6705c75833836dd28d45550e8a6c497c0671c,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,codigo 1139999
+balance,Gross PP&E,,,,,,CATALAXIA_MISSING_INPUT,CNV publica PPE neto
+balance,Accumulated Depreciation,,,,,,CATALAXIA_MISSING_INPUT,no publicado en el EEFF resumido
+balance,Net PP&E,PPE,1037206000000.0,ff30910972b106101ebcafd5d93051b2772434b350dd20c400fe3c55c3a81b1a,eed77f4f6ef9d2b890133fa18823bf75d0bb7377ef4d9abe1d2a719be503653c,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,codigo 1110100
+balance,Other Intangibles,Intangibles,18253000000.0,4fe6675c1a69244f4c6865f211dfbb9f8399976ed930738df9750e05536b22fd,3e2372a2187c156a73664e292357a6a8b58719233711318f26e4281c93249a24,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,codigo 1110200
+balance,Long-Term Investments,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+balance,Long-Term Receivables,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+balance,Deferred Tax Assets,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+balance,Other Long-Term Assets,,,,,,CATALAXIA_MISSING_INPUT,"derivable por residuo, no publicado"
+balance,Total Assets,Assets,1390076000000.0,367a864cffe50127b7864e288fb4da8bd8189b0d165228bc06b392c79b08ac47,bb02fe8473852bc721f126be847fe058f6d444c86b5d044f3723082d3f8bd836,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,codigo 1999999
+balance,Accounts Payable,Payables,145428000000.0,d4949edded3aa93c3a49aa31dc29f2011d318e3457672eae7129bd136404d893,afc5281a430aff619e30246fe92e0927e4b82b3033e7470662285eec591ba4b6,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,codigo 2321999
+balance,Accrued Expenses,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+balance,Current Portion Long-Term Debt,DebtCurrent,71079000000.0,e2896fc42c609c5aca68571cf680c5745ec313f754e5dd1feb190bbf92b05cd0,dee77c5479a1c93bce7012fe6b8617cd9fea471a9bcad2c2351984a32c971d8b,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,codigo 2322200
+balance,Current Lease Obligations,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+balance,Current Income Taxes Payable,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+balance,Unearned Revenue,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+balance,Other Current Liabilities,,,,,,CATALAXIA_MISSING_INPUT,"derivable por residuo, no publicado"
+balance,Total Current Liabilities,LiabilitiesCurrent,247455000000.0,19111e190541731d51ba4a60bf8b3e5ae361fd052732b2ad9c64cb18e1ea608b,2024ba447c5c41d73c2bc6a6acdf4eddc8ee23c43b0663c0d8d6ce2d4bcaebff,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,codigo 2339999
+balance,Long-Term Debt,DebtNonCurrent,73480000000.0,d3cbe48283d0eb29247a6c65096cac4b504a303e365716aee9641207a37e4679,c67e80f0edae830c15a59ec7b8715f69f48fccb129e8850aac8f3357145fbf7c,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,codigo 2312300
+balance,Capital Leases,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+balance,Deferred Tax Liabilities,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+balance,Other Non-Current Liabilities,,,,,,CATALAXIA_MISSING_INPUT,"derivable por residuo, no publicado"
+balance,Total Liabilities,Liabilities,429731000000.0,5702779be39c01459f74e86c2ab66f8c98b50903cf4feee3fcecca69f7187003,f2eb0adb036a81abcf1527d9787fc954f173b4949a5b053823fcdcb8723439c0,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,codigo 2399999
+balance,Common Stock,Capital,569000000.0,9f313a0633212146d4eb1ab6cd01535fafe131b12657ef5836404db89da0f454,6c38fcc5231ca04e2755e9d4114829c036be99e118117edc1475b09ad1e5f929,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,codigo 2210999
+balance,Retained Earnings,ResultadosNoAsignados,130656000000.0,bde16f85342009ce168cd46c09e3ec94bacd6bb5f4e9937b23c706b4f4d5fa76,3fd2af7dca40bc2e504c6027e0bec61f48975df29018cbfb992117cdedbb0b4b,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,codigo 2212999
+balance,Other Comprehensive Income / Other Equity,,,,,,CATALAXIA_MISSING_INPUT,Reservas existe pero no equivale; ver el hueco de 348.587 MM en §5
+balance,Common Equity,,,,,,CATALAXIA_MISSING_INPUT,requiere separar participacion minoritaria
+balance,Minority Interest,,,,,,CATALAXIA_MISSING_INPUT,NO existe como concepto
+balance,Total Equity,Equity,960345000000.0,5f3978cf92442610265b8e60622ae89c6501389ec7bc1c82520a65fc15c5c19e,5fa5dc63a0765161920c0f6d44eb98f59840e102354b8cf86f8551f4f3a8505b,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,codigo 2299999
+balance,Total Liabilities + Equity,Liabilities+Equity,,,,,DERIVABLE,derivable
+balance,Book Value / Share,,,,,,CATALAXIA_MISSING_INPUT,requiere numero de acciones
+balance,Tangible Book Value,Equity-Intangibles,,,,,DERIVABLE,derivable
+balance,Tangible Book Value / Share,,,,,,CATALAXIA_MISSING_INPUT,requiere numero de acciones
+balance,Total Debt,DebtCurrent+DebtNonCurrent,,,,,DERIVABLE,derivable
+balance,Net Debt,DebtCurrent+DebtNonCurrent-Cash,,,,,DERIVABLE,derivable
+balance,Land,,,,,,CATALAXIA_MISSING_INPUT,PPE no esta desagregado
+balance,Buildings,,,,,,CATALAXIA_MISSING_INPUT,idem
+balance,Construction in Progress,,,,,,CATALAXIA_MISSING_INPUT,idem
+cashflow,Net Income,NetIncome,132483000000.0,2f7d72b238de410b7aaf1ba5481999e6e1101af2c727cbc225b6621526fd7a4f,66d469d1afa31447a424d8a7bed7f24c41f89af8dd376cbdc8d6aa308ecbc330,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,codigo 3049999
+cashflow,D&A,DA,-60383000000.0,60e67801087b4f2cb629f9d1503c983b6c06cfde5c5a0591c280bf6fda034a88,3ad1fac73ace275cec87143e0edb803ee55b90d1c326059ae17d5a0500278794,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,codigo 3011600
+cashflow,Total D&A,DA,-60383000000.0,60e67801087b4f2cb629f9d1503c983b6c06cfde5c5a0591c280bf6fda034a88,3ad1fac73ace275cec87143e0edb803ee55b90d1c326059ae17d5a0500278794,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,un solo renglon en CNV
+cashflow,Deferred charges amortization,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+cashflow,Gain/Loss on asset sale,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+cashflow,Change in Accounts Receivable,,,,,,CATALAXIA_MISSING_INPUT,"derivable entre balances, no publicado como flujo"
+cashflow,Change in Inventory,,,,,,CATALAXIA_MISSING_INPUT,idem
+cashflow,Change in Accounts Payable,,,,,,CATALAXIA_MISSING_INPUT,idem
+cashflow,Change in Income Taxes,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+cashflow,Change in Deferred Taxes,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+cashflow,Change in Other Operating Assets,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+cashflow,Other Operating Activities,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+cashflow,Cash From Operations,CF_Operativo,89042000000.0,ca9eb4af37c592a3050d919adcfe4fa1fc8536fe21b92437dd51321843af1eed,a86a1d554781e3d16e44dcdd38d9bc503f0336563899b6fc773c909bd7712691,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,codigo 3241100
+cashflow,Capex,CapEx, , , , ,PROXY_ACCEPTED,"CNV does not isolate CapEx; CF_Inversion accepted as CapEx proxy per user adoption on 2026-09-02"
+cashflow,Purchase/Sale of Intangibles,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+cashflow,Purchase/Sale of Real Estate,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+cashflow,Investment in securities,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+cashflow,Other Investing Activities,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+cashflow,Cash From Investing,CF_Inversion,-58733000000.0,15a0676186fc21f6e8f03de1c3021f8d3b19d70f27d2c166df658a1f6a241c62,de138f19e2a4933045e9dcb44120d31989c89fdb63395f822de2d675a3db9de6,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,codigo 3241200
+cashflow,Debt Issued,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+cashflow,Debt Repaid,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+cashflow,Dividends,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+cashflow,Other Financing Activities,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+cashflow,Cash From Financing,CF_Financiacion,-42338000000.0,2b073b5e050de26c9598d48427ebbe3777cce849c2465eb657a2b2d64ff4b3d6,9dcb54c010d6a2a366e38142f1ae5eb1810ecdcf5d63231eda07ec52e1a0ec54,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,codigo 3241300
+cashflow,FX Adjustment,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+cashflow,Other Cash Flow Adjustments,,,,,,CATALAXIA_MISSING_INPUT,RECPAM existe pero no equivale
+cashflow,Net Change in Cash,CashFlowNeto,-12029000000.0,818deb9fe7bd4067a03c231cf1d89086c94c98a8235714807e89121c19b2b3dc,dce33d1cb01b4892a8c56b1367ee0cd3835d83963ce6040b3b93ac3c36906169,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,codigo 3240000
+cashflow,Free Cash Flow,FreeCashFlow,30309000000.0,,,,DERIVABLE,"Derived as CF_Operativo + CF_Inversion (CF_Inversion used as proxy for CapEx); see METR_TIKR_2025_PROVENANCE entry 'FreeCashFlow_proxy'"
+cashflow,Cash Beginning,Cash del periodo anterior,,,,,DERIVABLE,derivable
+cashflow,Cash Ending,Cash,116132000000.0,ee2242f1cd02d32e5189012fec19aef2de5f1bb25573191c96091d90d0f6c13a,1c9bcfcf2e9da9716e6fac984449246a2b2212bfe769b2c3240b898dcec4e52b,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,SOURCE_FACT_AVAILABLE,codigo 1122500
+cashflow,Cash Interest Paid,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+cashflow,Cash Taxes Paid,,,,,,CATALAXIA_MISSING_INPUT,sin renglon equivalente
+cashflow,Cash Flow per Share,,,,,,CATALAXIA_MISSING_INPUT,requiere numero de acciones
+ratio,ROA,NetIncome/Assets_prom,,,,,DERIVABLE,derivable
+ratio,ROIC / Return on Capital,,,,,,CATALAXIA_MISSING_INPUT,requiere capital invertido desagregado
+ratio,ROE,NetIncome/Equity_prom,,,,,DERIVABLE,derivable
+ratio,Return on Common Equity,,,,,,CATALAXIA_MISSING_INPUT,requiere Common Equity
+ratio,Gross Margin,GrossProfit/Revenue,,,,,DERIVABLE,derivable
+ratio,SG&A Margin,,,,,,CATALAXIA_MISSING_INPUT,requiere SG&A
+ratio,EBITDA Margin,EBITDA/Revenue,,,,,DERIVABLE,derivable
+ratio,EBITA Margin,,,,,,CATALAXIA_MISSING_INPUT,requiere amortizacion separada de depreciacion
+ratio,EBIT Margin,EBIT/Revenue,,,,,DERIVABLE,derivable
+ratio,Operating Income Margin,OperatingIncome/Revenue,,,,,DERIVABLE,derivable
+ratio,Net Margin,NetIncome/Revenue,,,,,DERIVABLE,derivable
+ratio,Normalized Net Margin,,,,,,TIKR_DERIVED_NOT_REPRODUCIBLE,requiere normalizacion TIKR
+ratio,Common Stockholder Margin,,,,,,CATALAXIA_MISSING_INPUT,requiere Minority Interest
+ratio,Levered FCF Margin,,,,,,CATALAXIA_MISSING_INPUT,requiere FCF
+ratio,Unlevered FCF Margin,,,,,,CATALAXIA_MISSING_INPUT,requiere FCF
+ratio,Asset Turnover,Revenue/Assets_prom,,,,,DERIVABLE,derivable
+ratio,Fixed Asset Turnover,Revenue/PPE_prom,,,,,DERIVABLE,derivable
+ratio,Accounts Receivable Turnover,Revenue/Receivables_prom,,,,,DERIVABLE,derivable
+ratio,Inventory Turnover,COGS/Inventory_prom,,,,,DERIVABLE,derivable
+ratio,Working Capital Turnover,Revenue/WorkingCapital,,,,,DERIVABLE,derivable
+ratio,Current Ratio,AssetsCurrent/LiabilitiesCurrent,,,,,DERIVABLE,derivable
+ratio,Quick Ratio,(AssetsCurrent-Inventory)/LiabilitiesCurrent,,,,,DERIVABLE,derivable
+ratio,Dividend Yield,,,,,,CATALAXIA_MISSING_INPUT,requiere dividendos y precio
+ratio,Operating Cash Flow / Current Liabilities,CF_Operativo/LiabilitiesCurrent,,,,,DERIVABLE,derivable
+ratio,DSO,Receivables/Revenue*365,,,,,DERIVABLE,derivable
+ratio,DIO,Inventory/COGS*365,,,,,DERIVABLE,derivable
+ratio,DPO,Payables/COGS*365,,,,,DERIVABLE,derivable
+ratio,Cash Conversion Cycle,DSO+DIO-DPO,,,,,DERIVABLE,derivable
+ratio,Debt / Equity,TotalDebt/Equity,,,,,DERIVABLE,derivable
+ratio,Debt / Total Capital,TotalDebt/(TotalDebt+Equity),,,,,DERIVABLE,derivable
+ratio,Total Liabilities / Total Assets,Liabilities/Assets,,,,,DERIVABLE,derivable
+ratio,EBIT / Interest Expense,EBIT/InterestExpense,,,,,DERIVABLE,derivable
+ratio,EBITDA / Interest Expense,EBITDA/InterestExpense,,,,,DERIVABLE,derivable
+ratio,(EBITDA - Capex) / Interest Expense,EBITDA_minus_Capex_over_Interest,3.7703,,,,DERIVABLE,"Derived using CapEx proxy (abs(CF_Inversion)=58.733 MM); (EBITDA - Capex) / Interest = 3.7703; provenance METR_TIKR_2025_PROVENANCE.csv"
+ratio,FFO / Interest,,,,,,CATALAXIA_MISSING_INPUT,requiere FFO
+ratio,FFO / Total Debt,,,,,,CATALAXIA_MISSING_INPUT,requiere FFO
+ratio,Total Debt / EBITDA,TotalDebt/EBITDA,,,,,DERIVABLE,derivable
+ratio,Net Debt / EBITDA,NetDebt/EBITDA,,,,,DERIVABLE,derivable
+ratio,Net Debt / (EBITDA - Capex),NetDebt_over_EBITDA_minus_Capex,0.1437,,,,DERIVABLE,"Derived using CapEx proxy (abs(CF_Inversion)=58.733 MM); NetDebt/(EBITDA-Capex)=0.1437; provenance METR_TIKR_2025_PROVENANCE.csv"
+segment,MetroENERGY Marketing · Operating Revenue,,,,,,CATALAXIA_MISSING_INPUT,CNV EEFF no trae dimension de segmento
+segment,MetroGAS Distribution · Operating Revenue,,,,,,CATALAXIA_MISSING_INPUT,idem
+segment,Segment Total · Operating Revenue,,,,,,CATALAXIA_MISSING_INPUT,idem
+segment,Eliminations,,,,,,CATALAXIA_MISSING_INPUT,idem
+segment,Segmentos · Operating Income,,,,,,CATALAXIA_MISSING_INPUT,idem
+segment,Segmentos · Net Income Common,,,,,,CATALAXIA_MISSING_INPUT,idem
+segment,Segmentos · Total Assets,,,,,,CATALAXIA_MISSING_INPUT,idem
+segment,Geographic · Argentina,,,,,,CATALAXIA_MISSING_INPUT,idem

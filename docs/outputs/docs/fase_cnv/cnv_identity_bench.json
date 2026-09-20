@@ -1,0 +1,128 @@
+{
+  "ok": true,
+  "controles": [
+    {
+      "caso": "YPF   por CUIT",
+      "esperado": "AUTORITATIVO",
+      "obtenido": "AUTORITATIVO",
+      "ok": true,
+      "entity_key": "E01M0X99C8F87H9TH9N39H2D1NW",
+      "cuit": "30546689979",
+      "cik": "0000904851"
+    },
+    {
+      "caso": "YPF   por CIK ",
+      "esperado": "AUTORITATIVO",
+      "obtenido": "AUTORITATIVO",
+      "ok": true,
+      "entity_key": "E01M0X99C8F87H9TH9N39H2D1NW",
+      "cuit": "30546689979",
+      "cik": "0000904851"
+    },
+    {
+      "caso": "TGS   por CUIT",
+      "esperado": "AUTORITATIVO",
+      "obtenido": "AUTORITATIVO",
+      "ok": true,
+      "entity_key": "E01M0X99G29RBSSFSGAM5S1QZMT",
+      "cuit": "30657862068",
+      "cik": "0000931427"
+    },
+    {
+      "caso": "TGS   por CIK ",
+      "esperado": "AUTORITATIVO",
+      "obtenido": "AUTORITATIVO",
+      "ok": true,
+      "entity_key": "E01M0X99G29RBSSFSGAM5S1QZMT",
+      "cuit": "30657862068",
+      "cik": "0000931427"
+    },
+    {
+      "caso": "CEPU  por CUIT",
+      "esperado": "AUTORITATIVO",
+      "obtenido": "AUTORITATIVO",
+      "ok": true,
+      "entity_key": "E01M0X99DQ7P5TQ4Z6Z58RC5PB3",
+      "cuit": "33650305499",
+      "cik": "0001717161"
+    },
+    {
+      "caso": "CEPU  por CIK ",
+      "esperado": "AUTORITATIVO",
+      "obtenido": "AUTORITATIVO",
+      "ok": true,
+      "entity_key": "E01M0X99DQ7P5TQ4Z6Z58RC5PB3",
+      "cuit": "33650305499",
+      "cik": "0001717161"
+    },
+    {
+      "caso": "GGAL  por CUIT",
+      "esperado": "CUIT_NO_AUTORITATIVO",
+      "obtenido": "CUIT_NO_AUTORITATIVO",
+      "ok": true,
+      "entity_key": "E01M0X99EXSQTYKWZMDEMMBX8QY",
+      "cuit": "30704962807",
+      "cik": "0001114700"
+    },
+    {
+      "caso": "GGAL  por CIK ",
+      "esperado": "CUIT_NO_AUTORITATIVO",
+      "obtenido": "CUIT_NO_AUTORITATIVO",
+      "ok": true,
+      "entity_key": "E01M0X99EXSQTYKWZMDEMMBX8QY",
+      "cuit": "30704962807",
+      "cik": "0001114700"
+    },
+    {
+      "caso": "CUIT inexistente",
+      "esperado": "NO_ESTA_EN_IDENTITY_V1",
+      "obtenido": "NO_ESTA_EN_IDENTITY_V1",
+      "ok": true,
+      "entity_key": null,
+      "cuit": null,
+      "cik": null
+    },
+    {
+      "caso": "CIK  sin CUIT (AAPL)",
+      "esperado": "SIN_CUIT",
+      "obtenido": "SIN_CUIT",
+      "ok": true,
+      "entity_key": "E01M13XBSM8ZWPXACZAG2H149JX",
+      "cuit": null,
+      "cik": "0000320193"
+    },
+    {
+      "caso": "YPF: --cuit == --cik",
+      "ok": true
+    },
+    {
+      "caso": "TGS: --cuit == --cik",
+      "ok": true
+    },
+    {
+      "caso": "CEPU: --cuit == --cik",
+      "ok": true
+    },
+    {
+      "caso": "GGAL bloquea en load_identity",
+      "ok": true,
+      "mensaje": "BLOCK identidad [CUIT_NO_AUTORITATIVO]: GRUPO FINANCIERO GALICIA S.A.: tiene 7 identificador(es) CUIT vigente(s) (30704962807) pero NINGUNO es autoritativo y ACTIVE. autoritativos=0 estados_identificador=[ACTIVE] estados_assertion=[CANDIDATE]. La ingesta CNV exige un identificador autoritativo: atribuir documentos con un CUIT no autoritativo es la atribucion cruzada que hay que evitar."
+    },
+    {
+      "caso": "YPF via load_identity",
+      "ok": true,
+      "ident": {
+        "cuit": "30546689979",
+        "entity_key": "E01M0X99C8F87H9TH9N39H2D1NW",
+        "legal_name": "YPF SOCIEDAD ANONIMA",
+        "binding": "IDENTITY_V1_AUTORITATIVO",
+        "cik": "0000904851",
+        "cuit_assertion": 345,
+        "cuit_method": "REGISTRY",
+        "findings": [
+          "el legacy identity.entities no tiene fila para el CUIT 30546689979. No bloquea: la identidad la resuelve identity_v1."
+        ]
+      }
+    }
+  ]
+}

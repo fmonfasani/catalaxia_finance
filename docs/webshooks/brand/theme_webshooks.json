@@ -1,0 +1,86 @@
+{
+  "brand": "webshooks",
+  "wordmark": {
+    "text": "webshooks.",
+    "parts": [
+      { "text": "web", "color": "#3B82F6" },
+      { "text": "shooks", "color": "#1A2744" },
+      { "text": ".", "color": "#F5821F" }
+    ]
+  },
+  "fonts": {
+    "primary": "Calibri",
+    "secondary": "Calibri",
+    "title": "Calibri",
+    "body": "Calibri",
+    "mono": "Consolas"
+  },
+  "colors": {
+    "navy": "#1A2744",
+    "navy_deep": "#10192E",
+    "blue": "#3B82F6",
+    "blue_dark": "#1A4D8F",
+    "orange": "#F5821F",
+    "green": "#43A047",
+    "body": "#3A4458",
+    "gray": "#6B7589",
+    "gray_light": "#AAB4C8",
+    "tint_blue": "#DCEAFF",
+    "tint_green": "#E7F7EC",
+    "surface": "#F4F8FE",
+    "border": "#D6E2F2",
+    "white": "#FFFFFF",
+    "primary": "#1A2744",
+    "secondary": "#3B82F6",
+    "accent": "#F5821F",
+    "success": "#43A047",
+    "title": "#1A2744",
+    "links": "#3B82F6",
+    "code_bg": "#F1F5FB",
+    "highlight": "#FFF2CC",
+    "table_header": "#1A2744",
+    "table_text": "#3A4458",
+    "header": "#1A2744",
+    "footer": "#6B7589",
+    "box": "#F4F8FE",
+    "background": "#FFFFFF"
+  },
+  "tables": {
+    "header_fill": "#1A2744",
+    "header_font": "#FFFFFF",
+    "zebra": "#F4F8FE",
+    "border": "#D6E2F2",
+    "autofit": true
+  },
+  "headings": {
+    "h1": { "size": 18, "bold": true, "color": "#1A2744" },
+    "h2": { "size": 14, "bold": true, "color": "#3B82F6" },
+    "h3": { "size": 12, "bold": true, "color": "#1A2744" },
+    "h4": { "size": 11, "bold": true, "color": "#6B7589" }
+  },
+  "body": { "size": 10.5, "color": "#3A4458", "line": 1.15 },
+  "cover": {
+    "title": { "size": 34, "bold": true, "color": "#1A2744" },
+    "subtitle": { "size": 14, "color": "#3B82F6" },
+    "meta": { "size": 11, "color": "#6B7589" }
+  },
+  "header": {
+    "logo": "logo/webshooks-wordmark-color.png",
+    "show_wordmark": true,
+    "rule_color": "#F5821F"
+  },
+  "footer": {
+    "text": "webshooks.com",
+    "page_number": true,
+    "rule_color": "#D6E2F2",
+    "color": "#6B7589"
+  },
+  "logo": {
+    "horizontal": "logo/webshooks-logo-horizontal-color.png",
+    "wordmark": "logo/webshooks-wordmark-color.png",
+    "wordmark_white": "logo/webshooks-wordmark-white.png",
+    "mark": "logo/webshooks-mark-color.png",
+    "favicon": "logo/webshooks-favicon.ico",
+    "variant": "default"
+  }
+}

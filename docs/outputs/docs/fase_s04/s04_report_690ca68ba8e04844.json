@@ -1,0 +1,84 @@
+{
+  "stage": "S04_normalize",
+  "run_id": "690ca68ba8e048449b5a41fff385ecbe",
+  "mode": "FAST",
+  "started_at": "2026-08-31T18:00:15.122987+00:00",
+  "finished_at": "2026-08-31T18:01:23.784828+00:00",
+  "code": {
+    "script": "scripts/engine/s04_normalize.py",
+    "normalizer_version": "s04_normalize_v1",
+    "git_commit": "e9d794b85a487d461018f243066293168638012c"
+  },
+  "input": {
+    "stage": "S03_parse",
+    "checkpoint_id": "d2de627da615411d-s03",
+    "run_id": "d2de627da615411d9d0008e170583c98",
+    "rows": 67084
+  },
+  "coverage": {
+    "grupos": 47930,
+    "emitidos": 0,
+    "sin_contexto": 0,
+    "sin_entidad": 67084,
+    "sin_unidad": 0,
+    "unidad_no_resuelta": 0,
+    "desempates": {}
+  },
+  "integrity": {
+    "hash_in": "65427093ebd4f49eecf5b339cabfb00c34a448a959a6dc4ec35df8434e99edaf",
+    "hash_out": "d860d15abaaf38e81d0acd510de90df33858e67fd2456c5081e155dc162eab78",
+    "hash_out_v1": "7b802bf4cd744cbbe5f74b54300e09ca9808f89f344b01adb2ce12f3822ccd29",
+    "hash_spec": "hashout-v2",
+    "por_tabla": {
+      "derived.fact": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "nulls": {
+    "count": 67084
+  },
+  "gate": {
+    "status": "BLOCK",
+    "checks": [
+      {
+        "id": "C-S04-001",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-002",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-003",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-004",
+        "result": "FAIL"
+      },
+      {
+        "id": "C-S04-005",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-006",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-007",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-008",
+        "result": "FAIL"
+      },
+      {
+        "id": "C-S04-009",
+        "result": "PASS"
+      }
+    ],
+    "reasons": [
+      "CIK sin entidad en identity_v1: ['0000904851']",
+      "persistidos=0 recomputados=0 huella_igual=False"
+    ]
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "ok": true,
+  "controles": [
+    {
+      "control": "0.1 · ningun pipeline en vuelo durante la auditoria",
+      "ok": true,
+      "critico": true,
+      "detalle": "0 corridas RUNNING"
+    },
+    {
+      "control": "0.2 · el universo tiene mas de un emisor (si no, F-054 no se prueba)",
+      "ok": true,
+      "critico": true,
+      "detalle": "8 emisores"
+    },
+    {
+      "control": "1.1 · ningun puntero resuelve a un hecho de OTRA empresa",
+      "ok": true,
+      "critico": true,
+      "detalle": "0 de 135,077 punteros"
+    },
+    {
+      "control": "1.2 · ningun puntero queda colgado",
+      "ok": true,
+      "critico": true,
+      "detalle": "0 de 135,077 punteros"
+    },
+    {
+      "control": "2.1 · los rangos de fact_id no se solapan entre emisores",
+      "ok": true,
+      "critico": true,
+      "detalle": "8 emisores, 0 solapes "
+    },
+    {
+      "control": "2.2 · la secuencia de fact_id no fue reiniciada",
+      "ok": true,
+      "critico": true,
+      "detalle": "secuencia=232357 max(fact_id)=232357"
+    },
+    {
+      "control": "2.3 · fact_id es unico en toda la tabla",
+      "ok": true,
+      "critico": true,
+      "detalle": "0 repetidos"
+    },
+    {
+      "control": "3.1 · ningun hecho derivado cita un filing distinto del suyo",
+      "ok": true,
+      "critico": true,
+      "detalle": "0 punteros cruzan accession"
+    },
+    {
+      "control": "3.2 · el concepto citado coincide con el del hecho derivado",
+      "ok": true,
+      "critico": true,
+      "detalle": "0 punteros cambian de concepto"
+    },
+    {
+      "control": "4.1 · la corrida S02 elegida por CIK no contiene otro emisor",
+      "ok": true,
+      "critico": true,
+      "detalle": "8 emisores verificados "
+    },
+    {
+      "control": "5.1 · no quedan contextos contradictorios bajo la regla canonica",
+      "ok": true,
+      "critico": true,
+      "detalle": "0 contextos"
+    },
+    {
+      "control": "5.2 · la correccion absorbio falsos positivos reales",
+      "ok": true,
+      "critico": false,
+      "detalle": "3562 eran falsos contradictorios"
+    },
+    {
+      "control": "6.1 · ningun hecho depende de un contexto descartable",
+      "ok": true,
+      "critico": true,
+      "detalle": "0 hechos"
+    },
+    {
+      "control": "6.2 · derived tiene exactamente un hecho por grupo canonico de parsed",
+      "ok": true,
+      "critico": true,
+      "detalle": "todos coinciden"
+    },
+    {
+      "control": "6.3 · hay emisores con doble representacion (inline + instancia)",
+      "ok": true,
+      "critico": false,
+      "detalle": "['0000320193', '0000789019', '0000904851', '0001045810', '0001114700']"
+    },
+    {
+      "control": "6.4 · derived declara cuantas fuentes colapso en cada hecho",
+      "ok": true,
+      "critico": true,
+      "detalle": "n_fuentes=1:46,919, n_fuentes=2:40,019, n_fuentes=3:251, n_fuentes=4:1,257, n_fuentes=5:1, n_fuentes=6:215, n_fuentes=8:113, n_fuentes=10:14"
+    }
+  ]
+}

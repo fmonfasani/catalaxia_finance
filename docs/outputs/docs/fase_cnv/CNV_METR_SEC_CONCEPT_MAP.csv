@@ -1,0 +1,27 @@
+concepto_sec,concepto_cnv,relacion
+Assets,1999999 TOTAL DEL ACTIVO,equivalente
+AssetsCurrent,1139999 TOTAL DEL ACTIVO CORRIENTE,equivalente
+Liabilities,2399999 TOTAL DEL PASIVO,equivalente
+LiabilitiesCurrent,2339999 TOTAL DEL PASIVO CORRIENTE,equivalente
+Equity,2299999 TOTAL DEL PATRIMONIO NETO,equivalente
+CashAndCashEquivalents,1122500 EFECTIVO Y EQUIVALENTES,equivalente
+Inventories,1120100 EXISTENCIAS,equivalente
+Revenue,3000100 INGRESOS,equivalente
+GrossProfit,3009999 GANANCIA BRUTA,equivalente
+ProfitLossFromOperatingActivities,3019999 RESULTADO OPERATIVO,equivalente
+ProfitLoss,3049999 GANANCIA (PERDIDA) DEL EJERCICIO,equivalente
+IncomeTaxExpense,3031100 IMPUESTO A LAS GANANCIAS,equivalente
+FinanceCosts,3021500 COSTOS FINANCIEROS,equivalente
+BasicEarningsLossPerShare,8000000 GANANCIA BASICA POR ACCION,equivalente
+CashFlowsFromOperatingActivities,3241100 TOTAL CAMBIOS EN ACTIVOS Y PASIVOS OPERATIVOS,equivalente con reserva: la CNV publica el subtotal
+Borrowings,2322200 + 2312300 PASIVOS FINANCIEROS,perimetro mas amplio
+—,3021800 RECPAM,solo CNV: resultado por exposicion a la inflacion (IAS 29)
+—,8000003 EBIT / 8000004 EBITDA,solo CNV: la CNV los publica como concepto
+—,8000005 CAPITAL DE TRABAJO,solo CNV
+—,8000006..8000029 (14 ratios),solo CNV: ratios publicados por el emisor
+—,8000002 PATRIMONIO DEL EJERCICIO ANTERIOR,solo CNV: comparativo reexpresado
+WeightedAverageShares,—,solo SEC: la CNV no publica cantidad de acciones
+PaymentsToAcquirePropertyPlantAndEquipment,—,solo SEC: no hay capex en CNV
+PropertyPlantAndEquipmentGross,—,solo SEC: la CNV publica el neto
+AccumulatedDepreciation,—,solo SEC
+DividendsCommonStock,—,solo SEC: no hay codigo de dividendos en CNV

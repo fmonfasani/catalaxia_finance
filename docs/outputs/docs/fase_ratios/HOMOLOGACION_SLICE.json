@@ -1,0 +1,280 @@
+{
+  "filas": 32,
+  "recalculo": [
+    {
+      "cik": "0000320193",
+      "ratio": "eps",
+      "publicado": "7.49",
+      "manual": "7.490000000000",
+      "dif_relativa": "0",
+      "ok": true
+    },
+    {
+      "cik": "0000320193",
+      "ratio": "ev_sales",
+      "publicado": "11.29879",
+      "manual": "11.298790465103",
+      "dif_relativa": "4.116394034545071119829417938395594729783E-8",
+      "ok": true
+    },
+    {
+      "cik": "0000320193",
+      "ratio": "pb",
+      "publicado": "63.029742",
+      "manual": "63.029741618375",
+      "dif_relativa": "6.054686470302776808020618986400458517247E-9",
+      "ok": true
+    },
+    {
+      "cik": "0000320193",
+      "ratio": "pe",
+      "publicado": "41.999998",
+      "manual": "41.999998264352",
+      "dif_relativa": "6.294106687721364805066254898154155623383E-9",
+      "ok": true
+    },
+    {
+      "cik": "0000789019",
+      "ratio": "eps",
+      "publicado": "18.0",
+      "manual": "18.000000000000",
+      "dif_relativa": "0",
+      "ok": true
+    },
+    {
+      "cik": "0000789019",
+      "ratio": "ev_sales",
+      "publicado": "11.362256",
+      "manual": "11.362255808226",
+      "dif_relativa": "1.687813800628051482900839220177991567605E-8",
+      "ok": true
+    },
+    {
+      "cik": "0000789019",
+      "ratio": "pb",
+      "publicado": "8.479184",
+      "manual": "8.479183622362",
+      "dif_relativa": "4.453703281417424865204424464688393600130E-8",
+      "ok": true
+    },
+    {
+      "cik": "0000789019",
+      "ratio": "pe",
+      "publicado": "28.058889",
+      "manual": "28.058888777778",
+      "dif_relativa": "7.919851138161213076312569105898503567490E-9",
+      "ok": true
+    },
+    {
+      "cik": "0000904851",
+      "ratio": "eps",
+      "publicado": "-2.11",
+      "manual": "-2.110000000000",
+      "dif_relativa": "0",
+      "ok": true
+    },
+    {
+      "cik": "0000904851",
+      "ratio": "ev_sales",
+      "publicado": "1.599221",
+      "manual": "1.599221042424",
+      "dif_relativa": "2.652798449327390433641651253378667208340E-8",
+      "ok": true
+    },
+    {
+      "cik": "0000904851",
+      "ratio": "pb",
+      "publicado": "1.835993",
+      "manual": "1.835993137659",
+      "dif_relativa": "7.497772616475702147347116062691898829893E-8",
+      "ok": true
+    },
+    {
+      "cik": "0000931427",
+      "ratio": "eps",
+      "publicado": "559.09",
+      "manual": "559.090000000000",
+      "dif_relativa": "0",
+      "ok": true
+    },
+    {
+      "cik": "0000931427",
+      "ratio": "ev_sales",
+      "publicado": "4.507306",
+      "manual": "4.507306441081",
+      "dif_relativa": "9.785903786880243576152713861649811391449E-8",
+      "ok": true
+    },
+    {
+      "cik": "0000931427",
+      "ratio": "pb",
+      "publicado": "2.191237",
+      "manual": "2.191237349113",
+      "dif_relativa": "1.593223879171470411853457114695940658674E-7",
+      "ok": true
+    },
+    {
+      "cik": "0000931427",
+      "ratio": "pe",
+      "publicado": "16.285392",
+      "manual": "16.285392333971",
+      "dif_relativa": "2.050741350906095551894563426688609348710E-8",
+      "ok": true
+    },
+    {
+      "cik": "0001045810",
+      "ratio": "eps",
+      "publicado": "4.93",
+      "manual": "4.930000000000",
+      "dif_relativa": "0",
+      "ok": true
+    },
+    {
+      "cik": "0001045810",
+      "ratio": "ev_sales",
+      "publicado": "25.64944",
+      "manual": "25.649440222582",
+      "dif_relativa": "8.677866104750911202910558750454648560440E-9",
+      "ok": true
+    },
+    {
+      "cik": "0001045810",
+      "ratio": "pb",
+      "publicado": "35.226144",
+      "manual": "35.226143711316",
+      "dif_relativa": "8.195168274967476151865489681321000299411E-9",
+      "ok": true
+    },
+    {
+      "cik": "0001045810",
+      "ratio": "pe",
+      "publicado": "46.243407",
+      "manual": "46.243406896552",
+      "dif_relativa": "2.237038375945931677268737209732981134011E-9",
+      "ok": true
+    },
+    {
+      "cik": "0001114700",
+      "ratio": "eps",
+      "publicado": "132.48",
+      "manual": "132.480000000000",
+      "dif_relativa": "0",
+      "ok": true
+    },
+    {
+      "cik": "0001114700",
+      "ratio": "pe",
+      "publicado": "51.932367",
+      "manual": "51.932367149758",
+      "dif_relativa": "2.883720930232558139534883720930220465116E-9",
+      "ok": true
+    },
+    {
+      "cik": "0001347426",
+      "ratio": "eps",
+      "publicado": "452.7535",
+      "manual": "452.753500000000",
+      "dif_relativa": "0",
+      "ok": true
+    },
+    {
+      "cik": "0001717161",
+      "ratio": "eps",
+      "publicado": "230.61",
+      "manual": "230.610000000000",
+      "dif_relativa": "0",
+      "ok": true
+    },
+    {
+      "cik": "0001717161",
+      "ratio": "pb",
+      "publicado": "1.28515",
+      "manual": "1.285149819723",
+      "dif_relativa": "1.402768880682956859794042995036204148162E-7",
+      "ok": true
+    },
+    {
+      "cik": "0001717161",
+      "ratio": "pe",
+      "publicado": "9.392481",
+      "manual": "9.392480811760",
+      "dif_relativa": "2.004155124653739612188365650969528303324E-8",
+      "ok": true
+    }
+  ],
+  "peor_desvio_relativo": "1.593223879171470411853457114695940658674E-7",
+  "formula_versions": [
+    "eps=eps_v1 (FY)",
+    "ev_sales=ev_sales_v1 (FY)",
+    "pb=pb_v1 (PIT)",
+    "pe=pe_v1 (FY)"
+  ],
+  "controles": [
+    {
+      "control": "A-C · los 25 valores publicados se reproducen a mano",
+      "ok": true,
+      "detalle": "25/25 · peor desvio relativo 1.59e-7 (tolerancia 0.000001)"
+    },
+    {
+      "control": "D1 · todo insumo contable de un CALCULADO cita RAW con hash",
+      "ok": true,
+      "detalle": "0 sin cadena"
+    },
+    {
+      "control": "D2 · todo source_fact_id existe en parsed.facts",
+      "ok": true,
+      "detalle": "0 huerfanos"
+    },
+    {
+      "control": "D3 · el hash citado es el que parsed.facts guarda",
+      "ok": true,
+      "detalle": "0 discrepan"
+    },
+    {
+      "control": "E1 · ningun insumo proviene de otro emisor",
+      "ok": true,
+      "detalle": "0 ajenos"
+    },
+    {
+      "control": "E2 · el entity_key de cada fila es el que da identity_v1",
+      "ok": true,
+      "detalle": "0 discrepan"
+    },
+    {
+      "control": "E3 · F-061 sobre los punteros de derived.fact",
+      "ok": true,
+      "detalle": "0 violaciones"
+    },
+    {
+      "control": "F1 · ninguna ventana dice TTM (el motor no lo soporta)",
+      "ok": true,
+      "detalle": "0"
+    },
+    {
+      "control": "F2 · ningun CALCULADO sin moneda ni sin insumos",
+      "ok": true,
+      "detalle": "0"
+    },
+    {
+      "control": "F3 · ningun NOT_CALCULABLE con valor o sin motivo",
+      "ok": true,
+      "detalle": "0"
+    },
+    {
+      "control": "F4 · ninguna identidad vigente duplicada",
+      "ok": true,
+      "detalle": "0"
+    },
+    {
+      "control": "F5 · ninguna corrida colgada",
+      "ok": true,
+      "detalle": "0"
+    },
+    {
+      "control": "F6 · toda fila cita una corrida real",
+      "ok": true,
+      "detalle": "0"
+    }
+  ],
+  "ok": true
+}

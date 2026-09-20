@@ -1,0 +1,110 @@
+{
+  "ok": true,
+  "cik": "0001717161",
+  "fotos": [
+    {
+      "parsed": "0dabd42445ae1e93bd2cd1070523e9fc",
+      "n_parsed": 2791,
+      "lineas_parsed": 11821,
+      "n_derived_filas": 2660,
+      "contextos": "7196bf8253572ce9b3609c9c545065ef",
+      "n_contextos": 778,
+      "derived": "e65aa05863ca71efdc3a09c38ecaee16",
+      "n_derived": 2660,
+      "lineas_derived": 2660,
+      "provenance": "2438fbb48648a1d4616e351d43a848e2",
+      "n_provenance": 11690,
+      "ajenos": 0,
+      "colgados": 0,
+      "rango_ids": "232358-235148",
+      "corrida": 1,
+      "rc_s03": 0,
+      "rc_s04": 0
+    },
+    {
+      "parsed": "0dabd42445ae1e93bd2cd1070523e9fc",
+      "n_parsed": 2791,
+      "lineas_parsed": 11821,
+      "n_derived_filas": 2660,
+      "contextos": "7196bf8253572ce9b3609c9c545065ef",
+      "n_contextos": 778,
+      "derived": "e65aa05863ca71efdc3a09c38ecaee16",
+      "n_derived": 2660,
+      "lineas_derived": 2660,
+      "provenance": "2438fbb48648a1d4616e351d43a848e2",
+      "n_provenance": 11690,
+      "ajenos": 0,
+      "colgados": 0,
+      "rango_ids": "235149-237939",
+      "corrida": 2,
+      "rc_s03": 0,
+      "rc_s04": 0
+    },
+    {
+      "parsed": "0dabd42445ae1e93bd2cd1070523e9fc",
+      "n_parsed": 2791,
+      "lineas_parsed": 11821,
+      "n_derived_filas": 2660,
+      "contextos": "7196bf8253572ce9b3609c9c545065ef",
+      "n_contextos": 778,
+      "derived": "e65aa05863ca71efdc3a09c38ecaee16",
+      "n_derived": 2660,
+      "lineas_derived": 2660,
+      "provenance": "2438fbb48648a1d4616e351d43a848e2",
+      "n_provenance": 11690,
+      "ajenos": 0,
+      "colgados": 0,
+      "rango_ids": "237940-240730",
+      "corrida": 3,
+      "rc_s03": 0,
+      "rc_s04": 0
+    }
+  ],
+  "controles": [
+    {
+      "control": "E0 · el re-parseo reproduce el contenido que ya estaba en la base",
+      "ok": true,
+      "detalle": "parsed 2,791->2,791 · derived 2,660->2,660"
+    },
+    {
+      "control": "E1 · contenido de parsed.facts estable entre corridas",
+      "ok": true,
+      "detalle": "0dabd42445ae1e93 vs 0dabd42445ae1e93"
+    },
+    {
+      "control": "E1 · contenido de parsed.contexts estable entre corridas",
+      "ok": true,
+      "detalle": "7196bf8253572ce9 vs 7196bf8253572ce9"
+    },
+    {
+      "control": "E1 · contenido de derived.fact estable entre corridas",
+      "ok": true,
+      "detalle": "e65aa05863ca71ef vs e65aa05863ca71ef"
+    },
+    {
+      "control": "E1 · forma de la provenance estable entre corridas",
+      "ok": true,
+      "detalle": "2438fbb48648a1d4 vs 2438fbb48648a1d4"
+    },
+    {
+      "control": "E2 · sin crecimiento espurio de filas",
+      "ok": true,
+      "detalle": "parsed 2,791=2,791 · derived 2,660=2,660"
+    },
+    {
+      "control": "E3 · sin contaminacion ni punteros colgados en ninguna corrida",
+      "ok": true,
+      "detalle": "c1:0/0, c2:0/0, c3:0/0"
+    },
+    {
+      "control": "E4 · los fact_id AVANZAN en cada corrida (G2 en accion)",
+      "ok": true,
+      "detalle": "232358-235148 → 235149-237939 → 237940-240730"
+    },
+    {
+      "control": "E5 · la base homologada no cambio",
+      "ok": true,
+      "detalle": "135077|88789|8 -> 135077|88789|8"
+    }
+  ]
+}

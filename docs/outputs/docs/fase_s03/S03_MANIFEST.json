@@ -1,0 +1,26 @@
+{
+  "run_id": "9a5d4205df364746bd6b42aa3064b8ab",
+  "git_commit": "2993918fd268d0ffa9184815626fa4e438a46327",
+  "pipeline_version": "engine-v1",
+  "parser_version": "xbrl_parse_v2",
+  "script": "scripts/engine/s03_parse_ypf.py",
+  "generated_at": "2026-09-07T05:40:10.067548+00:00",
+  "input": {
+    "checkpoint": "S02:9a5d4205df364746bd6b42aa3064b8ab",
+    "files_consumed": 536,
+    "bytes_total": 288084501
+  },
+  "outputs": [
+    {
+      "file": "S03_0000021344_PARSE_AUDIT.xlsx",
+      "sha256": "84cf69da6c7f8a1fbb4b06f77bed8b1d35d786623392c86102c63f33a7597fcb",
+      "bytes": 35997257
+    },
+    {
+      "file": "S03_PARSE_REPORT.md",
+      "sha256": "20c037e16671a561d4edb27c7302025a756e163c42eac8e1f6e39fa624614db1",
+      "bytes": 2755
+    }
+  ],
+  "nota": "S03_VALIDATION.json se escribe posterior al manifiesto (contiene el resultado del gate completo)."
+}

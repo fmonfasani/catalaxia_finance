@@ -1,0 +1,61 @@
+﻿campo,tikr,catalaxia,unidad,dif_rel,estado,clasificacion,nota
+Revenue,"47,941.0000","47,941.0000",M,+0.00%,COINCIDE,,
+Gross Profit,"29,544.0000","29,544.0000",M,+0.00%,COINCIDE,,
+Operating Income (us-gaap),"15,028.0000","13,762.0000",M,-8.42%,DIFIERE,,
+EBITDA,"16,078.0000","14,812.0000",M,-7.87%,DIFIERE,,
+Net Income,"13,107.0000","13,107.0000",M,+0.00%,COINCIDE,,
+D&A,"1,050.0000","1,050.0000",M,+0.00%,COINCIDE,,
+Interest Expense,"1,654.0000","1,654.0000",M,+0.00%,COINCIDE,,
+Current Assets,"31,044.0000","31,044.0000",M,+0.00%,COINCIDE,,
+Total Assets,"104,816.0000","104,816.0000",M,+0.00%,COINCIDE,,
+Current Liabilities,"21,281.0000","21,281.0000",M,+0.00%,COINCIDE,,
+Total Liabilities,"70,541.0000","70,541.0000",M,+0.00%,COINCIDE,,
+Common Equity,"32,169.0000","32,169.0000",M,+0.00%,COINCIDE,,
+Total Equity,"34,275.0000","34,275.0000",M,+0.00%,COINCIDE,,
+CFO,"7,408.0000","7,408.0000",M,+0.00%,COINCIDE,,
+CapEx,"2,112.0000","2,112.0000",M,+0.00%,COINCIDE,,
+FCF,"5,296.0000","5,296.0000",M,+0.00%,COINCIDE,,
+Diluted Shares,"4,313.0000","4,313.0000",M,+0.00%,COINCIDE,,
+Basic Shares,"4,303.0000","4,303.0000",M,+0.00%,COINCIDE,,
+Total Debt,"47,914.0000",,M,,NO_PRODUCIBLE,DATO NO UTILIZADO POR EL MOTOR,el tag existe pero solo dimensional en FY2025
+Net Debt,"32,108.0000",,M,,NO_PRODUCIBLE,DEPENDE DE Total Debt,
+Operating Income NORMALIZADO,"15,028.0000","15,027.0000",M,-0.01%,COINCIDE,NORMALIZACION TIKR,us-gaap OperatingIncomeLoss + DisposalGroup...AllowanceForReductionOfAssetsHeldForSale
+EBITDA NORMALIZADO,"16,078.0000","16,077.0000",M,-0.01%,COINCIDE,NORMALIZACION TIKR,EBIT normalizado + D&A
+Precio FY2025,69.9100,69.9100,USD,+0.00%,COINCIDE,PERIODO,Catalaxia tenia el cierre exacto; en el informe anterior use el ultimo precio (89.05999800)
+PER (precio FY / EPS basico),22.9213,22.9213,x,+0.00%,COINCIDE,RECONSTRUIDO,TIKR no lo publica en el extracto; se reconstruye de sus propios datos
+EPS basico,3.0500,3.0500,USD,+0.00%,COINCIDE,,
+EPS diluido,3.0400,3.0400,USD,+0.00%,COINCIDE,,
+Net Margin,27.3000,27.3399,%,+0.15%,COINCIDE,,
+Payout (Div/NI),67.0000,66.9795,%,-0.03%,COINCIDE,,
+Payout (DPS/EPS),67.0000,66.8852,%,-0.17%,DIFIERE,,
+Gross Margin,61.6000,61.6257,%,+0.04%,COINCIDE,,
+EBITDA Margin,33.5000,33.5350,%,+0.10%,COINCIDE,NORMALIZACION TIKR,
+EBIT Margin,31.3000,31.3448,%,+0.14%,COINCIDE,NORMALIZACION TIKR,
+EBIT Margin (us-gaap puro),31.3000,28.7061,%,-8.29%,DIFIERE,DEFINICION,sin la normalizacion de TIKR
+ROE acciones ordinarias,46.0000,45.9693,%,-0.07%,COINCIDE,PROMEDIO,NI / patrimonio comun PROMEDIO
+ROE recursos propios,43.3000,43.3228,%,+0.05%,COINCIDE,PROMEDIO,ProfitLoss / patrimonio total PROMEDIO
+"ROE (cierre, comun)",46.0000,40.7442,%,-11.43%,DIFIERE,CIERRE vs PROMEDIO,
+ROA,9.1000,12.7646,%,+40.27%,DIFIERE,DEFINICION,"no reconstruible: la serie 7,9/8,2/8,7/9,0/9,1 es demasiado suave para tener NI en el numerador; el margen neto va 25,3/22,2/23,4/22,6/27,3. Apunta a resultado NORMALIZADO"
+ROA con NI normalizado (hipotesis),9.1000,9.8513,%,+8.26%,DIFIERE,NORMALIZACION TIKR,"usando el Normalized Net Margin 21,1% que TIKR publica: se acerca pero no cierra"
+Debt/Equity,139.8000,139.7929,%,-0.01%,COINCIDE,VERIFICA IDENTIDAD TIKR,con la deuda de TIKR y NUESTRO patrimonio total
+Liabilities/Assets,67.3000,67.2998,%,-0.00%,COINCIDE,,
+EBIT/Interest,9.0900,9.0852,x,-0.05%,COINCIDE,NORMALIZACION TIKR,
+EBIT/Interest (us-gaap),9.0900,8.3204,x,-8.47%,DIFIERE,DEFINICION,
+EBITDA/Interest,9.9700,9.7201,x,-2.51%,DIFIERE,INCONSISTENCIA EN TIKR,"implica EBITDA ~16.490 M, no los 16.078 M de su propia tabla"
+Debt/EBITDA,2.9100,2.9803,x,+2.42%,DIFIERE,INCONSISTENCIA EN TIKR,implica EBITDA ~16.465 M
+Net Debt/EBITDA,1.9500,1.9971,x,+2.42%,DIFIERE,INCONSISTENCIA EN TIKR,implica EBITDA ~16.466 M
+Net Debt (verificacion),"32,108.0000","32,108.0000",M,+0.00%,COINCIDE,VERIFICA IDENTIDAD TIKR,caja de TIKR = CashCashEquivalentsAndShortTermInvestments + MarketableSecurities
+Current Ratio,1.4600,1.4588,x,-0.08%,COINCIDE,,
+Quick Ratio (Cash+STI+Mkt+Recv)/PC,0.8900,0.8855,x,-0.51%,DIFIERE,DEFINICION,la definicion de TIKR; la nuestra (AC-Inv)/PC da otro numero
+Quick Ratio (AC-Inv)/PC,0.8900,1.2508,x,+40.54%,DIFIERE,DEFINICION,
+CFO/Current Liabilities,0.3500,0.3481,x,-0.54%,DIFIERE,,
+Asset Turnover,0.4600,0.4574,x,-0.57%,DIFIERE,,
+Inventory Turnover,4.0200,4.0199,x,-0.00%,COINCIDE,PROMEDIO,TIKR usa inventario promedio
+Inventory Turnover (cierre),4.0200,4.1575,x,+3.42%,DIFIERE,CIERRE vs PROMEDIO,
+DSO,25.1500,25.1513,dias,+0.01%,COINCIDE,PROMEDIO,365 / rotacion de creditos con promedio
+DSO (cierre),25.1500,23.1299,dias,-8.03%,DIFIERE,CIERRE vs PROMEDIO,
+Dividend Yield (precio FY2025),2.3000,2.9180,%,+26.87%,DIFIERE,PERIODO,TIKR publica el yield solo en la columna LTM
+Dividend Yield (precio actual),2.3000,2.2906,%,-0.41%,DIFIERE,PERIODO,"con el ultimo cierre 89.05999800: TIKR usa precio corriente, no el de cierre fiscal"
+SG&A Margin,30.3000,30.2893,%,-0.04%,COINCIDE,,
+Enterprise Value,"333,629.8300",,M,,NO_PRODUCIBLE,DEPENDE DE Total Debt,
+Market Cap (FY2025),"301,521.8300","301,521.8473",M USD,+0.00%,COINCIDE,,con acciones diluidas promedio; KO no publica el conteo de circulacion

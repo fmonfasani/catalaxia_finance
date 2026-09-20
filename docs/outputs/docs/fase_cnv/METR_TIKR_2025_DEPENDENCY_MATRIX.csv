@@ -1,0 +1,64 @@
+dependency_id,dependency_name,metric,family,current_status,dependency_role,input_available,raw_available,classification,notes
+D07,Desagregacion de los resultados financieros,Interest Income,income,CATALAXIA_MISSING_INPUT,ES el dato faltante,si,si,G,el codigo 3021400 agrega intereses ganados y otros resultados financieros. TIKR separa 17.052 de intereses; no hay forma de partirlo
+D07,Desagregacion de los resultados financieros,FX Gains/Losses,income,CATALAXIA_MISSING_INPUT,ES el dato faltante,si,si,G,"TIKR reporta -3.121; el resultado cambiario esta embebido en los resultados financieros de la CNV, sin renglon propio"
+D06,Partidas no operativas e inusuales del resultado,Other Non-Operating Income/Expense,income,CATALAXIA_MISSING_INPUT,"existe como 3021900 en el plan de cuentas, pero METR no lo declara",no,parcial,E,no hay codigo equivalente en los 76 presentes en los documentos de METR
+D06,Partidas no operativas e inusuales del resultado,EBT excl. Unusual Items,income,CATALAXIA_MISSING_INPUT,el EBT ya existe (3029999); falta identificar lo inusual dentro de el,no,parcial,E,"exige la lista de partidas inusuales de TIKR, que es criterio propio"
+D06,Partidas no operativas e inusuales del resultado,Gain/Loss on Sale of Investments,income,CATALAXIA_MISSING_INPUT,ES el dato faltante,no,parcial,E,TIKR 21.392; sin codigo equivalente en el RAW
+D06,Partidas no operativas e inusuales del resultado,Legal Settlements,income,CATALAXIA_MISSING_INPUT,ES el dato faltante,no,parcial,E,TIKR -2.274; sin codigo equivalente
+D09,Dividendos declarados y precio de mercado,Dividends per Share,income,CATALAXIA_MISSING_INPUT,ES el dato faltante,no,no,E,el EEFF resumido no publica dividendos
+D03,Definicion de deuda financiera de TIKR,Short-Term Investments,balance,CATALAXIA_MISSING_INPUT,ES el dato faltante,si,parcial,G,el codigo existe pero vale 14.624 y TIKR reporta 2.555: agrupan distinto
+D02,Desglose del balance mas alla de los subtotales,Other Receivables,balance,CATALAXIA_MISSING_INPUT,ES el dato faltante,no,no,E,"Receivables (1121999) es un unico renglon, sin desagregar"
+D02,Desglose del balance mas alla de los subtotales,Prepaid Expenses,balance,CATALAXIA_MISSING_INPUT,ES el dato faltante,no,no,E,sin codigo equivalente
+D02,Desglose del balance mas alla de los subtotales,Other Current Assets,balance,CATALAXIA_MISSING_INPUT,ES el dato faltante,no,no,E,"derivable por residuo, pero el residuo no es un concepto: mezclaria todo lo que no se extrae"
+D02,Desglose del balance mas alla de los subtotales,Gross PP&E,balance,CATALAXIA_MISSING_INPUT,ES el dato faltante,no,no,E,"el EEFF resumido publica PPE neto (1110100); el bruto y la depreciacion acumulada estan en las notas, que no se descargan"
+D02,Desglose del balance mas alla de los subtotales,Accumulated Depreciation,balance,CATALAXIA_MISSING_INPUT,ES el dato faltante,no,no,E,idem
+D03,Definicion de deuda financiera de TIKR,Long-Term Investments,balance,CATALAXIA_MISSING_INPUT,ES el dato faltante,si,parcial,G,el codigo vale 2.872 y TIKR 1.834
+D03,Definicion de deuda financiera de TIKR,Other Long-Term Assets,balance,CATALAXIA_MISSING_INPUT,ES el dato faltante,si,parcial,G,el codigo vale 1.099 y TIKR 2.126
+D02,Desglose del balance mas alla de los subtotales,Accrued Expenses,balance,CATALAXIA_MISSING_INPUT,ES el dato faltante,no,no,E,sin codigo equivalente
+D03,Definicion de deuda financiera de TIKR,Current Portion Long-Term Debt,balance,CATALAXIA_MISSING_INPUT,"la CNV publica pasivos financieros corrientes, no la porcion corriente de la deuda de largo plazo",si,parcial,G,el codigo 2322200 vale 71.079 y TIKR reporta 34.418 + 13 de leasing: agrega mas que la deuda financiera
+D02,Desglose del balance mas alla de los subtotales,Current Portion Capital Leases,balance,CATALAXIA_MISSING_INPUT,ES el dato faltante,no,no,E,TIKR reporta 13; el leasing no tiene renglon propio en el EEFF
+D03,Definicion de deuda financiera de TIKR,Current Income Taxes Payable,balance,CATALAXIA_MISSING_INPUT,ES el dato faltante,si,parcial,G,el codigo vale 30.948 y TIKR 7.176
+D02,Desglose del balance mas alla de los subtotales,Current Unearned Revenue,balance,CATALAXIA_MISSING_INPUT,la CNV no separa 2321999 CUENTAS POR PAGAR CORRIENTES (145.428) en cuentas a pagar mas ingresos diferidos. Derivarlo como 145.428 menos el AP de TIKR seria circular: usaria el dato que se quiere reproducir,no,no,E,"434 = Payables - AP de TIKR, pero solo se puede derivar CONOCIENDO el AP de TIKR: es circular. Sin el desglose de la CNV no hay fuente propia"
+D02,Desglose del balance mas alla de los subtotales,Other Current Liabilities,balance,CATALAXIA_MISSING_INPUT,ES el dato faltante,no,no,E,idem
+D03,Definicion de deuda financiera de TIKR,Long-Term Debt,balance,CATALAXIA_MISSING_INPUT,"la CNV publica 2312300 pasivos financieros no corrientes (73.480), concepto mas amplio que la deuda de TIKR",si,parcial,G,el codigo vale 73.480 y TIKR 52.119
+D03,Definicion de deuda financiera de TIKR,Non-Current Deferred Tax Liabilities,balance,CATALAXIA_MISSING_INPUT,ES el dato faltante,si,parcial,G,el codigo vale 290 y TIKR 102.098
+D03,Definicion de deuda financiera de TIKR,Other Non-Current Liabilities,balance,CATALAXIA_MISSING_INPUT,ES el dato faltante,si,parcial,G,el codigo vale 108.506 y TIKR 28.059
+D02,Desglose del balance mas alla de los subtotales,Land,balance,CATALAXIA_MISSING_INPUT,ES el dato faltante,no,no,E,"desglose de PPE, esta en las notas"
+D02,Desglose del balance mas alla de los subtotales,Buildings,balance,CATALAXIA_MISSING_INPUT,ES el dato faltante,no,no,E,idem
+D02,Desglose del balance mas alla de los subtotales,Construction in Progress,balance,CATALAXIA_MISSING_INPUT,ES el dato faltante,no,no,E,idem
+D04,Cantidad de acciones en circulacion,Book Value / Share,perhare,CATALAXIA_MISSING_INPUT,el patrimonio ya existe; falta el denominador en acciones,no,no,E,requiere el numero de acciones en circulacion. Capital (569) NO es ese numero: es el capital social
+D04,Cantidad de acciones en circulacion,Tangible Book Value / Share,perhare,CATALAXIA_MISSING_INPUT,el patrimonio y los intangibles ya existen; falta el denominador,no,no,E,idem
+D11,Comparativo de caja de apertura,Cash Beginning,cashflow,CATALAXIA_MISSING_INPUT,es el saldo de cierre 2024 reexpresado al poder adquisitivo de 2025,no,no,D,"TIKR usa 160.859, la caja de apertura REEXPRESADA; Catalaxia tiene 122.280 en moneda de dic-2024. Se BUSCO en el RAW: ningun codigo tiene un valor cercano a 160.859, y los unicos codigos de flujo son los tres subtotales. HALLAZGO RELACIONADO: el UNICO comparativo que la CNV publica es el patrimonio (8000002 = 829.478, ya reexpresado, en 51 de 56 documentos); con el, el ROE da 14,804% = TIKR EXACTO. El de caja no existe"
+D01,Desglose del estado de flujos de efectivo,Change in Accounts Receivable,cashflow,CATALAXIA_MISSING_INPUT,ES el dato faltante,no,no,E,"el EEFF publica los tres subtotales del flujo, no las lineas. Derivarlo de la variacion de balances seria invalido: los dos balances estan en monedas de cierre distintas"
+D01,Desglose del estado de flujos de efectivo,Change in Accounts Payable,cashflow,CATALAXIA_MISSING_INPUT,ES el dato faltante,no,no,E,idem
+D01,Desglose del estado de flujos de efectivo,Change in Other Net Operating Assets,cashflow,CATALAXIA_MISSING_INPUT,ES el dato faltante,no,no,E,idem
+D01,Desglose del estado de flujos de efectivo,Other Operating Activities,cashflow,CATALAXIA_MISSING_INPUT,ES el dato faltante,no,no,E,idem
+D01,Desglose del estado de flujos de efectivo,Capital Expenditures,cashflow,CATALAXIA_MISSING_INPUT,ES el dato faltante,no,no,E,CF_Inversion (3241200) es el total; el capex no tiene renglon propio. ES EL GAP DE MAYOR IMPACTO: bloquea 6 metricas
+D01,Desglose del estado de flujos de efectivo,Purchase/Sale of Intangibles,cashflow,CATALAXIA_MISSING_INPUT,ES el dato faltante,no,no,E,idem
+D01,Desglose del estado de flujos de efectivo,Investment in Securities/Equity,cashflow,CATALAXIA_MISSING_INPUT,ES el dato faltante,no,no,E,idem
+D01,Desglose del estado de flujos de efectivo,Other Investing Activities,cashflow,CATALAXIA_MISSING_INPUT,ES el dato faltante,no,no,E,idem
+D01,Desglose del estado de flujos de efectivo,Debt Issued,cashflow,CATALAXIA_MISSING_INPUT,ES el dato faltante,no,no,E,CF_Financiacion (3241300) es el total
+D01,Desglose del estado de flujos de efectivo,Debt Repaid,cashflow,CATALAXIA_MISSING_INPUT,ES el dato faltante,no,no,E,idem
+D01,Desglose del estado de flujos de efectivo,Other Financing Activities,cashflow,CATALAXIA_MISSING_INPUT,ES el dato faltante,no,no,E,idem
+D01,Desglose del estado de flujos de efectivo,Cash Interest Paid,cashflow,CATALAXIA_MISSING_INPUT,ES el dato faltante,no,no,E,sin renglon propio
+D01,Desglose del estado de flujos de efectivo,Cash Taxes Paid,cashflow,CATALAXIA_MISSING_INPUT,ES el dato faltante,no,no,E,sin renglon propio
+D01,Desglose del estado de flujos de efectivo,Free Cash Flow,cashflow,CATALAXIA_MISSING_INPUT,"derivado: CFO menos el capex, que es lo que falta",no,no,E,CFO - Capex. Bloqueado por el capex
+D04,Cantidad de acciones en circulacion,Cash Flow per Share,cashflow,CATALAXIA_MISSING_INPUT,el CFO ya existe; falta el denominador en cantidad de acciones,no,no,E,requiere el numero de acciones
+D03,Definicion de deuda financiera de TIKR,Return on Capital,ratio,CATALAXIA_MISSING_INPUT,"necesita el capital invertido, que exige la definicion de deuda",si,parcial,G,"requiere capital invertido desagregado, que exige el desglose de deuda"
+D08,Desagregacion de gastos operativos (SG&A),SG&A Margin,ratio,CATALAXIA_MISSING_INPUT,"necesita la agrupacion SG&A de TIKR, que no esta definida",no,si,G,"los tres codigos SI estan en el RAW y suman 216.763. TIKR implica 13,0% x 1.217.305 = 158.250. No hay una combinacion evidente que lo de"
+D08,Desagregacion de gastos operativos (SG&A),EBITA Margin,ratio,CATALAXIA_MISSING_INPUT,necesita separar amortizacion de depreciacion,no,si,G,requiere separar amortizacion de depreciacion; el codigo 3011600 las agrega y no hay renglon que las parta
+D01,Desglose del estado de flujos de efectivo,Levered FCF Margin,ratio,CATALAXIA_MISSING_INPUT,"derivado del FCF, que depende del capex",no,no,E,bloqueado por el capex
+D01,Desglose del estado de flujos de efectivo,Unlevered FCF Margin,ratio,CATALAXIA_MISSING_INPUT,"derivado del FCF, que depende del capex",no,no,E,idem
+D09,Dividendos declarados y precio de mercado,Dividend Yield,ratio,CATALAXIA_MISSING_INPUT,necesita el dividendo y ademas el precio de mercado,no,no,E,requiere dividendos (no publicados) y precio de mercado (otra fuente)
+D01,Desglose del estado de flujos de efectivo,(EBITDA - Capex) / Interest Expense,ratio,CATALAXIA_MISSING_INPUT,el denominador ya existe; falta el capex del numerador,no,no,E,bloqueado por el capex
+D10,FFO (Funds From Operations) de TIKR,FFO / Interest Expense,ratio,CATALAXIA_MISSING_INPUT,ES el dato faltante,no,no,F,el FFO exige el desglose del flujo operativo
+D10,FFO (Funds From Operations) de TIKR,FFO / Total Debt,ratio,CATALAXIA_MISSING_INPUT,ES el dato faltante,no,no,F,idem
+D01,Desglose del estado de flujos de efectivo,Net Debt / (EBITDA - Capex),ratio,CATALAXIA_MISSING_INPUT,la deuda neta ya existe; falta el capex del denominador,no,no,E,bloqueado por el capex
+D05,Segmentacion operativa (MetroENERGY y eliminaciones),Operating Revenue · Eliminations,segment,CATALAXIA_MISSING_INPUT,CONSOLIDADO - INDIVIDUAL da MetroENERGY y eliminaciones juntos,parcial,no,E,la CNV no publica eliminaciones de consolidacion
+D05,Segmentacion operativa (MetroENERGY y eliminaciones),Operating Revenue · MetroENERGY Marketing,segment,CATALAXIA_MISSING_INPUT,ES el dato faltante,parcial,no,E,"CONSOLIDADO - INDIVIDUAL = 257.985 = MetroENERGY + eliminaciones. Por separado, no"
+D05,Segmentacion operativa (MetroENERGY y eliminaciones),Operating Income · Eliminations,segment,CATALAXIA_MISSING_INPUT,CONSOLIDADO - INDIVIDUAL da MetroENERGY y eliminaciones juntos,parcial,no,E,idem
+D05,Segmentacion operativa (MetroENERGY y eliminaciones),Operating Income · MetroENERGY Marketing,segment,CATALAXIA_MISSING_INPUT,ES el dato faltante,parcial,no,E,"idem, solo neto de eliminaciones"
+D05,Segmentacion operativa (MetroENERGY y eliminaciones),Net Income Common Stockholders · Eliminations,segment,CATALAXIA_MISSING_INPUT,CONSOLIDADO - INDIVIDUAL da MetroENERGY y eliminaciones juntos,parcial,no,E,idem
+D05,Segmentacion operativa (MetroENERGY y eliminaciones),Net Income Common Stockholders · MetroENERGY Marketing,segment,CATALAXIA_MISSING_INPUT,ES el dato faltante,parcial,no,E,idem
+D05,Segmentacion operativa (MetroENERGY y eliminaciones),Total Assets · Eliminations,segment,CATALAXIA_MISSING_INPUT,CONSOLIDADO - INDIVIDUAL da MetroENERGY y eliminaciones juntos,parcial,no,E,idem
+D05,Segmentacion operativa (MetroENERGY y eliminaciones),Total Assets · MetroENERGY Marketing,segment,CATALAXIA_MISSING_INPUT,ES el dato faltante,parcial,no,E,idem

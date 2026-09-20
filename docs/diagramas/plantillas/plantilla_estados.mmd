@@ -1,0 +1,16 @@
+%%{init: {"theme":"base","themeVariables": {"fontFamily":"Calibri","fontSize":14,"primaryColor":"#1A2744","primaryTextColor":"#FFFFFF","lineColor":"#3B82F6"}}}%%
+stateDiagram-v2
+    direction LR
+    PENDIENTE: Pendiente
+    CORRIENDO: Corriendo
+    OK: OK (PASS)
+    ABORTADO: Abortado
+    BLOQUEADO: Bloqueado
+    [*] --> PENDIENTE
+    PENDIENTE --> CORRIENDO: arranca
+    CORRIENDO --> OK: gate PASS
+    CORRIENDO --> ABORTADO: error / timeout
+    CORRIENDO --> BLOQUEADO: falta permiso
+    OK --> [*]
+    ABORTADO --> [*]
+    BLOQUEADO --> [*]

@@ -1,0 +1,22 @@
+{
+  "conteos": {
+    "entity": 8004,
+    "identifier": 8021,
+    "assertion": 8041,
+    "instrument": 0,
+    "instrument_symbol": 0,
+    "review": 4,
+    "conflict": 4
+  },
+  "dup_cik_aut": 0,
+  "dup_aut": 0,
+  "dos_aut_mismo_tipo": 0,
+  "conflictos": 4,
+  "reviews_open": 4,
+  "bridges_cik_cuit": 13,
+  "puentes_cik_lei": 4,
+  "lei": 4,
+  "cuit_legacy_aut": 0,
+  "sin_provenance": 0,
+  "sin_source_record": 0
+}

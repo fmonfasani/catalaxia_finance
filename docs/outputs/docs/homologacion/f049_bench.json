@@ -1,0 +1,75 @@
+{
+  "ok": true,
+  "escenarios": [
+    {
+      "escenario": "1. instalacion desde DB vacia",
+      "ok": true,
+      "detalle": "30 aplicadas"
+    },
+    {
+      "escenario": "   ...estado final completo",
+      "ok": true,
+      "detalle": "reg=30 tablas=9 trg=15"
+    },
+    {
+      "escenario": "2. instalacion repetida (idempotente)",
+      "ok": true,
+      "detalle": "aplicadas=0 reg=30"
+    },
+    {
+      "escenario": "3. migracion ya registrada se saltea",
+      "ok": true,
+      "detalle": "0 re-aplicadas"
+    },
+    {
+      "escenario": "8. sin duplicados en schema_migrations",
+      "ok": true,
+      "detalle": "0"
+    },
+    {
+      "escenario": "9. orden determinista: engine, luego market",
+      "ok": true,
+      "detalle": "30 en orden engine->market"
+    },
+    {
+      "escenario": "10. detecta y re-aplica la faltante",
+      "ok": true,
+      "detalle": "['engine/031_f044_politica_estructural_cik_lei.sql']"
+    },
+    {
+      "escenario": "    ...sin duplicar",
+      "ok": true,
+      "detalle": ""
+    },
+    {
+      "escenario": "4. base con schema_migrations preexistente",
+      "ok": true,
+      "detalle": "30 aplicadas"
+    },
+    {
+      "escenario": "5. una migracion que falla aborta",
+      "ok": true,
+      "detalle": "DataError: (psycopg2.errors.DivisionByZero) division by zero"
+    },
+    {
+      "escenario": "6. rollback: no queda NADA aplicado",
+      "ok": true,
+      "detalle": "tabla=False registradas=0"
+    },
+    {
+      "escenario": "   ...ni objetos huerfanos de la fallida",
+      "ok": true,
+      "detalle": "zzz_prueba existe=False"
+    },
+    {
+      "escenario": "7. aplicacion completa de las 30",
+      "ok": true,
+      "detalle": "30/30"
+    },
+    {
+      "escenario": "psql -f: ninguna migracion se auto-registra",
+      "ok": true,
+      "detalle": "0 con auto-registro"
+    }
+  ]
+}

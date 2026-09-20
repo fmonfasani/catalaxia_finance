@@ -1,0 +1,98 @@
+{
+  "veredicto": "PASS",
+  "controles": {
+    "ningun CIK designa dos entidades": {
+      "ok": true,
+      "detalle": "[]"
+    },
+    "ninguna entidad tiene dos CIK autoritativos": {
+      "ok": true,
+      "detalle": "[]"
+    },
+    "muestra aleatoria (40): SEC declara cada CIK": {
+      "ok": true,
+      "detalle": "[]"
+    },
+    "todo identificador autoritativo tiene provenance": {
+      "ok": true,
+      "detalle": "0 incompletas"
+    },
+    "todo CIK escrito por el backfill trae evidencia estructurada": {
+      "ok": true,
+      "detalle": "0 sin facts"
+    },
+    "cik_previos_sin_facts": {
+      "ok": true,
+      "detalle": "[('proc:sec_registry', 6), ('proc:s03_parse', 1)]"
+    },
+    "ninguna identidad autoritativa desde fuente no autoritativa": {
+      "ok": true,
+      "detalle": "[]"
+    },
+    "ninguna fuente estableció un tipo para el que no es autoritativa": {
+      "ok": true,
+      "detalle": "[]"
+    },
+    "CUIT autoritativos siguen siendo los 3 ratificados": {
+      "ok": true,
+      "detalle": "3"
+    },
+    "el backfill no firmo ningun CUIT autoritativo": {
+      "ok": true,
+      "detalle": "0"
+    },
+    "ningun bridge VERIFIED lo firmo un proceso": {
+      "ok": true,
+      "detalle": "0"
+    },
+    "nombres_repetidos_ok": {
+      "ok": true,
+      "detalle": "[('aeropuertos argentina 2000 s.a.', 3), ('banco de galicia y buenos aires s.a.', 3), ('banco supervielle s.a.', 3)]"
+    },
+    "ningun identificador apunta a entidad inexistente": {
+      "ok": true,
+      "detalle": "0"
+    },
+    "ninguna entidad muerta tiene identidad autoritativa": {
+      "ok": true,
+      "detalle": "0"
+    },
+    "todo CIK legacy verificable quedo anclado": {
+      "ok": true,
+      "detalle": "faltan 0: []"
+    },
+    "adversarial_0000034088": {
+      "ok": true,
+      "detalle": "ANCLADO cuit=0 por proc:backfill_cik@286e08d2ff"
+    },
+    "adversarial_0000712515": {
+      "ok": true,
+      "detalle": "ANCLADO cuit=0 por proc:backfill_cik@286e08d2ff"
+    },
+    "adversarial_0001347426": {
+      "ok": true,
+      "detalle": "ANCLADO cuit=0 por proc:f024_bma"
+    },
+    "adversarial_0000904851": {
+      "ok": true,
+      "detalle": "ANCLADO cuit=1 por proc:s03_parse"
+    },
+    "adversarial_0001717161": {
+      "ok": true,
+      "detalle": "ANCLADO cuit=1 por proc:sec_registry"
+    },
+    "hay >=2 corridas OK del backfill (idempotencia real)": {
+      "ok": true,
+      "detalle": "{'ABORTED': 1, 'OK': 5}"
+    },
+    "cero corridas RUNNING en toda la base": {
+      "ok": true,
+      "detalle": ""
+    },
+    "entidades == CIK autoritativos + entidades sin CIK": {
+      "ok": true,
+      "detalle": "525 = 513 con CIK + 12 sin CIK"
+    }
+  },
+  "hallazgos": []
+}

@@ -1,0 +1,82 @@
+tag,concepto,observations_before,observations_after,observations_nil,delta,reason
+1110100,PPE,56,60,0,4,re-extraccion completa
+1110200,Intangibles,56,60,0,4,re-extraccion completa
+1111999,ReceivablesNoCorrientes,0,0,60,60,nil reconocido (F-063)
+1112400,ActivosFinancierosNoCorrientes,0,58,2,60,codigo incorporado al vocabulario (F-063)
+1112500,OtrosActivosNoFinancierosNoCorrientes,0,60,0,60,codigo incorporado al vocabulario (F-063)
+1119999,AssetsNonCurrent,56,60,0,4,re-extraccion completa
+1120100,Inventory,29,32,28,31,re-extraccion completa
+1121999,Receivables,56,60,0,4,re-extraccion completa
+1122300,ActivosFinancierosCorrientes,0,56,4,60,codigo incorporado al vocabulario (F-063)
+1122400,OtrosActivosNoFinancierosCorrientes,0,4,56,60,codigo incorporado al vocabulario (F-063)
+1122500,Cash,56,60,0,4,re-extraccion completa
+1139999,AssetsCurrent,56,60,0,4,re-extraccion completa
+1999999,Assets,56,60,0,4,re-extraccion completa
+2210300,AjusteDeCapital,0,60,0,60,codigo incorporado al vocabulario (F-063)
+2210500,AportesNoCapitalizados,0,0,60,60,nil reconocido (F-063)
+2210900,OtrosConceptosDelCapital,0,0,60,60,nil reconocido (F-063)
+2210999,Capital,56,60,0,4,re-extraccion completa
+2211100,ReservaLegal,0,56,4,60,codigo incorporado al vocabulario (F-063)
+2211200,OtrasReservas,0,56,4,60,codigo incorporado al vocabulario (F-063)
+2211300,InteresesNoControlantes,0,30,30,60,codigo incorporado al vocabulario (F-063)
+2211999,Reservas,52,56,4,8,re-extraccion completa
+2212999,ResultadosNoAsignados,56,60,0,4,re-extraccion completa
+2213999,ResultadosIntegralesAcumulados,0,9,51,60,codigo incorporado al vocabulario (F-063)
+2299999,Equity,56,60,0,4,re-extraccion completa
+2311999,PayablesNoCorrientes,0,34,26,60,codigo incorporado al vocabulario (F-063)
+2312200,PasivosImpuestosNoCorrientes,0,51,9,60,codigo incorporado al vocabulario (F-063)
+2312300,DebtNonCurrent,56,60,0,4,re-extraccion completa
+2312400,OtrosPasivosNoFinancierosNoCorrientes,0,60,0,60,codigo incorporado al vocabulario (F-063)
+2319999,LiabilitiesNonCurrent,56,60,0,4,re-extraccion completa
+2321999,Payables,56,60,0,4,re-extraccion completa
+2322100,PasivosImpuestosCorrientes,0,60,0,60,codigo incorporado al vocabulario (F-063)
+2322200,DebtCurrent,56,60,0,4,re-extraccion completa
+2322300,OtrosPasivosNoFinancierosCorrientes,0,4,56,60,codigo incorporado al vocabulario (F-063)
+2339999,LiabilitiesCurrent,56,60,0,4,re-extraccion completa
+2399999,Liabilities,56,60,0,4,re-extraccion completa
+2999999,PasivoYPatrimonio,0,60,0,60,codigo incorporado al vocabulario (F-063)
+3000100,Revenue,56,60,0,4,re-extraccion completa
+3000200,COGS,56,60,0,4,re-extraccion completa
+3009999,GrossProfit,56,60,0,4,re-extraccion completa
+3011100,OtrosIngresos,0,47,13,60,codigo incorporado al vocabulario (F-063)
+3011200,GastosComercializacion,0,58,2,60,codigo incorporado al vocabulario (F-063)
+3011300,GastosAdministracion,0,60,0,60,codigo incorporado al vocabulario (F-063)
+3011301,HonorariosDirectores,0,58,2,60,codigo incorporado al vocabulario (F-063)
+3011400,OtrosGastosOperativos,0,47,13,60,codigo incorporado al vocabulario (F-063)
+3011600,DA,52,56,4,8,re-extraccion completa
+3019999,OperatingIncome,56,60,0,4,re-extraccion completa
+3021400,IngresosFinancieros,56,60,0,4,re-extraccion completa
+3021500,InterestExpense,56,60,0,4,re-extraccion completa
+3021800,RECPAM,54,58,0,4,re-extraccion completa
+3021900,OtrosResultados,0,0,60,60,nil reconocido (F-063)
+3029999,PretaxIncome,56,60,0,4,re-extraccion completa
+3031100,IncomeTax,56,60,0,4,re-extraccion completa
+3032000,ResultadoOperacionesDiscontinuadas,0,18,0,18,codigo incorporado al vocabulario (F-063)
+3041000,ResultadoPeriodoOperacionesDiscontinuadas,0,0,18,18,nil reconocido (F-063)
+3049999,NetIncome,56,60,0,4,re-extraccion completa
+3061999,OtroResultadoIntegral,0,18,42,60,codigo incorporado al vocabulario (F-063)
+3099999,ResultadoIntegral,56,60,0,4,re-extraccion completa
+3240000,CashFlowNeto,56,60,0,4,re-extraccion completa
+3241100,CF_Operativo,56,60,0,4,re-extraccion completa
+3241200,CF_Inversion,56,60,0,4,re-extraccion completa
+3241300,CF_Financiacion,56,60,0,4,re-extraccion completa
+8000000,EPS_basico,56,60,0,4,re-extraccion completa
+8000001,EPS_diluido,51,55,5,9,re-extraccion completa
+8000002,PatrimonioAperturaEjercicio,0,53,7,60,codigo incorporado al vocabulario (F-063)
+8000003,EBIT,56,60,0,4,re-extraccion completa
+8000004,EBITDA,56,60,0,4,re-extraccion completa
+8000005,WorkingCapital,56,60,0,4,re-extraccion completa
+8000006,CNV_liquidez,56,60,0,4,re-extraccion completa
+8000007,CNV_solvencia,56,60,0,4,re-extraccion completa
+8000008,CNV_inmovilizacion_capital,0,60,0,60,codigo incorporado al vocabulario (F-063)
+8000009,CNV_roe,56,60,0,4,re-extraccion completa
+8000010,CNV_roa,56,60,0,4,re-extraccion completa
+8000011,CNV_endeudamiento,56,60,0,4,re-extraccion completa
+8000012,CNV_endeudamiento_corto_plazo,0,60,0,60,codigo incorporado al vocabulario (F-063)
+8000013,CNV_apalancamiento,56,60,0,4,re-extraccion completa
+8000014,CNV_margen_neto,56,60,0,4,re-extraccion completa
+8000015,CNV_deuda_fin_ebitda,56,60,0,4,re-extraccion completa
+8000016,CNV_ebitda_costos_fin,56,60,0,4,re-extraccion completa
+8000027,CNV_prueba_acida,17,18,0,1,re-extraccion completa
+8000028,CNV_cobertura_intereses,17,18,0,1,re-extraccion completa
+8000029,CNV_rotacion_activos,17,18,0,1,re-extraccion completa

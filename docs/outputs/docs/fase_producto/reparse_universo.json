@@ -1,0 +1,50 @@
+[
+  {
+    "ticker": "CEPU",
+    "cik": "0001717161",
+    "s03": true,
+    "s04": true
+  },
+  {
+    "ticker": "TGSU2",
+    "cik": "0000931427",
+    "s03": true,
+    "s04": true
+  },
+  {
+    "ticker": "GGAL",
+    "cik": "0001114700",
+    "s03": true,
+    "s04": true
+  },
+  {
+    "ticker": "BMA",
+    "cik": "0001347426",
+    "s03": true,
+    "s04": true
+  },
+  {
+    "ticker": "AAPL",
+    "cik": "0000320193",
+    "s03": true,
+    "s04": false
+  },
+  {
+    "ticker": "MSFT",
+    "cik": "0000789019",
+    "s03": true,
+    "s04": false
+  },
+  {
+    "ticker": "NVDA",
+    "cik": "0001045810",
+    "s03": true,
+    "s04": false
+  },
+  {
+    "ticker": "YPF",
+    "cik": "0000904851",
+    "s03": false,
+    "s04": false
+  }
+]

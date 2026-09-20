@@ -1,0 +1,319 @@
+[
+  {
+    "slug": "YPF",
+    "clase": "CIK+CUIT+LEI",
+    "fuentes": [
+      "GLEIF",
+      "LEGACY",
+      "SEC:20F"
+    ],
+    "eventos": [
+      [
+        "CIK",
+        "VERIFIED",
+        "0001193125-17-115552"
+      ],
+      [
+        "CUIT legacy",
+        "CANDIDATE",
+        "fuente LEGACY_DIM_ENTITY nivel=CORROBORATING"
+      ],
+      [
+        "LEI",
+        "VERIFIED",
+        "5493003N7447U18U5U53"
+      ],
+      [
+        "CUIT via GLEIF",
+        "REVIEW_REQUIRED",
+        "GLEIF publica CUIT 30546689979 para el LEI 5493003N7447U18U5U53, pero nada demue"
+      ]
+    ],
+    "cik": "0000904851",
+    "lei": "5493003N7447U18U5U53",
+    "cuit": null,
+    "conflicto": null,
+    "identificadores": 2,
+    "entity_key": "E01M0X99C8F87H9TH9N39H2D1NW",
+    "reviews": 3
+  },
+  {
+    "slug": "CEPU",
+    "clase": "CIK+CUIT+LEI",
+    "fuentes": [
+      "GLEIF",
+      "LEGACY",
+      "SEC:registry"
+    ],
+    "eventos": [
+      [
+        "CIK",
+        "VERIFIED",
+        "submissions/CIK0001717161.json"
+      ],
+      [
+        "CUIT legacy",
+        "CANDIDATE",
+        "fuente LEGACY_DIM_ENTITY nivel=CORROBORATING"
+      ],
+      [
+        "LEI",
+        "VERIFIED",
+        "2549005JLIWQ6B7VNR38"
+      ],
+      [
+        "CUIT via GLEIF",
+        "REVIEW_REQUIRED",
+        "GLEIF publica CUIT 33650305499 para el LEI 2549005JLIWQ6B7VNR38, pero nada demue"
+      ]
+    ],
+    "cik": "0001717161",
+    "lei": "2549005JLIWQ6B7VNR38",
+    "cuit": null,
+    "conflicto": null,
+    "identificadores": 2,
+    "entity_key": "E01M0X99DQ7P5TQ4Z6Z58RC5PB3",
+    "reviews": 3
+  },
+  {
+    "slug": "TGSU2",
+    "clase": "CIK+CUIT+LEI",
+    "fuentes": [
+      "GLEIF",
+      "LEGACY",
+      "SEC:registry"
+    ],
+    "eventos": [
+      [
+        "CIK",
+        "VERIFIED",
+        "submissions/CIK0000931427.json"
+      ],
+      [
+        "CUIT legacy",
+        "CANDIDATE",
+        "fuente LEGACY_DIM_ENTITY nivel=CORROBORATING"
+      ],
+      [
+        "LEI",
+        "VERIFIED",
+        "5299002TRC7IFQYSW596"
+      ],
+      [
+        "CUIT via GLEIF",
+        "REVIEW_REQUIRED",
+        "GLEIF publica CUIT 30657862068 para el LEI 5299002TRC7IFQYSW596, pero nada demue"
+      ]
+    ],
+    "cik": "0000931427",
+    "lei": "5299002TRC7IFQYSW596",
+    "cuit": null,
+    "conflicto": null,
+    "identificadores": 2,
+    "entity_key": "E01M0X99G29RBSSFSGAM5S1QZMT",
+    "reviews": 3
+  },
+  {
+    "slug": "GGAL",
+    "clase": "CIK+LEI_sin_CUIT",
+    "fuentes": [
+      "GLEIF",
+      "LEGACY",
+      "SEC:registry"
+    ],
+    "eventos": [
+      [
+        "CIK",
+        "VERIFIED",
+        "submissions/CIK0001114700.json"
+      ],
+      [
+        "CUIT legacy",
+        "CANDIDATE",
+        "fuente LEGACY_DIM_ENTITY nivel=CORROBORATING"
+      ],
+      [
+        "LEI",
+        "VERIFIED",
+        "5299008H3AXIXV5G3C23"
+      ],
+      [
+        "CUIT via GLEIF",
+        "REVIEW_REQUIRED",
+        "GLEIF no publica CUIT utilizable: registrationAuthority 'RA999999' no asigna CUI"
+      ]
+    ],
+    "cik": "0001114700",
+    "lei": "5299008H3AXIXV5G3C23",
+    "cuit": null,
+    "conflicto": null,
+    "identificadores": 2,
+    "entity_key": "E01M0X99EXSQTYKWZMDEMMBX8QY",
+    "reviews": 4
+  },
+  {
+    "slug": "CAAP",
+    "clase": "CUIT_sin_CIK",
+    "fuentes": [
+      "LEGACY"
+    ],
+    "eventos": [
+      [
+        "CUIT legacy",
+        "CANDIDATE",
+        "fuente LEGACY_DIM_ENTITY nivel=CORROBORATING"
+      ]
+    ],
+    "cik": null,
+    "lei": null,
+    "cuit": null,
+    "conflicto": null,
+    "identificadores": 0,
+    "entity_key": "E01M13XBSB1SNWTM8WJ512Z329H",
+    "reviews": 0
+  },
+  {
+    "slug": "GGALB",
+    "clase": "CUIT_sin_CIK",
+    "fuentes": [
+      "LEGACY"
+    ],
+    "eventos": [
+      [
+        "CUIT legacy",
+        "CANDIDATE",
+        "fuente LEGACY_DIM_ENTITY nivel=CORROBORATING"
+      ]
+    ],
+    "cik": null,
+    "lei": null,
+    "cuit": null,
+    "conflicto": null,
+    "identificadores": 0,
+    "entity_key": "E01M13XBSD0VA2QVCX4VNT1SGV9",
+    "reviews": 0
+  },
+  {
+    "slug": "SUPVB",
+    "clase": "CUIT_sin_CIK",
+    "fuentes": [
+      "LEGACY"
+    ],
+    "eventos": [
+      [
+        "CUIT legacy",
+        "CANDIDATE",
+        "fuente LEGACY_DIM_ENTITY nivel=CORROBORATING"
+      ]
+    ],
+    "cik": null,
+    "lei": null,
+    "cuit": null,
+    "conflicto": null,
+    "identificadores": 0,
+    "entity_key": "E01M13XBSFF6T7J5X49T9FWG30E",
+    "reviews": 0
+  },
+  {
+    "slug": "YPFLUZ",
+    "clase": "CUIT_sin_CIK",
+    "fuentes": [
+      "LEGACY"
+    ],
+    "eventos": [
+      [
+        "CUIT legacy",
+        "CANDIDATE",
+        "fuente LEGACY_DIM_ENTITY nivel=CORROBORATING"
+      ]
+    ],
+    "cik": null,
+    "lei": null,
+    "cuit": null,
+    "conflicto": null,
+    "identificadores": 0,
+    "entity_key": "E01M13XBSHZ6D5QT5SRETQQMJ80",
+    "reviews": 0
+  },
+  {
+    "slug": "BMA",
+    "clase": "dato_corrupto_F024",
+    "fuentes": [],
+    "eventos": [
+      [
+        "ancla",
+        "REJECTED",
+        "CUIT legacy '0001347426' no pasa el modulo 11; no se crea entidad"
+      ]
+    ],
+    "cik": null,
+    "lei": null,
+    "cuit": null,
+    "conflicto": "dato de origen invalido (F-024)",
+    "identificadores": 0,
+    "entity_key": null
+  },
+  {
+    "slug": "AAPL",
+    "clase": "solo_CIK_US",
+    "fuentes": [
+      "SEC:registry"
+    ],
+    "eventos": [
+      [
+        "CIK",
+        "VERIFIED",
+        "submissions/CIK0000320193.json"
+      ]
+    ],
+    "cik": "0000320193",
+    "lei": null,
+    "cuit": null,
+    "conflicto": null,
+    "identificadores": 1,
+    "entity_key": "E01M13XBSM8ZWPXACZAG2H149JX",
+    "reviews": 0
+  },
+  {
+    "slug": "MSFT",
+    "clase": "solo_CIK_US",
+    "fuentes": [
+      "SEC:registry"
+    ],
+    "eventos": [
+      [
+        "CIK",
+        "VERIFIED",
+        "submissions/CIK0000789019.json"
+      ]
+    ],
+    "cik": "0000789019",
+    "lei": null,
+    "cuit": null,
+    "conflicto": null,
+    "identificadores": 1,
+    "entity_key": "E01M13XBSP3JTP05SPZKQ4W4PB2",
+    "reviews": 0
+  },
+  {
+    "slug": "NVDA",
+    "clase": "solo_CIK_US",
+    "fuentes": [
+      "SEC:registry"
+    ],
+    "eventos": [
+      [
+        "CIK",
+        "VERIFIED",
+        "submissions/CIK0001045810.json"
+      ]
+    ],
+    "cik": "0001045810",
+    "lei": null,
+    "cuit": null,
+    "conflicto": null,
+    "identificadores": 1,
+    "entity_key": "E01M13XBSREYYDB03WJ7W62ANSX",
+    "reviews": 0
+  }
+]

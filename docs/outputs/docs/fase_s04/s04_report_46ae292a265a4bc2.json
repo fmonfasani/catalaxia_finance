@@ -1,0 +1,85 @@
+{
+  "stage": "S04_normalize",
+  "run_id": "46ae292a265a4bc28d7935200d273658",
+  "mode": "FAST",
+  "started_at": "2026-09-06T23:03:10.706346+00:00",
+  "finished_at": "2026-09-06T23:05:10.084166+00:00",
+  "code": {
+    "script": "scripts/engine/s04_normalize.py",
+    "normalizer_version": "s04_normalize_v1",
+    "git_commit": "2993918fd268d0ffa9184815626fa4e438a46327"
+  },
+  "input": {
+    "stage": "S03_parse",
+    "checkpoint_id": "S03E2E:46ae292a265a4bc28d7935200d273658",
+    "run_id": "46ae292a265a4bc28d7935200d273658",
+    "rows": 67084
+  },
+  "coverage": {
+    "grupos": 47930,
+    "emitidos": 47930,
+    "sin_contexto": 0,
+    "sin_entidad": 0,
+    "sin_unidad": 0,
+    "unidad_no_resuelta": 0,
+    "desempates": {
+      "IDENTICO": 18753,
+      "POR_PRECISION": 100,
+      "UNICO": 29077
+    }
+  },
+  "integrity": {
+    "hash_in": "253589cf0e79e7753fa32552bc26fff0fd358b1c7e827c864c1c188c34bcfe2a",
+    "hash_out": "3c4b8e303e852a3b63612226450d0cec88f77c6dfb98eb5f391aa5e991dff61b",
+    "hash_out_v1": "22b83280b2e67071a2706db4354e5f85cc06f2848d3ce45f573b8902f4c2cfdd",
+    "hash_spec": "hashout-v2",
+    "por_tabla": {
+      "derived.fact": "fcbdc5f1801c7f72faa5298da8d0d7dacf76890cfa74768cdc702a3329310fef"
+    }
+  },
+  "nulls": {
+    "count": 0
+  },
+  "gate": {
+    "status": "PASS",
+    "checks": [
+      {
+        "id": "C-S04-001",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-002",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-003",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-004",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-005",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-006",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-007",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-008",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-009",
+        "result": "PASS"
+      }
+    ],
+    "reasons": []
+  }
+}

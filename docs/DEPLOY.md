@@ -18,7 +18,7 @@ public/                 ← Archivos HTML estáticos
 nginx/nginx.conf        ← Configuración de Nginx
 ```
 
-## Pre-requisitos en VPS (89.167.96.239)
+## Pre-requisitos en VPS (la IP real va en `CATALAXIA_HOST` del entorno, nunca en código/docs)
 
 - Docker + Docker Compose instalados
 - Puerto 8100 disponible (interno)
@@ -62,7 +62,7 @@ docker-compose logs -f api
 ### 1. En la VPS, clonar repo
 
 ```bash
-cd /opt/catalaxia
+cd /infra/projects/0009-catalaxia
 git pull origin main
 ```
 
@@ -120,6 +120,33 @@ curl https://api.catalaxia.webshooks.com/health
 
 # Si responde "ok", está funcionando ✅
 ```
+
+### 6. Variables de seguridad (F10)
+
+El API es **fail-closed**: sin `API_KEY` configurada responde 503 en todos los
+endpoints. Agregar al `.env` de producción:
+
+```bash
+# Clave de acceso al API (header `X-API-Key`, obligatoria en TODOS los endpoints).
+# Generar con: openssl rand -base64 32
+API_KEY=<clave_secreta>
+
+# Orígenes cross-origin permitidos (coma separada). Vacío = solo mismo-origen.
+# "%" NO se usa: si se requiere cualquier origen, literal "*" (sin credenciales).
+API_CORS_ORIGINS=https://api.catalaxia.webshooks.com
+```
+
+Verificar autenticación:
+
+```bash
+curl -i https://api.catalaxia.webshooks.com/v2/screener          # 401/503 (sin clave)
+curl -H "X-API-Key: $API_KEY" https://api.catalaxia.webshooks.com/v2/screener
+```
+
+Los jobs de extracción y run_update verifican certificados TLS por defecto
+(`REQUESTS_VERIFY=1`). No configurar `REQUESTS_VERIFY=0` salvo breaking de
+certificado de una fuente, y solo transitoriamente (riesgo MITM / integridad
+de RAW).
 
 ---
 
@@ -249,8 +276,8 @@ Guardas y exit codes (entrypoint `scripts/engine/run_e2e_certified.py`):
 La cadena se agenda en el VPS con cron (no es un servicio long-running):
 
 ```bash
-# /etc/cron.d/catalaxia-engine (requiere .env en /opt/catalaxia)
-30 6 * * 1-5 deploy   cd /opt/catalaxia && docker compose --profile run-e2e run --rm engine >> data/logs/engine_e2e.log 2>&1
+# /etc/cron.d/catalaxia-engine (requiere .env en /infra/projects/0009-catalaxia)
+30 6 * * 1-5 deploy   cd /infra/projects/0009-catalaxia && docker compose --profile run-e2e run --rm engine >> data/logs/engine_e2e.log 2>&1
 ```
 
 Los datos de trabajo (`data/raw/engine`, `data/screener.db` de solo lectura) y

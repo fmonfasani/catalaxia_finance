@@ -1,0 +1,46 @@
+{
+  "code": {
+    "script": "scripts/engine/c3_cnv_fetch.py",
+    "git_commit": "444ee1ad0e1b092c79ce055ded0b993fbc55822d",
+    "parser_version": "cnv-fetch-v1"
+  },
+  "gate": {
+    "checks": [
+      {
+        "id": "C-C3-001",
+        "detail": "pagina empresa invalida: V-MIN-SIZE(HARD): bytes=40720 piso=100000; V-EXPECTED-ENTITY(HARD): CUIT 99999999999 AUSENTE del cuerpo (probadas: ['99999999999', '99-99999999-9']); V-HAS-PRESENTATIONS(HARD): guids publicview=0; V-GENERIC-PAGE(HARD): shell generica CNV (0 guids, sin CUIT, tamano de shell)",
+        "result": "FAIL",
+        "blocking": true
+      }
+    ],
+    "status": "BLOCK",
+    "reasons": [
+      "pagina empresa invalida: V-MIN-SIZE(HARD): bytes=40720 piso=100000; V-EXPECTED-ENTITY(HARD): CUIT 99999999999 AUSENTE del cuerpo (probadas: ['99999999999', '99-99999999-9']); V-HAS-PRESENTATIONS(HARD): guids publicview=0; V-GENERIC-PAGE(HARD): shell generica CNV (0 guids, sin CUIT, tamano de shell)"
+    ]
+  },
+  "mode": "FAST",
+  "input": {
+    "rows": 1,
+    "checkpoint_id": "C2:reviews-resolution-v1"
+  },
+  "nulls": {
+    "count": 0,
+    "by_null_reason": {}
+  },
+  "stage": "C3_CNV_fetch",
+  "run_id": "e97e95e2fd7941aebe6ce6b506793772",
+  "coverage": {
+    "parsed": 0,
+    "expected": 1,
+    "rejected": 1,
+    "by_reason": {
+      "FAILED": 1
+    }
+  },
+  "integrity": {
+    "hash_in": "d079458f84565ef3dfb7333b4c050722dcb8d2b0e1702cb539708ab9da36872d",
+    "hash_out": "1e119595e2a582e98a8a5acbf16b94a28c13f63843d36fb5e14dac897ead683d"
+  },
+  "started_at": "2026-08-25T04:33:23.230830+00:00",
+  "finished_at": "2026-08-25T04:33:24.472290+00:00"
+}

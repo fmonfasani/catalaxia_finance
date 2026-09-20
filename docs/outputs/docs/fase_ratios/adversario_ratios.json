@@ -1,0 +1,96 @@
+{
+  "ok": true,
+  "ataques": [
+    {
+      "ataque": "A1 · current_ratio pasa a NO_CALCULABLE si el denominador cambia de moneda",
+      "ok": true,
+      "esperado": "NO_CALCULABLE, motivo menciona monedas distintas",
+      "real": "antes=CALCULADO=0.870214 · despues=NO_CALCULABLE motivo=monedas distintas: CurrentAssets=USD vs CurrentLiabilities=ARS. Un ratio no mezcla monedas",
+      "critico": true
+    },
+    {
+      "ataque": "A2a · el ratio SE CALCULA igual con Equity de signo invertido (el ratio no lo detecta)",
+      "ok": true,
+      "esperado": "CALCULADO, con un valor distinto y sin ninguna senal de error — la division no sabe que el insumo esta corrupto",
+      "real": "antes=0.027388 · despues=CALCULADO=-0.027388",
+      "critico": true
+    },
+    {
+      "ataque": "A2b · pero la identidad Activo=Pasivo+Patrimonio SI detecta la corrupcion",
+      "ok": true,
+      "esperado": "el desvio de la identidad crece (antes~0)",
+      "real": "desvio despues del ataque = 15519248728000 (antes 0)",
+      "critico": true
+    },
+    {
+      "ataque": "A3 · Equity=0 explicito da NO_CALCULABLE 'denominador=0', nunca ROE infinito",
+      "ok": true,
+      "esperado": "NO_CALCULABLE, motivo 'denominador ... = 0'",
+      "real": "NO_CALCULABLE motivo=denominador StockholdersEquity = 0",
+      "critico": true
+    },
+    {
+      "ataque": "A4 · el basico (antes en la cadena) sigue ganando sobre un diluted duplicado",
+      "ok": true,
+      "esperado": "ROA sin cambios (-0.028058) — 'resultado_neto' prioriza ProfitLossAttributableToOwnersOfParent antes que la variante Diluted",
+      "real": "antes=-0.028058 despues=-0.028058",
+      "critico": true
+    },
+    {
+      "ataque": "A5 · el comparativo mal etiquetado NO altera el ratio (filtro instant_date/end_date == report_period lo excluye)",
+      "ok": true,
+      "esperado": "current_ratio sin cambios (0.870214)",
+      "real": "antes=0.870214 despues=0.870214",
+      "critico": true
+    },
+    {
+      "ataque": "A6 · ningun fact anual 'principal' de ingresos/resultado tiene duracion trimestral",
+      "ok": true,
+      "esperado": "0 filas",
+      "real": "0 filas sospechosas ",
+      "critico": true
+    },
+    {
+      "ataque": "A7 · un fact de AAPL insertado bajo el CIK de GGAL SI se usa (la capa de ratios no verifica origen/pertenencia del dato)",
+      "ok": true,
+      "esperado": "current_ratio de GGAL pasa de NO_CALCULABLE a CALCULADO usando un valor que en realidad es de AAPL — la defensa contra esto vive en la identidad/provenance de la ingesta (F-054), no en el motor de ratios",
+      "real": "antes=NO_CALCULABLE despues=CALCULADO=0.893293",
+      "critico": true
+    },
+    {
+      "ataque": "A8 · sin el tag preferido, ROA cae al segundo candidato (ProfitLoss) con un VALOR MEDIBLEMENTE DISTINTO, no queda NO_CALCULABLE",
+      "ok": true,
+      "esperado": "ROA cambia de -0.028058 (ProfitLossAttributableToOwnersOfParent) a un valor distinto usando ProfitLoss=-799000000",
+      "real": "antes=-0.028058 despues=CALCULADO=-0.027141",
+      "critico": true
+    },
+    {
+      "ataque": "A9 · sin ningun tag de ingresos, los tres margenes quedan NO_CALCULABLE con motivo (nunca 0 ni division por cero)",
+      "ok": true,
+      "esperado": "net_margin y gross_margin -> NO_CALCULABLE, motivo menciona ingresos",
+      "real": "net_margin: NO_CALCULABLE motivo=falta denominador: ninguno de ['Revenue', 'RevenueFromContractsWithCustomers', 'RevenueFromContractWithCustomerExcludingAssessedTax', 'RevenueFromContractWithCustomerIncludingAssessedTax', 'Revenues'] presente en 2025-09-27 · gross_margin: NO_CALCULABLE",
+      "critico": true
+    },
+    {
+      "ataque": "A10 · sin EPS directo ni acciones promedio, el motor NO crashea (no ZeroDivisionError, no excepcion no controlada)",
+      "ok": true,
+      "esperado": "el recalculo completa sin excepcion",
+      "real": "no crasheo",
+      "critico": true
+    },
+    {
+      "ataque": "A11 · el ticker_canonico ES ambiguo por diseno (local+ADR) y la resolucion de identidad usa instrument_id, nunca el ticker solo",
+      "ok": true,
+      "esperado": "4 tickers con 2 instrumentos cada uno (CEPU/GGAL/TGSU2/YPFD); la identidad se enlaza por instrument_key='MKT:<id>'",
+      "real": "4 tickers ambiguos: [['GGAL', '2'], ['YPFD', '2'], ['CEPU', '2'], ['TGSU2', '2']]",
+      "critico": true
+    },
+    {
+      "ataque": "Z · la base homologada no cambio durante el banco",
+      "ok": true,
+      "esperado": "88789|bae5c8cb34c1a75e69953a68f56c6fdb",
+      "real": "88789|bae5c8cb34c1a75e69953a68f56c6fdb",
+      "critico": true
+    }
+  ]
+}

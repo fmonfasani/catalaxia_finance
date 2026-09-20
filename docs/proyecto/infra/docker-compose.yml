@@ -1,0 +1,53 @@
+# Catalaxia Screener — stack dockerizado (VPS Hetzner)
+# Convive con wapsell (ya en la VPS): usamos puertos y subdominio propios.
+# Copiar a la raíz del repo en /opt/catalaxia y correr: docker compose up -d --build
+#
+# El ORM (SQLAlchemy) NO es un servicio: vive dentro de la imagen 'api'.
+# El reverse proxy TLS lo hace el nginx del host (ya termina :443 para wapsell);
+# este stack expone la API SOLO en 127.0.0.1:8100 y el host nginx la publica.
+# (Si algún día se quiere un edge proxy dockerizado único para toda la VPS, migrar a Traefik.)
+
+services:
+  db:
+    image: postgres:16
+    container_name: catalaxia-db
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5433:5432"        # solo local (debug/psql); no expuesto a internet
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: catalaxia-api
+    restart: always
+    env_file: .env
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8100:8000"        # el host nginx proxya api.catalaxia.<dominio> -> acá
+    # command de ejemplo (o definido en el Dockerfile):
+    # command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+  # Frontend (opcional en la VPS; también puede ir a Vercel).
+  # web:
+  #   build: { context: ./frontend, dockerfile: Dockerfile }
+  #   container_name: catalaxia-web
+  #   restart: always
+  #   env_file: ./frontend/.env.local
+  #   ports: ["127.0.0.1:3011:3000"]   # 3010 lo usa wapsell; usamos 3011
+
+volumes:
+  pgdata:

@@ -1,0 +1,22 @@
+%%{init: {"theme":"base","themeVariables": {"primaryColor":"#1A2744","primaryTextColor":"#FFFFFF","primaryBorderColor":"#1A2744","lineColor":"#3B82F6","secondaryColor":"#DCEAFF","tertiaryColor":"#E7F7EC","fontFamily":"Calibri","fontSize":14}, "flowchart": {"curve":"basis","nodeSpacing":45,"rankSpacing":55}}}%%
+flowchart LR
+    subgraph FUENTES["1 · Fuentes"]
+        A1["SEC / EDGAR<br/>(XBRL)"]
+        A2["CNV<br/>(HTML)"]
+        A3["Market / TIKR"]
+    end
+    subgraph INGESTA["2 · Ingesta"]
+        B1["Descarga + hash"]
+        B2["RAW + metadatos"]
+    end
+    subgraph PROCESO["3 · Proceso"]
+        C1["Parsing"]
+        C2["Normalización"]
+        C3["Ratios"]
+    end
+    subgraph SALIDA["4 · Salida"]
+        D1["Gobernanza<br/>provenance"]
+        D2["Certificación"]
+        D3["Consumidores"]
+    end
+    FUENTES --> INGESTA --> PROCESO --> SALIDA

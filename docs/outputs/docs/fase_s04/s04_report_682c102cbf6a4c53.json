@@ -1,0 +1,97 @@
+{
+  "stage": "S04_normalize",
+  "run_id": "682c102cbf6a4c5384cd6f614671eae1",
+  "mode": "FAST",
+  "started_at": "2026-09-07T04:49:31.249397+00:00",
+  "finished_at": "2026-09-07T04:52:07.965513+00:00",
+  "input": {
+    "checkpoint_id": "S03E2E:682c102cbf6a4c5384cd6f614671eae1",
+    "rows": 90398,
+    "stage": "S03_parse",
+    "run_id": "682c102cbf6a4c5384cd6f614671eae1"
+  },
+  "coverage": {
+    "expected": 90398,
+    "parsed": 45113,
+    "rejected": 45285,
+    "by_reason": {}
+  },
+  "integrity": {
+    "hash_in": "8c85ec17a86cd81e075cc4f4b8b8515cb31a40f0d1a9252b0617129aa03db580",
+    "hash_out": "eedb7af31393b04db25e54bcdd488cca33ff4cd3caf328ca95691d87aabf7849",
+    "hash_out_v1": "5556ba9ae0be5effb247359b176f4834f3658e9951944c36308a33fa91e65a06",
+    "hash_spec": "hashout-v2",
+    "por_tabla": {
+      "derived.fact": "c88cbbc47669633e9fd3fb0bdc3b86f5309737c6dee0c90c40aaecf220c7d454"
+    }
+  },
+  "gate": {
+    "status": "PASS",
+    "reasons": [],
+    "checks": [
+      {
+        "id": "C-S04-001",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-002",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-003",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-004",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-005",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-006",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-007",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-008",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-009",
+        "result": "PASS"
+      }
+    ]
+  },
+  "nulls": {
+    "count": 0,
+    "by_null_reason": {
+      "sin_contexto": 0,
+      "sin_entidad": 0
+    }
+  },
+  "code": {
+    "git_commit": "2993918fd268d0ffa9184815626fa4e438a46327",
+    "parser_version": "s04_normalize_v1",
+    "script": "scripts/engine/s04_normalize.py",
+    "normalizer_version": "s04_normalize_v1"
+  },
+  "coverage_detail": {
+    "grupos": 45113,
+    "emitidos": 45113,
+    "sin_contexto": 0,
+    "sin_entidad": 0,
+    "sin_unidad": 0,
+    "unidad_no_resuelta": 0,
+    "desempates": {
+      "IDENTICO": 26172,
+      "POR_FACT_ID": 3113,
+      "UNICO": 3082,
+      "POR_PRECISION": 12746
+    }
+  }
+}

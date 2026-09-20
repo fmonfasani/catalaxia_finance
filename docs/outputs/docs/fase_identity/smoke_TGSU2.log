@@ -1,0 +1,28 @@
+SMOKE CROSS-WORKSTREAM · TGSU2 · CIK 0000931427
+  catalaxia_engine@127.0.0.1:5433/catalaxia mode=FAST prod=False
+
+  identity_v1
+    entity_key  E01M0X99G29RBSSFSGAM5S1QZMT
+    LEI         5299002TRC7IFQYSW596
+    bridge      assertion #344 ratificado por Federico (STRONG)
+    CUIT        30657862068
+
+  CNV antes   {'presentaciones_por_cuit': 0, 'presentaciones_por_entity_key': 0}
+
+  fetch CNV con CUIT 30657862068 (scope FINANCIERO) ...
+    por resultado           = {'DOWNLOADED': 692}
+    gate                    = PASS  checkpoint=e49f88f334f7482fb426115b832f4244
+      [PASS ] C-C3-001 � conciliacion plan->manifest: esperados=692 filas=692 ok=692 review=0 fallidos=0 criticos_fallidos=0
+      [PASS ] C-C3-002 � integridad RAW re-leyendo disco: verificados=692/692 mismatch=0 faltantes=0
+      [PASS ] C-C3-003 � provenance completa entidad->cuit->url->sha->raw->run->padre: filas persistidas=692 incompletas=0 sin_padre=0
+      [PASS ] C-C3-004 � validacion de contenido: 0 artefactos aceptados con validacion != VALID (aceptados=692, en revision=0, HTTP 200 rechazados por contenido=0)
+      [PASS ] C-C3-005 � rate limiting por host respetado: intervalos minimos observados={'www.cnv.gov.ar': None, 'aif2.cnv.gov.ar': 0.796, 'blob.cnv.gov.ar': None} vs configu
+      [PASS ] C-C3-006 � primera pasada: escritos=692 reutilizados=0; RAW direccionado por contenido, 0 sobreescrituras (bytes nuevos=46896730)
+      [PASS ] C-C3-007 � identidad no inventada: reviews no cerrables intactas=3/3; relaciones declaradas=120 (CONTROLADA=47, VINCULADA=73); 0 relaciones asumidas; 0 entidades
+      [PASS ] C-C3-008 � doble hash de adjuntos (C0-CNV-006): comparados=0 coinciden=0. El hash declarado por CNV NO se usa para idempotencia; la integridad la da el SHA-256 p
+      [PASS ] C-C3-009 � deteccion de duplicados: filas (kind,key,sha) repetidas en el manifest=0; contenidos identicos detectados bajo claves distintas=0 (se registran, no se
+      [PASS ] C-C3-010 � scope: 100% de las 692 descargas pertenecen al perfil CUIT 30657862068; 0 requests a SEC/mercado/otras empresas
+
+  CNV despues {'presentaciones_por_cuit': 2385, 'presentaciones_por_entity_key': 0}
+
+  evidencia -> outputs\docs\fase_identity\smoke_cross_cnv_TGSU2.json

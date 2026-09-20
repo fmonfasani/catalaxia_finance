@@ -1,0 +1,173 @@
+{
+  "ok": 19,
+  "bypass": 0,
+  "otra": 0,
+  "ataques": [
+    {
+      "id": "T1",
+      "ataque": "fuente incorrecta -> CIK",
+      "politica": "intacta",
+      "esperada": "tg_fuente_autoritativa_para_el_tipo",
+      "real": "tg_fuente_autoritativa_para_el_tipo",
+      "resultado": "RECHAZADO",
+      "veredicto": "OK"
+    },
+    {
+      "id": "T2",
+      "ataque": "fuente incorrecta -> LEI",
+      "politica": "intacta",
+      "esperada": "tg_fuente_autoritativa_para_el_tipo",
+      "real": "tg_fuente_autoritativa_para_el_tipo",
+      "resultado": "RECHAZADO",
+      "veredicto": "OK"
+    },
+    {
+      "id": "T3",
+      "ataque": "fuente incorrecta -> CUIT",
+      "politica": "intacta",
+      "esperada": "tg_fuente_autoritativa_para_el_tipo",
+      "real": "tg_fuente_autoritativa_para_el_tipo",
+      "resultado": "RECHAZADO",
+      "veredicto": "OK"
+    },
+    {
+      "id": "T7",
+      "ataque": "left_ref NULL",
+      "politica": "intacta",
+      "esperada": "F045:left_ref_obligatorio",
+      "real": "F045:left_ref_obligatorio",
+      "resultado": "RECHAZADO",
+      "veredicto": "OK"
+    },
+    {
+      "id": "T8",
+      "ataque": "left_ref con tipo incorrecto",
+      "politica": "intacta",
+      "esperada": "F045:left_ref_coincide",
+      "real": "F045:left_ref_coincide",
+      "resultado": "RECHAZADO",
+      "veredicto": "OK"
+    },
+    {
+      "id": "T9",
+      "ataque": "left_ref apuntando a otro identifier",
+      "politica": "intacta",
+      "esperada": "F045:left_ref_coincide",
+      "real": "F045:left_ref_coincide",
+      "resultado": "RECHAZADO",
+      "veredicto": "OK"
+    },
+    {
+      "id": "T10",
+      "ataque": "entity_key diferente",
+      "politica": "intacta",
+      "esperada": "F045:misma_entidad",
+      "real": "F045:misma_entidad",
+      "resultado": "RECHAZADO",
+      "veredicto": "OK"
+    },
+    {
+      "id": "T11",
+      "ataque": "CANDIDATE -> VERIFIED por UPDATE",
+      "resultado": "RECHAZADO",
+      "real": "GRANT_de_columna",
+      "veredicto": "OK",
+      "politica": "intacta"
+    },
+    {
+      "id": "T11b",
+      "ataque": "promover identifier CANDIDATE a autoritativo",
+      "resultado": "RECHAZADO",
+      "real": "GRANT_de_columna",
+      "veredicto": "OK",
+      "politica": "intacta"
+    },
+    {
+      "id": "T12",
+      "ataque": "cambiar source_id de una assertion VERIFIED",
+      "resultado": "RECHAZADO",
+      "real": "GRANT_de_columna",
+      "veredicto": "OK",
+      "politica": "intacta"
+    },
+    {
+      "id": "T12b",
+      "ataque": "cambiar left_ref para esquivar el CHECK",
+      "resultado": "RECHAZADO",
+      "real": "GRANT_de_columna",
+      "veredicto": "OK",
+      "politica": "intacta"
+    },
+    {
+      "id": "T15",
+      "ataque": "borrar provenance",
+      "resultado": "RECHAZADO",
+      "real": "GRANT_de_columna",
+      "veredicto": "OK",
+      "politica": "intacta"
+    },
+    {
+      "id": "T1",
+      "ataque": "fuente incorrecta -> CIK",
+      "politica": "adulterada",
+      "esperada": "ck_politica_estructural_cik_lei",
+      "real": "ck_politica_estructural_cik_lei",
+      "resultado": "RECHAZADO",
+      "veredicto": "OK"
+    },
+    {
+      "id": "T2",
+      "ataque": "fuente incorrecta -> LEI",
+      "politica": "adulterada",
+      "esperada": "ck_politica_estructural_cik_lei",
+      "real": "ck_politica_estructural_cik_lei",
+      "resultado": "RECHAZADO",
+      "veredicto": "OK"
+    },
+    {
+      "id": "T3",
+      "ataque": "fuente incorrecta -> CUIT",
+      "politica": "adulterada",
+      "esperada": "ck_cuit_exige_evidencia_estructurada",
+      "real": "ck_cuit_exige_evidencia_estructurada",
+      "resultado": "RECHAZADO",
+      "veredicto": "OK"
+    },
+    {
+      "id": "T7",
+      "ataque": "left_ref NULL",
+      "politica": "adulterada",
+      "esperada": "F045:left_ref_obligatorio",
+      "real": "F045:left_ref_obligatorio",
+      "resultado": "RECHAZADO",
+      "veredicto": "OK"
+    },
+    {
+      "id": "T8",
+      "ataque": "left_ref con tipo incorrecto",
+      "politica": "adulterada",
+      "esperada": "F045:left_ref_coincide",
+      "real": "F045:left_ref_coincide",
+      "resultado": "RECHAZADO",
+      "veredicto": "OK"
+    },
+    {
+      "id": "T9",
+      "ataque": "left_ref apuntando a otro identifier",
+      "politica": "adulterada",
+      "esperada": "F045:left_ref_coincide",
+      "real": "F045:left_ref_coincide",
+      "resultado": "RECHAZADO",
+      "veredicto": "OK"
+    },
+    {
+      "id": "T10",
+      "ataque": "entity_key diferente",
+      "politica": "adulterada",
+      "esperada": "F045:misma_entidad",
+      "real": "F045:misma_entidad",
+      "resultado": "RECHAZADO",
+      "veredicto": "OK"
+    }
+  ]
+}

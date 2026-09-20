@@ -1,0 +1,287 @@
+guid,veredicto,motivo,bytes,sha256,senal_codigos_con_valor,senal_fecha_cierre,senal_tipo_balance,senal_unidad_medida
+a287b9c1-aff3-4e73-befd-69fc89bddb52,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',77693,54450dc061480c678b6823ffa4ab6cdb6a4635566e6ca3d95bb107946f02103b,0,False,False,False
+d96fd259-c5ce-431f-8e14-17af592b99f9,VALID_EEFF,,152103,460d167241febbe3a3be8142c44be60c6c5eebfd4dc76c53a71b3dfca9b6b191,70,True,True,True
+576dbb0d-3527-46a9-b335-6f9aaf54d26e,VALID_EEFF,,152076,8f342fca78abf4e1b647686d321aef5d97cd7fcb9ede14b4d7dcb873ca713c40,69,True,True,True
+774414de-1a1d-4dad-9514-67d54d9ff8d9,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',77694,2ada2afffdcca0d506b5a1efd99481e4f76744445e820d3fdddaf5c08f1c6576,0,False,False,False
+5d17373a-5896-43ff-b1da-003c683a2e5f,VALID_EEFF,,152360,36c3dcbbf40bbbba9c497a3a63d6aaf2a2c2259a1796774afc97eafe55073ad5,69,True,True,True
+e4376e06-5db3-41ae-b246-30f380b61478,VALID_EEFF,,173370,fcf0f13fab2699d599a5dc01bc498fa8374bfcfce165974675613d30e927026d,69,True,True,True
+269c9274-8986-475a-8709-cee3ec3f0a83,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',77694,7bcf4e341738ced072e6d8c7e0bdf76c36e785a23d340377c4c39b999e847cf0,0,False,False,False
+210712c9-e761-4ec8-8634-a21baea1812c,VALID_EEFF,,152357,d0308c863c493a4cf73ec4449f4ccc091fa364444d61fecd203bceaa09ca8161,70,True,True,True
+6ae638d3-4535-4719-92c7-ca76b7d75833,VALID_EEFF,,152045,2f0c1bbe7958ff23dc1585d6794b44a2beaa91ff91a35d3b0e3f684fcdcd065d,69,True,True,True
+6b2958d3-f914-47ed-8ec2-8848182488e8,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',77693,b5875ca04549d11242630b124e822481223c0da82e66442c37aa42e16e8abdcf,0,False,False,False
+127a1069-5167-4cac-a4c8-5f9faccac142,VALID_EEFF,,152344,dd9ae3905411ed470d843c087c435cd2e24fd9d7ac915c4e4c7cb92ef6557b93,69,True,True,True
+01f1dc0b-9549-4ad0-b0d0-0a71ef140ac8,VALID_EEFF,,152038,3ca076080912da8719ca5b46b736c3f95b9b149b67d2085e49b41db700f251a5,69,True,True,True
+89e96a2b-946e-4def-85b2-b69f0739bc16,VALID_EEFF,,152328,469b6c565a2a63e4a205750758fecbe1ce7776ea71e67b3e6b938ce49edc55c4,69,True,True,True
+94ca9025-5acc-4530-a3a8-ea083acbe280,VALID_EEFF,,152052,36a65e866cdbfa8fa95194824bdef7edd926cce11910a2544dddc6d2dc3876a8,69,True,True,True
+808b4409-5c1a-4681-9a60-5239d9b47f8c,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',77710,c4c4d1ffbe5b051acf4b664e1e046528bcf3e95e0e7213570da762c8c0f908c2,0,False,False,False
+bb72f25a-74bd-4f8f-bf75-925754a15626,VALID_EEFF,,152053,6653d951e4910ac04934611309143a876926901ae8c44e29325d6b64b1ec74a2,69,True,True,True
+e04ceaf3-154a-4a37-96be-40496f91e2db,VALID_EEFF,,152335,66292afffe7677c78b020bf3b9b7dc2a7864cb3bdee54d890ae19bd83764f811,69,True,True,True
+fab6a1a3-7ea0-4444-9750-1fd18a8e67ed,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',77695,78ffa0f5b78780d3a29077b5cfc724587b7d31476db83911067a9a8ac24781d6,0,False,False,False
+f920efca-a3c0-4cb1-a93b-1b24a9046f21,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',77687,08db7b1d3d8a4603f92be67f159c58ac5c9e83d0bbd26ccd467ff3eb01897d57,0,False,False,False
+92d95754-b799-48f1-a8f9-e494fad4a260,VALID_EEFF,,152303,c8f31a0d27565a5605acae869afe2e389267fb685210090dd1335077f4bdbdca,69,True,True,True
+e6adb3a8-3875-4f0e-9607-38349f5b8b2c,VALID_EEFF,,152033,e278bb6ab48dc90bf2bdc659da93bbba90e1a580eb025f93f6967ef6fdbb33a3,69,True,True,True
+866c8f0a-958d-4775-9ec0-8f6c79974fb4,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',77682,c3896415e63a949d50c8c4e663a06c6cc033858355462de1394d2e12e37f7d64,0,False,False,False
+06093afc-5dc9-49d0-92d7-b4e9f9504edc,VALID_EEFF,,152301,7eedd615b7ef4f243fdfa0f331dcbe7f24fe8f80d5888b309f99a3cce1bd5dc0,69,True,True,True
+59698907-ef5a-4d0a-908e-12e4e3fb9b20,VALID_EEFF,,152024,1d454d6ffb1ca3b77d0ebdab745947f4e5f8436b153fa05eefc17d71c670bb2e,69,True,True,True
+88d8bf32-57b0-4235-b07f-1027ab07a3b9,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',77681,e80f3172843244d7a01538b5e356ca2e6804b8aba22c4b9cc884f17abe28df29,0,False,False,False
+04c91836-c648-4cfc-9caa-869dedc5af98,VALID_EEFF,,152302,f78e2b5952df2feaf935455e9e9895e7cea82bef7962c4e11491c6a648f134fa,69,True,True,True
+258c9cf1-1f6a-4f1b-962c-e151f63e0a36,VALID_EEFF,,152033,12e824b2e76d67651fd68a43fa9cf2c5f7f3f4d8cc04dba2004791cf27db09ba,69,True,True,True
+02068a47-52b9-4358-8c45-dfe3e6a18d43,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',77690,16f7043f3be4fa2e3d35a6f9f3839c19123e697ab6ea45103974422091931441,0,False,False,False
+43a57a20-298d-4b6e-a2bb-6844a795838f,VALID_EEFF,,150960,4e2c1b2ff0cd6a5d2118b1a98558a9d26c7754782cda84748a3651e7774a1f02,65,True,True,True
+5e33fb1d-1bf3-402d-bd94-298896d246dc,VALID_EEFF,,150685,6a513fe07eae61bf999ad2279c7297e6a6ce1c2532055a8831b9ac8541bd0e74,65,True,True,True
+4d7d0d60-a213-47a5-88c6-3aa0a15b6673,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',77683,29106056e2f615447d7664698d1d754268b10d70e54c3738fce45bd2d44cd487,0,False,False,False
+489ad884-9192-4384-b01b-68d875730113,VALID_EEFF,,150943,860422d1b7a45fb03fd4e0c728a27b4d07bb0fbaee321ee131d0ad504e36fbc4,65,True,True,True
+4ebc9487-8e0f-44a8-8206-7cf6763531c4,VALID_EEFF,,150667,8d5669f1a27a867c9e3812a6a299b77c60688e8fc1d7d780f7447cad72f6cf5f,65,True,True,True
+73c21550-3b56-4e38-9dd1-ee51da505596,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',77682,fd62abb326f1c4a7cb4b22619e56d2a0c5b9241201b7906ca5a543922cbd61f3,0,False,False,False
+633771f5-baac-4221-b3fa-f3857c7a0e85,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',77683,564943130c7808a8ec6f37444c1e627cea740a1cb4c7f55b3e31772cc3370837,0,False,False,False
+ddd0b662-bd90-4a7f-b6f6-f1e80e5fdda9,VALID_EEFF,,150686,9f63de8e3b3ea1025a319eeeb8600d1ad49f635e5102fa7c70b6572d0fd08026,65,True,True,True
+fe387fa3-e0dc-40e7-9f8a-88c1027d054e,VALID_EEFF,,150655,35994d3b02938598263ffa61c2e5e973200c5d0bac3d5a98f1d6465a65511144,65,True,True,True
+e6fb1b3b-8b17-4473-8a17-58f9b3a0982e,VALID_EEFF,,146627,0e4d3f41b2a771df4f6f76d0f03eea50da9164417029d3dc3e4005bdd36ce958,65,True,True,True
+3178ddb6-9ce4-4346-919f-f535f1645835,VALID_EEFF,,146898,ffcc6d310c5fc8e4920284baeec87b47730a74f776ccc6f098bc1f4048d16647,65,True,True,True
+9dcd0974-68af-47ce-ae4e-82c00855f1a4,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',77690,7d7e7ad7315013ef15062fe525fb663611db663f4683f44906af9e03ae5f088f,0,False,False,False
+b689bc5a-a9b5-4c31-b41d-53d9beed9742,VALID_EEFF,,146642,81974cf0ac0a0b237d53d69d3eaec2d216676747023eae16faa46f47dbeb2e3a,67,True,True,True
+28a7844e-5739-4ba8-9690-134ae92ae72c,VALID_EEFF,,146631,4fa4156db39268c1a5460add98793acb74252ac7c5addd872bcb15b363213a39,67,True,True,True
+548971ae-d0be-4750-973e-93186b8cad34,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',77685,87fd80f89af104d77575458376d91f1a1d4bf8eb4f96dd5e8c814259049a00c8,0,False,False,False
+b92a7877-6506-4339-91f5-8c1bb1814b0b,VALID_EEFF,,146633,fd0a44e7c99d302511373c8943745aaedc439110c0ec47e8d667a6440f6956fe,66,True,True,True
+5b2919ce-d051-4da0-841d-5264efaf3bbe,VALID_EEFF,,146624,02ff3df4ae494df0f7afba2d83d91a042ae186c9c39905474b90631f4284b2ac,66,True,True,True
+d6bd8810-11a0-434b-bed8-e91249daba10,VALID_EEFF,,146626,fa03de56beab7aece59d78e316b59ecd7c4675de1e5ef5c99591ae382cef952d,67,True,True,True
+0dd98060-bc0c-485e-8cfe-95c310b9e105,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',77685,e0c0714f8beef6c958c0b9f44a2f01d2d03bc5eead8cda549020cd8053114b46,0,False,False,False
+a7bf0c2e-cba7-47c1-be5e-ffcc0d93715e,VALID_EEFF,,146613,53d94206fedd0df747111a97824d0431cf5c6f498a4e1da942328f85d00f97a4,67,True,True,True
+24a37877-f995-48b7-8d02-175960e2a8d3,VALID_EEFF,,147596,74a7c2ce804e570d3cc3d971f5e15bd0642725aa0c88ad3200afb54fcbd35614,67,True,True,True
+331e86b3-3eab-4eef-b81a-f84da7f1e393,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',77689,dd3d56a10bbcec2ec446d029605495fab0d4de5734b56bff56b42d570cf66e1e,0,False,False,False
+5b4d69bf-7978-4a52-ab4a-eb6b1794232e,VALID_EEFF,,147599,0eb1b6123f2b29d9d451f7b45c0f0e62e96e600a1e4347e2e40da6b1bda1778c,67,True,True,True
+92939a80-7687-4ae0-bdbd-dbe6218141a8,VALID_EEFF,,147587,0965a1d78ec10202f87e1afc24e02842f19a10fb41335d708bfa2b4e09e32535,67,True,True,True
+b578ec95-6153-4efa-a31d-70e41a3e72b3,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',77690,fa94b75bf4001cb2bd7cb8da38a4b9f26a6e1d43adb9138af36ca93c8cf2dba8,0,False,False,False
+056880df-7ade-4bcd-b420-82e8de96328c,VALID_EEFF,,147535,723e68a9588a40a239ffd8bd5a3aaca51ac35fa9b447fdebb3fd83a887be49df,67,True,True,True
+01192889-b1ce-46bd-b504-15b4fd809bdd,VALID_EEFF,,147599,474ddcbcd7b7b75efd67a6f313ab6f8e9af47c52e15956bee2e7b30a9e52d7d9,67,True,True,True
+790551f5-5a7c-459f-b41e-d65dbe52eefd,VALID_EEFF,,148402,eefda7970115f2c0df70d837e3cdfbdfb8708b967ba78a6857a3b46175d75063,67,True,True,True
+ed957b6c-c5db-4367-8de1-d47ce4d86087,VALID_EEFF,,148392,1cbec40b01c6fed79643ae8541b3077988671934d4647f5302f8bcc4fa14d8f0,67,True,True,True
+649ca136-13c1-4d9d-9335-46adafea07b0,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',77685,ab1e55b463880eb51a4ee3d4c44af1a1c9a6b50ce5bf71e94b68fd6548347238,0,False,False,False
+29e32ab5-77b7-4cb4-9111-31ac6865eef6,VALID_EEFF,,148389,92fc6455731e7c9f5badf1b61557c57fc54e78aecc5f7a51e6dd4ee431a8dc73,67,True,True,True
+295ee6f5-2482-4f3a-a02b-b8e9c4c93831,VALID_EEFF,,148371,47a1fe0a0ff2655f79b898d5d23e0365ce7cd58815783accef993939fe00404a,66,True,True,True
+20c29e3c-ad63-4bda-af72-e869ae68e3c4,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',77685,37cd4802eca1516dfa9936cee691391f75b649f89feb0bd31e6754d7467cb683,0,False,False,False
+1ba00be2-7436-40b7-a5df-0ba9aa0563e4,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',77689,9cdc8f4c1899197d60a73df708b8221c5702ac8baf9df16934211a438d3f2135,0,False,False,False
+12528542-6e67-44eb-b1e9-3817d61dcbaa,VALID_EEFF,,147531,232c3556e852a784b7f4c2275d86f2aeb0a3ccaed4006c887e77d891412207f4,69,True,True,True
+66311816-d660-4786-a147-dba39a69b43d,VALID_EEFF,,147538,7c22c44b54d0b1daf360f0303dd9b688ecc254077f56f2060f11b59f3ca9a09c,68,True,True,True
+128e0456-cb36-42f7-98c0-d8b4ee5a6581,VALID_EEFF,,146724,aec9d9b81162e73356219d81355f8cd74ccff1a80659abd6132ea1b8b001ddf3,68,True,True,True
+8b862df5-8264-4c12-bca9-56ac6c8e48d9,VALID_EEFF,,146724,eab27ea0b2beeb5f25f294a53edaa55015611c1849fd71e4cd90a2501de1f1ec,68,True,True,True
+8c5744e2-0303-406f-83f2-2f5022ebd9d2,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',77690,62acca4778cb36d51ec7e0a84ef91d2f7ed90ae8b5a5a20e114394078736d86e,0,False,False,False
+a6e3351d-9faa-4f70-bbb5-ee56240056a6,VALID_EEFF,,146710,512cf83d0045c905c28fff1258ae5ef338d404aedab1f8d595271e0587ce46d1,67,True,True,True
+47eb2075-3a2a-4c78-839a-9957eac95032,VALID_EEFF,,146710,b7d0764f61a3a4495b9d4db056a0e96fe7e3bbc0a9c0d428f424587ac9e6cad9,67,True,True,True
+6e79fb07-239b-46aa-a621-d3f007e4343a,VALID_EEFF,,146722,2bd2598ca71d7e361222cde46270bd529a097d0aed4779524b0caa6726b9d2d9,67,True,True,True
+2c8301c6-22fd-446b-bc97-e3c5a3e11c22,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',77685,373da6703feed3b31b4388b3538f6746ad3f1035f371ac4f726e70db333ecfac,0,False,False,False
+96949a66-89e8-4fa9-b777-44b73cea64cf,VALID_EEFF,,147496,5e32070974a50bd907de039eb174eb3da3a9f9d4e1367500a8548d51fbbefb1f,67,True,True,True
+edc8a13d-64e4-4976-9fcf-eaa26a7f1824,VALID_EEFF,,147489,62e60b39f873c266c1fe2eeff6c62613f37b23f8f15fc01b1667ca058e94a954,67,True,True,True
+ccc760dd-cdf4-4147-ae2f-a7f78427948b,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',77681,c13d5f5c1ff2eac0ea0a514b4e828c0de5ebe600a7655e4cd8ba12ed13f8971d,0,False,False,False
+dd6315a7-12f5-4e97-b2ec-fcd35b57cbc3,VALID_EEFF,,147493,16800ea83be67bb7f00679fa51f1a60825c9e2a093448a4d03e73fc497cdb054,67,True,True,True
+e399d7cd-6461-4333-bb34-81a6b38202a4,VALID_EEFF,,147532,edc8642422e6839cd303d0a974cd4cb8a5db14d54472bc55674f734e6940a8bd,67,True,True,True
+2e9f76ed-9103-43aa-ad61-621e8f2edeb6,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',77682,598b651ea7102b4ab688f1ecdbe4b5d4360584d9c9e95f577df6d7d2858c2bb4,0,False,False,False
+a4e747cf-e59d-4bae-9726-2adcb2befab8,VALID_EEFF,,147512,e192e982e57dbd7f16c56108459d1e61788dcfc128b3fc57329ab0386045a50f,68,True,True,True
+d3267cca-9604-4cc0-a61d-e808764d4345,VALID_EEFF,,147525,f63a90d2225286081a4b4b30d0bc0a8b38fe63f8b7c128dba125a886bb1fc443,68,True,True,True
+cd10d176-417a-43e7-9986-0ac701394259,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',77814,52e8edbb81b86cf71af8f511bc9d59c787336993de04eccc665f55a5da7635d1,0,False,False,False
+dde965fa-c712-4caf-8d07-8b5d1880fb54,VALID_EEFF,,147455,2467969bf6eb0bbf65c8a8b7bdb71dc509ce615c28a9ffcdb518cd5c7ec70e7a,67,True,True,True
+69826825-5452-4aa3-8646-3d39f0bfb36c,VALID_EEFF,,147492,40af4f99b8e98653d376f5c0e916c17d9f3adeb0e4d83e1b2bb8326009e2e7bd,67,True,True,True
+0eb9ab9e-8f3c-419d-9ccc-f3c4245b74ac,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',77694,83a9b780ece0b3da9d821f42e97fc652954666e6dabfcc81d144e4154cc440fb,0,False,False,False
+0504fedc-7ce3-4e06-9f04-a30474729792,VALID_EEFF,,148236,9a14be5af3e86736a9bf894f79961950f9959b63fe8259c7693cc2efd5352e79,63,True,True,True
+b1d4b96c-1600-4527-a934-d9dfc824cad0,VALID_EEFF,,148232,7bf357ad2a5822e7e7b8a1b2115880f69466dc2ce62fda07587441e976ac4f54,64,True,True,True
+ed6afc16-56b9-4aba-bf96-15de85dcd4f9,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',77683,b97dc0e10a458f078cc6e0687826d8938e9b3da0df724eb0efc4fc5294780f7b,0,False,False,False
+e079b0d9-2fa9-4028-92cf-2f173020a247,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',77678,8dfcadbcc92860f44873fe18a8ad2cf18f4bebff6f54d30be9d2ad347e728c65,0,False,False,False
+18db049a-b82f-482c-8d01-37d64c12cdd7,VALID_EEFF,,148432,8923f390fcc81a092a3195a344c7ac4b4e45c910802f9e5b3e10300e0e7657a4,62,True,True,True
+ae73bd95-7818-4f40-a57e-739f90a1d4c3,VALID_EEFF,,148423,ebb981a122ab69b8fed67b7e94f2646e00401f36246c4ccc6aca029b88748614,61,True,True,True
+23551c97-49a9-425a-ba0e-74fb94d85c35,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50458,c9d00181d3b1a2a215d8d62477325594b10e1c8eec554db532940e6b6697fec4,0,False,False,False
+86b6c6e9-5f10-454d-957c-2014ae7a4b9a,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50464,77e9fe3ff1ebd9f1dbfc07bfb7c8315d81e08bcbd72b80026e7c454fbff710ff,0,False,False,False
+6cae3017-70ad-40c9-85b9-7142f99229b9,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50458,4e7b552419977fd8410cf571a099765f411b85dc711b2d132a60f3fa3f582f93,0,False,False,False
+805ea3e1-cc05-4a9a-ab69-818caf61dbe1,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50464,07981c9e731c5c241d32d963f603d987e3ce936c5cbca18d9ec34d643b97b32d,0,False,False,False
+fac94dc2-02af-49cf-9dad-25526259dfaa,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50458,c36cb91f68f52f67bb7192f1f5afcfd147e2f062f83272c71dd001792347e003,0,False,False,False
+efb8a659-7988-4023-96c2-926c40c61b06,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50484,6784a71aa997fcfb1a4186b945f5d11268f6a9e0e7b10b4a68c1afe726d75d5a,0,False,False,False
+6d2e1245-23ec-4925-85bf-2d07fceb4590,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50458,c67b7a4af3df70eb2595ca73ec5b13298bf5b44883f766a983a4abdbd979aed2,0,False,False,False
+ba90c67d-e2a3-426e-8f68-45494dde2db8,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50484,50b3f51d4e2a3a30ce1ba11b6bcc2e8644934968d48adb1ed6b08a430286c864,0,False,False,False
+3d71184f-1a8e-47a2-9cd3-40d42b4465a2,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50458,a6b6b89f3ede980fc51ac5b2ccaf1c0527323fb4cdcd916de7b5be200c2525c3,0,False,False,False
+c3f2e561-1eef-46fc-80df-2d157f17d77f,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50484,a594de38e68c203dc9e1520b457d599229eeb2202536a50fc51c1ac954a0a534,0,False,False,False
+4caabd1b-46b7-43c8-8f3d-bb9eec639e40,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50458,bc62f59ceb26941244d8f1288475bdd332cc457c6cb38e06a6fea1b6c026be7c,0,False,False,False
+6e9b6200-a193-4552-acbd-d63ad967865c,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50484,ef8f5a9042c0505adb673df19dde6c4e2afa412b688f13624a7011deb99d1de1,0,False,False,False
+5820301c-4849-4043-aecf-159e2f98a6b5,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50458,af2d1a1b753e637fd03bb75573362739c4694c310a6a62dd26cf57e23a6ef883,0,False,False,False
+68616a06-ed32-4b91-8ad4-bf9dcb092cf9,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50484,5a2805e926a9381f247a35ccc30ea100d99ceb637284b23be8abc2320370f67e,0,False,False,False
+e14b58f0-fb33-4ba6-96ab-fc30515f6ab2,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50458,afd50d5c2a06bfa2e7b94b11f22c0ed52c61108ab0e0d8bdb12a6a03b74c4603,0,False,False,False
+ca73679e-a767-48db-8460-66b195fd0c83,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50484,ffda27731ce19e951f560b00427f9e429ba21bfd150ccc896ebbf2007e2bcaf0,0,False,False,False
+247141ef-dfa9-431f-a625-19ec9148daa5,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50458,717abf939287b086682fdd51c1e9c09f9f34ce0e55f09525fc98b1e839cac7b7,0,False,False,False
+5ea63f2c-57f6-4616-9b4d-8df6cdb1f284,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50484,eefcc5854b06a5a91652358639433aee32027d8097d19bfe5fc6dd3806aa11cf,0,False,False,False
+376475e1-f0f1-4051-9df6-ea8341b43cbf,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50458,9f7d976c87d3d31e2ccd815322ee30e708d9539e0f16747ebf6e3004906b292a,0,False,False,False
+b5dd28d4-40a6-49c9-8821-f37dc69da365,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50484,8822a72ca701902bc42c3db58c9f9720c646f0fd5ac19e1d9965fb45cde14834,0,False,False,False
+161c65ba-cedc-4eb7-a438-c5191d67a6e4,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50458,2525baca4555983a3c38fcb8c725fceef3bef35d56c5677e0e8282189893bf31,0,False,False,False
+970363e4-cebb-44ed-bb3a-85a7d74183c0,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50484,c0960e8c465b4072ae6b27f320ab2e4cec21651a5b0ba6c3d3597cbe4dacb4bc,0,False,False,False
+bd324def-659b-4894-9e98-28c3c2021cfc,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50498,7f9a80cf1e3d30b7ef15fafe68a3c39c2f818f750a82040c805e5a3fdfc2376e,0,False,False,False
+50b4c637-23e2-4b04-b27a-fa9e48e65152,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50458,fd1d0ef2298b3ee59b380d046d15eda4325a8c72dc45586a598488828b535304,0,False,False,False
+7aee2ef9-5a76-44d9-b817-b866bda2f989,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50484,aa6650cf268eb1febe815edf630625e470aebc1d55ecd99c8f29ee2e02d5808d,0,False,False,False
+d8f08f87-a3ec-40e1-a0c0-7d330895f2f5,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50458,4889f29118c94721f42fd8788b98d9fabed278339078fb8928eaa5947565624a,0,False,False,False
+2b6ab489-97e1-4bf6-86ef-1f0fcf42da81,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50484,13778ff8930628b5880cde66095d58c0d17335ad4eb9cd10db65dba1cd299b62,0,False,False,False
+d8e62167-b605-426f-888a-4ea4238e265d,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50458,6e5f8d519b3f977c6b11cb960f5628f2328b697c2287ad630a4515a7a4400650,0,False,False,False
+e421884b-43e4-4387-bd18-2be66337798c,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50484,3ebb50862e766a672feab7cbd66250eae475dee18ba4286988c0ac404f179eb9,0,False,False,False
+f22d464e-dab1-44d2-b97d-4f3aea090caa,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50458,a9db9800705e67a7b04e5b791db6d8c0d00068d4cadaf072dad2e8e92e9a16b4,0,False,False,False
+cfc79429-c2be-4941-90c8-f3ad7290cad6,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50484,624056d00153672b6a13f36ba5b665bb2d74f920cc8257424ab7db4900d56b96,0,False,False,False
+690d50ff-63cb-416d-821d-c9e408ef072e,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50458,144e6db76daa1757cf89c7b0c247a2b10c3fc8f01ceb140f6d8913de0a9c9177,0,False,False,False
+3f42ebb0-c2c1-4be8-ad1f-081c6b2b6043,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50484,3068b3eed2af8474529fd72339e2de39c713b7ac3e059298894323ac50c33924,0,False,False,False
+e75ead43-974b-4ce8-a21a-711a7bbd49eb,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50446,6c2b584d09c175827cbfcb4727d01665d2a17398090e624a3e6ce7189de1afca,0,False,False,False
+74cf9d46-fb52-470b-92e4-63b3f2254c4f,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50458,588523d3a66eeddccb123c27ade960bdf54b7be95fecc39a5eb9672c4716cd9e,0,False,False,False
+da0b484b-49e7-4446-a4bf-610ac178de04,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50472,482333dc7c81b269e6ed54a1cee18ae042921950a3d7fd614b6b6cce96d371e9,0,False,False,False
+9f2c04a9-72ae-4ac9-8c48-86bb68784de6,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50458,27f3572736f88c1f81b5d2b9a9fdbf7feae817edd14236c1d67f3832d520b972,0,False,False,False
+92d71c25-2259-4e32-adf2-63364c425536,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50458,6937ebed147f9828271239a1c515eeaf9956849c6f703607cbd8d7e7b889d48e,0,False,False,False
+b5bfd657-6b1e-489d-b188-a6eb960f5cff,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50472,4375d04cc89547690bd5846a348f3a5233f35a4c006abede883bfda1482cb250,0,False,False,False
+c1d0dedd-38c4-45bb-8f43-53ae22864239,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50458,b8af0873c62b676e7d5b5dbc3ba1d90a529bc31c88fd9ea4f2b734f456da3c25,0,False,False,False
+1a2ee29f-7520-4fec-b39d-fdc6683d22e0,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50458,5f951ce132f4bbf7f2c81358ce9bb40f0edca16382fe3649dd0ac01c57bb639f,0,False,False,False
+08b46ed8-aee7-45cc-94a0-e2e81c78767d,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50472,5f389b9d48c8d3f8e5f8ffbb86c65b56a6780e03b194d7b76cdbccc927ee1d0a,0,False,False,False
+20b25532-2900-47d1-bae0-73ba203a3f59,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50458,ddfb95cde331d55f23f1d7a2e75845436a1e552f983819ff3bcde536ac55a38d,0,False,False,False
+686133f3-e7bd-4834-975a-6fd0a9674cef,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50484,4e9d2b6d9549e70806aa53444248ea975ba21b4ae6f7b18b014561a3a77f7ba4,0,False,False,False
+45537ca3-e607-43fd-8832-369b94394004,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50456,57a02c4ffce435d3b459bfcffdfb30e9160488e2461ca85d56c726cfc0bf4a97,0,False,False,False
+6a514b07-84ca-44de-b889-eca28b2c12cd,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50462,b32aa9a2ed3dae4a9698e03936eb59dbd025865b9933b1d752d5d40f98d739eb,0,False,False,False
+d7adc3b1-ad64-4173-9a75-b49f7ca259ab,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50484,460eec45c2fd36523bd01ac07352a4a18bcffef08452f16e239bc8e7132018b8,0,False,False,False
+d93be42b-b001-442f-a8da-eccd3732c737,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50456,0ce58973c6cd607e9dd2b43d3bb343c064271d0e699d155a2f2e5cf45f1b7775,0,False,False,False
+818993bf-4c10-4a2d-9971-348e13488c94,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50458,1e7d40ce2cc37064fc6293a21de797b56685195d63cc976c8a4f917dd7640886,0,False,False,False
+d55072ee-faa3-4538-ac3a-ef265578dd56,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50484,9b274e6531dffb569d388c56c472e45090b6136200a7a77a6969e24f3a6d46d9,0,False,False,False
+65509796-b993-40b6-93df-0ca2a87ce1db,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50458,7431a03898634f7e8990378c583267a9a6d711dc3c564c3efed3432c360a6e69,0,False,False,False
+e2b3d30c-05c7-42c0-a0e3-2ada6255f857,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50456,00620743868f14a40835475414e52f87f9c1369b34eae29f9d5a4a467eb3e74f,0,False,False,False
+ae949926-8246-48ed-ab19-13555715dc63,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50472,c3335baccc3145e4765c35e01c933eecf385692db037a67f879d76135f393ed1,0,False,False,False
+2341846b-ecb0-41d2-80a7-9460911db3b4,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50460,b59905803aae7a50f79d13d58fb592de01408492b835e5040ba9efaba69fde81,0,False,False,False
+913e25f4-6e23-42b8-8ab1-bd0fe1f1676c,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50460,550b9916931ad4cc76f9b48d0b95b7b479799d7bc3900ecf6eef6f097bc7db51,0,False,False,False
+b505db26-df6b-45fe-ad06-85d9ebdffd0d,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50452,b8f44e2054eeb76433af8ea685ab61df3aa5703b2b74e2bc2644d07a95f76cc9,0,False,False,False
+027b3735-02eb-4e00-bf43-1fbba3f1bf05,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50460,a6d7f4ba0da4be02e6f5ede4cd7f284fd07218aeae4a47a357974d7378fcc4e7,0,False,False,False
+fcbb9ff2-3074-49f0-8c04-61ccdeace8de,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50472,b63aa5df676e9cce977503b35287c4b25801f9be14b4cd708f76399018f92066,0,False,False,False
+e0b78061-e83f-4843-862f-bdd0ec38c4e4,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50444,fcb35ee5f6b9c0a9369641939fe55c4d7afd64dadcbb05b761a222d54df2ae0a,0,False,False,False
+477a2559-26b9-4591-bb66-f73d1c9a1cc6,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50444,c7fecab779e1012b61a0cc39b31f37d0262f215571bf966c95ae077f3b00ea25,0,False,False,False
+fed28895-9ced-4a7c-a119-ca87affd7d5b,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50472,8f80626b3fd4c0b4b49a0f19eb162b7de41308b480af7364ba2e38efa58e8ed7,0,False,False,False
+d3475dfc-34bf-4483-8de4-03628f969b5f,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50444,1d6effa6bfca3e665d5e59cf7e8d6d83eb8bc0bd70b63310aa36f6512b1abe93,0,False,False,False
+c2e96757-2720-410a-b41c-574caefceb06,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50444,cccf314464a3fa69cae2ac38f7be74d2b1ebd559dac1f6ed572e21d06263a817,0,False,False,False
+907256eb-386d-4404-ab61-f9f02e1b5623,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50472,1a69a68c9832037ec99339e7890039c506a392f3521a37a3dcfbba9c174be3b0,0,False,False,False
+e72f9d50-e164-4ab5-9f28-4d4aa10fa06a,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50444,e147ec362712477399823018e5ce9034919c545fdfe003b43d1a082148b6cd5b,0,False,False,False
+4f49ed80-d344-4795-b8a9-6be6e38a8d33,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50444,b6d373ac31fc0675ab2ce7a54baf08466ab9173e449c07412976db396d117b94,0,False,False,False
+d98f5a4e-8a11-4f30-b205-5e23c4ddb024,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50472,ba86731170c21d9c18c0904e7df08333b7a9775184a15dc1562d08acad4f7fbc,0,False,False,False
+e8822803-864d-4bed-acb0-27f6c1d0d73b,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50444,86928f581011eb1b1b52e12544212f502e9fdae333ea4ef09c179fd7568f2594,0,False,False,False
+88ff5132-16a7-4499-af65-4598fd5b9e6b,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50444,d3995e4c5deb840553be965b0e772b34723dbcebc9cd8da72edc35ccb8d2e97f,0,False,False,False
+87c57fdd-d2e2-4a4a-956b-8a3778c97ce4,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50472,0229909c09528af40cf8fe1aa903bd0e20a191cb0d8a96e8fef2fceacc43c602,0,False,False,False
+084f1323-bc45-4b52-adaf-9688f9bbb914,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50476,8fe50942d09cb9ae7f6674f7e446807042f3c38476f02a8bece32f0bc9358cf2,0,False,False,False
+06be8136-20a4-42e9-8042-21e51b9b13ad,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50444,bd0435db4c65fc14eab56199bdfadfeb1087d3f990797623899a1493eb40a636,0,False,False,False
+c2b31cb7-bc41-4a3e-96f6-5476e9bd4bef,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50444,99a519767480af97465e40be7d1daf3db777e92bab8ca2013d8ae33e2f3ff946,0,False,False,False
+d7389eca-77c2-47dc-ad4e-a26e77e64b6a,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50472,e5dc28ec26a7eb5f24a2ed1dfb864cdb2c01aa83f769d5dcf297bc6bf0e563ad,0,False,False,False
+1bc7acf8-fff9-4630-9671-4762e51e6282,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50444,4baac7e09437e4b2116c91c91a53bb1125b9ba5066aa0f2a7fa7a2cbca745bf6,0,False,False,False
+a6f18cde-c918-4745-bd02-9f198ed3d9db,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50444,db0bcba5545e2661e49ce941b36e345ff309aa795e481c47d76d09ad1ca9fafc,0,False,False,False
+40ca13ef-c8a0-4b7b-b75b-31233c872f0f,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50472,dca515b23c10b98267cde4dded944461cf96b3cdd3bbd53117bcc3d585ad4675,0,False,False,False
+fcccf711-f487-4006-9bb3-7fb55be2c0d8,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50446,0001683473e8148721259dc8ecec9a5b8b2d51c3af36d289d0f3a35b39ea9a25,0,False,False,False
+aea7ad67-9562-44e3-ac2a-0db17cb36bba,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50444,b6b83158cef78ef8d98bb39e52f98804e1f2f2c75b00747c8aeb4ee20890d947,0,False,False,False
+a5a01eb2-af2d-472d-a050-af795948000e,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50472,335fda00e7b8e0a7146da7d126d8a585e670f4d1291e126204696bf473ca3903,0,False,False,False
+b9a16124-274d-4b35-b58f-9f56cf4b6df5,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50452,2556ab1bc389b5c718f1d1610ccedbb92c7c109a3b96a6ac65c121b68ba05569,0,False,False,False
+cfad7f15-cac6-497b-9ef8-da251f58718d,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50448,1efbff55b1a1ea28e41837bad190e9541e5252983ace7fc1867b4b7491d001df,0,False,False,False
+96bf8b24-840e-4f77-8391-2f5a6d191d80,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50448,5c485f75ce88cca26bf945a48d4cb40531c9e5706093fe0ad8564a6d3a301b2a,0,False,False,False
+11cc1934-5799-40d9-ab57-3bc36dfd48c4,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50446,9a489973cad4e93327582edd68654b006f9cbec9d7826b03e29b7b01cbd7ac7c,0,False,False,False
+0edeb26f-148d-4cdd-b509-856a7b7c8666,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50446,e5d5831ec084ba53416dbcf308fc098c2c5f4ffb9d45226a11bb8d47563eb536,0,False,False,False
+5579e1e0-841e-44b2-b525-fa6aac3099fe,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50444,749794d53d54412a96a05f3be1d1b17a8bab5d76f70ddb69268cb91f6ee59cb5,0,False,False,False
+a5caf70a-169b-43e1-9cf8-ee75ca0a499a,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50472,230c80b8c35b2b198807e0b0fd73f71105ad84e59d0be70f7c586834bca8da80,0,False,False,False
+fd15816a-8b65-4dba-a7ef-3aa2d8786a61,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50446,b93b52ffe849bcaa24dfc5f663181131d565b0becac8d62a75d14ddd7dda5a0b,0,False,False,False
+c211b1d0-2105-44c4-bf4c-a8ea5698f42d,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50444,329e797f88add884018db6a3bf1919d320880bc9f72467e9d9dcab476f49d7be,0,False,False,False
+d138a8ed-a8fd-42bc-8415-334be97c30ed,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50472,2c7ac3611229283f1e47241c0841220e93bbaa08cbc5cac34cc1fd348ec3e524,0,False,False,False
+27ddbc91-354e-41e0-b3a4-6843e21a8c63,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50446,6ea35da930cac52bcb660179f9879436706062502d2ea26c0a5a5e34b4726726,0,False,False,False
+25f9a1d9-f605-4494-b72a-09cdf943f398,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50444,c2dffd8db4c13c669f6efa31d70804901c5d0ff1c1b09491665a3cba9b7ae21a,0,False,False,False
+e972210c-fc3f-4720-8f6b-4bc33afb2137,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50472,4e98737ecbc99e6c49aa667a2cef80611dbadd1fb0b275ac36085e207769a8c2,0,False,False,False
+f67b76ce-8762-4057-9d10-f0201ea8b04b,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50446,1908497e8dde8434ed2b00172903e7e92e7ae8ec44a69aed3e59a355abaaf0f6,0,False,False,False
+6c99f932-7100-434a-9205-3fd160703953,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50444,69ae35ed8ec5f089ab36642bef551a695dba40d331bc01f503bb917b1e0ca42c,0,False,False,False
+de9b1a87-1818-4258-832b-028a5c91d439,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50472,63da47e8fb9379c829b2be82725b885ed1874c2e851dadbee2abac99b43889a4,0,False,False,False
+ecdcf261-8ec7-4ae1-8970-5ec1d5507d88,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50446,ec16b6a1c92151964e9ec1f81411192a72c1a5e78b848fe3fab79d7c672d26c3,0,False,False,False
+7e931e7a-ac3c-41da-b930-5dbac797fecd,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50444,eae30213d97214214f4dbab54225d06858bc93391b5030382e0c7284d69b8931,0,False,False,False
+8b0e110e-2516-4af2-83f7-b8d5f0c1e80f,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50472,242350a74df8cd80e813b4e4381505015729b90e768ef4d5a9ba05fc89c4b820,0,False,False,False
+0c730009-4ba8-4297-a86b-8bff6f72044d,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50446,e7dd994925ca8958b5a25a19afba703944ecc0c68ae73396584e6125eb5d290c,0,False,False,False
+f22a78b4-3369-4092-a280-75922f2768b0,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50444,9eec60e61e8a71832f812d0404a4a882706308829b1993ee205a43dc91cf1729,0,False,False,False
+905dbb4c-9efc-4514-815d-57a4dffd38e3,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50472,43b2069a2d53e220db210dfc3992d5528bdbec0aebd166ddd64df097b5a7eab3,0,False,False,False
+e7766682-c312-4264-ac8d-4fbf8daceb9f,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50446,1b79a189d97428d5250fc54afab38e8da3206bf0506ad32a1f07106a4dd057b3,0,False,False,False
+f40ee68e-4512-42ea-ac2f-b8799cfa4200,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50444,b63007233b713c70f66351c4f6919bdbe537e4213d1ef1b543d967c4b9d926e4,0,False,False,False
+473ae0df-3b7e-4183-84bd-ed1f8668b256,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50472,fb80ace824ef79d7cb39dfe9ec813f5065c721d1506bacd4974abbec43b020ac,0,False,False,False
+52600775-8f8d-4a39-80fe-8ee9fe94697c,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50450,0ec72d50b9075478dac9607164562082b8f26250ef9e85ae02d5c066028aedaa,0,False,False,False
+a34e138b-9703-47b3-8853-96fe4631a2ea,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50444,de817702a7cb0ae02e1e587da01553c17c23028a980618dab6c103563c6130e4,0,False,False,False
+1b2b6385-a225-4142-a500-7da9e1e798d1,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50472,b6fa5fad55cc46b884f5e19cc58bf37c987a87f4c84320c0f539579bfbd49527,0,False,False,False
+6a7100d4-7d74-4e8f-9d94-58809b19a5af,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50438,7c64c37ab71fe5dbd2e08e85e581f14b89c5ee3ae54d62e67cd594055dce9d8f,0,False,False,False
+a922ae4c-2b99-4e5d-a7cb-30a1f6f199e0,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50444,4a261e42e0f451f695053cdb15a6272e510cef46d830b8e3137d205047516751,0,False,False,False
+2233f5c7-2675-45a3-878d-2301e5dbd75a,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50472,8c9b421b5091ebc75ceeeac3bdd49f8a26eeeb41c14a1858bac9300d60af34d4,0,False,False,False
+0ef5203d-907e-4ebf-bb09-4b2bb2a57cc4,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50444,43b1326d0e7a3e2b76427d8fe4e957550d318556a2eeb7e2e586fdfa514d5780,0,False,False,False
+265a7c3d-83e7-421d-8bca-7326a247dbea,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50448,e03b20c968d36b77a7e4c765cd65519a1498a22a9e5716c007a07826579672a9,0,False,False,False
+0caf739d-6f45-46ae-a670-a17a219360ac,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50472,66ac2e67601b9d61eb285c0e4cfca56d3167dbecaf896343fd86d2d59d908772,0,False,False,False
+2d59dc37-6dad-460b-a1e3-730d677498bc,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50448,82e8441a6234080a01c546aaf78ef4839bfb3523402ba59644cf3119e622b503,0,False,False,False
+04fde593-c67d-4343-b546-2dd07fa7ff2a,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50438,7607a6eeaf54e8c98af8dd06df52599ed8222ab1bb11e1a3656cde0c556a47aa,0,False,False,False
+5145dfbc-d2a0-4164-b18a-ad0b2a9d0489,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50440,4b134856745a49ef11198f9ac7feccfa657b8b94cca402943248e8f9bd63ce5f,0,False,False,False
+0a5204ad-0596-49af-b800-76d8f5296d8b,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50464,666bd785f73b0ab4bab9724642d95291a830f84e09cd06e5c48dd322f4ef6acc,0,False,False,False
+b379812d-1995-443e-8138-ef3dff099ec2,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50446,0b132bbba2ace312db54c10392de4887aa7ccc01ce1ce7d18d2d6895d2f6d42c,0,False,False,False
+f143aeb8-7585-434c-b8b0-023adf44d694,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50436,6fd5377c690ae27f4ceb59d7cb32d8fb85cccfdc0f4f21763200939bea085a47,0,False,False,False
+8fbf39c7-62ba-40a7-8afc-f304c7a71184,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50460,3be06f07217727efb48a0ffbda3350bb2af01689e67f09836dee416e94ebcc0b,0,False,False,False
+7df69ff0-a21d-42a8-80bf-5c0aa3da3a6f,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50440,f63e9acc675c18e9a526fe049965d55f3ce07812aa61b00edc0415c1d479e5e4,0,False,False,False
+8e62de51-dfbb-4e3e-9dae-d3a354c84376,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50436,301d4b599064ac9f995ef0fc5323e8d4e387219f90e6c8d9c5c5015e05c43d7d,0,False,False,False
+fe3ba471-83d8-4847-9194-8d34ab1e1ca9,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50460,7aea665a653f2b2da4453231d1075a3ec2ae92fc412f8c1ceddc6f31217d40b5,0,False,False,False
+7ab4b7e8-b4e8-4320-89c0-b2814942f433,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50440,e2d4ab501cfcdae59c8a0aa49ca341cf8c42edfc6b91e8bc93f5ff9bdafc29cc,0,False,False,False
+7936a65a-9b51-460e-81d7-7c3a8baab541,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50434,81be07ce188bc8e38ddc645a2294adc086d6e7cb200c06ce482348afe043e87a,0,False,False,False
+4a4378dc-3234-48e1-831f-53f112c87fc5,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50460,9adc22fcc4c49c63835a6335d31d556109bcdfa451fb2bb54dd9719d5e1bddee,0,False,False,False
+d92af160-fea3-42e2-9510-61a023cbb616,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50440,4bb947362501c97eddee011ac54fe6c9718e96699786bf46a649b5abe4d4944a,0,False,False,False
+fa646484-7286-458f-a13a-fa2f46dc7669,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50434,01fca95a7ed1c37ba0a144f77fb53754816aca40c1f5bda534283839fdba380d,0,False,False,False
+ed20e63f-de3d-4a22-b89b-ca0f046d1807,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50446,41e1f9c9770bf4951e07ffd0073dc35ae097f75986ab1abd3a1f633fa531722c,0,False,False,False
+d1b43c76-853c-4c3b-8b70-268e8cd745cc,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50440,3cbabec0374e1916ab091d1fbdceb72d1a7ba2e1bbf64ac8eef9d0f394ece413,0,False,False,False
+b0b9b869-3439-4fe7-bd50-c62dc147c7fd,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50434,8c839b5795642b8add11881beea34f0e7745ac91cb71331d991007b74a1b5fe2,0,False,False,False
+0d5a4bbe-7b7f-4a9d-9306-976bb0c49bf0,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50460,b0d1a068c6fdd6397dc2cb7ba25c262495ba33fc445f288e99ecf4906ab0eee1,0,False,False,False
+d8aa8865-187b-4979-a486-79d0580c732d,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50440,5b2202647b5211f98a69ec9ac1d9d079aa08ef4309561e75e33f8e5b2b05eda1,0,False,False,False
+7cc5f0d2-0c98-4fc9-94c2-82c4a595bf55,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50434,71c66ca045e6b635c7ec4653cc352420046b4b9ecac7155fff8185662f95bd6e,0,False,False,False
+8a17d900-98e6-44e5-9313-a483fdc65841,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50460,e2c508a18560af575817dc6d6c7af445f0b65a1d21df280dffabee6dbff30c96,0,False,False,False
+0dd02e5c-a8c6-47f3-ab8e-13af6b82a230,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50440,f32964f1e9a1b85be5c9bd73fcac73003ec9bfeb680eda78c1866f2b8925208f,0,False,False,False
+74759dc1-973c-40c6-90b3-c6984f9db768,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50434,07a0c8661b688b11663cba173889e970fa131572843d6fcbc0ea2303d6ad61a3,0,False,False,False
+5f7c29ef-a025-4f10-b6d0-37c3201ebd16,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50452,faaa33d73426ea1279878d36972a97a30bc58ce527c3ab809be42bd4fd8b093a,0,False,False,False
+a0085b52-1f3f-447e-a11f-94193d613ee1,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50440,6e9a5e0f7076aaa3f6f768ce13624a4a81debc0d150002610aa43cdc5a878560,0,False,False,False
+dfa2380f-973c-4cbd-9a48-714c41c9e71d,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50434,fbda7cca89ae3c55772ae93b5142ba1b2ba7f255b50f8a0ebc5f853b7f170da5,0,False,False,False
+475e7b25-6ffd-493f-9bc2-b411663d547d,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50458,0735eaf0e4044debaf324b12bff6d197e1443f179258fad8a69356bf4af750de,0,False,False,False
+f0906775-fece-4657-a046-f190092d9d38,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50438,10b5060b8bcc0249803142bf35692b800e1df614de2de5f56f2fd2c11379ac4e,0,False,False,False
+2942dc5e-8cf2-4cc5-b67f-ea59f97a50e0,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50434,a38927604f5affe10d576a340a0ee64d511f7f3a30b80771bcd4a4526f653480,0,False,False,False
+4e8f691e-bb32-424d-90c8-5f986260fd61,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50448,14dc00b7459062934e486a71564764bdfeff8875604184fd795b3cc979a7bb6d,0,False,False,False
+79c390ca-0bad-49d7-b2e6-8d58c7996e2e,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50442,490762ace8c18437934be0d41e0969538465a7466cbb25c3c044ce48dbc12952,0,False,False,False
+446cd07f-c197-488c-b218-989fc63978ec,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50434,af9189f69a077e170a6c86c7368d1304e45a4d964307023bf90108332f2bdaab,0,False,False,False
+c0973b42-174d-4e6d-bb54-8988e5eb273a,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50434,7c77879ba0017d891fd95a4676975605e7590e0ae97edcd351825017b4ea4b94,0,False,False,False
+46707342-4ebc-4cc8-90b0-3169a00081fc,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50440,140013fe83a05c26013c7ce95348d02e53fdac52ab7e4ab94d4170f87708e803,0,False,False,False
+40489f9f-fc32-4116-a5e7-acb0c20b2b79,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50434,04cf255458f0e52c300c775fb50422b8a3bc1e63de96d6df1abae60c45d5a884,0,False,False,False
+3b55613c-66f2-4d7e-8a4a-bcde4c32d2e3,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50444,1c9312abf58a2f073f6dc878743b49f7d97f994e1d29e7e01774c8219aaf834b,0,False,False,False
+2e456d9e-b96c-4170-a3ad-903d832dfc93,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50434,78a04794fabe37fbec8e7858dd0fb0c2ad67f3b8f4ca5aa0ff06e29a33d2bbe3,0,False,False,False
+92f468dc-e4ca-4288-be18-2081c7b62638,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50434,da6bab0815882a2ca718be7caa1577de51bfe329dd9c05b6c8c1910ba297582d,0,False,False,False
+ff5f3657-0e80-4d54-89b9-c56d12e66bdb,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50444,d82ace13b942341c77daf069f2a5c4a9d72ff26d93cf9e3ab77bc3e235ce1656,0,False,False,False
+a3293ef4-a9df-48c6-90fb-ac8815d1b059,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50434,1429fbb5e2a5b370c0fafb63483e347ad0536dcb3365ccabfa8141d192e90f0d,0,False,False,False
+56cf03c2-0646-46a8-b7f9-ee735ac43811,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50428,026c7de60f5360d026ae561644cdbd2ed3389fda53885b22a4ae0c38203b5824,0,False,False,False
+71cbf34f-f593-4d01-ae2b-9303649c2598,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50434,be92c6ca1345232b8c6e84dba71ce27fba7cb8c04b047ce364881ccbceef25f3,0,False,False,False
+50f07599-067a-4ff7-9acb-f625d2f4ca35,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50428,b800ebe481e5da19a78d803f1ab289ce6cc96aa775125e8b0817a740d7f1274f,0,False,False,False
+09595c6a-4d52-4ffb-8c10-4be51789a1c5,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50434,0c37cedbeda2a1d8841a526339094cc1e1a8b6a31f34387b4b99f6f930c9b969,0,False,False,False
+14e6d52c-024d-4726-9d2d-8456a809bfeb,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50428,4b1ea3601c78894be4f8d12113ed88a0b11a3b97f2a156c98f3ec33663fa41c5,0,False,False,False
+8da010bf-38b9-430f-9806-6ddc3c509ff0,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50434,7ae4997e27a341efee14e8213f50107c7fb8ff7c9c2db60576b44d790552b219,0,False,False,False
+ff5dc758-12db-4722-8b4a-4c3f3a4b182e,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50428,08874d303961d5d2b704faee1c88301a6e44983ee30733863bae06868635c278,0,False,False,False
+324b7407-ffa7-421b-a56b-e7d1009bc516,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50434,94c786147d46ef47c88d31db8ee428dbc80eedb187a5be76430e0d8ac0b378cd,0,False,False,False
+acc45f61-c39b-4725-9504-748b067bcaed,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50428,75f3575968a9236b781d9ba91b7eb5dd255f0f3501056b15b1ce78e4dd98e493,0,False,False,False
+59e580d4-36fc-41ea-bd3f-72f6cee1c569,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50434,e8e318baf19c8aba81abf34a38946a629029e0b94420b7787caa5f304eb51ea8,0,False,False,False
+6d7d9494-6062-4707-83aa-1c96345399a0,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50428,e7b30b435611335932dbe2422d1339cc2312023f83066d50245f36561dc260b7,0,False,False,False
+58a57a35-65de-4ca5-8afa-9533f431397e,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50434,6597bff92fe5447f4df7d6dbf9d4a8f7813cac4fc0f095b7eec2a995726ad23e,0,False,False,False
+dd94a92b-83dd-46c4-978d-93279ad8e201,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50428,7bfa9eb30c87e8c8f69a1487c4edd42da1765c21b18e4d15ea240a83327e73b7,0,False,False,False
+f3b38ce0-fcbf-4bbc-abe9-54f1d07f3089,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50434,769402d3298596110c4288223c4399095a2c5b01fa55e32f08a9d31c6e7ea06a,0,False,False,False
+9774e109-96a5-471e-8f9f-97f1bb95431f,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50428,3c31f9bc502fca81c70fd76b301e863fdebd3788f1c36a9e6bf2592c79aed3ea,0,False,False,False
+4240a716-ce7f-456e-a6b7-38032a03df93,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50434,96ba830e51a463b23dde6c8a17c650c67b061a0c54371f8b2b3f241dcc161170,0,False,False,False
+abe08bee-8dc2-4de5-b7a3-c2bc221c5154,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50428,4f0e59177229c863a5a6753656bd2a2ff48274c15f66e30a7eb5a77157926ba4,0,False,False,False
+fd0dfb24-9ff7-46d9-a39f-48b0ce4c0816,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50434,d84caab990a6db318d4132a5e2e875f9532f3582b82c1b2d3275d2644d0f1111,0,False,False,False
+47a979cc-ef27-49a5-b230-abf665f4a377,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50428,4dadb062a70831ff087299551fa87d578b22ea38f53310518d002008cd06d9a2,0,False,False,False
+9067e4ff-b56d-4ca8-ab04-39c3d288e54e,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50434,5a20b9960d74bc090944ed1a472fa68fb1cab1e1621a35c1bc9370136c9fa593,0,False,False,False
+8ceb1d5e-177e-47fa-b14d-02eba0bb4e36,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50428,4e078992cb50ef46ac06c858a1ab9babfa27609da38643486d3dc3608d93dd31,0,False,False,False
+96ca23dc-60a6-4e1b-9198-cee57bd0254a,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50434,f6d81d4400f5fcdf9e32af436258f3d84fede920ceadefe707eb2b206ce27e9f,0,False,False,False
+7f9210f2-ecab-469b-8c31-c18da32d7985,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50428,969510f4c05c01258bd75089e346393beb4268a417990997af06d6baa76e5808,0,False,False,False
+98237d28-fbf8-4511-b40a-c4a9995b42f6,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50440,cf578ce70644b600d46cd94edc495ffa543080c62c5ebcc88353ac864950c15e,0,False,False,False
+c0215894-46fc-4ec9-a6f3-4ba6bf9037cb,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50446,532d5784860d41cad7b5da45c03705e9138bc938544c2b347465a6d3885dcce6,0,False,False,False
+4a969833-6a66-4e1a-bfb5-9ac4d8d69567,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50446,40e83598256b786d85c4caad0c3af64e5cf5de3efa8ed6dc2609ed89bad96e77,0,False,False,False
+3cff0096-ad0f-44e6-a2cb-4f71e2af95a7,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50440,dd61617ca098465a49bb7178a8efc4594830dce75b618125a4610ea8899c628e,0,False,False,False
+4f91901c-3089-4e0d-a37c-f23be531fe50,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50442,59b466a22eb33b2896fb31db1b1e53fad0e14674210bda85eb79c2efffaa7a2d,0,False,False,False
+3282a5af-2608-48b2-9568-5bb5bcac74ce,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50436,db4dd932ebf0d5eecb20945f15713193e64b95acddfb140a7088d0ef80b5a8ab,0,False,False,False
+31226da0-1a3c-48b5-8a25-e3f2aa0e88ed,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50432,5ee8b310b7656aab48922943e3615e4d634ab2795d4ef01704eece03a9211bfa,0,False,False,False
+d2cb7f23-2ce4-4835-8506-04c507d9dc6a,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50442,0f70d1f2bb6979abe7a074cf869423c8a1ceccbd1d08bfae3f0da06e867fefbf,0,False,False,False
+60360fa0-c1df-4b9b-a59b-fc3c8dea8aa9,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50436,d42394a9e7f5bdac625481df8c511af9a6acedbe546a49d9a7edb9fbcbaa4706,0,False,False,False
+7c9b52f5-ef06-4053-9c5d-1fa66697972e,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50442,f7f25b953c49fa0c486e42f20d3215a38f77d86fd0d15e18b316f93f71ecc6c7,0,False,False,False
+6c88172f-e8ea-49c5-8cad-ccc5957b2b16,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50436,7e5c943eb5d03161c7f347f34e42c226e32a79da3351ed53c5a3fe4dcf0b51b9,0,False,False,False
+1e3d3030-7ab0-4bc5-b377-5298b0618837,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50436,2c182788da01a928b8e438e6688321a90125545cd49aaa8bdc34471c15971c09,0,False,False,False
+72a15b9a-3d7c-49ef-954d-abc5ef018975,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50430,9504d54abff4979b7a45b07111080bdc27ad255d6c8a6c7cfbcb343c4c30a25e,0,False,False,False
+3a920ad5-16cb-439f-953d-4707d03191e0,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50436,574216b26fabf29d9efedb90cd63eee8fd455b82d89f39823f8d4b3cf1dd5b1f,0,False,False,False
+26d24238-ca75-44ad-aba8-41268721c5d0,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50442,80e8e631bd594cae9c2b7de1b6ee48a31b67287e781677071dc7d19fe66135db,0,False,False,False
+1f473fb8-0545-416c-9759-37804954b67c,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50436,fa7324ff66fadb5b98e5bd6a00a11be9253bbfad3097af72213a8215bce92160,0,False,False,False
+e75f7186-f43e-41cc-bc45-aabc8f9fd384,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50442,cbf45cc9b1e81865d4fd561e0afdd9834011360fe302dd2ad6438dd16c7436f6,0,False,False,False
+5266d371-e9a8-4794-9656-57d94c1084fb,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50430,f128077a658a8ff32614008dee0f06146cf5aca9f657928c9c7c16e98dcf3660,0,False,False,False
+06beef5d-7f36-41db-a59b-5010898dbb70,EMPTY_SHELL,ninguna señal contable y el visor declara 'Cargando información',50424,ed5bf48cc7bc9d88374be02410fc8df3f2303f6b88391a91907dd46b6a097c77,0,False,False,False

@@ -1,0 +1,40 @@
+{
+  "ts_utc": "2026-08-28T19:16:39.962968+00:00",
+  "total": 1,
+  "resumen": {
+    "C_NO_ESTRUCTURABLE": 1
+  },
+  "items": [
+    {
+      "identifier_id": 1,
+      "entity_key": "E01M0X99C8F87H9TH9N39H2D1NW",
+      "cik": "0000904851",
+      "id_status": "ACTIVE",
+      "assertion_id": 1,
+      "source_id": "SEC_20F",
+      "source_record": "0001193125-17-115552",
+      "method": "REGULATORY_DOCUMENT",
+      "confidence": "AUTHORITATIVE",
+      "a_status": "VERIFIED",
+      "resolved_by": "proc:s03_parse",
+      "created_at": "2026-08-25 20:20:17.821262+00:00",
+      "evidence": "parsed.pre_xbrl_filings: 20-F 2017-04-07 accession 0001193125-17-115552 (CIK 0000904851)",
+      "nombre": "YPF SOCIEDAD ANONIMA",
+      "clase": "C_NO_ESTRUCTURABLE",
+      "motivo": "el documento 20-F nunca se archivo. Solo existe data\\raw\\engine\\CIK0000904851\\filings\\000119312517115552\\index.json, que lista los archivos del directorio pero NO declara el CIK ni el form: el CIK vive en la ruta de SEC, no en el contenido. Estructurar desde ahi seria inferir.",
+      "artefacto": null,
+      "facts": null,
+      "corroboracion_independiente": {
+        "fuente": "SEC_REGISTRY",
+        "artefacto": "data/raw/submissions/CIK0000904851.json",
+        "declara": {
+          "accession": "0001193125-17-115552",
+          "form": "20-F",
+          "filingDate": "2017-04-07",
+          "cik": "0000904851"
+        },
+        "nota": "El hecho es cierto y verificable, pero por una fuente DISTINTA de la que esta assertion declara. Usarla aca cambiaria que la sostiene."
+      }
+    }
+  ]
+}

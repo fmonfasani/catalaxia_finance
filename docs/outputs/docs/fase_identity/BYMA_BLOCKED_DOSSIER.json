@@ -1,0 +1,2359 @@
+{
+  "total": 56,
+  "cuit_modulo11_valido": 56,
+  "ratificados_en_este_ciclo": 0,
+  "emisores": [
+    {
+      "entity_id": 1,
+      "ticker": "A3",
+      "nombre_legacy": "A3 Mercados S.A.",
+      "cuit_legacy": "30525698412",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 2,
+      "ticker": "AGRO",
+      "nombre_legacy": "Agrometal Sociedad Anonima Industrial",
+      "cuit_legacy": "30503087967",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 3,
+      "ticker": "ALUA",
+      "nombre_legacy": "Aluar Aluminio Argentino",
+      "cuit_legacy": "30522780606",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 4,
+      "ticker": "AUSO",
+      "nombre_legacy": "Autopistas del Sol S.A.",
+      "cuit_legacy": "30677237119",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 5,
+      "ticker": "BHIP",
+      "nombre_legacy": "Banco Hipotecario S.A.",
+      "cuit_legacy": "30500011072",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 6,
+      "ticker": "GAMI",
+      "nombre_legacy": "B-GAMING SA",
+      "cuit_legacy": "30709967424",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 7,
+      "ticker": "BOLT",
+      "nombre_legacy": "Boldt",
+      "cuit_legacy": "30500179151",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 8,
+      "ticker": "BPAT",
+      "nombre_legacy": "Banco Patagonia SA",
+      "cuit_legacy": "30500006613",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 9,
+      "ticker": "BYMA",
+      "nombre_legacy": "Bolsas y Mercados Argentinos SA",
+      "cuit_legacy": "30715471953",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 10,
+      "ticker": "CADO",
+      "nombre_legacy": "Carlos Casado",
+      "cuit_legacy": "30525406756",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 11,
+      "ticker": "CAPX",
+      "nombre_legacy": "Capex S.A.",
+      "cuit_legacy": "30629827060",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 12,
+      "ticker": "CARC",
+      "nombre_legacy": "Carboclor S.A.(Ex. Sol Petroleo S.A.)",
+      "cuit_legacy": "30504249227",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 13,
+      "ticker": "CECO2",
+      "nombre_legacy": "CENTRAL COSTANERA S.A.",
+      "cuit_legacy": "30652254248",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 14,
+      "ticker": "CELU",
+      "nombre_legacy": "Celulosa Argentina",
+      "cuit_legacy": "30501062150",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 15,
+      "ticker": "CGPA2",
+      "nombre_legacy": "Camuzzi Gas del Sur S.A.",
+      "cuit_legacy": "30657864427",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 16,
+      "ticker": "COME",
+      "nombre_legacy": "Sociedad Comercial del Plata S.A.",
+      "cuit_legacy": "33526316989",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 17,
+      "ticker": "COUR",
+      "nombre_legacy": "Continental Urbana S.A.",
+      "cuit_legacy": "30709130354",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 18,
+      "ticker": "CTIO",
+      "nombre_legacy": "Consultatio S.A.",
+      "cuit_legacy": "30587480359",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 19,
+      "ticker": "CVH",
+      "nombre_legacy": "CABLEVISIÓN HOLDING S.A.",
+      "cuit_legacy": "30715591231",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 20,
+      "ticker": "DGCE",
+      "nombre_legacy": "Distribuidora de Gas del Centro S.A.",
+      "cuit_legacy": "33657865279",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 21,
+      "ticker": "DGCU2",
+      "nombre_legacy": "Distribuidora de Gas Cuyana",
+      "cuit_legacy": "33657865589",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 22,
+      "ticker": "DOME",
+      "nombre_legacy": "Domec Cia. de Artefactos Domesticos",
+      "cuit_legacy": "30501999470",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 23,
+      "ticker": "ECOG",
+      "nombre_legacy": "ECOGAS INVERSIONES S.A.",
+      "cuit_legacy": "30658275522",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 24,
+      "ticker": "EDSH",
+      "nombre_legacy": "Edesa Holding S.A.",
+      "cuit_legacy": "30712506497",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 25,
+      "ticker": "FERR",
+      "nombre_legacy": "Ferrum S.A. de Cerámica y Metalurgia",
+      "cuit_legacy": "30525341263",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 26,
+      "ticker": "FIPL",
+      "nombre_legacy": "Fiplasto S.A.",
+      "cuit_legacy": "30502112259",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 27,
+      "ticker": "GARO",
+      "nombre_legacy": "Garovaglio y Zorraquin S.A.",
+      "cuit_legacy": "30509284861",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 28,
+      "ticker": "GBAN",
+      "nombre_legacy": "NATURGY BAN S.A.",
+      "cuit_legacy": "30657864117",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 29,
+      "ticker": "GCDI",
+      "nombre_legacy": "GCDI S.A.",
+      "cuit_legacy": "30709282537",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 30,
+      "ticker": "GCLA",
+      "nombre_legacy": "Grupo Clarín S.A.",
+      "cuit_legacy": "30707001735",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 31,
+      "ticker": "GRIM",
+      "nombre_legacy": "Grimoldi S.A.",
+      "cuit_legacy": "30500781293",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 32,
+      "ticker": "HARG",
+      "nombre_legacy": "Holcim (Argentina) S.A.",
+      "cuit_legacy": "30501111127",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 33,
+      "ticker": "HAVA",
+      "nombre_legacy": "HAVANNA HOLDING S.A.",
+      "cuit_legacy": "30708544082",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 34,
+      "ticker": "INTR",
+      "nombre_legacy": "Cia. Introductora de Bs.As.",
+      "cuit_legacy": "30501290323",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 35,
+      "ticker": "INVJ",
+      "nombre_legacy": "Inversora Juramento S.A.",
+      "cuit_legacy": "30640285431",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 36,
+      "ticker": "LEDE",
+      "nombre_legacy": "Ledesma S.A.",
+      "cuit_legacy": "30501250305",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 37,
+      "ticker": "LONG",
+      "nombre_legacy": "Longvie",
+      "cuit_legacy": "30500833781",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 38,
+      "ticker": "METR",
+      "nombre_legacy": "Metrogas S.A.",
+      "cuit_legacy": "30657863676",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 39,
+      "ticker": "MIRG",
+      "nombre_legacy": "Mirgor",
+      "cuit_legacy": "30578036071",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 40,
+      "ticker": "MOLA",
+      "nombre_legacy": "Molinos Agro S.A.",
+      "cuit_legacy": "30715118773",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 41,
+      "ticker": "MOLI",
+      "nombre_legacy": "MOLINOS RÍO DE LA PLATA S.A.",
+      "cuit_legacy": "30500858628",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 42,
+      "ticker": "MORI",
+      "nombre_legacy": "Morixe Hnos S.A.",
+      "cuit_legacy": "30525346389",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 43,
+      "ticker": "OEST",
+      "nombre_legacy": "Grupo Concesionario del Oeste S.A.",
+      "cuit_legacy": "30663498513",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 44,
+      "ticker": "PATA",
+      "nombre_legacy": "S.A. Importadora y Exp. de La Patagonia",
+      "cuit_legacy": "30506730038",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 45,
+      "ticker": "POLL",
+      "nombre_legacy": "Polledo S.A.I.C.F.",
+      "cuit_legacy": "30538748478",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 46,
+      "ticker": "RAGH",
+      "nombre_legacy": "Raghsa S.A.",
+      "cuit_legacy": "30620880600",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 47,
+      "ticker": "REGE",
+      "nombre_legacy": "Garcia Reguera",
+      "cuit_legacy": "33528807939",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 48,
+      "ticker": "RICH",
+      "nombre_legacy": "LABORATORIOS RICHMOND SOCIEDAD ANONIMA, COMERCIAL,",
+      "cuit_legacy": "30501152826",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 49,
+      "ticker": "RIGO",
+      "nombre_legacy": "Rigolleau S.A.",
+      "cuit_legacy": "30500526935",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 50,
+      "ticker": "ROSE",
+      "nombre_legacy": "INSTITUTO ROSENBUSCH S.A. DE BIOLOGÍA E Y A",
+      "cuit_legacy": "30501407093",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 51,
+      "ticker": "SAMI",
+      "nombre_legacy": "S.A. San Miguel A.G.I.C.I. y F.",
+      "cuit_legacy": "30511190238",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 52,
+      "ticker": "SEMI",
+      "nombre_legacy": "Molinos Juan Semino S.A.",
+      "cuit_legacy": "30536928703",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 53,
+      "ticker": "TGNO4",
+      "nombre_legacy": "Transportadora de Gas del Norte S.A.",
+      "cuit_legacy": "30657863056",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 54,
+      "ticker": "TRAN",
+      "nombre_legacy": "Cia. de Transporte de Energia Electrica",
+      "cuit_legacy": "30663148776",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 55,
+      "ticker": "TXAR",
+      "nombre_legacy": "TERNIUM ARGENTINA S.A.",
+      "cuit_legacy": "30516888241",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    },
+    {
+      "entity_id": 56,
+      "ticker": "VALO",
+      "nombre_legacy": "Banco de Valores S.A.",
+      "cuit_legacy": "30576124275",
+      "cuit_modulo11_valido": true,
+      "cik": null,
+      "en_identity_v1": null,
+      "por_que_el_cuit_no_es_autoritativo": "La unica fuente que lo declara es LEGACY_DIM_ENTITY, cuyo authority_level es CORROBORATING: puede proponer, nunca establecer. La fila no tiene autor ni cita, y ya fallo antes (el CIK de YPF).",
+      "por_que_no_hay_cik": "El emisor no cotiza en EEUU: SEC no le asigna CIK. No es un dato faltante, es un identificador que no existe para el.",
+      "consecuencia": "Sin CIK no hay ancla autoritativa desde la cual tender un puente a GLEIF. Buscar su LEI por razon social es inferencia (F-024: GLEIF devuelve DOS LEI para 'Banco Macro').",
+      "fuentes_posibles": [
+        {
+          "fuente": "AFIP",
+          "autoritativa_para": "CUIT",
+          "disponible": false,
+          "obstaculo": "captcha; no automatizable (ciclo 3D)"
+        },
+        {
+          "fuente": "GLEIF",
+          "autoritativa_para": "LEI, CUIT",
+          "disponible": "parcial",
+          "obstaculo": "requiere identificar el LEI correcto sin ancla; buscar por nombre es inferencia prohibida"
+        },
+        {
+          "fuente": "CNV_PORTAL",
+          "autoritativa_para": "-",
+          "disponible": false,
+          "obstaculo": "DISCOVERY_ONLY: no declara el CUIT del emisor (solo el del auditor). Y su perfil se consulta POR CUIT: es circular"
+        },
+        {
+          "fuente": "HUMAN",
+          "autoritativa_para": "cualquiera",
+          "disponible": true,
+          "obstaculo": "requiere evidencia primaria que hoy no esta reunida"
+        }
+      ],
+      "que_evidencia_faltaria": "Un documento de una fuente AUTHORITATIVE que ligue esta razon social a ese CUIT: constancia de AFIP, o un registro de GLEIF con registeredAt RA000009/RA000010 al que se llegue por un identificador demostrado, no por el nombre.",
+      "requiere_afip": true,
+      "requiere_decision_humana": true,
+      "estado": "BLOQUEADO_SIN_ANCLA_AUTORITATIVA"
+    }
+  ]
+}

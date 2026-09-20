@@ -1,0 +1,93 @@
+[
+  {
+    "ataque": 1,
+    "nombre": "CUIT de otra empresa (CUIT real de CEPU atribuido a YPF)",
+    "garantia_atacada": "un identificador autoritativo vigente no puede designar dos entidades",
+    "resultado_esperado": "RECHAZADO, con conflicto abierto",
+    "resultado_real": "RECHAZADO",
+    "barrera_concreta": "identity_v1.assert_identifier() detecta el dueño previo antes de escribir y abre identity_v1.conflict; el índice único ux_identifier_autoritativo_unico respalda la regla a nivel de esquema",
+    "evidencia": "CUIT:AFIP:33650305499 pertenece a E01M0X99DQ7P5TQ4Z6Z58RC5PB3 (CEPU). Un identificador autoritativo no puede designar dos entidades. (conflict_id nuevo, transacción revertida)"
+  },
+  {
+    "ataque": 2,
+    "nombre": "CUIT inválido (dígito verificador roto)",
+    "garantia_atacada": "todo CUIT autoritativo debe pasar el dígito verificador AFIP (módulo 11) antes de aceptarse",
+    "resultado_esperado": "RECHAZADO",
+    "resultado_real": "RECHAZADO",
+    "barrera_concreta": "identity_v1.assert_identifier() -> cuit_valido() (módulo 11), evaluado ANTES de tocar la tabla",
+    "evidencia": "CUIT 30546689970 no pasa el dígito verificador (módulo 11)"
+  },
+  {
+    "ataque": 3,
+    "nombre": "Entity sin CUIT VERIFIED (GGAL, BMA)",
+    "garantia_atacada": "la ingesta CNV exige que la assertion del CUIT esté en estado VERIFIED, no solo que exista un CUIT candidato o un CIK",
+    "resultado_esperado": "BLOCK antes de tocar red o escribir cualquier dato",
+    "resultado_real": "BLOCK confirmado en vivo con el CLI real, para 2 empresas distintas",
+    "barrera_concreta": "resolver_en_identity_v1() en c3_cnv_fetch.py, invocado desde load_identity() -> SystemExit('BLOCK identidad [...]') antes de crear el run",
+    "evidencia": "GGAL (--cuit 30704962807): 'BLOCK identidad [CUIT_NO_VERIFICADO]: GRUPO FINANCIERO GALICIA S.A.: el CUIT 30704962807 esta en estado CANDIDATE, no VERIFIED.' | BMA (--cik 0001347426): 'BLOCK identidad [SIN_CUIT]: Macro Bank Inc. (E01M14AP85T67281AA83Z87FMEJ) no tiene identificador CUIT vigente en identity_v1.' Verificado además que 0 filas se escribieron en fetch_raw.cnv_download_log para estos dos intentos."
+  },
+  {
+    "ataque": 4,
+    "nombre": "Identidad basada sólo en ticker (YPF, GGAL.BA como --cuit)",
+    "garantia_atacada": "el ticker nunca es identidad; el CLI solo acepta un CUIT válido, nunca un símbolo de mercado",
+    "resultado_esperado": "RECHAZADO por formato, antes de consultar identity_v1",
+    "resultado_real": "RECHAZADO",
+    "barrera_concreta": "c3_cnv_fetch.py: val.normalize_cuit() + chequeo de 11 dígitos numéricos, evaluado antes de tocar red o identity_v1",
+    "evidencia": "--cuit 'YPF' -> 'CUIT invalido: 'YPF''; --cuit 'GGAL.BA' -> 'CUIT invalido: 'GGAL.BA''; --cuit '12345' -> 'CUIT invalido: '12345''"
+  },
+  {
+    "ataque": 5,
+    "nombre": "Identidad basada sólo en nombre (coincidencia de preferred_name)",
+    "garantia_atacada": "ningún camino de código debe resolver una entidad CNV comparando texto de nombre contra el CUIT/CIK entrante",
+    "resultado_esperado": "estructuralmente imposible: no debe existir tal camino de código",
+    "resultado_real": "confirmado ausente",
+    "barrera_concreta": "revisión estática de c3_cnv_fetch.py, c3_identity_link.py y engine/identity_v1.py: 0/3 archivos contienen ILIKE/similarity()/difflib/fuzzy contra preferred_name en la resolución de identidad; toda resolución pasa por entity_of()/resolver_en_identity_v1() sobre CIK/CUIT/LEI exactos",
+    "evidencia": "grep de patrones de matching por nombre sobre los 3 archivos: 0 coincidencias"
+  },
+  {
+    "ataque": 6,
+    "nombre": "Modificar CUIT/provenance de identity_v1 después del fetch (reescribir una assertion vigente)",
+    "garantia_atacada": "una assertion vigente es inmutable; no se puede reescribir su evidencia/CUIT una vez usada por un fetch",
+    "resultado_esperado": "RECHAZADO",
+    "resultado_real": "RECHAZADO",
+    "barrera_concreta": "permiso denegado directamente por el rol (catalaxia_engine no tiene UPDATE sobre identity_v1.assertion) -- barrera más estricta que el trigger tg_assertion_inmutable documentado, que sería la segunda línea de defensa si la primera no existiera",
+    "evidencia": "UPDATE identity_v1.assertion SET evidence='HACKEADO' WHERE assertion_id=345 -> 'permission denied for table assertion' (transacción revertida)"
+  },
+  {
+    "ataque": 7,
+    "nombre": "Insertar una presentación/fila de manifest con entity incorrecta (entity_key y cuit incoherentes)",
+    "garantia_atacada": "una fila de fetch_raw.cnv_download_log no debería poder declarar un entity_key que no corresponde a su cuit",
+    "resultado_esperado": "RECHAZADO por una FK o CHECK que ligue entity_key<->cuit",
+    "resultado_real": "*** SIN BARRERA — SE APLICÓ SIN EXCEPCIÓN ***",
+    "barrera_concreta": "ninguna: fetch_raw.cnv_download_log.entity_key es una columna TEXT libre, sin FK a identity_v1.entity ni CHECK de coherencia contra cuit. La única razón por la que esto no ocurre en producción es que Manifest.record() en c3_cnv_fetch.py siempre deriva ambos campos de la MISMA resolución de identidad (disciplina de la aplicación, no del esquema)",
+    "evidencia": "INSERT INTO fetch_raw.cnv_download_log (run_id, entity_key, cuit, ...) VALUES ('<run_id real de YPF>', 'CIK:0001717161' /*CEPU*/, '30546689979' /*YPF*/, ...) -> se aplicó sin excepción (transacción revertida, no persistido)",
+    "hallazgo_relacionado": "mismo gap estructural que el ataque 8 (fetch_raw sin las protecciones de identity_v1)"
+  },
+  {
+    "ataque": 8,
+    "nombre": "Alterar un hash ya persistido (falsificar sha256 de un artefacto)",
+    "garantia_atacada": "el sha256 de un artefacto ya descargado no debería poder modificarse una vez escrito",
+    "resultado_esperado": "RECHAZADO",
+    "resultado_real": "*** SIN BARRERA — EL UPDATE SE APLICÓ SIN EXCEPCIÓN ***",
+    "barrera_concreta": "ninguna a nivel de escritura: catalaxia_engine SÍ tiene UPDATE sobre fetch_raw.* (migración 011), a diferencia de identity_v1 que bloquea el UPDATE a nivel de permisos/triggers. Mitigación parcial, no preventiva: una auditoría posterior (AUD-HASH-001, Fase E) recalcula el sha256 desde el archivo físico en disco y detectaría la discrepancia en la SIGUIENTE pasada -- pero nada impide la escritura en el momento en que ocurre",
+    "evidencia": "UPDATE fetch_raw.cnv_download_log SET sha256='0000...0000' WHERE log_id=<real> -> se aplicó sin excepción (transacción revertida, no persistido)"
+  },
+  {
+    "ataque": 9,
+    "nombre": "Ejecutar fetch con identidad incompleta (sin CUIT, o identificador inexistente)",
+    "garantia_atacada": "sin un CUIT vigente y VERIFIED en identity_v1, la corrida debe abortar antes de cualquier request o escritura",
+    "resultado_esperado": "BLOCK inmediato, con el motivo exacto de la incompletitud",
+    "resultado_real": "BLOCK confirmado para los 2 sub-casos reales disponibles",
+    "barrera_concreta": "resolver_en_identity_v1(): motivo=SIN_CUIT cuando la entidad existe pero no tiene identificador CUIT vigente; motivo=NO_ESTA_EN_IDENTITY_V1 cuando el identificador ni siquiera resuelve a una entidad. El motivo=AMBIGUO (>1 entidad para el mismo identificador) existe en el código pero es estructuralmente inalcanzable en la práctica: el propio CLI exige exactamente uno de --cuit/--cik, y el índice único de identity_v1 ya impide que dos entidades autoritativas compartan un identificador vigente -- se confirma como defensa en profundidad, no como camino vivo",
+    "evidencia": "--cik 0001347426 (BMA, sin CUIT) -> 'BLOCK identidad [SIN_CUIT]: ... Sin CUIT no hay perfil CNV.' | --cuit 20111111112 (inexistente) -> 'BLOCK identidad [NO_ESTA_EN_IDENTITY_V1]: ... C3 no crea identidades: pertenece a Identity.' | --cuit X --cik Y simultáneos -> rechazado antes, por argparse: 'indicar exactamente uno: --cuit o --cik'"
+  },
+  {
+    "ataque": 10,
+    "nombre": "Repetir la misma corrida (idempotencia)",
+    "garantia_atacada": "una segunda corrida sobre el mismo CUIT/scope no debe duplicar RAW, no debe crear un checkpoint nuevo, y debe declarar explícitamente si el contenido cambió o no",
+    "resultado_esperado": "0 cambios reales, mismo checkpoint reutilizado",
+    "resultado_real": "CONFIRMADO, en una empresa que NO es CEPU (generalización real de la propiedad, no solo del código)",
+    "barrera_concreta": "engine/cnv/rawstore.canonical_sha256 (hash que ignora el ruido de cache-busting/anti-forgery conocido) + ON CONFLICT ... DO UPDATE ... RETURNING sobre engine.checkpoints (reutiliza checkpoint_id, no lo duplica)",
+    "evidencia": "TGSU2: run 60d6adb1... (primera, PASS, checkpoint 93d6ae56...) -> run fe56c67a... (--rerun, PASS, mismo checkpoint 93d6ae56..., C-C3-006: '126/126 idénticos en sustancia, 0 cambios reales')"
+  }
+]

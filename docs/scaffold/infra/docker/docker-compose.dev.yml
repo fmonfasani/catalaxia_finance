@@ -1,0 +1,62 @@
+version: "3.9"
+
+# docker-compose.dev.yml — DESARROLLO LOCAL
+# Buildea desde source, monta el código para hot reload.
+# Uso: docker compose -f docker-compose.dev.yml up
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: catalaxia_dev
+      POSTGRES_USER: catalaxia
+      POSTGRES_PASSWORD: dev_password_local
+    ports:
+      - "5432:5432"    # expuesto para conectar con pgAdmin o psql local
+    volumes:
+      - pgdata_dev:/var/lib/postgresql/data
+    networks:
+      - internal
+
+  api:
+    build:
+      context: ../../apps/api
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_URL: postgresql://catalaxia:dev_password_local@db:5432/catalaxia_dev
+      SECRET_KEY: dev_secret_local_only
+      LOG_LEVEL: debug
+      ENVIRONMENT: development
+      RELOAD: "true"
+    volumes:
+      - ../../apps/api:/app    # hot reload uvicorn
+    ports:
+      - "8100:8100"
+    depends_on:
+      - db
+    networks:
+      - internal
+
+  screener:
+    build:
+      context: ../../apps/screener
+      dockerfile: Dockerfile.dev
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8100
+      NEXTAUTH_URL: http://localhost:3000
+      NEXTAUTH_SECRET: dev_nextauth_secret
+    volumes:
+      - ../../apps/screener:/app
+      - /app/node_modules
+      - /app/.next
+    ports:
+      - "3000:3000"
+    networks:
+      - internal
+
+volumes:
+  pgdata_dev:
+
+networks:
+  internal:
+    driver: bridge

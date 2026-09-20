@@ -1,0 +1,50 @@
+[
+  {
+    "cik": "0000320193",
+    "nombre": "Apple Inc.",
+    "sha_historico": "f54472c17b26988eaf2773460f42505f14123e21f277e5eb8926720d9515ebc7",
+    "sha_actual": "2503475b32d84986bc12632a6430d620526d4fd08026014d0d5d64cb7ab602ab",
+    "identico": false,
+    "bytes": 164228
+  },
+  {
+    "cik": "0000789019",
+    "nombre": "MICROSOFT CORP",
+    "sha_historico": "d3e4cdd9cf0dedf61357c0ce7142d188305a7c489d1cd6c09036b58312de4ed6",
+    "sha_actual": "ef3d1eed787e1d32831fbebbce56e7e151dd13dcc99cf727c427627625df9cfd",
+    "identico": false,
+    "bytes": 183799
+  },
+  {
+    "cik": "0000931427",
+    "nombre": "GAS TRANSPORTER OF THE SOUTH INC",
+    "sha_historico": "854f2dd1245a8e34f21ed737e0330047645509dde0b2d8e5124fe61c58a3cc13",
+    "sha_actual": "15556a886f6ddc81b60f2499f8cfd9a82bb56bb18f29bed84abb827678cb1d9b",
+    "identico": false,
+    "bytes": 134280
+  },
+  {
+    "cik": "0001045810",
+    "nombre": "NVIDIA CORP",
+    "sha_historico": "3f7c580a7593ef5455132ef319c3817b915d57391fd185657d66e5685137d4d9",
+    "sha_actual": "64a5368efdc842eb34e4391b008598f9e025f7b6c2f329921bd87198ca9d15c1",
+    "identico": false,
+    "bytes": 159955
+  },
+  {
+    "cik": "0001114700",
+    "nombre": "GRUPO FINANCIERO GALICIA SA",
+    "sha_historico": "7bdaf08e4387c335d449bf4645694f8155b57c7138c93eae32d1b45f82f84604",
+    "sha_actual": "f0e4311816fe9916ab364d6a2859af9da459a46dbffcab91bba1c2399cca3e93",
+    "identico": false,
+    "bytes": 130671
+  },
+  {
+    "cik": "0001717161",
+    "nombre": "CENTRAL PUERTO S.A.",
+    "sha_historico": "10400c2e1bae7806b9d6934c05bd10871c069667145e90959607e76a166e23ad",
+    "sha_actual": "32b72984aa3e8f01297d3035c9d142d95e220b997c9618b18e6709b37608df0c",
+    "identico": false,
+    "bytes": 68953
+  }
+]

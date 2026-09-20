@@ -1,0 +1,10 @@
+{
+  "entidades_con_cik": 513,
+  "elegibles_market": 512,
+  "elegibles_market_por_grupo": {
+    "adr": 13,
+    "sp500": 499
+  },
+  "elegibles_cnv": 3,
+  "nota": "No se ejecuto CNV ni Market. Solo se midio elegibilidad. La brecha Market/CNV es G5: ninguna fuente publica el puente CIK<->LEI, asi que el CUIT exige ratificacion humana por empresa."
+}

@@ -146,7 +146,7 @@ fabricación · orden de ejecución ES información (no buscar independencia de 
 | cnv_estados_v2 | idem | 81.695→**102.323** | derivada | 🟢 |
 | ratios_cnv | idem | 0→**72** | derivada | 🟢 |
 | screener.db completo | SQLite local | 754 MB | todas | 🟢 dev |
-| PostgreSQL producción | VPS 89.167.96.239 (docker catalaxia-db PG16) | migraciones 002/003 aplicadas 2026-08-22 | sincronización | 🟢 |
+| PostgreSQL producción | VPS prod (docker catalaxia-db PG16; host en `CATALAXIA_HOST`) | migraciones 002/003 aplicadas 2026-08-22 | sincronización | 🟢 |
 | byma_pipeline.db (audit v3) | `data/byma_pipeline.db` | 10 tablas: universo 73, partidas_norm 85.370, anomalias 234, certificación 487/72 | CNV+yf | 🟢 snapshot certificado SHA256 |
 | Traza LLM | `data/export_llm/traza_13ratios.csv` | 728 filas = 56×13, capas L0–L5 | derivada | 🟢 verificada contra b6/b7 |
 | Reporte auditoría | `docs/10-auditoria-byma-pipeline-2026-08-22.md` | vivo | derivado | 🟢 |

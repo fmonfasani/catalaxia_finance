@@ -1,0 +1,206 @@
+{
+  "equivalencia_eps": [
+    {
+      "periodo": "2025-12-31",
+      "reportado": -2.11,
+      "derivado": -2.107401,
+      "dif_pct": 0.123,
+      "veredicto": "COINCIDE",
+      "tag_ni": "ProfitLossAttributableToOwnersOfParent",
+      "moneda": "USD",
+      "accession": "0001193125-26-126363"
+    },
+    {
+      "periodo": "2024-12-31",
+      "reportado": 5.99,
+      "derivado": 5.988444,
+      "dif_pct": 0.026,
+      "veredicto": "COINCIDE",
+      "tag_ni": "ProfitLossAttributableToOwnersOfParent",
+      "moneda": "USD",
+      "accession": "0001193125-25-067155"
+    },
+    {
+      "periodo": "2023-12-31",
+      "reportado": -3.35,
+      "derivado": -3.349306,
+      "dif_pct": 0.021,
+      "veredicto": "COINCIDE",
+      "tag_ni": "ProfitLossAttributableToOwnersOfParent",
+      "moneda": "USD",
+      "accession": "0001193125-24-114066"
+    },
+    {
+      "periodo": "2022-12-31",
+      "reportado": 5.67,
+      "derivado": 5.672205,
+      "dif_pct": 0.039,
+      "veredicto": "COINCIDE",
+      "tag_ni": "ProfitLossAttributableToOwnersOfParent",
+      "moneda": "USD",
+      "accession": "0001193125-23-097822"
+    },
+    {
+      "periodo": "2021-12-31",
+      "reportado": 0.65,
+      "derivado": 0.654684,
+      "dif_pct": 0.721,
+      "veredicto": "COINCIDE",
+      "tag_ni": "ProfitLossAttributableToOwnersOfParent",
+      "moneda": "ARS",
+      "accession": "0001193125-22-111088"
+    },
+    {
+      "periodo": "2020-12-31",
+      "reportado": -177.42,
+      "derivado": -177.424562,
+      "dif_pct": 0.003,
+      "veredicto": "COINCIDE",
+      "tag_ni": "ProfitLossAttributableToOwnersOfParent",
+      "moneda": "ARS",
+      "accession": "0001193125-21-125294"
+    },
+    {
+      "periodo": "2019-12-31",
+      "reportado": -86.85,
+      "derivado": -86.84881,
+      "dif_pct": 0.001,
+      "veredicto": "COINCIDE",
+      "tag_ni": "ProfitLossAttributableToOwnersOfParent",
+      "moneda": "ARS",
+      "accession": "0001193125-20-119222"
+    },
+    {
+      "periodo": "2018-12-31",
+      "reportado": 98.43,
+      "derivado": 98.345685,
+      "dif_pct": 0.086,
+      "veredicto": "COINCIDE",
+      "tag_ni": "ProfitLossAttributableToOwnersOfParent",
+      "moneda": "ARS",
+      "accession": "0001193125-19-096821"
+    },
+    {
+      "periodo": "2017-12-31",
+      "reportado": 31.43,
+      "derivado": 31.42946,
+      "dif_pct": 0.002,
+      "veredicto": "COINCIDE",
+      "tag_ni": "ProfitLossAttributableToOwnersOfParent",
+      "moneda": "ARS",
+      "accession": "0001193125-18-127245"
+    }
+  ],
+  "pe": [
+    {
+      "periodo": "2025-12-31",
+      "camino": "A",
+      "estado": "NO_CALCULABLE",
+      "motivo": "EPS=-2.11 <= 0"
+    },
+    {
+      "periodo": "2025-12-31",
+      "camino": "B:EntityCommonStockSharesOutstanding",
+      "estado": "NO_CALCULABLE",
+      "motivo": "net income <= 0"
+    },
+    {
+      "periodo": "2024-12-31",
+      "camino": "A",
+      "estado": "CALCULADO",
+      "valor": 8.4274,
+      "insumos": {
+        "precio": 50.48,
+        "eps": 5.99,
+        "accession": "0001193125-25-067155"
+      }
+    },
+    {
+      "periodo": "2024-12-31",
+      "camino": "B:EntityCommonStockSharesOutstanding",
+      "estado": "CALCULADO",
+      "valor": 8.4559,
+      "insumos": {
+        "precio": 50.48,
+        "acciones": 393312793.0,
+        "acciones_tag": "EntityCommonStockSharesOutstanding",
+        "net_income": 2348000000.0,
+        "ni_tag": "ProfitLossAttributableToOwnersOfParent"
+      }
+    },
+    {
+      "periodo": "2023-12-31",
+      "camino": "A",
+      "estado": "NO_CALCULABLE",
+      "motivo": "EPS=-3.35 <= 0"
+    },
+    {
+      "periodo": "2023-12-31",
+      "camino": "B:EntityCommonStockSharesOutstanding",
+      "estado": "NO_CALCULABLE",
+      "motivo": "net income <= 0"
+    },
+    {
+      "periodo": "2022-12-31",
+      "camino": "A",
+      "estado": "CALCULADO",
+      "valor": 8.903,
+      "insumos": {
+        "precio": 50.48,
+        "eps": 5.67,
+        "accession": "0001193125-23-097822"
+      }
+    },
+    {
+      "periodo": "2022-12-31",
+      "camino": "B:EntityCommonStockSharesOutstanding",
+      "estado": "CALCULADO",
+      "valor": 8.9113,
+      "insumos": {
+        "precio": 50.48,
+        "acciones": 393312793.0,
+        "acciones_tag": "EntityCommonStockSharesOutstanding",
+        "net_income": 2228000000.0,
+        "ni_tag": "ProfitLossAttributableToOwnersOfParent"
+      }
+    }
+  ],
+  "acciones": {
+    "2025-12-31": {
+      "WeightedAverageShares": 391952016.0,
+      "EntityCommonStockSharesOutstanding": 393312793.0
+    },
+    "2024-12-31": {
+      "WeightedAverageShares": 392088496.0,
+      "EntityCommonStockSharesOutstanding": 393312793.0
+    },
+    "2023-12-31": {
+      "WeightedAverageShares": 391722944.0,
+      "EntityCommonStockSharesOutstanding": 393312793.0
+    },
+    "2022-12-31": {
+      "WeightedAverageShares": 392792602.0,
+      "EntityCommonStockSharesOutstanding": 393312793.0
+    },
+    "2021-12-31": {
+      "WeightedAverageShares": 392555569.0,
+      "EntityCommonStockSharesOutstanding": 393312793.0
+    },
+    "2020-12-31": {
+      "WeightedAverageShares": 392555569.0,
+      "EntityCommonStockSharesOutstanding": 393312793.0
+    },
+    "2019-12-31": {
+      "WeightedAverageShares": 392302437.0,
+      "EntityCommonStockSharesOutstanding": 393312793.0
+    },
+    "2018-12-31": {
+      "WeightedAverageShares": 392625259.0,
+      "EntityCommonStockSharesOutstanding": 393312793.0
+    },
+    "2017-12-31": {
+      "WeightedAverageShares": 392625259.0,
+      "EntityCommonStockSharesOutstanding": 393312793.0
+    }
+  }
+}

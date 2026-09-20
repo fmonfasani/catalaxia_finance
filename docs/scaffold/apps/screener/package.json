@@ -1,0 +1,43 @@
+{
+  "name": "screener",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "DOCKER_BUILD=1 next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@catalaxia/types": "workspace:*",
+    "@catalaxia/ui": "workspace:*",
+    "next": "14.2.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "next-auth": "^5.0.0-beta",
+    "swr": "^2.2.0",
+    "@tanstack/react-table": "^8.17.0",
+    "@tanstack/react-virtual": "^3.5.0",
+    "stripe": "^16.0.0",
+    "zod": "^3.23.0",
+    "date-fns": "^3.6.0",
+    "lucide-react": "^0.383.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
+    "tailwind-merge": "^2.3.0",
+    "recharts": "^2.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "typescript": "^5.4.0",
+    "tailwindcss": "^3.4.0",
+    "tailwindcss-animate": "^1.0.7",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.0",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.0"
+  }
+}

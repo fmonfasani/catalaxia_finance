@@ -1,0 +1,63 @@
+[
+  {
+    "slug": "YPF",
+    "cik": "0000904851",
+    "lei": "5493003N7447U18U5U53",
+    "sec_filings": [
+      {
+        "accession_number": "0001193125-17-115552",
+        "form": "20-F",
+        "filing_date": "2017-04-07",
+        "primary_doc": null
+      },
+      {
+        "accession_number": "0001193125-16-507875",
+        "form": "20-F",
+        "filing_date": "2016-03-17",
+        "primary_doc": null
+      },
+      {
+        "accession_number": "0001193125-15-111986",
+        "form": "20-F",
+        "filing_date": "2015-03-30",
+        "primary_doc": null
+      }
+    ],
+    "gleif": {
+      "legalName": "YPF Sociedad Anonima",
+      "jurisdiction": "AR",
+      "status": "ACTIVE",
+      "registeredAt": "RA000009",
+      "registeredAs": "30-54668997-9",
+      "domicilio": "Guemes, Macacha, Boulevard 515, Buenos Aires, AR-C, AR"
+    }
+  },
+  {
+    "slug": "CEPU",
+    "cik": "0001717161",
+    "lei": "2549005JLIWQ6B7VNR38",
+    "sec_filings": [],
+    "gleif": {
+      "legalName": "CENTRAL PUERTO S A",
+      "jurisdiction": "AR",
+      "status": "ACTIVE",
+      "registeredAt": "RA000009",
+      "registeredAs": "33-65030549-9",
+      "domicilio": "Av. Thomas Edison, 2701 Darsena, E Terminal 6, Buenos Aires, AR-C, AR"
+    }
+  },
+  {
+    "slug": "TGSU2",
+    "cik": "0000931427",
+    "lei": "5299002TRC7IFQYSW596",
+    "sec_filings": [],
+    "gleif": {
+      "legalName": "Transportadora de Gas del Sur S.A.",
+      "jurisdiction": "AR",
+      "status": "ACTIVE",
+      "registeredAt": "RA000010",
+      "registeredAs": "30-65786206-8",
+      "domicilio": "Cecilia Grierson 355 , 26th floor, Buenos Aires, AR-C, AR"
+    }
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "ataque": "A1 · CANDIDATE con CUIT valido",
+    "esperado": "CUIT_NO_VERIFICADO",
+    "rc": 1,
+    "segundos": 5.8,
+    "motivo": "",
+    "mensaje": "",
+    "abrio_corrida": false,
+    "hizo_request": false,
+    "salida_cola": "(Background on this error at: https://sqlalche.me/e/20/e3q8)",
+    "ok": false
+  },
+  {
+    "ataque": "A2 · CUIT con checksum invalido",
+    "esperado": "NO_ESTA_EN_IDENTITY_V1",
+    "rc": 1,
+    "segundos": 5.9,
+    "motivo": "",
+    "mensaje": "",
+    "abrio_corrida": false,
+    "hizo_request": false,
+    "salida_cola": "(Background on this error at: https://sqlalche.me/e/20/e3q8)",
+    "ok": false
+  },
+  {
+    "ataque": "A3 · CUIT inexistente en Identity",
+    "esperado": "NO_ESTA_EN_IDENTITY_V1",
+    "rc": 1,
+    "segundos": 5.8,
+    "motivo": "",
+    "mensaje": "",
+    "abrio_corrida": false,
+    "hizo_request": false,
+    "salida_cola": "(Background on this error at: https://sqlalche.me/e/20/e3q8)",
+    "ok": false
+  },
+  {
+    "ataque": "A4 · CIK sin CUIT (AAPL)",
+    "esperado": "SIN_CUIT",
+    "rc": 1,
+    "segundos": 0,
+    "motivo": "",
+    "mensaje": "",
+    "abrio_corrida": false,
+    "hizo_request": false,
+    "salida_cola": "(Background on this error at: https://sqlalche.me/e/20/e3q8)",
+    "ok": false
+  },
+  {
+    "ataque": "A5 · entity_key valido pero CUIT de OTRA empresa",
+    "esperado": "CUIT_NO_VERIFICADO",
+    "rc": 1,
+    "segundos": 5.9,
+    "motivo": "",
+    "mensaje": "",
+    "abrio_corrida": false,
+    "hizo_request": false,
+    "salida_cola": "(Background on this error at: https://sqlalche.me/e/20/e3q8)",
+    "ok": false
+  }
+]

@@ -1,0 +1,46 @@
+{
+  "checkpoint_id": "MKT-GOLDEN-20260825-89c2f00f26c0",
+  "capa": "MARKET_DATA",
+  "veredicto": "PASS_WITH_WARNINGS",
+  "generado_utc": "2026-08-25T04:29:30.565145+00:00",
+  "quality_run_id": "golden-20260825T042925Z",
+  "state_digest": "89c2f00f26c09af9f4e7442bb8e108bb8851d8a01515aa141db3f5ceff3b4785",
+  "instrumentos": [
+    "YPFD.BA(83)",
+    "YPF(84)"
+  ],
+  "ruedas_totales": 14979,
+  "por_instrumento": {
+    "83": {
+      "ticker": "YPFD.BA",
+      "tipo": "LOCAL",
+      "moneda": "ARS",
+      "ruedas": 6634,
+      "desde": "2000-01-03",
+      "hasta": "2026-08-24",
+      "batch_hash": "192aa57329485470b2e91ba7e520bb478649519d5e9e832389036ea354a9a833",
+      "hash_mismatch": 0,
+      "raw_files_ok": 13,
+      "raw_files": 13
+    },
+    "84": {
+      "ticker": "YPF",
+      "tipo": "ADR",
+      "moneda": "USD",
+      "ruedas": 8345,
+      "desde": "1993-06-29",
+      "hasta": "2026-08-24",
+      "batch_hash": "4be3bce56c3bd82981477b2c836cd457c19ecb98ce8d869224ae72db35525333",
+      "hash_mismatch": 0,
+      "raw_files_ok": 13,
+      "raw_files": 13
+    }
+  },
+  "gates": {
+    "total": 35,
+    "VALID": 29,
+    "WARNING": 6
+  },
+  "siguiente_fase_habilitada": true,
+  "manifest_sha256": "2d59fba5a3d691eaee8742bae726a9e00e8c6d3728e672c4cacbf0304837cd6a"
+}

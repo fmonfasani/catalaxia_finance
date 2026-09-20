@@ -1,0 +1,29 @@
+{
+  "name": "catalaxia-platform",
+  "private": true,
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
+    "test": "turbo test",
+    "dev:screener": "turbo dev --filter=screener",
+    "dev:catalaxia": "turbo dev --filter=catalaxia",
+    "build:screener": "turbo build --filter=screener",
+    "clean": "turbo clean && find . -name node_modules -type d -prune -exec rm -rf {} +"
+  },
+  "devDependencies": {
+    "turbo": "^2.0.0",
+    "typescript": "^5.4.0",
+    "@types/node": "^20.0.0"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}

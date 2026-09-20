@@ -1,0 +1,88 @@
+{
+  "stage": "S04_normalize",
+  "run_id": "ef4a1dde2b2343468f654b4c5d8e1fb9",
+  "mode": "FAST",
+  "started_at": "2026-08-31T22:02:28.131534+00:00",
+  "finished_at": "2026-08-31T22:02:34.139789+00:00",
+  "code": {
+    "script": "scripts/engine/s04_normalize.py",
+    "normalizer_version": "s04_normalize_v1",
+    "git_commit": "e9d794b85a487d461018f243066293168638012c"
+  },
+  "input": {
+    "stage": "S03_parse",
+    "checkpoint_id": "2e7a2201ffda47a2-s03",
+    "run_id": "2e7a2201ffda47a2a16da71dbf0296a9",
+    "rows": 5444
+  },
+  "coverage": {
+    "grupos": 2505,
+    "emitidos": 2358,
+    "sin_contexto": 300,
+    "sin_entidad": 0,
+    "sin_unidad": 0,
+    "unidad_no_resuelta": 0,
+    "desempates": {
+      "POR_PRECISION": 1993,
+      "POR_FACT_ID": 233,
+      "IDENTICO": 132
+    }
+  },
+  "integrity": {
+    "hash_in": "c31b21705695323f7681920ad7ecf0c11bbb0326abba574369a817c9b069fe8e",
+    "hash_out": "86742746188e7c22d258d2eac3c07b4e10801277b18ed6eb049d4a424a9b3c87",
+    "hash_out_v1": "c94a246ef9465e2d4f1911be8340d23e7fd152886e49bd45320c28aafc49c51b",
+    "hash_spec": "hashout-v2",
+    "por_tabla": {
+      "derived.fact": "7e97eb9abebb01b957534c4147148f06631a4cb70277bb426ac7959c2fac7466"
+    }
+  },
+  "nulls": {
+    "count": 300
+  },
+  "gate": {
+    "status": "BLOCK",
+    "checks": [
+      {
+        "id": "C-S04-001",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-002",
+        "result": "FAIL"
+      },
+      {
+        "id": "C-S04-003",
+        "result": "FAIL"
+      },
+      {
+        "id": "C-S04-004",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-005",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-006",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-007",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-008",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-009",
+        "result": "PASS"
+      }
+    ],
+    "reasons": [
+      "corridas distintas en parsed.facts: 2",
+      "contextos contradictorios: 83"
+    ]
+  }
+}

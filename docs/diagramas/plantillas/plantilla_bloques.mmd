@@ -1,0 +1,11 @@
+%%{init: {"theme":"base","themeVariables": {"primaryColor":"#43A047","primaryTextColor":"#FFFFFF","primaryBorderColor":"#43A047","lineColor":"#3B82F6","secondaryColor":"#E7F7EC","tertiaryColor":"#F4F8FE","fontFamily":"Calibri","fontSize":14}, "flowchart": {"nodeSpacing":55,"rankSpacing":65}}}%%
+flowchart LR
+    M1["Módulo\nIngesta"]
+    M2["Módulo\nParser"]
+    M3["Módulo\nNormalizador"]
+    M4["Módulo\nRatios"]
+    M5["Módulo\nMarket"]
+    I1["(datos crudos)"] --> M1 --> M2 --> M3 --> M4
+    M3 -. ratios base .-> M4
+    M5 --> M4
+    M4 --> O1["(dataset final)"]

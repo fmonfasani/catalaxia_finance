@@ -1,0 +1,35 @@
+{
+  "target": "catalaxia_engine@127.0.0.1:5433/catalaxia mode=FAST prod=False",
+  "port": "5433",
+  "is_prod": false,
+  "identity_v1": {
+    "source": 9,
+    "entity": 0,
+    "identifier": 0,
+    "assertion": 0,
+    "instrument": 0,
+    "instrument_symbol": 0,
+    "review": 0,
+    "conflict": 0
+  },
+  "identity_v0": {
+    "entities": 0,
+    "identifiers": 0,
+    "identifier_reviews": 0,
+    "classifications": 0
+  },
+  "corridas_huerfanas": 0,
+  "raw_catalogo": {
+    "archivo": "company_tickers_2026-08-31.json",
+    "sha16": "bf83a6d3c92cfd32",
+    "files": [
+      "company_tickers_2026-08-31.json"
+    ]
+  },
+  "s01_s02_s03_sha256": {
+    "s01_identity.py": "f5e94449d6b51188",
+    "s02_fetch_ypf.py": "8ab8cdb99b7eaff8",
+    "s03_parse_ypf.py": "3c58fed711f64948"
+  },
+  "dim_entity_sha16": "d8605acc0141aafc"
+}

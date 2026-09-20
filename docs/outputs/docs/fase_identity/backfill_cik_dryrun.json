@@ -1,0 +1,4657 @@
+{
+  "modo": "DRY-RUN (se revierte)",
+  "run_id": "0cbe9e03c2a34677a3061cda74b232b5",
+  "procesados": 512,
+  "acciones": {
+    "REUTILIZADA": 512
+  },
+  "identifier_status": {
+    "VERIFIED": 512
+  },
+  "errores": [],
+  "antes": {
+    "entidades": 525,
+    "identifiers_vigentes": 574,
+    "identifiers_autoritativos": 520,
+    "cik_autoritativos": 513,
+    "cuit_autoritativos": 3,
+    "assertions": 614,
+    "reviews_open": 11,
+    "conflicts": 1
+  },
+  "despues": {
+    "entidades": 525,
+    "identifiers_vigentes": 574,
+    "identifiers_autoritativos": 520,
+    "cik_autoritativos": 513,
+    "cuit_autoritativos": 3,
+    "assertions": 614,
+    "reviews_open": 11,
+    "conflicts": 1
+  },
+  "hash_antes": "f0a38639982cd6164bd52ac614521ff08a31bb80cd75e776b541d4f4560f437e",
+  "hash_despues": "f0a38639982cd6164bd52ac614521ff08a31bb80cd75e776b541d4f4560f437e",
+  "eventos": [
+    {
+      "entity_id": 58,
+      "cik": "0001034957",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TVZRNVYRK85EHJ0WPRSBQ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null,
+      "cuit_legacy_status": "CANDIDATE"
+    },
+    {
+      "entity_id": 59,
+      "cik": "0001711375",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TVZSK89FN7SQH9HX0Q8YJ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null,
+      "cuit_legacy_status": "CANDIDATE"
+    },
+    {
+      "entity_id": 60,
+      "cik": "0001762506",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TVZT9FPAWB945SY84YA2W",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null,
+      "cuit_legacy_status": "CANDIDATE"
+    },
+    {
+      "entity_id": 62,
+      "cik": "0000931427",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M0X99G29RBSSFSGAM5S1QZMT",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null,
+      "cuit_legacy_status": "CANDIDATE"
+    },
+    {
+      "entity_id": 63,
+      "cik": "0001469395",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TVZVCFSCZD1TAAX9NJNFK",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null,
+      "cuit_legacy_status": "CANDIDATE"
+    },
+    {
+      "entity_id": 64,
+      "cik": "0000933267",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TVZW57PG23VJHY61H8E3T",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null,
+      "cuit_legacy_status": "CANDIDATE"
+    },
+    {
+      "entity_id": 65,
+      "cik": "0001114700",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M0X99EXSQTYKWZMDEMMBX8QY",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null,
+      "cuit_legacy_status": "CANDIDATE"
+    },
+    {
+      "entity_id": 66,
+      "cik": "0001517399",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TVZX40J748JGP54ZE3AX3",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null,
+      "cuit_legacy_status": "CANDIDATE"
+    },
+    {
+      "entity_id": 67,
+      "cik": "0000913059",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TVZXVZV702RTAYQ0SJJ0X",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null,
+      "cuit_legacy_status": "CANDIDATE"
+    },
+    {
+      "entity_id": 68,
+      "cik": "0000932470",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TVZYG7XESMDWQ7SYFEZTD",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null,
+      "cuit_legacy_status": "CANDIDATE"
+    },
+    {
+      "entity_id": 70,
+      "cik": "0001717161",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M0X99DQ7P5TQ4Z6Z58RC5PB3",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null,
+      "cuit_legacy_status": "CANDIDATE"
+    },
+    {
+      "entity_id": 72,
+      "cik": "0000904851",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M0X99C8F87H9TH9N39H2D1NW",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null,
+      "cuit_legacy_status": "CANDIDATE"
+    },
+    {
+      "entity_id": 73,
+      "cik": "0001090872",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TVZZWBWJF77PA2K62YSWW",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 74,
+      "cik": "0000320193",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M13XBSM8ZWPXACZAG2H149JX",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 75,
+      "cik": "0001551152",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW00KW5EMSF1ZSQSFG0GD",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 76,
+      "cik": "0001559720",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW013YTW1YMVNA0FTMV5F",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 77,
+      "cik": "0000001800",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW01J2WBQ0RF15Z8SK1T8",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 78,
+      "cik": "0000947484",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0223G6417PY6KSXKFWF",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 79,
+      "cik": "0001467373",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW02MMV6EFBRVRTY1TXRW",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 80,
+      "cik": "0000796343",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW034N2SDCGTPSDCTXYVN",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 81,
+      "cik": "0000006281",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW03J8C7RQBE8HWHKSPHB",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 82,
+      "cik": "0000007084",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW03ZPXA6RQGA6G123CBT",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 83,
+      "cik": "0000008670",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW04ESMXTEYB47VE6KBGA",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 84,
+      "cik": "0000769397",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW04W1MG7MWPGQT2S5DQ0",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 85,
+      "cik": "0001002910",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW05AVFDYM0BN28WGK4VY",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 86,
+      "cik": "0000004904",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW05SJDKB914KH7ZDAQYH",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 87,
+      "cik": "0000874761",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW067C4Y9QG9XP489FF6J",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 88,
+      "cik": "0000004977",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW06PZC2XG1WBH4Y1YV5E",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 89,
+      "cik": "0000005272",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW076P3NHQTAXVK6XCPDV",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 90,
+      "cik": "0001267238",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW07PF7V5QGN44YJMMXEX",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 91,
+      "cik": "0000354190",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW084V5M04456PXWSN1ZM",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 92,
+      "cik": "0001086222",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW08NK7WQ9CMW01TZERXE",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 93,
+      "cik": "0000915913",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW094Q8440XTSHDBKYD62",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 94,
+      "cik": "0001097149",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW09KPW8BEWMCRW7VVAX4",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 95,
+      "cik": "0000899051",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0A05GMS4GPQ3ME5AYX6",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 96,
+      "cik": "0001579241",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0AG3D83723YWKP18SZC",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 97,
+      "cik": "0000006951",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0B14KJ6VDGDWQEH5XB7",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 98,
+      "cik": "0001748790",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0BGRFEWWPTMNW39K3EW",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 99,
+      "cik": "0000002488",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0C39HT8ZGJPZERKM1T3",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 100,
+      "cik": "0001037868",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0CHQQ0YY26674B53BD1",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 101,
+      "cik": "0000318154",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0CZHFXF0CYHT0TNBVHX",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 102,
+      "cik": "0000820027",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0DE8203BPDP22PS8CDF",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 103,
+      "cik": "0001053507",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0DXKCEAASDNPSKYTTSR",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 104,
+      "cik": "0001018724",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0ECE83EHZ6R0SY33JZW",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 105,
+      "cik": "0001596532",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0EVZ9PV44FVT4Z1EQS7",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 106,
+      "cik": "0000315293",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0F94BCH8J67P19XWWN2",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 107,
+      "cik": "0000091142",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0FQHZ163ZCAMYX15PE6",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 108,
+      "cik": "0001841666",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0G5D47S8SBCJB36N1Q7",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 109,
+      "cik": "0000002969",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0GKDCE9H9GTVNDVMZ3J",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 110,
+      "cik": "0000820313",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0H4J4REKNADACHW5QCZ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 111,
+      "cik": "0001858681",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0HK5J2Z15DJ3SZMADPF",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 112,
+      "cik": "0001751008",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0J2PVPEKCCD2YHRPZ2G",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 113,
+      "cik": "0001521332",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0JK03AQXQEB8147HSNX",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 114,
+      "cik": "0001035443",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0K1G953EFM3R192EM7N",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 115,
+      "cik": "0001176948",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0KG9EQDTZ3K78E14D7C",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 116,
+      "cik": "0000731802",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0KZHNMN89GHTB7BVZ4Z",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 117,
+      "cik": "0000915912",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0MEKSBX3SMHEA56C4XJ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 118,
+      "cik": "0001730168",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0MW9EN84RDGT20A4FY2",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 119,
+      "cik": "0000008818",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0NAQTCT22GHKEJMCECY",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 120,
+      "cik": "0001410636",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0NTTY68D0MD9M0C6F96",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 121,
+      "cik": "0001069183",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0PA1WQV05M16P4KBPNJ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 122,
+      "cik": "0000004962",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0PSFEZXMRFCX2TZQDMB",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 123,
+      "cik": "0000866787",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0Q7NMY1SP1WRT9HMEFD",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 124,
+      "cik": "0000012927",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0QNWRN0R48B8R2HXPTF",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 125,
+      "cik": "0000070858",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0RHFT5WHYJZ51XAD9WH",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 126,
+      "cik": "0000009389",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0S2CGSD41H7ZZZCQBEP",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 127,
+      "cik": "0000010456",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0SPEFN6ZY633KTQ602X",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 128,
+      "cik": "0000764478",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0T94318HG1J4YJWVJP0",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 129,
+      "cik": "0000010795",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0TVP51JMFPM47QZVZQS",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 130,
+      "cik": "0000038777",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0VDMW11VXF8BHWY5CMQ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 131,
+      "cik": "0000014693",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0W45KH828KV5E9150R2",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 132,
+      "cik": "0001996862",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0WNDPPQHBJXZ3XRHFQG",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 133,
+      "cik": "0000875045",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0X8GTZP8859D10RW3SG",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 134,
+      "cik": "0001075531",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0XWYYVZ5BMSB01E0WDZ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 135,
+      "cik": "0001701605",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0YDB76YGW8V7172TSWN",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 136,
+      "cik": "0001316835",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0YXF7T475PBZTCHH11J",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 137,
+      "cik": "0002012383",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0ZECM3BK8DXHPA683DZ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 138,
+      "cik": "0000014272",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW0ZWGA368S9MRHQVEMYC",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 139,
+      "cik": "0001390777",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW10FC3D94E56EPXFEVKA",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 140,
+      "cik": "0001383312",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW10Z1X5RF4J646P19VK1",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 141,
+      "cik": "0001067983",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW11K12MGSJ05S6A8BCRF",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 142,
+      "cik": "0000079282",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW126Y1V5EE6VB6S2BV4N",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 143,
+      "cik": "0000885725",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW12SZVVTCXTXT180WZKS",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 144,
+      "cik": "0001393818",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW138DM2NG281PMBP6B72",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 145,
+      "cik": "0001037540",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW13TV3WJBNGQVCSQ0Q2Z",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 146,
+      "cik": "0000831001",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW14WRC9NCD7CMCAQ417N",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 147,
+      "cik": "0000023217",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW15BDADAMNQQTXMNHZYR",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 148,
+      "cik": "0000721371",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW15YWRMDMQ7T128PNK1Z",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 149,
+      "cik": "0001783180",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW16GTSH9AC3MHRSEHJ7V",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 150,
+      "cik": "0000726958",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW174WZKP6BHK8BDT7ZZZ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 151,
+      "cik": "0000018230",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW17TFW86S248HCY1DVST",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 152,
+      "cik": "0000896159",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW18DWBCJH2F02EV3QV7B",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 153,
+      "cik": "0001374310",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW190DZRV48Z14WZV0MEJ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 154,
+      "cik": "0001138118",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW19KSF7ZM9FF01RCDRPE",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 155,
+      "cik": "0001051470",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1A6DYCK1ND69KREY416",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 156,
+      "cik": "0000815097",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1ARH5AGA3FA9174SGCP",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 157,
+      "cik": "0000813672",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1BC2GJTJQ8Q16G7Z4CV",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 158,
+      "cik": "0001402057",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1BXMF901J9Q2N0KPT0D",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 159,
+      "cik": "0001868275",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1CEW1C6WXJDXXNKN13Z",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 160,
+      "cik": "0001324404",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1CZMQGJWSGVRQ8QT6EX",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 161,
+      "cik": "0000759944",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1DG4THF6AYXEFVCS67B",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 162,
+      "cik": "0000313927",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1E0AFBX7V8J5YMJ8CF4",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 163,
+      "cik": "0001043277",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1EEY8RG5VA7FG40RPTW",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 164,
+      "cik": "0001091667",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1EX1TGQXB5KJTE9ESHN",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 165,
+      "cik": "0001739940",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1FC4M8RKK61853NPGVN",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 166,
+      "cik": "0000936395",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1FTNTX1WE2VRXE73S75",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 167,
+      "cik": "0000020286",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1GA47DZW1XDY3VV7QGC",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 168,
+      "cik": "0000021665",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1GT0F9J7RNDEN0A6BHH",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 169,
+      "cik": "0000021076",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1H9SBYAE6TXQ25ZTYTC",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 170,
+      "cik": "0001166691",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1HRC34RF29SGCHD64PP",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 171,
+      "cik": "0001156375",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1J6GE9HYFAC3KDRBVWV",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 172,
+      "cik": "0001058090",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1JNJ58EZHRJTJBP0SFC",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 173,
+      "cik": "0000026172",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1K65DAM120G43FXH35D",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 174,
+      "cik": "0000811156",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1KNYE2HQ4G24HWJDGSM",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 175,
+      "cik": "0001071739",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1M5AZ3AHB9ZDRR0MC20",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 176,
+      "cik": "0001130310",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1MQZZ46YY44V7SJGM20",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 177,
+      "cik": "0000927628",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1N6VVZP4PET5AXQXGV3",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 178,
+      "cik": "0000820318",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1NQVWZ2Y6N59E5S7AKC",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 179,
+      "cik": "0001679788",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1P6CA48CF96WQJNPPEN",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 180,
+      "cik": "0000711404",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1PNQN1BYK14B4VDBCEA",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 181,
+      "cik": "0001163165",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1Q5GQ96C3S8SQBNG3XF",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 182,
+      "cik": "0001140859",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1QN6C10Z1XKQBYHFXBE",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 183,
+      "cik": "0000909832",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1R5Y4RMQN9JB3YQNQD5",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 184,
+      "cik": "0001175454",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1RPM1BKYR5HRWSCRBVR",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 185,
+      "cik": "0000900075",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1S53CW6M0SBEFCSXHNA",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 186,
+      "cik": "0000906345",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1SMS2N8NPQKD7QFQEBE",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 187,
+      "cik": "0000849395",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1T3JH13X6DKMH24T0R1",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 188,
+      "cik": "0001100682",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1TJ0QQ0CAGMAV1WX6HJ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 189,
+      "cik": "0001108524",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1V378NZ1NQ4WMF5EJK2",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 190,
+      "cik": "0001535527",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1VJM1BXFYFC9MMBG48N",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 191,
+      "cik": "0000858877",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1W1BE8QB3P7Q4MDQVRZ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 192,
+      "cik": "0001057352",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1WGW3P0ZGCDYB61T626",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 193,
+      "cik": "0000277948",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1X1VQG4SAAZPX6HM844",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 194,
+      "cik": "0000723254",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1XHFW31E6QPNVEXE9H8",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 195,
+      "cik": "0001058290",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1Y0211NSJ8DQC66SHA0",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 196,
+      "cik": "0001755672",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1YEJ07AEVTB8ZTWD2ZR",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 197,
+      "cik": "0001690820",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1YX3CV46FBG3BE7YDDW",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 198,
+      "cik": "0000064803",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1ZCC6GS79DBGDBWE1NZ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 199,
+      "cik": "0000093410",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW1ZVC472MG9YWHJNR9A6",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 200,
+      "cik": "0000715957",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW20D7AE09ZVKQTHXJ1PZ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 201,
+      "cik": "0000027904",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW20V6T3JE18K491D46V0",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 202,
+      "cik": "0001792789",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW21ASE1V8TZPY1HN0G9G",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 203,
+      "cik": "0001666700",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW21T1VHHW0D6JGGYNK71",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 204,
+      "cik": "0001561550",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW228NADKYMW9YTCCBKRT",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 205,
+      "cik": "0000315189",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW22RDB5YJV6MZW0DQ1FV",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 206,
+      "cik": "0000910521",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW235JP8G4XFDG95156QJ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 207,
+      "cik": "0001571996",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW23QKAV1972R8P15W4AN",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 208,
+      "cik": "0000029534",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW24690QET8G3FEAAAKSG",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 209,
+      "cik": "0001022079",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW24NZ5XD1F6Y4CRYY006",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 210,
+      "cik": "0000882184",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW256ZMRR6R2X4G0HCMAQ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 211,
+      "cik": "0000313616",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW25REVKTJDM12KNZ6W9B",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 212,
+      "cik": "0001744489",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW26CZC6777NRR806P04X",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 213,
+      "cik": "0001297996",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW26TG2N5C0BJ3HMH03W3",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 214,
+      "cik": "0000935703",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW27F70864VPG2CFAPG9Q",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 215,
+      "cik": "0000765880",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW27YNYN94WB1CJ9JW3N6",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 216,
+      "cik": "0000029905",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW28DMSCFGWA63YVM56YA",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 217,
+      "cik": "0001751788",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW28YBF82DN5M5KPSTZJ4",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 218,
+      "cik": "0001286681",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW29HDWMB054Y0JXRQ5S9",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 219,
+      "cik": "0000940944",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2A1FZFPPH7YD2PZYSCC",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 220,
+      "cik": "0000936340",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2AK4NYBVFVQK73V78SD",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 221,
+      "cik": "0001326160",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2B5VKDTHY78RJ2ZBC9Z",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 222,
+      "cik": "0000927066",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2BNDYH93CYRGV760FD0",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 223,
+      "cik": "0001090012",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2C77QAJ23C4WVE99Z6Y",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 224,
+      "cik": "0001093557",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2CRC2EXRF44ACEM05NW",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 225,
+      "cik": "0000712515",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2D6TF2J5172C8GZCR51",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 226,
+      "cik": "0001065088",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2DPT20T0F8XJX2XC5ED",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 227,
+      "cik": "0000031462",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2E5B5DRX1PXPP964VBP",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 228,
+      "cik": "0001047862",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2EN4YT4M1P5EQGQPP0K",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 229,
+      "cik": "0000033185",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2F50EYSWPNGVDQ8C169",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 230,
+      "cik": "0001095073",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2FQZNDDH2ZSMK40S0ED",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 231,
+      "cik": "0000827052",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2G6EZZP0SF6HHK9HXSD",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 232,
+      "cik": "0001001250",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2GPMPG80HKK4ED1R8Y4",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 233,
+      "cik": "0001156039",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2H7HB95A6XG0H1QQ01Z",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 234,
+      "cik": "0000105634",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2HP7JFGM68KVRW1XMQD",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 235,
+      "cik": "0000032604",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2J8ZNR67YVG1TEH806H",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 236,
+      "cik": "0000821189",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2JQWGP5F183VY4V4WKG",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 237,
+      "cik": "0001101239",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2K8WNRRRXCM9HV83035",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 238,
+      "cik": "0000906107",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2KP5M9SZ6GC27XRP9GX",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 239,
+      "cik": "0000033213",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2M6VK21850Y5NABV31G",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 240,
+      "cik": "0000922621",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2MQ8JT92HXPHCJGE07N",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 241,
+      "cik": "0000072741",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2N9KWPD3QEKHHH14N7T",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 242,
+      "cik": "0000920522",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2NSYJ1YTHXV1JZ2SVBH",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 243,
+      "cik": "0001551182",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2PANMJQZYFCP3EC9WBF",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 244,
+      "cik": "0000065984",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2PVW8YQE9A07S3Y1VFW",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 245,
+      "cik": "0001711269",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2QBXBK23FG5SN7MTNC8",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 246,
+      "cik": "0001099800",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2QWY6BCEEKPSXWBYQFD",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 247,
+      "cik": "0001109357",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2RBKE98XJAJB090KDK4",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 248,
+      "cik": "0000895126",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2RV9F9E1S9BH9PN197V",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 249,
+      "cik": "0000746515",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2S9ASYABY57BTCCSS7X",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 250,
+      "cik": "0001324424",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2SSKDRPX5GW0P6QVCYA",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 251,
+      "cik": "0001289490",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2T7KSJFQAR0TMDEQ1MJ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 252,
+      "cik": "0000037996",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2TPP7FW89AWPZK7V1XZ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 253,
+      "cik": "0001539838",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2V7RCW12J1Q399MYGWA",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 254,
+      "cik": "0000815556",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2VPAFFEXCM3HK4B0QDQ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 255,
+      "cik": "0000831259",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2W6WPBTNH7R8XQ0DVET",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 256,
+      "cik": "0001013237",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2WRNN6QCB6VK7K49DKV",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 257,
+      "cik": "0001048911",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2X76Z3E2MJ1X403WHTR",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 258,
+      "cik": "0001031296",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2XPB3H68Q50BDBVA5XT",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 259,
+      "cik": "0001048695",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2Y488PDZ09DJNQ4RW16",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 260,
+      "cik": "0000814547",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2YMNVRKT4DEJSZZR5D3",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 261,
+      "cik": "0001136893",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2Z4W477D68QXZ7WCR4H",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 262,
+      "cik": "0000798354",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW2ZMDXMVX0G8REVJ9Q49",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 263,
+      "cik": "0000035527",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW306CKR2VR4F0FC9BCH7",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 264,
+      "cik": "0001035983",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW30PF7CEQF7GJRWS9YMB",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 265,
+      "cik": "0000866374",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3153SF7Z5MJ4F7HF60H",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 266,
+      "cik": "0001754301",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW31M3BDC3QF81BAFH4MJ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 267,
+      "cik": "0000034903",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW324HSWF3EXHC88F943V",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 268,
+      "cik": "0001274494",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW32KEVQ3H371B47TQ2M0",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 269,
+      "cik": "0001262039",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW333YHV4RT4JN9HDJVWX",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 270,
+      "cik": "0001659166",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW33JFZJ76A3P6QGTHJ64",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 271,
+      "cik": "0000040533",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3441T5M5FBGA483FAAC",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 272,
+      "cik": "0001609711",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW34MJBJRAQKYTFDHRC2N",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 273,
+      "cik": "0000040545",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW355980A4AEN0932FH7T",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 274,
+      "cik": "0001932393",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW35MVYVEXQCYHVJX4SYV",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 275,
+      "cik": "0000849399",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3632JV66VRX6536XT6C",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 276,
+      "cik": "0001996810",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW36ME2CJ1W2TZ3A497S0",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 277,
+      "cik": "0000882095",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3744VCN556M1F2S1E7R",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 278,
+      "cik": "0000040704",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW37M93YBPNHW764K2QV2",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 279,
+      "cik": "0000320335",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW384T53FR2K8B12AXMRN",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 280,
+      "cik": "0000024741",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW38NX3Y836HDC17VQHC9",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 281,
+      "cik": "0001467858",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW395M935JATADC2M7DXG",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 282,
+      "cik": "0001474735",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW39MJ9KSYFPGNEZTYQJH",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 283,
+      "cik": "0001652044",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3A6FJYRJGNPJN46ZXZK",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 284,
+      "cik": "0000040987",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3AQJSPHK5B6ZP9QYYES",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 285,
+      "cik": "0001123360",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3B8RKYH80AR0WFMQAYK",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 286,
+      "cik": "0001121788",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3BRXCDF7M6QHGNYFYDM",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 287,
+      "cik": "0000886982",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3CRWHHMKFY8C344PQC0",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 288,
+      "cik": "0000277135",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3D7Z694YFH6MFXV682W",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 289,
+      "cik": "0000045012",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3DQN5GW66TK9N3NJK76",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 290,
+      "cik": "0000046080",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3E6R3648GY0PGKFBDWV",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 291,
+      "cik": "0000049196",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3EN8MPQG50DN9ZT1AE4",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 292,
+      "cik": "0000860730",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3F4KREKCKHXA3B1P9AH",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 293,
+      "cik": "0000354950",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3FK9GR7M2QBAFYKJNJ7",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 294,
+      "cik": "0000874766",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3G220W7T3CDT4BTHGQB",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 295,
+      "cik": "0001501585",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3GG9KZ1WQ4QFMRJKSX9",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 296,
+      "cik": "0001585689",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3GYS6XJNBP8ZXJWH7ES",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 297,
+      "cik": "0000773840",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3HD51D73ZZKNE6FXW58",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 298,
+      "cik": "0001783879",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3HW0AN56615QMD5XYFR",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 299,
+      "cik": "0001645590",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3JB5DX0JSAG6JDV8TYM",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 300,
+      "cik": "0000047217",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3JWE5EX1ZS8VDBMJW8E",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 301,
+      "cik": "0000048465",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3KBM5ES1T8AH7QQDGC7",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 302,
+      "cik": "0001000228",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3KTZ93K40J11NFKXHC8",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 303,
+      "cik": "0001070750",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3M86PKF3RJMYGPTNKMR",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 304,
+      "cik": "0000047111",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3MSCC0P434BAA4YCCDD",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 305,
+      "cik": "0000048898",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3NA7DB0YVXWMA3E7R89",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 306,
+      "cik": "0000049071",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3NS6WMTG21GNS48BFHN",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 307,
+      "cik": "0000004281",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3PB1SK917XGQ98W1588",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 308,
+      "cik": "0001381197",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3PT8X4H4KSZE70N5XTG",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 309,
+      "cik": "0000051143",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3Q8P896980GSK7EH6QS",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 310,
+      "cik": "0001571949",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3QRJA67QMHTTRGEDVV2",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 311,
+      "cik": "0000874716",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3R7B7PPPFMK0DX365YQ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 312,
+      "cik": "0000832101",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3RPGFK8Z5Q60GJT3TYC",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 313,
+      "cik": "0000051253",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3S4J31RNN043DJM0NSQ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 314,
+      "cik": "0000879169",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3SKVZMWZDN2JZC98K2X",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 315,
+      "cik": "0000050863",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3T4MGFANXG4RCRYH29K",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 316,
+      "cik": "0000896878",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3TJP9GZ462YG835AYYT",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 317,
+      "cik": "0001687229",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3V04259SRTRR2YX6J5T",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 318,
+      "cik": "0000051434",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3VGEPWB0SDHQXF7599Z",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 319,
+      "cik": "0001478242",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3VYGZTKP3CK7607CW2Z",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 320,
+      "cik": "0001699150",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3WEGGP4C6X4MW0B89QW",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 321,
+      "cik": "0001020569",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3WWRQFNV26KWAAG1TB5",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 322,
+      "cik": "0001035267",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3XBQDAQ2E8X9PP3CC36",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 323,
+      "cik": "0000749251",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3XSX8NTA3GNDVX9BNH9",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 324,
+      "cik": "0000049826",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3YDPTZB9MBHYQ84ZGDR",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 325,
+      "cik": "0000914208",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3YXETMFJMA9EJXTXW51",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 326,
+      "cik": "0000052988",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3ZEH544FXH397AX17C0",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 327,
+      "cik": "0000728535",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW3ZXBG1YAB9MK55HKWJH",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 328,
+      "cik": "0000898293",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW40D7Z3HXS4X9ZRAT5VE",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 329,
+      "cik": "0000833444",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW40WBP6QG98X9N66Q42K",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 330,
+      "cik": "0000779152",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW41E9S7GYVH34XTHNQR6",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 331,
+      "cik": "0000200406",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW41XSDR9SQVV4YXHY2MK",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 332,
+      "cik": "0000019617",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW43J13SCBE21PXRYM8BC",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 333,
+      "cik": "0001418135",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW444TR4HF7Q4Y533KQG3",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 334,
+      "cik": "0000091576",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW44N5KB2F87SZTGXFCFP",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 335,
+      "cik": "0001601046",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW456PJCCX2RC36XSZ9ZX",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 336,
+      "cik": "0001637459",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW45QMV1X8E41HEVFMHRW",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 337,
+      "cik": "0000879101",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW469N25Y7NSP2V94TK9A",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 338,
+      "cik": "0001404912",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW46Q63MEHMRX9XP6BXCY",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 339,
+      "cik": "0000319201",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4765WG9K09BGGQQAASM",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 340,
+      "cik": "0000055785",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW47QXJE5H2R6KTHPWXZ8",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 341,
+      "cik": "0001506307",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW488GEHSS58K3ZD5EDMK",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 342,
+      "cik": "0000021344",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW48R0PBJQPF1GG1B9S5N",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 343,
+      "cik": "0000056873",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW49AVR1W5MP7P7S91CFH",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 344,
+      "cik": "0001944048",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW49WK3GJHB4N2G8R0AZW",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 345,
+      "cik": "0000060086",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4ACNMV4MTMMMXVP73QP",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 346,
+      "cik": "0001336920",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4AW9J0BW9WJ1FT7DBKA",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 347,
+      "cik": "0000920760",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4BCT2P8ZRZHX0PDP75S",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 348,
+      "cik": "0000920148",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4BVF59417YRDD0RDGY7",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 349,
+      "cik": "0000202058",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4CA98PY1BEHH78R0JA5",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 350,
+      "cik": "0001069202",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4CYTA1VQXARCFFJ25BF",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 351,
+      "cik": "0001707925",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4DF3QN8Y8T6CMVHW2NE",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 352,
+      "cik": "0001633978",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4DYZRKTPE8MEPQER3WZ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 353,
+      "cik": "0000059478",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4EFAWR21HH6NW44GJCY",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 354,
+      "cik": "0000936468",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4F0PQGS15M7QTBG53TJ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 355,
+      "cik": "0000352541",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4FHE3Q9TCD1EEFFW5JF",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 356,
+      "cik": "0000060667",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4G1SDNTZMKYGZ1H192H",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 357,
+      "cik": "0000707549",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4GKBYWXJHCGH8YHH52J",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 358,
+      "cik": "0001397187",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4H4A6ZX6G9JWTPWBF54",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 359,
+      "cik": "0000092380",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4HK51YEP2ET9W67234Z",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 360,
+      "cik": "0001300514",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4J2K5Q0C1655CD31ES1",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 361,
+      "cik": "0001489393",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4JJSC5N4ZZ6PVZ57ZX7",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 362,
+      "cik": "0001335258",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4K08N1F9GVE468ZQ4VK",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 363,
+      "cik": "0001141391",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4KG2MKFD98NJ07ANBHV",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 364,
+      "cik": "0000912595",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4KZ7Q60QDEN023Z0VAC",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 365,
+      "cik": "0001048286",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4MH90KXEKVRB4WEM2W3",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 366,
+      "cik": "0000062996",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4N26ZMG5NR76V0DYGED",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 367,
+      "cik": "0000063908",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4NKM51BBZZ36ZT9RE6R",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 368,
+      "cik": "0000827054",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4P2YYP84M8QJN0G6F43",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 369,
+      "cik": "0000927653",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4PJ1AYZNBRQ57SJF7SQ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 370,
+      "cik": "0001059556",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4Q1H3RMEXCRKM2HRDMF",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 371,
+      "cik": "0001103982",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4QH8ZPCJ29W2JYPFEAB",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 372,
+      "cik": "0001613103",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4R2HZREZFMJ38NZXTJX",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 373,
+      "cik": "0001099219",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4RJ9Z7H8GPR0TGZNFR7",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 374,
+      "cik": "0001326801",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4S3WHKPA3JHX28EFKEV",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 375,
+      "cik": "0000789570",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4SQKSZ4Y5SA24YJTEM2",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 376,
+      "cik": "0000063754",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4T5RSXNV3VQTVGNVC5A",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 377,
+      "cik": "0000916076",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4TNMQNE4G83QE4591JJ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 378,
+      "cik": "0000066740",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4V53C0E48RM1PXB8K3Q",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 379,
+      "cik": "0000865752",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4VND3VZJ0Q25WH1R5XK",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 380,
+      "cik": "0000764180",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4W43ZKDA7ESAE158B28",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 381,
+      "cik": "0001285785",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4WK7GNG7S9K4WE35BB8",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 382,
+      "cik": "0001510295",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4X19S79H8P0E5EN41X0",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 383,
+      "cik": "0001280452",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4XGC2AVKTD4JB8EVBMM",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 384,
+      "cik": "0000310158",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4Y1Q3QWX74F89YM9A0M",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 385,
+      "cik": "0001682852",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4YHFR59P466TZXC5YEN",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 386,
+      "cik": "0000062709",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4Z36GC2RWF0SVGXMF4A",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 387,
+      "cik": "0001835632",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW4ZPYKY4GA2PV15NYZGP",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 388,
+      "cik": "0000895421",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW510P2S4GPFVBEBD6WYZ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 389,
+      "cik": "0001408198",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW51G8APFYN8WSTSAWAPK",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 390,
+      "cik": "0000789019",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M13XBSP3JTP05SPZKQ4W4PB2",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 391,
+      "cik": "0000068505",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW528F8FFH4RQVKE50CMW",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 392,
+      "cik": "0000036270",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW52SGXKXF7S6RBXS9T0V",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 393,
+      "cik": "0001037646",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW53AXAQKZW8TT3ZW6PF9",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 394,
+      "cik": "0000723125",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW53Z46ARSKCVXSTHE8HB",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 395,
+      "cik": "0001513761",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW54EGBH7YK0QY127KYMH",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 396,
+      "cik": "0001120193",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW54ZJC35VGS2SR0QHSR1",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 397,
+      "cik": "0000072331",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW55HP5BCHG7NEHK2HS9M",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 398,
+      "cik": "0000753308",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5609VVGKHMZRMYQVVYB",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 399,
+      "cik": "0001164727",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW56GD880KKSYXWXHMD4V",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 400,
+      "cik": "0001065280",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW570P1B3MFFVH2V2WTXH",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 401,
+      "cik": "0001111711",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW57KK5HB19XFMSR4AK1Z",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 402,
+      "cik": "0000320187",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5823MFSPRJ9HCJ6TPZD",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 403,
+      "cik": "0001133421",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW58M64NK22ZJW9VPQV77",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 404,
+      "cik": "0001373715",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW59585XDK85ES6X2JJQM",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 405,
+      "cik": "0001013871",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW59QK9VW2F85DH2MK6P2",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 406,
+      "cik": "0000702165",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5A8TVH80V4RXM1PWZCZ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 407,
+      "cik": "0001002047",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5AR12J9RGE4KR7QP05C",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 408,
+      "cik": "0000073124",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5BEY09NEXWJJ5YPAMMF",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 409,
+      "cik": "0000073309",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5C19ZZYZGG33BA93B6X",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 410,
+      "cik": "0001045810",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M13XBSREYYDB03WJ7W62ANSX",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 411,
+      "cik": "0000906163",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5CYDWWQR74747R5F6R8",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 412,
+      "cik": "0001564708",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5DH6HN92ZSFJAK5DNZR",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 413,
+      "cik": "0001413447",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5E7HTFNHX5M14TCW06V",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 414,
+      "cik": "0000726728",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5EWXN5ZT20SC02RZ77G",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 415,
+      "cik": "0000878927",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5FFFTGF9B0T8ZS8WFX4",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 416,
+      "cik": "0001039684",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5FZMVA5SPQ6QD89M9ZF",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 417,
+      "cik": "0000029989",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5GFVXH9C5JYR6V1SMA8",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 418,
+      "cik": "0001097864",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5GXHVRME1QN710EF3E6",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 419,
+      "cik": "0001341439",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5HDTT7N3Q0G1M0HSGWJ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 420,
+      "cik": "0000898173",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5HW9NBPJBV10A4DRD9D",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 421,
+      "cik": "0001781335",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5JC3J8QGRN1ZWPSE1HM",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 422,
+      "cik": "0000797468",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5JVYA2PD12ED594K397",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 423,
+      "cik": "0001327567",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5K9HF21V3KGC9P0GH1P",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 424,
+      "cik": "0000723531",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5KVKBKZ6XTXHRM5M16G",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 425,
+      "cik": "0000075362",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5MBYA12B5HY4ANDZH0F",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 426,
+      "cik": "0001004980",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5MVJXWBQSNGEQ3QWA1V",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 427,
+      "cik": "0000788784",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5NBMSA1ZCY3SW318PD8",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 428,
+      "cik": "0000077476",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5NTB54FH271WGKTXNCF",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 429,
+      "cik": "0000078003",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5PAGDVKSSE862C7PRZM",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 430,
+      "cik": "0001126328",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5PSRPPJGAVVJM4H2BYR",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 431,
+      "cik": "0000080424",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5Q8W4YMHXZXA4KN21GY",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 432,
+      "cik": "0000080661",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5QQZ33CHKY2SQ7VBVMW",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 433,
+      "cik": "0000076334",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5R9DTFDA92TVTA4EV29",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 434,
+      "cik": "0000822416",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5RSJXYBBKHAMVWDQSBC",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 435,
+      "cik": "0000075677",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5SCSSD4RVMV5B0THC8D",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 436,
+      "cik": "0001045609",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5T0KR9X1K85HMQFPA2Y",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 437,
+      "cik": "0001321655",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5TJJ9XTYXQ15B9GFNK9",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 438,
+      "cik": "0001413329",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5V4K6W344ARMMB5SK66",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 439,
+      "cik": "0000713676",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5VQEQNRW73R37DBH048",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 440,
+      "cik": "0000077360",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5WCJ0Z0WA7QQTY5BQKM",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 441,
+      "cik": "0000764622",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5X175AXDA318VX0EXB7",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 442,
+      "cik": "0001145197",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5XJKGGQS6HMQB5DNHET",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 443,
+      "cik": "0000079879",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5Y55Q6YJ8A48PYCE8YV",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 444,
+      "cik": "0000922224",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5YP4S6PKGEQTC3VP4A7",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 445,
+      "cik": "0001137774",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5Z5SCN0NNC1552YN6X4",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 446,
+      "cik": "0001393311",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW5ZNDKXXGA2V7XMRQGPV",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 447,
+      "cik": "0002041610",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6046T7YMER3W22GWC93",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 448,
+      "cik": "0001534701",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW60MTYA0E4F3MW4NM4ZG",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 449,
+      "cik": "0000857005",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW614J3Y17FY9V916AYKV",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 450,
+      "cik": "0001050915",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW61MWKZGX45GP73SV2RX",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 451,
+      "cik": "0001633917",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW625VZEJBFNS9SYEVSWN",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 452,
+      "cik": "0002058873",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW62NGH70801BES4QAR3C",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 453,
+      "cik": "0000804328",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW638N1QPK2HZD7GQPG5K",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 454,
+      "cik": "0000884887",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW63S9Z5ZCW6GTWHKRSCB",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 455,
+      "cik": "0000910606",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW64AQZ9W134ST369G0CF",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 456,
+      "cik": "0000872589",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW64TCX5TGW323EHE5JFZ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 457,
+      "cik": "0001281761",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW65BFPJNG6EADK02X1CK",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 458,
+      "cik": "0000720005",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW65WYFCFMDZN84JBPW59",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 459,
+      "cik": "0001037038",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW66DFG5BPJFR2Y3TM07R",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 460,
+      "cik": "0000943819",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW66YHZMZAPJ77KEDJ6Z9",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 461,
+      "cik": "0001024478",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW67DFF9W88SHRYHGEVA4",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 462,
+      "cik": "0000084839",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW67X5Q6Z1KA77A0KQTWR",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 463,
+      "cik": "0000882835",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW68G9QP6T8RBK3SY3Y9K",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 464,
+      "cik": "0000745732",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW691H14S0T71DYHPZP1P",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 465,
+      "cik": "0001060391",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW69GP906YTSG75CX5DYZ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 466,
+      "cik": "0000101829",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6A0WKK4CBBANCPNMHZC",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 467,
+      "cik": "0000031791",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6AGP29VSG7PF2GFRMQM",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 468,
+      "cik": "0001415404",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6AZS17YPCBWMK8Y69CP",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 469,
+      "cik": "0001034054",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6BFNYJVCB7GYSA3GMCJ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 470,
+      "cik": "0000829224",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6C29YDW30AAFEW2GTB3",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 471,
+      "cik": "0000316709",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6CMX4A2GHNPD79862HM",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 472,
+      "cik": "0000089800",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6D3JZF42B8FXNN0RFM3",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 473,
+      "cik": "0000091419",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6DJ5CT31VE2VSWSE5BK",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 474,
+      "cik": "0000087347",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6E2JM7TA3M8QFGCK68S",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 475,
+      "cik": "0001375365",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6EJYJBP3QQWSSVTKE3W",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 476,
+      "cik": "0000091440",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6F5G35S8ERV7B367P2M",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 477,
+      "cik": "0002023554",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6FMPVYBQGV4VCKPZD51",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 478,
+      "cik": "0000883241",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6G3JXNBT9QAXFCW4965",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 479,
+      "cik": "0000092122",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6GMCPRQKEHWWJ2JCRZB",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 480,
+      "cik": "0001964738",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6H29D78MN3JA8JTD5K8",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 481,
+      "cik": "0001063761",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6HJFGEFDX210Y8HY860",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 482,
+      "cik": "0000064040",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6J38BM10QPRNRHG87TY",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 483,
+      "cik": "0001032208",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6JKXZK5GA9TGV9WB459",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 484,
+      "cik": "0001757898",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6K48TXM81PKBZQCNNMH",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 485,
+      "cik": "0001022671",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6KMVR49152PA1N0RX9B",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 486,
+      "cik": "0000093751",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6M8M6SRQZWGW6J81VWD",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 487,
+      "cik": "0001137789",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6MV4K2P8EFS7ENQQKR7",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 488,
+      "cik": "0000016918",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6NEXYRDAGC2ERFP1YPJ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 489,
+      "cik": "0002005951",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6NYF4SNGZ32P9A9WB3M",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 490,
+      "cik": "0000093556",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6PDXBHHJF07PTFY864D",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 491,
+      "cik": "0000004127",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6PYN5PBE5PBCGZE3MY9",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 492,
+      "cik": "0001601712",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6QE43JQZBD8QY8E3JES",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 493,
+      "cik": "0000310764",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6R0DKTM3RDTDXQVRCRH",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 494,
+      "cik": "0000096021",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6RGG4J3NSK70EX0F736",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 495,
+      "cik": "0000732717",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6S0728NM1NRXTH3J9K5",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 496,
+      "cik": "0000024545",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6SJPCXAC64K926PDKPM",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 497,
+      "cik": "0001260221",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6T1M4XGNS11E8D6CQ4B",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 498,
+      "cik": "0001094285",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6TKVA162B2F13V0BNY9",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 499,
+      "cik": "0000842023",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6V2GEFDNS52GFN2F4TV",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 500,
+      "cik": "0001385157",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6VHFCC432Z75FXGM8NY",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 501,
+      "cik": "0000097210",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6W30TRQ918BYVTSXD0Y",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 502,
+      "cik": "0000092230",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6WKQNWK8P9978AG4DF9",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 503,
+      "cik": "0000027419",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6X7VQSXKMRMF9Z802A8",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 504,
+      "cik": "0000109198",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6XT1VT2R6PMEW84EB86",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 505,
+      "cik": "0001973266",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6YD0BRXP0G2Q4PSPYF2",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 506,
+      "cik": "0000097745",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6Z1AM56VJZQ255EKG5Q",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 507,
+      "cik": "0001283699",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW6ZP49SS2TC30EG0GS2Z",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 508,
+      "cik": "0001811074",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW70GQ25V9RYE0979HWZP",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 509,
+      "cik": "0001116132",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW71J2XYB3AKDEXTHTK0F",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 510,
+      "cik": "0001389170",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW72HV0ZFFD114ZEGH081",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 511,
+      "cik": "0000864749",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW73A5XCSD2PHKAC4BXA2",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 512,
+      "cik": "0001113169",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7468ZZRX80SC4913JYA",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 513,
+      "cik": "0000086312",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW74W9QSRQH1KGCM0MMVC",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 514,
+      "cik": "0000916365",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW75N4PFSNWGH9A05N5AC",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 515,
+      "cik": "0001318605",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW76C6053G8EZJX57SAXA",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 516,
+      "cik": "0000100493",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW773E8N9PQ37SQ6E3PK8",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 517,
+      "cik": "0001466258",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW77V8PKT5B1D41ZS9RNX",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 518,
+      "cik": "0001671933",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW78GB6H136JFZCBBYQ2W",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 519,
+      "cik": "0000946581",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW795Z6N4D9CY5XNGN6F5",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 520,
+      "cik": "0000097476",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW79RX2WD17PY2T6EFVKD",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 521,
+      "cik": "0000217346",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7ABZ0FSGY96TMC9FQEQ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 522,
+      "cik": "0000860731",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7B0SE7ZS5W7HKA2HQG1",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 523,
+      "cik": "0000100517",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7BH3AWSFGDN0P4J8QXZ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 524,
+      "cik": "0001543151",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7C60T0M4ACKHAREF0CQ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 525,
+      "cik": "0000074208",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7CTFR4ZX9MT8W2BAR51",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 526,
+      "cik": "0000352915",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7DFZ9R13NS4HMQ8KQ9F",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 527,
+      "cik": "0001403568",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7DY7D9NWZV75Q6WBH5R",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 528,
+      "cik": "0000731766",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7EHYG3X77CYVNVNKZKH",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 529,
+      "cik": "0000100885",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7F8X2DTEX8E6MQPDE4X",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 530,
+      "cik": "0001090727",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7FZDX5A3BT9J4W2912C",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 531,
+      "cik": "0001067701",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7GKZEYJJ0A020R0HWN5",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 532,
+      "cik": "0000036104",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7H72XHQQBXFD5TVQEF4",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 533,
+      "cik": "0001403161",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7HVYVER1TAJJ073HMCD",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 534,
+      "cik": "0001393052",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7JHZJF9JCSHCXGXH1BE",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 535,
+      "cik": "0001705696",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7K46CYV1CJBGYPZB5V0",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 536,
+      "cik": "0001035002",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7KS38MVBN8JWN4AN97Y",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 537,
+      "cik": "0001967680",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7MBTXFEQEF1MK64CRC6",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 538,
+      "cik": "0001396009",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7MXPBTHXYFPFXQ2DN60",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 539,
+      "cik": "0001442145",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7NG8KCK891ZDK3A8RMG",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 540,
+      "cik": "0001014473",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7P6CV78DV2TRWRA82NX",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 541,
+      "cik": "0001674101",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7PR9S871NS879JMTRE5",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 542,
+      "cik": "0000875320",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7Q8ASE67PCTED2QKSVA",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 543,
+      "cik": "0001692819",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7QRRR2XA2G23JKBPE2C",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 544,
+      "cik": "0000740260",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7R7E8HJW31PHASYR2WD",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 545,
+      "cik": "0001792044",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7RQFYSAGW853Z6JTW2A",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 546,
+      "cik": "0000732712",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7S81G8EZCZSP9WHVVX7",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 547,
+      "cik": "0000943452",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7STZ8Q1B4D6E1N73ZES",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 548,
+      "cik": "0001000697",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7T9YZP55YTVD0BXZAF3",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 549,
+      "cik": "0001437107",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7TSB2FZJRZWDM6S3VRX",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 550,
+      "cik": "0001327811",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7VEMK7NZ401VZK7SKKP",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 551,
+      "cik": "0000106040",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7VWFZ2JDEQ2FF7CJVRZ",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 552,
+      "cik": "0000783325",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7WBWMEJ28HVWP8N69V7",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 553,
+      "cik": "0000766704",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7WWZ49QSSYYX8D67FV1",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 554,
+      "cik": "0000072971",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7XEDJE5MR4XX964YBE4",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 555,
+      "cik": "0000823768",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7Y1K2RG2YFPVA58H4B0",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 556,
+      "cik": "0000107263",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7YH2NVT2VYHD5B4AHSC",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 557,
+      "cik": "0000104169",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7Z1BT5WVR7QE8BJSD97",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 558,
+      "cik": "0000011544",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW7ZHG6BRH76443GRNTW1",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 559,
+      "cik": "0000719955",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW802JNJHASE4DP7EQCAH",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 560,
+      "cik": "0000105770",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW80JS7TGVHC42MJYXEAY",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 561,
+      "cik": "0001140536",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW813DRG30R9CK6GH8EZK",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 562,
+      "cik": "0000106535",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW81Q9SV53GPD1KMJS6R6",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 563,
+      "cik": "0001174922",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW828FBB3027Z53Q0YFF4",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 564,
+      "cik": "0000072903",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW82SJ127ZGERXDWR6RPP",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 565,
+      "cik": "0000034088",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW83B4GAC6TGQGC13E6KD",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 566,
+      "cik": "0001524472",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW83V7N5VMEQPAJVDBRA3",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 567,
+      "cik": "0001512673",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW84BZ14J6QY8YH29B0S6",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 568,
+      "cik": "0001041061",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW84ZF7VA1PNSBW4MMB9D",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 569,
+      "cik": "0001136869",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW85FHZAYNV5KSTWQTNHR",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 570,
+      "cik": "0000877212",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW85YEWRR6ZQBTMVJWQZ3",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 571,
+      "cik": "0001555280",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW86G5W8BHZSHGYENQ6GP",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null
+    },
+    {
+      "entity_id": 573,
+      "cik": "0001395213",
+      "accion": "REUTILIZADA",
+      "entity_key": "E01M14TW86ZVB620D1QY7M5QG21",
+      "identifier": "VERIFIED",
+      "review": null,
+      "conflict": null,
+      "cuit_legacy_status": "CANDIDATE"
+    }
+  ]
+}

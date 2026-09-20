@@ -1,0 +1,62 @@
+{
+  "generado_utc": "2026-08-25T04:29:30.565145+00:00",
+  "checkpoint_id": "MKT-GOLDEN-20260825-89c2f00f26c0",
+  "archivos": [
+    {
+      "ruta": "outputs/docs/fase_market/golden/MARKET_GOLDEN_CASE.md",
+      "bytes": 4541,
+      "sha256": "6dbedb553d749d5d19e52ec70fa795787749df25727dd3d9784d98919d3c2691"
+    },
+    {
+      "ruta": "outputs/docs/fase_market/golden/market_fingerprint_report.md",
+      "bytes": 2555,
+      "sha256": "a760d5be15edbf6bbd759fffb1c8562b1b98cbddd873fc1451030837ac59a2cc"
+    },
+    {
+      "ruta": "outputs/docs/fase_market/golden/market_idempotency_report.md",
+      "bytes": 3346,
+      "sha256": "b342d47870a74251cdba37791661218378069c9157a662c349b5c0fddfac3ec7"
+    },
+    {
+      "ruta": "outputs/docs/fase_market/golden/market_validation_report.md",
+      "bytes": 4350,
+      "sha256": "4027872d2328ca471612b7def9b464cd340b72ae4051dae02e89ee5bdacde516"
+    },
+    {
+      "ruta": "outputs/docs/fase_market/golden/market_provenance.md",
+      "bytes": 8317,
+      "sha256": "c348ab3f7f0ac63affc508c4c8a68b53de066ede21d751dbdb7e59ebf7f1dad6"
+    },
+    {
+      "ruta": "outputs/docs/fase_market/golden/csv/serie_83_YPFD_BA.csv",
+      "bytes": 1806911,
+      "sha256": "9ddd0a8f3a2371f1f6bb4893d6f4b02eac41a3e757753f6e422c4c350262d0c1"
+    },
+    {
+      "ruta": "outputs/docs/fase_market/golden/csv/serie_84_YPF.csv",
+      "bytes": 2287690,
+      "sha256": "78190bcef52d39706eff713c7bbb49f83c2a459c786c285ff0acc3584ae64484"
+    },
+    {
+      "ruta": "outputs/docs/fase_market/golden/csv/gates.csv",
+      "bytes": 3734,
+      "sha256": "0bd2e2ca68685c756571d72ab7228c53807cd9552ee1e8895f04c183bde5724d"
+    },
+    {
+      "ruta": "outputs/docs/fase_market/golden/csv/cambios.csv",
+      "bytes": 199,
+      "sha256": "3ff6498ed52e51948edf559b8696dfa48c0b36a0eefba383968888153019063d"
+    },
+    {
+      "ruta": "outputs/docs/fase_market/golden/csv/provenance.csv",
+      "bytes": 5086,
+      "sha256": "8e04876ec434a786a9e83b06f8c305500f8197db859e072f77b9002fba92546c"
+    },
+    {
+      "ruta": "outputs/docs/fase_market/golden/market_golden_case.xlsx",
+      "bytes": 50479,
+      "sha256": "d3ea3314030fa2d6e2ea07bab032d0e790be984aa09edd6ff4f16c35ff678304"
+    }
+  ],
+  "sha256_manifest": "2d59fba5a3d691eaee8742bae726a9e00e8c6d3728e672c4cacbf0304837cd6a"
+}

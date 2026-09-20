@@ -1,0 +1,1304 @@
+[
+  {
+    "ticker": "CEPU",
+    "cadena": {
+      "EMPRESA": {
+        "ok": true,
+        "detalle": "2 instrumento(s): 80@BUE, 81@NYSE"
+      },
+      "IDENTITY": {
+        "ok": true,
+        "detalle": "CENTRAL PUERTO S.A. · E01M0X99DQ7P5TQ4Z6Z58RC5PB3 · CIK=0001717161 CUIT=33650305499(VERIFIED)"
+      },
+      "SEC_XBRL": {
+        "ok": true,
+        "detalle": "260 facts normalizados para CIK 0001717161"
+      },
+      "MARKET": {
+        "ok": true,
+        "detalle": "80@BUE=2166.00000000 ARS (2026-08-27), 81@NYSE=13.53000000 USD (2026-08-27)"
+      },
+      "METRICAS": {
+        "ok": true,
+        "detalle": "ejercicio 2025-12-31: 15/38 tags requeridos presentes"
+      },
+      "RATIOS": {
+        "ok": true,
+        "detalle": "12/14 calculados en 2025-12-31"
+      },
+      "SCREENER": {
+        "ok": true,
+        "detalle": "fila publicable con 12 metricas"
+      },
+      "PROVENANCE": {
+        "ok": true,
+        "detalle": "accessions citadas: ['0001292814-26-002446'] · precio 2026-08-27"
+      }
+    },
+    "ratios": {
+      "current_ratio": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 1.772771,
+        "formula": "CurrentAssets/CurrentLiabilities",
+        "moneda": "ARS",
+        "accession": "0001292814-26-002446",
+        "filing_date": "2026-04-22"
+      },
+      "cash_ratio": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 0.092473,
+        "formula": "CashAndCashEquivalents/CurrentLiabilities",
+        "moneda": "ARS",
+        "accession": "0001292814-26-002446",
+        "filing_date": "2026-04-22"
+      },
+      "debt_to_equity": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 0.402762,
+        "formula": "Liabilities/Equity",
+        "moneda": "ARS",
+        "accession": "0001292814-26-002446",
+        "filing_date": "2026-04-22"
+      },
+      "borrowings_to_equity": {
+        "estado": "NO_CALCULABLE",
+        "valor": null,
+        "motivo": "ninguno de ['Borrowings', 'DebtLongtermAndShorttermCombinedAmount', 'LongTermDebt'] en 2025-12-31"
+      },
+      "equity_ratio": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.712879,
+        "formula": "Equity/Assets",
+        "moneda": "ARS",
+        "accession": "0001292814-26-002446",
+        "filing_date": "2026-04-22"
+      },
+      "roe": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.132392,
+        "formula": "ProfitLossAttributableToOwnersOfParent/Equity",
+        "moneda": "ARS",
+        "accession": "0001292814-26-002446",
+        "filing_date": "2026-04-22"
+      },
+      "roa": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.09438,
+        "formula": "ProfitLossAttributableToOwnersOfParent/Assets",
+        "moneda": "ARS",
+        "accession": "0001292814-26-002446",
+        "filing_date": "2026-04-22"
+      },
+      "net_margin": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.315607,
+        "formula": "ProfitLossAttributableToOwnersOfParent/Revenue",
+        "moneda": "ARS",
+        "accession": "0001292814-26-002446",
+        "filing_date": "2026-04-22"
+      },
+      "gross_margin": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.35806,
+        "formula": "GrossProfit/Revenue",
+        "moneda": "ARS",
+        "accession": "0001292814-26-002446",
+        "filing_date": "2026-04-22"
+      },
+      "operating_margin": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.337494,
+        "formula": "ProfitLossFromOperatingActivities/Revenue",
+        "moneda": "ARS",
+        "accession": "0001292814-26-002446",
+        "filing_date": "2026-04-22"
+      },
+      "interest_coverage": {
+        "estado": "NO_CALCULABLE",
+        "valor": null,
+        "motivo": "ninguno de ['FinanceCosts', 'InterestExpense', 'InterestExpenseNonoperating'] en 2025-12-31"
+      },
+      "effective_tax_rate": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.221135,
+        "formula": "IncomeTaxExpenseContinuingOperations/ProfitLossBeforeTax",
+        "moneda": "ARS",
+        "accession": "0001292814-26-002446",
+        "filing_date": "2026-04-22"
+      },
+      "ocf_to_net_income": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 1.187244,
+        "formula": "CashFlowsFromUsedInOperatingActivities/ProfitLossAttributableToOwnersOfParent",
+        "moneda": "ARS",
+        "accession": "0001292814-26-002446",
+        "filing_date": "2026-04-22"
+      },
+      "pe": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 9.3925,
+        "formula": "close/ratio_adr/BasicEarningsLossPerShare",
+        "moneda": "ARS",
+        "precio": 2166.0,
+        "ratio_adr": 1.0,
+        "eps": 230.61,
+        "fecha_precio": "2026-08-27",
+        "accession": "0001292814-26-002446"
+      }
+    },
+    "corte": null,
+    "entidad": {
+      "entity_key": "E01M0X99DQ7P5TQ4Z6Z58RC5PB3",
+      "preferred_name": "CENTRAL PUERTO S.A.",
+      "cik": "0001717161",
+      "cuit": "33650305499",
+      "cuit_status": "VERIFIED"
+    },
+    "ejercicio": "2025-12-31",
+    "precios": [
+      {
+        "instrument_id": "80",
+        "d": "2026-08-27",
+        "close": "2166.00000000",
+        "currency": "ARS",
+        "exchange": "BUE"
+      },
+      {
+        "instrument_id": "81",
+        "d": "2026-08-27",
+        "close": "13.53000000",
+        "currency": "USD",
+        "exchange": "NYSE"
+      }
+    ]
+  },
+  {
+    "ticker": "YPFD",
+    "cadena": {
+      "EMPRESA": {
+        "ok": true,
+        "detalle": "2 instrumento(s): 83@BUE, 84@NYSE"
+      },
+      "IDENTITY": {
+        "ok": true,
+        "detalle": "YPF SOCIEDAD ANONIMA · E01M0X99C8F87H9TH9N39H2D1NW · CIK=0000904851 CUIT=30546689979(VERIFIED)"
+      },
+      "SEC_XBRL": {
+        "ok": true,
+        "detalle": "3210 facts normalizados para CIK 0000904851"
+      },
+      "MARKET": {
+        "ok": true,
+        "detalle": "83@BUE=8120.00000000 ARS (2026-08-27), 84@NYSE=50.48000000 USD (2026-08-27)"
+      },
+      "METRICAS": {
+        "ok": true,
+        "detalle": "ejercicio 2025-12-31: 19/38 tags requeridos presentes"
+      },
+      "RATIOS": {
+        "ok": true,
+        "detalle": "13/14 calculados en 2025-12-31"
+      },
+      "SCREENER": {
+        "ok": true,
+        "detalle": "fila publicable con 13 metricas"
+      },
+      "PROVENANCE": {
+        "ok": true,
+        "detalle": "accessions citadas: ['0001193125-26-126363'] · precio 2026-08-27"
+      }
+    },
+    "ratios": {
+      "current_ratio": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 0.870214,
+        "formula": "CurrentAssets/CurrentLiabilities",
+        "moneda": "USD",
+        "accession": "0001193125-26-126363",
+        "filing_date": "2026-03-26"
+      },
+      "cash_ratio": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 0.125353,
+        "formula": "CashAndCashEquivalents/CurrentLiabilities",
+        "moneda": "USD",
+        "accession": "0001193125-26-126363",
+        "filing_date": "2026-03-26"
+      },
+      "debt_to_equity": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 1.66561,
+        "formula": "Liabilities/Equity",
+        "moneda": "USD",
+        "accession": "0001193125-26-126363",
+        "filing_date": "2026-03-26"
+      },
+      "borrowings_to_equity": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 0.978454,
+        "formula": "Borrowings/EquityAttributableToOwnersOfParent",
+        "moneda": "USD",
+        "accession": "0001193125-26-126363",
+        "filing_date": "2026-03-26"
+      },
+      "equity_ratio": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.375149,
+        "formula": "Equity/Assets",
+        "moneda": "USD",
+        "accession": "0001193125-26-126363",
+        "filing_date": "2026-03-26"
+      },
+      "roe": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": -0.074792,
+        "formula": "ProfitLossAttributableToOwnersOfParent/Equity",
+        "moneda": "USD",
+        "accession": "0001193125-26-126363",
+        "filing_date": "2026-03-26"
+      },
+      "roa": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": -0.028058,
+        "formula": "ProfitLossAttributableToOwnersOfParent/Assets",
+        "moneda": "USD",
+        "accession": "0001193125-26-126363",
+        "filing_date": "2026-03-26"
+      },
+      "net_margin": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": -0.044775,
+        "formula": "ProfitLossAttributableToOwnersOfParent/Revenue",
+        "moneda": "USD",
+        "accession": "0001193125-26-126363",
+        "filing_date": "2026-03-26"
+      },
+      "gross_margin": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.276453,
+        "formula": "GrossProfit/Revenue",
+        "moneda": "USD",
+        "accession": "0001193125-26-126363",
+        "filing_date": "2026-03-26"
+      },
+      "operating_margin": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.094319,
+        "formula": "ProfitLossFromOperatingActivities/Revenue",
+        "moneda": "USD",
+        "accession": "0001193125-26-126363",
+        "filing_date": "2026-03-26"
+      },
+      "interest_coverage": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 1.600736,
+        "formula": "ProfitLossFromOperatingActivities/FinanceCosts",
+        "moneda": "USD",
+        "accession": "0001193125-26-126363",
+        "filing_date": "2026-03-26"
+      },
+      "effective_tax_rate": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 1.878022,
+        "formula": "IncomeTaxExpenseContinuingOperations/ProfitLossBeforeTax",
+        "moneda": "USD",
+        "accession": "0001193125-26-126363",
+        "filing_date": "2026-03-26"
+      },
+      "ocf_to_net_income": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": -6.003632,
+        "formula": "CashFlowsFromUsedInOperatingActivities/ProfitLossAttributableToOwnersOfParent",
+        "moneda": "USD",
+        "accession": "0001193125-26-126363",
+        "filing_date": "2026-03-26"
+      },
+      "pe": {
+        "estado": "NO_CALCULABLE",
+        "valor": null,
+        "motivo": "EPS=-2.11 <= 0 (ejercicio con perdida)"
+      }
+    },
+    "corte": null,
+    "entidad": {
+      "entity_key": "E01M0X99C8F87H9TH9N39H2D1NW",
+      "preferred_name": "YPF SOCIEDAD ANONIMA",
+      "cik": "0000904851",
+      "cuit": "30546689979",
+      "cuit_status": "VERIFIED"
+    },
+    "ejercicio": "2025-12-31",
+    "precios": [
+      {
+        "instrument_id": "83",
+        "d": "2026-08-27",
+        "close": "8120.00000000",
+        "currency": "ARS",
+        "exchange": "BUE"
+      },
+      {
+        "instrument_id": "84",
+        "d": "2026-08-27",
+        "close": "50.48000000",
+        "currency": "USD",
+        "exchange": "NYSE"
+      }
+    ]
+  },
+  {
+    "ticker": "TGSU2",
+    "cadena": {
+      "EMPRESA": {
+        "ok": true,
+        "detalle": "2 instrumento(s): 65@BUE, 66@NYSE"
+      },
+      "IDENTITY": {
+        "ok": true,
+        "detalle": "TRANSPORTADORA DE GAS DEL SUR S.A. · E01M0X99G29RBSSFSGAM5S1QZMT · CIK=0000931427 CUIT=30657862068(VERIFIED)"
+      },
+      "SEC_XBRL": {
+        "ok": true,
+        "detalle": "586 facts normalizados para CIK 0000931427"
+      },
+      "MARKET": {
+        "ok": true,
+        "detalle": "65@BUE=9105.00000000 ARS (2026-08-27), 66@NYSE=28.54999900 USD (2026-08-27)"
+      },
+      "METRICAS": {
+        "ok": true,
+        "detalle": "ejercicio 2025-12-31: 17/38 tags requeridos presentes"
+      },
+      "RATIOS": {
+        "ok": true,
+        "detalle": "13/14 calculados en 2025-12-31"
+      },
+      "SCREENER": {
+        "ok": true,
+        "detalle": "fila publicable con 13 metricas"
+      },
+      "PROVENANCE": {
+        "ok": true,
+        "detalle": "accessions citadas: ['0001140361-26-016167'] · precio 2026-08-27"
+      }
+    },
+    "ratios": {
+      "current_ratio": {
+        "estado": "NO_CALCULABLE",
+        "valor": null,
+        "motivo": "ninguno de ['CurrentAssets', 'AssetsCurrent'] en 2025-12-31"
+      },
+      "cash_ratio": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 1.797955,
+        "formula": "CashAndCashEquivalents/CurrentLiabilities",
+        "moneda": "ARS",
+        "accession": "0001140361-26-016167",
+        "filing_date": "2026-04-22"
+      },
+      "debt_to_equity": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 0.73096,
+        "formula": "Liabilities/Equity",
+        "moneda": "ARS",
+        "accession": "0001140361-26-016167",
+        "filing_date": "2026-04-22"
+      },
+      "borrowings_to_equity": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 0.545294,
+        "formula": "Borrowings/EquityAttributableToOwnersOfParent",
+        "moneda": "ARS",
+        "accession": "0001140361-26-016167",
+        "filing_date": "2026-04-22"
+      },
+      "equity_ratio": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.577714,
+        "formula": "Equity/Assets",
+        "moneda": "ARS",
+        "accession": "0001140361-26-016167",
+        "filing_date": "2026-04-22"
+      },
+      "roe": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.134552,
+        "formula": "ProfitLossAttributableToOwnersOfParent/Equity",
+        "moneda": "ARS",
+        "accession": "0001140361-26-016167",
+        "filing_date": "2026-04-22"
+      },
+      "roa": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.077732,
+        "formula": "ProfitLossAttributableToOwnersOfParent/Assets",
+        "moneda": "ARS",
+        "accession": "0001140361-26-016167",
+        "filing_date": "2026-04-22"
+      },
+      "net_margin": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.244597,
+        "formula": "ProfitLossAttributableToOwnersOfParent/Revenue",
+        "moneda": "ARS",
+        "accession": "0001140361-26-016167",
+        "filing_date": "2026-04-22"
+      },
+      "gross_margin": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.542383,
+        "formula": "GrossProfit/Revenue",
+        "moneda": "ARS",
+        "accession": "0001140361-26-016167",
+        "filing_date": "2026-04-22"
+      },
+      "operating_margin": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.408852,
+        "formula": "ProfitLossFromOperatingActivities/Revenue",
+        "moneda": "ARS",
+        "accession": "0001140361-26-016167",
+        "filing_date": "2026-04-22"
+      },
+      "interest_coverage": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 1.82125,
+        "formula": "ProfitLossFromOperatingActivities/FinanceCosts",
+        "moneda": "ARS",
+        "accession": "0001140361-26-016167",
+        "filing_date": "2026-04-22"
+      },
+      "effective_tax_rate": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.346534,
+        "formula": "IncomeTaxExpenseContinuingOperations/ProfitLossBeforeTax",
+        "moneda": "ARS",
+        "accession": "0001140361-26-016167",
+        "filing_date": "2026-04-22"
+      },
+      "ocf_to_net_income": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 1.31081,
+        "formula": "CashFlowsFromUsedInOperatingActivities/ProfitLossAttributableToOwnersOfParent",
+        "moneda": "ARS",
+        "accession": "0001140361-26-016167",
+        "filing_date": "2026-04-22"
+      },
+      "pe": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 16.2854,
+        "formula": "close/ratio_adr/BasicEarningsLossPerShare",
+        "moneda": "ARS",
+        "precio": 9105.0,
+        "ratio_adr": 1.0,
+        "eps": 559.09,
+        "fecha_precio": "2026-08-27",
+        "accession": "0001140361-26-016167"
+      }
+    },
+    "corte": null,
+    "entidad": {
+      "entity_key": "E01M0X99G29RBSSFSGAM5S1QZMT",
+      "preferred_name": "TRANSPORTADORA DE GAS DEL SUR S.A.",
+      "cik": "0000931427",
+      "cuit": "30657862068",
+      "cuit_status": "VERIFIED"
+    },
+    "ejercicio": "2025-12-31",
+    "precios": [
+      {
+        "instrument_id": "65",
+        "d": "2026-08-27",
+        "close": "9105.00000000",
+        "currency": "ARS",
+        "exchange": "BUE"
+      },
+      {
+        "instrument_id": "66",
+        "d": "2026-08-27",
+        "close": "28.54999900",
+        "currency": "USD",
+        "exchange": "NYSE"
+      }
+    ]
+  },
+  {
+    "ticker": "GGAL",
+    "cadena": {
+      "EMPRESA": {
+        "ok": true,
+        "detalle": "2 instrumento(s): 71@BUE, 72@NYSE"
+      },
+      "IDENTITY": {
+        "ok": true,
+        "detalle": "GRUPO FINANCIERO GALICIA S.A. · E01M0X99EXSQTYKWZMDEMMBX8QY · CIK=0001114700 CUIT=30704962807(CANDIDATE)"
+      },
+      "SEC_XBRL": {
+        "ok": true,
+        "detalle": "640 facts normalizados para CIK 0001114700"
+      },
+      "MARKET": {
+        "ok": true,
+        "detalle": "71@BUE=6880.00000000 ARS (2026-08-27), 72@NYSE=42.91000000 USD (2026-08-27)"
+      },
+      "METRICAS": {
+        "ok": true,
+        "detalle": "ejercicio 2025-12-31: 13/38 tags requeridos presentes"
+      },
+      "RATIOS": {
+        "ok": true,
+        "detalle": "9/14 calculados en 2025-12-31"
+      },
+      "SCREENER": {
+        "ok": true,
+        "detalle": "fila publicable con 9 metricas"
+      },
+      "PROVENANCE": {
+        "ok": true,
+        "detalle": "accessions citadas: ['0001114700-26-000038'] · precio 2026-08-27"
+      }
+    },
+    "ratios": {
+      "current_ratio": {
+        "estado": "NO_CALCULABLE",
+        "valor": null,
+        "motivo": "ninguno de ['CurrentAssets', 'AssetsCurrent'] en 2025-12-31"
+      },
+      "cash_ratio": {
+        "estado": "NO_CALCULABLE",
+        "valor": null,
+        "motivo": "ninguno de ['CurrentLiabilities', 'LiabilitiesCurrent'] en 2025-12-31"
+      },
+      "debt_to_equity": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 4.885523,
+        "formula": "Liabilities/Equity",
+        "moneda": "ARS",
+        "accession": "0001114700-26-000038",
+        "filing_date": "2026-04-16"
+      },
+      "borrowings_to_equity": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 0.113637,
+        "formula": "Borrowings/EquityAttributableToOwnersOfParent",
+        "moneda": "ARS",
+        "accession": "0001114700-26-000038",
+        "filing_date": "2026-04-16"
+      },
+      "equity_ratio": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.169908,
+        "formula": "Equity/Assets",
+        "moneda": "ARS",
+        "accession": "0001114700-26-000038",
+        "filing_date": "2026-04-16"
+      },
+      "roe": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.027388,
+        "formula": "ProfitLossAttributableToOwnersOfParent/Equity",
+        "moneda": "ARS",
+        "accession": "0001114700-26-000038",
+        "filing_date": "2026-04-16"
+      },
+      "roa": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.004654,
+        "formula": "ProfitLossAttributableToOwnersOfParent/Assets",
+        "moneda": "ARS",
+        "accession": "0001114700-26-000038",
+        "filing_date": "2026-04-16"
+      },
+      "net_margin": {
+        "estado": "NO_CALCULABLE",
+        "valor": null,
+        "motivo": "ninguno de ['Revenue', 'RevenueFromContractsWithCustomers', 'RevenueFromContractWithCustomerExcludingAssessedTax', 'RevenueFromContractWithCustomerIncludingAssessedTax', 'Revenues'] en 2025-12-31"
+      },
+      "gross_margin": {
+        "estado": "NO_CALCULABLE",
+        "valor": null,
+        "motivo": "ninguno de ['GrossProfit'] en 2025-12-31"
+      },
+      "operating_margin": {
+        "estado": "NO_CALCULABLE",
+        "valor": null,
+        "motivo": "ninguno de ['Revenue', 'RevenueFromContractsWithCustomers', 'RevenueFromContractWithCustomerExcludingAssessedTax', 'RevenueFromContractWithCustomerIncludingAssessedTax', 'Revenues'] en 2025-12-31"
+      },
+      "interest_coverage": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 0.077134,
+        "formula": "ProfitLossFromOperatingActivities/InterestExpense",
+        "moneda": "ARS",
+        "accession": "0001114700-26-000038",
+        "filing_date": "2026-04-16"
+      },
+      "effective_tax_rate": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.300277,
+        "formula": "IncomeTaxExpenseContinuingOperations/ProfitLossBeforeTax",
+        "moneda": "ARS",
+        "accession": "0001114700-26-000038",
+        "filing_date": "2026-04-16"
+      },
+      "ocf_to_net_income": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": -7.554086,
+        "formula": "CashFlowsFromUsedInOperatingActivities/ProfitLossAttributableToOwnersOfParent",
+        "moneda": "ARS",
+        "accession": "0001114700-26-000038",
+        "filing_date": "2026-04-16"
+      },
+      "pe": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 51.9324,
+        "formula": "close/ratio_adr/BasicEarningsLossPerShare",
+        "moneda": "ARS",
+        "precio": 6880.0,
+        "ratio_adr": 1.0,
+        "eps": 132.48,
+        "fecha_precio": "2026-08-27",
+        "accession": "0001114700-26-000038"
+      }
+    },
+    "corte": null,
+    "entidad": {
+      "entity_key": "E01M0X99EXSQTYKWZMDEMMBX8QY",
+      "preferred_name": "GRUPO FINANCIERO GALICIA S.A.",
+      "cik": "0001114700",
+      "cuit": "30704962807",
+      "cuit_status": "CANDIDATE"
+    },
+    "ejercicio": "2025-12-31",
+    "precios": [
+      {
+        "instrument_id": "71",
+        "d": "2026-08-27",
+        "close": "6880.00000000",
+        "currency": "ARS",
+        "exchange": "BUE"
+      },
+      {
+        "instrument_id": "72",
+        "d": "2026-08-27",
+        "close": "42.91000000",
+        "currency": "USD",
+        "exchange": "NYSE"
+      }
+    ]
+  },
+  {
+    "ticker": "BMA",
+    "cadena": {
+      "EMPRESA": {
+        "ok": true,
+        "detalle": "1 instrumento(s): 584@BUE"
+      },
+      "IDENTITY": {
+        "ok": false,
+        "detalle": "0 entidades para los instrumentos ['584']: sin enlace en identity_v1.instrument"
+      }
+    },
+    "ratios": {},
+    "corte": "IDENTITY"
+  },
+  {
+    "ticker": "AAPL",
+    "cadena": {
+      "EMPRESA": {
+        "ok": true,
+        "detalle": "1 instrumento(s): 86@?"
+      },
+      "IDENTITY": {
+        "ok": true,
+        "detalle": "Apple Inc. · E01M13XBSM8ZWPXACZAG2H149JX · CIK=0000320193 CUIT=None(None)"
+      },
+      "SEC_XBRL": {
+        "ok": true,
+        "detalle": "420 facts normalizados para CIK 0000320193"
+      },
+      "MARKET": {
+        "ok": true,
+        "detalle": "86@None=314.57998700 USD (2026-08-27)"
+      },
+      "METRICAS": {
+        "ok": true,
+        "detalle": "ejercicio 2025-09-27: 15/38 tags requeridos presentes"
+      },
+      "RATIOS": {
+        "ok": true,
+        "detalle": "13/14 calculados en 2025-09-27"
+      },
+      "SCREENER": {
+        "ok": true,
+        "detalle": "fila publicable con 13 metricas"
+      },
+      "PROVENANCE": {
+        "ok": true,
+        "detalle": "accessions citadas: ['0000320193-25-000079'] · precio 2026-08-27"
+      }
+    },
+    "ratios": {
+      "current_ratio": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 0.893293,
+        "formula": "AssetsCurrent/LiabilitiesCurrent",
+        "moneda": "USD",
+        "accession": "0000320193-25-000079",
+        "filing_date": "2025-10-31"
+      },
+      "cash_ratio": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 0.216952,
+        "formula": "CashAndCashEquivalentsAtCarryingValue/LiabilitiesCurrent",
+        "moneda": "USD",
+        "accession": "0000320193-25-000079",
+        "filing_date": "2025-10-31"
+      },
+      "debt_to_equity": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 3.872187,
+        "formula": "Liabilities/StockholdersEquity",
+        "moneda": "USD",
+        "accession": "0000320193-25-000079",
+        "filing_date": "2025-10-31"
+      },
+      "borrowings_to_equity": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 1.229816,
+        "formula": "LongTermDebt/StockholdersEquity",
+        "moneda": "USD",
+        "accession": "0000320193-25-000079",
+        "filing_date": "2025-10-31"
+      },
+      "equity_ratio": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.205247,
+        "formula": "StockholdersEquity/Assets",
+        "moneda": "USD",
+        "accession": "0000320193-25-000079",
+        "filing_date": "2025-10-31"
+      },
+      "roe": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 1.51913,
+        "formula": "NetIncomeLoss/StockholdersEquity",
+        "moneda": "USD",
+        "accession": "0000320193-25-000079",
+        "filing_date": "2025-10-31"
+      },
+      "roa": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.311796,
+        "formula": "NetIncomeLoss/Assets",
+        "moneda": "USD",
+        "accession": "0000320193-25-000079",
+        "filing_date": "2025-10-31"
+      },
+      "net_margin": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.269151,
+        "formula": "NetIncomeLoss/RevenueFromContractWithCustomerExcludingAssessedTax",
+        "moneda": "USD",
+        "accession": "0000320193-25-000079",
+        "filing_date": "2025-10-31"
+      },
+      "gross_margin": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.469052,
+        "formula": "GrossProfit/RevenueFromContractWithCustomerExcludingAssessedTax",
+        "moneda": "USD",
+        "accession": "0000320193-25-000079",
+        "filing_date": "2025-10-31"
+      },
+      "operating_margin": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.319708,
+        "formula": "OperatingIncomeLoss/RevenueFromContractWithCustomerExcludingAssessedTax",
+        "moneda": "USD",
+        "accession": "0000320193-25-000079",
+        "filing_date": "2025-10-31"
+      },
+      "interest_coverage": {
+        "estado": "NO_CALCULABLE",
+        "valor": null,
+        "motivo": "ninguno de ['FinanceCosts', 'InterestExpense', 'InterestExpenseNonoperating'] en 2025-09-27"
+      },
+      "effective_tax_rate": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.1561,
+        "formula": "IncomeTaxExpenseBenefit/IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+        "moneda": "USD",
+        "accession": "0000320193-25-000079",
+        "filing_date": "2025-10-31"
+      },
+      "ocf_to_net_income": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 0.995286,
+        "formula": "NetCashProvidedByUsedInOperatingActivities/NetIncomeLoss",
+        "moneda": "USD",
+        "accession": "0000320193-25-000079",
+        "filing_date": "2025-10-31"
+      },
+      "pe": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 42.0,
+        "formula": "close/ratio_adr/EarningsPerShareBasic",
+        "moneda": "USD",
+        "precio": 314.579987,
+        "ratio_adr": 1.0,
+        "eps": 7.49,
+        "fecha_precio": "2026-08-27",
+        "accession": "0000320193-25-000079"
+      }
+    },
+    "corte": null,
+    "entidad": {
+      "entity_key": "E01M13XBSM8ZWPXACZAG2H149JX",
+      "preferred_name": "Apple Inc.",
+      "cik": "0000320193",
+      "cuit": null,
+      "cuit_status": null
+    },
+    "ejercicio": "2025-09-27",
+    "precios": [
+      {
+        "instrument_id": "86",
+        "d": "2026-08-27",
+        "close": "314.57998700",
+        "currency": "USD",
+        "exchange": null
+      }
+    ]
+  },
+  {
+    "ticker": "MSFT",
+    "cadena": {
+      "EMPRESA": {
+        "ok": true,
+        "detalle": "1 instrumento(s): 402@?"
+      },
+      "IDENTITY": {
+        "ok": true,
+        "detalle": "MICROSOFT CORP · E01M13XBSP3JTP05SPZKQ4W4PB2 · CIK=0000789019 CUIT=None(None)"
+      },
+      "SEC_XBRL": {
+        "ok": true,
+        "detalle": "559 facts normalizados para CIK 0000789019"
+      },
+      "MARKET": {
+        "ok": true,
+        "detalle": "402@None=505.05999800 USD (2026-08-27)"
+      },
+      "METRICAS": {
+        "ok": true,
+        "detalle": "ejercicio 2026-06-30: 16/38 tags requeridos presentes"
+      },
+      "RATIOS": {
+        "ok": true,
+        "detalle": "14/14 calculados en 2026-06-30"
+      },
+      "SCREENER": {
+        "ok": true,
+        "detalle": "fila publicable con 14 metricas"
+      },
+      "PROVENANCE": {
+        "ok": true,
+        "detalle": "accessions citadas: ['0001193125-26-323660'] · precio 2026-08-27"
+      }
+    },
+    "ratios": {
+      "current_ratio": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 1.230327,
+        "formula": "AssetsCurrent/LiabilitiesCurrent",
+        "moneda": "USD",
+        "accession": "0001193125-26-323660",
+        "filing_date": "2026-07-29"
+      },
+      "cash_ratio": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 0.124004,
+        "formula": "CashAndCashEquivalentsAtCarryingValue/LiabilitiesCurrent",
+        "moneda": "USD",
+        "accession": "0001193125-26-323660",
+        "filing_date": "2026-07-29"
+      },
+      "debt_to_equity": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 0.714282,
+        "formula": "Liabilities/StockholdersEquity",
+        "moneda": "USD",
+        "accession": "0001193125-26-323660",
+        "filing_date": "2026-07-29"
+      },
+      "borrowings_to_equity": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 0.091083,
+        "formula": "LongTermDebt/StockholdersEquity",
+        "moneda": "USD",
+        "accession": "0001193125-26-323660",
+        "filing_date": "2026-07-29"
+      },
+      "equity_ratio": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.583335,
+        "formula": "StockholdersEquity/Assets",
+        "moneda": "USD",
+        "accession": "0001193125-26-323660",
+        "filing_date": "2026-07-29"
+      },
+      "roe": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.302335,
+        "formula": "NetIncomeLoss/StockholdersEquity",
+        "moneda": "USD",
+        "accession": "0001193125-26-323660",
+        "filing_date": "2026-07-29"
+      },
+      "roa": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.176362,
+        "formula": "NetIncomeLoss/Assets",
+        "moneda": "USD",
+        "accession": "0001193125-26-323660",
+        "filing_date": "2026-07-29"
+      },
+      "net_margin": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.403054,
+        "formula": "NetIncomeLoss/RevenueFromContractWithCustomerExcludingAssessedTax",
+        "moneda": "USD",
+        "accession": "0001193125-26-323660",
+        "filing_date": "2026-07-29"
+      },
+      "gross_margin": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.679441,
+        "formula": "GrossProfit/RevenueFromContractWithCustomerExcludingAssessedTax",
+        "moneda": "USD",
+        "accession": "0001193125-26-323660",
+        "filing_date": "2026-07-29"
+      },
+      "operating_margin": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.467808,
+        "formula": "OperatingIncomeLoss/RevenueFromContractWithCustomerExcludingAssessedTax",
+        "moneda": "USD",
+        "accession": "0001193125-26-323660",
+        "filing_date": "2026-07-29"
+      },
+      "interest_coverage": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 50.880695,
+        "formula": "OperatingIncomeLoss/InterestExpenseNonoperating",
+        "moneda": "USD",
+        "accession": "0001193125-26-323660",
+        "filing_date": "2026-07-29"
+      },
+      "effective_tax_rate": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.193963,
+        "formula": "IncomeTaxExpenseBenefit/IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+        "moneda": "USD",
+        "accession": "0001193125-26-323660",
+        "filing_date": "2026-07-29"
+      },
+      "ocf_to_net_income": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 1.367749,
+        "formula": "NetCashProvidedByUsedInOperatingActivities/NetIncomeLoss",
+        "moneda": "USD",
+        "accession": "0001193125-26-323660",
+        "filing_date": "2026-07-29"
+      },
+      "pe": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 28.0589,
+        "formula": "close/ratio_adr/EarningsPerShareBasic",
+        "moneda": "USD",
+        "precio": 505.059998,
+        "ratio_adr": 1.0,
+        "eps": 18.0,
+        "fecha_precio": "2026-08-27",
+        "accession": "0001193125-26-323660"
+      }
+    },
+    "corte": null,
+    "entidad": {
+      "entity_key": "E01M13XBSP3JTP05SPZKQ4W4PB2",
+      "preferred_name": "MICROSOFT CORP",
+      "cik": "0000789019",
+      "cuit": null,
+      "cuit_status": null
+    },
+    "ejercicio": "2026-06-30",
+    "precios": [
+      {
+        "instrument_id": "402",
+        "d": "2026-08-27",
+        "close": "505.05999800",
+        "currency": "USD",
+        "exchange": null
+      }
+    ]
+  },
+  {
+    "ticker": "NVDA",
+    "cadena": {
+      "EMPRESA": {
+        "ok": true,
+        "detalle": "1 instrumento(s): 422@?"
+      },
+      "IDENTITY": {
+        "ok": true,
+        "detalle": "NVIDIA CORP · E01M13XBSREYYDB03WJ7W62ANSX · CIK=0001045810 CUIT=None(None)"
+      },
+      "SEC_XBRL": {
+        "ok": true,
+        "detalle": "537 facts normalizados para CIK 0001045810"
+      },
+      "MARKET": {
+        "ok": true,
+        "detalle": "422@None=227.97999600 USD (2026-08-27)"
+      },
+      "METRICAS": {
+        "ok": true,
+        "detalle": "ejercicio 2026-01-25: 16/38 tags requeridos presentes"
+      },
+      "RATIOS": {
+        "ok": true,
+        "detalle": "14/14 calculados en 2026-01-25"
+      },
+      "SCREENER": {
+        "ok": true,
+        "detalle": "fila publicable con 14 metricas"
+      },
+      "PROVENANCE": {
+        "ok": true,
+        "detalle": "accessions citadas: ['0001045810-26-000021'] · precio 2026-08-27"
+      }
+    },
+    "ratios": {
+      "current_ratio": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 3.905264,
+        "formula": "AssetsCurrent/LiabilitiesCurrent",
+        "moneda": "USD",
+        "accession": "0001045810-26-000021",
+        "filing_date": "2026-02-25"
+      },
+      "cash_ratio": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 0.329727,
+        "formula": "CashAndCashEquivalentsAtCarryingValue/LiabilitiesCurrent",
+        "moneda": "USD",
+        "accession": "0001045810-26-000021",
+        "filing_date": "2026-02-25"
+      },
+      "debt_to_equity": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 0.314763,
+        "formula": "Liabilities/StockholdersEquity",
+        "moneda": "USD",
+        "accession": "0001045810-26-000021",
+        "filing_date": "2026-02-25"
+      },
+      "borrowings_to_equity": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 0.053836,
+        "formula": "LongTermDebt/StockholdersEquity",
+        "moneda": "USD",
+        "accession": "0001045810-26-000021",
+        "filing_date": "2026-02-25"
+      },
+      "equity_ratio": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.760593,
+        "formula": "StockholdersEquity/Assets",
+        "moneda": "USD",
+        "accession": "0001045810-26-000021",
+        "filing_date": "2026-02-25"
+      },
+      "roe": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.763333,
+        "formula": "NetIncomeLoss/StockholdersEquity",
+        "moneda": "USD",
+        "accession": "0001045810-26-000021",
+        "filing_date": "2026-02-25"
+      },
+      "roa": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.580586,
+        "formula": "NetIncomeLoss/Assets",
+        "moneda": "USD",
+        "accession": "0001045810-26-000021",
+        "filing_date": "2026-02-25"
+      },
+      "net_margin": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.556025,
+        "formula": "NetIncomeLoss/Revenues",
+        "moneda": "USD",
+        "accession": "0001045810-26-000021",
+        "filing_date": "2026-02-25"
+      },
+      "gross_margin": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.710681,
+        "formula": "GrossProfit/Revenues",
+        "moneda": "USD",
+        "accession": "0001045810-26-000021",
+        "filing_date": "2026-02-25"
+      },
+      "operating_margin": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.603817,
+        "formula": "OperatingIncomeLoss/Revenues",
+        "moneda": "USD",
+        "accession": "0001045810-26-000021",
+        "filing_date": "2026-02-25"
+      },
+      "interest_coverage": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 503.42471,
+        "formula": "OperatingIncomeLoss/InterestExpenseNonoperating",
+        "moneda": "USD",
+        "accession": "0001045810-26-000021",
+        "filing_date": "2026-02-25"
+      },
+      "effective_tax_rate": {
+        "estado": "CALCULADO",
+        "unidad": "fraccion",
+        "valor": 0.15117,
+        "formula": "IncomeTaxExpenseBenefit/IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+        "moneda": "USD",
+        "accession": "0001045810-26-000021",
+        "filing_date": "2026-02-25"
+      },
+      "ocf_to_net_income": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 0.855506,
+        "formula": "NetCashProvidedByUsedInOperatingActivities/NetIncomeLoss",
+        "moneda": "USD",
+        "accession": "0001045810-26-000021",
+        "filing_date": "2026-02-25"
+      },
+      "pe": {
+        "estado": "CALCULADO",
+        "unidad": "veces",
+        "valor": 46.2434,
+        "formula": "close/ratio_adr/EarningsPerShareBasic",
+        "moneda": "USD",
+        "precio": 227.979996,
+        "ratio_adr": 1.0,
+        "eps": 4.93,
+        "fecha_precio": "2026-08-27",
+        "accession": "0001045810-26-000021"
+      }
+    },
+    "corte": null,
+    "entidad": {
+      "entity_key": "E01M13XBSREYYDB03WJ7W62ANSX",
+      "preferred_name": "NVIDIA CORP",
+      "cik": "0001045810",
+      "cuit": null,
+      "cuit_status": null
+    },
+    "ejercicio": "2026-01-25",
+    "precios": [
+      {
+        "instrument_id": "422",
+        "d": "2026-08-27",
+        "close": "227.97999600",
+        "currency": "USD",
+        "exchange": null
+      }
+    ]
+  }
+]

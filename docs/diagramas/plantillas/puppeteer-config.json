@@ -1,0 +1,4 @@
+{
+  "args": ["--no-sandbox", "--headless=new", "--disable-gpu", "--disable-dev-shm-usage"],
+  "executablePath": "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe"
+}

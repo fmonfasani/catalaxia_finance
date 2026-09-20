@@ -1,0 +1,12 @@
+%%{init: {"theme":"base","themeVariables": {"primaryColor":"#1A2744","primaryTextColor":"#FFFFFF","primaryBorderColor":"#1A2744","lineColor":"#3B82F6","secondaryColor":"#F4F8FE","tertiaryColor":"#E7F7EC","fontFamily":"Calibri","fontSize":14}, "flowchart": {"curve":"basis"}}}%%
+flowchart TD
+    ST(("Inicio")) --> P1["Instrucción / evento"]
+    P1 --> Q1{"¿Permiso\npara correr?"}
+    Q1 -- "Sí" --> P2["Ejecutar paso"]
+    Q1 -- "No" --> E1[("Bloqueado")]
+    P2 --> P3["Validar resultados"]
+    P3 --> Q2{"¿Gate\nPASS?"}
+    Q2 -- "Sí" --> P4["Certificar"]
+    Q2 -- "No" --> P5["Rollback / troubleshooting"]
+    P4 --> FIN(("Fin"))
+    P5 --> P2

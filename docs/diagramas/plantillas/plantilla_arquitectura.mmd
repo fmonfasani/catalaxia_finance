@@ -1,0 +1,24 @@
+%%{init: {"theme":"base","themeVariables": {"primaryColor":"#1A2744","primaryTextColor":"#FFFFFF","primaryBorderColor":"#1A2744","lineColor":"#3B82F6","secondaryColor":"#DCEAFF","tertiaryColor":"#E7F7EC","fontFamily":"Calibri","fontSize":14}, "flowchart": {"nodeSpacing":50,"rankSpacing":60}}}%%
+flowchart TB
+    subgraph CAPA1["Capa 1 · Fuentes"]
+        A1["SEC EDGAR"]
+        A2["CNV"]
+        A3["Market"]
+    end
+    subgraph CAPA2["Capa 2 · Ingesta"]
+        B1["Descarga"]
+        B2["RAW"]
+    end
+    subgraph CAPA3["Capa 3 · Persistencia"]
+        C1[("PostgreSQL<br/>5432 prod / 5433 dev")]
+        C2[("SQLite")]
+    end
+    subgraph CAPA4["Capa 4 · Lógica"]
+        D1["Engine + jobs"]
+        D2["Ratios"]
+    end
+    subgraph CAPA5["Capa 5 · Salida"]
+        E1["API / Reportes"]
+        E2["Golden runs"]
+    end
+    CAPA1 --> CAPA2 --> CAPA3 --> CAPA4 --> CAPA5

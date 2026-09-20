@@ -1,0 +1,73 @@
+{
+  "blockers": [],
+  "findings": {
+    "F-041": {
+      "existe": true,
+      "instancias": 1,
+      "corrupcion_nueva": false,
+      "identidad_incorrecta": false,
+      "rompe_provenance": false,
+      "duplica_entidades": false,
+      "explotable_por_engine": false,
+      "solo_datos_existentes": true,
+      "limitacion_producto": false,
+      "deuda_historica": true,
+      "evidencia": "1 assertion (YPF SEC_20F); mutacion por engine: (psycopg2.errors.InsufficientPrivilege) permission denied for table assertion",
+      "veredicto": "PASS_WITH_NOTES"
+    },
+    "F-046": {
+      "existe": true,
+      "instancias": 6,
+      "corrupcion_nueva": false,
+      "identidad_incorrecta": false,
+      "rompe_provenance": false,
+      "duplica_entidades": false,
+      "explotable_por_engine": false,
+      "solo_datos_existentes": true,
+      "limitacion_producto": false,
+      "deuda_historica": true,
+      "evidencia": "6 filas; incoherencias de tipo: 0; crear uno nuevo: (psycopg2.errors.RaiseException) F-045: la assertion 1613 no declara que identificador establece (left_ref NUL",
+      "veredicto": "PASS_WITH_NOTES"
+    },
+    "F-044": {
+      "existe": true,
+      "corrupcion_nueva": false,
+      "identidad_incorrecta": false,
+      "rompe_provenance": false,
+      "duplica_entidades": false,
+      "explotable_por_engine": false,
+      "solo_datos_existentes": false,
+      "limitacion_producto": false,
+      "deuda_historica": false,
+      "evidencia": "grants de engine sobre source: SELECT; triggers en source: 0; UPDATE por engine: (psycopg2.errors.InsufficientPrivilege) permission denied for table source",
+      "veredicto": "PASS_WITH_NOTES"
+    },
+    "F-047": {
+      "existe": true,
+      "pares_con_ambos_estados": 3,
+      "corrupcion_nueva": false,
+      "identidad_incorrecta": false,
+      "rompe_provenance": false,
+      "duplica_entidades": false,
+      "explotable_por_engine": false,
+      "solo_datos_existentes": true,
+      "limitacion_producto": false,
+      "deuda_historica": false,
+      "evidencia": "3 pares con CANDIDATE+VERIFIED; bridges VERIFIED contradictorios: 0; VERIFIED mal formados: 0",
+      "veredicto": "PASS_WITH_NOTES"
+    },
+    "F-043": {
+      "existe": true,
+      "corrupcion_nueva": false,
+      "identidad_incorrecta": false,
+      "rompe_provenance": false,
+      "duplica_entidades": false,
+      "explotable_por_engine": false,
+      "solo_datos_existentes": false,
+      "limitacion_producto": true,
+      "deuda_historica": false,
+      "evidencia": "estados usados: {'SUCCESS': 577, 'FAILED': 14}; EMPTY emitido: 0; FAILED con error EMPTY: 14; filas FAILED con datos: 0; precios de los 7: 0; RAW en disco de los 7: 0; instrumentos que --resume reintentaria: 7",
+      "veredicto": "PASS_WITH_NOTES"
+    }
+  }
+}

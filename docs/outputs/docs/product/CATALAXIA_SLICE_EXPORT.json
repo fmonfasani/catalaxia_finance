@@ -1,0 +1,3122 @@
+{
+  "universo": [
+    {
+      "entity_key": "E01M13XBSM8ZWPXACZAG2H149JX",
+      "nombre": "Apple Inc.",
+      "cik": "0000320193",
+      "ratios": [
+        {
+          "canonical_id": "eps",
+          "value": 7.49,
+          "unit": "moneda_por_accion",
+          "status": "CALCULADO",
+          "period_end": "2025-09-27",
+          "window": "FY",
+          "denominator_basis": "AVERAGE",
+          "currency": "USD",
+          "formula_version": "eps_v1",
+          "formula": "EPS basico reportado por el emisor",
+          "provenance_status": "COMPLETA",
+          "motivo": null,
+          "publicable": true,
+          "provenance": {
+            "run_id": "f5ddcf77dcfd47e7933c80344320e44d",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:33:53.769945+00:00",
+            "valid_from": "2026-09-01T23:33:53.769945+00:00",
+            "valid_to": null,
+            "inputs": [
+              {
+                "rol": "eps",
+                "qname": "http://fasb.org/us-gaap/2025#EarningsPerShareBasic",
+                "valor": 7.49,
+                "moneda": "USD",
+                "concepto": "eps_basico",
+                "fact_key": "f52934ddc60664b974441ce242d6bf28ca48485878951e580bb68b3bad029150",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 4,
+                  "parsed_cik": "0000320193",
+                  "source_files": [
+                    "aapl-20250927.htm",
+                    "aapl-20250927_htm.xml"
+                  ],
+                  "source_paths": [
+                    "CIK0000320193/filings/000032019325000079/0000320193-25-000079-xbrl.zip!aapl-20250927.htm",
+                    "CIK0000320193/filings/000032019325000079/aapl-20250927_htm.xml"
+                  ],
+                  "source_hashes": [
+                    "274361a794f84b24d75b4ee98bc8eff5a031b4fc1be1a1210dbc2b10d92c5179",
+                    "e1076735f1c81bc96d5c1ff6e1a9d23515d6eacf52b405cb1f7da3e379ac533b"
+                  ],
+                  "source_fact_ids": [
+                    148052,
+                    148353,
+                    149183,
+                    149484
+                  ],
+                  "parsed_accession": "0000320193-25-000079"
+                },
+                "namespace": "http://fasb.org/us-gaap/2025",
+                "filing_date": "2025-10-31",
+                "tag_elegido": "EarningsPerShareBasic",
+                "unit_measure": "iso4217:USD/shares",
+                "cadena_evaluada": [
+                  "BasicEarningsLossPerShare",
+                  "BasicAndDilutedEarningsPerShare",
+                  "BasicAndDilutedEarningsLossPerShare",
+                  "EarningsPerShareBasic",
+                  "IncomeLossFromContinuingOperationsPerBasicShare"
+                ],
+                "accession_number": "0000320193-25-000079"
+              }
+            ]
+          }
+        },
+        {
+          "canonical_id": "ev_sales",
+          "value": 11.29879,
+          "unit": "veces",
+          "status": "CALCULADO",
+          "period_end": "2025-09-27",
+          "window": "FY",
+          "denominator_basis": "n/a",
+          "currency": "USD",
+          "formula_version": "ev_sales_v1",
+          "formula": "(market_cap + deuda_financiera - efectivo) / ingresos",
+          "provenance_status": "COMPLETA",
+          "motivo": null,
+          "publicable": true,
+          "provenance": {
+            "run_id": "290e4ba02f47469fb183d0923fde1dbd",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:20:13.584825+00:00",
+            "valid_from": "2026-09-01T23:20:13.584825+00:00",
+            "valid_to": null,
+            "inputs": [
+              {
+                "rol": "ingresos",
+                "qname": "http://fasb.org/us-gaap/2025#RevenueFromContractWithCustomerExcludingAssessedTax",
+                "valor": 416161000000.0,
+                "moneda": "USD",
+                "concepto": "ingresos",
+                "fact_key": "41a9786b0b2442df602b497fa80e125fcb0e4478409a8cdedcff623851b54d0e",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 8,
+                  "parsed_cik": "0000320193",
+                  "source_files": [
+                    "aapl-20250927.htm",
+                    "aapl-20250927_htm.xml"
+                  ],
+                  "source_paths": [
+                    "CIK0000320193/filings/000032019325000079/0000320193-25-000079-xbrl.zip!aapl-20250927.htm",
+                    "CIK0000320193/filings/000032019325000079/aapl-20250927_htm.xml"
+                  ],
+                  "source_hashes": [
+                    "274361a794f84b24d75b4ee98bc8eff5a031b4fc1be1a1210dbc2b10d92c5179",
+                    "e1076735f1c81bc96d5c1ff6e1a9d23515d6eacf52b405cb1f7da3e379ac533b"
+                  ],
+                  "source_fact_ids": [
+                    148013,
+                    148327,
+                    148938,
+                    149030,
+                    149144,
+                    149458,
+                    150069,
+                    150161
+                  ],
+                  "parsed_accession": "0000320193-25-000079"
+                },
+                "namespace": "http://fasb.org/us-gaap/2025",
+                "filing_date": "2025-10-31",
+                "tag_elegido": "RevenueFromContractWithCustomerExcludingAssessedTax",
+                "unit_measure": "iso4217:USD",
+                "cadena_evaluada": [
+                  "Revenue",
+                  "RevenueFromContractsWithCustomers",
+                  "RevenueFromContractWithCustomerExcludingAssessedTax",
+                  "RevenueFromContractWithCustomerIncludingAssessedTax",
+                  "Revenues"
+                ],
+                "accession_number": "0000320193-25-000079"
+              },
+              {
+                "rol": "deuda",
+                "qname": "http://fasb.org/us-gaap/2025#LongTermDebt",
+                "valor": 90678000000.0,
+                "moneda": "USD",
+                "concepto": "deuda_financiera",
+                "fact_key": "9dcd87cd88f8696494d849795a3c9624b5e208a99116d4c0cf902ad198c9fd53",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 2,
+                  "parsed_cik": "0000320193",
+                  "source_files": [
+                    "aapl-20250927.htm",
+                    "aapl-20250927_htm.xml"
+                  ],
+                  "source_paths": [
+                    "CIK0000320193/filings/000032019325000079/0000320193-25-000079-xbrl.zip!aapl-20250927.htm",
+                    "CIK0000320193/filings/000032019325000079/aapl-20250927_htm.xml"
+                  ],
+                  "source_hashes": [
+                    "274361a794f84b24d75b4ee98bc8eff5a031b4fc1be1a1210dbc2b10d92c5179",
+                    "e1076735f1c81bc96d5c1ff6e1a9d23515d6eacf52b405cb1f7da3e379ac533b"
+                  ],
+                  "source_fact_ids": [
+                    148857,
+                    149988
+                  ],
+                  "parsed_accession": "0000320193-25-000079"
+                },
+                "namespace": "http://fasb.org/us-gaap/2025",
+                "filing_date": "2025-10-31",
+                "tag_elegido": "LongTermDebt",
+                "unit_measure": "iso4217:USD",
+                "cadena_evaluada": [
+                  "Borrowings",
+                  "DebtLongtermAndShorttermCombinedAmount",
+                  "LongTermDebt"
+                ],
+                "accession_number": "0000320193-25-000079"
+              },
+              {
+                "rol": "efectivo",
+                "qname": "http://fasb.org/us-gaap/2025#CashAndCashEquivalentsAtCarryingValue",
+                "valor": 35934000000.0,
+                "moneda": "USD",
+                "concepto": "efectivo",
+                "fact_key": "c04c434c08d4f6ed2c2d80605c6b7f848cfe47995dd746272401a94381792f13",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 4,
+                  "parsed_cik": "0000320193",
+                  "source_files": [
+                    "aapl-20250927.htm",
+                    "aapl-20250927_htm.xml"
+                  ],
+                  "source_paths": [
+                    "CIK0000320193/filings/000032019325000079/0000320193-25-000079-xbrl.zip!aapl-20250927.htm",
+                    "CIK0000320193/filings/000032019325000079/aapl-20250927_htm.xml"
+                  ],
+                  "source_hashes": [
+                    "274361a794f84b24d75b4ee98bc8eff5a031b4fc1be1a1210dbc2b10d92c5179",
+                    "e1076735f1c81bc96d5c1ff6e1a9d23515d6eacf52b405cb1f7da3e379ac533b"
+                  ],
+                  "source_fact_ids": [
+                    148094,
+                    148453,
+                    149225,
+                    149584
+                  ],
+                  "parsed_accession": "0000320193-25-000079"
+                },
+                "namespace": "http://fasb.org/us-gaap/2025",
+                "filing_date": "2025-10-31",
+                "tag_elegido": "CashAndCashEquivalentsAtCarryingValue",
+                "unit_measure": "iso4217:USD",
+                "cadena_evaluada": [
+                  "CashAndCashEquivalents",
+                  "CashAndCashEquivalentsAtCarryingValue",
+                  "CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents"
+                ],
+                "accession_number": "0000320193-25-000079"
+              },
+              {
+                "rol": "acciones",
+                "qname": "http://fasb.org/us-gaap/2025#CommonStockSharesOutstanding",
+                "valor": 14773260000.0,
+                "moneda": null,
+                "concepto": "acciones_circulacion",
+                "fact_key": "beb2be14fe3ca64cb8573f19985e6c953914ca92b27d0ed2e595e78b6a6f9ed7",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 2,
+                  "parsed_cik": "0000320193",
+                  "source_files": [
+                    "aapl-20250927.htm",
+                    "aapl-20250927_htm.xml"
+                  ],
+                  "source_paths": [
+                    "CIK0000320193/filings/000032019325000079/0000320193-25-000079-xbrl.zip!aapl-20250927.htm",
+                    "CIK0000320193/filings/000032019325000079/aapl-20250927_htm.xml"
+                  ],
+                  "source_hashes": [
+                    "274361a794f84b24d75b4ee98bc8eff5a031b4fc1be1a1210dbc2b10d92c5179",
+                    "e1076735f1c81bc96d5c1ff6e1a9d23515d6eacf52b405cb1f7da3e379ac533b"
+                  ],
+                  "source_fact_ids": [
+                    148145,
+                    149276
+                  ],
+                  "parsed_accession": "0000320193-25-000079"
+                },
+                "namespace": "http://fasb.org/us-gaap/2025",
+                "filing_date": "2025-10-31",
+                "tag_elegido": "CommonStockSharesOutstanding",
+                "unit_measure": "shares",
+                "cadena_evaluada": [
+                  "EntityCommonStockSharesOutstanding",
+                  "NumberOfSharesOutstanding",
+                  "CommonStockSharesOutstanding"
+                ],
+                "accession_number": "0000320193-25-000079"
+              },
+              {
+                "rol": "precio",
+                "valor": 314.579987,
+                "moneda": "USD",
+                "concepto": "precio_cierre",
+                "exchange": null,
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "fuente": "market_price_daily"
+                },
+                "ratio_adr": 1.0,
+                "trading_date": "2026-08-27",
+                "instrument_id": "86"
+              },
+              {
+                "rol": "derivado",
+                "valor": 4647371938747.62,
+                "moneda": "USD",
+                "formula": "close / ratio_adr * acciones_circulacion",
+                "concepto": "market_cap"
+              },
+              {
+                "rol": "derivado",
+                "valor": 4702115938747.62,
+                "moneda": "USD",
+                "formula": "market_cap + deuda_financiera - efectivo",
+                "concepto": "enterprise_value"
+              }
+            ]
+          }
+        },
+        {
+          "canonical_id": "pb",
+          "value": 63.029742,
+          "unit": "veces",
+          "status": "CALCULADO",
+          "period_end": "2025-09-27",
+          "window": "PIT",
+          "denominator_basis": "CLOSING",
+          "currency": "USD",
+          "formula_version": "pb_v1",
+          "formula": "(close / ratio_adr) / (patrimonio_controladora / acciones_circulacion)",
+          "provenance_status": "COMPLETA",
+          "motivo": null,
+          "publicable": true,
+          "provenance": {
+            "run_id": "f5ddcf77dcfd47e7933c80344320e44d",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:33:53.769945+00:00",
+            "valid_from": "2026-09-01T23:33:53.769945+00:00",
+            "valid_to": null,
+            "inputs": [
+              {
+                "rol": "patrimonio",
+                "qname": "http://fasb.org/us-gaap/2025#StockholdersEquity",
+                "valor": 73733000000.0,
+                "moneda": "USD",
+                "concepto": "patrimonio_controladora",
+                "fact_key": "3027f05e0bf5802fa25567f918b6f5077ca34d81e93e76e95f106e09814df5b9",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 4,
+                  "parsed_cik": "0000320193",
+                  "source_files": [
+                    "aapl-20250927.htm",
+                    "aapl-20250927_htm.xml"
+                  ],
+                  "source_paths": [
+                    "CIK0000320193/filings/000032019325000079/0000320193-25-000079-xbrl.zip!aapl-20250927.htm",
+                    "CIK0000320193/filings/000032019325000079/aapl-20250927_htm.xml"
+                  ],
+                  "source_hashes": [
+                    "274361a794f84b24d75b4ee98bc8eff5a031b4fc1be1a1210dbc2b10d92c5179",
+                    "e1076735f1c81bc96d5c1ff6e1a9d23515d6eacf52b405cb1f7da3e379ac533b"
+                  ],
+                  "source_fact_ids": [
+                    148154,
+                    148203,
+                    149285,
+                    149334
+                  ],
+                  "parsed_accession": "0000320193-25-000079"
+                },
+                "namespace": "http://fasb.org/us-gaap/2025",
+                "filing_date": "2025-10-31",
+                "tag_elegido": "StockholdersEquity",
+                "unit_measure": "iso4217:USD",
+                "cadena_evaluada": [
+                  "EquityAttributableToOwnersOfParent",
+                  "Equity",
+                  "StockholdersEquity"
+                ],
+                "accession_number": "0000320193-25-000079"
+              },
+              {
+                "rol": "acciones",
+                "qname": "http://fasb.org/us-gaap/2025#CommonStockSharesOutstanding",
+                "valor": 14773260000.0,
+                "moneda": null,
+                "concepto": "acciones_circulacion",
+                "fact_key": "beb2be14fe3ca64cb8573f19985e6c953914ca92b27d0ed2e595e78b6a6f9ed7",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 2,
+                  "parsed_cik": "0000320193",
+                  "source_files": [
+                    "aapl-20250927.htm",
+                    "aapl-20250927_htm.xml"
+                  ],
+                  "source_paths": [
+                    "CIK0000320193/filings/000032019325000079/0000320193-25-000079-xbrl.zip!aapl-20250927.htm",
+                    "CIK0000320193/filings/000032019325000079/aapl-20250927_htm.xml"
+                  ],
+                  "source_hashes": [
+                    "274361a794f84b24d75b4ee98bc8eff5a031b4fc1be1a1210dbc2b10d92c5179",
+                    "e1076735f1c81bc96d5c1ff6e1a9d23515d6eacf52b405cb1f7da3e379ac533b"
+                  ],
+                  "source_fact_ids": [
+                    148145,
+                    149276
+                  ],
+                  "parsed_accession": "0000320193-25-000079"
+                },
+                "namespace": "http://fasb.org/us-gaap/2025",
+                "filing_date": "2025-10-31",
+                "tag_elegido": "CommonStockSharesOutstanding",
+                "unit_measure": "shares",
+                "cadena_evaluada": [
+                  "EntityCommonStockSharesOutstanding",
+                  "NumberOfSharesOutstanding",
+                  "CommonStockSharesOutstanding"
+                ],
+                "accession_number": "0000320193-25-000079"
+              },
+              {
+                "rol": "precio",
+                "valor": 314.579987,
+                "moneda": "USD",
+                "concepto": "precio_cierre",
+                "exchange": null,
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "fuente": "market_price_daily"
+                },
+                "ratio_adr": 1.0,
+                "trading_date": "2026-08-27",
+                "instrument_id": "86"
+              },
+              {
+                "rol": "derivado",
+                "valor": 4.990976940770013,
+                "moneda": "USD",
+                "formula": "patrimonio_controladora / acciones_circulacion",
+                "concepto": "bvps"
+              }
+            ]
+          }
+        },
+        {
+          "canonical_id": "pe",
+          "value": 41.999998,
+          "unit": "veces",
+          "status": "CALCULADO",
+          "period_end": "2025-09-27",
+          "window": "FY",
+          "denominator_basis": "n/a",
+          "currency": "USD",
+          "formula_version": "pe_v1",
+          "formula": "(close / ratio_adr) / eps_basico",
+          "provenance_status": "COMPLETA",
+          "motivo": null,
+          "publicable": true,
+          "provenance": {
+            "run_id": "f5ddcf77dcfd47e7933c80344320e44d",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:33:53.769945+00:00",
+            "valid_from": "2026-09-01T23:33:53.769945+00:00",
+            "valid_to": null,
+            "inputs": [
+              {
+                "rol": "eps",
+                "qname": "http://fasb.org/us-gaap/2025#EarningsPerShareBasic",
+                "valor": 7.49,
+                "moneda": "USD",
+                "concepto": "eps_basico",
+                "fact_key": "f52934ddc60664b974441ce242d6bf28ca48485878951e580bb68b3bad029150",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 4,
+                  "parsed_cik": "0000320193",
+                  "source_files": [
+                    "aapl-20250927.htm",
+                    "aapl-20250927_htm.xml"
+                  ],
+                  "source_paths": [
+                    "CIK0000320193/filings/000032019325000079/0000320193-25-000079-xbrl.zip!aapl-20250927.htm",
+                    "CIK0000320193/filings/000032019325000079/aapl-20250927_htm.xml"
+                  ],
+                  "source_hashes": [
+                    "274361a794f84b24d75b4ee98bc8eff5a031b4fc1be1a1210dbc2b10d92c5179",
+                    "e1076735f1c81bc96d5c1ff6e1a9d23515d6eacf52b405cb1f7da3e379ac533b"
+                  ],
+                  "source_fact_ids": [
+                    148052,
+                    148353,
+                    149183,
+                    149484
+                  ],
+                  "parsed_accession": "0000320193-25-000079"
+                },
+                "namespace": "http://fasb.org/us-gaap/2025",
+                "filing_date": "2025-10-31",
+                "tag_elegido": "EarningsPerShareBasic",
+                "unit_measure": "iso4217:USD/shares",
+                "cadena_evaluada": [
+                  "BasicEarningsLossPerShare",
+                  "BasicAndDilutedEarningsPerShare",
+                  "BasicAndDilutedEarningsLossPerShare",
+                  "EarningsPerShareBasic",
+                  "IncomeLossFromContinuingOperationsPerBasicShare"
+                ],
+                "accession_number": "0000320193-25-000079"
+              },
+              {
+                "rol": "precio",
+                "valor": 314.579987,
+                "moneda": "USD",
+                "concepto": "precio_cierre",
+                "exchange": null,
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "fuente": "market_price_daily"
+                },
+                "ratio_adr": 1.0,
+                "trading_date": "2026-08-27",
+                "instrument_id": "86"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entity_key": "E01M0X99DQ7P5TQ4Z6Z58RC5PB3",
+      "nombre": "CENTRAL PUERTO S.A.",
+      "cik": "0001717161",
+      "ratios": [
+        {
+          "canonical_id": "eps",
+          "value": 230.61,
+          "unit": "moneda_por_accion",
+          "status": "CALCULADO",
+          "period_end": "2025-12-31",
+          "window": "FY",
+          "denominator_basis": "AVERAGE",
+          "currency": "ARS",
+          "formula_version": "eps_v1",
+          "formula": "EPS basico reportado por el emisor",
+          "provenance_status": "COMPLETA",
+          "motivo": null,
+          "publicable": true,
+          "provenance": {
+            "run_id": "f5ddcf77dcfd47e7933c80344320e44d",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:33:53.769945+00:00",
+            "valid_from": "2026-09-01T23:33:53.769945+00:00",
+            "valid_to": null,
+            "inputs": [
+              {
+                "rol": "eps",
+                "qname": "https://xbrl.ifrs.org/taxonomy/2024-03-27/ifrs-full#BasicEarningsLossPerShare",
+                "valor": 230.61,
+                "moneda": "ARS",
+                "concepto": "eps_basico",
+                "fact_key": "cad37842fd5f3eb3a07d48b3e215cd463d9a0c1c479e72685ee74aee905337fb",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 1,
+                  "parsed_cik": "0001717161",
+                  "source_files": [
+                    "cepuform20f_2025.htm"
+                  ],
+                  "source_paths": [
+                    "CIK0001717161/filings/000129281426002446/0001292814-26-002446-xbrl.zip!cepuform20f_2025.htm"
+                  ],
+                  "source_hashes": [
+                    "aee1905ed645c8ed97a4cc967c84ef31f47a22f058d89f502af03eb8b758fb11"
+                  ],
+                  "source_fact_ids": [
+                    13551
+                  ],
+                  "parsed_accession": "0001292814-26-002446"
+                },
+                "namespace": "https://xbrl.ifrs.org/taxonomy/2024-03-27/ifrs-full",
+                "filing_date": "2026-04-22",
+                "tag_elegido": "BasicEarningsLossPerShare",
+                "unit_measure": "iso4217:ARS/xbrli:shares",
+                "cadena_evaluada": [
+                  "BasicEarningsLossPerShare",
+                  "BasicAndDilutedEarningsPerShare",
+                  "BasicAndDilutedEarningsLossPerShare",
+                  "EarningsPerShareBasic",
+                  "IncomeLossFromContinuingOperationsPerBasicShare"
+                ],
+                "accession_number": "0001292814-26-002446"
+              }
+            ]
+          }
+        },
+        {
+          "canonical_id": "ev_sales",
+          "value": null,
+          "unit": "veces",
+          "status": "NOT_CALCULABLE",
+          "period_end": "2025-12-31",
+          "window": "FY",
+          "denominator_basis": "n/a",
+          "currency": null,
+          "formula_version": "ev_sales_v1",
+          "formula": "(market_cap + deuda_financiera - efectivo) / ingresos",
+          "provenance_status": "COMPLETA",
+          "motivo": "sin fact para el concepto 'deuda_financiera' en 2025-12-31; candidatos consultados: ['Borrowings', 'DebtLongtermAndShorttermCombinedAmount', 'LongTermDebt']",
+          "publicable": false,
+          "provenance": {
+            "run_id": "290e4ba02f47469fb183d0923fde1dbd",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:20:13.584825+00:00",
+            "valid_from": "2026-09-01T23:20:13.584825+00:00",
+            "valid_to": null,
+            "inputs": [
+              {
+                "rol": "ingresos",
+                "qname": "https://xbrl.ifrs.org/taxonomy/2024-03-27/ifrs-full#Revenue",
+                "valor": 1097422190000.0,
+                "moneda": "ARS",
+                "concepto": "ingresos",
+                "fact_key": "268b19eeb57c15a9115786d17eea1fb7345fab08fa8c840f2e8897b10b1d810a",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 3,
+                  "parsed_cik": "0001717161",
+                  "source_files": [
+                    "cepuform20f_2025.htm"
+                  ],
+                  "source_paths": [
+                    "CIK0001717161/filings/000129281426002446/0001292814-26-002446-xbrl.zip!cepuform20f_2025.htm"
+                  ],
+                  "source_hashes": [
+                    "aee1905ed645c8ed97a4cc967c84ef31f47a22f058d89f502af03eb8b758fb11"
+                  ],
+                  "source_fact_ids": [
+                    13494,
+                    14196,
+                    14454
+                  ],
+                  "parsed_accession": "0001292814-26-002446"
+                },
+                "namespace": "https://xbrl.ifrs.org/taxonomy/2024-03-27/ifrs-full",
+                "filing_date": "2026-04-22",
+                "tag_elegido": "Revenue",
+                "unit_measure": "iso4217:ARS",
+                "cadena_evaluada": [
+                  "Revenue",
+                  "RevenueFromContractsWithCustomers",
+                  "RevenueFromContractWithCustomerExcludingAssessedTax",
+                  "RevenueFromContractWithCustomerIncludingAssessedTax",
+                  "Revenues"
+                ],
+                "accession_number": "0001292814-26-002446"
+              }
+            ]
+          }
+        },
+        {
+          "canonical_id": "pb",
+          "value": 1.28515,
+          "unit": "veces",
+          "status": "CALCULADO",
+          "period_end": "2025-12-31",
+          "window": "PIT",
+          "denominator_basis": "CLOSING",
+          "currency": "ARS",
+          "formula_version": "pb_v1",
+          "formula": "(close / ratio_adr) / (patrimonio_controladora / acciones_circulacion)",
+          "provenance_status": "COMPLETA",
+          "motivo": null,
+          "publicable": true,
+          "provenance": {
+            "run_id": "f5ddcf77dcfd47e7933c80344320e44d",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:33:53.769945+00:00",
+            "valid_from": "2026-09-01T23:33:53.769945+00:00",
+            "valid_to": null,
+            "inputs": [
+              {
+                "rol": "patrimonio",
+                "qname": "https://xbrl.ifrs.org/taxonomy/2024-03-27/ifrs-full#EquityAttributableToOwnersOfParent",
+                "valor": 2551318337000.0,
+                "moneda": "ARS",
+                "concepto": "patrimonio_controladora",
+                "fact_key": "30328096c6d93a1c9af6d8b522964e33870c3e61576dca1f42edef9662f3cb70",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 1,
+                  "parsed_cik": "0001717161",
+                  "source_files": [
+                    "cepuform20f_2025.htm"
+                  ],
+                  "source_paths": [
+                    "CIK0001717161/filings/000129281426002446/0001292814-26-002446-xbrl.zip!cepuform20f_2025.htm"
+                  ],
+                  "source_hashes": [
+                    "aee1905ed645c8ed97a4cc967c84ef31f47a22f058d89f502af03eb8b758fb11"
+                  ],
+                  "source_fact_ids": [
+                    13640
+                  ],
+                  "parsed_accession": "0001292814-26-002446"
+                },
+                "namespace": "https://xbrl.ifrs.org/taxonomy/2024-03-27/ifrs-full",
+                "filing_date": "2026-04-22",
+                "tag_elegido": "EquityAttributableToOwnersOfParent",
+                "unit_measure": "iso4217:ARS",
+                "cadena_evaluada": [
+                  "EquityAttributableToOwnersOfParent",
+                  "Equity",
+                  "StockholdersEquity"
+                ],
+                "accession_number": "0001292814-26-002446"
+              },
+              {
+                "rol": "acciones",
+                "qname": "http://xbrl.sec.gov/dei/2024#EntityCommonStockSharesOutstanding",
+                "valor": 1513770222.0,
+                "moneda": null,
+                "concepto": "acciones_circulacion",
+                "fact_key": "bb754f360d34ea9cf8a8646f4f38231a2e192b3044582f2bbb928b62ced32429",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 2,
+                  "parsed_cik": "0001717161",
+                  "source_files": [
+                    "cepuform20f_2025.htm"
+                  ],
+                  "source_paths": [
+                    "CIK0001717161/filings/000129281426002446/0001292814-26-002446-xbrl.zip!cepuform20f_2025.htm"
+                  ],
+                  "source_hashes": [
+                    "aee1905ed645c8ed97a4cc967c84ef31f47a22f058d89f502af03eb8b758fb11"
+                  ],
+                  "source_fact_ids": [
+                    13464,
+                    15473
+                  ],
+                  "parsed_accession": "0001292814-26-002446"
+                },
+                "namespace": "http://xbrl.sec.gov/dei/2024",
+                "filing_date": "2026-04-22",
+                "tag_elegido": "EntityCommonStockSharesOutstanding",
+                "unit_measure": "xbrli:shares",
+                "cadena_evaluada": [
+                  "EntityCommonStockSharesOutstanding",
+                  "NumberOfSharesOutstanding",
+                  "CommonStockSharesOutstanding"
+                ],
+                "accession_number": "0001292814-26-002446"
+              },
+              {
+                "rol": "precio",
+                "valor": 2166.0,
+                "moneda": "ARS",
+                "concepto": "precio_cierre",
+                "exchange": "BUE",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "fuente": "market_price_daily"
+                },
+                "ratio_adr": 1.0,
+                "trading_date": "2026-08-27",
+                "instrument_id": "80"
+              },
+              {
+                "rol": "derivado",
+                "valor": 1685.406609220511,
+                "moneda": "ARS",
+                "formula": "patrimonio_controladora / acciones_circulacion",
+                "concepto": "bvps"
+              }
+            ]
+          }
+        },
+        {
+          "canonical_id": "pe",
+          "value": 9.392481,
+          "unit": "veces",
+          "status": "CALCULADO",
+          "period_end": "2025-12-31",
+          "window": "FY",
+          "denominator_basis": "n/a",
+          "currency": "ARS",
+          "formula_version": "pe_v1",
+          "formula": "(close / ratio_adr) / eps_basico",
+          "provenance_status": "COMPLETA",
+          "motivo": null,
+          "publicable": true,
+          "provenance": {
+            "run_id": "f5ddcf77dcfd47e7933c80344320e44d",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:33:53.769945+00:00",
+            "valid_from": "2026-09-01T23:33:53.769945+00:00",
+            "valid_to": null,
+            "inputs": [
+              {
+                "rol": "eps",
+                "qname": "https://xbrl.ifrs.org/taxonomy/2024-03-27/ifrs-full#BasicEarningsLossPerShare",
+                "valor": 230.61,
+                "moneda": "ARS",
+                "concepto": "eps_basico",
+                "fact_key": "cad37842fd5f3eb3a07d48b3e215cd463d9a0c1c479e72685ee74aee905337fb",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 1,
+                  "parsed_cik": "0001717161",
+                  "source_files": [
+                    "cepuform20f_2025.htm"
+                  ],
+                  "source_paths": [
+                    "CIK0001717161/filings/000129281426002446/0001292814-26-002446-xbrl.zip!cepuform20f_2025.htm"
+                  ],
+                  "source_hashes": [
+                    "aee1905ed645c8ed97a4cc967c84ef31f47a22f058d89f502af03eb8b758fb11"
+                  ],
+                  "source_fact_ids": [
+                    13551
+                  ],
+                  "parsed_accession": "0001292814-26-002446"
+                },
+                "namespace": "https://xbrl.ifrs.org/taxonomy/2024-03-27/ifrs-full",
+                "filing_date": "2026-04-22",
+                "tag_elegido": "BasicEarningsLossPerShare",
+                "unit_measure": "iso4217:ARS/xbrli:shares",
+                "cadena_evaluada": [
+                  "BasicEarningsLossPerShare",
+                  "BasicAndDilutedEarningsPerShare",
+                  "BasicAndDilutedEarningsLossPerShare",
+                  "EarningsPerShareBasic",
+                  "IncomeLossFromContinuingOperationsPerBasicShare"
+                ],
+                "accession_number": "0001292814-26-002446"
+              },
+              {
+                "rol": "precio",
+                "valor": 2166.0,
+                "moneda": "ARS",
+                "concepto": "precio_cierre",
+                "exchange": "BUE",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "fuente": "market_price_daily"
+                },
+                "ratio_adr": 1.0,
+                "trading_date": "2026-08-27",
+                "instrument_id": "80"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entity_key": "E01M0X99EXSQTYKWZMDEMMBX8QY",
+      "nombre": "GRUPO FINANCIERO GALICIA S.A.",
+      "cik": "0001114700",
+      "ratios": [
+        {
+          "canonical_id": "eps",
+          "value": 132.48,
+          "unit": "moneda_por_accion",
+          "status": "CALCULADO",
+          "period_end": "2025-12-31",
+          "window": "FY",
+          "denominator_basis": "AVERAGE",
+          "currency": "ARS",
+          "formula_version": "eps_v1",
+          "formula": "EPS basico reportado por el emisor",
+          "provenance_status": "COMPLETA",
+          "motivo": null,
+          "publicable": true,
+          "provenance": {
+            "run_id": "f5ddcf77dcfd47e7933c80344320e44d",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:33:53.769945+00:00",
+            "valid_from": "2026-09-01T23:33:53.769945+00:00",
+            "valid_to": null,
+            "inputs": [
+              {
+                "rol": "eps",
+                "qname": "https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full#BasicEarningsLossPerShare",
+                "valor": 132.48,
+                "moneda": "ARS",
+                "concepto": "eps_basico",
+                "fact_key": "3a06d91c5d3d7f6e13451265cff5c7e60aed8c24194dbc03bfa13c2412193044",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 2,
+                  "parsed_cik": "0001114700",
+                  "source_files": [
+                    "ggal-20251231.htm",
+                    "ggal-20251231_htm.xml"
+                  ],
+                  "source_paths": [
+                    "CIK0001114700/filings/000111470026000038/0001114700-26-000038-xbrl.zip!ggal-20251231.htm",
+                    "CIK0001114700/filings/000111470026000038/ggal-20251231_htm.xml"
+                  ],
+                  "source_hashes": [
+                    "43f43759de1e8b34d699e06337643301685b9d865fa8d3c68ffd22e05c82b6da",
+                    "c6f19d2c9611d413c3eea5ddfd61f24dcb4a0240b93be1d97a58e7f3ab1d975f"
+                  ],
+                  "source_fact_ids": [
+                    23661,
+                    31588
+                  ],
+                  "parsed_accession": "0001114700-26-000038"
+                },
+                "namespace": "https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full",
+                "filing_date": "2026-04-16",
+                "tag_elegido": "BasicEarningsLossPerShare",
+                "unit_measure": "iso4217:ARS/shares",
+                "cadena_evaluada": [
+                  "BasicEarningsLossPerShare",
+                  "BasicAndDilutedEarningsPerShare",
+                  "BasicAndDilutedEarningsLossPerShare",
+                  "EarningsPerShareBasic",
+                  "IncomeLossFromContinuingOperationsPerBasicShare"
+                ],
+                "accession_number": "0001114700-26-000038"
+              }
+            ]
+          }
+        },
+        {
+          "canonical_id": "ev_sales",
+          "value": null,
+          "unit": "veces",
+          "status": "NOT_CALCULABLE",
+          "period_end": "2025-12-31",
+          "window": "FY",
+          "denominator_basis": "n/a",
+          "currency": null,
+          "formula_version": "ev_sales_v1",
+          "formula": "(market_cap + deuda_financiera - efectivo) / ingresos",
+          "provenance_status": "AUSENTE",
+          "motivo": "sin fact para el concepto 'ingresos' en 2025-12-31; candidatos consultados: ['Revenue', 'RevenueFromContractsWithCustomers', 'RevenueFromContractWithCustomerExcludingAssessedTax', 'RevenueFromContractWithCustomerIncludingAssessedTax', 'Revenues']",
+          "publicable": false,
+          "provenance": {
+            "run_id": "290e4ba02f47469fb183d0923fde1dbd",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:20:13.584825+00:00",
+            "valid_from": "2026-09-01T23:20:13.584825+00:00",
+            "valid_to": null,
+            "inputs": []
+          }
+        },
+        {
+          "canonical_id": "pb",
+          "value": null,
+          "unit": "veces",
+          "status": "NOT_CALCULABLE",
+          "period_end": "2025-12-31",
+          "window": "PIT",
+          "denominator_basis": "CLOSING",
+          "currency": null,
+          "formula_version": "pb_v1",
+          "formula": "(close / ratio_adr) / (patrimonio_controladora / acciones_circulacion)",
+          "provenance_status": "AUSENTE",
+          "motivo": "sin fact para el concepto 'acciones_circulacion' en 2025-12-31; candidatos consultados: ['EntityCommonStockSharesOutstanding', 'NumberOfSharesOutstanding', 'CommonStockSharesOutstanding']",
+          "publicable": false,
+          "provenance": {
+            "run_id": "f5ddcf77dcfd47e7933c80344320e44d",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:33:53.769945+00:00",
+            "valid_from": "2026-09-01T23:33:53.769945+00:00",
+            "valid_to": null,
+            "inputs": []
+          }
+        },
+        {
+          "canonical_id": "pe",
+          "value": 51.932367,
+          "unit": "veces",
+          "status": "CALCULADO",
+          "period_end": "2025-12-31",
+          "window": "FY",
+          "denominator_basis": "n/a",
+          "currency": "ARS",
+          "formula_version": "pe_v1",
+          "formula": "(close / ratio_adr) / eps_basico",
+          "provenance_status": "COMPLETA",
+          "motivo": null,
+          "publicable": true,
+          "provenance": {
+            "run_id": "f5ddcf77dcfd47e7933c80344320e44d",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:33:53.769945+00:00",
+            "valid_from": "2026-09-01T23:33:53.769945+00:00",
+            "valid_to": null,
+            "inputs": [
+              {
+                "rol": "eps",
+                "qname": "https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full#BasicEarningsLossPerShare",
+                "valor": 132.48,
+                "moneda": "ARS",
+                "concepto": "eps_basico",
+                "fact_key": "3a06d91c5d3d7f6e13451265cff5c7e60aed8c24194dbc03bfa13c2412193044",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 2,
+                  "parsed_cik": "0001114700",
+                  "source_files": [
+                    "ggal-20251231.htm",
+                    "ggal-20251231_htm.xml"
+                  ],
+                  "source_paths": [
+                    "CIK0001114700/filings/000111470026000038/0001114700-26-000038-xbrl.zip!ggal-20251231.htm",
+                    "CIK0001114700/filings/000111470026000038/ggal-20251231_htm.xml"
+                  ],
+                  "source_hashes": [
+                    "43f43759de1e8b34d699e06337643301685b9d865fa8d3c68ffd22e05c82b6da",
+                    "c6f19d2c9611d413c3eea5ddfd61f24dcb4a0240b93be1d97a58e7f3ab1d975f"
+                  ],
+                  "source_fact_ids": [
+                    23661,
+                    31588
+                  ],
+                  "parsed_accession": "0001114700-26-000038"
+                },
+                "namespace": "https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full",
+                "filing_date": "2026-04-16",
+                "tag_elegido": "BasicEarningsLossPerShare",
+                "unit_measure": "iso4217:ARS/shares",
+                "cadena_evaluada": [
+                  "BasicEarningsLossPerShare",
+                  "BasicAndDilutedEarningsPerShare",
+                  "BasicAndDilutedEarningsLossPerShare",
+                  "EarningsPerShareBasic",
+                  "IncomeLossFromContinuingOperationsPerBasicShare"
+                ],
+                "accession_number": "0001114700-26-000038"
+              },
+              {
+                "rol": "precio",
+                "valor": 6880.0,
+                "moneda": "ARS",
+                "concepto": "precio_cierre",
+                "exchange": "BUE",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "fuente": "market_price_daily"
+                },
+                "ratio_adr": 1.0,
+                "trading_date": "2026-08-27",
+                "instrument_id": "71"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entity_key": "E01M14AP85T67281AA83Z87FMEJ",
+      "nombre": "Macro Bank Inc.",
+      "cik": "0001347426",
+      "ratios": [
+        {
+          "canonical_id": "eps",
+          "value": 452.7535,
+          "unit": "moneda_por_accion",
+          "status": "CALCULADO",
+          "period_end": "2025-12-31",
+          "window": "FY",
+          "denominator_basis": "AVERAGE",
+          "currency": "ARS",
+          "formula_version": "eps_v1",
+          "formula": "EPS basico reportado por el emisor",
+          "provenance_status": "COMPLETA",
+          "motivo": null,
+          "publicable": true,
+          "provenance": {
+            "run_id": "f5ddcf77dcfd47e7933c80344320e44d",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:33:53.769945+00:00",
+            "valid_from": "2026-09-01T23:33:53.769945+00:00",
+            "valid_to": null,
+            "inputs": [
+              {
+                "rol": "eps",
+                "qname": "https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full#BasicEarningsLossPerShare",
+                "valor": 452.7535,
+                "moneda": "ARS",
+                "concepto": "eps_basico",
+                "fact_key": "40c88e674a4f807a53ad5e39e03d72a6231ccfc40f20dc20aae5805d662cc5de",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 2,
+                  "parsed_cik": "0001347426",
+                  "source_files": [
+                    "d29142d20f.htm"
+                  ],
+                  "source_paths": [
+                    "CIK0001347426/filings/000119312526163876/0001193125-26-163876-xbrl.zip!d29142d20f.htm"
+                  ],
+                  "source_hashes": [
+                    "8dde249293ded43ae43f906e2560f6b850c137f5a884e3c527189517ab7f472f"
+                  ],
+                  "source_fact_ids": [
+                    54535,
+                    57991
+                  ],
+                  "parsed_accession": "0001193125-26-163876"
+                },
+                "namespace": "https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full",
+                "filing_date": "2026-04-20",
+                "tag_elegido": "BasicEarningsLossPerShare",
+                "unit_measure": "iso4217:ARS/xbrli:shares",
+                "cadena_evaluada": [
+                  "BasicEarningsLossPerShare",
+                  "BasicAndDilutedEarningsPerShare",
+                  "BasicAndDilutedEarningsLossPerShare",
+                  "EarningsPerShareBasic",
+                  "IncomeLossFromContinuingOperationsPerBasicShare"
+                ],
+                "accession_number": "0001193125-26-163876"
+              }
+            ]
+          }
+        },
+        {
+          "canonical_id": "ev_sales",
+          "value": null,
+          "unit": "veces",
+          "status": "NOT_CALCULABLE",
+          "period_end": "2025-12-31",
+          "window": "FY",
+          "denominator_basis": "n/a",
+          "currency": null,
+          "formula_version": "ev_sales_v1",
+          "formula": "(market_cap + deuda_financiera - efectivo) / ingresos",
+          "provenance_status": "AUSENTE",
+          "motivo": "sin fact para el concepto 'ingresos' en 2025-12-31; candidatos consultados: ['Revenue', 'RevenueFromContractsWithCustomers', 'RevenueFromContractWithCustomerExcludingAssessedTax', 'RevenueFromContractWithCustomerIncludingAssessedTax', 'Revenues']",
+          "publicable": false,
+          "provenance": {
+            "run_id": "290e4ba02f47469fb183d0923fde1dbd",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:20:13.584825+00:00",
+            "valid_from": "2026-09-01T23:20:13.584825+00:00",
+            "valid_to": null,
+            "inputs": []
+          }
+        },
+        {
+          "canonical_id": "pb",
+          "value": null,
+          "unit": "veces",
+          "status": "NOT_CALCULABLE",
+          "period_end": "2025-12-31",
+          "window": "PIT",
+          "denominator_basis": "CLOSING",
+          "currency": "ARS",
+          "formula_version": "pb_v1",
+          "formula": "(close / ratio_adr) / (patrimonio_controladora / acciones_circulacion)",
+          "provenance_status": "AUSENTE",
+          "motivo": "la entidad no tiene instrumento ligado en identity_v1.instrument: atribuirle un precio seria un join por ticker",
+          "publicable": false,
+          "provenance": {
+            "run_id": "f5ddcf77dcfd47e7933c80344320e44d",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:33:53.769945+00:00",
+            "valid_from": "2026-09-01T23:33:53.769945+00:00",
+            "valid_to": null,
+            "inputs": []
+          }
+        },
+        {
+          "canonical_id": "pe",
+          "value": null,
+          "unit": "veces",
+          "status": "NOT_CALCULABLE",
+          "period_end": "2025-12-31",
+          "window": "FY",
+          "denominator_basis": "n/a",
+          "currency": "ARS",
+          "formula_version": "pe_v1",
+          "formula": "(close / ratio_adr) / eps_basico",
+          "provenance_status": "AUSENTE",
+          "motivo": "la entidad no tiene instrumento ligado en identity_v1.instrument: atribuirle un precio seria un join por ticker",
+          "publicable": false,
+          "provenance": {
+            "run_id": "f5ddcf77dcfd47e7933c80344320e44d",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:33:53.769945+00:00",
+            "valid_from": "2026-09-01T23:33:53.769945+00:00",
+            "valid_to": null,
+            "inputs": []
+          }
+        }
+      ]
+    },
+    {
+      "entity_key": "E01M13XBSP3JTP05SPZKQ4W4PB2",
+      "nombre": "MICROSOFT CORP",
+      "cik": "0000789019",
+      "ratios": [
+        {
+          "canonical_id": "eps",
+          "value": 18.0,
+          "unit": "moneda_por_accion",
+          "status": "CALCULADO",
+          "period_end": "2026-06-30",
+          "window": "FY",
+          "denominator_basis": "AVERAGE",
+          "currency": "USD",
+          "formula_version": "eps_v1",
+          "formula": "EPS basico reportado por el emisor",
+          "provenance_status": "COMPLETA",
+          "motivo": null,
+          "publicable": true,
+          "provenance": {
+            "run_id": "f5ddcf77dcfd47e7933c80344320e44d",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:33:53.769945+00:00",
+            "valid_from": "2026-09-01T23:33:53.769945+00:00",
+            "valid_to": null,
+            "inputs": [
+              {
+                "rol": "eps",
+                "qname": "http://fasb.org/us-gaap/2025#EarningsPerShareBasic",
+                "valor": 18.0,
+                "moneda": "USD",
+                "concepto": "eps_basico",
+                "fact_key": "e44142646608195f92ed8b10b7a825384bf6c3fbc84cc4aafb8e13abf6216b93",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 4,
+                  "parsed_cik": "0000789019",
+                  "source_files": [
+                    "msft-20260630.htm",
+                    "msft-20260630_htm.xml"
+                  ],
+                  "source_paths": [
+                    "CIK0000789019/filings/000119312526323660/0001193125-26-323660-xbrl.zip!msft-20260630.htm",
+                    "CIK0000789019/filings/000119312526323660/msft-20260630_htm.xml"
+                  ],
+                  "source_hashes": [
+                    "4561138eb81082fd06a693e6a2036eeae14e321d0c75a77aee5c28f1d4dc6d1d",
+                    "56e56d82ee2d82cb75d37b85df51d4807ffc1e1a3cc4e02ec87513b7574aa886"
+                  ],
+                  "source_fact_ids": [
+                    152563,
+                    152877,
+                    154432,
+                    154746
+                  ],
+                  "parsed_accession": "0001193125-26-323660"
+                },
+                "namespace": "http://fasb.org/us-gaap/2025",
+                "filing_date": "2026-07-29",
+                "tag_elegido": "EarningsPerShareBasic",
+                "unit_measure": "iso4217:USD/shares",
+                "cadena_evaluada": [
+                  "BasicEarningsLossPerShare",
+                  "BasicAndDilutedEarningsPerShare",
+                  "BasicAndDilutedEarningsLossPerShare",
+                  "EarningsPerShareBasic",
+                  "IncomeLossFromContinuingOperationsPerBasicShare"
+                ],
+                "accession_number": "0001193125-26-323660"
+              }
+            ]
+          }
+        },
+        {
+          "canonical_id": "ev_sales",
+          "value": 11.362256,
+          "unit": "veces",
+          "status": "CALCULADO",
+          "period_end": "2026-06-30",
+          "window": "FY",
+          "denominator_basis": "n/a",
+          "currency": "USD",
+          "formula_version": "ev_sales_v1",
+          "formula": "(market_cap + deuda_financiera - efectivo) / ingresos",
+          "provenance_status": "COMPLETA",
+          "motivo": null,
+          "publicable": true,
+          "provenance": {
+            "run_id": "290e4ba02f47469fb183d0923fde1dbd",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:20:13.584825+00:00",
+            "valid_from": "2026-09-01T23:20:13.584825+00:00",
+            "valid_to": null,
+            "inputs": [
+              {
+                "rol": "ingresos",
+                "qname": "http://fasb.org/us-gaap/2025#RevenueFromContractWithCustomerExcludingAssessedTax",
+                "valor": 331839000000.0,
+                "moneda": "USD",
+                "concepto": "ingresos",
+                "fact_key": "0e6f5a667c773d930bf6a655330c5733b8c596c76f5c5dd079cd18af531eaf5e",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 8,
+                  "parsed_cik": "0000789019",
+                  "source_files": [
+                    "msft-20260630.htm",
+                    "msft-20260630_htm.xml"
+                  ],
+                  "source_paths": [
+                    "CIK0000789019/filings/000119312526323660/0001193125-26-323660-xbrl.zip!msft-20260630.htm",
+                    "CIK0000789019/filings/000119312526323660/msft-20260630_htm.xml"
+                  ],
+                  "source_hashes": [
+                    "4561138eb81082fd06a693e6a2036eeae14e321d0c75a77aee5c28f1d4dc6d1d",
+                    "56e56d82ee2d82cb75d37b85df51d4807ffc1e1a3cc4e02ec87513b7574aa886"
+                  ],
+                  "source_fact_ids": [
+                    152524,
+                    154215,
+                    154235,
+                    154269,
+                    154393,
+                    156084,
+                    156104,
+                    156138
+                  ],
+                  "parsed_accession": "0001193125-26-323660"
+                },
+                "namespace": "http://fasb.org/us-gaap/2025",
+                "filing_date": "2026-07-29",
+                "tag_elegido": "RevenueFromContractWithCustomerExcludingAssessedTax",
+                "unit_measure": "iso4217:USD",
+                "cadena_evaluada": [
+                  "Revenue",
+                  "RevenueFromContractsWithCustomers",
+                  "RevenueFromContractWithCustomerExcludingAssessedTax",
+                  "RevenueFromContractWithCustomerIncludingAssessedTax",
+                  "Revenues"
+                ],
+                "accession_number": "0001193125-26-323660"
+              },
+              {
+                "rol": "deuda",
+                "qname": "http://fasb.org/us-gaap/2025#LongTermDebt",
+                "valor": 40294000000.0,
+                "moneda": "USD",
+                "concepto": "deuda_financiera",
+                "fact_key": "477947f0137448a7cfb436aee2605ee09e3373f6ea10dbab2c4dc26d2fb29890",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 2,
+                  "parsed_cik": "0000789019",
+                  "source_files": [
+                    "msft-20260630.htm",
+                    "msft-20260630_htm.xml"
+                  ],
+                  "source_paths": [
+                    "CIK0000789019/filings/000119312526323660/0001193125-26-323660-xbrl.zip!msft-20260630.htm",
+                    "CIK0000789019/filings/000119312526323660/msft-20260630_htm.xml"
+                  ],
+                  "source_hashes": [
+                    "4561138eb81082fd06a693e6a2036eeae14e321d0c75a77aee5c28f1d4dc6d1d",
+                    "56e56d82ee2d82cb75d37b85df51d4807ffc1e1a3cc4e02ec87513b7574aa886"
+                  ],
+                  "source_fact_ids": [
+                    153624,
+                    155493
+                  ],
+                  "parsed_accession": "0001193125-26-323660"
+                },
+                "namespace": "http://fasb.org/us-gaap/2025",
+                "filing_date": "2026-07-29",
+                "tag_elegido": "LongTermDebt",
+                "unit_measure": "iso4217:USD",
+                "cadena_evaluada": [
+                  "Borrowings",
+                  "DebtLongtermAndShorttermCombinedAmount",
+                  "LongTermDebt"
+                ],
+                "accession_number": "0001193125-26-323660"
+              },
+              {
+                "rol": "efectivo",
+                "qname": "http://fasb.org/us-gaap/2025#CashAndCashEquivalentsAtCarryingValue",
+                "valor": 20935000000.0,
+                "moneda": "USD",
+                "concepto": "efectivo",
+                "fact_key": "dffd0e146d9442c0defaac5d9f7eac38d120fddc0a60da119f840d4b3e9df1e8",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 4,
+                  "parsed_cik": "0000789019",
+                  "source_files": [
+                    "msft-20260630.htm",
+                    "msft-20260630_htm.xml"
+                  ],
+                  "source_paths": [
+                    "CIK0000789019/filings/000119312526323660/0001193125-26-323660-xbrl.zip!msft-20260630.htm",
+                    "CIK0000789019/filings/000119312526323660/msft-20260630_htm.xml"
+                  ],
+                  "source_hashes": [
+                    "4561138eb81082fd06a693e6a2036eeae14e321d0c75a77aee5c28f1d4dc6d1d",
+                    "56e56d82ee2d82cb75d37b85df51d4807ffc1e1a3cc4e02ec87513b7574aa886"
+                  ],
+                  "source_fact_ids": [
+                    152593,
+                    153035,
+                    154462,
+                    154904
+                  ],
+                  "parsed_accession": "0001193125-26-323660"
+                },
+                "namespace": "http://fasb.org/us-gaap/2025",
+                "filing_date": "2026-07-29",
+                "tag_elegido": "CashAndCashEquivalentsAtCarryingValue",
+                "unit_measure": "iso4217:USD",
+                "cadena_evaluada": [
+                  "CashAndCashEquivalents",
+                  "CashAndCashEquivalentsAtCarryingValue",
+                  "CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents"
+                ],
+                "accession_number": "0001193125-26-323660"
+              },
+              {
+                "rol": "acciones",
+                "qname": "http://fasb.org/us-gaap/2025#CommonStockSharesOutstanding",
+                "valor": 7427000000.0,
+                "moneda": null,
+                "concepto": "acciones_circulacion",
+                "fact_key": "3997ac5c12a618c81b3dc71dc6e5ff4d6acb3d1da77ddd282b1852e3b67d6c49",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 4,
+                  "parsed_cik": "0000789019",
+                  "source_files": [
+                    "msft-20260630.htm",
+                    "msft-20260630_htm.xml"
+                  ],
+                  "source_paths": [
+                    "CIK0000789019/filings/000119312526323660/0001193125-26-323660-xbrl.zip!msft-20260630.htm",
+                    "CIK0000789019/filings/000119312526323660/msft-20260630_htm.xml"
+                  ],
+                  "source_hashes": [
+                    "4561138eb81082fd06a693e6a2036eeae14e321d0c75a77aee5c28f1d4dc6d1d",
+                    "56e56d82ee2d82cb75d37b85df51d4807ffc1e1a3cc4e02ec87513b7574aa886"
+                  ],
+                  "source_fact_ids": [
+                    152655,
+                    153952,
+                    154524,
+                    155821
+                  ],
+                  "parsed_accession": "0001193125-26-323660"
+                },
+                "namespace": "http://fasb.org/us-gaap/2025",
+                "filing_date": "2026-07-29",
+                "tag_elegido": "CommonStockSharesOutstanding",
+                "unit_measure": "shares",
+                "cadena_evaluada": [
+                  "EntityCommonStockSharesOutstanding",
+                  "NumberOfSharesOutstanding",
+                  "CommonStockSharesOutstanding"
+                ],
+                "accession_number": "0001193125-26-323660"
+              },
+              {
+                "rol": "precio",
+                "valor": 505.059998,
+                "moneda": "USD",
+                "concepto": "precio_cierre",
+                "exchange": null,
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "fuente": "market_price_daily"
+                },
+                "ratio_adr": 1.0,
+                "trading_date": "2026-08-27",
+                "instrument_id": "402"
+              },
+              {
+                "rol": "derivado",
+                "valor": 3751080605146.0,
+                "moneda": "USD",
+                "formula": "close / ratio_adr * acciones_circulacion",
+                "concepto": "market_cap"
+              },
+              {
+                "rol": "derivado",
+                "valor": 3770439605146.0,
+                "moneda": "USD",
+                "formula": "market_cap + deuda_financiera - efectivo",
+                "concepto": "enterprise_value"
+              }
+            ]
+          }
+        },
+        {
+          "canonical_id": "pb",
+          "value": 8.479184,
+          "unit": "veces",
+          "status": "CALCULADO",
+          "period_end": "2026-06-30",
+          "window": "PIT",
+          "denominator_basis": "CLOSING",
+          "currency": "USD",
+          "formula_version": "pb_v1",
+          "formula": "(close / ratio_adr) / (patrimonio_controladora / acciones_circulacion)",
+          "provenance_status": "COMPLETA",
+          "motivo": null,
+          "publicable": true,
+          "provenance": {
+            "run_id": "f5ddcf77dcfd47e7933c80344320e44d",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:33:53.769945+00:00",
+            "valid_from": "2026-09-01T23:33:53.769945+00:00",
+            "valid_to": null,
+            "inputs": [
+              {
+                "rol": "patrimonio",
+                "qname": "http://fasb.org/us-gaap/2025#StockholdersEquity",
+                "valor": 442387000000.0,
+                "moneda": "USD",
+                "concepto": "patrimonio_controladora",
+                "fact_key": "2515de34215194f2bd9319a0711b328a192adca2db88e6681eb8b19e98cb7d2d",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 4,
+                  "parsed_cik": "0000789019",
+                  "source_files": [
+                    "msft-20260630.htm",
+                    "msft-20260630_htm.xml"
+                  ],
+                  "source_paths": [
+                    "CIK0000789019/filings/000119312526323660/0001193125-26-323660-xbrl.zip!msft-20260630.htm",
+                    "CIK0000789019/filings/000119312526323660/msft-20260630_htm.xml"
+                  ],
+                  "source_hashes": [
+                    "4561138eb81082fd06a693e6a2036eeae14e321d0c75a77aee5c28f1d4dc6d1d",
+                    "56e56d82ee2d82cb75d37b85df51d4807ffc1e1a3cc4e02ec87513b7574aa886"
+                  ],
+                  "source_fact_ids": [
+                    152665,
+                    152813,
+                    154534,
+                    154682
+                  ],
+                  "parsed_accession": "0001193125-26-323660"
+                },
+                "namespace": "http://fasb.org/us-gaap/2025",
+                "filing_date": "2026-07-29",
+                "tag_elegido": "StockholdersEquity",
+                "unit_measure": "iso4217:USD",
+                "cadena_evaluada": [
+                  "EquityAttributableToOwnersOfParent",
+                  "Equity",
+                  "StockholdersEquity"
+                ],
+                "accession_number": "0001193125-26-323660"
+              },
+              {
+                "rol": "acciones",
+                "qname": "http://fasb.org/us-gaap/2025#CommonStockSharesOutstanding",
+                "valor": 7427000000.0,
+                "moneda": null,
+                "concepto": "acciones_circulacion",
+                "fact_key": "3997ac5c12a618c81b3dc71dc6e5ff4d6acb3d1da77ddd282b1852e3b67d6c49",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 4,
+                  "parsed_cik": "0000789019",
+                  "source_files": [
+                    "msft-20260630.htm",
+                    "msft-20260630_htm.xml"
+                  ],
+                  "source_paths": [
+                    "CIK0000789019/filings/000119312526323660/0001193125-26-323660-xbrl.zip!msft-20260630.htm",
+                    "CIK0000789019/filings/000119312526323660/msft-20260630_htm.xml"
+                  ],
+                  "source_hashes": [
+                    "4561138eb81082fd06a693e6a2036eeae14e321d0c75a77aee5c28f1d4dc6d1d",
+                    "56e56d82ee2d82cb75d37b85df51d4807ffc1e1a3cc4e02ec87513b7574aa886"
+                  ],
+                  "source_fact_ids": [
+                    152655,
+                    153952,
+                    154524,
+                    155821
+                  ],
+                  "parsed_accession": "0001193125-26-323660"
+                },
+                "namespace": "http://fasb.org/us-gaap/2025",
+                "filing_date": "2026-07-29",
+                "tag_elegido": "CommonStockSharesOutstanding",
+                "unit_measure": "shares",
+                "cadena_evaluada": [
+                  "EntityCommonStockSharesOutstanding",
+                  "NumberOfSharesOutstanding",
+                  "CommonStockSharesOutstanding"
+                ],
+                "accession_number": "0001193125-26-323660"
+              },
+              {
+                "rol": "precio",
+                "valor": 505.059998,
+                "moneda": "USD",
+                "concepto": "precio_cierre",
+                "exchange": null,
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "fuente": "market_price_daily"
+                },
+                "ratio_adr": 1.0,
+                "trading_date": "2026-08-27",
+                "instrument_id": "402"
+              },
+              {
+                "rol": "derivado",
+                "valor": 59.56469637807998,
+                "moneda": "USD",
+                "formula": "patrimonio_controladora / acciones_circulacion",
+                "concepto": "bvps"
+              }
+            ]
+          }
+        },
+        {
+          "canonical_id": "pe",
+          "value": 28.058889,
+          "unit": "veces",
+          "status": "CALCULADO",
+          "period_end": "2026-06-30",
+          "window": "FY",
+          "denominator_basis": "n/a",
+          "currency": "USD",
+          "formula_version": "pe_v1",
+          "formula": "(close / ratio_adr) / eps_basico",
+          "provenance_status": "COMPLETA",
+          "motivo": null,
+          "publicable": true,
+          "provenance": {
+            "run_id": "f5ddcf77dcfd47e7933c80344320e44d",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:33:53.769945+00:00",
+            "valid_from": "2026-09-01T23:33:53.769945+00:00",
+            "valid_to": null,
+            "inputs": [
+              {
+                "rol": "eps",
+                "qname": "http://fasb.org/us-gaap/2025#EarningsPerShareBasic",
+                "valor": 18.0,
+                "moneda": "USD",
+                "concepto": "eps_basico",
+                "fact_key": "e44142646608195f92ed8b10b7a825384bf6c3fbc84cc4aafb8e13abf6216b93",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 4,
+                  "parsed_cik": "0000789019",
+                  "source_files": [
+                    "msft-20260630.htm",
+                    "msft-20260630_htm.xml"
+                  ],
+                  "source_paths": [
+                    "CIK0000789019/filings/000119312526323660/0001193125-26-323660-xbrl.zip!msft-20260630.htm",
+                    "CIK0000789019/filings/000119312526323660/msft-20260630_htm.xml"
+                  ],
+                  "source_hashes": [
+                    "4561138eb81082fd06a693e6a2036eeae14e321d0c75a77aee5c28f1d4dc6d1d",
+                    "56e56d82ee2d82cb75d37b85df51d4807ffc1e1a3cc4e02ec87513b7574aa886"
+                  ],
+                  "source_fact_ids": [
+                    152563,
+                    152877,
+                    154432,
+                    154746
+                  ],
+                  "parsed_accession": "0001193125-26-323660"
+                },
+                "namespace": "http://fasb.org/us-gaap/2025",
+                "filing_date": "2026-07-29",
+                "tag_elegido": "EarningsPerShareBasic",
+                "unit_measure": "iso4217:USD/shares",
+                "cadena_evaluada": [
+                  "BasicEarningsLossPerShare",
+                  "BasicAndDilutedEarningsPerShare",
+                  "BasicAndDilutedEarningsLossPerShare",
+                  "EarningsPerShareBasic",
+                  "IncomeLossFromContinuingOperationsPerBasicShare"
+                ],
+                "accession_number": "0001193125-26-323660"
+              },
+              {
+                "rol": "precio",
+                "valor": 505.059998,
+                "moneda": "USD",
+                "concepto": "precio_cierre",
+                "exchange": null,
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "fuente": "market_price_daily"
+                },
+                "ratio_adr": 1.0,
+                "trading_date": "2026-08-27",
+                "instrument_id": "402"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entity_key": "E01M13XBSREYYDB03WJ7W62ANSX",
+      "nombre": "NVIDIA CORP",
+      "cik": "0001045810",
+      "ratios": [
+        {
+          "canonical_id": "eps",
+          "value": 4.93,
+          "unit": "moneda_por_accion",
+          "status": "CALCULADO",
+          "period_end": "2026-01-25",
+          "window": "FY",
+          "denominator_basis": "AVERAGE",
+          "currency": "USD",
+          "formula_version": "eps_v1",
+          "formula": "EPS basico reportado por el emisor",
+          "provenance_status": "COMPLETA",
+          "motivo": null,
+          "publicable": true,
+          "provenance": {
+            "run_id": "f5ddcf77dcfd47e7933c80344320e44d",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:33:53.769945+00:00",
+            "valid_from": "2026-09-01T23:33:53.769945+00:00",
+            "valid_to": null,
+            "inputs": [
+              {
+                "rol": "eps",
+                "qname": "http://fasb.org/us-gaap/2025#EarningsPerShareBasic",
+                "valor": 4.93,
+                "moneda": "USD",
+                "concepto": "eps_basico",
+                "fact_key": "cbff5489d2fc3daf5ec8f21715a73532c987b68ca573017a036a6b6008a2992b",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 4,
+                  "parsed_cik": "0001045810",
+                  "source_files": [
+                    "nvda-20260125.htm",
+                    "nvda-20260125_htm.xml"
+                  ],
+                  "source_paths": [
+                    "CIK0001045810/filings/000104581026000021/0001045810-26-000021-xbrl.zip!nvda-20260125.htm",
+                    "CIK0001045810/filings/000104581026000021/nvda-20260125_htm.xml"
+                  ],
+                  "source_hashes": [
+                    "4233c3ff4b5c40cd7940f1b8bb317859171ebe58d9b11c44cbf2be40b9a61a65",
+                    "af8398105d629d98defacca572c8e85fe0d8a5f551266b01df2d8be4fa03558f"
+                  ],
+                  "source_fact_ids": [
+                    159948,
+                    160374,
+                    161253,
+                    161679
+                  ],
+                  "parsed_accession": "0001045810-26-000021"
+                },
+                "namespace": "http://fasb.org/us-gaap/2025",
+                "filing_date": "2026-02-25",
+                "tag_elegido": "EarningsPerShareBasic",
+                "unit_measure": "iso4217:USD/shares",
+                "cadena_evaluada": [
+                  "BasicEarningsLossPerShare",
+                  "BasicAndDilutedEarningsPerShare",
+                  "BasicAndDilutedEarningsLossPerShare",
+                  "EarningsPerShareBasic",
+                  "IncomeLossFromContinuingOperationsPerBasicShare"
+                ],
+                "accession_number": "0001045810-26-000021"
+              }
+            ]
+          }
+        },
+        {
+          "canonical_id": "ev_sales",
+          "value": 25.64944,
+          "unit": "veces",
+          "status": "CALCULADO",
+          "period_end": "2026-01-25",
+          "window": "FY",
+          "denominator_basis": "n/a",
+          "currency": "USD",
+          "formula_version": "ev_sales_v1",
+          "formula": "(market_cap + deuda_financiera - efectivo) / ingresos",
+          "provenance_status": "COMPLETA",
+          "motivo": null,
+          "publicable": true,
+          "provenance": {
+            "run_id": "290e4ba02f47469fb183d0923fde1dbd",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:20:13.584825+00:00",
+            "valid_from": "2026-09-01T23:20:13.584825+00:00",
+            "valid_to": null,
+            "inputs": [
+              {
+                "rol": "ingresos",
+                "qname": "http://fasb.org/us-gaap/2025#Revenues",
+                "valor": 215938000000.0,
+                "moneda": "USD",
+                "concepto": "ingresos",
+                "fact_key": "596ebef1359c75874161dbc672d175f0c5c80b71fceee32ea0e0e7718b7ebeca",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 6,
+                  "parsed_cik": "0001045810",
+                  "source_files": [
+                    "nvda-20260125.htm",
+                    "nvda-20260125_htm.xml"
+                  ],
+                  "source_paths": [
+                    "CIK0001045810/filings/000104581026000021/0001045810-26-000021-xbrl.zip!nvda-20260125.htm",
+                    "CIK0001045810/filings/000104581026000021/nvda-20260125_htm.xml"
+                  ],
+                  "source_hashes": [
+                    "4233c3ff4b5c40cd7940f1b8bb317859171ebe58d9b11c44cbf2be40b9a61a65",
+                    "af8398105d629d98defacca572c8e85fe0d8a5f551266b01df2d8be4fa03558f"
+                  ],
+                  "source_fact_ids": [
+                    159906,
+                    161019,
+                    161053,
+                    161211,
+                    162324,
+                    162358
+                  ],
+                  "parsed_accession": "0001045810-26-000021"
+                },
+                "namespace": "http://fasb.org/us-gaap/2025",
+                "filing_date": "2026-02-25",
+                "tag_elegido": "Revenues",
+                "unit_measure": "iso4217:USD",
+                "cadena_evaluada": [
+                  "Revenue",
+                  "RevenueFromContractsWithCustomers",
+                  "RevenueFromContractWithCustomerExcludingAssessedTax",
+                  "RevenueFromContractWithCustomerIncludingAssessedTax",
+                  "Revenues"
+                ],
+                "accession_number": "0001045810-26-000021"
+              },
+              {
+                "rol": "deuda",
+                "qname": "http://fasb.org/us-gaap/2025#LongTermDebt",
+                "valor": 8468000000.0,
+                "moneda": "USD",
+                "concepto": "deuda_financiera",
+                "fact_key": "2a4d1d83af726fb554904a785631cec51592c81de5f6c6847e8c3ecbf36eb1b8",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 2,
+                  "parsed_cik": "0001045810",
+                  "source_files": [
+                    "nvda-20260125.htm",
+                    "nvda-20260125_htm.xml"
+                  ],
+                  "source_paths": [
+                    "CIK0001045810/filings/000104581026000021/0001045810-26-000021-xbrl.zip!nvda-20260125.htm",
+                    "CIK0001045810/filings/000104581026000021/nvda-20260125_htm.xml"
+                  ],
+                  "source_hashes": [
+                    "4233c3ff4b5c40cd7940f1b8bb317859171ebe58d9b11c44cbf2be40b9a61a65",
+                    "af8398105d629d98defacca572c8e85fe0d8a5f551266b01df2d8be4fa03558f"
+                  ],
+                  "source_fact_ids": [
+                    160712,
+                    162017
+                  ],
+                  "parsed_accession": "0001045810-26-000021"
+                },
+                "namespace": "http://fasb.org/us-gaap/2025",
+                "filing_date": "2026-02-25",
+                "tag_elegido": "LongTermDebt",
+                "unit_measure": "iso4217:USD",
+                "cadena_evaluada": [
+                  "Borrowings",
+                  "DebtLongtermAndShorttermCombinedAmount",
+                  "LongTermDebt"
+                ],
+                "accession_number": "0001045810-26-000021"
+              },
+              {
+                "rol": "efectivo",
+                "qname": "http://fasb.org/us-gaap/2025#CashAndCashEquivalentsAtCarryingValue",
+                "valor": 10605000000.0,
+                "moneda": "USD",
+                "concepto": "efectivo",
+                "fact_key": "179c819990ac234423d4612e0cdf7765c8612d09a508fc5a976140e84545e2eb",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 2,
+                  "parsed_cik": "0001045810",
+                  "source_files": [
+                    "nvda-20260125.htm",
+                    "nvda-20260125_htm.xml"
+                  ],
+                  "source_paths": [
+                    "CIK0001045810/filings/000104581026000021/0001045810-26-000021-xbrl.zip!nvda-20260125.htm",
+                    "CIK0001045810/filings/000104581026000021/nvda-20260125_htm.xml"
+                  ],
+                  "source_hashes": [
+                    "4233c3ff4b5c40cd7940f1b8bb317859171ebe58d9b11c44cbf2be40b9a61a65",
+                    "af8398105d629d98defacca572c8e85fe0d8a5f551266b01df2d8be4fa03558f"
+                  ],
+                  "source_fact_ids": [
+                    159975,
+                    161280
+                  ],
+                  "parsed_accession": "0001045810-26-000021"
+                },
+                "namespace": "http://fasb.org/us-gaap/2025",
+                "filing_date": "2026-02-25",
+                "tag_elegido": "CashAndCashEquivalentsAtCarryingValue",
+                "unit_measure": "iso4217:USD",
+                "cadena_evaluada": [
+                  "CashAndCashEquivalents",
+                  "CashAndCashEquivalentsAtCarryingValue",
+                  "CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents"
+                ],
+                "accession_number": "0001045810-26-000021"
+              },
+              {
+                "rol": "acciones",
+                "qname": "http://fasb.org/us-gaap/2025#CommonStockSharesOutstanding",
+                "valor": 24304000000.0,
+                "moneda": null,
+                "concepto": "acciones_circulacion",
+                "fact_key": "b0d2f522d826377b84d70fb6fd1921b4b331e699de9018ad1c184397d10408fb",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 2,
+                  "parsed_cik": "0001045810",
+                  "source_files": [
+                    "nvda-20260125.htm",
+                    "nvda-20260125_htm.xml"
+                  ],
+                  "source_paths": [
+                    "CIK0001045810/filings/000104581026000021/0001045810-26-000021-xbrl.zip!nvda-20260125.htm",
+                    "CIK0001045810/filings/000104581026000021/nvda-20260125_htm.xml"
+                  ],
+                  "source_hashes": [
+                    "4233c3ff4b5c40cd7940f1b8bb317859171ebe58d9b11c44cbf2be40b9a61a65",
+                    "af8398105d629d98defacca572c8e85fe0d8a5f551266b01df2d8be4fa03558f"
+                  ],
+                  "source_fact_ids": [
+                    160033,
+                    161338
+                  ],
+                  "parsed_accession": "0001045810-26-000021"
+                },
+                "namespace": "http://fasb.org/us-gaap/2025",
+                "filing_date": "2026-02-25",
+                "tag_elegido": "CommonStockSharesOutstanding",
+                "unit_measure": "shares",
+                "cadena_evaluada": [
+                  "EntityCommonStockSharesOutstanding",
+                  "NumberOfSharesOutstanding",
+                  "CommonStockSharesOutstanding"
+                ],
+                "accession_number": "0001045810-26-000021"
+              },
+              {
+                "rol": "precio",
+                "valor": 227.979996,
+                "moneda": "USD",
+                "concepto": "precio_cierre",
+                "exchange": null,
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "fuente": "market_price_daily"
+                },
+                "ratio_adr": 1.0,
+                "trading_date": "2026-08-27",
+                "instrument_id": "422"
+              },
+              {
+                "rol": "derivado",
+                "valor": 5540825822784.0,
+                "moneda": "USD",
+                "formula": "close / ratio_adr * acciones_circulacion",
+                "concepto": "market_cap"
+              },
+              {
+                "rol": "derivado",
+                "valor": 5538688822784.0,
+                "moneda": "USD",
+                "formula": "market_cap + deuda_financiera - efectivo",
+                "concepto": "enterprise_value"
+              }
+            ]
+          }
+        },
+        {
+          "canonical_id": "pb",
+          "value": 35.226144,
+          "unit": "veces",
+          "status": "CALCULADO",
+          "period_end": "2026-01-25",
+          "window": "PIT",
+          "denominator_basis": "CLOSING",
+          "currency": "USD",
+          "formula_version": "pb_v1",
+          "formula": "(close / ratio_adr) / (patrimonio_controladora / acciones_circulacion)",
+          "provenance_status": "COMPLETA",
+          "motivo": null,
+          "publicable": true,
+          "provenance": {
+            "run_id": "f5ddcf77dcfd47e7933c80344320e44d",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:33:53.769945+00:00",
+            "valid_from": "2026-09-01T23:33:53.769945+00:00",
+            "valid_to": null,
+            "inputs": [
+              {
+                "rol": "patrimonio",
+                "qname": "http://fasb.org/us-gaap/2025#StockholdersEquity",
+                "valor": 157293000000.0,
+                "moneda": "USD",
+                "concepto": "patrimonio_controladora",
+                "fact_key": "d56e42af82b60b584355f204b97a7d8e7a7f84696fe7d102b790b3267670952a",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 4,
+                  "parsed_cik": "0001045810",
+                  "source_files": [
+                    "nvda-20260125.htm",
+                    "nvda-20260125_htm.xml"
+                  ],
+                  "source_paths": [
+                    "CIK0001045810/filings/000104581026000021/0001045810-26-000021-xbrl.zip!nvda-20260125.htm",
+                    "CIK0001045810/filings/000104581026000021/nvda-20260125_htm.xml"
+                  ],
+                  "source_hashes": [
+                    "4233c3ff4b5c40cd7940f1b8bb317859171ebe58d9b11c44cbf2be40b9a61a65",
+                    "af8398105d629d98defacca572c8e85fe0d8a5f551266b01df2d8be4fa03558f"
+                  ],
+                  "source_fact_ids": [
+                    160045,
+                    160132,
+                    161350,
+                    161437
+                  ],
+                  "parsed_accession": "0001045810-26-000021"
+                },
+                "namespace": "http://fasb.org/us-gaap/2025",
+                "filing_date": "2026-02-25",
+                "tag_elegido": "StockholdersEquity",
+                "unit_measure": "iso4217:USD",
+                "cadena_evaluada": [
+                  "EquityAttributableToOwnersOfParent",
+                  "Equity",
+                  "StockholdersEquity"
+                ],
+                "accession_number": "0001045810-26-000021"
+              },
+              {
+                "rol": "acciones",
+                "qname": "http://fasb.org/us-gaap/2025#CommonStockSharesOutstanding",
+                "valor": 24304000000.0,
+                "moneda": null,
+                "concepto": "acciones_circulacion",
+                "fact_key": "b0d2f522d826377b84d70fb6fd1921b4b331e699de9018ad1c184397d10408fb",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 2,
+                  "parsed_cik": "0001045810",
+                  "source_files": [
+                    "nvda-20260125.htm",
+                    "nvda-20260125_htm.xml"
+                  ],
+                  "source_paths": [
+                    "CIK0001045810/filings/000104581026000021/0001045810-26-000021-xbrl.zip!nvda-20260125.htm",
+                    "CIK0001045810/filings/000104581026000021/nvda-20260125_htm.xml"
+                  ],
+                  "source_hashes": [
+                    "4233c3ff4b5c40cd7940f1b8bb317859171ebe58d9b11c44cbf2be40b9a61a65",
+                    "af8398105d629d98defacca572c8e85fe0d8a5f551266b01df2d8be4fa03558f"
+                  ],
+                  "source_fact_ids": [
+                    160033,
+                    161338
+                  ],
+                  "parsed_accession": "0001045810-26-000021"
+                },
+                "namespace": "http://fasb.org/us-gaap/2025",
+                "filing_date": "2026-02-25",
+                "tag_elegido": "CommonStockSharesOutstanding",
+                "unit_measure": "shares",
+                "cadena_evaluada": [
+                  "EntityCommonStockSharesOutstanding",
+                  "NumberOfSharesOutstanding",
+                  "CommonStockSharesOutstanding"
+                ],
+                "accession_number": "0001045810-26-000021"
+              },
+              {
+                "rol": "precio",
+                "valor": 227.979996,
+                "moneda": "USD",
+                "concepto": "precio_cierre",
+                "exchange": null,
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "fuente": "market_price_daily"
+                },
+                "ratio_adr": 1.0,
+                "trading_date": "2026-08-27",
+                "instrument_id": "422"
+              },
+              {
+                "rol": "derivado",
+                "valor": 6.4718976300197495,
+                "moneda": "USD",
+                "formula": "patrimonio_controladora / acciones_circulacion",
+                "concepto": "bvps"
+              }
+            ]
+          }
+        },
+        {
+          "canonical_id": "pe",
+          "value": 46.243407,
+          "unit": "veces",
+          "status": "CALCULADO",
+          "period_end": "2026-01-25",
+          "window": "FY",
+          "denominator_basis": "n/a",
+          "currency": "USD",
+          "formula_version": "pe_v1",
+          "formula": "(close / ratio_adr) / eps_basico",
+          "provenance_status": "COMPLETA",
+          "motivo": null,
+          "publicable": true,
+          "provenance": {
+            "run_id": "f5ddcf77dcfd47e7933c80344320e44d",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:33:53.769945+00:00",
+            "valid_from": "2026-09-01T23:33:53.769945+00:00",
+            "valid_to": null,
+            "inputs": [
+              {
+                "rol": "eps",
+                "qname": "http://fasb.org/us-gaap/2025#EarningsPerShareBasic",
+                "valor": 4.93,
+                "moneda": "USD",
+                "concepto": "eps_basico",
+                "fact_key": "cbff5489d2fc3daf5ec8f21715a73532c987b68ca573017a036a6b6008a2992b",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 4,
+                  "parsed_cik": "0001045810",
+                  "source_files": [
+                    "nvda-20260125.htm",
+                    "nvda-20260125_htm.xml"
+                  ],
+                  "source_paths": [
+                    "CIK0001045810/filings/000104581026000021/0001045810-26-000021-xbrl.zip!nvda-20260125.htm",
+                    "CIK0001045810/filings/000104581026000021/nvda-20260125_htm.xml"
+                  ],
+                  "source_hashes": [
+                    "4233c3ff4b5c40cd7940f1b8bb317859171ebe58d9b11c44cbf2be40b9a61a65",
+                    "af8398105d629d98defacca572c8e85fe0d8a5f551266b01df2d8be4fa03558f"
+                  ],
+                  "source_fact_ids": [
+                    159948,
+                    160374,
+                    161253,
+                    161679
+                  ],
+                  "parsed_accession": "0001045810-26-000021"
+                },
+                "namespace": "http://fasb.org/us-gaap/2025",
+                "filing_date": "2026-02-25",
+                "tag_elegido": "EarningsPerShareBasic",
+                "unit_measure": "iso4217:USD/shares",
+                "cadena_evaluada": [
+                  "BasicEarningsLossPerShare",
+                  "BasicAndDilutedEarningsPerShare",
+                  "BasicAndDilutedEarningsLossPerShare",
+                  "EarningsPerShareBasic",
+                  "IncomeLossFromContinuingOperationsPerBasicShare"
+                ],
+                "accession_number": "0001045810-26-000021"
+              },
+              {
+                "rol": "precio",
+                "valor": 227.979996,
+                "moneda": "USD",
+                "concepto": "precio_cierre",
+                "exchange": null,
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "fuente": "market_price_daily"
+                },
+                "ratio_adr": 1.0,
+                "trading_date": "2026-08-27",
+                "instrument_id": "422"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entity_key": "E01M0X99G29RBSSFSGAM5S1QZMT",
+      "nombre": "TRANSPORTADORA DE GAS DEL SUR S.A.",
+      "cik": "0000931427",
+      "ratios": [
+        {
+          "canonical_id": "eps",
+          "value": 559.09,
+          "unit": "moneda_por_accion",
+          "status": "CALCULADO",
+          "period_end": "2025-12-31",
+          "window": "FY",
+          "denominator_basis": "AVERAGE",
+          "currency": "ARS",
+          "formula_version": "eps_v1",
+          "formula": "EPS basico reportado por el emisor",
+          "provenance_status": "COMPLETA",
+          "motivo": null,
+          "publicable": true,
+          "provenance": {
+            "run_id": "f5ddcf77dcfd47e7933c80344320e44d",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:33:53.769945+00:00",
+            "valid_from": "2026-09-01T23:33:53.769945+00:00",
+            "valid_to": null,
+            "inputs": [
+              {
+                "rol": "eps",
+                "qname": "https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full#BasicEarningsLossPerShare",
+                "valor": 559.09,
+                "moneda": "ARS",
+                "concepto": "eps_basico",
+                "fact_key": "b93f8e974ee1e67a58f20116d22e38885707e47e8b08c00221953d349d3aaecb",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 2,
+                  "parsed_cik": "0000931427",
+                  "source_files": [
+                    "ef20060824_20f.htm"
+                  ],
+                  "source_paths": [
+                    "CIK0000931427/filings/000114036126016167/0001140361-26-016167-xbrl.zip!ef20060824_20f.htm"
+                  ],
+                  "source_hashes": [
+                    "3802f019cc86f53ecc27602ede91be43d9777b20b3c12089d040e70834b65355"
+                  ],
+                  "source_fact_ids": [
+                    15771,
+                    16380
+                  ],
+                  "parsed_accession": "0001140361-26-016167"
+                },
+                "namespace": "https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full",
+                "filing_date": "2026-04-22",
+                "tag_elegido": "BasicEarningsLossPerShare",
+                "unit_measure": "iso4217:ARS/xbrli:shares",
+                "cadena_evaluada": [
+                  "BasicEarningsLossPerShare",
+                  "BasicAndDilutedEarningsPerShare",
+                  "BasicAndDilutedEarningsLossPerShare",
+                  "EarningsPerShareBasic",
+                  "IncomeLossFromContinuingOperationsPerBasicShare"
+                ],
+                "accession_number": "0001140361-26-016167"
+              }
+            ]
+          }
+        },
+        {
+          "canonical_id": "ev_sales",
+          "value": 4.507306,
+          "unit": "veces",
+          "status": "CALCULADO",
+          "period_end": "2025-12-31",
+          "window": "FY",
+          "denominator_basis": "n/a",
+          "currency": "ARS",
+          "formula_version": "ev_sales_v1",
+          "formula": "(market_cap + deuda_financiera - efectivo) / ingresos",
+          "provenance_status": "COMPLETA",
+          "motivo": null,
+          "publicable": true,
+          "provenance": {
+            "run_id": "290e4ba02f47469fb183d0923fde1dbd",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:20:13.584825+00:00",
+            "valid_from": "2026-09-01T23:20:13.584825+00:00",
+            "valid_to": null,
+            "inputs": [
+              {
+                "rol": "ingresos",
+                "qname": "https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full#Revenue",
+                "valor": 1720626082000.0,
+                "moneda": "ARS",
+                "concepto": "ingresos",
+                "fact_key": "d09acdeb3eccd8389eb0c1a9071deb6bd6935ef4bc83f2a6f9c1ea622a521fbc",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 3,
+                  "parsed_cik": "0000931427",
+                  "source_files": [
+                    "ef20060824_20f.htm"
+                  ],
+                  "source_paths": [
+                    "CIK0000931427/filings/000114036126016167/0001140361-26-016167-xbrl.zip!ef20060824_20f.htm"
+                  ],
+                  "source_hashes": [
+                    "3802f019cc86f53ecc27602ede91be43d9777b20b3c12089d040e70834b65355"
+                  ],
+                  "source_fact_ids": [
+                    15707,
+                    16408,
+                    16736
+                  ],
+                  "parsed_accession": "0001140361-26-016167"
+                },
+                "namespace": "https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full",
+                "filing_date": "2026-04-22",
+                "tag_elegido": "Revenue",
+                "unit_measure": "iso4217:ARS",
+                "cadena_evaluada": [
+                  "Revenue",
+                  "RevenueFromContractsWithCustomers",
+                  "RevenueFromContractWithCustomerExcludingAssessedTax",
+                  "RevenueFromContractWithCustomerIncludingAssessedTax",
+                  "Revenues"
+                ],
+                "accession_number": "0001140361-26-016167"
+              },
+              {
+                "rol": "deuda",
+                "qname": "https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full#Borrowings",
+                "valor": 1705606117000.0,
+                "moneda": "ARS",
+                "concepto": "deuda_financiera",
+                "fact_key": "4a56803950965325a970083230cc5ca0008ffb80aeb8a572a993164083c5f849",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 3,
+                  "parsed_cik": "0000931427",
+                  "source_files": [
+                    "ef20060824_20f.htm"
+                  ],
+                  "source_paths": [
+                    "CIK0000931427/filings/000114036126016167/0001140361-26-016167-xbrl.zip!ef20060824_20f.htm"
+                  ],
+                  "source_hashes": [
+                    "3802f019cc86f53ecc27602ede91be43d9777b20b3c12089d040e70834b65355"
+                  ],
+                  "source_fact_ids": [
+                    18082,
+                    18197,
+                    18790
+                  ],
+                  "parsed_accession": "0001140361-26-016167"
+                },
+                "namespace": "https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full",
+                "filing_date": "2026-04-22",
+                "tag_elegido": "Borrowings",
+                "unit_measure": "iso4217:ARS",
+                "cadena_evaluada": [
+                  "Borrowings",
+                  "DebtLongtermAndShorttermCombinedAmount",
+                  "LongTermDebt"
+                ],
+                "accession_number": "0001140361-26-016167"
+              },
+              {
+                "rol": "efectivo",
+                "qname": "https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full#CashAndCashEquivalents",
+                "valor": 804106528000.0,
+                "moneda": "ARS",
+                "concepto": "efectivo",
+                "fact_key": "c83c9f04a20de44a269fb621cf3cdaedbc67e65a1f4081433c7049621ed33703",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 3,
+                  "parsed_cik": "0000931427",
+                  "source_files": [
+                    "ef20060824_20f.htm"
+                  ],
+                  "source_paths": [
+                    "CIK0000931427/filings/000114036126016167/0001140361-26-016167-xbrl.zip!ef20060824_20f.htm"
+                  ],
+                  "source_hashes": [
+                    "3802f019cc86f53ecc27602ede91be43d9777b20b3c12089d040e70834b65355"
+                  ],
+                  "source_fact_ids": [
+                    15798,
+                    16223,
+                    16672
+                  ],
+                  "parsed_accession": "0001140361-26-016167"
+                },
+                "namespace": "https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full",
+                "filing_date": "2026-04-22",
+                "tag_elegido": "CashAndCashEquivalents",
+                "unit_measure": "iso4217:ARS",
+                "cadena_evaluada": [
+                  "CashAndCashEquivalents",
+                  "CashAndCashEquivalentsAtCarryingValue",
+                  "CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents"
+                ],
+                "accession_number": "0001140361-26-016167"
+              },
+              {
+                "rol": "acciones",
+                "qname": "http://xbrl.sec.gov/dei/2025#EntityCommonStockSharesOutstanding",
+                "valor": 752761058.0,
+                "moneda": null,
+                "concepto": "acciones_circulacion",
+                "fact_key": "693d3103a3190c6169642453300b07596e4b81749d669777a004e5d2095ef567",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 1,
+                  "parsed_cik": "0000931427",
+                  "source_files": [
+                    "ef20060824_20f.htm"
+                  ],
+                  "source_paths": [
+                    "CIK0000931427/filings/000114036126016167/0001140361-26-016167-xbrl.zip!ef20060824_20f.htm"
+                  ],
+                  "source_hashes": [
+                    "3802f019cc86f53ecc27602ede91be43d9777b20b3c12089d040e70834b65355"
+                  ],
+                  "source_fact_ids": [
+                    15675
+                  ],
+                  "parsed_accession": "0001140361-26-016167"
+                },
+                "namespace": "http://xbrl.sec.gov/dei/2025",
+                "filing_date": "2026-04-22",
+                "tag_elegido": "EntityCommonStockSharesOutstanding",
+                "unit_measure": "xbrli:shares",
+                "cadena_evaluada": [
+                  "EntityCommonStockSharesOutstanding",
+                  "NumberOfSharesOutstanding",
+                  "CommonStockSharesOutstanding"
+                ],
+                "accession_number": "0001140361-26-016167"
+              },
+              {
+                "rol": "precio",
+                "valor": 9105.0,
+                "moneda": "ARS",
+                "concepto": "precio_cierre",
+                "exchange": "BUE",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "fuente": "market_price_daily"
+                },
+                "ratio_adr": 1.0,
+                "trading_date": "2026-08-27",
+                "instrument_id": "65"
+              },
+              {
+                "rol": "derivado",
+                "valor": 6853889433090.0,
+                "moneda": "ARS",
+                "formula": "close / ratio_adr * acciones_circulacion",
+                "concepto": "market_cap"
+              },
+              {
+                "rol": "derivado",
+                "valor": 7755389022090.0,
+                "moneda": "ARS",
+                "formula": "market_cap + deuda_financiera - efectivo",
+                "concepto": "enterprise_value"
+              }
+            ]
+          }
+        },
+        {
+          "canonical_id": "pb",
+          "value": 2.191237,
+          "unit": "veces",
+          "status": "CALCULADO",
+          "period_end": "2025-12-31",
+          "window": "PIT",
+          "denominator_basis": "CLOSING",
+          "currency": "ARS",
+          "formula_version": "pb_v1",
+          "formula": "(close / ratio_adr) / (patrimonio_controladora / acciones_circulacion)",
+          "provenance_status": "COMPLETA",
+          "motivo": null,
+          "publicable": true,
+          "provenance": {
+            "run_id": "f5ddcf77dcfd47e7933c80344320e44d",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:33:53.769945+00:00",
+            "valid_from": "2026-09-01T23:33:53.769945+00:00",
+            "valid_to": null,
+            "inputs": [
+              {
+                "rol": "patrimonio",
+                "qname": "https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full#EquityAttributableToOwnersOfParent",
+                "valor": 3127862637000.0,
+                "moneda": "ARS",
+                "concepto": "patrimonio_controladora",
+                "fact_key": "da321b65adcef6a10dd4786bdcbb933b7e47b3e48832a61106a78c84f568c58f",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 1,
+                  "parsed_cik": "0000931427",
+                  "source_files": [
+                    "ef20060824_20f.htm"
+                  ],
+                  "source_paths": [
+                    "CIK0000931427/filings/000114036126016167/0001140361-26-016167-xbrl.zip!ef20060824_20f.htm"
+                  ],
+                  "source_hashes": [
+                    "3802f019cc86f53ecc27602ede91be43d9777b20b3c12089d040e70834b65355"
+                  ],
+                  "source_fact_ids": [
+                    15818
+                  ],
+                  "parsed_accession": "0001140361-26-016167"
+                },
+                "namespace": "https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full",
+                "filing_date": "2026-04-22",
+                "tag_elegido": "EquityAttributableToOwnersOfParent",
+                "unit_measure": "iso4217:ARS",
+                "cadena_evaluada": [
+                  "EquityAttributableToOwnersOfParent",
+                  "Equity",
+                  "StockholdersEquity"
+                ],
+                "accession_number": "0001140361-26-016167"
+              },
+              {
+                "rol": "acciones",
+                "qname": "http://xbrl.sec.gov/dei/2025#EntityCommonStockSharesOutstanding",
+                "valor": 752761058.0,
+                "moneda": null,
+                "concepto": "acciones_circulacion",
+                "fact_key": "693d3103a3190c6169642453300b07596e4b81749d669777a004e5d2095ef567",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 1,
+                  "parsed_cik": "0000931427",
+                  "source_files": [
+                    "ef20060824_20f.htm"
+                  ],
+                  "source_paths": [
+                    "CIK0000931427/filings/000114036126016167/0001140361-26-016167-xbrl.zip!ef20060824_20f.htm"
+                  ],
+                  "source_hashes": [
+                    "3802f019cc86f53ecc27602ede91be43d9777b20b3c12089d040e70834b65355"
+                  ],
+                  "source_fact_ids": [
+                    15675
+                  ],
+                  "parsed_accession": "0001140361-26-016167"
+                },
+                "namespace": "http://xbrl.sec.gov/dei/2025",
+                "filing_date": "2026-04-22",
+                "tag_elegido": "EntityCommonStockSharesOutstanding",
+                "unit_measure": "xbrli:shares",
+                "cadena_evaluada": [
+                  "EntityCommonStockSharesOutstanding",
+                  "NumberOfSharesOutstanding",
+                  "CommonStockSharesOutstanding"
+                ],
+                "accession_number": "0001140361-26-016167"
+              },
+              {
+                "rol": "precio",
+                "valor": 9105.0,
+                "moneda": "ARS",
+                "concepto": "precio_cierre",
+                "exchange": "BUE",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "fuente": "market_price_daily"
+                },
+                "ratio_adr": 1.0,
+                "trading_date": "2026-08-27",
+                "instrument_id": "65"
+              },
+              {
+                "rol": "derivado",
+                "valor": 4155.186567847138,
+                "moneda": "ARS",
+                "formula": "patrimonio_controladora / acciones_circulacion",
+                "concepto": "bvps"
+              }
+            ]
+          }
+        },
+        {
+          "canonical_id": "pe",
+          "value": 16.285392,
+          "unit": "veces",
+          "status": "CALCULADO",
+          "period_end": "2025-12-31",
+          "window": "FY",
+          "denominator_basis": "n/a",
+          "currency": "ARS",
+          "formula_version": "pe_v1",
+          "formula": "(close / ratio_adr) / eps_basico",
+          "provenance_status": "COMPLETA",
+          "motivo": null,
+          "publicable": true,
+          "provenance": {
+            "run_id": "f5ddcf77dcfd47e7933c80344320e44d",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:33:53.769945+00:00",
+            "valid_from": "2026-09-01T23:33:53.769945+00:00",
+            "valid_to": null,
+            "inputs": [
+              {
+                "rol": "eps",
+                "qname": "https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full#BasicEarningsLossPerShare",
+                "valor": 559.09,
+                "moneda": "ARS",
+                "concepto": "eps_basico",
+                "fact_key": "b93f8e974ee1e67a58f20116d22e38885707e47e8b08c00221953d349d3aaecb",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 2,
+                  "parsed_cik": "0000931427",
+                  "source_files": [
+                    "ef20060824_20f.htm"
+                  ],
+                  "source_paths": [
+                    "CIK0000931427/filings/000114036126016167/0001140361-26-016167-xbrl.zip!ef20060824_20f.htm"
+                  ],
+                  "source_hashes": [
+                    "3802f019cc86f53ecc27602ede91be43d9777b20b3c12089d040e70834b65355"
+                  ],
+                  "source_fact_ids": [
+                    15771,
+                    16380
+                  ],
+                  "parsed_accession": "0001140361-26-016167"
+                },
+                "namespace": "https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full",
+                "filing_date": "2026-04-22",
+                "tag_elegido": "BasicEarningsLossPerShare",
+                "unit_measure": "iso4217:ARS/xbrli:shares",
+                "cadena_evaluada": [
+                  "BasicEarningsLossPerShare",
+                  "BasicAndDilutedEarningsPerShare",
+                  "BasicAndDilutedEarningsLossPerShare",
+                  "EarningsPerShareBasic",
+                  "IncomeLossFromContinuingOperationsPerBasicShare"
+                ],
+                "accession_number": "0001140361-26-016167"
+              },
+              {
+                "rol": "precio",
+                "valor": 9105.0,
+                "moneda": "ARS",
+                "concepto": "precio_cierre",
+                "exchange": "BUE",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "fuente": "market_price_daily"
+                },
+                "ratio_adr": 1.0,
+                "trading_date": "2026-08-27",
+                "instrument_id": "65"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entity_key": "E01M0X99C8F87H9TH9N39H2D1NW",
+      "nombre": "YPF SOCIEDAD ANONIMA",
+      "cik": "0000904851",
+      "ratios": [
+        {
+          "canonical_id": "eps",
+          "value": -2.11,
+          "unit": "moneda_por_accion",
+          "status": "CALCULADO",
+          "period_end": "2025-12-31",
+          "window": "FY",
+          "denominator_basis": "AVERAGE",
+          "currency": "USD",
+          "formula_version": "eps_v1",
+          "formula": "EPS basico reportado por el emisor",
+          "provenance_status": "COMPLETA",
+          "motivo": null,
+          "publicable": true,
+          "provenance": {
+            "run_id": "f5ddcf77dcfd47e7933c80344320e44d",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:33:53.769945+00:00",
+            "valid_from": "2026-09-01T23:33:53.769945+00:00",
+            "valid_to": null,
+            "inputs": [
+              {
+                "rol": "eps",
+                "qname": "https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full#BasicEarningsLossPerShare",
+                "valor": -2.11,
+                "moneda": "USD",
+                "concepto": "eps_basico",
+                "fact_key": "977b69559c420b68e5de000f7ba490dae967a29e3385006e35c845556c2c7c7f",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 2,
+                  "parsed_cik": "0000904851",
+                  "source_files": [
+                    "d95578d20f.htm"
+                  ],
+                  "source_paths": [
+                    "CIK0000904851/filings/000119312526126363/0001193125-26-126363-xbrl.zip!d95578d20f.htm"
+                  ],
+                  "source_hashes": [
+                    "960c7a2e28de2028a26ca1ff73525b3b03ec333ebe2365ea261a07302f68d823"
+                  ],
+                  "source_fact_ids": [
+                    165591,
+                    169656
+                  ],
+                  "parsed_accession": "0001193125-26-126363"
+                },
+                "namespace": "https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full",
+                "filing_date": "2026-03-26",
+                "tag_elegido": "BasicEarningsLossPerShare",
+                "unit_measure": "iso4217:USD/xbrli:shares",
+                "cadena_evaluada": [
+                  "BasicEarningsLossPerShare",
+                  "BasicAndDilutedEarningsPerShare",
+                  "BasicAndDilutedEarningsLossPerShare",
+                  "EarningsPerShareBasic",
+                  "IncomeLossFromContinuingOperationsPerBasicShare"
+                ],
+                "accession_number": "0001193125-26-126363"
+              }
+            ]
+          }
+        },
+        {
+          "canonical_id": "ev_sales",
+          "value": 1.599221,
+          "unit": "veces",
+          "status": "CALCULADO",
+          "period_end": "2025-12-31",
+          "window": "FY",
+          "denominator_basis": "n/a",
+          "currency": "USD",
+          "formula_version": "ev_sales_v1",
+          "formula": "(market_cap + deuda_financiera - efectivo) / ingresos",
+          "provenance_status": "COMPLETA",
+          "motivo": null,
+          "publicable": true,
+          "provenance": {
+            "run_id": "290e4ba02f47469fb183d0923fde1dbd",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:20:13.584825+00:00",
+            "valid_from": "2026-09-01T23:20:13.584825+00:00",
+            "valid_to": null,
+            "inputs": [
+              {
+                "rol": "ingresos",
+                "qname": "https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full#Revenue",
+                "valor": 18448000000.0,
+                "moneda": "USD",
+                "concepto": "ingresos",
+                "fact_key": "124c7b9282500911a1f0afb510e73d870bb4018764dcd68f2c0b73e34d42767f",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 4,
+                  "parsed_cik": "0000904851",
+                  "source_files": [
+                    "d95578d20f.htm"
+                  ],
+                  "source_paths": [
+                    "CIK0000904851/filings/000119312526126363/0001193125-26-126363-xbrl.zip!d95578d20f.htm"
+                  ],
+                  "source_hashes": [
+                    "960c7a2e28de2028a26ca1ff73525b3b03ec333ebe2365ea261a07302f68d823"
+                  ],
+                  "source_fact_ids": [
+                    165509,
+                    166257,
+                    168803,
+                    169098
+                  ],
+                  "parsed_accession": "0001193125-26-126363"
+                },
+                "namespace": "https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full",
+                "filing_date": "2026-03-26",
+                "tag_elegido": "Revenue",
+                "unit_measure": "iso4217:USD",
+                "cadena_evaluada": [
+                  "Revenue",
+                  "RevenueFromContractsWithCustomers",
+                  "RevenueFromContractWithCustomerExcludingAssessedTax",
+                  "RevenueFromContractWithCustomerIncludingAssessedTax",
+                  "Revenues"
+                ],
+                "accession_number": "0001193125-26-126363"
+              },
+              {
+                "rol": "deuda",
+                "qname": "https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full#Borrowings",
+                "valor": 10581000000.0,
+                "moneda": "USD",
+                "concepto": "deuda_financiera",
+                "fact_key": "715eeab5f0148680d4832c7d220490bdf7e8fd988e40b6816c09de232e600149",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 1,
+                  "parsed_cik": "0000904851",
+                  "source_files": [
+                    "d95578d20f.htm"
+                  ],
+                  "source_paths": [
+                    "CIK0000904851/filings/000119312526126363/0001193125-26-126363-xbrl.zip!d95578d20f.htm"
+                  ],
+                  "source_hashes": [
+                    "960c7a2e28de2028a26ca1ff73525b3b03ec333ebe2365ea261a07302f68d823"
+                  ],
+                  "source_fact_ids": [
+                    168534
+                  ],
+                  "parsed_accession": "0001193125-26-126363"
+                },
+                "namespace": "https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full",
+                "filing_date": "2026-03-26",
+                "tag_elegido": "Borrowings",
+                "unit_measure": "iso4217:USD",
+                "cadena_evaluada": [
+                  "Borrowings",
+                  "DebtLongtermAndShorttermCombinedAmount",
+                  "LongTermDebt"
+                ],
+                "accession_number": "0001193125-26-126363"
+              },
+              {
+                "rol": "efectivo",
+                "qname": "https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full#CashAndCashEquivalents",
+                "valor": 933000000.0,
+                "moneda": "USD",
+                "concepto": "efectivo",
+                "fact_key": "eddd119a62b8caefbc304144f86b27ffdbf7f9c2f999fb0f12962d8a5eaa6b9c",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 3,
+                  "parsed_cik": "0000904851",
+                  "source_files": [
+                    "d95578d20f.htm"
+                  ],
+                  "source_paths": [
+                    "CIK0000904851/filings/000119312526126363/0001193125-26-126363-xbrl.zip!d95578d20f.htm"
+                  ],
+                  "source_hashes": [
+                    "960c7a2e28de2028a26ca1ff73525b3b03ec333ebe2365ea261a07302f68d823"
+                  ],
+                  "source_fact_ids": [
+                    165383,
+                    165899,
+                    168000
+                  ],
+                  "parsed_accession": "0001193125-26-126363"
+                },
+                "namespace": "https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full",
+                "filing_date": "2026-03-26",
+                "tag_elegido": "CashAndCashEquivalents",
+                "unit_measure": "iso4217:USD",
+                "cadena_evaluada": [
+                  "CashAndCashEquivalents",
+                  "CashAndCashEquivalentsAtCarryingValue",
+                  "CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents"
+                ],
+                "accession_number": "0001193125-26-126363"
+              },
+              {
+                "rol": "acciones",
+                "qname": "http://xbrl.sec.gov/dei/2025#EntityCommonStockSharesOutstanding",
+                "valor": 393312793.0,
+                "moneda": null,
+                "concepto": "acciones_circulacion",
+                "fact_key": "e8c20657568f2e6bf4ae30fe9f41e1f6edb77c64139243b62a8e63c4f1d57bc0",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 1,
+                  "parsed_cik": "0000904851",
+                  "source_files": [
+                    "d95578d20f.htm"
+                  ],
+                  "source_paths": [
+                    "CIK0000904851/filings/000119312526126363/0001193125-26-126363-xbrl.zip!d95578d20f.htm"
+                  ],
+                  "source_hashes": [
+                    "960c7a2e28de2028a26ca1ff73525b3b03ec333ebe2365ea261a07302f68d823"
+                  ],
+                  "source_fact_ids": [
+                    165309
+                  ],
+                  "parsed_accession": "0001193125-26-126363"
+                },
+                "namespace": "http://xbrl.sec.gov/dei/2025",
+                "filing_date": "2026-03-26",
+                "tag_elegido": "EntityCommonStockSharesOutstanding",
+                "unit_measure": "xbrli:shares",
+                "cadena_evaluada": [
+                  "EntityCommonStockSharesOutstanding",
+                  "NumberOfSharesOutstanding",
+                  "CommonStockSharesOutstanding"
+                ],
+                "accession_number": "0001193125-26-126363"
+              },
+              {
+                "rol": "precio",
+                "valor": 50.48,
+                "moneda": "USD",
+                "concepto": "precio_cierre",
+                "exchange": "NYSE",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "fuente": "market_price_daily"
+                },
+                "ratio_adr": 1.0,
+                "trading_date": "2026-08-27",
+                "instrument_id": "84"
+              },
+              {
+                "rol": "derivado",
+                "valor": 19854429790.64,
+                "moneda": "USD",
+                "formula": "close / ratio_adr * acciones_circulacion",
+                "concepto": "market_cap"
+              },
+              {
+                "rol": "derivado",
+                "valor": 29502429790.64,
+                "moneda": "USD",
+                "formula": "market_cap + deuda_financiera - efectivo",
+                "concepto": "enterprise_value"
+              }
+            ]
+          }
+        },
+        {
+          "canonical_id": "pb",
+          "value": 1.835993,
+          "unit": "veces",
+          "status": "CALCULADO",
+          "period_end": "2025-12-31",
+          "window": "PIT",
+          "denominator_basis": "CLOSING",
+          "currency": "USD",
+          "formula_version": "pb_v1",
+          "formula": "(close / ratio_adr) / (patrimonio_controladora / acciones_circulacion)",
+          "provenance_status": "COMPLETA",
+          "motivo": null,
+          "publicable": true,
+          "provenance": {
+            "run_id": "f5ddcf77dcfd47e7933c80344320e44d",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:33:53.769945+00:00",
+            "valid_from": "2026-09-01T23:33:53.769945+00:00",
+            "valid_to": null,
+            "inputs": [
+              {
+                "rol": "patrimonio",
+                "qname": "https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full#EquityAttributableToOwnersOfParent",
+                "valor": 10814000000.0,
+                "moneda": "USD",
+                "concepto": "patrimonio_controladora",
+                "fact_key": "964271a205e1da78d27ffce54a6e5f63382be02a6d13adf000cefbf6156231ce",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 1,
+                  "parsed_cik": "0000904851",
+                  "source_files": [
+                    "d95578d20f.htm"
+                  ],
+                  "source_paths": [
+                    "CIK0000904851/filings/000119312526126363/0001193125-26-126363-xbrl.zip!d95578d20f.htm"
+                  ],
+                  "source_hashes": [
+                    "960c7a2e28de2028a26ca1ff73525b3b03ec333ebe2365ea261a07302f68d823"
+                  ],
+                  "source_fact_ids": [
+                    165428
+                  ],
+                  "parsed_accession": "0001193125-26-126363"
+                },
+                "namespace": "https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full",
+                "filing_date": "2026-03-26",
+                "tag_elegido": "EquityAttributableToOwnersOfParent",
+                "unit_measure": "iso4217:USD",
+                "cadena_evaluada": [
+                  "EquityAttributableToOwnersOfParent",
+                  "Equity",
+                  "StockholdersEquity"
+                ],
+                "accession_number": "0001193125-26-126363"
+              },
+              {
+                "rol": "acciones",
+                "qname": "http://xbrl.sec.gov/dei/2025#EntityCommonStockSharesOutstanding",
+                "valor": 393312793.0,
+                "moneda": null,
+                "concepto": "acciones_circulacion",
+                "fact_key": "e8c20657568f2e6bf4ae30fe9f41e1f6edb77c64139243b62a8e63c4f1d57bc0",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 1,
+                  "parsed_cik": "0000904851",
+                  "source_files": [
+                    "d95578d20f.htm"
+                  ],
+                  "source_paths": [
+                    "CIK0000904851/filings/000119312526126363/0001193125-26-126363-xbrl.zip!d95578d20f.htm"
+                  ],
+                  "source_hashes": [
+                    "960c7a2e28de2028a26ca1ff73525b3b03ec333ebe2365ea261a07302f68d823"
+                  ],
+                  "source_fact_ids": [
+                    165309
+                  ],
+                  "parsed_accession": "0001193125-26-126363"
+                },
+                "namespace": "http://xbrl.sec.gov/dei/2025",
+                "filing_date": "2026-03-26",
+                "tag_elegido": "EntityCommonStockSharesOutstanding",
+                "unit_measure": "xbrli:shares",
+                "cadena_evaluada": [
+                  "EntityCommonStockSharesOutstanding",
+                  "NumberOfSharesOutstanding",
+                  "CommonStockSharesOutstanding"
+                ],
+                "accession_number": "0001193125-26-126363"
+              },
+              {
+                "rol": "precio",
+                "valor": 50.48,
+                "moneda": "USD",
+                "concepto": "precio_cierre",
+                "exchange": "NYSE",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "fuente": "market_price_daily"
+                },
+                "ratio_adr": 1.0,
+                "trading_date": "2026-08-27",
+                "instrument_id": "84"
+              },
+              {
+                "rol": "derivado",
+                "valor": 27.494656142547594,
+                "moneda": "USD",
+                "formula": "patrimonio_controladora / acciones_circulacion",
+                "concepto": "bvps"
+              }
+            ]
+          }
+        },
+        {
+          "canonical_id": "pe",
+          "value": null,
+          "unit": "veces",
+          "status": "NOT_CALCULABLE",
+          "period_end": "2025-12-31",
+          "window": "FY",
+          "denominator_basis": "n/a",
+          "currency": "USD",
+          "formula_version": "pe_v1",
+          "formula": "(close / ratio_adr) / eps_basico",
+          "provenance_status": "COMPLETA",
+          "motivo": "REGLA: EPS = -2.11 <= 0 (ejercicio con perdida). El P/E queda sin valor por decision financiera, no por falta de dato: el EPS esta y su provenance tambien",
+          "publicable": false,
+          "provenance": {
+            "run_id": "f5ddcf77dcfd47e7933c80344320e44d",
+            "input_checkpoint_id": "e28d642bb2dee6bfb8946258f59d16c6",
+            "calculated_at": "2026-09-01T23:33:53.769945+00:00",
+            "valid_from": "2026-09-01T23:33:53.769945+00:00",
+            "valid_to": null,
+            "inputs": [
+              {
+                "rol": "eps",
+                "qname": "https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full#BasicEarningsLossPerShare",
+                "valor": -2.11,
+                "moneda": "USD",
+                "concepto": "eps_basico",
+                "fact_key": "977b69559c420b68e5de000f7ba490dae967a29e3385006e35c845556c2c7c7f",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "n_fuentes": 2,
+                  "parsed_cik": "0000904851",
+                  "source_files": [
+                    "d95578d20f.htm"
+                  ],
+                  "source_paths": [
+                    "CIK0000904851/filings/000119312526126363/0001193125-26-126363-xbrl.zip!d95578d20f.htm"
+                  ],
+                  "source_hashes": [
+                    "960c7a2e28de2028a26ca1ff73525b3b03ec333ebe2365ea261a07302f68d823"
+                  ],
+                  "source_fact_ids": [
+                    165591,
+                    169656
+                  ],
+                  "parsed_accession": "0001193125-26-126363"
+                },
+                "namespace": "https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full",
+                "filing_date": "2026-03-26",
+                "tag_elegido": "BasicEarningsLossPerShare",
+                "unit_measure": "iso4217:USD/xbrli:shares",
+                "cadena_evaluada": [
+                  "BasicEarningsLossPerShare",
+                  "BasicAndDilutedEarningsPerShare",
+                  "BasicAndDilutedEarningsLossPerShare",
+                  "EarningsPerShareBasic",
+                  "IncomeLossFromContinuingOperationsPerBasicShare"
+                ],
+                "accession_number": "0001193125-26-126363"
+              },
+              {
+                "rol": "precio",
+                "valor": 50.48,
+                "moneda": "USD",
+                "concepto": "precio_cierre",
+                "exchange": "NYSE",
+                "evidencia": {
+                  "estado": "COMPLETA",
+                  "fuente": "market_price_daily"
+                },
+                "ratio_adr": 1.0,
+                "trading_date": "2026-08-27",
+                "instrument_id": "84"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

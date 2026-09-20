@@ -1,0 +1,109 @@
+{
+  "elegibles": [
+    "30546689979",
+    "30657862068",
+    "33650305499"
+  ],
+  "bloqueados_ambiguo": [
+    "30500001735",
+    "30696170580",
+    "30714128309",
+    "33500005179"
+  ],
+  "bloqueados_no_autoritativo": [
+    "30500003193",
+    "30500530851",
+    "30509300700",
+    "30525322749",
+    "30526552659",
+    "30617442937",
+    "30639453738",
+    "30655116202",
+    "30704962807",
+    "33515950899"
+  ],
+  "fingerprint_identity": "525|574|608",
+  "controles": [
+    {
+      "control": "A1 · desaparecio max(a.status::text) de la elegibilidad",
+      "ok": true,
+      "detalle": "no aparece"
+    },
+    {
+      "control": "A2 · la consulta filtra por is_authoritative",
+      "ok": true,
+      "detalle": ""
+    },
+    {
+      "control": "A2 · la consulta filtra por status ACTIVE",
+      "ok": true,
+      "detalle": ""
+    },
+    {
+      "control": "A2 · la consulta filtra por valid_to vigente",
+      "ok": true,
+      "detalle": ""
+    },
+    {
+      "control": "A3 · existen los motivos nuevos",
+      "ok": true,
+      "detalle": ""
+    },
+    {
+      "control": "B1 · los elegibles coinciden con los que tienen assertion VERIFIED",
+      "ok": true,
+      "detalle": "elegibles=['30546689979', '30657862068', '33650305499'] verificados=['30546689979', '30657862068', '33650305499']"
+    },
+    {
+      "control": "B2 · exactamente 3 elegibles",
+      "ok": true,
+      "detalle": "3"
+    },
+    {
+      "control": "C1 · VERIFIED sobre identificador NO autoritativo",
+      "ok": true,
+      "detalle": "0"
+    },
+    {
+      "control": "C2 · autoritativo con assertion != VERIFIED",
+      "ok": true,
+      "detalle": "0"
+    },
+    {
+      "control": "C3 · autoritativo vigente con status != ACTIVE",
+      "ok": true,
+      "detalle": "0"
+    },
+    {
+      "control": "C4 · >1 CUIT autoritativo vigente por entidad",
+      "ok": true,
+      "detalle": "0"
+    },
+    {
+      "control": "D1 · todo artefacto pertenece a un CUIT hoy autoritativo",
+      "ok": true,
+      "detalle": "0 de CUIT no autoritativo"
+    },
+    {
+      "control": "D2 · los CUIT con artefactos son subconjunto de los elegibles",
+      "ok": true,
+      "detalle": "['30546689979', '30657862068', '33650305499']"
+    },
+    {
+      "control": "D3 · provenance completa en todos los artefactos",
+      "ok": true,
+      "detalle": "0"
+    },
+    {
+      "control": "D4 · sin corridas RUNNING",
+      "ok": true,
+      "detalle": "0"
+    },
+    {
+      "control": "E1 · huella de Identity (entities|identifiers|assertions)",
+      "ok": true,
+      "detalle": "525|574|608"
+    }
+  ],
+  "ok": true
+}

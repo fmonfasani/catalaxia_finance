@@ -1,0 +1,14 @@
+%%{init: {"theme":"base","themeVariables": {"primaryColor":"#FFFFFF","primaryTextColor":"#1A2744","primaryBorderColor":"#3B82F6","lineColor":"#3B82F6","actorBkg":"#1A2744","actorBorder":"#1A2744","actorTextColor":"#FFFFFF","fontFamily":"Calibri","fontSize":14}, "sequence": {"mirrorActors":false}}}%%
+sequenceDiagram
+    actor U as Usuario / Orquestador
+    participant M as Motor
+    participant DB as PostgreSQL
+    participant C as Caché / TIKR
+    U->>M: Paso del pipeline
+    M->>DB: Leer estado / fixtures
+    DB-->>M: Datos de entrada
+    M->>M: Parsear + normalizar
+    M->>C: Pedir dato externo
+    C-->>M: Respuesta (o fallback)
+    M->>DB: Escribir resultado + provenance
+    M->>U: Reporte de salida (gate)

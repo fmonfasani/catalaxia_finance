@@ -1,0 +1,86 @@
+{
+  "stage": "S04_normalize",
+  "run_id": "16aa290298e74b11a57fb2f407ae307b",
+  "mode": "FAST",
+  "started_at": "2026-08-31T21:51:27.737275+00:00",
+  "finished_at": "2026-08-31T21:51:40.966313+00:00",
+  "code": {
+    "script": "scripts/engine/s04_normalize.py",
+    "normalizer_version": "s04_normalize_v1",
+    "git_commit": "e9d794b85a487d461018f243066293168638012c"
+  },
+  "input": {
+    "stage": "S03_parse",
+    "checkpoint_id": "582bba5422b24967-s03",
+    "run_id": "582bba5422b249679b5e0c563496adfb",
+    "rows": 7766
+  },
+  "coverage": {
+    "grupos": 7301,
+    "emitidos": 7301,
+    "sin_contexto": 0,
+    "sin_entidad": 0,
+    "sin_unidad": 0,
+    "unidad_no_resuelta": 0,
+    "desempates": {
+      "UNICO": 6940,
+      "IDENTICO": 353,
+      "POR_PRECISION": 6,
+      "POR_FACT_ID": 2
+    }
+  },
+  "integrity": {
+    "hash_in": "7316645bb6d04510e279f34c10d9d9adfed773f0648c2dbf8cc6755b7860118d",
+    "hash_out": "751f2061a6196cb153be32302f1bd62293c0ecdeb31a3e512e41bb90ef13f238",
+    "hash_out_v1": "7e8c50f9499e9a0c7b76437c15f92373865d864198f4c8bd0939dfa7e3c19b13",
+    "hash_spec": "hashout-v2",
+    "por_tabla": {
+      "derived.fact": "7bbecade64c630feaba184667845947bb7ce064947bd080102642a5086a45c10"
+    }
+  },
+  "nulls": {
+    "count": 0
+  },
+  "gate": {
+    "status": "PASS",
+    "checks": [
+      {
+        "id": "C-S04-001",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-002",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-003",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-004",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-005",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-006",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-007",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-008",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-009",
+        "result": "PASS"
+      }
+    ],
+    "reasons": []
+  }
+}

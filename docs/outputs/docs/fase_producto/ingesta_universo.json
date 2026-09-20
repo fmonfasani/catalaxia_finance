@@ -1,0 +1,68 @@
+[
+  {
+    "ticker": "CEPU",
+    "cik": "0001717161",
+    "forms": "20-F,20-F/A",
+    "max_filings": 2,
+    "s02": "FALLO",
+    "s02_detalle": "(s)s,%(r)s,%(ih)s,%(cv)s,%(ctv)s,%(ref)s)]\n[parameters: {'cid': '7a42b67301684043829f72d6b8440d58', 's': 'S02_fetch', 'r': 'ec4b39b316664d46b3f59c967bdc0d8b', 'ih': '0712f4613539b5673aeac7611991e01e68dcebed7b1d50d5614bb31de31ecf01', 'cv': 's2-fetch-v1', 'ctv': 'fetch_raw-v1', 'ref': 'pg://fetch_raw.download_log + fs://data/raw/engine'}]\n(Background on this error at: https://sqlalche.me/e/20/gkpj)\n"
+  },
+  {
+    "ticker": "TGSU2",
+    "cik": "0000931427",
+    "forms": "20-F,20-F/A",
+    "max_filings": 2,
+    "s02": "OK",
+    "s03": "OK",
+    "s04": "OK"
+  },
+  {
+    "ticker": "GGAL",
+    "cik": "0001114700",
+    "forms": "20-F,20-F/A",
+    "max_filings": 2,
+    "s02": "OK",
+    "s03": "OK",
+    "s04": "FALLO",
+    "s04_detalle": "a de origen: 0\n   [PASS] C-S04-007  numericos con unidad resuelta pero sin medida: 0 · con unidad declarada y no resuelta (F-026): 0\n   [PASS] C-S04-008  persistidos=9196 recomputados=9196 huella_igual=True\n   [PASS] C-S04-009  is_dimensional nulo: 0\n\nhash_in  5a7ae6e413c05257677c698c4107df38b2a2e0bad78bd71e866a75af14a5c175\nhash_out ff0af4c16ee9d01a71932de7f9849df0e6beb1b97f571d2d325e4e98ee1aee74\n"
+  },
+  {
+    "ticker": "BMA",
+    "cik": "0001347426",
+    "forms": "20-F,20-F/A",
+    "max_filings": 2,
+    "s02": "OK",
+    "s03": "OK",
+    "s04": "OK"
+  },
+  {
+    "ticker": "AAPL",
+    "cik": "0000320193",
+    "forms": "10-K,10-K/A",
+    "max_filings": 2,
+    "s02": "OK",
+    "s03": "OK",
+    "s04": "FALLO",
+    "s04_detalle": "a de origen: 0\n   [PASS] C-S04-007  numericos con unidad resuelta pero sin medida: 0 · con unidad declarada y no resuelta (F-026): 0\n   [PASS] C-S04-008  persistidos=1893 recomputados=1893 huella_igual=True\n   [PASS] C-S04-009  is_dimensional nulo: 0\n\nhash_in  89e0ec65c673b4cbd041bdc1092ab79a6dbf65f750c965fe94e6abd05858d2b6\nhash_out 82f13e65dfac630a8f4ee1928e5510a2f31bc55407623ffd25cfc608aa7444ce\n"
+  },
+  {
+    "ticker": "MSFT",
+    "cik": "0000789019",
+    "forms": "10-K,10-K/A",
+    "max_filings": 2,
+    "s02": "OK",
+    "s03": "OK",
+    "s04": "FALLO",
+    "s04_detalle": "a de origen: 0\n   [PASS] C-S04-007  numericos con unidad resuelta pero sin medida: 0 · con unidad declarada y no resuelta (F-026): 0\n   [PASS] C-S04-008  persistidos=3180 recomputados=3180 huella_igual=True\n   [PASS] C-S04-009  is_dimensional nulo: 0\n\nhash_in  6d775d5d8e2069e2950ccaa1c1084b4f860956be3439f05d2ef6b2bc4261c722\nhash_out c3993424b2dd8650028c0f81086f5b2e64fd74477c6a4870aa7e18335f7d12ca\n"
+  },
+  {
+    "ticker": "NVDA",
+    "cik": "0001045810",
+    "forms": "10-K,10-K/A",
+    "max_filings": 2,
+    "s02": "OK",
+    "s03": "OK",
+    "s04": "FALLO",
+    "s04_detalle": "a de origen: 0\n   [PASS] C-S04-007  numericos con unidad resuelta pero sin medida: 0 · con unidad declarada y no resuelta (F-026): 0\n   [PASS] C-S04-008  persistidos=2358 recomputados=2358 huella_igual=True\n   [PASS] C-S04-009  is_dimensional nulo: 0\n\nhash_in  c31b21705695323f7681920ad7ecf0c11bbb0326abba574369a817c9b069fe8e\nhash_out 86742746188e7c22d258d2eac3c07b4e10801277b18ed6eb049d4a424a9b3c87\n"
+  }
+]

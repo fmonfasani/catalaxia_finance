@@ -1,0 +1,87 @@
+{
+  "stage": "S04_normalize",
+  "run_id": "70893c0ca7fc41c69c7e04a72959cf3d",
+  "mode": "FAST",
+  "started_at": "2026-08-31T22:13:11.155640+00:00",
+  "finished_at": "2026-08-31T22:13:19.088045+00:00",
+  "code": {
+    "script": "scripts/engine/s04_normalize.py",
+    "normalizer_version": "s04_normalize_v1",
+    "git_commit": "e9d794b85a487d461018f243066293168638012c"
+  },
+  "input": {
+    "stage": "S03_parse",
+    "checkpoint_id": "af689b115a9e4fff-s03",
+    "run_id": "af689b115a9e4fff8682bc006e11c92e",
+    "rows": 5444
+  },
+  "coverage": {
+    "grupos": 2505,
+    "emitidos": 2501,
+    "sin_contexto": 8,
+    "sin_entidad": 0,
+    "sin_unidad": 0,
+    "unidad_no_resuelta": 0,
+    "desempates": {
+      "POR_PRECISION": 2097,
+      "POR_FACT_ID": 265,
+      "IDENTICO": 139
+    }
+  },
+  "integrity": {
+    "hash_in": "b5b0ad0d39cd713626ad4f685479b84eb6175353300a6f1d00dd47bc9c9e482d",
+    "hash_out": "15d273b8bd43a4bb8f0205dbeb2148e0f04d2f5d1eaf64763b76b789b4ddbb22",
+    "hash_out_v1": "98a90bb5a5228d2fb4b26a911b257d94c9b294aded5604ccc70258ecfc33d70d",
+    "hash_spec": "hashout-v2",
+    "por_tabla": {
+      "derived.fact": "6d96121be2df0a71998b36e29da4fa768aaccd9f9021da03af717b9f9cfe51e4"
+    }
+  },
+  "nulls": {
+    "count": 8
+  },
+  "gate": {
+    "status": "BLOCK",
+    "checks": [
+      {
+        "id": "C-S04-001",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-002",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-003",
+        "result": "FAIL"
+      },
+      {
+        "id": "C-S04-004",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-005",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-006",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-007",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-008",
+        "result": "PASS"
+      },
+      {
+        "id": "C-S04-009",
+        "result": "PASS"
+      }
+    ],
+    "reasons": [
+      "contextos contradictorios: 2"
+    ]
+  }
+}

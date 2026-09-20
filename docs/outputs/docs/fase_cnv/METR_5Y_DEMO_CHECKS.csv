@@ -1,0 +1,56 @@
+fy,control,estado,detalle
+2021,activo = corriente + no corriente,PASS,"suma 90,489,436,000 vs 90,489,436,000 (0.00e+00)"
+2021,pasivo = corriente + no corriente,PASS,"suma 73,142,397,000 vs 73,142,397,000 (0.00e+00)"
+2021,activo = pasivo + patrimonio,PASS,"90,489,436,000 vs 90,489,436,000 (0.00e+00)"
+2021,bruto = ingresos + costo,PASS,"13,720,092,000 vs 13,720,092,000 (costo viene en negativo)"
+2021,ebitda = ebit - D&A,PASS,"897,707,000 vs 897,707,000"
+2021,moneda homogenea,PASS,['ARS']
+2021,escala declarada unica,PASS,['ars@1e3']
+2021,perimetro sin mezcla,PASS,['CONSOLIDADO']
+2021,measurement_date = cierre,PASS,['2021-12-31']
+2021,precio alineado al cierre,PASS,precio 2021-12-30 vs cierre 2021-12-31 (1 dias)
+2021,MEP alineado al cierre,PASS,MEP 2021-12-30 (1 dias)
+2022,activo = corriente + no corriente,PASS,"suma 156,788,000,000 vs 156,788,000,000 (0.00e+00)"
+2022,pasivo = corriente + no corriente,PASS,"suma 117,244,000,000 vs 117,244,000,000 (0.00e+00)"
+2022,activo = pasivo + patrimonio,PASS,"156,788,000,000 vs 156,788,000,000 (0.00e+00)"
+2022,bruto = ingresos + costo,PASS,"29,515,000,000 vs 29,515,000,000 (costo viene en negativo)"
+2022,ebitda = ebit - D&A,PASS,"7,806,000,000 vs 7,806,000,000"
+2022,moneda homogenea,PASS,['ARS']
+2022,escala declarada unica,PASS,['ars@1e6']
+2022,perimetro sin mezcla,PASS,['CONSOLIDADO']
+2022,measurement_date = cierre,PASS,['2022-12-31']
+2022,precio alineado al cierre,PASS,precio 2022-12-30 vs cierre 2022-12-31 (1 dias)
+2022,MEP alineado al cierre,PASS,MEP 2022-12-30 (1 dias)
+2023,activo = corriente + no corriente,PASS,"suma 456,301,000,000 vs 456,301,000,000 (0.00e+00)"
+2023,pasivo = corriente + no corriente,PASS,"suma 237,871,000,000 vs 237,871,000,000 (0.00e+00)"
+2023,activo = pasivo + patrimonio,PASS,"456,301,000,000 vs 456,301,000,000 (0.00e+00)"
+2023,bruto = ingresos + costo,PASS,"89,557,000,000 vs 89,557,000,000 (costo viene en negativo)"
+2023,ebitda = ebit - D&A,PASS,"21,354,000,000 vs 21,354,000,000"
+2023,moneda homogenea,PASS,['ARS']
+2023,escala declarada unica,PASS,['ars@1e6']
+2023,perimetro sin mezcla,PASS,['CONSOLIDADO']
+2023,measurement_date = cierre,PASS,['2023-12-31']
+2023,precio alineado al cierre,PASS,precio 2023-12-29 vs cierre 2023-12-31 (2 dias)
+2023,MEP alineado al cierre,PASS,MEP 2023-12-29 (2 dias)
+2024,activo = corriente + no corriente,PASS,"suma 1,100,677,000,000 vs 1,100,677,000,000 (0.00e+00)"
+2024,pasivo = corriente + no corriente,PASS,"suma 470,135,000,000 vs 470,135,000,000 (0.00e+00)"
+2024,activo = pasivo + patrimonio,PASS,"1,100,677,000,000 vs 1,100,677,000,000 (0.00e+00)"
+2024,bruto = ingresos + costo,PASS,"339,646,000,000 vs 339,646,000,000 (costo viene en negativo)"
+2024,ebitda = ebit - D&A,PASS,"187,752,000,000 vs 187,752,000,000"
+2024,moneda homogenea,PASS,['ARS']
+2024,escala declarada unica,PASS,['ars@1e6']
+2024,perimetro sin mezcla,PASS,['CONSOLIDADO']
+2024,measurement_date = cierre,PASS,['2024-12-31']
+2024,precio alineado al cierre,PASS,precio 2024-12-30 vs cierre 2024-12-31 (1 dias)
+2024,MEP alineado al cierre,PASS,MEP 2024-12-30 (1 dias)
+2025,activo = corriente + no corriente,PASS,"suma 1,390,076,000,000 vs 1,390,076,000,000 (0.00e+00)"
+2025,pasivo = corriente + no corriente,PASS,"suma 429,731,000,000 vs 429,731,000,000 (0.00e+00)"
+2025,activo = pasivo + patrimonio,PASS,"1,390,076,000,000 vs 1,390,076,000,000 (0.00e+00)"
+2025,bruto = ingresos + costo,PASS,"465,192,000,000 vs 465,192,000,000 (costo viene en negativo)"
+2025,ebitda = ebit - D&A,PASS,"256,694,000,000 vs 256,694,000,000"
+2025,moneda homogenea,PASS,['ARS']
+2025,escala declarada unica,PASS,['ars@1e6']
+2025,perimetro sin mezcla,PASS,['CONSOLIDADO']
+2025,measurement_date = cierre,PASS,['2025-12-31']
+2025,precio alineado al cierre,PASS,precio 2025-12-30 vs cierre 2025-12-31 (1 dias)
+2025,MEP alineado al cierre,PASS,MEP 2025-12-30 (1 dias)

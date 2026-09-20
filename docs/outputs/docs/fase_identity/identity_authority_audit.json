@@ -1,0 +1,173 @@
+{
+  "c1_verified_sin_autoridad": [],
+  "c1_cuit_vigentes": 0,
+  "c2_autoritativo_sin_verified": [],
+  "c3_autoritativo_no_active": [
+    {
+      "id_type": "CIK",
+      "identifier_status": "RETIRED",
+      "filas": 6,
+      "vigentes": 0
+    },
+    {
+      "id_type": "CUIT",
+      "identifier_status": "DISPUTED",
+      "filas": 3,
+      "vigentes": 0
+    }
+  ],
+  "c4_autoritativo_cerrado": [
+    {
+      "id_type": "CIK",
+      "status": "RETIRED",
+      "filas": 6,
+      "desde": "2026-08-28",
+      "hasta": "2026-08-28"
+    },
+    {
+      "id_type": "CUIT",
+      "status": "DISPUTED",
+      "filas": 3,
+      "desde": "2026-08-26",
+      "hasta": "2026-08-26"
+    }
+  ],
+  "c5_multiples_autoritativos": [],
+  "c6": {
+    "cuit_verified_total": 6,
+    "violaciones": 3,
+    "detalle": [
+      {
+        "assertion_id": "4",
+        "source_id": "GLEIF",
+        "resolved_by": "proc:gleif_fetch",
+        "source_facts": "(null)"
+      },
+      {
+        "assertion_id": "8",
+        "source_id": "GLEIF",
+        "resolved_by": "proc:gleif_fetch",
+        "source_facts": "(null)"
+      },
+      {
+        "assertion_id": "16",
+        "source_id": "GLEIF",
+        "resolved_by": "proc:gleif_fetch",
+        "source_facts": "(null)"
+      }
+    ]
+  },
+  "c7_duplicados": [
+    {
+      "entity_key": "E01M0X99C8F87H9TH9N39H2D1NW",
+      "cuit": "30546689979",
+      "method": "REGISTRY",
+      "resolved_by": "proc:legacy_import",
+      "filas": 7,
+      "identifier_ids": "105,116,124,132,154,158,162",
+      "estados": "CANDIDATE",
+      "evidencias_distintas": 1,
+      "sources_distintos": 1,
+      "records_distintos": 1,
+      "confianzas_distintas": 1
+    },
+    {
+      "entity_key": "E01M0X99DQ7P5TQ4Z6Z58RC5PB3",
+      "cuit": "33650305499",
+      "method": "REGISTRY",
+      "resolved_by": "proc:legacy_import",
+      "filas": 7,
+      "identifier_ids": "106,117,125,133,155,159,163",
+      "estados": "CANDIDATE",
+      "evidencias_distintas": 1,
+      "sources_distintos": 1,
+      "records_distintos": 1,
+      "confianzas_distintas": 1
+    },
+    {
+      "entity_key": "E01M0X99EXSQTYKWZMDEMMBX8QY",
+      "cuit": "30704962807",
+      "method": "REGISTRY",
+      "resolved_by": "proc:legacy_import",
+      "filas": 7,
+      "identifier_ids": "108,119,127,135,157,161,165",
+      "estados": "CANDIDATE",
+      "evidencias_distintas": 1,
+      "sources_distintos": 1,
+      "records_distintos": 1,
+      "confianzas_distintas": 1
+    },
+    {
+      "entity_key": "E01M0X99G29RBSSFSGAM5S1QZMT",
+      "cuit": "30657862068",
+      "method": "REGISTRY",
+      "resolved_by": "proc:legacy_import",
+      "filas": 7,
+      "identifier_ids": "107,118,126,134,156,160,164",
+      "estados": "CANDIDATE",
+      "evidencias_distintas": 1,
+      "sources_distintos": 1,
+      "records_distintos": 1,
+      "confianzas_distintas": 1
+    },
+    {
+      "entity_key": "E01M13XBSB1SNWTM8WJ512Z329H",
+      "cuit": "30696170580",
+      "method": "REGISTRY",
+      "resolved_by": "proc:legacy_import",
+      "filas": 2,
+      "identifier_ids": "109,136",
+      "estados": "CANDIDATE",
+      "evidencias_distintas": 1,
+      "sources_distintos": 1,
+      "records_distintos": 1,
+      "confianzas_distintas": 1
+    },
+    {
+      "entity_key": "E01M13XBSD0VA2QVCX4VNT1SGV9",
+      "cuit": "30500001735",
+      "method": "REGISTRY",
+      "resolved_by": "proc:legacy_import",
+      "filas": 2,
+      "identifier_ids": "110,137",
+      "estados": "CANDIDATE",
+      "evidencias_distintas": 1,
+      "sources_distintos": 1,
+      "records_distintos": 1,
+      "confianzas_distintas": 1
+    },
+    {
+      "entity_key": "E01M13XBSFF6T7J5X49T9FWG30E",
+      "cuit": "33500005179",
+      "method": "REGISTRY",
+      "resolved_by": "proc:legacy_import",
+      "filas": 2,
+      "identifier_ids": "111,138",
+      "estados": "CANDIDATE",
+      "evidencias_distintas": 1,
+      "sources_distintos": 1,
+      "records_distintos": 1,
+      "confianzas_distintas": 1
+    },
+    {
+      "entity_key": "E01M13XBSHZ6D5QT5SRETQQMJ80",
+      "cuit": "30714128309",
+      "method": "REGISTRY",
+      "resolved_by": "proc:legacy_import",
+      "filas": 2,
+      "identifier_ids": "112,139",
+      "estados": "CANDIDATE",
+      "evidencias_distintas": 1,
+      "sources_distintos": 1,
+      "records_distintos": 1,
+      "confianzas_distintas": 1
+    }
+  ],
+  "c7_semanticos": 8,
+  "c8": {
+    "regla_propuesta": 3,
+    "filas_vigentes": 56,
+    "cuit_distintos": 17,
+    "regla_actual_max": 3
+  }
+}

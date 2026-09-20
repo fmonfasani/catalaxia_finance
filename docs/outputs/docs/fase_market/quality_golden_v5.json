@@ -1,0 +1,269 @@
+{
+  "run_id": "quality-20260824T222739Z",
+  "veredicto": "PASS_WITH_WARNINGS",
+  "resumen": {
+    "83": {
+      "filas": 6634,
+      "rango": "2000-01-03..2026-08-24",
+      "ultimo_close": 8175.0,
+      "gaps": 0,
+      "incoherencias_ohlc": 4,
+      "hash_mismatch": 0
+    },
+    "84": {
+      "filas": 8345,
+      "rango": "1993-06-29..2026-08-24",
+      "ultimo_close": 51.279999,
+      "gaps": 0,
+      "incoherencias_ohlc": 0,
+      "hash_mismatch": 0
+    }
+  },
+  "gates": [
+    {
+      "check": "C-MKT-001",
+      "instrument_id": null,
+      "severity": "VALID",
+      "detail": "instrumentos con precios sin identidad=[]; identidades sin entity_id=0",
+      "trading_date": null
+    },
+    {
+      "check": "C-MKT-007",
+      "instrument_id": null,
+      "severity": "VALID",
+      "detail": "mappings por estado={'MAPPED': 584}; simbolos MAPPED compartidos=[] (total 0)",
+      "trading_date": null
+    },
+    {
+      "check": "C-MKT-015",
+      "instrument_id": null,
+      "severity": "VALID",
+      "detail": "archivos RAW verificados=22/22; ausentes=0 []; alterados=0 []",
+      "trading_date": null
+    },
+    {
+      "check": "C-MKT-002",
+      "instrument_id": null,
+      "severity": "VALID",
+      "detail": "corridas por estado={'SUCCESS': 18}; sin fuente/version/params=0",
+      "trading_date": null
+    },
+    {
+      "check": "C-MKT-017",
+      "instrument_id": null,
+      "severity": "VALID",
+      "detail": "filas sin corrida registrada=0; filas cuya corrida no tiene RAW archivado=0",
+      "trading_date": null
+    },
+    {
+      "check": "C-MKT-012",
+      "instrument_id": "83",
+      "severity": "VALID",
+      "detail": "filas=6634; full_hash reconstruido != persistido en 0 fila(s) []; business_hash derivable de las columnas persistidas",
+      "trading_date": null
+    },
+    {
+      "check": "C-MKT-005",
+      "instrument_id": "83",
+      "severity": "VALID",
+      "detail": "filas=6634 fechas_distintas=6634",
+      "trading_date": null
+    },
+    {
+      "check": "C-MKT-006",
+      "instrument_id": "83",
+      "severity": "VALID",
+      "detail": "moneda en la serie={'ARS': 6634}; identidad=ARS",
+      "trading_date": null
+    },
+    {
+      "check": "C-MKT-008",
+      "instrument_id": "83",
+      "severity": "VALID",
+      "detail": "tz_mercado=America/Argentina/Buenos_Aires; ruedas por estado={'FINALIZED': 6633, 'CURRENT': 1}; rango=2000-01-03..2026-08-24",
+      "trading_date": null
+    },
+    {
+      "check": "C-MKT-009",
+      "instrument_id": "83",
+      "severity": "VALID",
+      "detail": "OHLC nulos=0 []; volumen nulo=0",
+      "trading_date": null
+    },
+    {
+      "check": "C-MKT-004",
+      "instrument_id": "83",
+      "severity": "WARNING",
+      "detail": "filas=6634; incoherencias=4; reproducidas byte a byte en el RAW (defecto de la fuente)=4; introducidas por el pipeline=0 []; ej=[('2007-10-12', 'LOW_GT_OPEN'), ('2007-10-25', 'LOW_GT_OPEN'), ('2011-05-03', 'HIGH_LT_CLOSE')]",
+      "trading_date": null
+    },
+    {
+      "check": "C-MKT-004",
+      "instrument_id": "83",
+      "severity": "WARNING",
+      "detail": "UPSTREAM_OHLC_DEFECT: LOW_GT_OPEN O=12.4 H=12.7 L=12.7 C=12.7",
+      "trading_date": "2007-10-12"
+    },
+    {
+      "check": "C-MKT-004",
+      "instrument_id": "83",
+      "severity": "WARNING",
+      "detail": "UPSTREAM_OHLC_DEFECT: LOW_GT_OPEN O=12.8 H=14.0 L=14.0 C=14.0",
+      "trading_date": "2007-10-25"
+    },
+    {
+      "check": "C-MKT-004",
+      "instrument_id": "83",
+      "severity": "WARNING",
+      "detail": "UPSTREAM_OHLC_DEFECT: HIGH_LT_CLOSE O=18.0 H=18.0 L=17.6 C=18.1",
+      "trading_date": "2011-05-03"
+    },
+    {
+      "check": "C-MKT-004",
+      "instrument_id": "83",
+      "severity": "WARNING",
+      "detail": "UPSTREAM_OHLC_DEFECT: LOW_GT_OPEN O=7.05 H=7.46 L=7.15 C=7.43",
+      "trading_date": "2012-11-02"
+    },
+    {
+      "check": "C-MKT-003",
+      "instrument_id": "83",
+      "severity": "VALID",
+      "detail": "anos cubiertos=27 (2000..2026); ruedas=6634; gaps>12h=0 top=[]",
+      "trading_date": null
+    },
+    {
+      "check": "C-MKT-011",
+      "instrument_id": "83",
+      "severity": "VALID",
+      "detail": "ultimo_cierre=2026-08-24 close=8175.0 estado_sesion=CURRENT dias_atras=0 cutoff=2026-08-24",
+      "trading_date": "2026-08-24"
+    },
+    {
+      "check": "C-MKT-016",
+      "instrument_id": "83",
+      "severity": "VALID",
+      "detail": "serie: dividendos=16 splits=1 | market_corporate_actions: dividendos=16 splits=1",
+      "trading_date": null
+    },
+    {
+      "check": "C-MKT-010",
+      "instrument_id": "83",
+      "severity": "VALID",
+      "detail": "tolerancia relativa=1e-05; filas escritas por ruido de Adj Close=0 (debe ser 0: el ruido no persiste)",
+      "trading_date": null
+    },
+    {
+      "check": "C-MKT-013",
+      "instrument_id": "83",
+      "severity": "VALID",
+      "detail": "ultima corrida=golden-v5-retest-83-20260824T222714192051Z estado=SIN_CAMBIOS; cambios registrados=ninguno; no benignos=0",
+      "trading_date": null
+    },
+    {
+      "check": "C-MKT-014",
+      "instrument_id": "83",
+      "severity": "VALID",
+      "detail": "snapshots=4 en market_snapshots; la serie historica no contiene campos de snapshot",
+      "trading_date": null
+    },
+    {
+      "check": "C-MKT-017",
+      "instrument_id": "83",
+      "severity": "VALID",
+      "detail": "filas por corrida de origen={'golden-retest4-83-20260824T214742Z': 6634}",
+      "trading_date": null
+    },
+    {
+      "check": "C-MKT-012",
+      "instrument_id": "84",
+      "severity": "VALID",
+      "detail": "filas=8345; full_hash reconstruido != persistido en 0 fila(s) []; business_hash derivable de las columnas persistidas",
+      "trading_date": null
+    },
+    {
+      "check": "C-MKT-005",
+      "instrument_id": "84",
+      "severity": "VALID",
+      "detail": "filas=8345 fechas_distintas=8345",
+      "trading_date": null
+    },
+    {
+      "check": "C-MKT-006",
+      "instrument_id": "84",
+      "severity": "VALID",
+      "detail": "moneda en la serie={'USD': 8345}; identidad=USD",
+      "trading_date": null
+    },
+    {
+      "check": "C-MKT-008",
+      "instrument_id": "84",
+      "severity": "VALID",
+      "detail": "tz_mercado=America/New_York; ruedas por estado={'FINALIZED': 8344, 'CURRENT': 1}; rango=1993-06-29..2026-08-24",
+      "trading_date": null
+    },
+    {
+      "check": "C-MKT-009",
+      "instrument_id": "84",
+      "severity": "VALID",
+      "detail": "OHLC nulos=0 []; volumen nulo=0",
+      "trading_date": null
+    },
+    {
+      "check": "C-MKT-004",
+      "instrument_id": "84",
+      "severity": "VALID",
+      "detail": "filas=8345 sin incoherencias OHLC",
+      "trading_date": null
+    },
+    {
+      "check": "C-MKT-003",
+      "instrument_id": "84",
+      "severity": "VALID",
+      "detail": "anos cubiertos=34 (1993..2026); ruedas=8345; gaps>12h=0 top=[]",
+      "trading_date": null
+    },
+    {
+      "check": "C-MKT-011",
+      "instrument_id": "84",
+      "severity": "VALID",
+      "detail": "ultimo_cierre=2026-08-24 close=51.279999 estado_sesion=CURRENT dias_atras=0 cutoff=2026-08-24",
+      "trading_date": "2026-08-24"
+    },
+    {
+      "check": "C-MKT-016",
+      "instrument_id": "84",
+      "severity": "VALID",
+      "detail": "serie: dividendos=58 splits=0 | market_corporate_actions: dividendos=58 splits=0",
+      "trading_date": null
+    },
+    {
+      "check": "C-MKT-010",
+      "instrument_id": "84",
+      "severity": "VALID",
+      "detail": "tolerancia relativa=1e-05; filas escritas por ruido de Adj Close=0 (debe ser 0: el ruido no persiste)",
+      "trading_date": null
+    },
+    {
+      "check": "C-MKT-013",
+      "instrument_id": "84",
+      "severity": "VALID",
+      "detail": "ultima corrida=golden-v5-retest-84-20260824T222724322764Z estado=SIN_CAMBIOS; cambios registrados=ninguno; no benignos=0",
+      "trading_date": null
+    },
+    {
+      "check": "C-MKT-014",
+      "instrument_id": "84",
+      "severity": "VALID",
+      "detail": "snapshots=4 en market_snapshots; la serie historica no contiene campos de snapshot",
+      "trading_date": null
+    },
+    {
+      "check": "C-MKT-017",
+      "instrument_id": "84",
+      "severity": "VALID",
+      "detail": "filas por corrida de origen={'golden-retest4-84-20260824T214752Z': 8345}",
+      "trading_date": null
+    }
+  ]
+}

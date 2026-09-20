@@ -1,0 +1,53 @@
+{
+  "fecha": "2026-09-01",
+  "script": "scripts/engine/adversario_ratios.py",
+  "metodo": "cada ataque predice su veredicto ANTES de correr; corre sobre una copia descartable de la base (CREATE DATABASE ... TEMPLATE catalaxia), nunca la homologada. La huella de la homologada se verifica identica antes y despues del banco completo.",
+  "resultado_global": {"ataques_con_veredicto_esperado": 13, "total_ataques": 13, "criticos_en_rojo": 0},
+  "cobertura_de_los_10_items_del_encargo": [
+    {"item": "1. cambiar taxonomia", "cubierto_por": ["A7"], "nota": "combinado con el item 10: se inyecta un fact us-gaap bajo un tag ifrs-full"},
+    {"item": "2. eliminar un tag preferido", "cubierto_por": ["A8"]},
+    {"item": "3. forzar fallback", "cubierto_por": ["A8"], "nota": "mismo ataque que el item 2: eliminar el preferido ES forzar el fallback"},
+    {"item": "4. cambiar periodo", "cubierto_por": ["A5"]},
+    {"item": "5. EPS negativo", "cubierto_por": ["evidencia_existente"], "nota": "no requirio mutacion: YPFD 2025 tiene EPS=-2.11 real, ya verificado por el control E3 de ratios_auditoria.py (P/E con EPS<=0 queda NULL_VALIDO, nunca negativo)"},
+    {"item": "6. revenue inexistente", "cubierto_por": ["A9"]},
+    {"item": "7. denominator = 0", "cubierto_por": ["A3"]},
+    {"item": "8. shares inexistentes", "cubierto_por": ["A10"]},
+    {"item": "9. ticker ambiguo", "cubierto_por": ["A11"]},
+    {"item": "10. fact perteneciente a otra empresa", "cubierto_por": ["A2", "A7"], "nota": "A2 corrompe un VALOR existente (signo); A7 inyecta un fact ENTERO de otra empresa. Son dos variantes del mismo riesgo."}
+  ],
+  "ataques": [
+    {"id": "A1", "descripcion": "moneda incorrecta en el denominador (CurrentLiabilities de YPF pasa de USD a ARS)", "veredicto_esperado": "NO_CALCULABLE, motivo menciona monedas distintas", "resultado_real": "antes=CALCULADO=0.870214 -> despues=NO_CALCULABLE, motivo='monedas distintas: CurrentAssets=USD vs CurrentLiabilities=ARS'", "ok": true, "clasificacion": "CORRECTO — NULL/bloqueo, sin resultado incorrecto"},
+    {"id": "A2a", "descripcion": "signo de Equity invertido (GGAL)", "veredicto_esperado": "el ratio SE CALCULA igual, con valor distinto y SIN ninguna senal de error", "resultado_real": "ROE 0.027388 -> CALCULADO -0.027388, sin alarma", "ok": true, "clasificacion": "PRODUCE UN RESULTADO 'INCORRECTO' (el ratio en si no distingue un insumo corrupto de uno legitimo) — ver finding F-061"},
+    {"id": "A2b", "descripcion": "el mismo ataque, visto por la identidad contable Activo=Pasivo+Patrimonio", "veredicto_esperado": "la identidad SI detecta la corrupcion", "resultado_real": "desvio 0 -> 15,519,248,728,000 (magnitud ~2x Equity, coherente con invertir el signo)", "ok": true, "clasificacion": "CORRECTO — existe una capa que detecta esto, ver F-061 sobre por que no es obligatoria"},
+    {"id": "A3", "descripcion": "denominador puesto en CERO explicito (Equity=0 en AAPL)", "veredicto_esperado": "NO_CALCULABLE 'denominador=0', nunca ROE infinito", "resultado_real": "NO_CALCULABLE, motivo='denominador StockholdersEquity = 0'", "ok": true, "clasificacion": "CORRECTO"},
+    {"id": "A4", "descripcion": "se inserta un resultado 'diluted' con otro valor, compitiendo con el basico (YPF)", "veredicto_esperado": "el basico sigue ganando (esta antes en la cadena de fallback)", "resultado_real": "ROA sin cambios: -0.028058 antes y despues", "ok": true, "clasificacion": "CORRECTO"},
+    {"id": "A5", "descripcion": "un 'comparativo' con instant_date que NO coincide con su report_period (YPF)", "veredicto_esperado": "el filtro de periodo lo excluye; el ratio no cambia", "resultado_real": "current_ratio sin cambios: 0.870214 antes y despues, pese a insertar una fila con valor x999", "ok": true, "clasificacion": "CORRECTO"},
+    {"id": "A6", "descripcion": "duracion trimestral coladndose como anual (trampa conocida de suite-validacion-edgar)", "veredicto_esperado": "0 casos en las 8 empresas para tags de ingresos/resultado", "resultado_real": "0 filas sospechosas, verificado empiricamente sobre las 8", "ok": true, "clasificacion": "CORRECTO — la trampa no se manifiesta en este universo"},
+    {"id": "A7", "descripcion": "se clonan AssetsCurrent y LiabilitiesCurrent de AAPL (us-gaap) bajo el CIK de GGAL con tags ifrs-full y moneda ARS — GGAL (banco) no tenia NINGUNO de los dos originalmente", "veredicto_esperado": "el ratio SI adopta los datos ajenos", "resultado_real": "current_ratio de GGAL: NO_CALCULABLE -> CALCULADO=0.893293 (identico al current_ratio real de AAPL, 0.8933 — la fila 'de GGAL' es en realidad AAPL con otro nombre)", "ok": true, "clasificacion": "PRODUCE UN RESULTADO INCORRECTO — ver finding F-061 (HIGH)"},
+    {"id": "A8", "descripcion": "se borra ProfitLossAttributableToOwnersOfParent de YPF 2025 (queda solo ProfitLoss, un valor REAL distinto: -799M vs -826M)", "veredicto_esperado": "ROA cae al segundo candidato con un valor medible distinto, no queda NO_CALCULABLE", "resultado_real": "ROA -0.028058 -> CALCULADO -0.027141 (cambia, usando ProfitLoss)", "ok": true, "clasificacion": "CORRECTO — fallback funciona y es auditable via provenance (tag usado queda registrado)"},
+    {"id": "A9", "descripcion": "se borran TODOS los tags de ingresos de AAPL en su ultimo ejercicio", "veredicto_esperado": "net_margin y gross_margin -> NO_CALCULABLE con motivo, nunca 0 ni division por cero", "resultado_real": "ambos NO_CALCULABLE, motivo lista los tags de ingresos buscados", "ok": true, "clasificacion": "CORRECTO"},
+    {"id": "A10", "descripcion": "se borran el tag directo de EPS Y el de acciones promedio de CEPU 2025 (ningun camino para EPS)", "veredicto_esperado": "el motor completa sin excepcion (no crash, no ZeroDivisionError)", "resultado_real": "no crasheo", "ok": true, "clasificacion": "CORRECTO"},
+    {"id": "A11", "descripcion": "lectura, sin mutar: CEPU/GGAL/TGSU2/YPFD tienen 2 instrumentos (local BUE + ADR NYSE) bajo el mismo ticker_canonico", "veredicto_esperado": "el ticker ES ambiguo por diseno; la resolucion de identidad usa instrument_id, nunca el ticker solo", "resultado_real": "4 tickers con 2 instrumentos cada uno confirmados; identity_v1.instrument enlaza por instrument_key='MKT:<id>'", "ok": true, "clasificacion": "CORRECTO — la ambiguedad existe pero esta resuelta por diseno, no por convencion informal"},
+    {"id": "Z", "descripcion": "control de cierre: la base homologada no cambio durante todo el banco", "veredicto_esperado": "hash identico antes/despues", "resultado_real": "88789|bae5c8cb34c1a75e69953a68f56c6fdb == 88789|bae5c8cb34c1a75e69953a68f56c6fdb", "ok": true, "clasificacion": "CORRECTO"}
+  ],
+  "findings": [
+    {
+      "id": "F-061",
+      "titulo": "La capa de ratios no verifica el origen ni la integridad de los facts que consume",
+      "severidad": "HIGH",
+      "evidencia": ["A2a/A2b", "A7"],
+      "descripcion": "El motor de ratios (`ratios_inventario.py`, `e2e_producto.py`, `matriz_producto.py`) confia completamente en que cada fila de `derived.fact` con el CIK correcto pertenece genuinamente a esa empresa y tiene el signo/valor correcto. Dos ataques lo confirman: (A2) invertir el signo de un insumo produce un ratio CALCULADO, con un valor distinto, sin ninguna senal de error; (A7) insertar los dos operandos de current_ratio tomados literalmente de AAPL bajo el CIK de GGAL produce un current_ratio 'de GGAL' que es en realidad el de AAPL, indistinguible de un dato legitimo con solo mirar el numero.",
+      "mitigante_existente": "Las identidades contables (Activo=Pasivo+Patrimonio, EPS=Resultado/Acciones) SI detectan ambos ataques cuando se corren — audit_provenance_ratios.py. El problema no es que no exista defensa: es que esa defensa es un script SEPARADO y OPCIONAL, no una precondicion obligatoria antes de publicar un ratio.",
+      "recomendacion": "Formalizar (no implementar en este ciclo, per las restricciones del encargo) que ningun ratio se publique en el screener sin que la identidad contable del emisor+periodo haya pasado control ese mismo dia/corrida. Ya recomendado en PRODUCT_DEMO_GATE.md #4 del ciclo anterior; este ataque lo confirma con evidencia nueva y mas directa (A7)."
+    },
+    {
+      "id": "F-062",
+      "titulo": "EV/EBITDA fue clasificado como NOT_CALCULABLE por falta de dato en el ciclo anterior; el dato SI existe bajo otros nombres de tag",
+      "severidad": "MEDIUM",
+      "evidencia": ["Fase A de este ciclo — consulta directa a derived.fact"],
+      "descripcion": "RATIO_COVERAGE_MATRIX.md (2026-09-01, version anterior) y RATIO_CONTRACT.md afirmaban que ningun tag de D&A aparecia en derived.fact para ninguna de las 8 empresas. Es incorrecto: las 8 tienen tags candidatos de D&A (ej. BMA tiene 'DepreciationAndAmortisationExpense' textual; AAPL tiene 'DepreciationDepletionAndAmortization'; YPF tiene 'AdjustmentsForDepreciationExpense'+'AdjustmentsForAmortisationExpense'), verificado por consulta directa el 2026-09-01. El bloqueo real es que EV/EBITDA nunca se declaro como concepto en ratio_defs.py — es NO_IMPLEMENTADO (falta de codigo), no NOT_CALCULABLE (falta de dato).",
+      "mitigante_existente": "n/a — es una correccion de clasificacion, no un riesgo activo",
+      "recomendacion": "Corregir la clasificacion en RATIO_CONTRACT.md/RATIO_COVERAGE_MATRIX.md (hecho en este ciclo, ver RATIO_PRODUCT_AUDIT.md). No implementar EV/EBITDA en este ciclo: elegir CUAL tag de D&A usar por concepto (hay varios candidatos con semantica distinta — gasto del ejercicio vs. acumulado en balance vs. ajuste de conciliacion de flujo de caja) es trabajo de contrato, no de ejecucion."
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+DRY-RUN BACKFILL identity_v1 - READ-ONLY (D-I-04 / F-020)
+
+-- fuentes --
+  SEC catalog      : company_tickers_2026-08-31.json sha16=bf83a6d3c92cfd32
+  dim_entity       : screener.db (573 filas)
+  acciones_arg_usa : acciones_argentinas_usa.csv (6 filas)
+  cedears_byma     : cedears_byma.csv (10 filas)
+  GLEIF snapshot   : 4 lei (ciclo 4)
+
+-- RESULTADO --
+1.  total_emisores_sec = 8004
+2.  cik_validos_sec    = 8004
+    cik_validos_dim    = 512
+3.  cik_invalidos      = 0
+4.  entidades_crear    = 8004
+5.  entidades_fusionar = 510
+6.  duplicados_cik     = 0  (multi-ticker catalog=2387, no duplica entidad)
+      0001652044:GOOGL->GOOG; 0000036104:USB->USB-PA; 0001067983:BRK-B->BRK-A; 0000937966:ASML->ASMLF; 0001046179:TSM->TSMWF; 0001577552:BABA->BABAF
+7.  sec_vs_legacy      = 4
+      ('YPF', '0001104659', '0000904851')
+      ('GGAL', '0001069595', '0001114700')
+      ('BMA', '0001113245', '0001347426')
+      ('CRESY', '0001082722', '0001034957')
+8.  bridges_cik_lei    = 4
+      {'ticker': 'TGSU2', 'cik': '0000931427', 'lei': '5299002TRC7IFQYSW596'}
+      {'ticker': 'GGAL', 'cik': '0001114700', 'lei': '5299008H3AXIXV5G3C23'}
+      {'ticker': 'CEPU', 'cik': '0001717161', 'lei': '2549005JLIWQ6B7VNR38'}
+      {'ticker': 'YPFD', 'cik': '0000904851', 'lei': '5493003N7447U18U5U53'}
+9.  bridges_cik_cuit   = 13
+      {'ticker': 'CRES', 'cik': '0001034957', 'cuit': '30509300700'}
+      {'ticker': 'LOMA', 'cik': '0001711375', 'cuit': '30500530851'}
+      {'ticker': 'VIST', 'cik': '0001762506', 'cuit': '33515950899'}
+      {'ticker': 'TGSU2', 'cik': '0000931427', 'cuit': '30657862068'}
+      {'ticker': 'PAMP', 'cik': '0001469395', 'cuit': '30526552659'}
+      {'ticker': 'IRSA', 'cik': '0000933267', 'cuit': '30525322749'}
+      {'ticker': 'GGAL', 'cik': '0001114700', 'cuit': '30704962807'}
+      {'ticker': 'SUPV', 'cik': '0001517399', 'cuit': '30617442937'}
+      {'ticker': 'BBAR', 'cik': '0000913059', 'cuit': '30500003193'}
+      {'ticker': 'TECO2', 'cik': '0000932470', 'cuit': '30639453738'}
+      {'ticker': 'CEPU', 'cik': '0001717161', 'cuit': '33650305499'}
+      {'ticker': 'YPFD', 'cik': '0000904851', 'cuit': '30546689979'}
+      {'ticker': 'EDN', 'cik': '0001395213', 'cuit': '30655116202'}
+10. reviews_a_abrir    = 1
+      GLEIF_sin_CUIT:GGAL
+11. conflictos         = 4 (legacy vs SEC; autoridad SEC)
+12. rechazos           = 0
+13. casos_no_determinables = 69
+      byma_only_sin_CIK     = 56  (solo CUIT legacy: sin ancla autoritativa)
+      arg_sin_LEI_snapshot  = 11  (requiere busqueda GLEIF por nombre)
+      dim_cik_no_sec        = 2  (CIK legacy sin match SEC)
+      byma_only_sin_CIK:A3
+      byma_only_sin_CIK:AGRO
+      byma_only_sin_CIK:ALUA
+      byma_only_sin_CIK:AUSO
+      byma_only_sin_CIK:BHIP
+      byma_only_sin_CIK:GAMI
+      byma_only_sin_CIK:BOLT
+      byma_only_sin_CIK:BPAT
+      byma_only_sin_CIK:BYMA
+      byma_only_sin_CIK:CADO
+      byma_only_sin_CIK:CAPX
+      byma_only_sin_CIK:CARC
+      ... (+57)
+
+-- VALIDACIONES OBLIGATORIAS --
+  [V1] un CIK SEC -> una sola entidad            : OK (CIKs unicos=8004, entidades a crear=8004)
+  [V2] legacy CIK nunca desplaza CIK SEC         : OK (los 4 conflictos se resuelven con SEC ganando; legacy CIK descartado)
+  [V3] ausencia LEI US no abre review            : OK (reviews=1, todas de argentinos con LEI en snapshot)
+  [V4] solo ambiguedad real abre review          : OK (1 caso: GGAL con LEI pero GLEIF sin registeredAs)
+  [V5] provenance por origen                     : OK (sha16 catalogo, conteos, listados con fuente)
+  [V6] sin escrituras (no importa sqlalchemy/db) : OK (solo sqlite ro + json/csv)
+
+-- garantia READ-ONLY --
+   Sin INSERT/UPDATE/DELETE. Solo sqlite ro + json/csv lectura.
+   No se importo identity_v1 ni engine.db.
+
+-- DISCREPANCIAS documentacion vs poblacion real (no se corrigen en silencio) --
+  a) Documentacion dice ~7.998 emisores SEC; el catalog RAW real tiene   : 8004 CIKs unicos
+     (el catalog se refresco 2026-08-31; +6 emisores desde el ciclo 4)
+  b) El catalog tiene 10391 entradas con ticker vs 8004 CIKs unicos:
+     2387 CIKs aparecen con varios tickers (clases de accion); no duplican entidad.
+  c) identity.entities @5433 esta VACIA (0 filas); el plan citaba 7.998.
+     El dry-run NO depende de ella: usa el catalog RAW como fuente de CIK.
+  d) parsed.pre_xbrl_filings @5433 esta VACIA: no hay evidencia 20-F
+     materializada; el backfill real deberia considerar SEC_REGISTRY como
+     fuente del CIK (igual que hizo el piloto para 3 de 4 emisores).
+  e) identity_v1 @5433 esta VACIO (solo source=9): el piloto del ciclo 4
+     no esta materializado en esta instalacion. El backfill crearia desde 0.
+  f) Los 510 solapamientos coinciden con F-020 (dim 512 con CIK - 2 sin SEC).

@@ -1,0 +1,54 @@
+{
+  "ok": true,
+  "controles": [
+    {
+      "control": "E1 · identidad activo = pasivo + patrimonio en ambas taxonomias",
+      "ok": true,
+      "critico": true,
+      "detalle": "se cumple donde los tres conceptos existen"
+    },
+    {
+      "control": "E2 · resultado/acciones reproduce el EPS publicado (semantica del tag)",
+      "ok": true,
+      "critico": true,
+      "detalle": "coinciden"
+    },
+    {
+      "control": "E3 · ingresos - costo de ventas = resultado bruto",
+      "ok": true,
+      "critico": true,
+      "detalle": "coinciden donde los tres existen"
+    },
+    {
+      "control": "C-A · el par difiere en el ORDEN pero no en el conjunto",
+      "ok": true,
+      "critico": true,
+      "detalle": "2 dimensiones, mismo conjunto: True"
+    },
+    {
+      "control": "C-C · GGAL: derived == grupos canonicos (el aumento no es duplicacion)",
+      "ok": true,
+      "critico": true,
+      "detalle": "grupos=14111 derived=14111"
+    },
+    {
+      "control": "C-C2 · GGAL no tiene hechos derivados duplicados",
+      "ok": true,
+      "critico": true,
+      "detalle": "0 grupos con mas de un hecho derivado"
+    },
+    {
+      "control": "G1 · la cadena hecho -> fact_id -> filing -> CIK es inequivoca",
+      "ok": true,
+      "critico": true,
+      "detalle": "6 hechos, 0 rotas "
+    },
+    {
+      "control": "G2 · el artefacto en disco reproduce el SHA256 registrado",
+      "ok": true,
+      "critico": true,
+      "detalle": "6/6 verificados contra disco"
+    }
+  ],
+  "limitaciones": []
+}

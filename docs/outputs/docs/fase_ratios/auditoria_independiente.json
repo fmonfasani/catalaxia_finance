@@ -1,0 +1,90 @@
+{
+  "ok": true,
+  "controles": [
+    {
+      "control": "A1 · fila del screener reproducida con aritmetica propia",
+      "ok": true,
+      "detalle": "82 reproducidos, 0 divergentes "
+    },
+    {
+      "control": "A2 · inventario completo reproducido (todos los ejercicios)",
+      "ok": true,
+      "detalle": "274 reproducidos, 0 divergentes "
+    },
+    {
+      "control": "B1 · todo insumo existe en derived.fact con ese valor",
+      "ok": true,
+      "detalle": "0 sin respaldo "
+    },
+    {
+      "control": "C1 · cada accession citada existe en derived.fact",
+      "ok": true,
+      "detalle": "22 accessions distintas, 0 inexistentes"
+    },
+    {
+      "control": "C2 · ningun fact derivado sin accession ni source_fact_ids",
+      "ok": true,
+      "detalle": "0 facts sin trazabilidad"
+    },
+    {
+      "control": "D1 · ningun ratio mezcla monedas",
+      "ok": true,
+      "detalle": "0 mezclados"
+    },
+    {
+      "control": "D2 · numerador y denominador del mismo filing",
+      "ok": true,
+      "detalle": "0 cruzan filings"
+    },
+    {
+      "control": "D3 · la regla de periodo descarta los comparativos",
+      "ok": true,
+      "detalle": "Assets: 9 principales de 27 filas (los otros son comparativos de 3 anios)"
+    },
+    {
+      "control": "E1 · todo NO_CALCULABLE declara motivo",
+      "ok": true,
+      "detalle": "0 sin motivo"
+    },
+    {
+      "control": "E2 · toda empresa sin fila declara donde se corto",
+      "ok": true,
+      "detalle": "0 sin eslabon de corte"
+    },
+    {
+      "control": "E3 · P/E con EPS<=0 queda NULL, no negativo",
+      "ok": true,
+      "detalle": "['YPFD'] sin valor"
+    },
+    {
+      "control": "F1 · EPS reportado == ProfitLoss/WeightedAverageShares",
+      "ok": true,
+      "detalle": "9/9 coinciden (dif max 0.72%)"
+    },
+    {
+      "control": "F2 · los caminos del P/E concuerdan dentro del 5%",
+      "ok": true,
+      "detalle": "2 ejercicios con >1 camino, 0 divergentes"
+    },
+    {
+      "control": "G1 · el conjunto de insumos es estable entre lecturas",
+      "ok": true,
+      "detalle": "0a8575736e01c29a"
+    },
+    {
+      "control": "H1 · toda empresa de la muestra tiene cadena completa o un corte de causa conocida",
+      "ok": true,
+      "detalle": "completas=['CEPU', 'YPFD', 'TGSU2', 'GGAL', 'AAPL', 'MSFT', 'NVDA'] bloqueadas={'BMA': 'IDENTITY'}"
+    },
+    {
+      "control": "H2 · fundamentals en toda la base == el tamano de la muestra deliberada (no mas)",
+      "ok": true,
+      "detalle": "8/513 CIK con facts en derived.fact = 1.56% · muestra: 8 empresas (7 con cadena completa, BMA con fundamentals pero sin enlace de instrumento)"
+    },
+    {
+      "control": "H3 · el enlace instrumento->entidad es el limite del join",
+      "ok": true,
+      "detalle": "15/584 instrumentos enlazados = 2.6%"
+    }
+  ]
+}
