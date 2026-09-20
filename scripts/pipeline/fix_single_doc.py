@@ -4,7 +4,7 @@ FIX single-doc: re-extrae CVH/EDSH tomando TODOS los conceptos de UN mismo docum
 (no mezclar docs) → el balance cierra (el PN total ya incluye minoritario). Actualiza cnv_reextract.
 """
 import re,os,subprocess,sqlite3
-con=sqlite3.connect('data/screener.db'); cur=con.cursor()
+con=sqlite3.connect(os.path.join("data", os.environ.get("SCREENER_DB", "screener.db"))); cur=con.cursor()
 CODE_MAP={'3000100':'revenue','3000200':'cogs','3009999':'gross_profit','3011600':'da',
  '3019999':'operating_income','3021400':'financial_income','3021500':'interest_expense',
  '3021800':'recpam','3029999':'pretax_income','3031100':'income_tax','3049999':'net_income',

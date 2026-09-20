@@ -26,10 +26,13 @@ from collections import OrderedDict
 
 import yfinance as yf
 import requests
-import urllib3
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-urllib3.disable_warnings()
+# R3: RAW inmutable — archivar, nunca borrar. Este es el unico modulo que sabe
+# archivar/restaurar/registrar un crudo de data/raw/ (ver _raw_inmutable.py).
+from _raw_inmutable import archivar as archivar_raw
+from _raw_inmutable import restaurar as restaurar_raw
+from _raw_inmutable import registrar as registrar_raw
 
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / "data").is_dir())
 import os as _os
@@ -291,15 +294,36 @@ def re_download_edgar(con, new_ciks, log):
         meta[cik] = (row[0] or cik, row[1]) if row else (cik, None)
 
     raw_dir = ROOT / "data" / "raw"
+    # R3: RAW inmutable. La re-descarga NUNCA borra el crudo: lo archiva en
+    # data/raw/_stale/<ts>/re_download_edgar/ (con SHA256 previo + provenance)
+    # y deja libre el path principal para la nueva captura. Si la nueva
+    # descarga no deja un archivo en el path principal, el previo se restaura.
     ok = 0
     for cik in new_ciks:
-        # delete stale cache to force re-download
+        archivados = []
         for f in [raw_dir / "companyfacts" / f"CIK{cik}.json",
                   raw_dir / "submissions" / f"CIK{cik}.json"]:
-            if f.exists():
-                f.unlink()
+            prov = archivar_raw(f, razon="re_download_edgar")
+            if prov:
+                archivados.append(prov)
+                log.log(f"  [ARCHIVE R3] {f.name}: previo sha256={prov['sha256'][:12]} -> "
+                        f"{Path(prov['ruta_archivado']).relative_to(raw_dir).as_posix()}")
+                registrar_raw(con, cik, prov["tipo"], prov["sha256"],
+                              razon="re_download_edgar", bytes_=prov["bytes"])
         ticker, nombre = meta[cik]
         res = descargar_empresa(con, ticker, cik, nombre)
+        # R3 INV4: si la re-descarga no dejo archivo nuevo en el path principal,
+        # el RAW previo archivado se restaura (el pipeline nunca queda referido
+        # a un crudo inexistente). La copia archivada se conserva como evidencia.
+        for prov in archivados:
+            if not Path(prov["origen_abs"]).exists():
+                if restaurar_raw(prov):
+                    log.log(f"  [RESTORE R3] {prov['nombre_original']}: re-descarga "
+                            f"no dejo archivo nuevo; RAW previo restaurado desde "
+                            f"{Path(prov['ruta_archivado']).relative_to(raw_dir).as_posix()}")
+                    registrar_raw(con, cik, prov["tipo"], prov["sha256"],
+                                  razon="re_download_edgar", evento="restaurado",
+                                  bytes_=prov["bytes"])
         if res:
             ok += 1
             log.log(f"  [RE-DL] CIK={cik} {ticker} -> {res[0]}")

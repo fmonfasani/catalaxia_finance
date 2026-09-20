@@ -36,7 +36,7 @@ def get_pg_conn():
         "port": int(os.environ.get("DB_PORT", "5432")),
         "dbname": os.environ.get("DB_NAME", "catalaxia"),
         "user": os.environ.get("DB_USER", "catalaxia"),
-        "password": os.environ.get("DB_PASSWORD", "catalaxia"),
+        "password": os.environ.get("DB_PASSWORD", ""),
     }
     return psycopg2.connect(**params)
 

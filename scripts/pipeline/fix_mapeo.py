@@ -7,7 +7,8 @@ FIX de mapeo de identidad: cada entidad a su ticker real de BYMA.
 Actualiza dim_entity, dim_instrument, screener y los externos (eerr/ratios). Idempotente.
 """
 import sqlite3
-con=sqlite3.connect('data/screener.db'); cur=con.cursor()
+import os as _os
+con=sqlite3.connect(_os.path.join("data", _os.environ.get("SCREENER_DB", "screener.db"))); cur=con.cursor()
 # orden: GAMI primero (libera BOLT), luego Boldt->BOLT, luego Importadora->PATA
 renames=[('30709967424','GAMI'),('30500179151','BOLT'),('30506730038','PATA')]
 print('== antes ==')

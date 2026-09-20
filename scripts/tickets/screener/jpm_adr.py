@@ -28,11 +28,12 @@ from pathlib import Path
 from datetime import datetime, timezone, timedelta
 
 import requests
-import urllib3
-urllib3.disable_warnings()
 
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / "data").is_dir())
 import os as _os
+# TLS: verificar certificados por defecto (fail-closed). REQUESTS_VERIFY=0 como
+# fallback explicito (riesgo MITM / integridad del dato JPM).
+VERIFY = _os.environ.get("REQUESTS_VERIFY", "1") != "0"
 # SCREENER_DB permite apuntar a una copia de prueba sin tocar produccion.
 # Debe estar en TODOS los scripts que escriben en la base: si uno solo no lo
 # respeta, escribe en la real aunque el resto corra sobre la copia.
@@ -45,7 +46,7 @@ SOURCE = "https://www.adr.com (J.P. Morgan / MarkitDigital jpmadr-public API)"
 
 def _get(ep):
     try:
-        r = requests.get(B + ep, headers=H, timeout=15, verify=False)
+        r = requests.get(B + ep, headers=H, timeout=15, verify=VERIFY)
         if r.status_code == 200:
             return r.json()
     except Exception:

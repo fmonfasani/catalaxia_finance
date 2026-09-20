@@ -70,6 +70,10 @@ def _target_dev():
 
 def _admin_conn():
     with _target_dev():
+        # R2: este default es FIXTURE de desarrollo (contenedor local 5433,
+        # base descartable), NO credencial de produccion. Permanece como
+        # excepcion allowlisted en tests/test_r2_secretos.py
+        # (test_scripts_sin_default_credencial). Override con DB_PASSWORD.
         c = psycopg2.connect(
             host=os.environ["DB_HOST"], port=int(os.environ["DB_PORT"]),
             dbname="postgres",

@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """Triangulación ROE: SEC vs CNV re-extraído vs investing, ALINEADO por ejercicio anual."""
 import sqlite3, datetime as dt
-con=sqlite3.connect('data/screener.db'); cur=con.cursor()
+import os as _os
+con=sqlite3.connect(_os.path.join("data", _os.environ.get("SCREENER_DB", "screener.db"))); cur=con.cursor()
 def days(a,b):
     try: return (dt.date.fromisoformat(b)-dt.date.fromisoformat(a)).days
     except: return None

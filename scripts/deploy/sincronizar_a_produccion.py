@@ -60,8 +60,25 @@ from pathlib import Path
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / "data").is_dir())
 DB = ROOT / "data" / os.environ.get("SCREENER_DB", "screener.db")
 
-HOST = os.environ.get("CATALAXIA_HOST", "89.167.96.239")
-USER = os.environ.get("CATALAXIA_SSH_USER", "root")
+def _requerida(nombre):
+    """R2: variable de entorno obligatoria de infraestructura.
+
+    Sin default silencioso: en produccion una variable ausente debe fallar
+    temprano. Definir en .env (ver .env.example).
+    """
+    valor = os.environ.get(nombre, "").strip()
+    if not valor:
+        print(f"ERROR R2: falta la variable de entorno obligatoria {nombre}.\n"
+              "  Definila en el .env (ver .env.example). Sin default silencioso.",
+              file=sys.stderr)
+        sys.exit(2)
+    return valor
+
+
+# R2: HOST/USER son infraestructura sensible -> obligatorias, sin default.
+# CONT/PGUSER/PGDB son nombres NO sensibles de entorno dev (con default, documentado).
+HOST = _requerida("CATALAXIA_HOST")
+USER = _requerida("CATALAXIA_SSH_USER")
 CONT = os.environ.get("CATALAXIA_DB_CONTAINER", "catalaxia-db")
 PGUSER = os.environ.get("CATALAXIA_PG_USER", "catalaxia")
 PGDB = os.environ.get("CATALAXIA_PG_DB", "catalaxia")

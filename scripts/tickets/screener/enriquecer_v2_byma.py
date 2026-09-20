@@ -124,7 +124,10 @@ def conn_pg():
                 for k in ("DB_PASSWORD=", "POSTGRES_PASSWORD="):
                     if l.strip().startswith(k):
                         return l.split("=", 1)[1].strip().strip('"').strip("'")
-        return "catalaxia"
+        # R2: sin default silencioso. Si no hay env ni .env, devuelve "" y la
+        # autenticacion falla temprano (FAIL temprano) en vez de conectar con
+        # una credencial adivinada.
+        return ""
     return psycopg2.connect(
         host=os.environ.get("DB_HOST", "localhost"),
         port=int(os.environ.get("DB_PORT", "5432")),

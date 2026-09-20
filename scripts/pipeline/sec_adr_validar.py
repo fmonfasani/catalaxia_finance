@@ -4,7 +4,8 @@ FASE SEC — Extrae fundamentals SEC (facts) de los 12 ADR argentinos y valida R
 contra investing. Segunda fuente independiente (misma moneda ARS para 10 de 12).
 """
 import sqlite3, datetime as dt
-con=sqlite3.connect('data/screener.db'); cur=con.cursor()
+import os as _os
+con=sqlite3.connect(_os.path.join("data", _os.environ.get("SCREENER_DB", "screener.db"))); cur=con.cursor()
 def days(a,b):
     try: return (dt.date.fromisoformat(b)-dt.date.fromisoformat(a)).days
     except: return None

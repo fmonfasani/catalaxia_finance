@@ -14,30 +14,62 @@ Deployment (Docker):
     catalaxia-api
 """
 import os
-from fastapi import FastAPI, Query
+import secrets
+from typing import Optional, List
+from datetime import datetime
+
+import logging
+
+from fastapi import Depends, FastAPI, Header, HTTPException, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+from fastapi.exceptions import HTTPException as _HTTPException
 import psycopg2
 import psycopg2.extras
-from datetime import datetime
-from typing import Optional, List
-import logging
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+# --- Seguridad (F10) ------------------------------------------------------
+# API_KEY: clave requerida via header `X-API-Key` en TODOS los endpoints.
+#   Si no esta configurada el API responde 503 (fail-closed): nunca abre por defecto.
+# API_CORS_ORIGINS: lista blanca de origenes cross-origin separada por coma.
+#   "*" habilita cualquier origen SIN credenciales. Vacio = solo mismo-origen.
+API_KEY = os.environ.get("API_KEY", "").strip()
+ALLOWED_ORIGINS = [
+    o.strip() for o in os.environ.get("API_CORS_ORIGINS", "").split(",") if o.strip()
+]
+
+if not API_KEY:
+    logger.warning("API_KEY no configurada: todos los endpoints responden 503 (fail-closed).")
+
+
+def require_key(x_api_key: str = Header(default="", alias="X-API-Key")) -> None:
+    """Autenticacion obligatoria a nivel global (fail-closed, constante en tiempo)."""
+    if not API_KEY:
+        raise HTTPException(status_code=503, detail="api_key_not_configured")
+    if not secrets.compare_digest(x_api_key, API_KEY):
+        raise HTTPException(status_code=401, detail="invalid_api_key")
+
+
+def is_origin_allowed(origin: Optional[str]) -> bool:
+    return bool(origin) and (origin in ALLOWED_ORIGINS or "*" in ALLOWED_ORIGINS)
+
+
 app = FastAPI(
     title="Catalaxia Finance API",
     description="Ratios de 572 empresas (S&P 500 + ADR + BYMA-only)",
-    version="2.0",
+    version="2.1",
+    dependencies=[Depends(require_key)],
 )
 
-# CORS
+# CORS: solo origenes de la lista blanca; sin credenciales, sin eco arbitrario.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_origins=ALLOWED_ORIGINS,
+    allow_credentials=False,
+    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["X-API-Key", "Content-Type"],
 )
 
 
@@ -53,19 +85,21 @@ from fastapi.exceptions import HTTPException as _HTTPException
 
 
 def _cors_headers(request: Request) -> dict:
-    origin = request.headers.get("origin", "*")
+    origin = request.headers.get("origin", "")
+    if not is_origin_allowed(origin):
+        return {"Vary": "Origin"}
     return {
         "Access-Control-Allow-Origin": origin,
-        "Access-Control-Allow-Credentials": "true",
         "Vary": "Origin",
     }
 
 
 @app.exception_handler(_HTTPException)
 async def http_exception_con_cors(request: Request, exc: _HTTPException):
+    err = exc.detail if isinstance(exc.detail, str) else str(exc.detail)
     return JSONResponse(
         status_code=exc.status_code,
-        content={"error": exc.detail, "path": request.url.path},
+        content={"error": err, "path": request.url.path},
         headers=_cors_headers(request),
     )
 
@@ -75,12 +109,7 @@ async def error_no_manejado_con_cors(request: Request, exc: Exception):
     logger.exception("Error no manejado en %s %s", request.method, request.url.path)
     return JSONResponse(
         status_code=500,
-        content={
-            "error": "internal_error",
-            "tipo": type(exc).__name__,
-            "detalle": str(exc)[:300],
-            "path": request.url.path,
-        },
+        content={"error": "internal_error", "path": request.url.path},
         headers=_cors_headers(request),
     )
 
@@ -93,7 +122,7 @@ def get_db():
             port=int(os.environ.get("DB_PORT", "5432")),
             dbname=os.environ.get("DB_NAME", "catalaxia"),
             user=os.environ.get("DB_USER", "catalaxia"),
-            password=os.environ.get("DB_PASSWORD", "catalaxia"),
+            password=os.environ.get("DB_PASSWORD", ""),
         )
         return conn
     except psycopg2.Error as e:
@@ -116,6 +145,7 @@ def health():
     return {
         "status": "ok",
         "message": "Catalaxia Finance API v2",
+        "auth": "required" if API_KEY else "not_configured",
         "endpoints": [
             "/v2/screener - Todos los ratios (572 empresas)",
             "/v2/screener/{ticker} - Empresa específica",

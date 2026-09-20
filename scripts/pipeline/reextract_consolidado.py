@@ -84,7 +84,7 @@ if __name__=='__main__':
     tbs=[v[1] for d in data.values() for v in d.values()]
     print('  tipos:', dict((x,tbs.count(x)) for x in set(tbs)))
     if ticker:
-        con=sqlite3.connect('data/screener.db'); cur=con.cursor()
+        con=sqlite3.connect(os.path.join("data", os.environ.get("SCREENER_DB", "screener.db"))); cur=con.cursor()
         for concepto,extc in [('revenue','Revenue'),('net_income','NetIncome')]:
             std=decum(data.get(concepto,{}))
             ext=dict(cur.execute("select period_end,valor from eerr_externos where ticker=? and concepto=?",(ticker,extc)).fetchall())

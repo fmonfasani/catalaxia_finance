@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from f2_reextract_batch import extraer, anti_outlier  # seguro: f2 tiene guard __main__
 
 def main():
-    con=sqlite3.connect('data/screener.db'); cur=con.cursor()
+    con=sqlite3.connect(os.path.join("data", os.environ.get("SCREENER_DB", "screener.db"))); cur=con.cursor()
     data=extraer(['adr'])
     rows=anti_outlier(data)
     cur.executemany("insert or replace into cnv_reextract(cuit,concepto,period_end,valor,tipo_balance) values(?,?,?,?,?)",rows)

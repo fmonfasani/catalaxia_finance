@@ -10,9 +10,12 @@ set -euo pipefail
 
 # ── Configuracion ────────────────────────────────────────────────────
 PROJECT_DIR="/infra/projects/0009-catalaxia"
-REPO_URL="git@github.com:anomalyco/catalaxia-cedears-prod.git"  # <-- CAMBIAR
+REPO_URL="https://github.com/fmonfasani/catalaxia_finance.git"
 BRANCH="main"
-POSTGRES_PASSWORD="${POSTGRES_PASSWORD:-catalaxia_prod_2024}"
+# R2: POSTGRES_PASSWORD debe venir del entorno (o definirse antes de ejecutar).
+# Sin default silencioso: una credencial de produccion NO pertenece al codigo.
+# FAIL temprano si falta.
+: "${POSTGRES_PASSWORD:?POSTGRES_PASSWORD es obligatoria (credencial de produccion). Sin default. Definirla antes de ejecutar setup_vps.sh:  export POSTGRES_PASSWORD=...}"
 DB_NAME="catalaxia"
 DB_USER="catalaxia"
 BACKUP_DIR="${PROJECT_DIR}/backups"

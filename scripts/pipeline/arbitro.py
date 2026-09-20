@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """Arbitro: ROE propio (balance CNV, cierre de ejercicio) vs anual-nuestro vs investing."""
 import sqlite3
-con=sqlite3.connect('data/screener.db'); cur=con.cursor()
+import os as _os
+con=sqlite3.connect(_os.path.join("data", _os.environ.get("SCREENER_DB", "screener.db"))); cur=con.cursor()
 alias={'BOLT':'BOLT_2','PATA':'PATA_2'}
 extk={r[0] for r in cur.execute("select ticker from ratios_externos")}
 def near(a,b,t=0.25): return isinstance(a,(int,float)) and isinstance(b,(int,float)) and b!=0 and abs(a-b)<=abs(b)*t

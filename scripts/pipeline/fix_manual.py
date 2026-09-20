@@ -7,7 +7,8 @@ Correcciones manuales reproducibles (verificadas, no fabricadas):
 Idempotente.
 """
 import sqlite3
-con=sqlite3.connect('data/screener.db'); cur=con.cursor()
+import os as _os
+con=sqlite3.connect(_os.path.join("data", _os.environ.get("SCREENER_DB", "screener.db"))); cur=con.cursor()
 # EDN (Edenor): dropeada del universo, se recupera via SEC (no está en screener → f1 no la crea)
 if not cur.execute("select 1 from dim_entity where ticker_canonico='EDN'").fetchone():
     cur.execute("""insert into dim_entity(cuit,cik,ticker_canonico,nombre,grupo,moneda_funcional,fy_end_month,es_financiera)

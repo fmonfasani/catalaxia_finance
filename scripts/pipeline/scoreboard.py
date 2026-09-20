@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """Tablero: de-acumula cnv_reextract (NUEVO consolidado) y compara vs investing por empresa."""
 import sqlite3
-con=sqlite3.connect('data/screener.db'); cur=con.cursor()
+import os as _os
+con=sqlite3.connect(_os.path.join("data", _os.environ.get("SCREENER_DB", "screener.db"))); cur=con.cursor()
 def mb(a,b): return (int(b[:4])-int(a[:4]))*12+(int(b[5:7])-int(a[5:7]))
 def decum(serie,fy):
     pes=sorted(serie); std={}

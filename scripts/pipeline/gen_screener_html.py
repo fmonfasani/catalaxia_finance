@@ -4,7 +4,7 @@ Genera la cara del producto: docs/producto/screener.html (autocontenido, datos e
 Universo completo: byma_only (CNV) + ADR + 499 US (SEC). Reproducible: re-correr tras run_pipeline.
 """
 import sqlite3, json, os, datetime as dt
-con=sqlite3.connect('data/screener.db'); con.row_factory=sqlite3.Row; cur=con.cursor()
+con=sqlite3.connect(os.path.join("data", os.environ.get("SCREENER_DB", "screener.db"))); con.row_factory=sqlite3.Row; cur=con.cursor()
 rows=[dict(r) for r in cur.execute("select * from screener_gold order by roe desc")]
 periodos=sorted({r['periodo_cierre'] for r in rows if r['periodo_cierre']})
 from collections import Counter

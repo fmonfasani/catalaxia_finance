@@ -6,7 +6,8 @@ Si las acciones saltan (corrupción no-uniforme, ej. GCDI) → NO toca (flag). S
 Escribe en cnv_reextract. Idempotente-ish (guarda log de correcciones).
 """
 import sqlite3, statistics, math
-con=sqlite3.connect('data/screener.db'); cur=con.cursor()
+import os as _os
+con=sqlite3.connect(_os.path.join("data", _os.environ.get("SCREENER_DB", "screener.db"))); cur=con.cursor()
 CONC=[r[0] for r in cur.execute("select distinct concepto from cnv_reextract")]
 by=cur.execute("select cuit,ticker_canonico from dim_entity where grupo='byma_only' and cuit is not null").fetchall()
 def cluster_mode(vals):

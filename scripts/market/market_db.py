@@ -36,7 +36,7 @@ Variables de entorno:
     DB_HOST DB_PORT DB_NAME              destino (DB_PORT=5432 => PRODUCCION)
     MARKET_DB_USER_RO                    rol de lectura  (def. catalaxia_market_ro)
     MARKET_DB_USER                       rol de escritura (def. catalaxia)
-    DB_PASSWORD / POSTGRES_PASSWORD      credencial
+    DB_PASSWORD / POSTGRES_PASSWORD      credencial (REQUERIDA en prod; sin default silencioso. FAIL temprano)
     MARKET_ALLOW_PROD_WRITE=1            unico modo de escribir en 5432
 """
 from __future__ import annotations
@@ -75,7 +75,7 @@ def destino() -> dict:
         "dbname": e.get("DB_NAME", "catalaxia"),
         "user_ro": e.get("MARKET_DB_USER_RO", "catalaxia_market_ro"),
         "user_rw": e.get("MARKET_DB_USER", e.get("DB_USER", "catalaxia")),
-        "password": e.get("DB_PASSWORD", e.get("POSTGRES_PASSWORD", "catalaxia")),
+        "password": e.get("DB_PASSWORD", e.get("POSTGRES_PASSWORD", "")),
         "allow_prod_write": e.get("MARKET_ALLOW_PROD_WRITE", "0") == "1",
     }
 

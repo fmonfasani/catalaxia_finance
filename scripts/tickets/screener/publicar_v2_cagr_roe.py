@@ -96,7 +96,9 @@ def _pass_de_env():
             for k in ("DB_PASSWORD=", "POSTGRES_PASSWORD="):
                 if l.startswith(k):
                     return l.split("=", 1)[1].strip().strip('"').strip("'")
-    return "catalaxia"
+    # R2: sin default silencioso ("catalaxia" eliminado). Si no hay env ni
+    # .env, devuelve "" y la autenticacion falla temprano (FAIL temprano).
+    return ""
 
 
 def main():
