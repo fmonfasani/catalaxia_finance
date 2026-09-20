@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import sys
-import uuid
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
@@ -38,7 +38,9 @@ def main() -> int:
         print(f"[huerfanas] {len(huerfanas)} corridas previas quedaron en RUNNING:")
         for h in huerfanas[:5]:
             print(f"   {h['run_id'][:12]} {h['pipeline_version']} hace {h['horas']}h")
-    with edb.run_scope(engine, settings, PIPELINE_VERSION, stage_id=STAGE_ID) as run:
+    with edb.run_scope(engine, settings, PIPELINE_VERSION, 
+                       run_id=os.environ.get("ENGINE_E2E_RUN_ID"),
+                       stage_id=STAGE_ID) as run:
         print(f"[run] run_id={run.run_id} git={run.git_commit}")
         return _correr(engine, settings, run)
 
@@ -106,13 +108,24 @@ def _correr(engine, settings, run) -> int:
                  "WHERE id = (SELECT max(id) FROM engine.stage_runs WHERE run_id=:run AND stage_id=:stage)"),
             {"r": report.to_json(), "g": gate.value, "run": run.run_id, "stage": STAGE_ID},
         )
-        if gate is GateStatus.PASS:
+        if gate is GateStatus.PASS and not os.environ.get("ENGINE_E2E_RUN_ID"):
+            # Decisión R4/E2E: en modo E2E las etapas NO escriben checkpoints
+            # individuales. Un run E2E que aborta en una etapa posterior no
+            # deja checkpoints dangling (F-031). El checkpoint solo tiene
+            # sentido en modo individual, donde cada etapa es un hito.
+            # ON CONFLICT sobre ux_checkpoints_reuse: re-correr S00 (individual
+            # o E2E) con el mismo input es un "checkpoint hit" por diseño
+            # (STAGE_GRAPH.md S4), no un error. Sin esto, S00 chocaba con
+            # UniqueViolation en la segunda corrida.
             conn.execute(
                 text("INSERT INTO engine.checkpoints "
                      "(checkpoint_id, stage_id, run_id, input_hash, code_version, contract_version, artifact_ref) "
-                     "VALUES (:cid, :stage, :run, :ih, :cv, :ctv, :ref)"),
+                     "VALUES (:cid, :stage, :run, :ih, :cv, :ctv, :ref) "
+                     "ON CONFLICT (stage_id, input_hash, code_version, contract_version) "
+                     "DO UPDATE SET checkpoint_id=EXCLUDED.checkpoint_id, run_id=EXCLUDED.run_id, "
+                     "artifact_ref=EXCLUDED.artifact_ref, created_at=now()"),
                 {
-                    "cid": uuid.uuid4().hex,
+                    "cid": run.run_id[:16] + "-s00",
                     "stage": STAGE_ID,
                     "run": run.run_id,
                     "ih": hashlib.sha256(settings.describe().encode()).hexdigest(),

@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import sys
 import uuid
@@ -76,13 +77,13 @@ def is_xbrl_payload(name: str) -> bool:
         name.lower() == "filingsummary.xml"
 
 
-def resolve_entity_from_s01(engine) -> dict:
+def resolve_entity_from_s01(engine, cik: str) -> dict:
     with engine.connect() as conn:
         ents = conn.execute(
             text("SELECT entity_id, legal_name, country, cik, cuit FROM identity.entities "
-                 "WHERE cik = :c"), {"c": GOLDEN_CIK}).mappings().all()
+                 "WHERE cik = :c"), {"c": cik}).mappings().all()
         if len(ents) != 1:
-            raise RuntimeError(f"S01 debía resolver exactamente 1 entidad para CIK {GOLDEN_CIK}, hay {len(ents)}")
+            raise RuntimeError(f"S01 debía resolver exactamente 1 entidad para CIK {cik}, hay {len(ents)}")
         ent = dict(ents[0])
         idents = conn.execute(
             text("SELECT id_type, id_value, marketplace FROM identity.identifiers "
@@ -240,7 +241,9 @@ def main() -> int:
         print(f"[huerfanas] {len(huerfanas)} corridas previas quedaron en RUNNING:")
         for h in huerfanas[:5]:
             print(f"   {h['run_id'][:12]} {h['pipeline_version']} hace {h['horas']}h")
-    with edb.run_scope(engine, settings, PIPELINE_VERSION, stage_id=STAGE_ID) as run:
+    with edb.run_scope(engine, settings, PIPELINE_VERSION,
+                       run_id=os.environ.get("ENGINE_E2E_RUN_ID"),
+                       stage_id=STAGE_ID) as run:
         print(f"[run] run_id={run.run_id} git={run.git_commit}")
         return _correr(engine, settings, run)
 
@@ -259,7 +262,7 @@ def _correr(engine, settings, run) -> int:
             text("SELECT id FROM engine.stage_runs WHERE run_id=:r AND stage_id=:s ORDER BY id DESC LIMIT 1"),
             {"r": run.run_id, "s": STAGE_ID}).scalar_one()
 
-    ent = resolve_entity_from_s01(engine)
+    ent = resolve_entity_from_s01(engine, GOLDEN_CIK)
     print(f"[identity] {ent['entity_id']} | {ent['legal_name']} | tickers="
           f"{[(i['id_value'], i['marketplace']) for i in ent['identifiers'] if i['id_type']=='TICKER']}")
     if ent["cik"] != GOLDEN_CIK:
@@ -452,7 +455,8 @@ def _correr(engine, settings, run) -> int:
                           "gate_status=:g WHERE id=(SELECT max(id) FROM engine.stage_runs "
                           "WHERE run_id=:run AND stage_id=:s)"),
                      {"r": report.to_json(), "g": gate.value, "run": run.run_id, "s": STAGE_ID})
-        if gate is not GateStatus.BLOCK:
+        if gate is not GateStatus.BLOCK and not os.environ.get("ENGINE_E2E_RUN_ID"):
+            # Decisión R4/E2E: en modo E2E no se escriben checkpoints individuales.
             conn.execute(text("INSERT INTO engine.checkpoints "
                               "(checkpoint_id, stage_id, run_id, input_hash, code_version, contract_version, artifact_ref) "
                               "VALUES (:cid,:s,:r,:ih,:cv,:ctv,:ref)"),

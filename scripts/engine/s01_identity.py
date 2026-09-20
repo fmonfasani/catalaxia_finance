@@ -1,7 +1,9 @@
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
+import os
 import sys
 import uuid
 from pathlib import Path
@@ -19,6 +21,7 @@ from engine.states import GateStatus, StageState, assert_transition
 STAGE_ID = "S01_identity"
 PIPELINE_VERSION = "s1-identity-v1"
 SCRIPT = "scripts/engine/s01_identity.py"
+YPF_CIK = "0000904851"  # Golden Case historico; otros CIK usan la via generica.
 
 
 def check_unique_active_identity(engine) -> dict:
@@ -109,8 +112,12 @@ def check_golden_ypf(engine, resolution: dict) -> dict:
 
 
 def main() -> int:
+    ap = argparse.ArgumentParser(description="S01 identidad (por CIK; YPF=golden)")
+    ap.add_argument("--cik", default=YPF_CIK, help="CIK objetivo, 10 digitos")
+    args = ap.parse_args()
+    cik = args.cik.zfill(10)
     settings = load_settings()
-    print(f"[config] target={settings.describe()}")
+    print(f"[config] target={settings.describe()} cik={cik}")
     engine = edb.get_engine(settings)
     applied = edb.apply_migrations(engine)
     print(f"[migrations] aplicadas ahora: {applied or '(ninguna nueva)'}")
@@ -125,12 +132,14 @@ def main() -> int:
         print(f"[huerfanas] {len(huerfanas)} corridas previas quedaron en RUNNING:")
         for h in huerfanas[:5]:
             print(f"   {h['run_id'][:12]} {h['pipeline_version']} hace {h['horas']}h")
-    with edb.run_scope(engine, settings, PIPELINE_VERSION, stage_id=STAGE_ID) as run:
+    with edb.run_scope(engine, settings, PIPELINE_VERSION,
+                       run_id=os.environ.get("ENGINE_E2E_RUN_ID"),
+                       stage_id=STAGE_ID) as run:
         print(f"[run] run_id={run.run_id} git={run.git_commit}")
-        return _correr(engine, settings, run)
+        return _correr(engine, settings, run, cik)
 
 
-def _correr(engine, settings, run) -> int:
+def _correr(engine, settings, run, cik: str = YPF_CIK) -> int:
     """Cuerpo de la etapa. Fija `run.status`; NUNCA llama a finish_run (F-050)."""
 
     prev: StageState | None = None
@@ -150,13 +159,25 @@ def _correr(engine, settings, run) -> int:
     print(f"[manual] resoluciones aplicadas: identifiers nuevos={stats_manual.identifiers} "
           f"yf nuevos={stats_manual.yf_symbols} problemas={len(stats_manual.conflicts)}")
 
-    resolution = ident.resolve_golden_ypf(engine)
+    if cik == YPF_CIK:
+        resolution = ident.resolve_golden_ypf(engine)
+        golden_checks = [check_golden_ypf(engine, resolution)]
+    else:
+        # Via generica multiemisor (F4): misma resolucion por CIK, sin gates YPF.
+        resolution = ident.resolve_por_cik(engine, cik)
+        if not resolution.get("present"):
+            resolution = {"present": False, "cik": cik,
+                          "detail": "CIK %s ausente en identity.entities" % cik}
+            golden_checks = [{"id": "C-S01-GEN", "result": "FAIL", "blocking": True,
+                              "detail": resolution["detail"]}]
+        else:
+            golden_checks = []
 
     checks = [
         check_unique_active_identity(engine),
         check_disputes_routed(engine, expected_min=len(stats_link.conflicts)),
         check_identity_vs_classification(engine),
-        check_golden_ypf(engine, resolution),
+        *golden_checks,
     ]
     blocked = [c for c in checks if c["result"] == "FAIL" and c.get("blocking")]
     gate = GateStatus.BLOCK if blocked else GateStatus.PASS
@@ -184,7 +205,7 @@ def _correr(engine, settings, run) -> int:
         gate=gate,
         input_checkpoint_id="ROOT",
         input_rows=stats_sec.entities,
-        expected=4,
+        expected=len(checks),
         parsed=sum(1 for c in checks if c["result"] == "PASS"),
         rejected=len(blocked),
         rejected_by_reason={c["id"]: 1 for c in blocked},
@@ -205,7 +226,8 @@ def _correr(engine, settings, run) -> int:
                  "WHERE run_id=:run AND stage_id=:stage)"),
             {"r": report.to_json(), "g": gate.value, "run": run.run_id, "stage": STAGE_ID},
         )
-        if gate is not GateStatus.BLOCK:
+        if gate is not GateStatus.BLOCK and not os.environ.get("ENGINE_E2E_RUN_ID"):
+            # Decisión R4/E2E: en modo E2E no se escriben checkpoints individuales.
             conn.execute(
                 text("INSERT INTO engine.checkpoints "
                      "(checkpoint_id, stage_id, run_id, input_hash, code_version, contract_version, artifact_ref) "

@@ -2,12 +2,28 @@
 
 Discovery -> Fetch -> RAW -> Integrity -> Manifest -> Provenance -> Validation -> Checkpoint.
 
-Generalizable a cualquier empresa CNV por CUIT. CEPU es el caso piloto, no una
-excepcion: ninguna regla del codigo nombra a CEPU. La identidad se consume, nunca
-se inventa (C1/C2); si C3 detecta una inconsistencia, la registra y sigue.
+Generalizable a cualquier empresa CNV. CEPU es el caso piloto, no una excepcion:
+ninguna regla del codigo nombra a CEPU ni lleva su CUIT por default.
+
+La identidad se CONSUME de identity_v1, nunca se inventa.
+
+CONTRATO DE ELEGIBILIDAD (C1, 2026-09-01)
+La autorizacion para ingerir es un identificador CUIT **autoritativo, ACTIVE y
+vigente** en identity_v1:
+
+    id_type='CUIT' AND is_authoritative AND status='ACTIVE' AND valid_to IS NULL
+
+Debe devolver exactamente una fila: 0 bloquea, >1 bloquea por AMBIGUO. La
+`assertion` no se consulta para decidir — el invariante 14 del modelo ya
+garantiza que un identificador autoritativo tiene assertion VERIFIED.
+
+Este docstring declaraba antes la regla en terminos de `assertion.status`, lo
+que contradecia la "Regla de autoridad" de IDENTITY_ARCHITECTURE_V1. Se corrigio
+junto con el codigo; no volver a describir la elegibilidad por el estado de la
+assertion.
 
 Uso:
-  python scripts/engine/c3_cnv_fetch.py --cuit 33650305499 --scope FINANCIERO
+  python scripts/engine/c3_cnv_fetch.py --cik 904851 --scope FINANCIERO
   python scripts/engine/c3_cnv_fetch.py --cuit 33650305499 --rerun     # idempotencia
 """
 from __future__ import annotations
@@ -57,51 +73,196 @@ SCOPES = {
 
 
 # --------------------------------------------------------------- identidad ---
-def load_identity(cuit: str, engine) -> dict:
-    """Consume la identidad de C1 (seed declarativo) y la contrasta con identity.*.
+#
+# CONTRATO DE ELEGIBILIDAD CNV
+# ============================
+# Una entidad es elegible para ingesta CNV si y solo si posee un identificador
+# CUIT que cumple LAS CUATRO condiciones:
+#
+#     id_type = 'CUIT'  ·  is_authoritative  ·  status = 'ACTIVE'  ·  valid_to IS NULL
+#
+# La `assertion` NO se consulta para decidir. El invariante 14 del modelo
+# (`tg_identifier_autoritativo`) ya garantiza que un identificador autoritativo
+# tiene assertion VERIFIED. La assertion se registra en la provenance, no en la
+# decision.
+#
+# POR QUE CAMBIO (C1)
+# La version anterior decidia con `max(a.status::text)`: sin filtrar
+# `is_authoritative`, sin mirar `identifier.status`, y resolviendo por el maximo
+# ALFABETICO del texto del estado. Daba el resultado correcto porque 'VERIFIED'
+# es el mayor de {UNRESOLVED, CANDIDATE, REVIEW_REQUIRED, VERIFIED, REJECTED} en
+# orden lexicografico — una propiedad del alfabeto, no una regla.
+#
+# El modelo garantiza `autoritativo => VERIFIED`, NO su reciproco: una assertion
+# VERIFIED sobre un identificador no autoritativo habilitaba una descarga que el
+# modelo no autoriza. Hoy no existe ese caso; nada lo impedia.
+#
+# `is_authoritative` es el discriminador que declara la arquitectura ("Regla de
+# autoridad") y el que ya usa S04 (`resolver_entidad`). CNV era el unico
+# consumidor desalineado.
+#
+# Ver: outputs/docs/fase_identity/IDENTITY_CNV_AUTHORITY_CONTRACT_AUDIT.md
 
-    No crea ni modifica entidades. Si el binding no existe, el run sigue con una
-    clave provisional CUIT:{cuit} y emite un hallazgo, en vez de inventar una.
+SQL_ENTIDAD = """
+SELECT DISTINCT e.entity_key, e.preferred_name
+  FROM identity_v1.entity e
+  JOIN identity_v1.identifier i ON i.entity_key = e.entity_key AND i.valid_to IS NULL
+ WHERE (CAST(:cuit AS text) IS NOT NULL AND i.id_type = 'CUIT' AND i.id_value = :cuit)
+    OR (CAST(:cik  AS text) IS NOT NULL AND i.id_type = 'CIK'  AND i.id_value = :cik)
+"""
+
+# La consulta de elegibilidad. Debe devolver EXACTAMENTE una fila.
+SQL_CUIT_AUTORITATIVO = """
+SELECT i.id_value        AS cuit,
+       i.identifier_id,
+       i.assertion_id    AS cuit_assertion,
+       i.status          AS cuit_identifier_status,
+       a.status          AS cuit_status,
+       a.method          AS cuit_method,
+       a.confidence      AS cuit_confidence
+  FROM identity_v1.identifier i
+  LEFT JOIN identity_v1.assertion a ON a.assertion_id = i.assertion_id
+ WHERE i.entity_key = :ek
+   AND i.id_type = 'CUIT'
+   AND i.is_authoritative
+   AND i.status = 'ACTIVE'
+   AND i.valid_to IS NULL
+ ORDER BY i.identifier_id
+"""
+
+# Contexto para explicar POR QUE se bloquea, sin usarlo para decidir.
+SQL_CUIT_CONTEXTO = """
+SELECT count(*)                                                     AS filas,
+       count(*) FILTER (WHERE i.is_authoritative)                   AS autoritativas,
+       count(*) FILTER (WHERE i.status <> 'ACTIVE')                 AS no_activas,
+       coalesce(string_agg(DISTINCT i.id_value, ', '), '')          AS valores,
+       coalesce(string_agg(DISTINCT i.status, ', '), '')            AS estados_ident,
+       coalesce(string_agg(DISTINCT a.status, ', '), '')            AS estados_assert
+  FROM identity_v1.identifier i
+  LEFT JOIN identity_v1.assertion a ON a.assertion_id = i.assertion_id
+ WHERE i.entity_key = :ek AND i.id_type = 'CUIT' AND i.valid_to IS NULL
+"""
+
+SQL_CIK_AUTORITATIVO = """
+SELECT i.id_value FROM identity_v1.identifier i
+ WHERE i.entity_key = :ek AND i.id_type = 'CIK'
+   AND i.is_authoritative AND i.valid_to IS NULL
+ ORDER BY i.identifier_id LIMIT 1
+"""
+
+
+def resolver_en_identity_v1(engine, cuit: str | None, cik: str | None) -> dict:
+    """Resuelve la identidad CNV EXCLUSIVAMENTE contra identity_v1.
+
+    La autorizacion para ingerir es un identificador CUIT **autoritativo,
+    ACTIVE y vigente**. Ni el nombre, ni el ticker, ni el legacy, ni un
+    hardcode, ni el estado de la assertion leido por separado.
+
+    Motivos de rechazo:
+        NO_ESTA_EN_IDENTITY_V1   el identificador no resuelve a ninguna entidad
+        AMBIGUO                  resuelve a >1 entidad, o la entidad tiene >1
+                                 CUIT autoritativo vigente
+        SIN_CUIT                 la entidad no tiene ningun CUIT vigente
+        CUIT_NO_AUTORITATIVO     tiene CUIT, pero ninguno autoritativo+ACTIVE
+
+    Devuelve {'ok': bool, 'motivo': str, ...}. Nunca lanza: el que decide que
+    hacer con un BLOCK es el llamador.
     """
-    ident = {"cuit": cuit, "entity_key": f"CUIT:{cuit}", "legal_name": None,
-             "binding": "PROVISIONAL_CUIT", "cik": None, "findings": []}
+    clave = f"CUIT {cuit}" if cuit else f"CIK {cik}"
+    with engine.connect() as conn:
+        ents = conn.execute(text(SQL_ENTIDAD),
+                            {"cuit": cuit, "cik": cik}).mappings().all()
+        if not ents:
+            return {"ok": False, "motivo": "NO_ESTA_EN_IDENTITY_V1",
+                    "detalle": f"{clave} no tiene entidad vigente en identity_v1. "
+                               f"C3 no crea identidades: pertenece a Identity."}
+        if len(ents) > 1:
+            # Dos entidades para el mismo identificador es justamente lo que el
+            # indice unico de Identity debe impedir. Si pasa, no se elige una.
+            return {"ok": False, "motivo": "AMBIGUO",
+                    "detalle": f"{clave} resuelve a {len(ents)} entidades: "
+                               f"{[e['entity_key'] for e in ents]}"}
+        ent = dict(ents[0])
+        ek = ent["entity_key"]
+        ent["cik"] = conn.execute(text(SQL_CIK_AUTORITATIVO), {"ek": ek}).scalar()
+        elegibles = conn.execute(text(SQL_CUIT_AUTORITATIVO), {"ek": ek}).mappings().all()
+        ctx = dict(conn.execute(text(SQL_CUIT_CONTEXTO), {"ek": ek}).mappings().one())
+
+    if len(elegibles) > 1:
+        # Ambiguedad de autoridad: NO se desempata. Elegir uno seria inventar
+        # cual de los dos manda.
+        return {"ok": False, "motivo": "AMBIGUO", **ent,
+                "detalle": f"{ent['preferred_name']}: la entidad tiene "
+                           f"{len(elegibles)} identificadores CUIT autoritativos "
+                           f"vigentes ({[e['cuit'] for e in elegibles]}). La "
+                           f"autoridad es ambigua y no se desempata."}
+    if not elegibles:
+        if ctx["filas"] == 0:
+            return {"ok": False, "motivo": "SIN_CUIT", **ent, "contexto": ctx,
+                    "detalle": f"{ent['preferred_name']} ({ek}) no tiene identificador "
+                               f"CUIT vigente en identity_v1. Sin CUIT no hay perfil CNV."}
+        return {"ok": False, "motivo": "CUIT_NO_AUTORITATIVO", **ent, "contexto": ctx,
+                "cuit": ctx["valores"] or None,
+                "detalle": f"{ent['preferred_name']}: tiene {ctx['filas']} identificador(es) "
+                           f"CUIT vigente(s) ({ctx['valores']}) pero NINGUNO es autoritativo "
+                           f"y ACTIVE. autoritativos={ctx['autoritativas']} "
+                           f"estados_identificador=[{ctx['estados_ident']}] "
+                           f"estados_assertion=[{ctx['estados_assert']}]. La ingesta CNV "
+                           f"exige un identificador autoritativo: atribuir documentos con un "
+                           f"CUIT no autoritativo es la atribucion cruzada que hay que evitar."}
+    r = dict(elegibles[0])
+    return {"ok": True, "motivo": "AUTORITATIVO", **ent, **r, "contexto": ctx}
+
+
+def load_identity(engine, cuit: str | None = None, cik: str | None = None) -> dict:
+    """Identidad para la corrida. La fuente autoritativa es identity_v1.
+
+    Corta con SystemExit ANTES de que el llamador abra corrida: un caso no
+    elegible no debe gastar un run ni un request.
+
+    El seed C1 y el schema legacy `identity.*` se siguen leyendo, pero SOLO para
+    contrastar: si divergen, se registra un hallazgo. Ninguno decide el
+    `entity_key` ni el CUIT.
+    """
+    res = resolver_en_identity_v1(engine, cuit, cik)
+    if not res["ok"]:
+        raise SystemExit(f"BLOCK identidad [{res['motivo']}]: {res['detalle']}")
+    cuit = res["cuit"]
+    ident = {"cuit": cuit, "entity_key": res["entity_key"],
+             "legal_name": res["preferred_name"], "binding": "IDENTITY_V1_AUTORITATIVO",
+             "cik": res["cik"], "cuit_assertion": res["cuit_assertion"],
+             "cuit_method": res["cuit_method"], "findings": []}
     seed_rows: list[dict] = []
     if SEED_C1.exists():
         seed_rows = list(csv.DictReader(SEED_C1.open(encoding="utf-8-sig")))
     seed_key = next((r["entity_key"] for r in seed_rows
                      if r["scope"] == "entity" and r["field"] == "cuit"
                      and val.normalize_cuit(r["value"]) == cuit), None)
-    if seed_key:
-        ident["entity_key"] = seed_key
-        ident["binding"] = "C1_SEED"
-        ident["legal_name"] = next((r["value"] for r in seed_rows
-                                    if r["entity_key"] == seed_key and r["field"] == "legal_name"), None)
-        if seed_key.startswith("CIK:"):
-            ident["cik"] = seed_key.split(":", 1)[1]
-    else:
+    if seed_key and seed_key != ident["entity_key"]:
+        # No es un error: el seed usa claves legibles (`CIK:...`) y identity_v1
+        # usa claves opacas. Se registra para poder auditar la correspondencia.
         ident["findings"].append(
-            f"CUIT {cuit} sin binding en el seed C1 ({SEED_C1.name}): se opera con clave "
-            f"provisional CUIT:{cuit}. C3 no crea identidades; requiere C1 para esta empresa.")
+            f"el seed C1 ({SEED_C1.name}) declara entity_key={seed_key} para el CUIT {cuit} y "
+            f"identity_v1 resuelve {ident['entity_key']}. Manda identity_v1; el seed queda "
+            f"como referencia historica.")
+    if seed_key and seed_key.startswith("CIK:"):
+        cik_seed = seed_key.split(":", 1)[1]
+        if ident["cik"] and cik_seed != ident["cik"]:
+            raise SystemExit(f"BLOCK identidad: el seed C1 dice CIK {cik_seed} e identity_v1 dice "
+                             f"CIK {ident['cik']} para el CUIT {cuit}")
 
     with engine.connect() as conn:
         row = conn.execute(text("SELECT entity_id, legal_name, cik, cuit FROM identity.entities "
-                                "WHERE cuit = :c OR entity_id = :k"),
-                           {"c": cuit, "k": ident["entity_key"]}).mappings().first()
+                                "WHERE cuit = :c"), {"c": cuit}).mappings().first()
     ident["identity_db"] = dict(row) if row else None
     if row:
         if row["cik"] and ident["cik"] and row["cik"] != ident["cik"]:
-            raise SystemExit(f"BLOCK identidad: seed C1 dice CIK {ident['cik']} y identity.entities "
-                             f"dice {row['cik']} para {ident['entity_key']}")
-        if not row["cuit"]:
-            # Inconsistencia real detectada por C3: se registra, no se corrige aqui.
-            ident["findings"].append(
-                f"identity.entities[{row['entity_id']}].cuit es NULL pero el seed C1 declara "
-                f"CUIT {cuit}. El seed nunca se promovio a PostgreSQL. Pertenece a C1: C3 lo "
-                f"registra y no muta identity.*")
-        ident["legal_name"] = ident["legal_name"] or row["legal_name"]
+            raise SystemExit(f"BLOCK identidad: identity_v1 dice CIK {ident['cik']} y el legacy "
+                             f"identity.entities dice {row['cik']} para el CUIT {cuit}")
     else:
         ident["findings"].append(
-            f"identity.entities no tiene fila para {ident['entity_key']} ni para CUIT {cuit}.")
+            f"el legacy identity.entities no tiene fila para el CUIT {cuit}. No bloquea: la "
+            f"identidad la resuelve identity_v1.")
     return ident
 
 
@@ -274,7 +435,11 @@ def fetch_attachment(client, store, mf, cuit: str, att, viewer_guid: str, csrf: 
 # ----------------------------------------------------------------- main ------
 def main() -> int:
     ap = argparse.ArgumentParser(description="C3 CNV fetcher (por CUIT, generalizable)")
-    ap.add_argument("--cuit", default="33650305499", help="CUIT sin guiones del perfil CNV")
+    # Sin default: un CUIT hardcodeado en el fetcher es exactamente la clase de
+    # atajo que este ciclo prohibe. O se pasa el CUIT (y se valida contra
+    # identity_v1) o se pasa el CIK (y el CUIT se DERIVA de identity_v1).
+    ap.add_argument("--cuit", default=None, help="CUIT sin guiones; se valida contra identity_v1")
+    ap.add_argument("--cik", default=None, help="CIK; el CUIT se resuelve desde identity_v1")
     ap.add_argument("--scope", default="FINANCIERO", choices=sorted(SCOPES))
     ap.add_argument("--desde-anio", type=int, default=None, help="filtra por anio de cierre >= N")
     ap.add_argument("--max-visores", type=int, default=None)
@@ -285,9 +450,14 @@ def main() -> int:
     ap.add_argument("--delay-visor", type=float, default=DEFAULT_DELAYS["aif2.cnv.gov.ar"])
     args = ap.parse_args()
 
-    cuit = val.normalize_cuit(args.cuit)
-    if not cuit or len(cuit) != 11:
-        raise SystemExit(f"CUIT invalido: {args.cuit!r}")
+    if bool(args.cuit) == bool(args.cik):
+        raise SystemExit("indicar exactamente uno: --cuit o --cik")
+    cuit = None
+    if args.cuit:
+        cuit = val.normalize_cuit(args.cuit)
+        if not cuit or len(cuit) != 11:
+            raise SystemExit(f"CUIT invalido: {args.cuit!r}")
+    cik = args.cik.zfill(10) if args.cik else None
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
     settings = load_settings()
@@ -295,8 +465,10 @@ def main() -> int:
     applied = edb.apply_migrations(engine)
     print(f"[config] {settings.describe()} | migraciones nuevas: {applied or '(ninguna)'}")
 
-    ident = load_identity(cuit, engine)
-    print(f"[identity] {ident['entity_key']} | {ident['legal_name']} | binding={ident['binding']}")
+    ident = load_identity(engine, cuit=cuit, cik=cik)
+    cuit = ident["cuit"]          # si se entro por --cik, el CUIT lo puso identity_v1
+    print(f"[identity] {ident['entity_key']} | {ident['legal_name']} | binding={ident['binding']} "
+          f"| cuit={cuit} (assertion {ident['cuit_assertion']}, {ident['cuit_method']})")
     for f in ident["findings"]:
         print(f"[identity][HALLAZGO] {f}")
 

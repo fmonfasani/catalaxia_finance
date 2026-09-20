@@ -289,6 +289,47 @@ def apply_manual_resolutions(engine: Engine, run_id: str) -> SeedStats:
     return stats
 
 
+def resolve_por_cik(engine: Engine, cik: str) -> dict:
+    """Igual que `resolve_golden_ypf` pero para cualquier CIK.
+
+    Existe porque el golden case tenia el CIK de YPF escrito dentro del SQL, y
+    la ingesta del resto del universo necesita la misma resolucion para otros
+    emisores. `resolve_golden_ypf` queda como el caso particular, para no tocar
+    la firma que consume S01.
+    """
+    with engine.connect() as conn:
+        ent = conn.execute(
+            text(
+                """
+                SELECT entity_id, legal_name, cik, cuit FROM identity.entities
+                 WHERE cik = :cik
+                """
+            ),
+            {"cik": cik},
+        ).first()
+        if not ent:
+            return {"present": False}
+        idents = conn.execute(
+            text(
+                """
+                SELECT id_type, id_value, marketplace, status
+                  FROM identity.identifiers
+                 WHERE entity_id = :e
+                 ORDER BY id_type, marketplace
+                """
+            ),
+            {"e": ent.entity_id},
+        ).all()
+    return {
+        "present": True,
+        "entity_id": ent.entity_id,
+        "legal_name": ent.legal_name,
+        "cik": ent.cik,
+        "cuit": ent.cuit,
+        "identifiers": [dict(r._mapping) for r in idents],
+    }
+
+
 def resolve_golden_ypf(engine: Engine) -> dict:
     with engine.connect() as conn:
         ent = conn.execute(

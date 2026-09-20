@@ -35,6 +35,7 @@ import argparse
 import hashlib
 import io
 import json
+import os
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -45,8 +46,9 @@ from sqlalchemy import text  # noqa: E402
 
 from engine import db as edb
 from engine import hashout  # noqa: E402
-from engine.config import load_settings  # noqa: E402
-from engine.states import GateStatus, StageState  # noqa: E402
+from engine.config import load_settings # noqa: E402
+from engine.report import StageReport # noqa: E402
+from engine.states import GateStatus, StageState # noqa: E402
 
 STAGE_ID = "S04_normalize"
 PIPELINE_VERSION = "engine-v1"
@@ -156,6 +158,29 @@ def fact_key(entity_key, accession, qname, context_id, unit_ref) -> str:
 # =====================================================================
 
 def checkpoint_s03(conn) -> dict:
+    # Decisión R4/E2E: en modo E2E las etapas NO escriben checkpoints
+    # individuales (un run E2E que aborta no debe dejar checkpoints dangling,
+    # F-031). El insumo de S04 es el S03 del MISMO run E2E: se resuelve directo
+    # por stage_runs, sin depender de engine.checkpoints.
+    e2e_run_id = os.environ.get("ENGINE_E2E_RUN_ID")
+    if e2e_run_id:
+        s03_row = conn.execute(text(
+            """
+            SELECT state, gate_status FROM engine.stage_runs
+             WHERE run_id = :r AND stage_id = :s
+             ORDER BY id DESC LIMIT 1
+            """), {"r": e2e_run_id, "s": INPUT_STAGE}).mappings().first()
+        if s03_row is None or s03_row["gate_status"] != "PASS":
+            raise RuntimeError(
+                f"S04 en modo E2E requiere S03 con gate PASS en el run {e2e_run_id}")
+        return {
+            "checkpoint_id": f"S03E2E:{e2e_run_id}",
+            "run_id": e2e_run_id,
+            "code_version": "engine-v1",
+            "contract_version": "parsed-v1",
+            "artifact_ref": "pg://parsed.* (E2E, sin checkpoint individual)",
+            "status": "OK",
+        }
     row = conn.execute(text(
         """
         SELECT c.checkpoint_id, c.run_id, c.code_version, c.contract_version,
@@ -198,19 +223,55 @@ def hash_out_s03(conn, run_id: str) -> tuple[str, str, str]:
     return declarado, sha(json.dumps(tot, sort_keys=True)), spec
 
 
+# Un contexto XBRL puede llegar dos veces: SEC publica el documento inline
+# (.htm) y la instancia extraida (_htm.xml) del MISMO filing, y ambos se
+# parsean. Las dos representaciones son equivalentes pero serializan la lista de
+# dimensiones en distinto ORDEN. Comparar `dimensions::text` las declaraba
+# contradictorias, y `contextos_deduplicados` DESCARTA lo contradictorio: los
+# hechos que usaban esos contextos se perdian en silencio (F-055).
+#
+# La lista de dimensiones es un conjunto, no una secuencia: se canoniza
+# ordenando sus elementos antes de comparar. Es el mismo criterio que hashout-v2
+# aplico a las filas.
+#
+# Las dimensiones TIPADAS guardan ademas el fragmento XML crudo, que arrastra
+# los `xmlns` en alcance en ese punto del documento. El inline y la instancia
+# declaran distintos prefijos, asi que el mismo valor tipado (p.ej. la fecha
+# 2024-09-29 de AAPL) se serializaba distinto. Se comparan sin ese ruido.
+SQL_CTX_CANONICO = """
+SELECT ctx_id, run_id, accession_number, context_id, start_date, end_date,
+       instant_date, period_kind, dim_count, dimensions,
+       CASE WHEN jsonb_typeof(dimensions) = 'array'
+            THEN (SELECT jsonb_agg(e ORDER BY e::text)
+                    FROM jsonb_array_elements(dimensions) e)
+            ELSE dimensions END AS dims_c,
+       CASE WHEN jsonb_typeof(typed_dimensions) = 'array'
+            THEN (SELECT jsonb_agg(n ORDER BY n::text) FROM (
+                    SELECT CASE WHEN e ? 'content'
+                                THEN jsonb_set(e, '{content}', to_jsonb(
+                                       regexp_replace(e->>'content',
+                                         '\\s+xmlns(:[A-Za-z0-9_.-]+)?="[^"]*"', '', 'g')))
+                                ELSE e END AS n
+                      FROM jsonb_array_elements(typed_dimensions) e) t)
+            ELSE typed_dimensions END AS typed_c
+  FROM parsed.contexts
+"""
+
+
 def contextos_deduplicados(conn, run_id: str) -> tuple[dict, list]:
     """T1 — un contexto por (accession, context_id). Reporta contradicciones."""
     filas = conn.execute(text(
-        """
+        f"""
         SELECT accession_number, context_id,
                count(*) AS n,
                count(DISTINCT (start_date, end_date, instant_date, period_kind,
-                               dimensions, typed_dimensions)::text) AS variantes,
+                               dims_c, typed_c)::text) AS variantes,
                min(start_date) AS start_date, min(end_date) AS end_date,
                min(instant_date) AS instant_date, min(period_kind) AS period_kind,
                min(dim_count) AS dim_count,
                (array_agg(dimensions ORDER BY ctx_id))[1] AS dimensions
-          FROM parsed.contexts WHERE run_id = :r
+          FROM ({SQL_CTX_CANONICO}) z
+         WHERE run_id = :r
          GROUP BY accession_number, context_id
         """), {"r": run_id}).mappings().all()
     ctx = {}
@@ -437,14 +498,22 @@ def correr_gate(conn, s03: dict, run_id: str, stats: dict, dry: bool) -> list[di
     chk("C-S04-001", decl == recalc and s03["status"] == "OK" and spec == hashout.HASH_SPEC,
         f"spec={spec} declarado={decl} recalculado={recalc} corrida={s03['status']}")
 
+    # F-054: `parsed` acumula un emisor por corrida. La invariante ya no es
+    # "una sola corrida en la tabla" —eso era cierto cuando habia un unico
+    # golden case— sino "ningun CIK mezcla corridas".
     n_runs = conn.execute(text("SELECT count(DISTINCT run_id) FROM parsed.facts")).scalar()
-    chk("C-S04-002", n_runs == 1, f"corridas distintas en parsed.facts: {n_runs}")
+    ciks_mezclados = conn.execute(text(
+        "SELECT count(*) FROM (SELECT cik FROM parsed.facts GROUP BY cik "
+        "  HAVING count(DISTINCT run_id) > 1) x")).scalar()
+    chk("C-S04-002", ciks_mezclados == 0,
+        f"CIK con hechos de mas de una corrida: {ciks_mezclados} "
+        f"(corridas en parsed.facts: {n_runs}, una por emisor)")
 
     contradictorios = conn.execute(text(
-        "SELECT count(*) FROM (SELECT accession_number, context_id FROM parsed.contexts "
-        " WHERE run_id=:r GROUP BY 1,2 "
-        " HAVING count(DISTINCT (start_date,end_date,instant_date,period_kind,"
-        "dimensions,typed_dimensions)::text) > 1) x"), {"r": s03["run_id"]}).scalar()
+        f"SELECT count(*) FROM (SELECT accession_number, context_id "
+        f"  FROM ({SQL_CTX_CANONICO}) z WHERE run_id=:r GROUP BY 1,2 "
+        f" HAVING count(DISTINCT (start_date,end_date,instant_date,period_kind,"
+        f"dims_c,typed_c)::text) > 1) x"), {"r": s03["run_id"]}).scalar()
     chk("C-S04-003", contradictorios == 0, f"contextos contradictorios: {contradictorios}")
 
     ciks = [r[0] for r in conn.execute(text(
@@ -509,6 +578,64 @@ def correr_gate(conn, s03: dict, run_id: str, stats: dict, dry: bool) -> list[di
     return checks
 
 
+def build_s04_report(*, stage, run_id, mode, started_at, finished_at,
+                     script, normalizer_version, git_commit,
+                     input_stage, s03, stats, hechos, resumen, h2,
+                     gate, checks, fallidos):
+    """Construye el reporte S04 sobre engine.report.StageReport (M7, FASE 1).
+
+    Mapeo C10: expected = filas de entrada (parsed), parsed = hechos
+    canonicos emitidos, rejected = expected - parsed (caidos en
+    normalizacion; numero honesto por construccion). El desglose por causa
+    vive en coverage_detail porque las categorias de caida se solapan
+    (un hecho puede ser sin_contexto y sin_entidad a la vez) y no admiten
+    particion exacta: no se inventa un by_reason que no cuadre.
+    Todo el contenido legacy se preserva como extras (code.normalizer_version,
+    input.stage/run_id, coverage_detail, integrity extendida, nulls por causa
+    exacta). validate() impone el contrato C10; unico cambio de conducta
+    posible vs legacy: gate PASS con cero checks ahora falla en validate()
+    (norma del proyecto: 'termino sin excepcion' nunca es PASS).
+    """
+    emitidos = len(hechos)
+    sr = StageReport(
+        stage=stage, run_id=run_id, mode=mode,
+        started_at=started_at, finished_at=finished_at,
+        gate=gate,
+        input_checkpoint_id=s03["checkpoint_id"],
+        input_rows=stats["filas_entrada"],
+        expected=stats["filas_entrada"],
+        parsed=emitidos,
+        rejected=stats["filas_entrada"] - emitidos,
+        hash_in=sha(s03["checkpoint_id"]),
+        hash_out=h2["hash_out"],
+        gate_reasons=[c["detail"] for c in fallidos],
+        checks=[{"id": c["id"], "result": c["result"]} for c in checks],
+        nulls_count=stats["sin_contexto"] + stats["sin_entidad"],
+        nulls_by_reason={"sin_contexto": stats["sin_contexto"],
+                         "sin_entidad": stats["sin_entidad"]},
+        parser_version=normalizer_version,
+        script=script,
+        git_commit=git_commit,
+    )
+    sr.validate()
+    report = sr.to_dict()
+    report["code"]["normalizer_version"] = normalizer_version
+    report["input"]["stage"] = input_stage
+    report["input"]["run_id"] = s03["run_id"]
+    report["coverage_detail"] = {
+        "grupos": stats["grupos"], "emitidos": emitidos,
+        "sin_contexto": stats["sin_contexto"],
+        "sin_entidad": stats["sin_entidad"],
+        "sin_unidad": stats["sin_unidad"],
+        "unidad_no_resuelta": stats["unidad_no_resuelta"],
+        "desempates": stats["desempates"],
+    }
+    report["integrity"]["hash_out_v1"] = sha(json.dumps(resumen, sort_keys=True))
+    report["integrity"]["hash_spec"] = h2["hash_spec"]
+    report["integrity"]["por_tabla"] = h2["por_tabla"]
+    return report
+
+
 # =====================================================================
 
 def main() -> int:
@@ -538,7 +665,9 @@ def main() -> int:
           f"status {s03['status']})\n")
 
     # ---- run_scope: el cierre va en finally (F-009) --------------------
-    with edb.run_scope(engine, settings, PIPELINE_VERSION, stage_id=STAGE_ID) as run:
+    with edb.run_scope(engine, settings, PIPELINE_VERSION,
+                       run_id=os.environ.get("ENGINE_E2E_RUN_ID"),
+                       stage_id=STAGE_ID) as run:
         prev = None
         for st in (StageState.READY, StageState.RUNNING):
             edb.record_stage_transition(engine, run.run_id, STAGE_ID, prev, st)
@@ -568,32 +697,14 @@ def main() -> int:
         with engine.connect() as conn:
             h2 = hashout.hash_out(conn, ["derived.fact"], "run_id = :r",
                                   {"r": run.run_id})
-        report = {
-            "stage": STAGE_ID, "run_id": run.run_id, "mode": settings.mode,
-            "started_at": started_at, "finished_at": utc_now_iso(),
-            "code": {"script": SCRIPT, "normalizer_version": NORMALIZER_VERSION,
-                     "git_commit": run.git_commit},
-            "input": {"stage": INPUT_STAGE, "checkpoint_id": s03["checkpoint_id"],
-                      "run_id": s03["run_id"], "rows": stats["filas_entrada"]},
-            "coverage": {"grupos": stats["grupos"], "emitidos": len(hechos),
-                         "sin_contexto": stats["sin_contexto"],
-                         "sin_entidad": stats["sin_entidad"],
-                         "sin_unidad": stats["sin_unidad"],
-                         "unidad_no_resuelta": stats["unidad_no_resuelta"],
-                         "desempates": stats["desempates"]},
-            "integrity": {"hash_in": sha(s03["checkpoint_id"]),
-                          # F-029: el hash de salida es el digest de CONTENIDO de
-                          # derived.fact. El resumen de conteos queda como _v1
-                          # para poder contrastar con checkpoints historicos.
-                          "hash_out": h2["hash_out"],
-                          "hash_out_v1": sha(json.dumps(resumen, sort_keys=True)),
-                          "hash_spec": h2["hash_spec"],
-                          "por_tabla": h2["por_tabla"]},
-            "nulls": {"count": stats["sin_contexto"] + stats["sin_entidad"]},
-            "gate": {"status": gate.value,
-                     "checks": [{"id": c["id"], "result": c["result"]} for c in checks],
-                     "reasons": [c["detail"] for c in fallidos]},
-        }
+        report = build_s04_report(
+            stage=STAGE_ID, run_id=run.run_id, mode=settings.mode,
+            started_at=started_at, finished_at=utc_now_iso(),
+            script=SCRIPT, normalizer_version=NORMALIZER_VERSION,
+            git_commit=run.git_commit, input_stage=INPUT_STAGE,
+            s03=s03, stats=stats, hechos=hechos, resumen=resumen, h2=h2,
+            gate=gate, checks=checks, fallidos=fallidos,
+        )
 
         # ---- OPERACION CONSISTENTE (F-009): transicion + report +
         #      checkpoint en UNA transaccion. En S03 iban separadas.

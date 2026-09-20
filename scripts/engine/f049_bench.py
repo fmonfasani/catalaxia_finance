@@ -28,6 +28,11 @@ from engine.db import apply_migrations, get_admin_engine  # noqa: E402
 
 OUT = REPO / "outputs" / "docs" / "homologacion"
 MIG = REPO / "migrations" / "engine"
+MIG_MARKET = REPO / "migrations" / "market"
+# F-051: el runner aplica engine + market. Sobre una base SIN tablas de Market,
+# solo entra `market/012_rol_market_readonly.sql` (roles, no depende de tablas);
+# 013 y 025 se saltean hasta que `m19_apply_schema.py` cree las tablas.
+MARKET_SIN_TABLAS = 1
 BASE = "v101_bench"
 
 
@@ -103,7 +108,8 @@ def main() -> int:
     if s.is_prod:
         print("EXT-010: abortado.")
         return 2
-    n_mig = len(list(MIG.glob("*.sql")))
+    n_eng = len(list(MIG.glob('*.sql')))
+    n_mig = n_eng + MARKET_SIN_TABLAS   # lo que el runner aplica sobre base vacia
     res, ok_total = [], True
 
     def chk(n, cond, det=""):
@@ -139,19 +145,21 @@ def main() -> int:
     chk("8. sin duplicados en schema_migrations", e2["duplicados"] == 0, e2["duplicados"])
 
     # 9 -------------------------------------------------------------
-    chk("9. orden correcto (lexicografico)",
-        e2["orden"] == sorted(p.name for p in MIG.glob("*.sql")),
-        "aplicadas en orden de nombre")
+    esperado = ([f"engine/{p.name}" for p in sorted(MIG.glob("*.sql"))]
+                + ["market/012_rol_market_readonly.sql"])
+    chk("9. orden determinista: engine, luego market",
+        e2["orden"] == esperado,
+        f"{len(e2['orden'])} en orden engine->market")
 
     # 10 ------------------------------------------------------------
     eng, _ = admin_a(BASE)
     with eng.begin() as c:
         c.execute(text("DELETE FROM engine.schema_migrations "
-                       " WHERE filename='031_f044_politica_estructural_cik_lei.sql'"))
+                       " WHERE filename LIKE '%031_f044_politica_estructural_cik_lei.sql'"))
     eng.dispose()
     ap3, err3 = correr(BASE)
     chk("10. detecta y re-aplica la faltante",
-        err3 is None and ap3 == ["031_f044_politica_estructural_cik_lei.sql"],
+        err3 is None and ap3 == ["engine/031_f044_politica_estructural_cik_lei.sql"],
         err3 or f"{ap3}")
     chk("    ...sin duplicar", estado(BASE)["duplicados"] == 0)
 
@@ -196,7 +204,7 @@ def main() -> int:
     recrear(BASE)
     ap7, err7 = correr(BASE)
     e7 = estado(BASE)
-    chk("7. aplicacion completa de las 29",
+    chk(f"7. aplicacion completa de las {n_mig}",
         err7 is None and len(ap7 or []) == n_mig and e7["registradas"] == n_mig,
         f"{len(ap7 or [])}/{n_mig}")
 

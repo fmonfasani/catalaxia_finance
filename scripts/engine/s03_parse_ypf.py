@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import argparse
+
 import hashlib
 import json
 import os
@@ -21,7 +23,7 @@ from engine import db as edb
 from engine import hashout  # noqa: E402
 from engine.config import load_settings  # noqa: E402
 from engine.fetch import RAW_ROOT, sha256_bytes  # noqa: E402
-from engine.identity import resolve_golden_ypf  # noqa: E402
+from engine.identity import resolve_por_cik  # noqa: E402
 from engine.report import StageReport, utc_now_iso  # noqa: E402
 from engine.states import GateStatus, StageState, assert_transition  # noqa: E402
 from engine.xbrlparse import (  # noqa: E402
@@ -39,6 +41,11 @@ SCRIPT = "scripts/engine/s03_parse_ypf.py"
 PARSER_VERSION = "xbrl_parse_v2"
 OUT_DIR = REPO_ROOT / "outputs" / "docs" / "fase_s03"
 GOLDEN_CIK = "0000904851"
+# C-S03-004 mezclaba el invariante real (ningun filing con XBRL quedo sin
+# hechos) con una expectativa de VOLUMEN propia de YPF (>=9 filings, eras
+# FY2017-FY2025). El umbral pasa a ser una entrada explicita: 9 por defecto,
+# para que el golden case siga verificandose igual.
+MIN_XBRL_FILINGS = 9
 STANDARD_HINTS = ("us-gaap", "ifrs-full", "dei", "srt")
 
 XBRL_PAYLOAD_KINDS = {"XBRL_INSTANCE", "XBRL_SCHEMA", "LINKBASE_PRE", "LINKBASE_CAL",
@@ -93,16 +100,49 @@ def insert_many(cur, table: str, cols: tuple[str, ...], rows: list[tuple]) -> in
     return len(rows)
 
 
-def find_s02_input_run(engine) -> str:
+def decidir_reemplazo(previas_con_hechos: set, filing_results: list[dict]
+                      ) -> tuple[bool, list, int]:
+    """F13 — guarda del replace-all. Funcion pura: se testea sin base.
+
+    El borrado del parsed previo solo procede si el lote nuevo reproduce
+    TODOS los filings que ya tenian hechos. Un filing previo con hechos que
+    el lote nuevo no reproduce (ausente del lote, o presente pero sin hechos)
+    significa que reemplazar destruiria provenance viva de `derived.fact`
+    (`source_fact_ids` -> `fact_id` inexistente => NO_DANGLING > 0, medido
+    90.398 en el incidente de KO).
+
+    Devuelve (reemplazo_ok, faltantes, hechos_nuevos):
+      reemplazo_ok  True solo si hay hechos nuevos Y no falta ningun filing
+                    previo con hechos.
+      faltantes     accessions previos con hechos no reproducidos (ordenados).
+      hechos_nuevos total de facts del lote nuevo.
+    """
+    nuevas = {res["acc"] for res in filing_results if res["facts_rows"]}
+    faltantes = sorted(a for a in previas_con_hechos if a not in nuevas)
+    hechos_nuevos = sum(len(res["facts_rows"]) for res in filing_results)
+    return (hechos_nuevos > 0 and not faltantes), faltantes, hechos_nuevos
+
+
+def find_s02_input_run(engine, cik: str) -> str:
+    """Ultima corrida S02 con gate PASS **de este CIK**.
+
+    F-054: sin el filtro por CIK, re-parsear la empresa A despues de haber
+    hecho el fetch de B tomaba los archivos de B y los escribia bajo el CIK de
+    A, porque `parse_filing` etiqueta las filas con `GOLDEN_CIK`. Atribucion
+    cruzada, sin error visible.
+    """
     with engine.connect() as conn:
         row = conn.execute(text("""
             SELECT r.run_id FROM engine.runs r
              WHERE EXISTS (SELECT 1 FROM engine.stage_runs s
                             WHERE s.run_id = r.run_id AND s.stage_id='S02_fetch'
                               AND s.gate_status='PASS')
-             ORDER BY r.started_at DESC LIMIT 1""")).scalar()
+               AND EXISTS (SELECT 1 FROM fetch_raw.download_log d
+                            WHERE d.run_id = r.run_id AND d.cik = :cik)
+             ORDER BY r.started_at DESC LIMIT 1"""), {"cik": cik}).scalar()
     if not row:
-        raise SystemExit("BLOCK: no hay run S02 con gate PASS; correr scripts/engine/s02_fetch_ypf.py")
+        raise SystemExit(f"BLOCK: no hay corrida S02 con gate PASS para el CIK {cik}; "
+                         f"correr scripts/engine/s02_fetch_ypf.py --cik {cik}")
     return row
 
 
@@ -337,9 +377,18 @@ def main() -> int:
     No se toca el parsing, la normalizacion ni los contratos de datos: el cuerpo
     de la etapa se movio entero a `_etapa`, sin reindentar ni reordenar nada.
     """
+    global GOLDEN_CIK, MIN_XBRL_FILINGS
+    ap = argparse.ArgumentParser(description="S03 parse XBRL (por CIK)")
+    ap.add_argument("--cik", default=GOLDEN_CIK,
+                    help="CIK cuyo fetch de S02 se parsea; debe coincidir con el de la corrida")
+    ap.add_argument("--min-xbrl", type=int, default=MIN_XBRL_FILINGS,
+                    help="minimo de filings con XBRL parseado que exige C-S03-004")
+    _a = ap.parse_args()
+    GOLDEN_CIK, MIN_XBRL_FILINGS = _a.cik.zfill(10), _a.min_xbrl
+
     settings = load_settings()
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    print(f"[config] target={settings.describe()} scope=GOLDEN_CASE:YPF:{STAGE_ID}")
+    print(f"[config] target={settings.describe()} scope=CIK{GOLDEN_CIK}:{STAGE_ID}")
     engine = edb.get_engine(settings)
     applied = edb.apply_migrations(engine, settings=settings)
     print(f"[migrations] aplicadas ahora: {applied or '(ninguna nueva)'}")
@@ -352,7 +401,9 @@ def main() -> int:
             print(f"   {h['run_id']} {h['pipeline_version']} {h['horas']} h")
         return 1
 
-    with edb.run_scope(engine, settings, PIPELINE_VERSION, stage_id=STAGE_ID) as run:
+    with edb.run_scope(engine, settings, PIPELINE_VERSION,
+                       run_id=os.environ.get("ENGINE_E2E_RUN_ID"),
+                       stage_id=STAGE_ID) as run:
         print(f"[run] run_id={run.run_id} git={run.git_commit}")
         return _etapa(engine, settings, run)
 
@@ -377,13 +428,13 @@ def _etapa(engine, settings, run) -> int:
             text("SELECT id FROM engine.stage_runs WHERE run_id=:r AND stage_id=:s ORDER BY id DESC LIMIT 1"),
             {"r": run.run_id, "s": STAGE_ID}).scalar_one()
 
-    ent = resolve_golden_ypf(engine)
+    ent = resolve_por_cik(engine, GOLDEN_CIK)
     if not ent.get("present") or ent["cik"] != GOLDEN_CIK:
-        raise SystemExit("BLOCK: identidad YPF inconsistente con golden case")
+        raise SystemExit(f"BLOCK: identidad inconsistente para CIK {GOLDEN_CIK}")
     run.entity_id = ent["entity_id"]
     print(f"[identity] {ent['entity_id']} | {ent['legal_name']}")
 
-    s02_run_id = find_s02_input_run(engine)
+    s02_run_id = find_s02_input_run(engine, GOLDEN_CIK)
     print(f"[input] checkpoint S02: run_id={s02_run_id}")
     s02_files = load_s02_inputs(engine, s02_run_id)
     files_ok, files_bad = verify_raw_integrity(s02_files)
@@ -410,22 +461,76 @@ def _etapa(engine, settings, run) -> int:
     raw = engine.raw_connection()
     try:
         cur = raw.cursor()
-        for table in PARSED_TABLES:
-            cur.execute(f"DELETE FROM {table}")
-        cur.execute("SELECT setval(pg_get_serial_sequence('parsed.facts','fact_id'), 1, false)")
-
+        # F13 — el reemplazo es CONDICIONAL al lote nuevo (gap #5).
+        #
+        # El defecto: el borrado de abajo corria SIEMPRE y el COMMIT (mas
+        # adelante) ocurria ANTES de los gates. Un re-parse vacio (S02 sin
+        # filings, o filings sin hechos) dejaba `parsed.*` del CIK en cero con
+        # `derived.fact` vigente citando los `fact_id` borrados:
+        # NO_DANGLING = 90.398 medido en KO, curado solo con re-run manual.
+        #
+        # Regla: primero se parsea TODO en memoria (sin escribir); el borrado
+        # del parsed previo + la insercion del nuevo ocurren en la MISMA
+        # transaccion y SOLO si el lote nuevo reproduce todos los filings que
+        # ya tenian hechos (`decidir_reemplazo`). Si no, no se toca nada: se
+        # conserva el parsed anterior, su provenance sigue resolviendo, y la
+        # corrida BLOCKea con C-S03-010 explicando que filings faltan. El
+        # checkpoint S03 no se actualiza, asi que S04 sigue consumiendo el
+        # parsed previo intacto.
         for acc, bucket in buckets.items():
             if acc == "_GLOBAL_":
                 continue
             res = parse_filing(acc, bucket, run, stage_run_id)
             filing_results.append(res)
-            n_facts = insert_many(cur, "parsed.facts", FACT_COLS, res["facts_rows"])
-            insert_many(cur, "parsed.contexts", CTX_COLS, res["ctx_rows"])
-            insert_many(cur, "parsed.units", UNIT_COLS, res["unit_rows"])
-            insert_many(cur, "parsed.link_relations", REL_COLS, res["rel_rows"])
-            print(f"[filing] {res['meta'].get('form')} {acc} -> {res['outcome']} facts={n_facts} "
+            print(f"[filing] {res['meta'].get('form')} {acc} -> {res['outcome']} "
+                  f"facts={len(res['facts_rows'])} "
                   f"ctx={len(res['ctx_rows'])} units={len(res['unit_rows'])} "
                   f"rels={len(res['rel_rows'])} inline={res['metrics']['inline_docs']} t={res['seconds']}s")
+
+        cur.execute("SELECT DISTINCT accession_number FROM parsed.facts WHERE cik = %s",
+                    (GOLDEN_CIK,))
+        previas_con_hechos = {r[0] for r in cur.fetchall()}
+        reemplazo_ok, faltantes, facts_nuevos = decidir_reemplazo(
+            previas_con_hechos, filing_results)
+
+        if reemplazo_ok:
+            # F-054: el borrado tiene ALCANCE, y la secuencia NO se reinicia.
+            #
+            # Antes: `DELETE FROM` sobre las cinco tablas + `setval(...,1,false)`.
+            # Con un unico emisor era un staging correcto. Con dos, cada corrida
+            # borraba la provenance del anterior y ademas REUTILIZABA sus fact_id,
+            # asi que los `source_fact_ids` que `derived.fact` ya tenia guardados
+            # pasaban a resolver contra las filas de otra empresa. No quedaban
+            # colgados: devolvian una fila ajena, en silencio.
+            # `parsed.facts` y `parsed.pre_xbrl_filings` llevan `cik`; las otras seis
+            # se identifican por las corridas en que ESTE emisor fue parseado.
+            cur.execute("SELECT DISTINCT run_id FROM parsed.facts WHERE cik = %s "
+                        " UNION SELECT DISTINCT run_id FROM parsed.pre_xbrl_filings "
+                        "  WHERE cik = %s", (GOLDEN_CIK, GOLDEN_CIK))
+            runs_previos = [r[0] for r in cur.fetchall()]
+            cur.execute("DELETE FROM parsed.facts WHERE cik = %s", (GOLDEN_CIK,))
+            cur.execute("DELETE FROM parsed.pre_xbrl_filings WHERE cik = %s", (GOLDEN_CIK,))
+            if runs_previos:
+                for table in ("parsed.contexts", "parsed.units", "parsed.concepts",
+                              "parsed.link_relations", "parsed.companyfacts_compare",
+                              "parsed.parse_errors"):
+                    cur.execute(f"DELETE FROM {table} WHERE run_id = ANY(%s)", (runs_previos,))
+
+            for res in filing_results:
+                insert_many(cur, "parsed.facts", FACT_COLS, res["facts_rows"])
+                insert_many(cur, "parsed.contexts", CTX_COLS, res["ctx_rows"])
+                insert_many(cur, "parsed.units", UNIT_COLS, res["unit_rows"])
+                insert_many(cur, "parsed.link_relations", REL_COLS, res["rel_rows"])
+            print(f"[reemplazo] ejecutado: {len(previas_con_hechos)} filing(s) previo(s) "
+                  f"con hechos reproducidos; hechos nuevos={facts_nuevos}")
+        else:
+            # F13 — no-reemplazo: el parsed anterior queda intacto (ningun
+            # DELETE/INSERT en esta transaccion), la corrida BLOCKea abajo y
+            # el checkpoint no se actualiza. `derived.fact` sigue resolviendo.
+            print(f"[reemplazo] NO EJECUTADO (F13): el lote nuevo no reproduce "
+                  f"{len(faltantes)} filing(s) con hechos previos "
+                  f"(faltantes={faltantes or 'ninguno: lote sin hechos'}); "
+                  f"se conserva el parsed anterior. Gate=BLOCK (C-S03-010).")
 
         for res in filing_results:
             for row in res["concept_rows"]:
@@ -441,7 +546,8 @@ def _etapa(engine, settings, run) -> int:
                                         None, None, None,
                                         not any(s in tax for s in STANDARD_HINTS),
                                         tax, "INSTANCE_OBSERVED")
-        insert_many(cur, "parsed.concepts", CONCEPT_COLS, list(all_concepts.values()))
+        if reemplazo_ok:
+            insert_many(cur, "parsed.concepts", CONCEPT_COLS, list(all_concepts.values()))
 
         filing_agg: dict[str, dict] = defaultdict(lambda: {"obs": 0, "periods": set(), "units": set()})
         for res in filing_results:
@@ -472,7 +578,8 @@ def _etapa(engine, settings, run) -> int:
                              j(cf["unit_kinds"]) if cf and cf["unit_kinds"] else None,
                              cf["first_period"] if cf else None, cf["last_period"] if cf else None,
                              fa["obs"] if fa else None, "; ".join(notes_parts) or None))
-        insert_many(cur, "parsed.companyfacts_compare", CMP_COLS, cmp_rows)
+        if reemplazo_ok:
+            insert_many(cur, "parsed.companyfacts_compare", CMP_COLS, cmp_rows)
 
         for res in filing_results:
             if res["outcome"] == "PRE_XBRL":
@@ -486,7 +593,8 @@ def _etapa(engine, settings, run) -> int:
                     sum(r["bytes"] or 0 for r in buckets[res["acc"]]["files"]),
                     "PRE_XBRL",
                     "era sin XBRL estructurado (FY2001-FY2017): documento preservado en RAW, sin hechos parseables; NO se intento conversion automatica HTML->XBRL"))
-        insert_many(cur, "parsed.pre_xbrl_filings", PX_COLS, px_rows)
+        if reemplazo_ok:
+            insert_many(cur, "parsed.pre_xbrl_filings", PX_COLS, px_rows)
 
         for res in filing_results:
             for e in res["errors"]:
@@ -495,44 +603,49 @@ def _etapa(engine, settings, run) -> int:
         for b in files_bad:
             err_rows.append((run.run_id, ent["entity_id"], b.get("acc"), b["raw_path"],
                              "ERROR", b["reason"], "input RAW corrompido o ausente"))
-        insert_many(cur, "parsed.parse_errors", ERR_COLS, err_rows)
+        if reemplazo_ok:
+            insert_many(cur, "parsed.parse_errors", ERR_COLS, err_rows)
         raw.commit()
 
         # F-028 — ANALYZE despues del replace-all, antes de validar.
-        #
-        # S03 vacia parsed.* y recarga ~67k filas. Las estadisticas del planner
-        # quedan describiendo las filas viejas, y la validacion de integridad
-        # facts<->contexts elige un plan que se pasa del statement_timeout:
-        #     QueryCanceled: canceling statement due to statement timeout
-        # La corrida moria DESPUES de haber escrito todo, y el trabajo se perdia.
-        #
-        # ANALYZE sobre los 8 objetos tarda ~3 s. Subir el timeout habria tapado
-        # el sintoma dejando el plan malo.
-        t_analyze = time.perf_counter()
-        cur.execute("SELECT now()")
-        t0_db = cur.fetchone()[0]
-        for table in PARSED_TABLES:
-            cur.execute(f"ANALYZE {table}")
-        raw.commit()
+        # Solo cuando hubo reemplazo: sin escrituras las estadisticas siguen
+        # describiendo los datos vigentes (F13 no toca nada).
+        if not reemplazo_ok:
+            print("[analyze] omitido: no hubo reemplazo, tablas sin cambios")
+        else:
+            # S03 vacia parsed.* y recarga ~67k filas. Las estadisticas del planner
+            # quedan describiendo las filas viejas, y la validacion de integridad
+            # facts<->contexts elige un plan que se pasa del statement_timeout:
+            #     QueryCanceled: canceling statement due to statement timeout
+            # La corrida moria DESPUES de haber escrito todo, y el trabajo se perdia.
+            #
+            # ANALYZE sobre los 8 objetos tarda ~3 s. Subir el timeout habria tapado
+            # el sintoma dejando el plan malo.
+            t_analyze = time.perf_counter()
+            cur.execute("SELECT now()")
+            t0_db = cur.fetchone()[0]
+            for table in PARSED_TABLES:
+                cur.execute(f"ANALYZE {table}")
+            raw.commit()
 
-        # ANALYZE sin privilegio NO falla: emite
-        #     WARNING: permission denied to analyze "facts", skipping it
-        # y devuelve exito. Un script que no mira los warnings cree que
-        # analizo. Se verifica contra pg_stat_user_tables que las estadisticas
-        # se hayan actualizado de verdad, y se aborta si no.
-        cur.execute(
-            "SELECT relname FROM pg_stat_user_tables "
-            " WHERE schemaname='parsed' AND relname = ANY(%s) "
-            "   AND (last_analyze IS NULL OR last_analyze < %s)",
-            ([t.split('.', 1)[1] for t in PARSED_TABLES], t0_db))
-        sin_analizar = [r[0] for r in cur.fetchall()]
-        if sin_analizar:
-            raise RuntimeError(
-                f"F-028: ANALYZE no se aplico sobre {sin_analizar}. "
-                "Postgres saltea con warning cuando el rol no es dueño de la tabla; "
-                "verificar el OWNER (migracion 019).")
-        print(f"[analyze] estadisticas actualizadas y VERIFICADAS sobre "
-              f"{len(PARSED_TABLES)} tablas t={round(time.perf_counter() - t_analyze, 2)}s")
+            # ANALYZE sin privilegio NO falla: emite
+            #     WARNING: permission denied to analyze "facts", skipping it
+            # y devuelve exito. Un script que no mira los warnings cree que
+            # analizo. Se verifica contra pg_stat_user_tables que las estadisticas
+            # se hayan actualizado de verdad, y se aborta si no.
+            cur.execute(
+                "SELECT relname FROM pg_stat_user_tables "
+                " WHERE schemaname='parsed' AND relname = ANY(%s) "
+                "   AND (last_analyze IS NULL OR last_analyze < %s)",
+                ([t.split('.', 1)[1] for t in PARSED_TABLES], t0_db))
+            sin_analizar = [r[0] for r in cur.fetchall()]
+            if sin_analizar:
+                raise RuntimeError(
+                    f"F-028: ANALYZE no se aplico sobre {sin_analizar}. "
+                    "Postgres saltea con warning cuando el rol no es dueño de la tabla; "
+                    "verificar el OWNER (migracion 019).")
+            print(f"[analyze] estadisticas actualizadas y VERIFICADAS sobre "
+                  f"{len(PARSED_TABLES)} tablas t={round(time.perf_counter() - t_analyze, 2)}s")
     except Exception:
         raw.rollback()
         raise
@@ -563,6 +676,21 @@ def _etapa(engine, settings, run) -> int:
     rejected_accs = [res["acc"] for res in filing_results if res["outcome"] == "REJECTED"]
 
     checks: list[dict] = []
+
+    # F13 — guarda del replace-all (gap #5). Bloquea la corrida cuando el
+    # reemplazo no se ejecuto: el parsed anterior sigue vigente y el lote
+    # nuevo no lo reproduce. Sin este check, un lote vacio degradaria a un
+    # BLOCK generico sin decir que la provenance se salvo por no-reemplazo.
+    checks.append({"id": "C-S03-010", "blocking": True,
+                   "result": "PASS" if reemplazo_ok else "FAIL",
+                   "detail": (f"reemplazo condicional F13: ejecutado={reemplazo_ok} "
+                              f"filings_previos_con_hechos={len(previas_con_hechos)} "
+                              f"hechos_nuevos={facts_nuevos} "
+                              f"faltantes={faltantes or 'ninguno'}"),
+                   "evidence": {"reemplazo_ejecutado": reemplazo_ok,
+                                "filings_previos_con_hechos": sorted(previas_con_hechos),
+                                "hechos_nuevos": facts_nuevos,
+                                "faltantes": faltantes}})
 
     ok1 = len(filing_results) == filings_expected and not rejected_accs and not files_bad
     checks.append({"id": "C-S03-001", "blocking": True,
@@ -617,11 +745,13 @@ def _etapa(engine, settings, run) -> int:
                    "evidence": {"provenance_violations": prov_viol, "facts_total": facts_total}})
     empty_xbrl = [a for a in xbrl_accs if per_acc_facts[a] == 0]
     checks.append({"id": "C-S03-004", "blocking": True,
-                   "result": "PASS" if not empty_xbrl and outcomes["PARSED_XBRL"] >= 9 else "FAIL",
+                   "result": ("PASS" if not empty_xbrl
+                              and outcomes["PARSED_XBRL"] >= MIN_XBRL_FILINGS else "FAIL"),
                    "detail": (f"cobertura XBRL: filings con hechos extraidos={len(xbrl_accs)} "
-                              f"(esperado>=9, eras FY2017-FY2025); sin hechos: {empty_xbrl or 'ninguno'}"),
+                              f"(esperado>={MIN_XBRL_FILINGS}); "
+                              f"sin hechos: {empty_xbrl or 'ninguno'}"),
                    "evidence": {"filings_with_facts": xbrl_accs, "empty": empty_xbrl,
-                                "expected_min": 9}})
+                                "expected_min": MIN_XBRL_FILINGS}})
     unclassified_pre = [a for a in prexbrl_accs
                         if a not in {p[3] for p in px_rows}]
     checks.append({"id": "C-S03-005", "blocking": True,
@@ -702,7 +832,12 @@ def _etapa(engine, settings, run) -> int:
         stage=STAGE_ID, run_id=run.run_id, mode=settings.mode,
         started_at=started_at, finished_at=utc_now_iso(), gate=gate,
         input_checkpoint_id=f"S02:{s02_run_id}", input_rows=len(s02_files),
-        expected=filings_expected, parsed=parsed_n, rejected=outcomes["REJECTED"] + len(files_bad),
+        # `expected` y `parsed` cuentan FILINGS; `files_bad` cuenta ARCHIVOS.
+        # Sumarlos rompia la conciliacion en cuanto habia un archivo global
+        # ausente (COMPANYFACTS, SUBMISSIONS), que ni siquiera entra en
+        # `filings_expected`. Los archivos corruptos se reportan aparte y
+        # siguen bloqueando el gate por C-S03-001/002.
+        expected=filings_expected, parsed=parsed_n, rejected=outcomes["REJECTED"],
         rejected_by_reason={"REJECTED_FILING": outcomes["REJECTED"], "BAD_INPUT": len(files_bad)},
         hash_in=hashlib.sha256(f"S02:{s02_run_id}".encode()).hexdigest(),
         hash_out=hashlib.sha256(json.dumps(
@@ -734,11 +869,12 @@ def _etapa(engine, settings, run) -> int:
                           "WHERE run_id=:run AND stage_id=:s)"),
                      {"r": json.dumps(report_json, ensure_ascii=False), "g": gate.value,
                       "run": run.run_id, "s": STAGE_ID})
-        if gate is not GateStatus.BLOCK:
+        if gate is not GateStatus.BLOCK and not os.environ.get("ENGINE_E2E_RUN_ID"):
+            # Decisión R4/E2E: en modo E2E no se escriben checkpoints individuales.
             # ON CONFLICT sobre ux_checkpoints_reuse: re-corrida con mismo
             # input+code+contract es un "checkpoint hit" por diseño
-            # (STAGE_GRAPH.md S4), no un error. parsed.* ya es replace-all,
-            # asi que el checkpoint debe apuntar a la corrida mas reciente.
+            # (STAGE_GRAPH.md S4), no un error. asi que el checkpoint debe
+            # apuntar a la corrida mas reciente.
             conn.execute(text("INSERT INTO engine.checkpoints "
                               "(checkpoint_id, stage_id, run_id, input_hash, code_version, contract_version, artifact_ref) "
                               "VALUES (:cid,:s,:r,:ih,:cv,:ctv,:ref) "
@@ -758,6 +894,9 @@ def _etapa(engine, settings, run) -> int:
         "stage": STAGE_ID, "parser_version": PARSER_VERSION,
         "input_checkpoint": {"stage": "S02_fetch", "run_id": s02_run_id},
         "gate": gate.value, "verdict": "READY_FOR_S04" if gate is GateStatus.PASS else "BLOCKED_S04",
+        "reemplazo": {"ejecutado": reemplazo_ok,
+                      "filings_previos_con_hechos": len(previas_con_hechos),
+                      "hechos_nuevos": facts_nuevos, "faltantes": faltantes},
         "checks": checks,
         "totals": metrics_ctx,
         "performance": perf,
@@ -776,6 +915,7 @@ def _etapa(engine, settings, run) -> int:
     verdict = "READY_FOR_S04" if gate is GateStatus.PASS else "BLOCKED_S04"
     print(json.dumps({
         "gate": gate.value, "verdict": verdict,
+        "reemplazo": {"ejecutado": reemplazo_ok, "faltantes": faltantes},
         "filings": {"expected": filings_expected, **dict(outcomes)},
         "totals": {"facts": facts_total, "contexts": ctx_total, "units": units_total,
                    "relations": rels_total, "conceptos": concepts_total,
@@ -941,9 +1081,9 @@ def write_outputs(run, filing_results, px_rows, cmp_rows, err_rows, checks,
     for row in err_rows:
         ws.append(list(row))
 
-    excel_path = OUT_DIR / "S03_YPF_PARSE_AUDIT.xlsx"
+    excel_path = OUT_DIR / f"S03_{GOLDEN_CIK}_PARSE_AUDIT.xlsx"
     wb.save(excel_path)
-    paths["S03_YPF_PARSE_AUDIT.xlsx"] = excel_path
+    paths[f"S03_{GOLDEN_CIK}_PARSE_AUDIT.xlsx"] = excel_path
     paths["S03_PARSE_REPORT.md"] = write_report_md(run, metrics, perf, checks)
     return paths
 

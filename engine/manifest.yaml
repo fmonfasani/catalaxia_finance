@@ -23,6 +23,14 @@ scripts:
   - path: scripts/engine/s00_smoke.py
     etapa: S00_bootstrap
     clase: B
+  - path: scripts/engine/e2e_orchestrator.py
+    etapa: E2E_orchestrator
+    clase: B
+    notas: R4 — orquestador E2E; crea un run compartido y encadena S00→S04 como subprocesos
+  - path: scripts/engine/c11_certificar.py
+    etapa: C11_CERTIFICACION
+    clase: B
+    notas: R4 — capa 11 independiente; lee runs/stage_runs/checkpoints y escribe unicamente engine.certifications
 migrations:
   - path: migrations/engine/001_s00_bootstrap.sql
     tablas:
@@ -30,6 +38,9 @@ migrations:
       - engine.stage_runs
       - engine.checkpoints
       - engine.schema_migrations
+  - path: migrations/engine/034_c11_certifications.sql
+    tablas:
+      - engine.certifications
 storage:
   motor: postgresql
   decision: D-002 (gate 2026-08-23)

@@ -70,7 +70,43 @@ def apply_migrations(engine: Engine, migrations_dir: Path = MIGRATIONS_DIR,
         admin.dispose()
 
 
-def _apply_migrations(engine: Engine, migrations_dir: Path = MIGRATIONS_DIR) -> list[str]:
+# F-051: Market tenia sus migraciones en `migrations/market/` y NADIE las aplicaba.
+# `m19_apply_schema.py` aplica un schema consolidado sin versionado, asi que
+# `ck_estado_coherente_con_artefacto` (F-038) y el rol `catalaxia_market_ro` (012)
+# no llegaban nunca a una base limpia. El E2E lo demostro: el mismo INSERT que la
+# base homologada rechaza por ese CHECK, en una limpia lo detenia una FK cualquiera.
+#
+# NO se crea un segundo runner: se extiende el unico que existe, que es el que tiene
+# registro, orden determinista y transaccion unica. Dos mecanismos paralelos es lo
+# que produjo F-049.
+MARKET_MIGRATIONS_DIR = REPO_ROOT / "migrations" / "market"
+
+# Tabla que cada migracion de Market necesita que exista. Market y engine son dos
+# schemas con ciclos de vida separados: una base puede tener engine sin Market, y el
+# runner de engine no debe fallar por eso. Ver F051_MARKET_INSTALLATION_CONTRACT.md.
+MARKET_REQUIERE = {
+    "012_rol_market_readonly.sql": None,          # solo roles/GRANTs a nivel base
+    "013_venue_ticker.sql": "market_instruments",
+    "025_f038_invariantes_corrida.sql": "market_raw_runs",
+}
+
+
+def _ya_aplicada(nombre: str, ruta: str, done: set[str]) -> bool:
+    """¿Esta migracion ya corrio?
+
+    Se aceptan AMBOS formatos de registro. Las bases anteriores a F-051 guardan el
+    nombre desnudo (`008_identity_v1.sql`); desde F-051 se guarda con su directorio
+    (`engine/008_identity_v1.sql`) para que `012_*` de engine y de market no compitan
+    por la misma clave primaria.
+
+    Sin esta doble lectura, el runner creeria pendientes las 29 migraciones ya
+    aplicadas de toda base existente y las re-ejecutaria en cada arranque.
+    """
+    return nombre in done or ruta in done
+
+
+def _apply_migrations(engine: Engine, migrations_dir: Path = MIGRATIONS_DIR,
+                      market_dir: Path = MARKET_MIGRATIONS_DIR) -> list[str]:
     applied: list[str] = []
     with engine.begin() as conn:
         conn.execute(text("CREATE SCHEMA IF NOT EXISTS engine"))
@@ -85,16 +121,32 @@ def _apply_migrations(engine: Engine, migrations_dir: Path = MIGRATIONS_DIR) -> 
             )
         )
         done = {r[0] for r in conn.execute(text("SELECT filename FROM engine.schema_migrations"))}
-        if migrations_dir.exists():
-            for sql_file in sorted(migrations_dir.glob("*.sql")):
-                if sql_file.name in done:
+
+        # Orden determinista: engine primero, market despues; dentro de cada uno,
+        # por nombre. Market no depende de engine, pero el orden se fija igual para
+        # que dos instalaciones limpias produzcan exactamente la misma secuencia.
+        for etiqueta, carpeta in (("engine", migrations_dir), ("market", market_dir)):
+            if not carpeta.exists():
+                continue
+            for sql_file in sorted(carpeta.glob("*.sql")):
+                ruta = f"{etiqueta}/{sql_file.name}"
+                if _ya_aplicada(sql_file.name, ruta, done):
                     continue
+                if etiqueta == "market":
+                    tabla = MARKET_REQUIERE.get(sql_file.name, "market_instruments")
+                    if tabla is not None and conn.execute(
+                        text("SELECT to_regclass(:t) IS NULL"), {"t": tabla}
+                    ).scalar():
+                        # Market no esta instalado en esta base todavia. No es un
+                        # error: se aplicara cuando `m19_apply_schema.py` cree las
+                        # tablas y el runner vuelva a correr.
+                        continue
                 conn.execute(text(sql_file.read_text(encoding="utf-8")))
                 conn.execute(
                     text("INSERT INTO engine.schema_migrations (filename) VALUES (:f)"),
-                    {"f": sql_file.name},
+                    {"f": ruta},
                 )
-                applied.append(sql_file.name)
+                applied.append(ruta)
     return applied
 
 
