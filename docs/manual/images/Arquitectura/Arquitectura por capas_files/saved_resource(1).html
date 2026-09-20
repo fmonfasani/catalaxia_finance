@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!-- saved from url=(0083)https://app-block-dd2fb4503557225702d19c6409e6f099.web-sandbox.oaiusercontent.com/? -->
+<html lang="es-419" class="light" data-chat-theme="blue" data-app-block-surface="inline" data-app-block-style-mode="default" style="color-scheme: light; background-color: var(--main-surface-primary, #fcfcfc);" data-ready=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <script>
+      window.tailwind = window.tailwind || {};
+      window.tailwind.config = { darkMode: "class" };
+    </script>
+    <script id="app-block-tailwind" src="./saved_resource" defer=""></script>
+    <script>
+      (() => {
+        const tailwindScript = document.getElementById("app-block-tailwind");
+        const markFatal = () => {
+          document.documentElement.setAttribute("data-fatal", "");
+        };
+
+        if (!(tailwindScript instanceof HTMLScriptElement)) {
+          markFatal();
+          return;
+        }
+
+        tailwindScript.addEventListener("error", markFatal, { once: true });
+        tailwindScript.addEventListener(
+          "load",
+          () => {
+            const readinessProbe = document.createElement("div");
+            readinessProbe.className = "hidden";
+            readinessProbe.setAttribute("aria-hidden", "true");
+
+            const markReadyWhenStyled = () => {
+              if (getComputedStyle(readinessProbe).display !== "none") {
+                return;
+              }
+
+              styleObserver.disconnect();
+              readinessProbe.remove();
+              document.documentElement.setAttribute("data-ready", "");
+            };
+            const styleObserver = new MutationObserver(markReadyWhenStyled);
+            styleObserver.observe(document.head, {
+              childList: true,
+              characterData: true,
+              subtree: true,
+            });
+
+            document.body.append(readinessProbe);
+            markReadyWhenStyled();
+          },
+          { once: true }
+        );
+      })();
+    </script>
+    <link rel="stylesheet" href="./app-block-sandbox-iimeogb3.css">
+    
+  <style>html,body,#root{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;margin:0;padding:0}html,body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Helvetica Neue,Arial,sans-serif!important}button,input,textarea,select{font-family:inherit}html{background-color:transparent}html.chatgptOled.dark,html.mobileSkybridge.dark{background-color:#000}@supports (font: -apple-system-body){html.mobileSkybridge{font:-apple-system-body}}html.desktopSkybridge.dark{background-color:#1e1e1e}html.desktopSkybridge [data-openai-titlebar]{padding-left:calc(8px + var(--openai-titlebar-left-inset, 0px));padding-right:8px}html.transparentSkybridgeBackground,html.transparentSkybridgeBackground.dark{background-color:transparent}html.androidSkybridge,html.androidSkybridge body,html.androidSkybridge *{-webkit-tap-highlight-color:rgba(255,255,255,0)}html.androidSkybridge *::selection,html.androidSkybridge *::-moz-selection{background:#fff0;color:inherit}</style><style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.hidden{display:none}.w-full{width:100%}</style></head>
+  <body>
+    <main>
+<div class="w-full"><style>.flow{display:flex;align-items:center;justify-content:center;gap:0;overflow-x:auto;padding:22px 4px}.node{min-width:150px;width:150px;height:82px;border:1px solid #D6E2F2;border-radius:11px;background:#fff;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;box-sizing:border-box}.node span{font-size:13px;font-weight:700;color:#1A2744;line-height:1.2}.arrow{font-size:22px;font-weight:600;color:#3B82F6;padding:0 8px;flex:0 0 auto}.results{display:flex;gap:10px;margin-left:8px}.result{min-width:120px;height:68px;border-radius:10px;display:flex;align-items:center;justify-content:center;text-align:center;padding:8px;box-sizing:border-box;font-size:12px;font-weight:700}.pass{background:#E7F7EC;border:1px solid #43A047;color:#2E6B35}.warn{background:#FFF4E8;border:1px solid #F5821F;color:#9A5515}.fail{background:#FDECEC;border:1px solid #D9534F;color:#9B2C2C}@media(max-width:760px){.flow{justify-content:flex-start}}</style><div class="flow"><div class="node"><span>PROCESAMIENTO</span></div><div class="arrow">→</div><div class="node"><span>CONTROLES</span></div><div class="arrow">→</div><div class="results"><div class="result pass">PASS</div><div class="result warn">PASS WITH<br>WARNINGS</div><div class="result fail">FAIL</div></div></div></div>
+    </main>
+    <script>
+  (() => {
+    const isOpenStyleMode = false;
+
+    function updateSurface(surface) {
+      if (surface !== "inline" && surface !== "stage") {
+        return;
+      }
+
+      const root = document.documentElement;
+      const isDarkMode = root.classList.contains("dark");
+      const surfaceBackgrounds = isDarkMode
+        ? { inline: "#000000", stage: "#212121" }
+        : { inline: "#fcfcfc", stage: "#ffffff" };
+      root.setAttribute("data-app-block-surface", surface);
+      root.style.backgroundColor =
+        surface === "inline" && isOpenStyleMode
+          ? "transparent"
+          : "var(--main-surface-primary, " + surfaceBackgrounds[surface] + ")";
+    }
+
+    window.addEventListener("openai:set_globals", (event) => {
+      const surface = event.detail?.globals?.__appBlockSurface;
+      if (surface != null) {
+        updateSurface(surface);
+      }
+    });
+
+    const initialSurface =
+      window.openai?.__appBlockSurface ??
+      document.documentElement.getAttribute("data-app-block-surface") ??
+      "inline";
+    updateSurface(initialSurface);
+  })();
+</script>
+    
+  
+</body></html>
