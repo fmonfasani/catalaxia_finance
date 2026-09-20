@@ -1,0 +1,56 @@
+{
+  "c10_version": "c10_evaluate_v1",
+  "scope": "sec",
+  "evaluated_at": "2026-09-09T05:07:31.267704+00:00",
+  "verdict": "PASS",
+  "invariants": [
+    {
+      "id": "SEC_GATES",
+      "result": "PASS",
+      "evidence": {
+        "runs": 1,
+        "stages": [
+          "S00_bootstrap",
+          "S01_identity",
+          "S02_fetch",
+          "S03_parse",
+          "S04_normalize"
+        ]
+      }
+    },
+    {
+      "id": "IDENTITY",
+      "result": "PASS",
+      "evidence": {
+        "ciks": [
+          "0000904851"
+        ]
+      }
+    },
+    {
+      "id": "PROVENANCE",
+      "result": "PASS",
+      "evidence": {
+        "ciks": [
+          "0000904851"
+        ]
+      }
+    },
+    {
+      "id": "NO_DANGLING",
+      "result": "PASS",
+      "evidence": {
+        "dangling": 0
+      }
+    },
+    {
+      "id": "NO_ORPHAN_ENTITY",
+      "result": "PASS",
+      "evidence": {
+        "ciks": [
+          "0000904851"
+        ]
+      }
+    }
+  ]
+}

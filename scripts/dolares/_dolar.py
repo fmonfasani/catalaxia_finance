@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 """Fetchers de los dólares de referencia (CCL, MEP, A3500). Compartido por los dos scripts."""
-import statistics, requests, urllib3
-urllib3.disable_warnings()
+import os, statistics, requests
+
+# TLS: verificar certificados por defecto (fail-closed). REQUESTS_VERIFY=0 como
+# fallback explicito (riesgo MITM / integridad de la serie).
+VERIFY = os.environ.get("REQUESTS_VERIFY", "1") != "0"
 
 # CCL por arbitraje de ADR: precio local (ARS) × acciones por ADR / precio del ADR (USD).
 # Ratios estables y conocidos (1 ADR = N acciones ordinarias).
@@ -26,14 +29,14 @@ def ccl_yahoo():
 
 def dolarapi():
     """{casa: {compra, venta, ...}} de dolarapi.com (CCL, MEP/bolsa, mayorista≈A3500, oficial, blue)."""
-    r = requests.get('https://dolarapi.com/v1/dolares', timeout=15, verify=False,
+    r = requests.get('https://dolarapi.com/v1/dolares', timeout=15, verify=VERIFY,
                      headers={'User-Agent': 'Mozilla/5.0'})
     return {d['casa']: d for d in r.json()}
 
 def criptoya():
     """MEP por bono (AL30, GD30) desde criptoya.com — 2ª fuente independiente del MEP."""
     try:
-        r = requests.get('https://criptoya.com/api/dolar', timeout=15, verify=False,
+        r = requests.get('https://criptoya.com/api/dolar', timeout=15, verify=VERIFY,
                          headers={'User-Agent': 'Mozilla/5.0'})
         return r.json()
     except Exception:

@@ -1,0 +1,6 @@
+{
+  "tikr_fixture": "research\\fx_tikr_reverse\\fixtures\\tikr_fx_12.csv",
+  "fx_reference": "research\\fx_tikr_reverse\\normalized\\fx_reference.parquet",
+  "run_report": "research\\fx_tikr_reverse\\RUN_REPORT.md",
+  "provenance": "research\\fx_tikr_reverse\\PROVENANCE.md"
+}

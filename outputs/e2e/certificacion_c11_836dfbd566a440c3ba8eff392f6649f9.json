@@ -1,0 +1,86 @@
+{
+  "certification_id": "c11-836dfbd566a440c3ba8eff392f6649f9",
+  "run_id": "836dfbd566a440c3ba8eff392f6649f9",
+  "objeto": "RUN",
+  "veredicto": "CERTIFICADA",
+  "cert_rule": "c11-rule-v1",
+  "cert_hash": "ef207c88828c1e835a7d6284ef53c4289aad51858f79b894815d5da1c620b629",
+  "pipeline_version": "e2e-sec-edgar-v1",
+  "stages_total": 5,
+  "stages_pass": 5,
+  "stages_warn": 0,
+  "stages_block": 0,
+  "stages_insuf": 0,
+  "evidence": [
+    {
+      "stage_id": "S00_bootstrap",
+      "state": "CHECKPOINTED",
+      "gate_status": "PASS",
+      "result": "PASS",
+      "reason": null,
+      "report_sha256": "621ee05c38ef87fdf8e72f56b5473fb56db9c080ed0638e4837da493ab2f8fd2",
+      "check_count": 2,
+      "expected": 2,
+      "parsed": 2,
+      "rejected": 0
+    },
+    {
+      "stage_id": "S01_identity",
+      "state": "CHECKPOINTED",
+      "gate_status": "PASS",
+      "result": "PASS",
+      "reason": null,
+      "report_sha256": "513e229058056815fb72fc0f8a20b815b2bfc9848cb46491567eacc6292b22fb",
+      "check_count": 4,
+      "expected": 4,
+      "parsed": 4,
+      "rejected": 0
+    },
+    {
+      "stage_id": "S02_fetch",
+      "state": "CHECKPOINTED",
+      "gate_status": "PASS",
+      "result": "PASS",
+      "reason": null,
+      "report_sha256": "d9892868c0628ddafb3fbad94078764682e1c7e3718ad228449d3e358569b59b",
+      "check_count": 5,
+      "expected": 187,
+      "parsed": 187,
+      "rejected": 0
+    },
+    {
+      "stage_id": "S03_parse",
+      "state": "CHECKPOINTED",
+      "gate_status": "PASS",
+      "result": "PASS",
+      "reason": null,
+      "report_sha256": "5d61b8b6e2d9523b74764af32c099e5a2559e5885c49bc924a646c0a881d012f",
+      "check_count": 10,
+      "expected": 27,
+      "parsed": 27,
+      "rejected": 0
+    },
+    {
+      "stage_id": "S04_normalize",
+      "state": "CHECKPOINTED",
+      "gate_status": "PASS",
+      "result": "PASS",
+      "reason": null,
+      "report_sha256": "9b5fa08c59ad2ea61d04b80fc4d2592982b15a917b0172df9267edff6eb9d182",
+      "check_count": 9,
+      "expected": 67084,
+      "parsed": 47930,
+      "rejected": 19154,
+      "checkpoint": {
+        "stage_id": "S04_normalize",
+        "checkpoint_id": "836dfbd566a440c3-s04",
+        "input_hash": "6ed332e7dda29cecb9917a3bcfcb1119fa6c3cd4ace4ded2be2efde672f54673",
+        "code_version": "engine-v1",
+        "contract_version": "derived-v1"
+      }
+    }
+  ],
+  "motivo": null,
+  "generado_por": "scripts/engine/c11_certificar.py",
+  "generado_at": "2026-09-09T05:07:31.980426+00:00"
+}

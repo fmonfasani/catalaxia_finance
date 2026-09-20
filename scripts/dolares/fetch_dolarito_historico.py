@@ -26,12 +26,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import requests
-import urllib3
-
-urllib3.disable_warnings()
 
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / "data").is_dir())
 import os as _os
+# TLS: verificar certificados por defecto (fail-closed). REQUESTS_VERIFY=0 como
+# fallback explicito (riesgo MITM / integridad de la serie).
+VERIFY = _os.environ.get("REQUESTS_VERIFY", "1") != "0"
 # SCREENER_DB permite apuntar a una copia de prueba sin tocar produccion.
 # Debe estar en TODOS los scripts que escriben en la base: si uno solo no lo
 # respeta, escribe en la real aunque el resto corra sobre la copia.
@@ -99,7 +99,7 @@ def fetch_series() -> dict:
             "  o exportalo como variable de entorno antes de correr el script.\n"
             "  Se obtiene mirando el header que manda www.dolarito.ar en el navegador."
         )
-    r = requests.get(API_URL, headers=HEADERS, timeout=60, verify=False)
+    r = requests.get(API_URL, headers=HEADERS, timeout=60, verify=VERIFY)
     r.raise_for_status()
     return r.json()
 

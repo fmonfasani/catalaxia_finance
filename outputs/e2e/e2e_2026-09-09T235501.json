@@ -1,0 +1,45 @@
+{
+  "entrypoint": "scripts/engine/run_e2e_certified.py",
+  "pipeline_version": "e2e-certificado-v1",
+  "target": "catalaxia_engine@127.0.0.1:5433/catalaxia mode=FAST prod=False",
+  "started_at": "2026-09-09T23:55:01.642233+00:00",
+  "finished_at": "2026-09-10T00:20:14.035754+00:00",
+  "status": "PASS",
+  "errors": null,
+  "publish_skipped": true,
+  "steps": [
+    {
+      "step_id": "S00_S04",
+      "script": "e2e_orchestrator.py",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "step_id": "RATIO",
+      "script": "ratio_engine.py",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "step_id": "C10",
+      "script": "c10_evaluate.py",
+      "exit_code": 0,
+      "verdict": "PASS",
+      "ok": true
+    },
+    {
+      "step_id": "C11",
+      "script": "c11_certificar.py",
+      "exit_code": 0,
+      "verdict": "CERTIFICADA",
+      "ok": true
+    },
+    {
+      "step_id": "C12",
+      "script": "publisher.py",
+      "exit_code": 0,
+      "ok": true,
+      "skipped": true
+    }
+  ]
+}
