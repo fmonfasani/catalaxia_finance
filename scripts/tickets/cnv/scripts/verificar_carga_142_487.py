@@ -1,7 +1,8 @@
 """Verificar resultados de la carga de FT=142 y FT=487"""
 import sqlite3
 
-db = sqlite3.connect('data/screener.db')
+import os
+db = sqlite3.connect(os.path.join("data", os.environ.get("SCREENER_DB", "screener.db")))
 
 # Check BPAT, PATA, VALO - tickers that didn't have data before
 for tk in ('BPAT', 'PATA', 'VALO'):

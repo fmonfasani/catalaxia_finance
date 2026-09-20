@@ -1,7 +1,8 @@
 """Check where BYMA price data lives"""
 import sqlite3
 
-db = sqlite3.connect('data/screener.db')
+import os
+db = sqlite3.connect(os.path.join("data", os.environ.get("SCREENER_DB", "screener.db")))
 
 # Get BYMA tickers
 cur = db.execute("SELECT ticker_ppal, cik FROM empresas WHERE grupo='byma_yf'")

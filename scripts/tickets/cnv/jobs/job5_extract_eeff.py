@@ -26,8 +26,6 @@ import csv, re, sys, time, sqlite3, html as ihtml
 from pathlib import Path
 from datetime import datetime
 import requests
-import urllib3
-urllib3.disable_warnings()
 
 BASE = Path(__file__).resolve().parent.parent
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / "data").is_dir())
@@ -36,6 +34,9 @@ import os as _os
 # Debe estar en TODOS los scripts que escriben en la base: si uno solo no lo
 # respeta, escribe en la real aunque el resto corra sobre la copia.
 DB = ROOT / "data" / _os.environ.get("SCREENER_DB", "screener.db")
+# TLS: verificar certificados por defecto (fail-closed). REQUESTS_VERIFY=0 como
+# fallback explicito (riesgo MITM / integridad de RAW).
+VERIFY = _os.environ.get("REQUESTS_VERIFY", "1") != "0"
 WHITELIST = BASE / "datos" / "whitelist_eeff.csv"
 DONE = ROOT / "data" / "log_job5_done.txt"
 H = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120", "Accept-Language": "es-AR"}
@@ -132,7 +133,7 @@ def main():
             print(f"  Tope --max {mx} alcanzado; corté (resume-safe, volvé a correr para seguir)."); break
         reqs += 1
         try:
-            html = ses.get(row["url"], timeout=30, verify=False).text
+            html = ses.get(row["url"], timeout=30, verify=VERIFY).text
             pe = period_end(html)
             datos = {CODIGOS[c]: v for c, v in parse(html).items() if c in CODIGOS}
             ratios = {RATIOS_CNV[c]: v for c, v in parse(html).items() if c in RATIOS_CNV}

@@ -2,7 +2,8 @@
 import csv, re, requests, sqlite3
 
 # Find ALUA's most recent ANNUAL filing (tipo='A' in cnv_estados)
-db = sqlite3.connect('data/screener.db')
+import os
+db = sqlite3.connect(os.path.join("data", os.environ.get("SCREENER_DB", "screener.db")))
 cur = db.execute("""
     SELECT period_end, form, accn FROM cnv_estados 
     WHERE ticker='ALUA' AND concepto='NetIncome' AND tipo='A'

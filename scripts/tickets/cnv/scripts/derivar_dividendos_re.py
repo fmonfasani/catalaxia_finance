@@ -2,7 +2,8 @@
 import sqlite3
 from collections import defaultdict
 
-db = sqlite3.connect('data/screener.db')
+import os
+db = sqlite3.connect(os.path.join("data", os.environ.get("SCREENER_DB", "screener.db")))
 TICKER = 'ALUA'
 
 # 1. Get ResultadosNoAsignados and NetIncome for ALUA, ordered by period

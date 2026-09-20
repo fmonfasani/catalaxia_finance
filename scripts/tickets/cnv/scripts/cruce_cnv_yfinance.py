@@ -1,7 +1,8 @@
 """Cross-reference CNV vs YFinance data for 56 BYMA tickers"""
 import sqlite3
 
-db = sqlite3.connect('data/screener.db')
+import os
+db = sqlite3.connect(os.path.join("data", os.environ.get("SCREENER_DB", "screener.db")))
 
 cur = db.execute("SELECT ticker_ppal FROM empresas WHERE grupo='byma_yf'")
 byma = [r[0] for r in cur.fetchall()]

@@ -2,7 +2,8 @@
 import sqlite3
 from collections import defaultdict
 
-db = sqlite3.connect('data/screener.db')
+import os
+db = sqlite3.connect(os.path.join("data", os.environ.get("SCREENER_DB", "screener.db")))
 
 TICKER = 'GGAL'
 CIK = db.execute("SELECT cik FROM empresas WHERE ticker_ppal=? AND grupo='adr_arg'", (TICKER,)).fetchone()[0]

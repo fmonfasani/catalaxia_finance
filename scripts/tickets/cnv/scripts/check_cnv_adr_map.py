@@ -1,6 +1,7 @@
 """Find what CNV data exists for ADR companies"""
 import sqlite3
-db = sqlite3.connect('data/screener.db')
+import os
+db = sqlite3.connect(os.path.join("data", os.environ.get("SCREENER_DB", "screener.db")))
 
 # 1. All CNV tickers
 cur = db.execute("SELECT DISTINCT ticker FROM cnv_estados WHERE fuente LIKE 'cnv-%' ORDER BY ticker")

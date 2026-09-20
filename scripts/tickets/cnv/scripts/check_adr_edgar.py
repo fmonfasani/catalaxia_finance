@@ -1,5 +1,6 @@
 import sqlite3
-db = sqlite3.connect('data/screener.db')
+import os
+db = sqlite3.connect(os.path.join("data", os.environ.get("SCREENER_DB", "screener.db")))
 tickers = ['ALUA','ARCA','YPFD','GGAL','PAMP','TECO2','BMA','CRES','LOMA','IRSA','EDN','CEPU','TGSU4']
 cur = db.execute(f"""
     SELECT cik, ticker_ppal, nombre, grupo FROM empresas 

@@ -1,6 +1,7 @@
 """Find source of existing ADR data in cnv_estados"""
 import sqlite3
-db = sqlite3.connect('data/screener.db')
+import os
+db = sqlite3.connect(os.path.join("data", os.environ.get("SCREENER_DB", "screener.db")))
 
 for tk in ['BBAR', 'BMA', 'CEPU', 'CRESY', 'EDN', 'GGAL', 'LOMA', 'PAM', 'SUPV', 'TEO']:
     cur = db.execute("""

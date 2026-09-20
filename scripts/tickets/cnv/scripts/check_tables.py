@@ -1,5 +1,6 @@
 import sqlite3
-db = sqlite3.connect('data/screener.db')
+import os
+db = sqlite3.connect(os.path.join("data", os.environ.get("SCREENER_DB", "screener.db")))
 cur = db.execute("SELECT name FROM sqlite_master WHERE type='table' ORDER BY name")
 for r in cur:
     print(r[0])

@@ -1,5 +1,6 @@
 import sqlite3
-db = sqlite3.connect('data/screener.db')
+import os
+db = sqlite3.connect(os.path.join("data", os.environ.get("SCREENER_DB", "screener.db")))
 
 # Check CNV_ prefixed concepts
 cur = db.execute("SELECT DISTINCT concepto FROM cnv_estados WHERE concepto LIKE 'CNV_%' ORDER BY concepto")

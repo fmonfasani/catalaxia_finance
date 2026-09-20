@@ -2,7 +2,8 @@
 import sqlite3
 from collections import defaultdict
 
-db = sqlite3.connect('data/screener.db')
+import os
+db = sqlite3.connect(os.path.join("data", os.environ.get("SCREENER_DB", "screener.db")))
 
 # Best ADR candidates with both EDGAR data and CNV NetIncome
 candidates = ['BBAR', 'CEPU', 'CRESY', 'LOMA', 'SUPV', 'TEO']

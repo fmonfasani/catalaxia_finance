@@ -1,7 +1,8 @@
 """Cross-reference CNV vs YFinance - con nombres reales de tags"""
 import sqlite3
 
-db = sqlite3.connect('data/screener.db')
+import os
+db = sqlite3.connect(os.path.join("data", os.environ.get("SCREENER_DB", "screener.db")))
 
 # First, discover actual yfinance tag names for BYMA
 cur = db.execute("""

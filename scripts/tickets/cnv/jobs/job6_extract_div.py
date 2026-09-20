@@ -27,8 +27,6 @@ from __future__ import annotations
 import csv, re, sys, time, sqlite3, html as ihtml
 from pathlib import Path
 import requests
-import urllib3
-urllib3.disable_warnings()
 
 BASE = Path(__file__).resolve().parent.parent
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / "data").is_dir())
@@ -37,6 +35,9 @@ import os as _os
 # Debe estar en TODOS los scripts que escriben en la base: si uno solo no lo
 # respeta, escribe en la real aunque el resto corra sobre la copia.
 DB = ROOT / "data" / _os.environ.get("SCREENER_DB", "screener.db")
+# TLS: verificar certificados por defecto (fail-closed). REQUESTS_VERIFY=0 como
+# fallback explicito (riesgo MITM / integridad de RAW).
+VERIFY = _os.environ.get("REQUESTS_VERIFY", "1") != "0"
 WHITELIST = BASE / "datos" / "whitelist_div.csv"
 HTML_DIR = BASE / "eeff" / "div_html"        # gitignoreado (crudo)
 DONE = ROOT / "data" / "log_job6_done.txt"
@@ -92,7 +93,7 @@ def main():
             print(f"  Tope --max {mx} alcanzado; corté (resume-safe, volvé a correr para seguir)."); break
         reqs += 1
         try:
-            html = ses.get(row["url"], timeout=30, verify=False).text
+            html = ses.get(row["url"], timeout=30, verify=VERIFY).text
             (HTML_DIR / f"{guid}.html").write_text(html, encoding="utf-8")
             txt = texto_plano(html)
             fechas = RX_FECHA.findall(txt)

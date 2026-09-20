@@ -24,8 +24,10 @@ import csv, os, re, sys, time, sqlite3, html as ihtml
 from pathlib import Path
 from datetime import datetime
 import requests
-import urllib3
-urllib3.disable_warnings()
+
+# TLS: verificar certificados por defecto (fail-closed). REQUESTS_VERIFY=0 como
+# fallback explicito (riesgo MITM / integridad de RAW).
+VERIFY = os.environ.get("REQUESTS_VERIFY", "1") != "0"
 
 BASE = Path(__file__).resolve().parent.parent
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / "data").is_dir())
@@ -261,7 +263,7 @@ def main():
             cache += 1
         else:
             reqs += 1
-            html = ses.get(row["url"], timeout=15, verify=False).text
+            html = ses.get(row["url"], timeout=15, verify=VERIFY).text
             html_path.write_text(html, encoding="utf-8")
 
         try:

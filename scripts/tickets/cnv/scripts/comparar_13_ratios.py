@@ -3,7 +3,8 @@ import sqlite3
 import math
 from datetime import datetime, date
 
-db = sqlite3.connect('data/screener.db')
+import os
+db = sqlite3.connect(os.path.join("data", os.environ.get("SCREENER_DB", "screener.db")))
 
 TICKER = 'ALUA'
 print(f"=== Comparacion 13 ratios: {TICKER} ===")
