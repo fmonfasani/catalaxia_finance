@@ -93,3 +93,28 @@ __pycache__/
 ~$*.pptx
 .vscode/
 scratchpad/
+
+# Backups de DB (snapshots SQLite de ~1.5 GB cada uno)
+data/backups/
+
+# ZIPs y carpetas duplicadas de pipelines KO/YPF ya versionados en scripts/KO/ y scripts/YPF/
+scripts/KO_TIKR_COMPARISON_3_SCRIPTS.zip
+scripts/KO_TIKR_COMPARISON_3_SCRIPTS/
+scripts/KO_TIKR_PIPELINE_4_SCRIPTS.zip
+scripts/KO_TIKR_PIPELINE_4_SCRIPTS/
+scripts/KO_TIKR_STYLE_3_SCRIPTS.zip
+scripts/KO_TIKR_STYLE_3_SCRIPTS/
+scripts/catalaxia-ko-analysis-main.zip
+scripts/catalaxia-ko-analysis-main/
+
+# Versiones descartadas del manual (se versiona solo _WORD_FINAL)
+docs/manual/Catalaxia_Manual_de_Operaciones_WORD_COMPATIBLE.docx
+docs/manual/Catalaxia_Manual_de_Operaciones_WORD_PANDOC.docx
+docs/manual/Catalaxia_Manual_de_Operaciones_WORD_CON_IMAGENES.docx
+docs/manual/Catalaxia_Manual_de_Operaciones_WORD_CON_IMAGENES\ (1).docx
+
+# PDFs de propuestas y documentos borrados
+docs/pdfs/
+
+# EEFF descargados de la CNV (66 carpetas, regenerables con jobs)
+scripts/tickets/cnv/eeff/
