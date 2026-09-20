@@ -1,0 +1,16 @@
+{
+ "source": "SEC_EDGAR",
+ "filing_url": "https://www.sec.gov/Archives/edgar/data/914021/000119312520244916/d84152d18ka.htm",
+ "accession_number": "000119312520244916",
+ "company_cik": "914021",
+ "document": "d84152d18ka.htm",
+ "fts_query": "fts-historicos",
+ "motivo": "Argentina 18-K/A 2020-09-14 (canje 2020, era AL/GD)",
+ "retrieved_at": "2026-09-15T23:00:36+00:00",
+ "sha256": "14eb4749bc39ecb9ad86a3b296718f0c7e3ee2443839dfbae5dd35f0a3d07fdb",
+ "http_status": 200,
+ "bytes": 29562,
+ "collector": "edgar_dl@v1.0.0",
+ "git_commit": "f375090",
+ "raw_ref": "D:\\Software Development\\Porfolio\\catalaxia-cedears-prod\\research\\fx_tikr_reverse\\edgar_sovereign\\raw\\filings\\914021_000119312520244916_d84152d18ka.htm"
+}

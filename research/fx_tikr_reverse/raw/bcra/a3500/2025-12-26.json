@@ -1,0 +1,259 @@
+{
+ "meta": {
+  "source": "BCRA-estadisticas-cambiarias-v1.0",
+  "fx_type": "A3500",
+  "source_url": "https://api.bcra.gob.ar/estadisticascambiarias/v1.0/Cotizaciones?fecha=2025-12-26",
+  "retrieved_at": "2026-09-15T21:31:16+00:00",
+  "source_date": "2025-12-26",
+  "sha256": "3c93aff5cc06690f164857cb3c2ee3e1aedec5d17b7a88c47b5b4647fa89278d",
+  "http_status": 200,
+  "collector": "bcra_a3500@v1.0.0",
+  "engine": "fx-engine@v1.0.0",
+  "git_commit": "f375090"
+ },
+ "payload": {
+  "status": 200,
+  "results": {
+   "fecha": "2025-12-26",
+   "detalle": [
+    {
+     "codigoMoneda": "ARS",
+     "descripcion": "PESO",
+     "tipoPase": 0.000688,
+     "tipoCotizacion": 0.0
+    },
+    {
+     "codigoMoneda": "AUD",
+     "descripcion": "DOLAR AUSTRALIA",
+     "tipoPase": 0.671,
+     "tipoCotizacion": 974.6275
+    },
+    {
+     "codigoMoneda": "AWG",
+     "descripcion": "FLORIN (ANTILLAS HOLANDESAS)",
+     "tipoPase": 0.558659,
+     "tipoCotizacion": 811.452514
+    },
+    {
+     "codigoMoneda": "BOB",
+     "descripcion": "BOLIVIANOS",
+     "tipoPase": 0.145243,
+     "tipoCotizacion": 210.965868
+    },
+    {
+     "codigoMoneda": "BRL",
+     "descripcion": "REAL",
+     "tipoPase": 0.180505,
+     "tipoCotizacion": 262.184116
+    },
+    {
+     "codigoMoneda": "CAD",
+     "descripcion": "DOLAR CANADIEN.",
+     "tipoPase": 0.731582,
+     "tipoCotizacion": 1062.623455
+    },
+    {
+     "codigoMoneda": "CHF",
+     "descripcion": "FRANCO SUIZO",
+     "tipoPase": 1.266304,
+     "tipoCotizacion": 1839.306066
+    },
+    {
+     "codigoMoneda": "CLP",
+     "descripcion": "PESO CHILENO",
+     "tipoPase": 0.001103,
+     "tipoCotizacion": 1.602175
+    },
+    {
+     "codigoMoneda": "CNH",
+     "descripcion": "YUAN CNH RENMINBI OFF SHORE",
+     "tipoPase": 0.142763,
+     "tipoCotizacion": 207.363732
+    },
+    {
+     "codigoMoneda": "CNY",
+     "descripcion": "YUAN CNY RENMINBI",
+     "tipoPase": 0.142721,
+     "tipoCotizacion": 207.301583
+    },
+    {
+     "codigoMoneda": "COP",
+     "descripcion": "COLOMBIANOS",
+     "tipoPase": 0.00027,
+     "tipoCotizacion": 0.392145
+    },
+    {
+     "codigoMoneda": "CZK",
+     "descripcion": "CORONAS CHECAS",
+     "tipoPase": 0.048585,
+     "tipoCotizacion": 70.569659
+    },
+    {
+     "codigoMoneda": "DKK",
+     "descripcion": "CORONAS DANESAS",
+     "tipoPase": 0.157587,
+     "tipoCotizacion": 228.895157
+    },
+    {
+     "codigoMoneda": "EUR",
+     "descripcion": "EURO",
+     "tipoPase": 1.1771,
+     "tipoCotizacion": 1709.73775
+    },
+    {
+     "codigoMoneda": "GBP",
+     "descripcion": "LIBRA ESTERLINA",
+     "tipoPase": 1.3496,
+     "tipoCotizacion": 1960.294
+    },
+    {
+     "codigoMoneda": "HKD",
+     "descripcion": "DOLAR HONG KONG",
+     "tipoPase": 0.128679,
+     "tipoCotizacion": 186.905666
+    },
+    {
+     "codigoMoneda": "ILS",
+     "descripcion": "LIBRA ISRAELI",
+     "tipoPase": 0.31294,
+     "tipoCotizacion": 454.545455
+    },
+    {
+     "codigoMoneda": "INR",
+     "descripcion": "RUPIA (INDIA)",
+     "tipoPase": 0.01113,
+     "tipoCotizacion": 16.166048
+    },
+    {
+     "codigoMoneda": "JPY",
+     "descripcion": "YENS",
+     "tipoPase": 0.006388,
+     "tipoCotizacion": 9.278186
+    },
+    {
+     "codigoMoneda": "MXP",
+     "descripcion": "PESO MEXICANO",
+     "tipoPase": 0.055866,
+     "tipoCotizacion": 81.145251
+    },
+    {
+     "codigoMoneda": "NIO",
+     "descripcion": "CORDOBA NICARAGUENSE",
+     "tipoPase": 0.02715,
+     "tipoCotizacion": 39.435924
+    },
+    {
+     "codigoMoneda": "NOK",
+     "descripcion": "CORONAS NORUEGA",
+     "tipoPase": 0.099826,
+     "tipoCotizacion": 144.997704
+    },
+    {
+     "codigoMoneda": "NZD",
+     "descripcion": "DOLAR NEOZELANDES",
+     "tipoPase": 0.583,
+     "tipoCotizacion": 846.8075
+    },
+    {
+     "codigoMoneda": "PEN",
+     "descripcion": "SOLES",
+     "tipoPase": 0.296833,
+     "tipoCotizacion": 431.149633
+    },
+    {
+     "codigoMoneda": "PYG",
+     "descripcion": "GUARANIES",
+     "tipoPase": 0.000151,
+     "tipoCotizacion": 0.219909
+    },
+    {
+     "codigoMoneda": "REF",
+     "descripcion": "DOLAR REFERENCIA COM 3500",
+     "tipoPase": 0.0,
+     "tipoCotizacion": 1450.9167
+    },
+    {
+     "codigoMoneda": "RSD",
+     "descripcion": "DINAR SERBIA",
+     "tipoPase": 0.010045,
+     "tipoCotizacion": 14.590863
+    },
+    {
+     "codigoMoneda": "RUB",
+     "descripcion": "RUSIA",
+     "tipoPase": 0.012929,
+     "tipoCotizacion": 18.779592
+    },
+    {
+     "codigoMoneda": "SEK",
+     "descripcion": "CORONAS SUECAS",
+     "tipoPase": 0.109112,
+     "tipoCotizacion": 158.48509
+    },
+    {
+     "codigoMoneda": "SGD",
+     "descripcion": "DOLAR DE SINGAPUR",
+     "tipoPase": 0.778634,
+     "tipoCotizacion": 1130.966285
+    },
+    {
+     "codigoMoneda": "TRY",
+     "descripcion": "LIRA TURCA",
+     "tipoPase": 0.023298,
+     "tipoCotizacion": 33.841007
+    },
+    {
+     "codigoMoneda": "USD",
+     "descripcion": "DOLAR E.E.U.U.",
+     "tipoPase": 0.0,
+     "tipoCotizacion": 1452.5
+    },
+    {
+     "codigoMoneda": "UYU",
+     "descripcion": "PESO URUGUAYO",
+     "tipoPase": 0.025528,
+     "tipoCotizacion": 37.079584
+    },
+    {
+     "codigoMoneda": "VEB",
+     "descripcion": "BOLIVARES",
+     "tipoPase": 0.00364582,
+     "tipoCotizacion": 5.29555195
+    },
+    {
+     "codigoMoneda": "VND",
+     "descripcion": "DONG VIETNAM (C/1.000 UNIDADES)",
+     "tipoPase": 0.03802,
+     "tipoCotizacion": 55.223937
+    },
+    {
+     "codigoMoneda": "XAG",
+     "descripcion": "PLATA - ONZA TROY",
+     "tipoPase": 76.3855,
+     "tipoCotizacion": 0.0
+    },
+    {
+     "codigoMoneda": "XAU",
+     "descripcion": "ORO FINO (1 ONZA)",
+     "tipoPase": 4518.58,
+     "tipoCotizacion": 0.0
+    },
+    {
+     "codigoMoneda": "XDR",
+     "descripcion": "DEG",
+     "tipoPase": 1.36979,
+     "tipoCotizacion": 1989.619975
+    },
+    {
+     "codigoMoneda": "ZAR",
+     "descripcion": "RAND SUD",
+     "tipoPase": 0.059914,
+     "tipoCotizacion": 87.024511
+    }
+   ]
+  }
+ },
+ "parsed_hint": {
+  "usd_tipoCotizacion": 1452.5
+ }
+}

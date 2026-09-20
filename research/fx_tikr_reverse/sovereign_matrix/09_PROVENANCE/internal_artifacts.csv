@@ -1,0 +1,6 @@
+artefacto,motivo
+fixtures/tikr_fx_12.csv,"12 FX del encargo P8 (fixture externo, no medido)"
+RUN_REPORT.md §3,Tabla A3500/OFICIAL/tikr por quarter (derivación Catalaxia)
+normalized/fx_reference.parquet,Referencias BCRA normalizadas (derivación C)
+04_CERTIFICACION/*,Matrices y veredicto UNKNOWN de otro agente (no fuente primaria)
+Perplexity/*,Dossiers de terceros (no auditados aquí)

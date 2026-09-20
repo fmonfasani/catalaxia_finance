@@ -1,0 +1,16 @@
+{
+ "source": "SEC_EDGAR",
+ "filing_url": "https://www.sec.gov/Archives/edgar/data/1717161/000129281424004083/cepu20241107_6k.htm",
+ "accession_number": "000129281424004083",
+ "company_cik": "1717161",
+ "document": "cepu20241107_6k.htm",
+ "fts_query": "phase2",
+ "motivo": "CEPU 6-K 2024-11-07 (serie dividendos, posible 2da fecha de valuación)",
+ "retrieved_at": "2026-09-16T00:02:57+00:00",
+ "sha256": "ce688046fc8837b248eeae6a770b6096ee476b7e12bcd03245c340f70aea6361",
+ "http_status": 200,
+ "bytes": 19948,
+ "collector": "edgar_dl@v1.0.0",
+ "git_commit": "f375090",
+ "raw_ref": "D:\\Software Development\\Porfolio\\catalaxia-cedears-prod\\research\\fx_tikr_reverse\\edgar_sovereign\\raw\\filings\\1717161_000129281424004083_cepu20241107_6k.htm"
+}

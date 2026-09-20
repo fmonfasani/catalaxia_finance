@@ -1,0 +1,15 @@
+{
+ "source": "SEC_EDGAR",
+ "filing_url": "https://www.sec.gov/Archives/edgar/data/914021/000119312520244916/index.json",
+ "accession_number": "000119312520244916",
+ "company_cik": "914021",
+ "document": "index.json",
+ "fts_query": "filing-index",
+ "motivo": "descubrir documento principal",
+ "retrieved_at": "2026-09-15T23:00:38+00:00",
+ "sha256": "443380f097d1ecda56cffea977cc2234d9604084e6067fcb2fa7fd25e7ffe85f",
+ "http_status": 200,
+ "collector": "edgar_dl@v1.0.0",
+ "git_commit": "f375090",
+ "raw_ref": "D:\\Software Development\\Porfolio\\catalaxia-cedears-prod\\research\\fx_tikr_reverse\\edgar_sovereign\\raw\\filings\\914021_000119312520244916_index.json"
+}

@@ -1,0 +1,16 @@
+{
+ "source": "SEC_EDGAR",
+ "filing_url": "https://www.sec.gov/Archives/edgar/data/914021/000090342308000171/repargentina-18k_0220.htm",
+ "accession_number": "000090342308000171",
+ "company_cik": "914021",
+ "document": "repargentina-18k_0220.htm",
+ "fts_query": "fts-historicos",
+ "motivo": "Argentina 18-K 2008-02-20 (deuda soberana era BODEN)",
+ "retrieved_at": "2026-09-15T23:00:32+00:00",
+ "sha256": "d081c9ddd55a03d513563783d5f8425dae903efa2b800455eef53c4f3b6280d1",
+ "http_status": 200,
+ "bytes": 9176632,
+ "collector": "edgar_dl@v1.0.0",
+ "git_commit": "f375090",
+ "raw_ref": "D:\\Software Development\\Porfolio\\catalaxia-cedears-prod\\research\\fx_tikr_reverse\\edgar_sovereign\\raw\\filings\\914021_000090342308000171_repargentina-18k_0220.htm"
+}

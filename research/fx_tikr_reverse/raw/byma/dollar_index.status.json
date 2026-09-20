@@ -1,0 +1,15 @@
+{
+ "source": "BYMA",
+ "producto": "Dollar_Index",
+ "endpoint": "api-mgr.byma.com.ar/{eod|delayed}/indices",
+ "docs": "https://www.byma.com.ar/productos/productos-de-datos/market-data/apis",
+ "status": "AUTH_REQUIRED",
+ "reason": "Endpoint indices con credenciales; ausentes.",
+ "source_url": "api-mgr.byma.com.ar/{eod|delayed}/indices",
+ "retrieved_at": "2026-09-15T21:33:57+00:00",
+ "source_date": "2026-09-15",
+ "sha256": null,
+ "collector": "byma_status@v1.0.0",
+ "git_commit": "f375090",
+ "action_requerida": "proveer BYMA_CLIENT_ID/SECRET en .env (nunca en código) y re-ejecutar"
+}

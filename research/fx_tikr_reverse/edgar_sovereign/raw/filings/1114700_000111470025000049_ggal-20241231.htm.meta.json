@@ -1,0 +1,16 @@
+{
+ "source": "SEC_EDGAR",
+ "filing_url": "https://www.sec.gov/Archives/edgar/data/1114700/000111470025000049/ggal-20241231.htm",
+ "accession_number": "000111470025000049",
+ "company_cik": "1114700",
+ "document": "ggal-20241231.htm",
+ "fts_query": "mains-descubiertos-por-indice",
+ "motivo": "GGAL 20-F 2024 principal (EEFF+notas)",
+ "retrieved_at": "2026-09-15T22:58:55+00:00",
+ "sha256": "bbf035c67524ad86ebc2c266844051448a39684aa3922bf954baff36283e3784",
+ "http_status": 200,
+ "bytes": 12831994,
+ "collector": "edgar_dl@v1.0.0",
+ "git_commit": "f375090",
+ "raw_ref": "D:\\Software Development\\Porfolio\\catalaxia-cedears-prod\\research\\fx_tikr_reverse\\edgar_sovereign\\raw\\filings\\1114700_000111470025000049_ggal-20241231.htm"
+}

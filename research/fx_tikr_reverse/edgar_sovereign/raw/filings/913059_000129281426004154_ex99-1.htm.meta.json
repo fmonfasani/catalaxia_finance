@@ -1,0 +1,16 @@
+{
+ "source": "SEC_EDGAR",
+ "filing_url": "https://www.sec.gov/Archives/edgar/data/913059/000129281426004154/ex99-1.htm",
+ "accession_number": "000129281426004154",
+ "company_cik": "913059",
+ "document": "ex99-1.htm",
+ "fts_query": "al30",
+ "motivo": "BBVA 6-K 2026-08-10 menciona AL30 (earnings: valores + FX?)",
+ "retrieved_at": "2026-09-15T22:58:33+00:00",
+ "sha256": "c8d31ad687023e422601bfed8ae88d3a5f1d03e83721d52e4692c59c279d33e5",
+ "http_status": 200,
+ "bytes": 3408717,
+ "collector": "edgar_dl@v1.0.0",
+ "git_commit": "f375090",
+ "raw_ref": "D:\\Software Development\\Porfolio\\catalaxia-cedears-prod\\research\\fx_tikr_reverse\\edgar_sovereign\\raw\\filings\\913059_000129281426004154_ex99-1.htm"
+}

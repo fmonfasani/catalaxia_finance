@@ -1,0 +1,4 @@
+case_id,fecha,instrumento,buy_leg,sell_leg,evidencia,clasificacion,capa
+CX00,N/A,N/A,N/A,N/A,Revisión 2001–2026 (15 docs + frases xmarket_*): 0 operaciones instrumento-USD↔ARS,NO_EVIDENCE_FOUND,FINANCIAL MODEL
+CX01-neg,2021-03-31,N/A (acero/chatarra),chatarra EEUU (39%),N/A,"Ternium 20-F 2020: '39% was purchased in the United States. Scrap is purchased at market prices' — commodity, no bono",FALSE_POSITIVE_REMOVED,FINANCIAL MODEL
+CX02-near,2024-12-06,N/A (adquisición HSBC),"Ps.82,436,043","US$81,158 (mismo activo)","GGAL exhibit4_4: ON Ps.82,436,043 (US$81,158 at exchange rate in effect) — traslación mismo activo",ACCOUNTING_TRANSLATION (no cross-market),FINANCIAL MODEL

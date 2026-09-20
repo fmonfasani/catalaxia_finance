@@ -1,0 +1,15 @@
+dato_id,descripcion,grado,fuente,justificacion
+V01-V04,CEPU GD30/35/41/38 ARS 2023-11-30,A,CEPU 6-K 2023-12-05 (company notice),Documento primario del emisor con fecha+ISIN+precio; plaza no nombrada (límite declarado)
+V05,Telecom GD30 nominal+reserva,A,Telecom 6-K 2024-11-11,Documento primario; AR$ es carrying (límite declarado)
+V06,GGAL posición neta FX,A,GGAL 20-F 2024,EEFF primario; redondeo a millones (límite)
+X01-X08,Tasas BCRA/A3500/mercado citadas,A,GGAL/Macro 20-F,Filings primarios citando BCRA; valor+fecha+fuente presentes
+X09,BNA vendedor 2023-11-30,E,CEPU 6-K,Fuente+fecha citadas pero valor numérico ausente en el filing
+FX01,1032.14 (posición),C,Catalaxia (V06),Cociente reproducible desde V06; banda ±~15 por redondeo
+FX02,794.79 (carrying),C,Catalaxia (V05),Cociente reproducible; NO es FX de mercado
+FX03-met,Implicit Exchange Rate (fórmula),A,GGAL exhibit4_4,Definición contractual primaria; sin print numérico
+ID-AL30/GD30,ISIN+ley AL30/GD30,A,GGAL exhibit4_4,ISINs textuales en contrato
+ID-BPOC7/BPOD7/TV24,ISINs Bopreal/TV24,A,CEPU 6-Ks,ISINs textuales en avisos
+ID-NEW30/35/38/41/46,Términos canje 2020,A,Argentina 424B5 2020-08-17,Madurez/amortización textuales; ISIN new bonds ausentes→E parcial
+FTS-500,Ventanas FTS con HTTP 500,E,efts.sec.gov,"5 ventanas sin respuesta (gd46 pre-16, al25 post-16, lefis pre-16, cusip pre-16, xbuy_ar post-16)"
+Rava-CCL/MEP,Vendor OHLC 2025-07→2026-07,B,Rava (data/dolar/rava),Secundario; columnas usd_* inutilizables (ratio~1/cero); sin 2023-11-30
+FTS-VERSIONED,Re-fetches idénticos,D,efts.sec.gov,"Contenido duplicado por reintento (trazado, no evidencia doble)"

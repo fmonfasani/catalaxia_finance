@@ -1,0 +1,20 @@
+{
+  "version": "FX-CLOSEOUT-1.0",
+  "quarter_selection": "fixture_12",
+  "reference_sources": [
+    "A3500",
+    "OFICIAL"
+  ],
+  "include_mep_ccl": true,
+  "tikr_statistic": "fixture_value",
+  "comparison_date_policy": "effective_market_date",
+  "missing_policy": "NO_FILL",
+  "winner_policy": "NO_WINNER",
+  "provenance_policy": "SOURCE_REQUIRED",
+  "acceptance": {
+    "minimum_tikr_provenance": true,
+    "minimum_reference_coverage": 1.0,
+    "comparison_must_execute": true,
+    "no_proprietary_method_claim_from_error_alone": true
+  }
+}

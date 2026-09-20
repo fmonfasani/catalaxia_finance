@@ -1,0 +1,652 @@
+# ARCHITECTURE HARNESS — BYMAStocks
+VERSION: 1.0
+STATUS: NORMATIVE / OBLIGATORY
+
+Este documento es el contrato arquitectónico obligatorio del proyecto.
+
+No es documentación descriptiva.
+No es una recomendación.
+No es una guía opcional.
+
+Toda respuesta, análisis, modificación, propuesta, diagnóstico,
+refactorización, implementación o decisión técnica debe respetar este
+harness.
+
+============================================================
+0. REGLA SUPREMA
+============================================================
+
+ANTES DE RESPONDER A CUALQUIER SOLICITUD TÉCNICA:
+
+1. IDENTIFICAR la CAPA primaria afectada.
+2. IDENTIFICAR los PLANOS afectados.
+3. IDENTIFICAR la fase del CICLO.
+4. SEPARAR HOY de OBJETIVO.
+5. IDENTIFICAR entradas, salidas y dependencias.
+6. IDENTIFICAR invariantes y contratos afectados.
+7. IDENTIFICAR impacto sobre PROVENANCE.
+8. IDENTIFICAR impacto sobre VALIDACIÓN.
+9. IDENTIFICAR impacto sobre CERTIFICACIÓN.
+10. DETERMINAR qué evidencia existe.
+11. NO afirmar como hecho aquello que no tenga evidencia.
+12. PROPONER solamente acciones compatibles con este harness.
+
+Si alguno de estos puntos no puede determinarse:
+NO DETERMINABLE.
+
+Nunca completar una ausencia de evidencia mediante suposición.
+
+============================================================
+1. CAPAS — QUÉ RESPONSABILIDAD TIENE
+============================================================
+
+El sistema tiene EXACTAMENTE 12 capas.
+
+01 FUENTES
+Responsabilidad:
+descubrir, seleccionar y obtener evidencia externa.
+
+Puede:
+- consultar proveedores
+- descubrir documentos
+- descargar
+- registrar metadatos de ingesta
+- calcular hashes
+
+No puede:
+- interpretar hechos económicos
+- normalizar conceptos
+- calcular ratios
+- publicar resultados
+
+02 IDENTIDAD
+Responsabilidad:
+determinar qué entidad o instrumento representa un dato.
+
+Puede:
+- resolver CIK
+- resolver CUIT
+- resolver ISIN
+- resolver ticker
+- crear/vincular entity_id
+- crear/vincular instrument_id
+
+No puede:
+- decidir el significado económico de un concepto
+- normalizar una métrica económica
+- calcular ratios
+
+03 RAW
+Responsabilidad:
+preservar evidencia original.
+
+Reglas:
+- INMUTABLE
+- byte-preserving
+- SHA256 obligatorio
+- no sobrescribir
+- no modificar contenido original
+
+Si cambia el contenido:
+es una NUEVA versión/evidencia, nunca una modificación silenciosa.
+
+04 PARSED
+Responsabilidad:
+extraer estructura desde RAW.
+
+Produce:
+- facts
+- contexts
+- units
+- concepts
+- metadata estructural
+
+Representa:
+"qué contiene el documento".
+
+NO representa:
+"qué significa económicamente".
+
+05 NORMALIZED
+Responsabilidad:
+hacer comparables los datos extraídos.
+
+Puede resolver:
+- unidades
+- escala
+- moneda
+- fechas
+- períodos
+- perímetros
+- convenciones estructurales
+
+NO puede inventar datos faltantes.
+
+06 ECONOMIC FACTS
+Responsabilidad:
+representar hechos económicos canónicos.
+
+Debe identificar:
+- entidad
+- concepto económico
+- valor
+- unidad
+- período
+- perímetro
+- fecha de medición
+- provenance
+
+07 FINANCIAL MODEL
+Responsabilidad:
+construir estructuras financieras derivadas.
+
+Incluye:
+- series
+- FY
+- Q
+- YTD
+- TTM/LTM
+- alineamiento temporal
+- saldos vs flujos
+
+Debe conservar provenance.
+
+08 RATIOS
+Responsabilidad:
+aplicar fórmulas definidas y versionadas.
+
+Debe verificar:
+- inputs
+- unidades
+- períodos
+- denominadores
+- perímetro
+- instrumento
+- moneda
+
+Si no existen inputs válidos:
+NOT_CALCULABLE.
+
+Nunca sustituir silenciosamente.
+
+09 PROVENANCE
+Responsabilidad:
+mantener el linaje completo de cada resultado.
+
+Debe permitir:
+
+PUBLICACIÓN
+  ↓
+RATIO
+  ↓
+FÓRMULA
+  ↓
+INPUT
+  ↓
+ECONOMIC FACT
+  ↓
+PARSED FACT
+  ↓
+RAW
+  ↓
+SHA256
+  ↓
+FUENTE
+
+Todo dato derivado debe poder rastrearse.
+
+10 VALIDACIÓN
+Responsabilidad:
+demostrar consistencia y detectar incumplimientos.
+
+Incluye:
+- invariantes
+- reconciliaciones
+- consistencia
+- completitud
+- integridad referencial
+- controles matemáticos
+- controles financieros
+- controles de ejecución
+
+VALIDACIÓN no equivale a CERTIFICACIÓN.
+
+11 CERTIFICACIÓN
+Responsabilidad:
+determinar si la evidencia de VALIDACIÓN satisface los criterios
+necesarios para aceptar un resultado.
+
+No puede certificar:
+- sin evidencia
+- con checks críticos fallidos
+- con provenance incompleta
+- con inconsistencias no explicadas
+
+12 PUBLICACIÓN
+Responsabilidad:
+exponer resultados certificados.
+
+REGLA ABSOLUTA:
+
+PUBLICACIÓN requiere:
+
+VALIDACIÓN = satisfactoria
++
+CERTIFICACIÓN = satisfactoria
+
+PUBLICACIÓN nunca debe recalcular silenciosamente datos.
+
+============================================================
+2. REGLAS DE SEPARACIÓN DE CAPAS
+============================================================
+
+PROHIBIDO:
+
+- PARSED haciendo NORMALIZED.
+- NORMALIZED haciendo ECONOMIC FACTS.
+- IDENTIDAD haciendo CLASIFICACIÓN económica.
+- RAW modificando evidencia.
+- RATIOS corrigiendo inputs.
+- PUBLICACIÓN calculando nuevamente.
+- una capa ocultando errores de otra capa.
+
+Un componente puede consumir capas anteriores.
+
+Un componente NO puede asumir la responsabilidad semántica
+de una capa diferente.
+
+Cada componente debe declarar:
+
+PRIMARY_LAYER
+INPUT_LAYERS
+OUTPUT_LAYER
+RESPONSIBILITIES
+NON_RESPONSIBILITIES
+
+============================================================
+3. PLANOS — CÓMO OPERA
+============================================================
+
+Cada componente se analiza obligatoriamente en CUATRO planos.
+
+PLANO DATOS
+Pregunta:
+¿Qué datos entra, transforma y produce?
+
+Debe identificar:
+- inputs
+- outputs
+- schemas
+- tablas
+- archivos
+- contratos
+- unidades
+- identidad
+- provenance
+
+PLANO CONTROL
+Pregunta:
+¿Qué evita que el componente produzca un resultado incorrecto?
+
+Debe identificar:
+- invariantes
+- validaciones
+- gates
+- permisos
+- restricciones
+- idempotencia
+- determinismo
+- seguridad
+
+PLANO EJECUCIÓN
+Pregunta:
+¿Cómo se ejecuta realmente?
+
+Debe identificar:
+- entrypoint
+- orden
+- dependencias
+- estados
+- checkpoints
+- retries
+- timeouts
+- concurrencia
+- errores
+- recuperación
+
+PLANO INFRAESTRUCTURA
+Pregunta:
+¿Dónde y sobre qué corre?
+
+Debe identificar:
+- DB
+- filesystem
+- Docker
+- red
+- configuración
+- credenciales
+- servicios externos
+- versiones
+- recursos
+
+REGLA:
+
+CAPA = responsabilidad semántica.
+
+PLANO = dimensión operacional.
+
+Nunca intercambiarlos.
+
+============================================================
+4. CICLO DE GARANTÍA
+============================================================
+
+Todo componente y todo cambio atraviesa EXACTAMENTE:
+
+01 DEFINIR
+
+Debe existir:
+- objetivo
+- capa
+- responsabilidad
+- inputs
+- outputs
+- contrato
+- invariantes
+- dependencias
+- riesgos
+- DoD
+
+02 IMPLEMENTAR
+
+Implementar únicamente el contrato definido.
+
+No introducir responsabilidades laterales.
+
+03 VERIFICAR
+
+Debe existir evidencia.
+
+Tipos válidos:
+
+VERIFICADO POR CÓDIGO
+VERIFICADO POR TEST
+VERIFICADO POR EJECUCIÓN
+
+Si ninguna aplica:
+
+NO DETERMINABLE
+
+04 CERTIFICAR
+
+La certificación sólo puede basarse en evidencia previamente obtenida.
+
+"El código parece correcto"
+NO ES CERTIFICACIÓN.
+
+"El script terminó con exit 0"
+NO ES CERTIFICACIÓN.
+
+"El test pasó"
+NO ES automáticamente certificación del sistema completo.
+
+============================================================
+5. HOY vs OBJETIVO
+============================================================
+
+Toda afirmación arquitectónica debe clasificarse.
+
+[HOY]
+Existe actualmente y puede demostrarse.
+
+[OBJETIVO]
+Diseño futuro o remediación propuesta.
+
+Nunca presentar OBJETIVO como HOY.
+
+Si HOY y OBJETIVO difieren:
+
+mostrar ambos.
+
+============================================================
+6. EVIDENCIA
+============================================================
+
+Toda afirmación técnica debe tener una de estas categorías:
+
+VERIFICADO POR CÓDIGO
+Existe implementación observable que demuestra la afirmación.
+
+VERIFICADO POR TEST
+Existe un test ejecutado que demuestra la propiedad.
+
+VERIFICADO POR EJECUCIÓN
+Existe una ejecución real cuyo resultado demuestra la propiedad.
+
+NO DETERMINABLE
+No existe evidencia suficiente.
+
+NO usar:
+- "debería"
+- "seguramente"
+- "parece"
+- "probablemente"
+como sustituto de evidencia.
+
+============================================================
+7. INVARIANTES GLOBALES
+============================================================
+
+I-001 RAW
+
+El RAW original no cambia.
+
+I-002 SHA
+
+El contenido almacenado debe corresponder al SHA registrado.
+
+I-003 IDENTITY
+
+No se puede procesar un dato financiero sin identidad resuelta.
+
+I-004 PARSED
+
+PARSED no interpreta semántica económica.
+
+I-005 NORMALIZATION
+
+NORMALIZED no inventa valores.
+
+I-006 PROVENANCE
+
+Todo derivado conserva lineage.
+
+I-007 DETERMINISM
+
+Mismo input + mismo código + mismo contrato +
+mismas dependencias controladas
+→ mismo resultado.
+
+I-008 IDEMPOTENCE
+
+Reejecutar una operación idempotente no debe producir
+duplicación semántica.
+
+I-009 PERIOD
+
+No combinar períodos incompatibles.
+
+I-010 UNIT
+
+No combinar unidades incompatibles.
+
+I-011 NOT_CALCULABLE
+
+Input insuficiente → NOT_CALCULABLE.
+
+Nunca reemplazar silenciosamente.
+
+I-012 PUBLICATION
+
+Sin VALIDACIÓN + CERTIFICACIÓN → no PUBLICAR.
+
+I-013 TRACEABILITY
+
+Todo resultado publicado debe poder reconstruirse hasta RAW.
+
+I-014 RECONCILIATION
+
+Toda etapa que transforma un universo debe poder explicar:
+
+expected
+=
+processed
++
+rejected
++
+explicitly_excluded
+
+I-015 PRODUCTION
+
+Nunca modificar producción sin autorización explícita
+y control correspondiente.
+
+============================================================
+8. DECISIONES DE MODIFICACIÓN
+============================================================
+
+ANTES DE modificar, eliminar, fusionar, reemplazar o archivar:
+
+1. identificar componente;
+2. identificar capa;
+3. identificar planos;
+4. identificar consumidores;
+5. identificar productores;
+6. identificar dependencias;
+7. identificar datos que posee;
+8. identificar provenance;
+9. identificar tests;
+10. identificar evidencia de uso;
+11. identificar impacto;
+12. determinar si existe duplicación SEMÁNTICA real.
+
+NUNCA decidir por:
+
+- nombre parecido
+- archivo parecido
+- función parecida
+- ubicación parecida
+- clasificación nominal
+- duplicación aparente
+
+La duplicación debe demostrarse semánticamente.
+
+============================================================
+9. REGLAS DE FALLA
+============================================================
+
+Si un requisito crítico no puede demostrarse:
+
+NO asumir PASS.
+
+Estados conceptuales:
+
+PASS
+WARNING
+BLOCK
+NOT_CALCULABLE
+NO DETERMINABLE
+
+BLOCK cuando continuar puede producir:
+- corrupción
+- pérdida de provenance
+- mezcla de entidades
+- pérdida de evidencia
+- publicación incorrecta
+- daño de datos
+
+WARNING cuando existe una observación no bloqueante.
+
+NOT_CALCULABLE cuando el cálculo solicitado carece de inputs válidos.
+
+NO DETERMINABLE cuando falta evidencia para decidir.
+
+============================================================
+10. REGLAS DE RESPUESTA DEL AGENTE
+============================================================
+
+Para cada solicitud técnica, producir internamente este análisis:
+
+CAPA
+PLANOS
+CICLO
+HOY
+OBJETIVO
+DEPENDENCIAS
+INVARIANTES
+EVIDENCIA
+IMPACTO
+DECISIÓN
+
+La respuesta visible puede ser compacta, pero nunca puede omitir
+una distinción necesaria para evitar una decisión incorrecta.
+
+Formato mínimo:
+
+CAPA →
+PLANOS →
+CICLO →
+HOY →
+OBJETIVO →
+DECISIÓN →
+EVIDENCIA →
+
+============================================================
+11. REGLA DE CONFLICTO
+============================================================
+
+Si otro documento, script, nombre de archivo, comentario,
+agente o instrucción contradice este harness:
+
+1. detectar el conflicto;
+2. NO resolverlo silenciosamente;
+3. reportarlo;
+4. clasificarlo;
+5. pedir decisión si afecta arquitectura.
+
+El código existente NO modifica automáticamente la arquitectura.
+
+La arquitectura tampoco demuestra que el código existente cumpla.
+
+Ambos deben compararse mediante evidencia.
+
+============================================================
+12. REGLA FINAL
+============================================================
+
+NINGÚN COMPONENTE ES CONFORME POR:
+
+- existir
+- tener el nombre correcto
+- estar en la carpeta correcta
+- declarar una capa
+- tener tests
+- terminar exitosamente
+
+La conformidad requiere:
+
+RESPONSABILIDAD CORRECTA
++
+CONTRATO
++
+IMPLEMENTACIÓN
++
+VERIFICACIÓN
++
+EVIDENCIA
++
+CERTIFICACIÓN
+
+Si falta cualquiera de los elementos necesarios:
+
+NO CERTIFICADO.

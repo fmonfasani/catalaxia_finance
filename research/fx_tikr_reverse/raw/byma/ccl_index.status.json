@@ -1,0 +1,15 @@
+{
+ "source": "BYMA",
+ "producto": "CCL_Index",
+ "endpoint": "https://www.byma.com.ar/productos/productos-de-datos/indice-ccl-byma-historico",
+ "docs": "https://www.byma.com.ar/productos/productos-de-datos/indice-ccl-byma-historico",
+ "status": "AUTH_REQUIRED",
+ "reason": "Producto existe (índice CCL BYMA) pero el histórico descargable exige acceso BYMA; ausente.",
+ "source_url": "https://www.byma.com.ar/productos/productos-de-datos/indice-ccl-byma-historico",
+ "retrieved_at": "2026-09-15T21:33:57+00:00",
+ "source_date": "2026-09-15",
+ "sha256": null,
+ "collector": "byma_status@v1.0.0",
+ "git_commit": "f375090",
+ "action_requerida": "proveer BYMA_CLIENT_ID/SECRET en .env (nunca en código) y re-ejecutar"
+}

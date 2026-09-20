@@ -1,0 +1,178 @@
+{
+ "generated_at": "2026-09-16T00:06:54+00:00",
+ "git_commit": "f375090",
+ "generator": "make_outputs@v1.0.0",
+ "branch": "feature/fx-research-engine",
+ "artifacts": [
+  {
+   "path": "sovereign_matrix\\01_DISCOVERY\\LAYER_MANIFEST.md",
+   "sha256": "69be73beb8c3b203b511c066577d4ca7dae7c026260914c8209b325b65647945",
+   "bytes": 132
+  },
+  {
+   "path": "sovereign_matrix\\02_IDENTITY\\equivalences.csv",
+   "sha256": "86abafadc1dd291db6fe2d4b04ab326c6299de4e2e816e3254304c9e052a4b0f",
+   "bytes": 590
+  },
+  {
+   "path": "sovereign_matrix\\02_IDENTITY\\instrument_master.csv",
+   "sha256": "4882f1772108dea1cebd697a6b052708628ab994f84e9d1d87cd5c2c04e11eda",
+   "bytes": 7624
+  },
+  {
+   "path": "sovereign_matrix\\02_IDENTITY\\LAYER_MANIFEST.md",
+   "sha256": "dd27aa8e851d48903a362c149b5dbaa3927953423d651bd502990237cd2dd0d5",
+   "bytes": 149
+  },
+  {
+   "path": "sovereign_matrix\\03_RAW\\LAYER_MANIFEST.md",
+   "sha256": "3e992ef0813fdbc7a874f4c3a9e957e0532882e4b1b49f1c95d704b1489ad399",
+   "bytes": 144
+  },
+  {
+   "path": "sovereign_matrix\\04_PARSED\\LAYER_MANIFEST.md",
+   "sha256": "45ea312b699272ee67411cebdabb2cfa2dfa26b0d20e929e86bc9fb702c100f6",
+   "bytes": 130
+  },
+  {
+   "path": "sovereign_matrix\\05_NORMALIZED\\LAYER_MANIFEST.md",
+   "sha256": "7ae4da1cffb9fd9ff7d7a5ba4d3cfc6e5ca4f654b76d468d3d3b80406ead248d",
+   "bytes": 150
+  },
+  {
+   "path": "sovereign_matrix\\06_ECONOMIC_FACTS\\LAYER_MANIFEST.md",
+   "sha256": "1059e8eec93fe780f42efa1110795689ee9f41441d663fb9b2a2d204f45240d5",
+   "bytes": 160
+  },
+  {
+   "path": "sovereign_matrix\\07_FINANCIAL_MODEL\\LAYER_MANIFEST.md",
+   "sha256": "df0adef47c502820abb8351ffdfc51d70234fffb2268c3162fbdf1105cbf1478",
+   "bytes": 135
+  },
+  {
+   "path": "sovereign_matrix\\09_PROVENANCE\\cross_validation.csv",
+   "sha256": "eed3cece71db01c0b66c2f6f68e2468b7e502fcb34d99a4c26d5a9653d262112",
+   "bytes": 852
+  },
+  {
+   "path": "sovereign_matrix\\09_PROVENANCE\\internal_artifacts.csv",
+   "sha256": "36935f086230a9579669058229108ef7b7e7effdc50e3ffcafb8c156d0a48c76",
+   "bytes": 395
+  },
+  {
+   "path": "sovereign_matrix\\09_PROVENANCE\\LAYER_MANIFEST.md",
+   "sha256": "1f0e684798a570283cfea1fcbf6a29217ca986aa1393b9905cc3da31715fa3bf",
+   "bytes": 187
+  },
+  {
+   "path": "sovereign_matrix\\10_VALIDATION\\LAYER_MANIFEST.md",
+   "sha256": "b6e7e1446b86e87253e5bc86ce4f8e60f32877b51d6d66da85d4c360fb604f9e",
+   "bytes": 127
+  },
+  {
+   "path": "sovereign_matrix\\10_VALIDATION\\test_sovereign_matrix.py",
+   "sha256": "2f154698183264aa54e23fef42a488f40bfcce0d49bf19656fbac1799a794f2d",
+   "bytes": 4735
+  },
+  {
+   "path": "sovereign_matrix\\11_CERTIFICATION\\certification_report.md",
+   "sha256": "a7acdb0cbd814e7457b879a054bc2023aa04fc7187e15d5964fccfefa38681a1",
+   "bytes": 3178
+  },
+  {
+   "path": "sovereign_matrix\\11_CERTIFICATION\\LAYER_MANIFEST.md",
+   "sha256": "cbc6bd469742136df6f2c138ea8aa3ea5b4aff785b21f3925248b43cb8ade580",
+   "bytes": 122
+  },
+  {
+   "path": "sovereign_matrix\\coverage_report.json",
+   "sha256": "9d778e32c6715062ef50aea70ce0962da5d0165c83303b0edca66b75deed562d",
+   "bytes": 553
+  },
+  {
+   "path": "sovereign_matrix\\coverage_report.md",
+   "sha256": "bd02e775bb97cd968026527373989406337e226935dfb57c22a4c321b5d0fe15",
+   "bytes": 708
+  },
+  {
+   "path": "sovereign_matrix\\cross_market_cases.csv",
+   "sha256": "cb1d7111d89e64c20fa8f46dedc9fef2a45903d1ac16ede7755fbbe5175027aa",
+   "bytes": 694
+  },
+  {
+   "path": "sovereign_matrix\\cross_market_cases.xlsx",
+   "sha256": "ee8d6e56b00aff277fb76e45ba946059856389d756c584b225b36955aba2618e",
+   "bytes": 5886
+  },
+  {
+   "path": "sovereign_matrix\\evidence_matrix.xlsx",
+   "sha256": "d90d177d45184dad1df556fe83b7e97e5141701af303b2fe6057b10a4ffdf117",
+   "bytes": 9276
+  },
+  {
+   "path": "sovereign_matrix\\fx_observations.csv",
+   "sha256": "7012aa0c7ef604ced076a434352e3c4361bdc3f87ab8f89e85c26973ad1399a8",
+   "bytes": 895
+  },
+  {
+   "path": "sovereign_matrix\\fx_observations.xlsx",
+   "sha256": "1f833d29b0cf59beaa8dcd86dd391b2aaf48cab285837f7e6a013518f659ff5f",
+   "bytes": 6010
+  },
+  {
+   "path": "sovereign_matrix\\provenance_matrix.csv",
+   "sha256": "4c996f04be0c65d1157bc4473e8d072b0f71de178328ac16731060df8578d0d8",
+   "bytes": 1660
+  },
+  {
+   "path": "sovereign_matrix\\research_manifest.json",
+   "sha256": "01018c30e1919b5b5121a394fb4b717085ee78dcb360f1062fa707e8139f6031",
+   "bytes": 5517
+  },
+  {
+   "path": "sovereign_matrix\\scripts\\build_master.py",
+   "sha256": "f1951216fb0d05788f364d0aadc4ed23495a033ebef442d5b7bd28214349e43e",
+   "bytes": 13261
+  },
+  {
+   "path": "sovereign_matrix\\scripts\\discovery_p2.py",
+   "sha256": "8f6714c9d210b38e285904f86f877bf259359d92af16c94898068f470ca16961",
+   "bytes": 4310
+  },
+  {
+   "path": "sovereign_matrix\\scripts\\dl_phase2.py",
+   "sha256": "92537237bfe53db502a5acbeae738f4858c6457f11924fe4af71c65ab5174ba6",
+   "bytes": 3603
+  },
+  {
+   "path": "sovereign_matrix\\scripts\\make_outputs.py",
+   "sha256": "cccf4a5eb492b008a1fef73f735ea3f8840f8ecf9e5f9f8152e9581f2ded5cb8",
+   "bytes": 3608
+  },
+  {
+   "path": "sovereign_matrix\\scripts\\provenance_coverage.py",
+   "sha256": "2f7f29a8e8dad71d6bb454bcd369ec2b3215213a5d0070c107ef512704bd4160",
+   "bytes": 6925
+  },
+  {
+   "path": "sovereign_matrix\\sovereign_debt_master.csv",
+   "sha256": "8a734336f633a759988190c0ca773a30fb10a420553324c4596d14fdf2480ffc",
+   "bytes": 4545
+  },
+  {
+   "path": "sovereign_matrix\\sovereign_debt_master.parquet",
+   "sha256": "3a8851bf89adfc9b0f15103a8a91aacdd2971012981a9ce1d9e5a7a0fa070051",
+   "bytes": 22761
+  },
+  {
+   "path": "sovereign_matrix\\sovereign_debt_master.xlsx",
+   "sha256": "68395261d3e314138fd21fb65c185716541a8aac9835e244c472229ab8283774",
+   "bytes": 8679
+  },
+  {
+   "path": "sovereign_matrix\\SOVEREIGN_MATRIX_REPORT.md",
+   "sha256": "a3b23f9af0af0a8a94664d4e58e2f45fcb0af47133a6f1f5810e03f55f80e4f3",
+   "bytes": 6445
+  }
+ ]
+}

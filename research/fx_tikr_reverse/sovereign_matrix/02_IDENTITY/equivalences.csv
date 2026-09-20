@@ -1,0 +1,8 @@
+local,international,veredicto,evidencia
+AL30,GD30,"EQUIVALENT_ECONOMIC (same bond, different law/species)",GGAL Implicit Exchange Rate usa indistintamente el más líquido GD30/AL30; misma maturity 2030-07-09 y Step-Up; ISIN distintos (ARARGE3209S6 vs US040114HS26)
+AL35,GD35,CANDIDATE (sin evidencia directa),
+AL38,GD38,CANDIDATE (sin evidencia directa),
+AL41,GD41,CANDIDATE (sin evidencia directa),
+New USD 2035,GD35,CANDIDATE (ticker link no confirmado en prospecto),
+New USD 2041,GD41,CANDIDATE (idem),
+New USD 2046,GD46,CANDIDATE (GD46 sin hits EDGAR 2016+; FTS-gap pre-2016),

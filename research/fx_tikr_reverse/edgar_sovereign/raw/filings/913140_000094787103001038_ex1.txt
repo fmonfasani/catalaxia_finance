@@ -1,0 +1,864 @@
+<DOCUMENT>
+<TYPE>EX-1
+<SEQUENCE>3
+<FILENAME>ex1.txt
+<DESCRIPTION>FORM 6-K
+<TEXT>
+                                                                       Exhibit A
+
+PRICING SUPPLEMENT
+
+                           BANCO RIO DE LA PLATA S.A.
+
+           (incorporated under the laws of the Republic of Argentina)
+
+                US$17,017,200 Step-Up Notes due December 15, 2009
+
+    US$42,700 Floating Rate Mandatorily Exchangeable Notes due August 3, 2012
+                         ------------------------------
+
+         Both the Step-Up Notes and the Floating Rate Mandatorily Exchangeable
+Notes (collectively, the "New Notes") and the Contingent Interest Coupon
+Certificate (each a "CICC"), which will be issued with the Step-Up Notes and
+detach automatically following issuance of the Step-Up Notes, will be issued
+under an existing medium-term note program registered with the Comision Nacional
+de Valores ("CNV") in Argentina pursuant to the Certificate No. 263 dated March
+27, 2000 (the "Program") and pursuant to an indenture dated as of May 19, 2000
+as amended by the First Supplemental Indenture, dated January 22, 2001 (the
+"Indenture"), among Banco Rio de la Plata S.A. (the "Bank"), The Bank of New
+York, as trustee, co-registrar and co-paying agent and Banque Internationale a
+Luxembourg S.A., as paying agent and transfer agent. This Pricing Supplement is
+in the form contemplated in the Indenture, with such modifications as are
+appropriate to describe certain terms and conditions of the New Notes. Terms not
+defined herein shall have the meanings ascribed thereto in the Indenture. The
+terms and conditions of the Notes set forth in the Indenture shall apply to the
+New Notes, except to the extent modified by this Pricing Supplement.
+
+         The New Notes constitute obligaciones negociables under Argentine Law
+No. 23,576, as amended by Argentine Law No. 23,962 (the "Negotiable Obligations
+Law"), and are entitled to the benefits set forth therein and subject to the
+procedural requirements thereof. The New Notes are senior unsecured obligations
+and will rank pari passu with all other senior unsecured indebtedness of the
+Bank from time to time outstanding. Under Argentine law, depositors in the Bank
+have certain priority rights over all other unsecured creditors as described
+under "Terms and Conditions of the Notes -- Status of the Notes" in Exhibit A to
+the Indenture and as modified herein.
+
+         The New Notes, including any Global Note, will be issued only in
+registered form without coupons. The New Notes offered and sold in reliance on
+Regulation S (the "Regulation S") under the U.S. Securities Act of 1933, as
+amended (the "Securities Act") pursuant to the Offer will be represented by one
+or more global notes (each, a "Regulation S Global Note"). Beneficial interests
+in a Regulation S Global Note may be held through Euroclear or Clearstream, or
+through organizations that are participants, and any resale or transfer of such
+interests to U.S. persons shall not be permitted unless such resale and transfer
+is made pursuant to Regulation S or pursuant to another exemption under the
+Securities Act. The New Notes offered and sold in reliance on Section 3(a)(9)
+under the Securities Act pursuant to a simultaneous offer in a transaction that
+is exempt from registration under the Securities Act (the "U.S. Concurrent
+Offer") will be represented by one or more global notes (each, a "U.S. Global
+Note"). The Regulation S Global Notes and the U.S. Global Notes (collectively,
+the "Global Notes") will be deposited with, or on behalf of, The Depository
+Trust Company, as Depositary ("DTC") and will be registered in the name of the
+nominee of the Depositary.
+
+         Application has been made to list the New Notes on the Buenos Aires
+Stock Exchange.
+
+The date of this Pricing Supplement is April 11, 2003
+
+<PAGE>
+
+
+                      Terms Applicable to the Step-Up Notes
+                      -------------------------------------
+
+Aggregate Principal
+Amount to be delivered.........     US$17,017,200
+
+Maturity Date..................     December 15, 2009.
+
+Principal Amortization
+Schedule ......................     Eight semiannual installments equal to
+                                    12.50% of the original principal amount
+                                    commencing on June 15, 2006.
+
+Interest.......................     The Step-Up Notes will bear interest from
+                                    December 15, 2002 at the rate of 4% per
+                                    annum until December 15, 2005, and
+                                    thereafter interest on the Step-Up Notes
+                                    will increase 1% per annum up to a maximum
+                                    interest rate of 6% per annum.
+
+Interest Payments..............     Interest on the Step-Up Notes will be paid
+                                    semiannually in arrears on June 15 and
+                                    December 15 of each year, commencing on June
+                                    15, 2003.
+
+Minimum Denomination...........     US$1.00.
+
+Contingent Interest
+Coupon Certificates............     Each US$1.00 original principal amount of
+                                    Step-Up Notes will be issued with a CICC
+                                    that will detach from the Step-Up Notes
+                                    automatically following issuance without any
+                                    action on the part of the holders thereof
+                                    and will be able to be traded separately
+                                    from the Step-Up Notes. The CICCs will
+                                    entitle the holders thereof to the
+                                    possibility of a limited amount of
+                                    additional interest in the form of a
+                                    contingent cash payment from the Bank in
+                                    accordance with a formula based on the
+                                    Bank's earnings and net worth for each of
+                                    the fiscal years 2003 through 2009.
+
+Identifying Codes..............     CUSIP: 059644 AG 9
+                                    ISIN: US059644AG91
+                                    Common Code: 15941618
+
+
+      Terms Applicable to the Floating Rate Mandatorily Exchangeable Notes
+      --------------------------------------------------------------------
+
+Aggregate Principal
+Amount to be delivered.........     US$42,700
+
+Maturity Date..................     August 3, 2012.
+
+Principal Amortization
+Schedule.......................     Eight annual payments of principal equal to
+                                    12.50% of the original principal amount
+                                    commencing on August 3, 2005.
+
+Interest.......................     Interest on the Floating Rate Mandatorily
+                                    Exchangeable Notes will be deemed to accrue
+                                    from February 4, 2003 on a floating rate
+                                    basis which will be determined by applying
+                                    to the minimum denomination (US$100) the
+                                    interest rate applicable to U.S. dollar
+                                    deposits for a six month term in the London
+                                    Interbank Market ("LIBOR") at 11:00 a.m.
+                                    London time on the second business day next
+                                    preceding the commencement of each
+                                    semiannual interest period and adjusted to a
+                                    calendar year of 365 or 366 days, as
+                                    applicable, with the adjusted interest rate
+                                    for the first interest period ending August
+                                    3, 2003 being 1.369% per annum.
+
+                                       2
+<PAGE>
+
+Interest Payments..............     Interest on the Floating Rate Mandatorily
+                                    Exchangeable Notes will be paid semiannually
+                                    in arrears on February 3 and August 3 of
+                                    each year, commencing on August 3, 2003.
+
+Minimum Denomination...........     US$100.
+
+Mandatory Redemption and
+Exchange into BODEN............     The Floating Rate Mandatorily Exchangeable
+                                    Notes will be subject to a mandatory
+                                    redemption by the Bank and exchange of the
+                                    entire amount of Floating Rate Mandatorily
+                                    Exchangeable Notes for Bonos del Gobierno
+                                    Nacional due August 3, 2012 ("BODEN"), a
+                                    series of unsecured securities issued in
+                                    2002 by the Republic of Argentina
+                                    ("Argentina"), on a dollar-for-dollar basis
+                                    as soon as practicable after the Bank is no
+                                    longer subject to the current restrictions
+                                    imposed by Banco Central de la Republica de
+                                    Argentina (the "Central Bank") on the Bank's
+                                    ability to transfer ownership of BODEN in an
+                                    aggregate amount at least equal to the
+                                    outstanding aggregate principal amount of
+                                    the Floating Rate Mandatorily Exchangeable
+                                    Notes. The Bank will have the right, in its
+                                    sole discretion, to substitute the Floating
+                                    Rate Mandatorily Exchangeable Notes for
+                                    BODEN prior to the termination of the offer
+                                    to exchange the US$89,875,000 8.75% Class IV
+                                    Negotiable Obligations due December 15, 2003
+                                    in the event a sufficient quantity of BODEN
+                                    has been released prior to the issuance of
+                                    the Floating Rate Mandatorily Exchangeable
+                                    Notes.
+
+Identifying Codes..............     CUSIP: 059644 AJ 3
+                                    ISIN: US059644AJ31
+                                    Common Code: 15941626
+
+
+     Terms Applicable to the Step-Up Notes and the Floating Rate Mandatorily
+                               Exchangeable Notes
+     -----------------------------------------------------------------------
+
+Date of Issuance...............     Initially on April 11, 2003.
+
+Ranking........................     The New Notes are senior unsecured
+                                    obligations and will rank pari passu with
+                                    all other senior unsecured indebtedness.
+
+Subordination..................     In the event of our judicial liquidation,
+                                    all depositors, regardless of the type,
+                                    amount or currency of their deposits,
+                                    whether made by individuals or corporations,
+                                    will have a general and absolute priority
+                                    right over all creditors (such as the
+                                    holders of the New Notes), with the
+                                    exception of certain labor creditors, those
+                                    creditors secured with a pledge or mortgage,
+                                    credits granted under section 17,
+                                    subsections (b), (c), and (f) of the Central
+                                    Bank's Charter (rediscounts granted to
+                                    financial institutions based on temporary
+                                    illiquidity, overdrafts granted to financial
+                                    institutions with collateral, collateral
+                                    assignment, pledge or special allocation of
+                                    certain assets) and credits granted by the
+                                    Banking Liquidity Fund secured by a pledge
+                                    or mortgage, to be paid out of 100% of the
+                                    proceeds of the liquidation of our assets.
+                                    In addition, depositors of any type of
+                                    deposits have a special priority right over
+                                    all other of our creditors, with the
+                                    exception of certain labor creditors, to be
+                                    paid out of (i) any of our funds which may
+                                    be held by the Central Bank as reserves,
+                                    (ii) any other of our funds existing as of
+                                    the date our license is revoked, or (iii)
+                                    any proceeds which may result from the
+                                    mandatory transfer of certain of our assets
+                                    as determined by the Central Bank. Payments
+                                    are to be made in the following order of
+                                    priority: (i) deposits made by individuals
+                                    up to Ps.5,000 per person, or its equivalent
+                                    in foreign currency, (ii) all deposits with
+                                    maturities of more than 90 days, and (iii)
+                                    all other deposits on a pro rata basis.
+
+                                       3
+<PAGE>
+
+                                    Additionally, pursuant to section 53 of
+                                    Argentine Law No. 21,526, as amended, the
+                                    claims of the Central Bank will have
+                                    seniority over other creditors, except
+                                    creditors secured by pledge or mortgage,
+                                    certain labor creditors, depositors, credits
+                                    granted under section 17, subsections (b),
+                                    (c), and (f) of the Central Bank's Charter
+                                    (rediscounts granted to financial
+                                    institutions based on temporary illiquidity,
+                                    overdrafts granted to financial institutions
+                                    with collateral, collateral assignment,
+                                    pledge or special allocation of certain
+                                    assets) and credits granted by the Banking
+                                    Liquidity Fund secured by pledge or
+                                    mortgage.
+
+Additional Payments............     All payments of principal and interest on
+                                    the Step-Up Notes, the Floating Rate
+                                    Mandatorily Exchangeable Notes and the CICC
+                                    will be made without withholding or
+                                    deduction for, or on account of, any present
+                                    of future taxes, duties, levies,
+                                    contributions, withholdings or transfer
+                                    expense of any nature in effect on the
+                                    closing date or imposed or established in
+                                    the future by or on behalf of Argentina or
+                                    any authority in Argentina subject to
+                                    certain exceptions.
+
+Tax Redemption.................     The Step-Up Notes, the Floating Rate
+                                    Mandatorily Exchangeable Notes and the CICC
+                                    are redeemable at the Bank's option in whole
+                                    at par plus accrued and unpaid interest in
+                                    the event that the Bank becomes obligated to
+                                    pay any additional payments in respect of,
+                                    among other things, Argentine withholding
+                                    taxes as a result of a change in Argentine
+                                    tax law or regulation or in its
+                                    interpretation after the Issue Date.
+
+Trustee........................     The Bank of New York.
+
+Form of New Notes..............     In registered form without coupons in the
+                                    name of Cede & Co. as the nominee for DTC.
+                                    The New Notes will be offered in separate
+                                    and simultaneous offers in reliance on
+                                    Regulation S under the Securities Act and in
+                                    reliance on Section 3(a)(9) under the
+                                    Securities Act.
+
+Governing Law..................     Argentine Law No. 23,576, as amended, the
+                                    Negotiable Obligations Law, governs the
+                                    requirements for the Step-Up Notes and the
+                                    Floating Rate Mandatorily Exchangeable Notes
+                                    to qualify as obligaciones negociables
+                                    thereunder, while such law, together with
+                                    Argentine Law No. 19,550, as amended, and
+                                    other applicable Argentine laws and
+                                    regulations, govern the Bank's capacity and
+                                    corporate authorizations to execute and
+                                    deliver the Step-Up Notes and the Floating
+                                    Rate Mandatorily Exchangeable Notes and the
+                                    authorization of the CNV for the
+                                    establishment of the Program and the public
+                                    offering of the New Notes in Argentina. As
+                                    to all other matters, the New Notes shall be
+                                    governed by, and shall be construed in
+                                    accordance with, the law of the State of New
+                                    York, United States of America.
+
+Listing........................     Application has been made to list the New
+                                    Notes on the Buenos Aires Stock Exchange.
+
+                                       4
+<PAGE>
+
+
+                TERMS AND CONDITIONS APPLICABLE TO THE NEW NOTES
+
+         The terms and conditions set forth in the Indenture and the Terms and
+Conditions of the Notes in Exhibit A to the Indenture (the "Conditions") shall
+apply to the issuance of the New Notes as supplemented or amended, as the case
+may be, by the terms and conditions set forth below. Terms not defined herein
+shall have the same meaning assigned to them in the Indenture, unless otherwise
+defined. Any reference to sections are to sections of the Conditions, except
+where otherwise provided.
+
+         1   General. Section 1 is amended by inserting the paragraphs below.
+
+         (a) The Step-Up Notes will be issued in the aggregate principal amount
+of US$17,017,200 and will mature on December 15, 2009. The Floating Rate
+Mandatorily Exchangeable Notes will be issued in the aggregate principal amount
+of US$42,700 and will mature on August 3, 2012, the same date as the maturity of
+the BODEN into which the Floating Rate Mandatorily Exchangeable Notes shall be
+mandatorily redeemable and exchangeable, as described below.
+
+         (b) BODEN are one of a series of U.S. dollar denominated debt
+securities that were issued by the Argentine Government to compensate financial
+institutions in Argentina for financial losses caused by the Argentine
+Government's compulsory conversion of credit and debt obligations and deposits
+denominated in any foreign currency into Argentine pesos at different exchange
+rates in January 2002 which resulted in short foreign currency positions at such
+financial institutions, known as pesification. The BODEN that will be
+deliverable under certain circumstances upon mandatory redemption and exchange
+of the Floating Rate Mandatorily Exchangeable Notes (as described below), were
+issued to the Bank in connection with the pesification of its assets and
+liabilities. Holders of the 8.75% Class IV Negotiable Obligations due December
+15, 2003 that elect to receive Floating Rate Mandatorily Exchangeable Notes
+should be aware that bonds issued by the Argentine Government have different
+terms and conditions and it is possible that in the future the Argentine
+Government may elect to treat the BODEN the same or differently than its
+treatment of other issuances of Argentine Government securities. For more
+information on the BODEN, see sections 4, 5, and 6 thereof.
+
+         2.  Form, Denomination and Registration. Section 2 is amended by
+deleting it in its entirety and substituting it with the paragraphs below.
+
+         The Step-Up Notes, including any Global Note, will be issued only in
+registered form without coupons and in minimum denominations of US$1.00. The
+Floating Rate Mandatorily Exchangeable Notes, including any Global Note, will be
+issued only in registered form without coupons and in minimum denominations of
+US$100. No service charge will be made for any registration of transfer or
+exchange of New Notes, but the Bank may require payment of a sum sufficient to
+cover any tax or other governmental charge payable in connection therewith.
+
+         The New Notes offered and sold in reliance of Regulation S under the
+Securities Act pursuant to the Offer will be represented by a Regulation S
+Global Note. Beneficial interests in a Regulation S Global Note may be held
+through Euroclear or Clearstream, or through organizations that are DTC
+participants and any resale or transfer of such interests to U.S. persons shall
+not be permitted unless such resale and transfer is made pursuant to Regulation
+S or pursuant to another exemption under the Securities Act.
+
+         The New Notes offered and sold in reliance on Section 3(a)(9) under the
+Securities Act pursuant to the U.S. Concurrent Offer will be represented by one
+or more global notes. The Global Notes will be deposited with, or on behalf of,
+the Depositary and will be registered in the name of the nominee of the
+Depositary.
+
+         Upon receipt of Global Notes, the Depositary will credit, on its
+book-entry registration and transfer system, the respective principal amounts of
+the Existing Notes represented by such Global Notes to the accounts of
+institutions that have accounts with the Depositary or its nominee
+("Participants"). Ownership of beneficial interests in Global Notes are limited
+to Participants or persons that may hold interests through Participants.
+Ownership of interests in such Global Notes are shown on, and the transfer of
+those ownership interests will be effected only through, records maintained by
+the Depositary (with respect to Participants' interests) and such Participants
+(with respect to the owners of beneficial interests held through Participants in
+such Global Notes). The laws of some jurisdictions may require that certain
+purchasers of New Notes take physical delivery of such New Notes in definitive
+form. Consequently, any transfer of beneficial interests in Global Notes to such
+persons may require that such interests in Global Notes be exchanged for
+Certificated Notes (as defined below).
+
+                                       5
+<PAGE>
+
+         Because the Depositary can only act on behalf of Participants, which in
+turn act on behalf of owners of beneficial interests held through such
+Participants and certain banks, the ability of a person having a beneficial
+interest in a Global Note to pledge or transfer such interest to persons or
+entities that do not participate in the DTC system, or otherwise take actions in
+respect of such interest, may require that such interest in a Global Note be
+exchanged for Certificated Notes. Interests in a Global Note will be
+exchangeable for Certificated Notes as described below. Such limits and laws may
+impair the ability to transfer or pledge beneficial interests in a Global Note.
+
+         So long as the Depositary, or its nominee, is the registered holder and
+owner of such Global Notes, the Depositary or such nominee, as the case may be,
+will be considered the sole owner and holder of the related New Notes for all
+purposes of such Notes and for all purposes under the Indenture. Except as set
+forth below, owners of beneficial interests in Global Notes will not be entitled
+to have New Notes represented by such Global Notes registered in their names,
+will not receive or be entitled to receive physical delivery of the New Notes in
+definitive form and will not be considered to be the owners or holders of any
+New Notes under the Indenture or such Global Notes.
+
+         Accordingly, each person owning a beneficial interest in Global Notes
+must rely on the procedures of the Depositary and, if such person is not a
+Participant, on the procedures of the Participant through which such person owns
+its interest, to exercise any rights of a holder of New Notes under the
+Indenture or such Global Notes. The Bank understands that under existing
+industry practice, in the event it requests any action of Holders or an owner of
+a beneficial interest in Global Notes desires to take any action that the
+Depositary, as the holder of such Global Notes, is entitled to take, the
+Depositary would authorize the Participants to take such action, and that the
+Participants would authorize beneficial owners owning through such Participants
+to take such action or would otherwise act upon the instructions of beneficial
+owners owning through them.
+
+         All payments in respect of New Notes represented by a Global Note are
+made to the Depositary or its nominee, as the case may be, as the registered
+owner and holder of such Global Note and the Bank will be fully discharged by
+payment to DTC from any responsibility or liability in respect of each amount so
+paid. Upon receipt of any such payment in respect of a Global Note, DTC will
+credit Participants' accounts with payments in amounts proportionate to their
+respective beneficial interests in the principal amount of such Global Note as
+shown on the records of DTC.
+
+         The Depositary has advised the Bank and the Trustee that its current
+practice is to immediately credit the accounts of the Participants with payments
+in respect of Global Notes on the date the same are payable in amounts
+proportionate to their respective holdings in principal amount of beneficial
+interests in the applicable Global Notes as shown in the records of the
+Depositary. DTC's current practice is to credit such accounts with respect to
+such payments in same-day funds. Payments by Participants to owners of
+beneficial interests in Global Notes held through such Participants will be
+governed by standing instructions and customary practices, as is now the case
+with New Notes held for the accounts of customers registered in "street name,"
+and will be the responsibility of such Participants. None of the Trustee, any
+Paying Agent or the Bank will have any responsibility or liability for any
+aspect of the records relating to, or payments made on account of, beneficial
+ownership interests in a Global Note for any New Notes or for maintaining,
+supervising or reviewing any records relating to such beneficial ownership
+interests or for any other aspect of the relationship between the Depositary and
+its Participants or the relationship between such Participants and the owners of
+beneficial interests in such Global Notes held through such Participants.
+
+         Unless and until it is exchanged in whole or in part for New Notes in
+definitive form, a Global Note may not be transferred except as a whole by the
+Depositary to a nominee of such Depositary, by a nominee of such Depositary to
+such Depositary or another nominee of such Depositary, or to a successor of the
+Depositary or its nominee.
+
+         The Depositary has advised the Bank as follows: the Depositary is a
+limited-purpose trust company organized under the New York Banking Law, a
+"banking organization" within the meaning of the New York Banking Law, a member
+of the Federal Reserve System, a "clearing corporation" within the meaning of
+the Uniform Commercial Code and a "clearing agency" registered pursuant to the
+provisions of Section 17A of the Exchange Act. The Depositary was created to
+hold securities for its Participants and facilitate the clearance and settlement
+of securities transactions between Participants through electronic book-entry
+changes in accounts of its Participants, thereby eliminating the need for
+physical movement of certificates. Participants include securities brokers and
+dealers, banks, trust companies and clearing corporations and may include
+certain other organizations. Indirect access to the DTC system is available to
+others such as banks, brokers, dealers and trust companies that clear through or
+maintain a custodial relationship with a Participant, either directly or
+indirectly.
+
+                                       6
+<PAGE>
+
+         The rules applicable to the Depositary and the Participants are on file
+with the Commission. The Depositary agrees with and represents to its
+Participants that it will administer its book-entry system in accordance with
+its rules and by-laws and requirements of law. Neither the Bank nor the Trustee
+will have any responsibility for the performance by the Depositary or its
+Participants or owners of beneficial interests held through Participants of
+their respective obligations under the rules and procedures governing their
+operations.
+
+         Owners of beneficial interests in Global Notes will be entitled, under
+limited circumstances, to receive physical delivery of certificated Notes
+("Certificated Notes") in fully registered definitive form. The New Notes are
+not issuable in bearer form. Interests in a Global Note will be exchangeable or
+transferable, as the case may be, for Certificated Notes if (i) the Depositary
+notifies the Bank that it is unwilling or unable to continue as depositary for
+such Global Note, or the Depositary ceases to be a "Clearing Agency" registered
+under the Exchange Act, and a successor depositary is not appointed by the Bank
+within 90 days, (ii) the Bank, at its option, notifies the Trustee in writing
+that Global Notes shall be exchangeable for Certificated Notes, or (iii) an
+Event of Default has occurred and is continuing with respect to such New Notes.
+Upon the occurrence of any of the events described in the preceding sentence,
+the Bank will cause the appropriate Certificated Notes to be delivered. All
+Certificated Notes issued upon any exchange or registration of transfer of New
+Notes shall be valid obligations of the Bank evidencing the same debt and
+entitled to the same benefits as the Global Note.
+
+         3.  Transfer and Exchange. Section 3 is amended by deleting it in
+             its entirety and substituting it with the paragraphs below.
+
+         Transfers by a holder of a beneficial interest in a Global Note to a
+transferee who takes delivery of such interest through a Global Note will be
+made only in accordance with the applicable procedures of the Depositary (the
+"Applicable Procedures").
+
+         Transfers between Participants will be effected in the ordinary way in
+accordance with the Applicable Procedures and will be settled in same-day funds.
+
+         Certificated Notes may be exchanged or transferred in whole or in part
+for other Certificated Notes of any authorized denominations and of a like tenor
+and aggregate principal amount by surrendering such Certificated Notes at the
+office of the Registrar or Co-Registrar with a written instrument of transfer as
+provided in the Indenture.
+
+         The costs and expenses of effecting any exchange or registration of
+transfer pursuant to the foregoing provisions, except for the expense of
+delivery by other than regular mail (if any) and except for the payment of a sum
+sufficient to cover any tax or other governmental charges or insurance charges
+that may be imposed in relation thereto, will be borne by the Bank.
+
+         The Registrar and Co-Registrar will effect transfers of Global Notes
+and will effect exchanges and transfers of Certificated Notes. In addition, the
+Registrar and Co-Registrar will keep books (the "Note Register") for the
+ownership, exchange and transfer of any New Notes in definitive form.
+
+         The Depositary has advised the Bank that it will take any action
+permitted to be taken by a Holder (including, without limitation, the
+presentation of New Notes for exchange as described above) only at the direction
+of one or more Participants to whose account with the Depositary interests in
+the Global Notes are credited and only in respect of such portion of the
+aggregate principal amount of the New Notes as to which such Participant or
+Participants has or have given such direction. However, if there is an Event of
+Default under the New Notes, the Depositary will exchange the Global Notes for
+Certificated Notes which it will distribute to its Participants.
+
+         4.  Status. Section 4 is amended by inserting the paragraphs below.
+
+         Argentine Law No. 24,485, as amended, provides that in the event of the
+Bank's judicial liquidation or bankruptcy, all depositors, regardless of the
+type, amount or currency of their deposits, whether made by individuals or
+corporations, will have a general and absolute priority right over all other
+creditors (such as the holders of the New Notes), with exception of, among other
+things, credits granted under section 17, subsections (b), (c) and (f) of the
+Central Bank's Charter (rediscounts granted to financial institutions based on
+temporary illiquidity, overdrafts granted to financial institutions with
+collateral, collateral assignment, pledge or special allocation of certain
+assets) and credits granted by the Banking Liquidity Fund secured by a pledge or
+mortgage, to be paid out of 100% of the proceeds of the liquidation of our
+assets. In addition, the depositors of any kind of deposits are entitled to
+special priority rights as compared to the rest of the creditors, except for
+those with labor claims, those secured by pledges or mortgages, credits granted
+under section 17,
+
+                                       7
+<PAGE>
+
+
+subsections (b), (c), and (f) of the Central Bank's Charter (rediscounts granted
+to financial institutions based on transitory illiquidity, overdrafts granted to
+financial institutions with collateral, collateral assignment, pledge or special
+allocation of certain assets) and credits granted by the Banking Liquidity Fund
+("Fondo de Liquidez Bancaria") secured by pledge or mortgage, and credits to
+collect the receivables (i) from our funds held by the Central Bank of Argentina
+as reserves; (ii) from our other funds existing as of the date on which the our
+license is revoked; or (iii) from any proceeds resulting from compulsory
+transfer of our assets as ruled by the Central Bank of Argentina according to
+the following priority: (a) deposits made by individuals of up to Ps.5,000 per
+person or the equivalent amount in foreign currency; (b) all deposits with
+maturities exceeding 90 days; (c) and all other deposits on a pro rata basis.
+
+         Additionally, pursuant to Section 53 of Argentine Law No. 21,526, as
+amended, the claims of the Central Bank will have seniority over other
+creditors, except creditors secured by pledge or mortgage, certain labor
+creditors and depositors, credits granted under section 17, subsections (b), (c)
+and (f) of the Central Bank's Charter (rediscounts granted to financial
+institutions based on temporary illiquidity, overdrafts granted to financial
+institutions with collateral, collateral assignment, pledge or special
+allocation of certain assets) and credits granted by the Banking Liquidity Fund
+secured by a pledge or mortgage.
+
+         The New Notes are not deposits guaranteed under the deposit insurance
+system established by Argentine Law No. 24,485, as amended. The New Notes have
+no special or general priority right of payment in case of the Bank's
+bankruptcy, liquidation or winding up, since provisions contained in section
+49(d) and (e) of Argentine Law No. 21,526, as amended, are not applicable. In
+addition, the New Notes are not entitled to a lien on the Bank's assets nor are
+they secured by any other means or guaranteed by any other financial
+institution.
+
+         BODEN are U.S.-dollar denominated unsecured obligations of Argentina
+and rank pari passu with all of Argentina's other unsecured indebtedness. As of
+September 30, 2002, Argentina has reported to have in excess of US$130 billion
+in indebtedness, of which an estimated US$87 billion is held by external
+creditors and US$43 billion is held by Argentine creditors. There is no limit on
+the amount of indebtedness that Argentina may incur. The Bank does not in any
+way guarantee, nor does its credit back, the obligations of Argentina in respect
+of BODEN. As a result of the current economic conditions in Argentina, the
+ability of Argentina to make timely payments of interest and principal on BODEN
+when due is uncertain.
+
+         5.  Interest. Section 5 is amended by inserting the paragraphs below.
+
+         (a) The Step-Up Notes will bear interest at 4% per annum until December
+15, 2005, and thereafter interest on the Step-Up Notes will increase 1% per
+annum up to a maximum interest rate of 6% per annum, payable semiannually in
+arrears on June 15 and December 15 of each year (each, an "Interest Payment
+Date"), commencing June 15, 2003, to the person in whose name the Step-Up Note
+is registered at the close of business 15 calendar days prior to the relevant
+interest payment date (whether or not a Business Day (each a "Regular Record
+Date"), as the case may be, immediately preceding such interest payment date;
+provided, however, that if the Bank at any time defaults in the payment of
+principal or interest in respect of the Step-Up Notes, the Bank shall pay
+interest on the amount in default from the date of such default until the date
+of payment at a rate equal to 2% per annum in addition to the then applicable
+interest rate (the "Default Rate"). Interest on the Step-Up Notes will be
+calculated on the basis of a 360-day year consisting of twelve 30-day months
+and, in the case of an incomplete month, the number of days actually elapsed.
+
+         (b) The Floating Rate Mandatorily Exchangeable Notes will bear
+interest, if any, commencing on February 4, 2003 on a floating rate basis which
+will be determined by applying to the minimum denomination (US$100) the interest
+rate applicable to U.S. dollar deposits for a six month term in the London
+Interbank Market ("LIBOR") at 11:00 a.m. London time on the second business day
+next preceding the commencement of each semiannual interest period and adjusted
+to a calendar year of 365 or 366 days, as applicable, with the adjusted interest
+rate for the first interest period ending August 3, 2003 being 1.369% per annum.
+The interest is calculated as from and including the first day of interest
+accrual up to and excluding the last day of the relevant interest period. In
+case an interest payment date shall occur on a day that is not a business day in
+Buenos Aires, Argentina, New York or London, payment of interest shall be made
+on the next business day, provided that, in such case, the interest shall be
+calculated until effective payment of interest is made. The next interest period
+shall commence on such effective interest payment date. Interest will be
+calculated on the basis of a year of 365 or 366 days, as applicable, and the
+number of days actually elapsed. The LIBOR interest due at any time in respect
+of the Floating Rate Mandatorily Exchangeable Notes will de determined by The
+Bank of New York, as calculation agent. Interest shall be payable semiannually
+in arrears on February 3 and August 3 of each year (an "Interest Payment Date"),
+commencing August 3, 2003. The interest payable on the Floating Rate Mandatorily
+Exchangeable Notes on any Interest Payment Date will, subject to certain
+conditions set forth in the Conditions, be paid to the person (the "Registered
+Holder")
+
+                                       8
+<PAGE>
+
+
+in whose name the Floating Rate Mandatorily Exchangeable Note is registered at
+the close of business 15 calendar days prior to the relevant interest payment
+date (the "Record Date") preceding such Interest Payment Date.
+
+         6.  Contingent Interest Coupon Certificate.
+
+         The CICCs are being issued in connection with the issuance by the Bank
+of the Step-Up Notes under and pursuant to the Indenture. Each US$1.00 original
+principal amount of Step-Up Notes (but not the Floating Rate Mandatorily
+Exchangeable Notes) will be issued with a CICC that will be able to be traded
+separately from the Step-Up Notes. The CICCs are being issued as part of the
+Step-Up Notes as additional contingent interest and will detach from the Step-Up
+Notes automatically following issuance of the Step-Up Notes without any action
+on the part of the holders thereof. The CICCs will represent only a contingent
+right of the holder to receive a cash payment in U.S. dollars determined in
+accordance with the formula set forth in the CICC that is based on the Bank's
+yearly earnings and net worth for each of the fiscal years 2003 through and
+including 2009, subject to satisfaction of specified conditions. The Bank's
+obligation under the CICCs will not have any principal, fixed or certain amount
+and the claim of the holders of the CICCs will constitute an unsecured
+unsubordinated contingent claim against the Bank for amounts, if any, payable to
+the CICC holders as such amounts accrue under the terms of the formula described
+herein. The CICCs will have no covenants or events of default or rights of
+acceleration associated therewith other than the obligation to make the specific
+payment, if any, if provided the conditions to such payment are satisfied.
+
+         To the extent the Step-Up Notes have been redeemed, terminated or
+cancelled, the Trustee will continue to act as the Trustee with respect to the
+performance of its obligations under the CICC, including making payments in
+accordance with the terms of the CICC, as described in the attached form of
+CICC.
+
+         7.  Redemption and Purchase Provisions. Section 7 is amended by
+inserting the paragraphs below.
+
+         (a) Mandatory Redemption and Exchange into BODEN. The Floating Rate
+Mandatorily Exchangeable Notes will be subject to mandatory redemption by the
+Bank and exchanged for BODEN on a dollar-for-dollar basis as soon as the
+restrictions imposed by the Central Bank on the Bank's ability to transfer
+ownership of the BODEN shall have been released on BODEN credited to the Bank's
+account in 2002 in connection with the pesification of the Bank's assets and
+liabilities.
+
+         The Bank shall be obligated to use commercially reasonable efforts to
+obtain the release of the restrictions imposed by the Central Bank on the
+ability to transfer ownership of the BODEN and to communicate to the Trustee
+when the restrictions shall have been released from an aggregate amount of BODEN
+equal to the then aggregate outstanding amount of the Floating Rate Mandatorily
+Exchangeable Notes. It is expected that upon receipt of such notice, the Trustee
+will commence the process of informing holders of the Floating Rate Mandatorily
+Exchangeable Notes of the date of the mandatory redemption and exchange and
+thereafter to effect the mandatory redemption and exchange without the need of
+any action by the holders of the Floating Rate Mandatorily Exchangeable Notes.
+At the time of the mandatory redemption and exchange, holders will be furnished
+with BODEN in an aggregate principal amount equal to the amount of the Floating
+Rate Mandatorily Exchangeable Notes held by them, together with accrued but
+unpaid interest on the BODEN at the rate stated to be paid thereon (which may
+differ from the stated rate on the Floating Rate Mandatorily Exchangeable Notes)
+from the immediately preceding interest payment date to the date of any such
+mandatory redemption and exchange in satisfaction of all of the rights of the
+holders of the Floating Rate Mandatorily Exchangeable Notes to principal,
+accrued but unpaid interest and other amounts on the Floating Rate Mandatorily
+Exchangeable Notes held by, or for the benefit of, such holder of Floating Rate
+Mandatorily Exchangeable Notes.
+
+         No BODEN will be furnished to the holders of the Floating Rate
+Mandatorily Exchangeable Notes until the restrictions on the Bank's ability to
+transfer ownership of a sufficient quantity of BODEN have been released so that
+all holders of Floating Rate Mandatorily Exchangeable Notes may be furnished
+with their allocable portion of BODEN. In the event that Argentina has defaulted
+on the BODEN prior to the date scheduled for the mandatory redemption and
+exchange, or publicly indicated an intention to do so, the redemption and the
+exchange will not proceed as aforesaid and the holders of the Floating Rate
+Mandatorily Exchangeable Notes will not be furnished with BODEN and will retain
+the Floating Rate Mandatorily Exchangeable Notes and all rights related thereto.
+Floating Rate Mandatorily Exchangeable Notes that are the subject of the
+mandatory redemption and exchange will be cancelled. BODEN furnished to the
+holders of the Floating Rate Mandatorily Exchangeable Notes will not be held by
+the Trustee or in the manner in which the Floating Rate Mandatorily Exchangeable
+Notes are held and will instead be held directly by the holders of the Floating
+Rate Mandatorily Exchangeable Notes.
+
+                                       9
+<PAGE>
+
+         8.  Financial Statements. Section 10(b) is amended by substituting it
+with the paragraph below.
+
+         The Bank will furnish or cause to be furnished to the Trustee, (i) as
+soon as available but in any event not later than 120 days after the close of
+each of its fiscal years, a complete copy of its report in English (an "Annual
+Report") unless a later date is prescribed by the Central Bank and its
+regulators, in which case it will be as of such later date, and (ii) as soon as
+available and in any event no later than 90 days unless a later date is
+prescribed by the Central Bank and its regulators, in which case it will be as
+of such later date, after the end of each of its first three quarters of each of
+its fiscal years, a complete copy of its report in English (a "Quarterly
+Report") unless a later date is prescribed by the Central Bank and its
+regulators, in which case it will be as of such later date, and such Annual
+Report and Quarterly Report shall include a balance sheet, statement of income,
+statement of changes in stockholders' equity and statement of cash flows for
+such fiscal year or quarter, as the case may be, and which, in the case of the
+Annual Report, will be audited by and accompanied by a report of an independent
+certified public accountant selected by the Bank and, in the case of each
+Quarterly Report, will be subject to limited review by an independent certified
+public accountant selected by the Bank.
+
+         9.  Mergers, Consolidations, Sales and Leases. Section 10(f) is amended
+by substituting it with the paragraph below.
+
+         The Bank will not, and will not permit any of its Subsidiaries to,
+merge, consolidate or amalgamate with or into, or convey, transfer or lease its
+Properties and assets substantially as an entirety to, any Person, unless
+immediately after giving effect to such transaction (i) no Event of Default
+shall have occurred and be continuing, (ii) any corporation formed by any such
+merger, consolidation or amalgamation with the Bank or the Person which acquires
+by conveyance or transfer, or which leases, the properties and assets of the
+Bank substantially as an entirety (a "successor corporation") shall expressly
+assume the due and punctual payment of the principal of, premium, if any, and
+interest (including Additional Amounts, if any) on all the New Notes according
+to their terms, and the due and punctual performance of all of the covenants and
+obligations of the Bank under the New Notes as specified in the Indenture and
+(iii) the Bank's successor corporation (except in the case of leases), if any,
+succeeds to and becomes substituted for the Bank with the same effect as if it
+had been named in the New Notes as the issuer thereof.
+
+         10. Events of Default. Section 11 is amended by deleting (v) and
+substituting it with the paragraph below:
+
+             (v)  the Bank or any of its Subsidiaries shall (A) default in the
+                  payment of the principal of, premium or prepayment charge (if
+                  any) or interest on, any note, bond, coupon or other
+                  instrument evidencing Indebtedness for money borrowed or
+                  raised in an amount of US$20 million or more, other than the
+                  Existing Notes, issued, assumed or guaranteed by the Bank,
+                  when and as the same shall become due and payable, if such
+                  default shall continue for more than the period of grace, if
+                  any, originally applicable thereto and the time for payment of
+                  such amount has not been effectively extended; provided,
+                  however, that in the case of any such Indebtedness
+                  constituting interbank loans of up to seven days, any such
+                  default must continue for a minimum of 15 days beyond the time
+                  payment thereof was originally due before the default in the
+                  payment of any amount in respect thereof shall constitute an
+                  Event of Default hereunder, or (B) default in the observance
+                  of any other terms and conditions relating to any such
+                  Indebtedness for money borrowed or raised, if the effect of
+                  such default is to cause such Indebtedness to become due prior
+                  to its stated maturity.
+
+         11. Currency Indemnity. Section 20 is amended by deleting it in its
+entirety and substituting it with the paragraph below.
+
+         The dollar is the sole currency of account and payment for all sums
+payable by the Bank under or in connection with the New Notes, including
+damages, if any. Any amount received or recovered in currency other than dollars
+(whether as a result of, or of the enforcement of, a judgment or order of a
+court of any jurisdiction, in our winding up or dissolution or otherwise) by any
+holder of New Notes in respect of any sum expressed to be due to it from the
+Bank shall only constitute the Bank's discharge to the extent of the dollar
+amount which the recipient is able to purchase with the amount so received or
+recovered in that other currency on the date of that receipt or recovery (or, if
+it is not practicable to make that purchase on that date, on the first date on
+which it is practicable to do so). If that dollar amount is less than the dollar
+amount expressed to be due to the recipient under any New Note, the Bank shall
+indemnify such recipient against any loss sustained by it as a result. In any
+event, the Bank shall indemnify the recipient against the cost of making any
+such purchase. For the purposes of this paragraph, it will be sufficient for the
+holder of the New Note to certify in satisfactory manner (indicating the sources
+of information used) that it would have suffered a loss had an actual purchase
+of dollars
+
+                                       10
+<PAGE>
+
+
+been made with the amount so received in that other currency on the date of
+receipt or recovery (or, if a purchase of dollars on such date had not been
+practicable, on the first date on which it would have been practicable, it being
+required that the need for a change of date be certified in the manner mentioned
+above). These indemnities constitute a separate and independent obligation from
+the Bank's other obligations, shall give rise to a separate and independent
+cause of action, shall apply irrespective of any indulgence granted by any
+holder of the New Note and shall continue in full force and effect despite any
+other judgment, order, claim or proof for a liquidated amount in respect of any
+sum due under any New Note or any other judgment or order.
+
+         12. Other.
+
+         The Bank may make tender offers, exchange offers or other offers
+relating to the purchase of the Step-Up and/or Floating Rate Mandatorily
+Exchangeable Notes to some but not other holders, including if extending such
+offer to holders residing in any particular jurisdiction would impose
+substantial burdens on the Bank.
+
+                                       11
+
+</TEXT>
+</DOCUMENT>

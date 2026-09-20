@@ -1,0 +1,24 @@
+{
+ "meta": {
+  "source": "BCRA-estadisticas-cambiarias-v1.0",
+  "fx_type": "A3500",
+  "source_url": "https://api.bcra.gob.ar/estadisticascambiarias/v1.0/Cotizaciones?fecha=2025-06-28",
+  "retrieved_at": "2026-09-15T21:31:16+00:00",
+  "source_date": "2025-06-28",
+  "sha256": "46776a821b70dddc6b7a4ec6965ff282268597b3a2aa9dddcf5a67c037eaffe4",
+  "http_status": 200,
+  "collector": "bcra_a3500@v1.0.0",
+  "engine": "fx-engine@v1.0.0",
+  "git_commit": "f375090"
+ },
+ "payload": {
+  "status": 200,
+  "results": {
+   "fecha": null,
+   "detalle": []
+  }
+ },
+ "parsed_hint": {
+  "usd_tipoCotizacion": null
+ }
+}

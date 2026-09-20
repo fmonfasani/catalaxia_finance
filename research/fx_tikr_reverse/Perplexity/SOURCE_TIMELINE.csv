@@ -1,0 +1,24 @@
+DATE,EVENT,SOURCE_ID,URL,ORGANIZATION,DOCUMENT_TITLE,SOURCE_TYPE
+2002-03-01,Emision Comunicacion A 3500 (TCR),1,https://www.bcra.gob.ar/archivos/Pdfs/comytexord/a3500.pdf,BCRA,Comunicacion A 3500,PRIMARY_OFFICIAL
+2003-01-02,Inicio serie historica MEP/CCL (fuentes de mercado),40,https://www.dolarito.ar/cotizaciones-historicas/mep,Dolarito,Dolar MEP Historico,SECONDARY
+2015-01-01,Inicio serie historica dolar oficial en portales publicos,38,https://www.lanacion.com.ar/dolar-oficial-historico/,La Nation,Dolar oficial historico,SECONDARY
+2017-08-14,Inicio datos historicos AL30D en Investing.com,50,https://es.investing.com/rates-bonds/ararge3209s6-usd-historical-data,Investing.com,AL30D Historical Data,SECONDARY
+2018-07-01,Argentina clasificada como economia hiperinflacionaria (IAS 29),47,https://www.sec.gov/Archives/edgar/data/932470/000110465925019133/teo-20241231x20f.htm,Telecom Argentina,20-F 2024,PRIMARY_MARKET
+2019-01-01,Manual de Procedimientos BYMA (liquidacion),64,https://data-widgets.byma.com.ar/wp-content/uploads/2019/02/BYMA-Procedures-Manual.pdf,BYMA,Manual de Procedimientos,PRIMARY_MARKET
+2021-08-03,Lanzamiento pagina Evolution of exchange rates BCRA,36,https://www.bcra.gob.ar/en/currency-evolution/,BCRA,Evolution of exchange rates,PRIMARY_OFFICIAL
+2023-01-01,Informe IMF SDDS sobre fuentes de tipo de cambio Argentina,18,https://dsbb.imf.org/sdds/dqaf-base/country/ARG/category/EXR00,IMF,DQAF View: Argentina - Exchange rates,SECONDARY
+2023-12-31,Estados financieros BCRA 2023 (conversion usando TCR A3500),45,https://www.bcra.gob.ar/archivos/Pdfs/PublicacionesEstadisticas/i2023FinancialStatements.pdf,BCRA,Financial Statements 2023,PRIMARY_OFFICIAL
+2024-02-28,Lanzamiento Indice Dolar BYMA y CCL BYMA,8,https://www.byma.com.ar/en/newsroom/byma-introduces-two-new-indexes-for-the-argentine-market,BYMA,BYMA introduces two new indexes,PRIMARY_MARKET
+2024-05-08,CNV RG 1000/2024 (cambio settlement T+2 a T+1),31,https://www.argentina.gob.ar/normativa/nacional/resolucion-1000-2024-399067/texto,CNV,Resolucion General 1000/2024,PRIMARY_OFFICIAL
+2024-05-09,BCRA anuncia cambio settlement T+0 a T+1,60,https://www.bcra.gob.ar/en/news/the-bcra-aligns-foreign-exchange-transactions-settlement-term-with-international-practices/,BCRA,The BCRA aligns foreign exchange transactions settlement term,PRIMARY_OFFICIAL
+2024-07-15,Settlement Instructions Argentina Clearing (CCyL),43,https://argentinaclearing.com.ar/wp-content/uploads/2022/03/Settlement-instructions-2024-07-15.pdf,Argentina Clearing,Settlement Instructions,PRIMARY_MARKET
+2024-11-06,CNV comunica alineacion normativa settlement,34,https://www.argentina.gob.ar/noticias/la-cnv-continua-alineando-su-normativa-los-altos-estandares-de-los-mercados-internacionales,CNV,La CNV continua alineando su normativa,PRIMARY_OFFICIAL
+2024-12-31,Telecom Argentina 20-F (conversion estados financieros IAS 21/29),47,https://www.sec.gov/Archives/edgar/data/932470/000110465925019133/teo-20241231x20f.htm,Telecom Argentina,20-F 2024,PRIMARY_MARKET
+2025-07-03,Descripcion publica TIKR Terminal,54,https://www.tikr.com/,TIKR,Stock Market Research & Investor Analysis Tools,TERTIARY
+2025-12-04,BCRA anuncia nueva metodologia TCR A3500,2,https://www.bcra.gob.ar/noticias/con-el-aporte-de-los-principales-actores-del-mercado-el-bcra-aprobo-una-nueva-metodologia-para-el-calculo-del-tipo-de-cambio-de-referencia-a-3500/,BCRA,Nueva metodologia TCR A 3500,PRIMARY_OFFICIAL
+2025-12-XX,Proyecto de modificacion Comunicacion A3500,4,https://www.bcra.gob.ar/archivos/Pdfs/Noticias/Proyecto-modificacion-comunicacion-A3500.pdf,BCRA,Proyecto de Modificacion Comunicacion A 3500,PRIMARY_OFFICIAL
+2026-01-01,Entrada en vigencia nueva metodologia TCR A3500,2,https://www.bcra.gob.ar/noticias/con-el-aporte-de-los-principales-actores-del-mercado-el-bcra-aprobo-una-nueva-metodologia-para-el-calculo-del-tipo-de-cambio-de-referencia-a-3500/,BCRA,Nueva metodologia TCR A 3500,PRIMARY_OFFICIAL
+2026-02-26,TradingView EcoValores (curva yields Argentina),58,https://www.tradingview.com/script/ppcLlbR6/,TradingView (EcoValores),Argentina Bonds Yield Curve,SECONDARY
+2026-04-27,Rueda AI curva soberana en tiempo real,56,https://rueda.live/en/bonos/curva-soberana,Rueda AI,Argentina sovereign curve,SECONDARY
+2026-06-17,Investing.com AL30D historical data actualizado,50,https://es.investing.com/rates-bonds/ararge3209s6-usd-historical-data,Investing.com,AL30D Historical Data,SECONDARY
+2026-08-04,Valor Dolar Blue serie historica 2011-2026,42,https://valordolarblue.ar/blog/dolar-historico-argentina,Valor Dolar Blue,Dolar Historico Argentina 2011-2026,SECONDARY

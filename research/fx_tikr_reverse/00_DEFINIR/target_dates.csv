@@ -1,0 +1,43 @@
+# Matriz de fechas objetivo — REQ-FX-001
+#
+# Regla de observación (congelada en DEFINIR, v1.0.0 — no cambiar tras ver resultados):
+#   OBS-V1: para cada target_date (cierre trimestral calendario), el valor FX
+#   comparable es la última publicación disponible con observation_date <= target_date
+#   y target_date - observation_date <= 5 días calendario. Si no existe, NULL +
+#   null_reason=NO_PUBLICATION_IN_WINDOW. Prohibido forward-fill desde el futuro
+#   e interpolación. Cada celda conserva (target_date, observation_date, lag_days).
+#   Primary = cierre (esta regla). Sensibilidad secundaria pre-registrada AVG5 =
+#   media de hasta 5 publicaciones <= target_date (mismo tope 5 días expandido a
+#   10 días sólo para AVG5); se reporta aparte y NO decide el veredicto primario.
+#
+# period_id formato: YYYY-QN. priority: POC = lista prioritaria del encargo,
+# EXT = extensión (sólo con evidencia reproducible).
+# Generado por: scripts/build_target_matrix.py (determinista, sin red).
+
+period_id,year,quarter,target_date,priority,observation_rule_version
+2020-Q1,2020,1,2020-03-31,EXT,OBS-V1
+2020-Q2,2020,2,2020-06-30,EXT,OBS-V1
+2020-Q3,2020,3,2020-09-30,EXT,OBS-V1
+2020-Q4,2020,4,2020-12-31,EXT,OBS-V1
+2021-Q1,2021,1,2021-03-31,EXT,OBS-V1
+2021-Q2,2021,2,2021-06-30,EXT,OBS-V1
+2021-Q3,2021,3,2021-09-30,EXT,OBS-V1
+2021-Q4,2021,4,2021-12-31,EXT,OBS-V1
+2022-Q1,2022,1,2022-03-31,EXT,OBS-V1
+2022-Q2,2022,2,2022-06-30,EXT,OBS-V1
+2022-Q3,2022,3,2022-09-30,EXT,OBS-V1
+2022-Q4,2022,4,2022-12-31,EXT,OBS-V1
+2023-Q1,2023,1,2023-03-31,EXT,OBS-V1
+2023-Q2,2023,2,2023-06-30,EXT,OBS-V1
+2023-Q3,2023,3,2023-09-30,POC,OBS-V1
+2023-Q4,2023,4,2023-12-31,POC,OBS-V1
+2024-Q1,2024,1,2024-03-31,POC,OBS-V1
+2024-Q2,2024,2,2024-06-30,POC,OBS-V1
+2024-Q3,2024,3,2024-09-30,POC,OBS-V1
+2024-Q4,2024,4,2024-12-31,POC,OBS-V1
+2025-Q1,2025,1,2025-03-31,POC,OBS-V1
+2025-Q2,2025,2,2025-06-30,POC,OBS-V1
+2025-Q3,2025,3,2025-09-30,POC,OBS-V1
+2025-Q4,2025,4,2025-12-31,POC,OBS-V1
+2026-Q1,2026,1,2026-03-31,POC,OBS-V1
+2026-Q2,2026,2,2026-06-30,POC,OBS-V1

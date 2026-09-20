@@ -1,0 +1,13 @@
+period,target_date,tikr_fx,fixture_version,provenance
+2023-Q3,2023-09-30,349.97,tikr_fixture@v1.0.0,"encargo-AGENTE02-P8 (fixture externo, no medido aquí)"
+2023-Q4,2023-12-31,808.46,tikr_fixture@v1.0.0,"encargo-AGENTE02-P8 (fixture externo, no medido aquí)"
+2024-Q1,2024-03-31,857.22,tikr_fixture@v1.0.0,"encargo-AGENTE02-P8 (fixture externo, no medido aquí)"
+2024-Q2,2024-06-30,911.50,tikr_fixture@v1.0.0,"encargo-AGENTE02-P8 (fixture externo, no medido aquí)"
+2024-Q3,2024-09-30,968.50,tikr_fixture@v1.0.0,"encargo-AGENTE02-P8 (fixture externo, no medido aquí)"
+2024-Q4,2024-12-31,1030.50,tikr_fixture@v1.0.0,"encargo-AGENTE02-P8 (fixture externo, no medido aquí)"
+2025-Q1,2025-03-31,1073.10,tikr_fixture@v1.0.0,"encargo-AGENTE02-P8 (fixture externo, no medido aquí)"
+2025-Q2,2025-06-30,1204.50,tikr_fixture@v1.0.0,"encargo-AGENTE02-P8 (fixture externo, no medido aquí)"
+2025-Q3,2025-09-30,1379.70,tikr_fixture@v1.0.0,"encargo-AGENTE02-P8 (fixture externo, no medido aquí)"
+2025-Q4,2025-12-31,1451.00,tikr_fixture@v1.0.0,"encargo-AGENTE02-P8 (fixture externo, no medido aquí)"
+2026-Q1,2026-03-31,1382.00,tikr_fixture@v1.0.0,"encargo-AGENTE02-P8 (fixture externo, no medido aquí)"
+2026-Q2,2026-06-30,1483.70,tikr_fixture@v1.0.0,"encargo-AGENTE02-P8 (fixture externo, no medido aquí)"

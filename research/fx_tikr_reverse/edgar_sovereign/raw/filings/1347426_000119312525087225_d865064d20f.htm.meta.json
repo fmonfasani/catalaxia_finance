@@ -1,0 +1,16 @@
+{
+ "source": "SEC_EDGAR",
+ "filing_url": "https://www.sec.gov/Archives/edgar/data/1347426/000119312525087225/d865064d20f.htm",
+ "accession_number": "000119312525087225",
+ "company_cik": "1347426",
+ "document": "d865064d20f.htm",
+ "fts_query": "mains-descubiertos-por-indice",
+ "motivo": "Macro 20-F 2024 principal (EEFF+notas)",
+ "retrieved_at": "2026-09-15T22:58:56+00:00",
+ "sha256": "55ee4984e162a2f9ee1a33eb37ea015cc48416fd4560b92618129f28919866dc",
+ "http_status": 200,
+ "bytes": 11063046,
+ "collector": "edgar_dl@v1.0.0",
+ "git_commit": "f375090",
+ "raw_ref": "D:\\Software Development\\Porfolio\\catalaxia-cedears-prod\\research\\fx_tikr_reverse\\edgar_sovereign\\raw\\filings\\1347426_000119312525087225_d865064d20f.htm"
+}

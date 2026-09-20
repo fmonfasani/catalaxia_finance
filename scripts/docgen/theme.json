@@ -1,0 +1,61 @@
+{
+  "fonts": {
+    "primary": "Calibri",
+    "secondary": "Calibri",
+    "title": "Calibri",
+    "body": "Calibri"
+  },
+  "colors": {
+    "primary": "#123C78",
+    "secondary": "#123C78",
+    "tertiary": "#DBE1EA",
+    "title": "#1E1E1E",
+    "links": "#123C78",
+    "code": "#F5F5F5",
+    "highlight": "#FFF2CC",
+    "table_header": "#123C78",
+    "table_text": "#1E1E1E",
+    "header": "#123C78",
+    "footer": "#092142",
+    "box": "#ECEFF4",
+    "background": "#FFFFFF"
+  },
+  "tables": {
+    "header_fill": "#123C78",
+    "header_font": "#FFFFFF",
+    "border": "#B7C6EA",
+    "autofit": true
+  },
+  "headings": {
+    "h1": {
+      "size": 24,
+      "bold": true,
+      "color": "#123C78"
+    },
+    "h2": {
+      "size": 18,
+      "bold": true,
+      "color": "#1E1E1E"
+    },
+    "h3": {
+      "size": 14,
+      "bold": true,
+      "color": "#123C78"
+    }
+  },
+  "header": {
+    "logo": true,
+    "project_name": "Proyecto",
+    "chapter": "Documento"
+  },
+  "footer": {
+    "page_number": true,
+    "doc_name": "Manual",
+    "version": "v1.0"
+  },
+  "logo": {
+    "path": "",
+    "variant": "default"
+  },
+  "images": {}
+}

@@ -1,0 +1,16 @@
+{
+ "source": "SEC_EDGAR",
+ "filing_url": "https://www.sec.gov/Archives/edgar/data/932470/000110465924116432/tm2428055d1_6k.htm",
+ "accession_number": "000110465924116432",
+ "company_cik": "932470",
+ "document": "tm2428055d1_6k.htm",
+ "fts_query": "gd30",
+ "motivo": "Telecom 6-K 2024-11-12 menciona GD30",
+ "retrieved_at": "2026-09-15T22:58:40+00:00",
+ "sha256": "2ea47db782c18f2cfd13db8bb1c8aa479aacd9836916a3cf820fd65bca54440b",
+ "http_status": 200,
+ "bytes": 14801,
+ "collector": "edgar_dl@v1.0.0",
+ "git_commit": "f375090",
+ "raw_ref": "D:\\Software Development\\Porfolio\\catalaxia-cedears-prod\\research\\fx_tikr_reverse\\edgar_sovereign\\raw\\filings\\932470_000110465924116432_tm2428055d1_6k.htm"
+}

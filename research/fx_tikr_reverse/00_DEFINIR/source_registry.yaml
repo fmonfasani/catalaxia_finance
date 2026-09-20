@@ -1,0 +1,85 @@
+# Registro de fuentes FX — REQ-FX-002..005
+# Estado por fuente: VERIFICADO POR CÓDIGO / FUENTE / EJECUCIÓN / NO DETERMINABLE.
+# Nada de lo listado abajo autoriza a mezclar fuentes en una misma serie.
+
+version: sources-v1.0.0
+frozen_for_decision: true   # cambios posteriores a la congelación exigen nueva versión + motivo
+
+# ── REQ-FX-002 · A3500 / mayorista ──────────────────────────────────────────
+A3500:
+  definicion: "Tipo de cambio de referencia del BCRA, Comunicación A 3500 (promedio
+    ponderado de operaciones mayoristas del día). Candidato primario si TIKR convierte
+    a cierre."
+  fuente_primaria_exigida: "BCRA (publicación oficial A3500)"
+  candidatas_en_repo_HOY:
+    - { nombre: "dolarapi-mayorista", clase: secundaria, estado: "VERIFICADO POR CÓDIGO (scripts/dolares/_dolar.py:59-61) — NO es primaria" }
+    - { nombre: "dolarito-MAYORISTA", clase: secundaria, estado: "VERIFICADO POR CÓDIGO (fetch_dolarito_historico.py:68) — NO es primaria" }
+    - { nombre: "Rava Dolar A3500.xlsx", clase: secundaria, estado: "VERIFICADO POR CÓDIGO (existe en data/dolar/rava/) — vendor, NO primaria" }
+  fuente_primaria_OBJETIVO:
+    descripcion: "Serie oficial BCRA A3500, descarga directa con endpoint + parámetros +
+      downloaded_at + http_status + raw_hash persistidos en 01_raw/."
+    estado: "NO DETERMINABLE hasta VERIFICAR por ejecución (endpoint BCRA por confirmar
+      contra fuente viva; prohibido hardcodear URL no verificada)."
+    criterio_aceptacion: "Cobertura de los 12 target POC con observation_date + lag_days;
+      cruce contra secundaria (dolarapi/dolarito/Rava) con desvío reportado, sin sustituir."
+  columna_canonica: A3500_ARS_por_USD
+  settlement: "N/A (referencia, no operable)"
+
+# ── REQ-FX-003 · Oficial ────────────────────────────────────────────────────
+OFICIAL:
+  definicion: "Dólar oficial minorista/vendedor publicado por BCRA (distinto de A3500 mayorista)."
+  fuente_primaria_exigida: "BCRA"
+  candidatas_en_repo_HOY:
+    - { nombre: "dolarito-OFICIAL", clase: secundaria, estado: "VERIFICADO POR CÓDIGO — NO primaria" }
+  fuente_primaria_OBJETIVO:
+    descripcion: "Serie oficial BCRA, misma exigencia de provenance que A3500."
+    estado: "NO DETERMINABLE hasta VERIFICAR por ejecución."
+  columna_canonica: OFICIAL_ARS_por_USD
+
+# ── REQ-FX-004 · MEP y CCL: directa vs reconstrucción ───────────────────────
+# Regla dura: TODA serie MEP/CCL lleva etiqueta obligatoria {DIRECTA | RECONSTRUIDA}.
+# DIRECTA = cotización publicada por un proveedor (contiene bid/ask o último, timestamp).
+# RECONSTRUIDA = calculada desde instrumentos (ver instrumental_spec.md). Jamás se mezclan
+# en una misma columna sin etiqueta; la comparación REQ-FX-008 las trata como 4 columnas
+# separadas: MEP_DIRECTA, CCL_DIRECTA, MEP_RECONSTRUIDA, CCL_RECONSTRUIDA.
+
+MEP_DIRECTA:
+  definicion: "MEP publicado por vendor (bono AL30 48hs u homólogo declarado)."
+  candidatas_HOY:
+    - { nombre: "criptoya-al30-24hs", clase: secundaria, estado: "VERIFICADO POR CÓDIGO (_dolar.py:52-55) — vendor, NO primaria, spot/actual, sin historia quarterly" }
+    - { nombre: "dolarapi-bolsa", clase: secundaria/cruce, estado: "VERIFICADO POR CÓDIGO — vendor" }
+    - { nombre: "dolarito-MEP (historia 2018-10-29→hoy)", clase: secundaria, estado: "VERIFICADO POR CÓDIGO (cobertura declarada en docstring, NO verificada por ejecución aquí)" }
+    - { nombre: "Rava DOLAR MEP - Cotizaciones historicas.csv", clase: secundaria, estado: "VERIFICADO POR CÓDIGO (existe, NO inspeccionado contenido)" }
+  etiqueta: DIRECTA
+  estado: "NO DETERMINABLE como serie quarterly hasta normalizar con OBS-V1 + provenance."
+
+CCL_DIRECTA:
+  definicion: "CCL publicado por vendor."
+  candidatas_HOY:
+    - { nombre: "dolarapi-contadoconliqui", clase: secundaria/cruce, estado: "VERIFICADO POR CÓDIGO — vendor" }
+    - { nombre: "dolarito-CCL", clase: secundaria, estado: "VERIFICADO POR CÓDIGO — vendor" }
+    - { nombre: "Rava DOLAR CCL - Cotizaciones historicas.csv", clase: secundaria, estado: "VERIFICADO POR CÓDIGO (existe)" }
+  etiqueta: DIRECTA
+
+MEP_RECONSTRUIDA:
+  etiqueta: RECONSTRUIDA
+  metodo: "Ver instrumental_spec.md. Pares ARS/USD del MISMO bono (AL30, GD30) con MISMO settlement."
+  estado: "NO DETERMINABLE hasta IMPLEMENTAR con precios auditables."
+
+CCL_RECONSTRUIDA:
+  etiqueta: RECONSTRUIDA
+  metodo: "Arbitraje ADR: CCL = P_ARS(local) × ratio / P_USD(ADR), mismo timestamp y settlement.
+    Universo inicial: GGAL (10), YPF/YPFD (1), PAMP/PAM (25) — cfr. _dolar.py:11-13."
+  estado: "NO DETERMINABLE hasta IMPLEMENTAR."
+
+# ── Matriz de admitted use ──────────────────────────────────────────────────
+usos_permitidos:
+  - "A3500/OFICIAL primarios: únicos válidos para veredicto sobre esos candidatos."
+  - "Secundarias (dolarapi/dolarito/Rava/criptoya/yfinance): contexto, cruce e
+     imputación de gaps SÓLO si se declaran como tales; jamás sustituyen a la primaria
+     en el veredicto (EXT-NEW-006)."
+  - "TIKR: objeto de estudio (numerador/denominador del FX implícito), NUNCA fuente de FX."
+reproducibilidad_minima_por_celda:
+  - fuente, endpoint + parámetros, downloaded_at, http_status, raw_ref, raw_hash,
+    parser_version, observation_date, lag_days, etiqueta DIRECTA/RECONSTRUIDA,
+    instrumento + settlement (si reconstruida)

@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Presentaci&#xF3;n #3326103 - Metrogas S.A. | 30657863676 - Comisión Nacional de Valores</title>
+
+    <!-- Library Css -->
+    <link href="/lib/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css?v=DkJIJr7tJde8bgPnI0oQ7JF-kMKMN5wIkQaIMSxQs54" rel="stylesheet" />
+    <link href="/lib/noty/lib/noty.css?v=WPvBXHbbHuWL3fCWI_s2_NvCwu3Xk6ged8JzU3O74Sc" rel="stylesheet" />
+    <link href="/lib/jquery-ui/1.12.1/jquery-ui.css" rel="stylesheet" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i" rel="stylesheet" >
+    <!-- link href="~/css/fonts.css" rel="stylesheet" /-->
+
+    <!-- Simple Line Icons -->
+    <link href="/css/simple-line-icons.css" rel="stylesheet" />
+
+    <!-- Menu styles -->
+    <link href="/css/animate.css" rel="stylesheet" />
+    <link href="/css/nav-aside-menu2.css" rel="stylesheet" />
+    
+    <!-- Boostrap styles -->
+    <link href="/lib/bootgrid/bootgrid.css" rel="stylesheet" />
+    <link href="/css/bootstrap.css" rel="stylesheet" />
+
+    <!-- Custom styles -->
+    <link href="/css/shared.css?v=d28O2b-RJsaE7bqmni83lS1wFafqvVkR61jBGhWubJQ" rel="stylesheet" />
+    <link href="/css/styles.css?v=BEBx4gbbVfEFlAY9iYyhUvtdPKnsY-lsaOtW17yXiys" rel="stylesheet" />
+    <link href="/css/reset.css?v=7ybxAlYx7O_I6ouWY_4fEkW0Hjovh0404S1NMQqOgo4" rel="stylesheet" />
+    <link href="/css/trusteeshipserie/trusteeshipserie.css?v=OLW-PbfBc2iAFAcR1oxGdOhwZMe9qSRUbiulRVtJ2ws" rel="stylesheet" />
+
+    <!-- Scripts  styles -->
+    <script src="/js/site.bo.min.js?v=ErfquWI6JvBLMfVKYt4cgoGzNBG7dypFRUQv-Oxf7PU" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        var blobHost =  "https://blob.cnv.gov.ar/BlobWebService.svc/";
+
+        ///Polyfill shims assets
+        $.webshims.setOptions('basePath', host + '/lib/polyfiller/shims/');
+
+        $(document).ready(function () {
+            $(".nav-header").on("click", function () {
+                $(".nav-aside-menu").toggleClass("open");
+            });
+        });
+    </script>
+
+    
+
+    <script src="/js/Presentations/presentations.js"></script>
+    <script type='text/javascript' src="/Engine/js/3rdparty/namespace.min.js"></script>
+    <script type='text/javascript' src="/Engine/js/3rdparty/jquery-1.7.2.min.js"></script>
+    <script type='text/javascript' src="/lib/jquery-file-download/jquery.fileDownload.js"></script>
+    <script type='text/javascript' src="/Engine/js/3rdparty/bootstrap.min.js"></script>
+    <script type='text/javascript' src="/Engine/js/3rdparty/knockout-2.3.0.js"></script>
+    <script type='text/javascript' src="/Engine/js/3rdparty/date.js"></script>
+    <script type='text/javascript' src="/Engine/js/3rdparty/response.min.js"></script>
+    <script type='text/javascript' src="/Engine/js/3rdparty/jquery.linq.js"></script>
+    <script type='text/javascript' src="/Engine/js/3rdparty/linq.js"></script>
+    <script type='text/javascript' src="/Engine/js/3rdparty/jsonpath.js"></script>
+    <script type='text/javascript' src="/Engine/js/3rdparty/bootstrap-table.js"></script>
+    <script type='text/javascript' src="/Engine/js/3rdparty/bootstrap-table-es-MX.js"></script>
+    <!-- Script de ayuda -->
+    <script type='text/javascript' src="/Engine/js/fb.helper.js"></script> <!-- Solo para dev Ivan -->
+    <script type='text/javascript' src="/Engine/js/fb.helperjson.js"></script> <!-- Solo para dev Ivan -->
+    <script type='text/javascript' src="/Engine/js/fb.utils.js"></script>
+    <script type='text/javascript' src="/Engine/js/fb.xmlform.js"></script>
+    <script type='text/javascript' src="/Engine/js/CNV.utils.js"></script>
+    <script type='text/javascript' src="/Engine/js/formatters.js"></script>
+    <!-- Script que contiene un administrador de promesas -->
+    <script type='text/javascript' src="/Engine/js/fb.queue.promise.js"></script> <!-- Solo para dev Ivan -->
+    <!-- Scripts de la aplicacion principal -->
+    <script type='text/javascript' src="/Engine/js/app.js"></script>
+    <script type='text/javascript' src="/Engine/js/appui.js"></script>
+    <script type='text/javascript' src="/Engine/js/appconfig.js"></script>
+    <script type='text/javascript' src="/Engine/js/fb.pagination.js"></script>
+    <script type='text/javascript' src="/Engine/js/fb.fileutils.js"></script>
+    <script type='text/javascript' src="/Engine/js/fb.cargamasiva.js"></script>
+    <!-- Componente de construccion de html -->
+    <script type='text/javascript' src="/Engine/js/fb.htmlbuilder.js"></script>
+    <!-- Script para Modal de Compensaciones -->
+    <script type='text/javascript' src="/Engine/js/compensaciones.js"></script>
+    <!-- Plugins que generan los controles visuales (htmldom)  -->
+    <script type='text/javascript' src="/Engine/js/fbhtmlcontrols/fb.controlbase.js"></script>
+    <script type='text/javascript' src="/Engine/js/fbhtmlcontrols/fb.checkbox.js"></script>
+    <script type='text/javascript' src="/Engine/js/fbhtmlcontrols/fb.iconosayuda.js"></script>
+    <script type='text/javascript' src="/Engine/js/fbhtmlcontrols/fb.cuadrodialogo.js"></script>
+    <script type='text/javascript' src="/Engine/js/fbhtmlcontrols/fb.cuadromodal.js"></script>
+    <script type='text/javascript' src="/Engine/js/fbhtmlcontrols/fb.cuadrocompensaciones.js"></script>
+    <script type='text/javascript' src="/Engine/js/fbhtmlcontrols/fb.list.js"></script>
+    <script type='text/javascript' src="/Engine/js/fbhtmlcontrols/fb.textbox.js"></script>
+    <script type='text/javascript' src="/Engine/js/fbhtmlcontrols/fb.decimal.js"></script>
+    <script type='text/javascript' src="/Engine/js/fbhtmlcontrols/fb.oculto.js"></script>
+    <script type='text/javascript' src="/Engine/js/fbhtmlcontrols/fb.label.js"></script>
+    <script type='text/javascript' src="/Engine/js/fbhtmlcontrols/fb.controlvacio.js"></script>
+    <script type='text/javascript' src="/Engine/js/fbhtmlcontrols/fb.combobox.js"></script>
+    <script type='text/javascript' src="/Engine/js/fbhtmlcontrols/fb.formulariogrid.js"></script>
+    <script type='text/javascript' src="/Engine/js/fbhtmlcontrols/fb.formulariogridedicion.new.js"></script>
+    <script type='text/javascript' src="/Engine/js/fbhtmlcontrols/fb.fecha.js"></script>
+    <script type='text/javascript' src="/Engine/js/fbhtmlcontrols/fb.etiquetatexto.js"></script>
+    <script type='text/javascript' src="/Engine/js/fbhtmlcontrols/fb.clasificador.js"></script>
+    <script type="text/javascript" src="/Engine/js/fbhtmlcontrols/fb.publicuploader.js"></script>
+    <!-- Componente del Modelo del formulario -->
+    <script type='text/javascript' src="/Engine/js/fb.viewmodel.js"></script>
+    <!-- Componente que genera las reglas y validaciones -->
+    <script type='text/javascript' src="/Engine/js/fb.runtime.js"></script>
+    <!-- Componente que genera un repositorio de catalogos -->
+    <script type='text/javascript' src="/Engine/js/fb.catalogs.js"></script>
+    <!-- Componente de parseo -->
+    <script type='text/javascript' src="/Engine/js/fb.parser.responsive.js"></script>
+    <script type='text/javascript' src="/Engine/js/fb.parserjson.js"></script>
+    <!-- Scripts de la aplicacion principal -->
+    <script type='text/javascript' src="/Engine/js/CNV.environment.js"></script>
+    <!--<script type='text/javascript' src=" Html.URLContenidoEstatico("fb.businessrules.js")"></script>-->
+    <!-- Se cargan al final los scripts que no seran utilizados en un principio,
+            se modificara para cargarlos asincronamente -->
+    <script type='text/javascript' src="/Engine/js/3rdparty/base64.min.js"></script>
+    <script type='text/javascript' src="/Engine/js/3rdparty/jquery.formatCurrency.min.js"></script>
+    <script type='text/javascript' src="/Engine/js/3rdparty/json2.min.js"></script>
+    <script type='text/javascript' src="/Engine/js/3rdparty/jquery.maskedinput.min.js"></script>
+    <script type='text/javascript' src="/Engine/js/3rdparty/bootstrap-datepicker.js"></script>
+
+
+</head>
+<body class="body">
+
+
+    <input type="hidden" id="RequestVerificationToken" name="RequestVerificationToken" value="CfDJ8A0-ZLC0AtxNgXF7tp-jeSH-YYzWvCjhjUbcsxzNrbl2HyYO04Wtg6LCmxu8X6HrZMxxxiNgj6em06Pv2wB66QLRDyP_UosXyWns3YrlfJ8GszSAU_QnNVnFd0hzKh1ZqoJMgOYhcz1z6T3aHoZo37I">
+
+
+    <div id="page-wrapper" class="container-fluid publico">
+        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0; padding-top: 20px;">
+            <div class="navbar-header text-center" style="width: 100%; float: none;">
+                <img width="100" class="logo" src="/images/logo2024.png" alt="CNV. Comisión Nacional de Valores. República Argentina." style="margin-bottom: 5px;">
+            </div>
+        </nav>
+        <div id="body" class="container body-content col-md-12">
+            <link href="/Engine/css/datepicker.css" rel="stylesheet" media="screen">
+<link href="/Engine/css/bootstrap-table.css" rel="stylesheet">
+<input id="filterId" hidden />
+<div class="row header-section">
+    <div class="col-xs-12">
+        <div class="row">
+            <div class="col-xs-4">
+                <h3 class="h3 title">Presentaci&#xF3;n #3326103 - Metrogas S.A. | 30657863676</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="row vmargin-lg no-mg-top">
+        <div class="col-xs-2">
+            <label for="txtPresentationId">Presentación</label>
+            <input id="txtPresentationId" class="form-control input-sm" value="3326103" readonly />
+        </div>
+        <div class="col-xs-3">
+            <label for="txtFormTypeName">Formulario</label>
+            <input id="txtFormTypeName" class="form-control input-sm" value="Estados Contables - NIIF" readonly />
+        </div>
+        <div class="col-xs-3">
+            <div class="expiration-date-container">
+                <label for="txtExpirationDate">Fecha de Vencimiento</label>
+                <input id="txtExpirationDate" class="form-control input-sm" readonly />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <form id="form-presentation" class="form-horizontal">
+                <div id="htmlOutput">
+                    <div class="icon6-wrapper">
+                        <i class="icon-refresh icon-spin icon-6"></i>
+                    </div>
+                </div>
+            </form>
+            <div id="modal-ayuda" class="modal fade" backdrop="static" keyboard="false" style="z-index: 9999">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                        </div>
+                        <div class="modal-footer">
+                            <div class="notify">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">
+                                    Cerrar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="modal-iconoAyuda" class="modal fade" backdrop="static" keyboard="false" style="z-index: 9999">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title"></h4>
+                        </div>
+                        <div class="modal-body">
+                        </div>
+                        <div class="modal-footer">
+                            <div class="notify">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">
+                                    Aceptar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="modal-error" class="modal fade" backdrop="static" keyboard="false" style="z-index: 9999">
+                <div class="modal-dialog">
+                    <div class="modal-content alert alert-danger">
+                        <div class="modal-body">
+                        </div>
+                        <div class="modal-footer">
+                            <div class="notify">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                    Aceptar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" backdrop="static" keyboard="false">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Cargando información.</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <div class="col-lg-offset-1 col-lg-11">
+                                    <i class="icon-spinner icon-spin icon-large icon-6x"></i>
+                                    <span class="title-progress">Espera por favor mientras termina de cargar la información necesaria.</span>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="modalSeccion" class="modal fade" style="z-index: 9999" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" backdrop="static" keyboard="false">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- dialog body -->
+                        <div class="modal-body">
+                        </div>
+                        <!-- dialog buttons -->
+                        <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="si btn btn-primary btn-red">
+                                Aceptar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hide">
+                <div id="ayudasCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+                    <!-- Carousel indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#ayudasCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#ayudasCarousel" data-slide-to="1"></li>
+                        <li data-target="#ayudasCarousel" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for carousel items -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div style="padding-left: 15%; padding-right: 15%; padding-bottom: 12%;">
+                                <table class="tabla-ayuda table-responsive" style="width: 100%;">
+                                    <thead>
+                                        <tr></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div style="padding-left: 15%; padding-right: 15%; padding-bottom: 12%;">
+                                <table class="tabla-ayuda table-responsive" style="width: 100%;">
+                                    <thead>
+                                        <tr></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div style="padding-left: 15%; padding-right: 15%; padding-bottom: 12%;">
+                                <table class="tabla-ayuda table-responsive" style="width: 100%;">
+                                    <thead>
+                                        <tr></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Carousel controls -->
+                    <a class="carousel-control left" href="#ayudasCarousel" style="opacity: 1;" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="carousel-control right" href="#ayudasCarousel" style="opacity: 1;" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+            </div>
+            <div id="modalErrorFilaFormularioGridEdicion" class="modal fade" style="z-index: 9999" backdrop="static" keyboard="false">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            Para realizar ésta acción, por favor corrija los errores de la captura del registro actual.
+                        </div>
+                        <div class="modal-footer">
+                            <div class="notify">
+                                <button type="button" data-dismiss="modal" class="no btn btn-primary btn-red">
+                                    Aceptar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="modalAvisoCompensaciones" class="modal fade" style="z-index: 9999" backdrop="static" keyboard="false">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- dialog body -->
+                        <div class="modal-body">
+                            Esta opción no está disponible para este dispositivo, utiliza un equipo de cómputo de escritorio.
+                        </div>
+                        <!-- dialog buttons -->
+                        <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="si btn btn-primary btn-red">
+                                Aceptar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="divDynamicModals">
+            </div>
+            <div id="modalErroresEnSecciones" class="modal fade" style="z-index: 9999" backdrop="static" keyboard="false">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <input type="hidden">
+                        <!-- dialog body -->
+                        <div class="modal-body">
+                            Proceso concluido. Se detectaron errores en la declaración.
+
+
+                        </div>
+                        <!-- dialog buttons -->
+                        <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="btn btn-primary btn-red">
+                                Aceptar
+
+
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="templateDlgCompensanciones">
+                <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" backdrop="static" keyboard="false">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <h4 class="modal-title">Compensaciones</h4>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h4 class="modal-title">
+                                            <span>Total: $</span><span id="lblMonto"></span>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-body"></div>
+                            <div class="modal-footer">
+                                <button id="btnCancelar" type="button" class="btn btn-primary btn-red">Cancelar</button>
+                                <button id="addItem" type="button" class="btn btn-primary btn-red">Agregar</button>
+                                <button id="btnTerminar" type="button" class="btn btn-primary btn-red">Terminar</button>
+                                <div style="clear: both;"></div>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+            </div>
+            <div id="templateRowCompensaciones" class="hide">
+                <div class="container sat-row-compensaciones">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <label>Tipo</label>
+                            <select id="tipoSelect" class="form-control sat-height-field" claveinformativa="C1302"></select>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Periodicidad</label>
+                            <select id="periodicidadSelect" class="form-control" disabled="disabled" claveinformativa="C1303"></select>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Período</label>
+                            <select id="periodoSelect" class="form-control" disabled="disabled" claveinformativa="C1304"></select>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Ejercicio</label>
+                            <select id="ejercicioSelect" class="form-control" disabled="disabled" claveinformativa="C1305"></select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <label>Fecha de causación (dd-mm-aaaa)</label>
+                            <div class="input-append date" id="datepicker" data-date-format="dd/mm/yyyy">
+                                <input class="form-control" maxlength="12" id="txtFechaCausacion" type="text" maxlength="10" disabled="disabled" claveinformativa="C1315" />
+                                <span style="display: none;" class="add-on"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Número de operación</label>
+                            <input id="txtNumeroOperacion" onkeyup="ESALFANUMERICO(event)" maxlength="14" class="form-control" type="text" disabled="disabled" claveinformativa="C1306" />
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Concepto</label>
+                            <select id="selectConcepto" class="form-control" disabled="disabled" claveinformativa="C1307"></select>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Saldo a aplicar</label>
+                            <input maxlength="12" id="txtSaldoAplicar" class="form-control currency" type="text" disabled="disabled" onkeydown="return SoloNumerosPositivos(event)" claveinformativa="C1308" />
+                            <button id="btnValidar" disabled="disabled">Continuar</button>
+                            <button id="btnEliminar">Eliminar</button>
+                        </div>
+                    </div>
+                    <div style="width: 100%; border: solid 1px lightgrey; border-width: thin"></div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <table width="400px">
+                                    <tr>
+                                        <td style="width: 50%;">
+                                            <label>Tipo de declaración</label>
+                                        </td>
+                                        <td style="width: 50%;">
+                                            <select id="selectTipoDeclaracion" class="form-control" disabled="disabled" claveinformativa="C1309"></select>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <table width="400px">
+                                    <tr>
+                                        <td style="width: 50%;">
+                                            <label>Monto del saldo a favor original</label>
+                                        </td>
+                                        <td style="width: 50%;">
+                                            <input maxlength="12" id="txtSaldoFavor" class="form-control currency" type="text" disabled="disabled" onkeydown="return SoloNumerosPositivos(event)" claveinformativa="C1311" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <table width="400px">
+                                    <tr>
+                                        <td style="width: 50%;">
+                                            <label style="width: 200px;">Fecha en que se presentó la </br> declaración del saldo a favor (dd-mm-aaaa)</label>
+                                        </td>
+                                        <td style="width: 50%;">
+                                            <div class="input-append date" id="datepicker" data-date-format="dd/mm/yyyy">
+                                                <input class="form-control" style="float: left; width: 85%; margin-right: 5px;" id="txtFechaDeclaracion" type="text" maxlength="10" disabled="disabled" claveinformativa="C1314">
+                                                <span style="display: none;" class="add-on"></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <table width="400px">
+                                    <tr>
+                                        <td style="width: 50%;">
+                                            <label>Número de operación</label>
+                                        </td>
+                                        <td style="width: 50%;">
+                                            <input id="txtNumeroOperacion1" onkeyup="ESALFANUMERICO(event)" maxlength="14" class="form-control" type="text" disabled="disabled" claveinformativa="C1310" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <table width="400px">
+                                    <tr>
+                                        <td style="width: 50%;">
+                                            <label>Remanente histórico antes de la aplicación</label>
+                                        </td>
+                                        <td style="width: 50%;">
+                                            <input maxlength="12" id="txtRemanenteHistorico" class="form-control currency" type="text" disabled="disabled" onkeydown="return SoloNumerosPositivos(event)" claveinformativa="C1312" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <table width="400px">
+                                    <tr>
+                                        <td style="width: 50%;">
+                                            <label>Remanente actualizado antes de la aplicación</label>
+                                        </td>
+                                        <td style="width: 50%;">
+                                            <input maxlength="12" id="txtRemanenteActualizado" class="form-control currency" type="text" disabled="disabled" onkeydown="return SoloNumerosPositivos(event)" claveinformativa="C1313" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width: 100%; border: solid 1px;"></div>
+                </div>
+            </div>
+            <div class="modal fade" id="dlgCancelar" style="z-index: 9999" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" backdrop="static" keyboard="false">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Cancelar</h4>
+                        </div>
+                        <div class="modal-body">¿Está seguro de cancelar todas las Compensaciones?</div>
+                        <div class="modal-footer">
+                            <button id="btnAceptar" type="button" class="btn btn-primary btn-red">SI</button>
+                            <button type="button" class="btn btn-primary btn-red" data-dismiss="modal">NO</button>
+                            <div style="clear: both;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="modalEliminarGridEdicion" class="modal fade" style="z-index: 9999" backdrop="static" keyboard="false">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <input type="hidden">
+                        <!-- dialog body -->
+                        <div class="modal-body">
+                            El registro se eliminará. ¿Deseas continuar?
+                        </div>
+                        <!-- dialog buttons -->
+                        <div class="modal-footer">
+                            <button type="button" class="aceptar btn btn-primary btn-red">
+                                Aceptar
+                            </button>
+                            <button type="button" data-dismiss="modal" class="cancelar btn btn-primary btn-red">
+                                Cancelar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="templateCuadroDialogoModal">
+                <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                    <div class="modal-dialog" style="width: 800px;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <h4 id="lblTituloCuadroDialogo" class="modal-title"></h4>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h4 class="modal-title">
+                                            <span>Total: $</span><span id="lblMontoEstimulo"></span>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <input type="hidden" class="sat-tmpl-row" />
+                                <input type="hidden" class="sat-view-model-row-id" />
+                                <table class="table table-bordered sat-table"></table>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="cancelTable" type="button" class="btn btn-primary btn-red">
+                                    Cancelar
+                                </button>
+                                <button id="nuevaFila" type="button" class="btn btn-primary btn-red">
+                                    Agregar
+                                </button>
+                                <button id="acceptTable" type="button" class="btn btn-primary btn-red">
+                                    Terminar
+                                </button>
+                                <div style="clear: both;"></div>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+            </div>
+            <div id="modalYesNo" class="modal fade" style="z-index: 9999">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- dialog body -->
+                        <div class="modal-body">
+                            Ya hay información capturada, ¿desea continuar con la operación?
+                        </div>
+                        <!-- dialog buttons -->
+                        <div class="modal-footer">
+                            <button type="button" class="si btn btn-primary btn-red">
+                                SI
+                            </button>
+                            <button type="button" class="no btn btn-primary btn-red">
+                                NO
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modalValidando" tabindex="-1" role="dialog" aria-hidden="false" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Validando</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <div class="col-lg-offset-1 col-lg-11">
+                                    <i class="icon-spinner icon-spin icon-large icon-6x"></i> Espera por favor mientras termina de validar los datos que capturaste.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modalDetalleCargaMasiva" tabindex="-1" role="dialog" aria-hidden="false">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Detalle carga masiva</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="alert alert-success" style="padding: 1em!important;">
+                            </div>
+                            <div class="alert alert-danger" style="padding: 1em!important;">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="btn btn-primary btn-red">
+                                Cerrar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modalCargandoArchivo" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Cargando archivo.</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <div class="col-lg-offset-1 col-lg-11">
+                                    <i class="icon-spinner icon-spin icon-large icon-6x"></i>
+                                    <span class="title-progress">Espera por favor mientras termina de cargar y leer el archivo.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="DVPLANFOR" class="sat-div-contenedores hide">-</div>
+            <div id="DVDAPREFOR" class="sat-div-contenedores hide">-</div>
+            <div id="DVDAPREFORCOMP" class="sat-div-contenedores hide">-</div>
+            <div id="DVOPER" class="sat-div-contenedores hide">-</div>
+            <div id="DVDECLARACIONDISCO" class="sat-div-contenedores hide">-</div>
+            <div id="DVDECLARACION" class="sat-div-contenedores hide">-</div>
+            <div id="DVINFOCON" class="sat-div-contenedores hide">-</div>
+            <div id="DVINFOALERTCLIENT" class="sat-div-contenedores hide">-</div>
+            <div id="DVINFOALERTCLIENTORIGIN" class="sat-div-contenedores hide">-</div>
+            <div id="DVCA07" class="sat-div-contenedores hide">-</div>
+            <div id="DVCA08" class="sat-div-contenedores hide">-</div>
+            <div id="DVRETENCIONES" class="sat-div-contenedores hide">-</div>
+            <div id="DVINITRETENCIONES" class="sat-div-contenedores hide">-</div>
+            <div id="DVINFODECLA" clasS="sat-div-contenedores hide">-</div>
+            <input style="display: none;" id="fileDialog" type="file" />
+            <input type="hidden" id="idRetencion">
+        </div>
+    </div>
+</div>
+<script type="text/javascript" defer="defer">
+    "use strict";
+
+    var message = "";
+    if(message != "")
+    {
+        alert(message);
+        window.history.back();
+    }
+
+    var formTypeId = '147';
+    var expirationId = '-1';
+
+    var presentationIdGlobal = '3326103';
+    var formTypeName = 'Estados Contables - NIIF';
+    var societyName = '';
+    var presentationDate = '';
+
+    var presentation ='<modeloDatos><relacionesGrid /><entidad visibilidad="true" id="10001" tipo="" clave="IdentificacionBalance"><propiedad id="PeriodoBalance" visible="true" claveinformativa="PeriodoBalance">1</propiedad><propiedad id="FechaCierre" visible="true" claveinformativa="FechaCierre">2024-12-31T03:00:00.000Z</propiedad><propiedad id="FechaDesde" visible="false" claveinformativa="FechaDesde" /><propiedad id="FechaHasta" visible="false" claveinformativa="FechaHasta" /><propiedad id="Detalle" visible="false" claveinformativa="Detalle" /><propiedad id="TipoBalance" visible="true" claveinformativa="TipoBalance">Consolidado</propiedad><propiedad id="Moneda" visible="true" claveinformativa="Moneda">7</propiedad><propiedad id="UnidadMedida" visible="true" claveinformativa="UnidadMedida">Millones de $</propiedad><propiedad id="NormasContablesAplicadas" visible="true" claveinformativa="NormasContablesAplicadas">NIIF</propiedad></entidad><entidad visibilidad="true" id="10006" tipo="" clave="Activos en Moneda Extranjera" grid="1" numeroelementos="1"><fila identificador="1" orden="1"><propiedad id="AMEMoneda" claveinformativa="AMEMoneda" etiqueta="Dólar (E.U.A.)">36</propiedad><propiedad id="AMEActivoInversiones" claveinformativa="AMEActivoInversiones">1029</propiedad><propiedad id="AMEActivoExistencias" claveinformativa="AMEActivoExistencias" /><propiedad id="AMEPasivoDeudasComerciales" claveinformativa="AMEPasivoDeudasComerciales">21672</propiedad><propiedad id="AMEPasivoOtrasDeudas" claveinformativa="AMEPasivoOtrasDeudas" /><propiedad id="AMEActivoCreditosComerciales" claveinformativa="AMEActivoCreditosComerciales">14406</propiedad><propiedad id="AMEPasivoPrestamosBancarios" claveinformativa="AMEPasivoPrestamosBancarios">943</propiedad></fila></entidad><entidad visibilidad="true" id="10007" tipo="" clave="Método Contable" grid="1" numeroelementos="2"><fila identificador="1" orden="1"><propiedad id="MCRubro" claveinformativa="MCRubro" etiqueta="Propiedades, Plantas y equipos">1</propiedad><propiedad id="MCMetodo" claveinformativa="MCMetodo" etiqueta="Valor Razonable">1</propiedad><propiedad id="MCFechaInicioAplicacion" claveinformativa="MCFechaInicioAplicacion">2017-04-01T03:00:00.000Z</propiedad><propiedad id="MCElemento" claveinformativa="MCElemento">Activos Esenciales</propiedad></fila><fila identificador="2" orden="2"><propiedad id="MCRubro" claveinformativa="MCRubro" etiqueta="Propiedades de inversión">2</propiedad><propiedad id="MCMetodo" claveinformativa="MCMetodo" etiqueta="Costo de adquisición">2</propiedad><propiedad id="MCFechaInicioAplicacion" claveinformativa="MCFechaInicioAplicacion">2012-01-01T03:00:00.000Z</propiedad><propiedad id="MCElemento" claveinformativa="MCElemento">Terrenos y edificios</propiedad></fila></entidad><entidad visibilidad="true" id="10008" tipo="" clave="Otros Datos Balance"><propiedad id="ODBEnTramiteFusion" visible="true" claveinformativa="ODBEnTramiteFusion">2</propiedad><propiedad id="ODBAccionesCartera" visible="true" claveinformativa="ODBAccionesCartera" etiqueta="No">2</propiedad><propiedad id="ODBConcursoPreventivo" visible="true" claveinformativa="ODBConcursoPreventivo" etiqueta="No">2</propiedad><propiedad id="ODBCantidadAcciones" visible="true" claveinformativa="ODBCantidadAcciones">569</propiedad><propiedad id="ODBCapitalizacionBursatil" visible="true" claveinformativa="ODBCapitalizacionBursatil">1584665.00</propiedad><propiedad id="ODBPorcentajeFloating" visible="true" claveinformativa="ODBPorcentajeFloating">30.00</propiedad><propiedad id="ODBCUITAuditor" visible="true" claveinformativa="ODBCUITAuditor">20-21552635-7</propiedad><propiedad id="ODBNombreAuditor" visible="true" claveinformativa="ODBNombreAuditor">Diego O. De Vivo</propiedad><propiedad id="ODBCUITEstudioAuditor" visible="true" claveinformativa="ODBCUITEstudioAuditor">30-52612491-6</propiedad><propiedad id="ODBRazonSocialEstudioAuditor" visible="true" claveinformativa="ODBRazonSocialEstudioAuditor">Deloitte &amp; Co. S.A</propiedad><propiedad id="ODBOfertaPublicaAcciones" visible="true" claveinformativa="ODBOfertaPublicaAcciones">1</propiedad><propiedad id="ODBPERPrecioCotizacionSobreBeneficioNeto" visible="true" claveinformativa="ODBPERPrecioCotizacionSobreBeneficioNeto">56.24</propiedad><propiedad id="ODBPrecioCotizacion" visible="true" claveinformativa="ODBPrecioCotizacion">2785.00</propiedad><propiedad id="ODBCuitAuditor2" visible="true" claveinformativa="ODBCuitAuditor2" /><propiedad id="ODBNombreAuditor2" visible="true" claveinformativa="ODBNombreAuditor2" /><propiedad id="ODBCuitEstudioAuditor2" visible="true" claveinformativa="ODBCuitEstudioAuditor2" /><propiedad id="ODBRazonSocialEstudioAuditor2" visible="true" claveinformativa="ODBRazonSocialEstudioAuditor2" /><propiedad id="ODCCantidadEmpleados" visible="true" claveinformativa="ODCCantidadEmpleados">1103</propiedad></entidad><entidad visibilidad="true" id="10009" tipo="" clave="Adjuntos Balance"><propiedad id="ABEstadoContable" visible="true" claveinformativa="ABEstadoContable" uploader="archivos-1uploader90489">[{"idUploader":"1uploader90489","idEntidadPropiedad":"E10009PABEstadoContable","nombreArchivo":"Nota_CNV_ConciliaciónMKTR_122024.pdf","tamano":"0.15 MB","guid":"56eae0df-bd9b-4ded-1bbe-816152834352","hash":"jZcMIHx9+BMZkhwgo9zdM2V3uqXC07aARIasS2skr3o="},{"idUploader":"1uploader90489","idEntidadPropiedad":"E10009PABEstadoContable","nombreArchivo":"Estados Financieros_1224_CON.pdf","tamano":"1.26 MB","guid":"e9cd6d8a-59a8-43ee-d5e2-499ab55a2dcc","hash":"mBT0jD+fEsPvk6HAKW7XBT2O8hfv1sA/05n/hXHf2t4="}]</propiedad><propiedad id="ABMemoria" visible="true" claveinformativa="ABMemoria" uploader="archivos-1uploader17219">[{"idUploader":"1uploader17219","idEntidadPropiedad":"E10009PABMemoria","nombreArchivo":"MetroGAS Memoria 31.12.24.pdf","tamano":"2.04 MB","guid":"abc641ad-5455-4ab0-3908-0c782bb1c8e1","hash":"pzkAXlvrU3+/T0vtMOvuoKqKBzGtjCBKTH+WJJvO5cw="}]</propiedad><propiedad id="ABInformeAuditorIndependiente" visible="true" claveinformativa="ABInformeAuditorIndependiente" uploader="archivos-1uploader15873">[{"idUploader":"1uploader15873","idEntidadPropiedad":"E10009PABInformeAuditorIndependiente","nombreArchivo":"Informe del Auditor_1224_CON.pdf","tamano":"4.40 MB","guid":"cbbda800-b4d8-44fd-2a07-0d2479a44835","hash":"Tq+gaybyIVIUvbZXCy53LK3VFaUIpCE1DSN4UP4NRHQ="}]</propiedad><propiedad id="ABInformeComisionFiscalizadoraSindico" visible="true" claveinformativa="ABInformeComisionFiscalizadoraSindico" uploader="archivos-1uploader16065">[{"idUploader":"1uploader16065","idEntidadPropiedad":"E10009PABInformeComisionFiscalizadoraSindico","nombreArchivo":"Informe CF_1224_CON.pdf","tamano":"0.14 MB","guid":"67dc2d62-a4e6-48ee-0f37-3a5dc8f27794","hash":"Y5ROZ92kqwROa6jwHG8BAFtkfARTFpn1t4sOlOFOSH4="}]</propiedad><propiedad id="Etiqueta" visible="true" claveinformativa="Etiqueta" /><propiedad id="ABResenaInformativa" visible="true" claveinformativa="ABResenaInformativa" uploader="archivos-1uploader16112">[{"idUploader":"1uploader16112","idEntidadPropiedad":"E10009PABResenaInformativa","nombreArchivo":"Reseña Informativa 31.12.2024.pdf","tamano":"0.26 MB","guid":"923e627f-96a7-4ba7-c19e-fe93d9041051","hash":"lnYpHYNlQxc35TgBjwu4sbAV4w0nBpZvA0Klga0+4MA="}]</propiedad></entidad><entidad visibilidad="true" id="10013" tipo="" clave="Estados Contables Cuentas" grid="1" numeroelementos="82"><fila identificador="1" orden="1"><propiedad id="Nro" claveinformativa="Nro">1122500</propiedad><propiedad id="Rubro" claveinformativa="Rubro">EFECTIVO Y EQUIVALENTES A EFECTIVO</propiedad><propiedad id="Monto" claveinformativa="Monto"> 122280.00</propiedad></fila><fila identificador="2" orden="2"><propiedad id="Nro" claveinformativa="Nro">1122300</propiedad><propiedad id="Rubro" claveinformativa="Rubro">ACTIVOS FINANCIEROS CORRIENTES</propiedad><propiedad id="Monto" claveinformativa="Monto"> 10872.00</propiedad></fila><fila identificador="3" orden="3"><propiedad id="Nro" claveinformativa="Nro">1121999</propiedad><propiedad id="Rubro" claveinformativa="Rubro">CUENTAS POR COBRAR CORRIENTES</propiedad><propiedad id="Monto" claveinformativa="Monto"> 161171.00</propiedad></fila><fila identificador="4" orden="4"><propiedad id="Nro" claveinformativa="Nro">1122400</propiedad><propiedad id="Rubro" claveinformativa="Rubro">OTROS ACTIVOS NO FINANCIEROS CORRIENTES</propiedad><propiedad id="Monto" claveinformativa="Monto"> -</propiedad></fila><fila identificador="5" orden="5"><propiedad id="Nro" claveinformativa="Nro">1120100</propiedad><propiedad id="Rubro" claveinformativa="Rubro">INVENTARIOS CORRIENTES</propiedad><propiedad id="Monto" claveinformativa="Monto"> -</propiedad></fila><fila identificador="6" orden="6"><propiedad id="Nro" claveinformativa="Nro">1139999</propiedad><propiedad id="Rubro" claveinformativa="Rubro">ACTIVO CORRIENTE</propiedad><propiedad id="Monto" claveinformativa="Monto"> 294323.00</propiedad></fila><fila identificador="7" orden="7"><propiedad id="Nro" claveinformativa="Nro">1112400</propiedad><propiedad id="Rubro" claveinformativa="Rubro">ACTIVOS FINANCIEROS NO CORRIENTES</propiedad><propiedad id="Monto" claveinformativa="Monto"> 312.00</propiedad></fila><fila identificador="8" orden="8"><propiedad id="Nro" claveinformativa="Nro">1111999</propiedad><propiedad id="Rubro" claveinformativa="Rubro">CUENTAS POR COBRAR NO CORRIENTES</propiedad><propiedad id="Monto" claveinformativa="Monto"> -</propiedad></fila><fila identificador="9" orden="9"><propiedad id="Nro" claveinformativa="Nro">1110100</propiedad><propiedad id="Rubro" claveinformativa="Rubro">PROPIEDADES PLANTAS Y EQUIPOS</propiedad><propiedad id="Monto" claveinformativa="Monto"> 778295.00</propiedad></fila><fila identificador="10" orden="10"><propiedad id="Nro" claveinformativa="Nro">1112500</propiedad><propiedad id="Rubro" claveinformativa="Rubro">OTROS ACTIVOS NO FINANCIEROS NO CORRIENTES</propiedad><propiedad id="Monto" claveinformativa="Monto"> 864.00</propiedad></fila><fila identificador="11" orden="11"><propiedad id="Nro" claveinformativa="Nro">1110200</propiedad><propiedad id="Rubro" claveinformativa="Rubro">ACTIVOS INTANGIBLES</propiedad><propiedad id="Monto" claveinformativa="Monto"> 26883.00</propiedad></fila><fila identificador="12" orden="12"><propiedad id="Nro" claveinformativa="Nro">1119999</propiedad><propiedad id="Rubro" claveinformativa="Rubro">ACTIVO NO CORRIENTE</propiedad><propiedad id="Monto" claveinformativa="Monto"> 806354.00</propiedad></fila><fila identificador="13" orden="13"><propiedad id="Nro" claveinformativa="Nro">1999999</propiedad><propiedad id="Rubro" claveinformativa="Rubro">TOTAL DEL ACTIVO</propiedad><propiedad id="Monto" claveinformativa="Monto"> 1100677.00</propiedad></fila><fila identificador="14" orden="14"><propiedad id="Nro" claveinformativa="Nro">2210999</propiedad><propiedad id="Rubro" claveinformativa="Rubro">CAPITAL</propiedad><propiedad id="Monto" claveinformativa="Monto"> 569.00</propiedad></fila><fila identificador="15" orden="15"><propiedad id="Nro" claveinformativa="Nro">2210300</propiedad><propiedad id="Rubro" claveinformativa="Rubro">AJUSTE DE CAPITAL</propiedad><propiedad id="Monto" claveinformativa="Monto"> 263419.00</propiedad></fila><fila identificador="16" orden="16"><propiedad id="Nro" claveinformativa="Nro">2210500</propiedad><propiedad id="Rubro" claveinformativa="Rubro">APORTES NO CAPITALIZADOS O CONTRIBUCIONES DE CAPITAL</propiedad><propiedad id="Monto" claveinformativa="Monto"> -</propiedad></fila><fila identificador="17" orden="17"><propiedad id="Nro" claveinformativa="Nro">2210900</propiedad><propiedad id="Rubro" claveinformativa="Rubro">OTROS CONCEPTOS DEL CAPITAL</propiedad><propiedad id="Monto" claveinformativa="Monto"> -</propiedad></fila><fila identificador="18" orden="18"><propiedad id="Nro" claveinformativa="Nro">2211100</propiedad><propiedad id="Rubro" claveinformativa="Rubro">RESERVA LEGAL</propiedad><propiedad id="Monto" claveinformativa="Monto"> 52798.00</propiedad></fila><fila identificador="19" orden="19"><propiedad id="Nro" claveinformativa="Nro">2211200</propiedad><propiedad id="Rubro" claveinformativa="Rubro">OTRAS RESERVAS</propiedad><propiedad id="Monto" claveinformativa="Monto"> 158072.00</propiedad></fila><fila identificador="20" orden="20"><propiedad id="Nro" claveinformativa="Nro">2211999</propiedad><propiedad id="Rubro" claveinformativa="Rubro">GANANCIAS RESERVADAS</propiedad><propiedad id="Monto" claveinformativa="Monto"> 210870.00</propiedad></fila><fila identificador="21" orden="21"><propiedad id="Nro" claveinformativa="Nro">2211300</propiedad><propiedad id="Rubro" claveinformativa="Rubro">INTERESES NO CONTROLANTES</propiedad><propiedad id="Monto" claveinformativa="Monto"> 1269.00</propiedad></fila><fila identificador="22" orden="22"><propiedad id="Nro" claveinformativa="Nro">2212999</propiedad><propiedad id="Rubro" claveinformativa="Rubro">RESULTADOS NO ASIGNADOS</propiedad><propiedad id="Monto" claveinformativa="Monto"> 154415.00</propiedad></fila><fila identificador="23" orden="23"><propiedad id="Nro" claveinformativa="Nro">2213999</propiedad><propiedad id="Rubro" claveinformativa="Rubro">RESULTADOS INTEGRALES</propiedad><propiedad id="Monto" claveinformativa="Monto"> -</propiedad></fila><fila identificador="24" orden="24"><propiedad id="Nro" claveinformativa="Nro">2299999</propiedad><propiedad id="Rubro" claveinformativa="Rubro">TOTAL PATRIMONIO NETO</propiedad><propiedad id="Monto" claveinformativa="Monto"> 630542.00</propiedad></fila><fila identificador="25" orden="25"><propiedad id="Nro" claveinformativa="Nro">2322200</propiedad><propiedad id="Rubro" claveinformativa="Rubro">PASIVOS FINANCIEROS CORRIENTES</propiedad><propiedad id="Monto" claveinformativa="Monto"> 24823.00</propiedad></fila><fila identificador="26" orden="26"><propiedad id="Nro" claveinformativa="Nro">2321999</propiedad><propiedad id="Rubro" claveinformativa="Rubro">CUENTAS POR PAGAR CORRIENTES</propiedad><propiedad id="Monto" claveinformativa="Monto"> 244701.00</propiedad></fila><fila identificador="27" orden="27"><propiedad id="Nro" claveinformativa="Nro">2322100</propiedad><propiedad id="Rubro" claveinformativa="Rubro">PASIVOS POR IMPUESTOS CORRIENTES</propiedad><propiedad id="Monto" claveinformativa="Monto"> 90736.00</propiedad></fila><fila identificador="28" orden="28"><propiedad id="Nro" claveinformativa="Nro">2322300</propiedad><propiedad id="Rubro" claveinformativa="Rubro">OTROS PASIVOS NO FINANCIEROS CORRIENTES</propiedad><propiedad id="Monto" claveinformativa="Monto"> -</propiedad></fila><fila identificador="29" orden="29"><propiedad id="Nro" claveinformativa="Nro">2339999</propiedad><propiedad id="Rubro" claveinformativa="Rubro">PASIVO CORRIENTE</propiedad><propiedad id="Monto" claveinformativa="Monto"> 360260.00</propiedad></fila><fila identificador="30" orden="30"><propiedad id="Nro" claveinformativa="Nro">2312300</propiedad><propiedad id="Rubro" claveinformativa="Rubro">PASIVOS FINANCIEROS NO CORRIENTES</propiedad><propiedad id="Monto" claveinformativa="Monto"> 19455.00</propiedad></fila><fila identificador="31" orden="31"><propiedad id="Nro" claveinformativa="Nro">2311999</propiedad><propiedad id="Rubro" claveinformativa="Rubro">CUENTAS POR PAGAR NO CORRIENTES</propiedad><propiedad id="Monto" claveinformativa="Monto"> -</propiedad></fila><fila identificador="32" orden="32"><propiedad id="Nro" claveinformativa="Nro">2312200</propiedad><propiedad id="Rubro" claveinformativa="Rubro">PASIVOS POR IMPUESTOS NO CORRIENTES</propiedad><propiedad id="Monto" claveinformativa="Monto"> 226.00</propiedad></fila><fila identificador="33" orden="33"><propiedad id="Nro" claveinformativa="Nro">2312400</propiedad><propiedad id="Rubro" claveinformativa="Rubro">OTROS PASIVOS NO FINANCIEROS NO CORRIENTES</propiedad><propiedad id="Monto" claveinformativa="Monto"> 90194.00</propiedad></fila><fila identificador="34" orden="34"><propiedad id="Nro" claveinformativa="Nro">2319999</propiedad><propiedad id="Rubro" claveinformativa="Rubro">PASIVO NO CORRIENTE</propiedad><propiedad id="Monto" claveinformativa="Monto"> 109875.00</propiedad></fila><fila identificador="35" orden="35"><propiedad id="Nro" claveinformativa="Nro">2399999</propiedad><propiedad id="Rubro" claveinformativa="Rubro">TOTAL DEL PASIVO</propiedad><propiedad id="Monto" claveinformativa="Monto"> 470135.00</propiedad></fila><fila identificador="36" orden="36"><propiedad id="Nro" claveinformativa="Nro">2999999</propiedad><propiedad id="Rubro" claveinformativa="Rubro">TOTAL DEL PASIVO Y PATRIMONIO NETO</propiedad><propiedad id="Monto" claveinformativa="Monto"> 1100677.00</propiedad></fila><fila identificador="37" orden="37"><propiedad id="Nro" claveinformativa="Nro">3000100</propiedad><propiedad id="Rubro" claveinformativa="Rubro">INGRESOS DE ACTIVIDADES ORDINARIAS</propiedad><propiedad id="Monto" claveinformativa="Monto"> 925090.00</propiedad></fila><fila identificador="38" orden="38"><propiedad id="Nro" claveinformativa="Nro">3000200</propiedad><propiedad id="Rubro" claveinformativa="Rubro">COSTO DE VENTAS Y/O SERVICIOS</propiedad><propiedad id="Monto" claveinformativa="Monto"> -585444.00</propiedad></fila><fila identificador="39" orden="39"><propiedad id="Nro" claveinformativa="Nro">3009999</propiedad><propiedad id="Rubro" claveinformativa="Rubro">GANANCIA (PERDIDA) BRUTA</propiedad><propiedad id="Monto" claveinformativa="Monto"> 339646.00</propiedad></fila><fila identificador="40" orden="40"><propiedad id="Nro" claveinformativa="Nro">3011301</propiedad><propiedad id="Rubro" claveinformativa="Rubro">HONORARIOS A DIRECTORES Y SINDICOS</propiedad><propiedad id="Monto" claveinformativa="Monto"> -617.00</propiedad></fila><fila identificador="41" orden="41"><propiedad id="Nro" claveinformativa="Nro">3011300</propiedad><propiedad id="Rubro" claveinformativa="Rubro">OTROS GASTOS DE ADMINISTRACION</propiedad><propiedad id="Monto" claveinformativa="Monto"> -67828.00</propiedad></fila><fila identificador="42" orden="42"><propiedad id="Nro" claveinformativa="Nro">3011200</propiedad><propiedad id="Rubro" claveinformativa="Rubro">GASTOS DE COMERCIALIZACION Y/O DISTRIBUCION</propiedad><propiedad id="Monto" claveinformativa="Monto"> -78635.00</propiedad></fila><fila identificador="43" orden="43"><propiedad id="Nro" claveinformativa="Nro">3011400</propiedad><propiedad id="Rubro" claveinformativa="Rubro">OTROS GASTOS OPERATIVOS</propiedad><propiedad id="Monto" claveinformativa="Monto"> -4814.00</propiedad></fila><fila identificador="44" orden="44"><propiedad id="Nro" claveinformativa="Nro">3011100</propiedad><propiedad id="Rubro" claveinformativa="Rubro">OTROS INGRESOS</propiedad><propiedad id="Monto" claveinformativa="Monto"> -</propiedad></fila><fila identificador="45" orden="45"><propiedad id="Nro" claveinformativa="Nro">3011600</propiedad><propiedad id="Rubro" claveinformativa="Rubro">DEPRECIACIONES Y AMORTIZACIONES</propiedad><propiedad id="Monto" claveinformativa="Monto"> -42380.00</propiedad></fila><fila identificador="46" orden="46"><propiedad id="Nro" claveinformativa="Nro">3019999</propiedad><propiedad id="Rubro" claveinformativa="Rubro">GANANCIA (PERDIDA) DE ACTIVIDADES OPERATIVAS</propiedad><propiedad id="Monto" claveinformativa="Monto"> 145372.00</propiedad></fila><fila identificador="47" orden="47"><propiedad id="Nro" claveinformativa="Nro">3021400</propiedad><propiedad id="Rubro" claveinformativa="Rubro">INGRESOS FINANCIEROS</propiedad><propiedad id="Monto" claveinformativa="Monto"> 47012.00</propiedad></fila><fila identificador="48" orden="48"><propiedad id="Nro" claveinformativa="Nro">3021500</propiedad><propiedad id="Rubro" claveinformativa="Rubro">COSTOS FINANCIEROS</propiedad><propiedad id="Monto" claveinformativa="Monto"> -77409.00</propiedad></fila><fila identificador="49" orden="49"><propiedad id="Nro" claveinformativa="Nro">3021800</propiedad><propiedad id="Rubro" claveinformativa="Rubro">RECPAM</propiedad><propiedad id="Monto" claveinformativa="Monto"> 143240.00</propiedad></fila><fila identificador="50" orden="50"><propiedad id="Nro" claveinformativa="Nro">3021900</propiedad><propiedad id="Rubro" claveinformativa="Rubro">OTROS RESULTADOS</propiedad><propiedad id="Monto" claveinformativa="Monto"> -</propiedad></fila><fila identificador="51" orden="51"><propiedad id="Nro" claveinformativa="Nro">3029999</propiedad><propiedad id="Rubro" claveinformativa="Rubro">GANANCIA (PERDIDA) ANTES DE IMPUESTOS</propiedad><propiedad id="Monto" claveinformativa="Monto"> 258215.00</propiedad></fila><fila identificador="52" orden="52"><propiedad id="Nro" claveinformativa="Nro">3031100</propiedad><propiedad id="Rubro" claveinformativa="Rubro">INGRESO (GASTO) POR IMPUESTOS A LAS GANANCIAS</propiedad><propiedad id="Monto" claveinformativa="Monto"> -101587.00</propiedad></fila><fila identificador="53" orden="53"><propiedad id="Nro" claveinformativa="Nro">3032000</propiedad><propiedad id="Rubro" claveinformativa="Rubro">GANANCIA (PERDIDA)  DEL PERIODO / EJERCICIO OPERACIONES CONTINUADAS</propiedad><propiedad id="Monto" claveinformativa="Monto"> 156628.00</propiedad></fila><fila identificador="54" orden="54"><propiedad id="Nro" claveinformativa="Nro">3041000</propiedad><propiedad id="Rubro" claveinformativa="Rubro">GANANCIA (PERDIDA)  DEL PERIODO / EJERCICIO OPERACIONES DISCONTINUADAS</propiedad><propiedad id="Monto" claveinformativa="Monto"> -</propiedad></fila><fila identificador="55" orden="55"><propiedad id="Nro" claveinformativa="Nro">3049999</propiedad><propiedad id="Rubro" claveinformativa="Rubro">GANANCIA (PERDIDA)  DEL PERIODO / EJERCICIO</propiedad><propiedad id="Monto" claveinformativa="Monto"> 156628.00</propiedad></fila><fila identificador="56" orden="56"><propiedad id="Nro" claveinformativa="Nro">3061999</propiedad><propiedad id="Rubro" claveinformativa="Rubro">OTRO RESULTADO INTEGRAL DEL EJERCICIO / PERIODO</propiedad><propiedad id="Monto" claveinformativa="Monto"> -</propiedad></fila><fila identificador="57" orden="57"><propiedad id="Nro" claveinformativa="Nro">3099999</propiedad><propiedad id="Rubro" claveinformativa="Rubro">RESULTADO INTEGRAL TOTAL  DEL EJERCICIO / PERIODO</propiedad><propiedad id="Monto" claveinformativa="Monto"> 156628.00</propiedad></fila><fila identificador="58" orden="58"><propiedad id="Nro" claveinformativa="Nro">3241100</propiedad><propiedad id="Rubro" claveinformativa="Rubro">TOTAL CAMBIOS EN ACTIVOS Y PASIVOS OPERATIVOS</propiedad><propiedad id="Monto" claveinformativa="Monto"> 161133.00</propiedad></fila><fila identificador="59" orden="59"><propiedad id="Nro" claveinformativa="Nro">3241200</propiedad><propiedad id="Rubro" claveinformativa="Rubro">TOTAL DE ACTIVIDADES DE INVERSION</propiedad><propiedad id="Monto" claveinformativa="Monto"> -37621.00</propiedad></fila><fila identificador="60" orden="60"><propiedad id="Nro" claveinformativa="Nro">3241300</propiedad><propiedad id="Rubro" claveinformativa="Rubro">TOTAL DE ACTIVIDADES DE FINANCIACION</propiedad><propiedad id="Monto" claveinformativa="Monto"> -22554.00</propiedad></fila><fila identificador="61" orden="61"><propiedad id="Nro" claveinformativa="Nro">3240000</propiedad><propiedad id="Rubro" claveinformativa="Rubro">INCREMENTO (DISMINUCION) NETA DE EFECTIVO Y EQUIVALENTES</propiedad><propiedad id="Monto" claveinformativa="Monto"> 100958.00</propiedad></fila><fila identificador="62" orden="62"><propiedad id="Nro" claveinformativa="Nro">8000000</propiedad><propiedad id="Rubro" claveinformativa="Rubro">GANANCIA (PERDIDA) BASICA POR ACCION</propiedad><propiedad id="Monto" claveinformativa="Monto"> 271.38</propiedad></fila><fila identificador="63" orden="63"><propiedad id="Nro" claveinformativa="Nro">8000001</propiedad><propiedad id="Rubro" claveinformativa="Rubro">GANANCIAS (PERDIDA) DILUIDA POR ACCION</propiedad><propiedad id="Monto" claveinformativa="Monto"> 271.38</propiedad></fila><fila identificador="64" orden="64"><propiedad id="Nro" claveinformativa="Nro">8000002</propiedad><propiedad id="Rubro" claveinformativa="Rubro">TOTAL PATRIMONIO NETO DEL EJERCICIO ANTERIOR</propiedad><propiedad id="Monto" claveinformativa="Monto"> 475654.00</propiedad></fila><fila identificador="65" orden="65"><propiedad id="Nro" claveinformativa="Nro">8000003</propiedad><propiedad id="Rubro" claveinformativa="Rubro">EBIT</propiedad><propiedad id="Monto" claveinformativa="Monto"> 145372.00</propiedad></fila><fila identificador="66" orden="66"><propiedad id="Nro" claveinformativa="Nro">8000004</propiedad><propiedad id="Rubro" claveinformativa="Rubro">EBITDA</propiedad><propiedad id="Monto" claveinformativa="Monto"> 187752.00</propiedad></fila><fila identificador="67" orden="67"><propiedad id="Nro" claveinformativa="Nro">8000005</propiedad><propiedad id="Rubro" claveinformativa="Rubro">CAPITAL DE TRABAJO</propiedad><propiedad id="Monto" claveinformativa="Monto"> -65937.00</propiedad></fila><fila identificador="68" orden="68"><propiedad id="Nro" claveinformativa="Nro">8000006</propiedad><propiedad id="Rubro" claveinformativa="Rubro">LIQUIDEZ</propiedad><propiedad id="Monto" claveinformativa="Monto"> 0.82</propiedad></fila><fila identificador="69" orden="69"><propiedad id="Nro" claveinformativa="Nro">8000007</propiedad><propiedad id="Rubro" claveinformativa="Rubro">SOLVENCIA</propiedad><propiedad id="Monto" claveinformativa="Monto"> 1.34</propiedad></fila><fila identificador="70" orden="70"><propiedad id="Nro" claveinformativa="Nro">8000008</propiedad><propiedad id="Rubro" claveinformativa="Rubro">INMOVILIZACION DEL CAPITAL</propiedad><propiedad id="Monto" claveinformativa="Monto"> 0.73</propiedad></fila><fila identificador="71" orden="71"><propiedad id="Nro" claveinformativa="Nro">8000009</propiedad><propiedad id="Rubro" claveinformativa="Rubro">RENTABILIDAD PATRIMONIO NETO</propiedad><propiedad id="Monto" claveinformativa="Monto"> 0.28</propiedad></fila><fila identificador="72" orden="72"><propiedad id="Nro" claveinformativa="Nro">8000010</propiedad><propiedad id="Rubro" claveinformativa="Rubro">RENTABILIDAD DEL ACTIVO</propiedad><propiedad id="Monto" claveinformativa="Monto"> 0.14</propiedad></fila><fila identificador="73" orden="73"><propiedad id="Nro" claveinformativa="Nro">8000011</propiedad><propiedad id="Rubro" claveinformativa="Rubro">ENDEUDAMIENTO</propiedad><propiedad id="Monto" claveinformativa="Monto"> 0.75</propiedad></fila><fila identificador="74" orden="74"><propiedad id="Nro" claveinformativa="Nro">8000012</propiedad><propiedad id="Rubro" claveinformativa="Rubro">ENDEUDAMIENTO A CORTO PLAZO</propiedad><propiedad id="Monto" claveinformativa="Monto"> 0.57</propiedad></fila><fila identificador="75" orden="75"><propiedad id="Nro" claveinformativa="Nro">8000013</propiedad><propiedad id="Rubro" claveinformativa="Rubro">APALANCAMIENTO</propiedad><propiedad id="Monto" claveinformativa="Monto"> 1.75</propiedad></fila><fila identificador="76" orden="76"><propiedad id="Nro" claveinformativa="Nro">8000014</propiedad><propiedad id="Rubro" claveinformativa="Rubro">MARGEN NETO / VENTAS</propiedad><propiedad id="Monto" claveinformativa="Monto"> 0.17</propiedad></fila><fila identificador="77" orden="77"><propiedad id="Nro" claveinformativa="Nro">8000015</propiedad><propiedad id="Rubro" claveinformativa="Rubro">DEUDA FINANCIERA / EBITDA</propiedad><propiedad id="Monto" claveinformativa="Monto"> 0.24</propiedad></fila><fila identificador="78" orden="78"><propiedad id="Nro" claveinformativa="Nro">8000016</propiedad><propiedad id="Rubro" claveinformativa="Rubro">EBITDA / COSTOS FINANCIEROS</propiedad><propiedad id="Monto" claveinformativa="Monto"> -2.43</propiedad></fila><fila identificador="79" orden="79"><propiedad id="Nro" claveinformativa="Nro">8000017</propiedad><propiedad id="Rubro" claveinformativa="Rubro">ANALISIS DU-PONT</propiedad><propiedad id="Monto" claveinformativa="Monto"> 0.25</propiedad></fila><fila identificador="80" orden="80"><propiedad id="Nro" claveinformativa="Nro">8000027</propiedad><propiedad id="Rubro" claveinformativa="Rubro">PRUEBA ACIDA</propiedad><propiedad id="Monto" claveinformativa="Monto"> 0.82</propiedad></fila><fila identificador="81" orden="81"><propiedad id="Nro" claveinformativa="Nro">8000028</propiedad><propiedad id="Rubro" claveinformativa="Rubro">COBERTURA DE GASTOS FINANCIEROS</propiedad><propiedad id="Monto" claveinformativa="Monto"> -1.88</propiedad></fila><fila identificador="82" orden="82"><propiedad id="Nro" claveinformativa="Nro">8000029</propiedad><propiedad id="Rubro" claveinformativa="Rubro">ROTACION DE ACTIVOS</propiedad><propiedad id="Monto" claveinformativa="Monto"> 0.84</propiedad></fila></entidad><entidad visibilidad="true" id="10014" tipo="" clave="Contar Registros Estados Contables"><propiedad id="Registros" visible="true" claveinformativa="Registros">82</propiedad></entidad><entidad visibilidad="true" id="10015" tipo="" clave="Activos en Moneda Extranjera"><propiedad id="AMETieneActivosMonedaExtranjera" visible="true" claveinformativa="AMETieneActivosMonedaExtranjera" etiquetaComboWs="Si">1</propiedad></entidad></modeloDatos>';
+
+
+    var formFile = {"navegacion":{"agrupador":[{"id":"1group23823","titulo":"Estados Contables","idEntidadPropiedad":"","idPropiedad":"","idTipoAgrupador":"","icono":"","subregimen":"","orden":"","seccion":[{"id":"1section69062","idControlFormulario":"1maincontainer18827","tituloSeccion":"Identificación del Balance","tipoSeccion":"","orden":"1","ocultar":""},{"id":"1section45318","idControlFormulario":"1maincontainer47537","tituloSeccion":"Activos/Pasivos en Moneda Extranjera","tipoSeccion":"","orden":"","ocultar":""},{"id":"1section30933","idControlFormulario":"1maincontainer58066","tituloSeccion":"Método Contable","tipoSeccion":"","orden":"","ocultar":""},{"id":"1section191097","idControlFormulario":"1maincontainer16712","tituloSeccion":"Otros Datos","tipoSeccion":"","orden":"","ocultar":""},{"id":"1section110809","idControlFormulario":"1maincontainer21205","tituloSeccion":"Adjuntos","tipoSeccion":"","orden":"","ocultar":""},{"id":"1section18239","idControlFormulario":"1maincontainer19853","tituloSeccion":"Estados Contables Básicos y Principales Índices","tipoSeccion":"","orden":"","ocultar":""}]}]},"reglas":{"reglas":{"regla":[{"idEntidad":"10001","idFormulario":"","tipoRegla":"Visual","mensajeError":"","orden":"","participaEnGrid":false,"definicion":"SI($PeriodoBalance>=4,MOSTRARCONTENEDOR($FechaDesde,FILA),OCULTARCONTENEDOR($FechaDesde,FILA))","idPropiedadAsociada":"FechaDesde","disparadores":"","id":100001,"ejecutarAlInicio":"1"},{"idEntidad":"10002","idFormulario":"","tipoRegla":"Validacion","mensajeError":"El Codigo de Rubro es requerido","orden":"","participaEnGrid":true,"definicion":"SI($CodigoRubro!='',VERDADERO,FALSO)","idPropiedadAsociada":"CodigoRubro","disparadores":"","id":100002},{"idEntidad":"10002","idFormulario":"","tipoRegla":"Calculo","mensajeError":"","orden":"","participaEnGrid":false,"definicion":"$2322200=$2210999+$2210300+$2210500+$2210900+$2211999+$2212999+$2213999","idPropiedadAsociada":"2322200","disparadores":"","id":100007},{"idEntidad":"10002","idFormulario":"","tipoRegla":"Calculo","mensajeError":"","orden":"","participaEnGrid":false,"definicion":"$3019999=$3009999+$3011301+$3011300+$3011200+$3011400+$3011100+$3011600","idPropiedadAsociada":"3019999","disparadores":"","id":100013},{"idEntidad":"10001","idFormulario":"","tipoRegla":"Visual","mensajeError":"","orden":"","participaEnGrid":false,"definicion":"SI(Y($PeriodoBalance>=1,$PeriodoBalance<=3),MOSTRARCONTENEDOR($FechaCierre,FILA),OCULTARCONTENEDOR($FechaCierre,FILA))","idPropiedadAsociada":"FechaCierre","disparadores":"","id":100030,"ejecutarAlInicio":"1"},{"idEntidad":"10005","idFormulario":"","tipoRegla":"Visual","mensajeError":"","orden":"","participaEnGrid":false,"definicion":"SI($DNG_TipoDeDeuda==1,MOSTRAR($DNG_CUIT),OCULTAR($DNG_CUIT))","idPropiedadAsociada":"DNG_CUIT","disparadores":"","id":100033,"ejecutarAlInicio":"1"},{"idEntidad":"10005","idFormulario":"","tipoRegla":"Visual","mensajeError":"","orden":"","participaEnGrid":false,"definicion":"SI($DNG_TipoDeDeuda==2,MOSTRAR($DNG_Vehiculo),OCULTAR($DNG_Vehiculo))","idPropiedadAsociada":"DNG_Vehiculo","disparadores":"","id":100034,"ejecutarAlInicio":"1"},{"idEntidad":"10003","idFormulario":"","tipoRegla":"Validacion","mensajeError":"El campo #GPBPA es requerido","orden":"","participaEnGrid":false,"definicion":"SI(ESNULO($GPBPA),FALSO,VERDADERO)","idPropiedadAsociada":"GPBPA","disparadores":"","id":100042},{"idEntidad":"10002","idFormulario":"","tipoRegla":"Visual","mensajeError":"El campo #1122500 es requerido","orden":"","participaEnGrid":false,"definicion":"SI(ESNULO($GPBPA),FALSO,VERDADERO)","idPropiedadAsociada":"1122500","disparadores":"","id":100043},{"idEntidad":"10010","idFormulario":"","tipoRegla":"Validacion","mensajeError":"El Código de cuenta es requerido","orden":"","participaEnGrid":false,"definicion":"SI(ESNULO($Codigo),FALSO,VERDADERO)","idPropiedadAsociada":"Codigo","disparadores":"","id":100044},{"idEntidad":"10010","idFormulario":"","tipoRegla":"Validacion","mensajeError":"El Detalle de la cuenta es requerido","orden":"","participaEnGrid":false,"definicion":"SI(ESNULO($DetalleCuenta),FALSO,VERDADERO)","idPropiedadAsociada":"DetalleCuenta","disparadores":"","id":100045},{"idEntidad":"10010","idFormulario":"","tipoRegla":"Validacion","mensajeError":"El Importe es requerido","orden":"","participaEnGrid":false,"definicion":"SI(ESNULO($ImporteCuenta),FALSO,VERDADERO)","idPropiedadAsociada":"ImporteCuenta","disparadores":"","id":100046},{"idEntidad":"10008","idFormulario":"","tipoRegla":"Visual","mensajeError":"","orden":"","participaEnGrid":false,"definicion":"SI($ODBOfertaPublicaAcciones==1,MOSTRARCONTENEDOR($ODBCantidadAcciones,FILA),OCULTARCONTENEDOR($ODBCantidadAcciones,FILA))","idPropiedadAsociada":"ODBOfertaPublicaAcciones","disparadores":"","id":100048,"ejecutarAlInicio":"1"},{"idEntidad":"10001","idFormulario":"","tipoRegla":"Visual","mensajeError":"","orden":"","participaEnGrid":false,"definicion":"SI($PeriodoBalance>=4,MOSTRARCONTENEDOR($Detalle,FILA),OCULTARCONTENEDOR($Detalle,FILA))","idPropiedadAsociada":"Detalle","disparadores":"","id":100049,"ejecutarAlInicio":"1"},{"idEntidad":"10001","idFormulario":"","tipoRegla":"Validacion","mensajeError":"El Perído es Requerido","orden":"","participaEnGrid":false,"definicion":"SI($PeriodoBalance==0,FALSO,VERDADERO)","idPropiedadAsociada":"PeriodoBalance","disparadores":"","id":100052},{"idEntidad":"10001","idFormulario":"","tipoRegla":"Validacion","mensajeError":"La fecha de cierre es requerida","orden":"","participaEnGrid":false,"definicion":"SI(Y($PeriodoBalance==1,ESNULO($FechaCierre)),FALSO,VERDADERO)","idPropiedadAsociada":"FechaCierre","disparadores":"","id":100077},{"idEntidad":"10001","idFormulario":"","tipoRegla":"Validacion","mensajeError":"La fecha de cierre es requerida","orden":"","participaEnGrid":false,"definicion":"SI(Y($PeriodoBalance==2,ESNULO($FechaCierre)),FALSO,VERDADERO)","idPropiedadAsociada":"FechaCierre","disparadores":"","id":100078},{"idEntidad":"10001","idFormulario":"","tipoRegla":"Validacion","mensajeError":"La fecha de cierre es requerida","orden":"","participaEnGrid":false,"definicion":"SI(Y($PeriodoBalance==3,ESNULO($FechaCierre)),FALSO,VERDADERO)","idPropiedadAsociada":"FechaCierre","disparadores":"","id":100079},{"idEntidad":"10001","idFormulario":"","tipoRegla":"Validacion","mensajeError":"La fecha desde es requerida","orden":"","participaEnGrid":false,"definicion":"SI(Y($PeriodoBalance>=4,ESNULO($FechaDesde)),FALSO,VERDADERO)","idPropiedadAsociada":"FechaDesde","disparadores":"","id":100080},{"idEntidad":"10001","idFormulario":"","tipoRegla":"Validacion","mensajeError":"La fecha hasta es requerida","orden":"","participaEnGrid":false,"definicion":"SI(Y($PeriodoBalance>=4,ESNULO($FechaHasta)),FALSO,VERDADERO)","idPropiedadAsociada":"FechaHasta","disparadores":"","id":100081},{"idEntidad":"10001","idFormulario":"","tipoRegla":"Validacion","mensajeError":"El detalle es requerido","orden":"","participaEnGrid":false,"definicion":"SI(Y($PeriodoBalance>=4,ESNULO($Detalle)),FALSO,VERDADERO)","idPropiedadAsociada":"Detalle","disparadores":"","id":100082},{"idEntidad":"10001","idFormulario":"","tipoRegla":"Validacion","mensajeError":"El tipo de balance es requerido","orden":"","participaEnGrid":false,"definicion":"SI($TipoBalance==0,FALSO,VERDADERO)","idPropiedadAsociada":"TipoBalance","disparadores":"","id":100083},{"idEntidad":"10001","idFormulario":"","tipoRegla":"Validacion","mensajeError":"La moneda es requerida","orden":"","participaEnGrid":false,"definicion":"SI($Moneda==0,FALSO,VERDADERO)","idPropiedadAsociada":"Moneda","disparadores":"","id":100084},{"idEntidad":"10001","idFormulario":"","tipoRegla":"Validacion","mensajeError":"La unidad de medida es requerida","orden":"","participaEnGrid":false,"definicion":"SI($UnidadMedida==0,FALSO,VERDADERO)","idPropiedadAsociada":"UnidadMedida","disparadores":"","id":100085},{"idEntidad":"10001","idFormulario":"","tipoRegla":"Validacion","mensajeError":"Las normas contables aplicadas son requeridas","orden":"","participaEnGrid":false,"definicion":"SI($NormasContablesAplicadas==0,FALSO,VERDADERO)","idPropiedadAsociada":"NormasContablesAplicadas","disparadores":"","id":100086},{"idEntidad":"10006","idFormulario":"","tipoRegla":"Validacion","mensajeError":"La moneda es requerida","orden":"","participaEnGrid":true,"definicion":"SI($AMEMoneda==0,FALSO,VERDADERO)","idPropiedadAsociada":"AMEMoneda","disparadores":"","id":100087},{"idEntidad":"10007","idFormulario":"","tipoRegla":"Validacion","mensajeError":"El rubro es requerido","orden":"","participaEnGrid":false,"definicion":"SI($MCRubro==0,FALSO,VERDADERO)","idPropiedadAsociada":"MCRubro","disparadores":"","id":100088},{"idEntidad":"10007","idFormulario":"","tipoRegla":"Validacion","mensajeError":"El método es requerido","orden":"","participaEnGrid":false,"definicion":"SI($MCMetodo==0,FALSO,VERDADERO)","idPropiedadAsociada":"MCMetodo","disparadores":"","id":100089},{"idEntidad":"10007","idFormulario":"","tipoRegla":"Validacion","mensajeError":"La fecha de inicio de aplicación es requerida","orden":"","participaEnGrid":false,"definicion":"SI(ESNULO($MCFechaInicioAplicacion),FALSO,VERDADERO)","idPropiedadAsociada":"MCFechaInicioAplicacion","disparadores":"","id":100090},{"idEntidad":"10008","idFormulario":"","tipoRegla":"Validacion","mensajeError":"En tramite fusión es requerido","orden":"","participaEnGrid":false,"definicion":"SI($ODBEnTramiteFusion==0,FALSO,VERDADERO)","idPropiedadAsociada":"ODBEnTramiteFusion","disparadores":"","id":100091},{"idEntidad":"10008","idFormulario":"","tipoRegla":"Validacion","mensajeError":"Acciones en cartera es requerido","orden":"","participaEnGrid":false,"definicion":"SI($ODBAccionesCartera==0,FALSO,VERDADERO)","idPropiedadAsociada":"ODBAccionesCartera","disparadores":"","id":100092},{"idEntidad":"10008","idFormulario":"","tipoRegla":"Validacion","mensajeError":"Concurso preventivo es requerido","orden":"","participaEnGrid":false,"definicion":"SI($ODBConcursoPreventivo==0,FALSO,VERDADERO)","idPropiedadAsociada":"ODBConcursoPreventivo","disparadores":"","id":100093},{"idEntidad":"10008","idFormulario":"","tipoRegla":"Validacion","mensajeError":"Oferta pública de acciones es requerido","orden":"","participaEnGrid":false,"definicion":"SI($ODBOfertaPublicaAcciones==0,FALSO,VERDADERO)","idPropiedadAsociada":"ODBOfertaPublicaAcciones","disparadores":"","id":100094},{"idEntidad":"10008","idFormulario":"","tipoRegla":"Validacion","mensajeError":"La cantidad de acciones es requerida","orden":"","participaEnGrid":false,"definicion":"SI(Y($ODBOfertaPublicaAcciones==1,ESNULO($ODBCantidadAcciones)),FALSO,VERDADERO)","idPropiedadAsociada":"ODBCantidadAcciones","disparadores":"","id":100095},{"idEntidad":"10008","idFormulario":"","tipoRegla":"Validacion","mensajeError":"El precio de cotización es requerido","orden":"","participaEnGrid":false,"definicion":"SI(Y($ODBOfertaPublicaAcciones==1,ESNULO($ODBPrecioCotizacion)),FALSO,VERDADERO)","idPropiedadAsociada":"ODBPrecioCotizacion","disparadores":"","id":100096},{"idEntidad":"10008","idFormulario":"","tipoRegla":"Validacion","mensajeError":"La capitalización bursátil es requerida","orden":"","participaEnGrid":false,"definicion":"SI(Y($ODBOfertaPublicaAcciones==1,ESNULO($ODBCapitalizacionBursatil)),FALSO,VERDADERO)","idPropiedadAsociada":"ODBCapitalizacionBursatil","disparadores":"","id":100097},{"idEntidad":"10008","idFormulario":"","tipoRegla":"Validacion","mensajeError":"El porcentaje de floating es requerido","orden":"","participaEnGrid":false,"definicion":"SI(Y($ODBOfertaPublicaAcciones==1,ESNULO($ODBPorcentajeFloating)),FALSO,VERDADERO)","idPropiedadAsociada":"ODBPorcentajeFloating","disparadores":"","id":100098},{"idEntidad":"10008","idFormulario":"","tipoRegla":"Validacion","mensajeError":"La cantidad de empleados es requerida","orden":"","participaEnGrid":false,"definicion":"SI(ESNULO($ODCCantidadEmpleados),FALSO,VERDADERO)","idPropiedadAsociada":"ODCCantidadEmpleados","disparadores":"","id":100099},{"idEntidad":"10008","idFormulario":"","tipoRegla":"Validacion","mensajeError":"El CUIT del auditor es requerido","orden":"","participaEnGrid":false,"definicion":"SI(ESNULO($ODBCUITAuditor),FALSO,VERDADERO)","idPropiedadAsociada":"ODBCUITAuditor","disparadores":"","id":100100},{"idEntidad":"10008","idFormulario":"","tipoRegla":"Validacion","mensajeError":"El nombre del auditor es requerido","orden":"","participaEnGrid":false,"definicion":"SI(ESNULO($ODBNombreAuditor),FALSO,VERDADERO)","idPropiedadAsociada":"ODBNombreAuditor","disparadores":"","id":100101},{"idEntidad":"10008","idFormulario":"","tipoRegla":"Validacion","mensajeError":"El CUIT del estudio del auditor es requerido","orden":"","participaEnGrid":false,"definicion":"SI(ESNULO($ODBCUITEstudioAuditor),FALSO,VERDADERO)","idPropiedadAsociada":"ODBCUITEstudioAuditor","disparadores":"","id":100102},{"idEntidad":"10008","idFormulario":"","tipoRegla":"Validacion","mensajeError":"La razón social del estudio auditor es requerida","orden":"","participaEnGrid":false,"definicion":"SI(ESNULO($ODBRazonSocialEstudioAuditor),FALSO,VERDADERO)","idPropiedadAsociada":"ODBRazonSocialEstudioAuditor","disparadores":"","id":100103},{"idEntidad":"10009","idFormulario":"","tipoRegla":"Validacion","mensajeError":"El estado contable es requerido","orden":"","participaEnGrid":false,"definicion":"SI(ESNULO($ABEstadoContable),FALSO,VERDADERO)","idPropiedadAsociada":"ABEstadoContable","disparadores":"","id":100104},{"idEntidad":"10009","idFormulario":"","tipoRegla":"Validacion","mensajeError":"El informa del auditor independiente es requerido","orden":"","participaEnGrid":false,"definicion":"SI(ESNULO($ABInformeAuditorIndependiente),FALSO,VERDADERO)","idPropiedadAsociada":"ABInformeAuditorIndependiente","disparadores":"","id":100105},{"idEntidad":"10009","idFormulario":"","tipoRegla":"Validacion","mensajeError":"El Informe de la Comisión Fiscalizadora Síndico es requerido","orden":"","participaEnGrid":false,"definicion":"SI(ESNULO($ABInformeComisiónFiscalizadoraSíndico),FALSO,VERDADERO)","idPropiedadAsociada":"ABInformeComisiónFiscalizadoraSíndico","disparadores":"","id":100106},{"idEntidad":"10009","idFormulario":"","tipoRegla":"Validacion","mensajeError":"El informe de la comisión fiscalizadora del síndico es requerido","orden":"","participaEnGrid":false,"definicion":"SI(ESNULO($ABInformeComisionFiscalizadoraSindico),FALSO,VERDADERO)","idPropiedadAsociada":"ABInformeComisionFiscalizadoraSindico","disparadores":"","id":100107},{"idEntidad":"10008","idFormulario":"","tipoRegla":"Validacion","mensajeError":"el precio de cotización sobre beneficio neto es requerido","orden":"","participaEnGrid":false,"definicion":"SI(Y($ODBOfertaPublicaAcciones==1,ESNULO($ODBPERPrecioCotizacionSobreBeneficioNeto)),FALSO,VERDADERO)","idPropiedadAsociada":"ODBPERPrecioCotizacionSobreBeneficioNeto","disparadores":"","id":100108},{"idEntidad":"10004","idFormulario":"","tipoRegla":"Validacion","mensajeError":"El formato del CUIT ingresado es inválido","orden":"","participaEnGrid":true,"definicion":"SI(VALIDARCUIT($DGCUIT),VERDADERO,FALSO)","idPropiedadAsociada":"DGCUIT","disparadores":"","id":100115},{"idEntidad":"10008","idFormulario":"","tipoRegla":"Validacion","mensajeError":"El formato del CUIT ingresado es inválido","orden":"","participaEnGrid":true,"definicion":"SI(VALIDARCUIT($ODBCUITAuditor),VERDADERO,FALSO)","idPropiedadAsociada":"ODBCUITAuditor","disparadores":"","id":100117},{"idEntidad":"10008","idFormulario":"","tipoRegla":"Validacion","mensajeError":"El formato del CUIT ingresado es inválido","orden":"","participaEnGrid":true,"definicion":"SI(VALIDARCUIT($ODBCUITEstudioAuditor),VERDADERO,FALSO)","idPropiedadAsociada":"ODBCUITEstudioAuditor","disparadores":"","id":100118},{"idEntidad":"10010","idFormulario":"","tipoRegla":"Validacion","mensajeError":"El monto es requerido","orden":"","participaEnGrid":false,"definicion":"SI(ESNULO($Monto),FALSO,VERDADERO)","idPropiedadAsociada":"Monto","disparadores":"","id":100121},{"idEntidad":"10007","idFormulario":"","tipoRegla":"Validacion","mensajeError":"El elemento es requerido","orden":"","participaEnGrid":false,"definicion":"SI(ESNULO($MCElemento),FALSO,VERDADERO)","idPropiedadAsociada":"MCElemento","disparadores":"","id":100122},{"idEntidad":"10008","idFormulario":"","tipoRegla":"Validacion","mensajeError":"El formato del CUIT ingresado es inválido","orden":"","participaEnGrid":false,"definicion":"SI(VALIDARCUIT($ODBCuitAuditor2),VERDADERO,FALSO)\n","idPropiedadAsociada":"ODBCuitAuditor2","disparadores":"","id":100123},{"idEntidad":"10008","idFormulario":"","tipoRegla":"Validacion","mensajeError":"El formato del CUIT ingresado es inválido","orden":"","participaEnGrid":false,"definicion":"SI(VALIDARCUIT($ODBCuitEstudioAuditor2),VERDADERO,FALSO)","idPropiedadAsociada":"ODBCuitEstudioAuditor2","disparadores":"","id":100124},{"idEntidad":"10009","idFormulario":"","tipoRegla":"Validacion","mensajeError":"","orden":"","participaEnGrid":false,"definicion":"SI(ESNULO($ABMemoria),FALSO,VERDADERO)","idPropiedadAsociada":"ABMemoria","disparadores":"","id":100125},{"idEntidad":"10009","idFormulario":"","tipoRegla":"Validacion","mensajeError":"","orden":"","participaEnGrid":false,"definicion":"SI(ESNULO($ABResenaInformativa),FALSO,VERDADERO)","idPropiedadAsociada":"ABResenaInformativa","disparadores":"","id":100126},{"idEntidad":"10014","idFormulario":"","tipoRegla":"Calculo","mensajeError":"","orden":"","participaEnGrid":true,"definicion":"$Registros=CONTARREGISTROS($Nro) ","idPropiedadAsociada":"Nro","disparadores":"","id":100127,"ejecutarAlInicio":"1"},{"idEntidad":"10014","idFormulario":"","tipoRegla":"Calculo","mensajeError":"","orden":"","participaEnGrid":false,"definicion":"$Registros=SI(ESNULO($Registros),0)","idPropiedadAsociada":"Registros","disparadores":"","id":100128,"ejecutarAlInicio":"1"},{"idEntidad":"10014","idFormulario":"","tipoRegla":"Validacion","mensajeError":"DEBE TENER CARGADO UN .CSV CON REGISTROS","orden":"","participaEnGrid":false,"definicion":"SI($Registros==0,FALSO,VERDADERO)","idPropiedadAsociada":"Registros","disparadores":"","id":100129,"ejecutarAlInicio":"1"},{"idEntidad":"10014","idFormulario":"","tipoRegla":"Visual","mensajeError":"","orden":"","participaEnGrid":false,"definicion":"SI($Registros!=-1,INHABILITAR($Registros),INHABILITAR($Registros))","idPropiedadAsociada":"Registros","disparadores":"","id":100130,"ejecutarAlInicio":"1"},{"idEntidad":"10015","idFormulario":"","tipoRegla":"Validacion","mensajeError":"Debe indicar si posee activos en moneda extranjera","orden":"","participaEnGrid":false,"definicion":"SI($AMETieneActivosMonedaExtranjera==0,FALSO,VERDADERO)","idPropiedadAsociada":"AMETieneActivosMonedaExtranjera","disparadores":"","id":100131}]},"propiedades":{"propiedad":[{"idEntidad":10002,"idFormulario":"","idRegla":100002,"idEntidadPropiedad":10002,"idPropiedad":"CodigoRubro","ejecutarRegla":"1","id":"CodigoRubro10002"},{"idEntidad":10002,"idFormulario":"","idRegla":100007,"idEntidadPropiedad":10002,"idPropiedad":"2322200","ejecutarRegla":"0","id":"232220010002"},{"idEntidad":10002,"idFormulario":"","idRegla":100007,"idEntidadPropiedad":10002,"idPropiedad":"2210999","ejecutarRegla":"1","id":"221099910002"},{"idEntidad":10002,"idFormulario":"","idRegla":100007,"idEntidadPropiedad":10002,"idPropiedad":"2210300","ejecutarRegla":"1","id":"221030010002"},{"idEntidad":10002,"idFormulario":"","idRegla":100007,"idEntidadPropiedad":10002,"idPropiedad":"2210500","ejecutarRegla":"1","id":"221050010002"},{"idEntidad":10002,"idFormulario":"","idRegla":100007,"idEntidadPropiedad":10002,"idPropiedad":"2210900","ejecutarRegla":"1","id":"221090010002"},{"idEntidad":10002,"idFormulario":"","idRegla":100007,"idEntidadPropiedad":10002,"idPropiedad":"2211999","ejecutarRegla":"1","id":"221199910002"},{"idEntidad":10002,"idFormulario":"","idRegla":100007,"idEntidadPropiedad":10002,"idPropiedad":"2212999","ejecutarRegla":"1","id":"221299910002"},{"idEntidad":10002,"idFormulario":"","idRegla":100007,"idEntidadPropiedad":10002,"idPropiedad":"2213999","ejecutarRegla":"1","id":"221399910002"},{"idEntidad":10002,"idFormulario":"","idRegla":100013,"idEntidadPropiedad":10002,"idPropiedad":"3019999","ejecutarRegla":"0","id":"301999910002"},{"idEntidad":10002,"idFormulario":"","idRegla":100013,"idEntidadPropiedad":10002,"idPropiedad":"3009999","ejecutarRegla":"1","id":"300999910002"},{"idEntidad":10002,"idFormulario":"","idRegla":100013,"idEntidadPropiedad":10002,"idPropiedad":"3011301","ejecutarRegla":"1","id":"301130110002"},{"idEntidad":10002,"idFormulario":"","idRegla":100013,"idEntidadPropiedad":10002,"idPropiedad":"3011300","ejecutarRegla":"1","id":"301130010002"},{"idEntidad":10002,"idFormulario":"","idRegla":100013,"idEntidadPropiedad":10002,"idPropiedad":"3011200","ejecutarRegla":"1","id":"301120010002"},{"idEntidad":10002,"idFormulario":"","idRegla":100013,"idEntidadPropiedad":10002,"idPropiedad":"3011400","ejecutarRegla":"1","id":"301140010002"},{"idEntidad":10002,"idFormulario":"","idRegla":100013,"idEntidadPropiedad":10002,"idPropiedad":"3011100","ejecutarRegla":"1","id":"301110010002"},{"idEntidad":10002,"idFormulario":"","idRegla":100013,"idEntidadPropiedad":10002,"idPropiedad":"3011600","ejecutarRegla":"1","id":"301160010002"},{"idEntidad":10001,"idFormulario":"","idRegla":100030,"idEntidadPropiedad":10001,"idPropiedad":"PeriodoBalance","ejecutarRegla":"1","id":"PeriodoBalance10001"},{"idEntidad":10001,"idFormulario":"","idRegla":100030,"idEntidadPropiedad":10001,"idPropiedad":"FechaCierre","ejecutarRegla":"1","id":"FechaCierre10001"},{"idEntidad":10001,"idFormulario":"","idRegla":100001,"idEntidadPropiedad":10001,"idPropiedad":"PeriodoBalance","ejecutarRegla":"1","id":"PeriodoBalance10001"},{"idEntidad":10001,"idFormulario":"","idRegla":100001,"idEntidadPropiedad":10001,"idPropiedad":"FechaDesde","ejecutarRegla":"1","id":"FechaDesde10001"},{"idEntidad":10005,"idFormulario":"","idRegla":100033,"idEntidadPropiedad":10005,"idPropiedad":"DNG_TipoDeDeuda","ejecutarRegla":"1","id":"DNG_TipoDeDeuda10005"},{"idEntidad":10005,"idFormulario":"","idRegla":100033,"idEntidadPropiedad":10005,"idPropiedad":"DNG_CUIT","ejecutarRegla":"1","id":"DNG_CUIT10005"},{"idEntidad":10005,"idFormulario":"","idRegla":100034,"idEntidadPropiedad":10005,"idPropiedad":"DNG_TipoDeDeuda","ejecutarRegla":"1","id":"DNG_TipoDeDeuda10005"},{"idEntidad":10005,"idFormulario":"","idRegla":100034,"idEntidadPropiedad":10005,"idPropiedad":"DNG_Vehiculo","ejecutarRegla":"1","id":"DNG_Vehiculo10005"},{"idEntidad":10003,"idFormulario":"","idRegla":100042,"idEntidadPropiedad":10003,"idPropiedad":"GPBPA","ejecutarRegla":"1","id":"GPBPA10003"},{"idEntidad":10003,"idFormulario":"","idRegla":100043,"idEntidadPropiedad":10003,"idPropiedad":"GPBPA","ejecutarRegla":"1","id":"GPBPA10003"},{"idEntidad":10010,"idFormulario":"","idRegla":100044,"idEntidadPropiedad":10010,"idPropiedad":"Codigo","ejecutarRegla":"1","id":"Codigo10010"},{"idEntidad":10010,"idFormulario":"","idRegla":100045,"idEntidadPropiedad":10010,"idPropiedad":"DetalleCuenta","ejecutarRegla":"1","id":"DetalleCuenta10010"},{"idEntidad":10010,"idFormulario":"","idRegla":100046,"idEntidadPropiedad":10010,"idPropiedad":"ImporteCuenta","ejecutarRegla":"1","id":"ImporteCuenta10010"},{"idEntidad":10001,"idFormulario":"","idRegla":100049,"idEntidadPropiedad":10001,"idPropiedad":"PeriodoBalance","ejecutarRegla":"1","id":"PeriodoBalance10001"},{"idEntidad":10001,"idFormulario":"","idRegla":100049,"idEntidadPropiedad":10001,"idPropiedad":"Detalle","ejecutarRegla":"1","id":"Detalle10001"},{"idEntidad":10001,"idFormulario":"","idRegla":100052,"idEntidadPropiedad":10001,"idPropiedad":"PeriodoBalance","ejecutarRegla":"1","id":"PeriodoBalance10001"},{"idEntidad":10001,"idFormulario":"","idRegla":100077,"idEntidadPropiedad":10001,"idPropiedad":"PeriodoBalance","ejecutarRegla":"1","id":"PeriodoBalance10001"},{"idEntidad":10001,"idFormulario":"","idRegla":100077,"idEntidadPropiedad":10001,"idPropiedad":"FechaCierre","ejecutarRegla":"1","id":"FechaCierre10001"},{"idEntidad":10001,"idFormulario":"","idRegla":100078,"idEntidadPropiedad":10001,"idPropiedad":"PeriodoBalance","ejecutarRegla":"1","id":"PeriodoBalance10001"},{"idEntidad":10001,"idFormulario":"","idRegla":100078,"idEntidadPropiedad":10001,"idPropiedad":"FechaCierre","ejecutarRegla":"1","id":"FechaCierre10001"},{"idEntidad":10001,"idFormulario":"","idRegla":100079,"idEntidadPropiedad":10001,"idPropiedad":"PeriodoBalance","ejecutarRegla":"1","id":"PeriodoBalance10001"},{"idEntidad":10001,"idFormulario":"","idRegla":100079,"idEntidadPropiedad":10001,"idPropiedad":"FechaCierre","ejecutarRegla":"1","id":"FechaCierre10001"},{"idEntidad":10001,"idFormulario":"","idRegla":100080,"idEntidadPropiedad":10001,"idPropiedad":"PeriodoBalance","ejecutarRegla":"1","id":"PeriodoBalance10001"},{"idEntidad":10001,"idFormulario":"","idRegla":100080,"idEntidadPropiedad":10001,"idPropiedad":"FechaDesde","ejecutarRegla":"1","id":"FechaDesde10001"},{"idEntidad":10001,"idFormulario":"","idRegla":100081,"idEntidadPropiedad":10001,"idPropiedad":"PeriodoBalance","ejecutarRegla":"1","id":"PeriodoBalance10001"},{"idEntidad":10001,"idFormulario":"","idRegla":100081,"idEntidadPropiedad":10001,"idPropiedad":"FechaHasta","ejecutarRegla":"1","id":"FechaHasta10001"},{"idEntidad":10001,"idFormulario":"","idRegla":100082,"idEntidadPropiedad":10001,"idPropiedad":"PeriodoBalance","ejecutarRegla":"1","id":"PeriodoBalance10001"},{"idEntidad":10001,"idFormulario":"","idRegla":100082,"idEntidadPropiedad":10001,"idPropiedad":"Detalle","ejecutarRegla":"1","id":"Detalle10001"},{"idEntidad":10001,"idFormulario":"","idRegla":100083,"idEntidadPropiedad":10001,"idPropiedad":"TipoBalance","ejecutarRegla":"1","id":"TipoBalance10001"},{"idEntidad":10001,"idFormulario":"","idRegla":100084,"idEntidadPropiedad":10001,"idPropiedad":"Moneda","ejecutarRegla":"1","id":"Moneda10001"},{"idEntidad":10001,"idFormulario":"","idRegla":100085,"idEntidadPropiedad":10001,"idPropiedad":"UnidadMedida","ejecutarRegla":"1","id":"UnidadMedida10001"},{"idEntidad":10001,"idFormulario":"","idRegla":100086,"idEntidadPropiedad":10001,"idPropiedad":"NormasContablesAplicadas","ejecutarRegla":"1","id":"NormasContablesAplicadas10001"},{"idEntidad":10006,"idFormulario":"","idRegla":100087,"idEntidadPropiedad":10006,"idPropiedad":"AMEMoneda","ejecutarRegla":"1","id":"AMEMoneda10006"},{"idEntidad":10007,"idFormulario":"","idRegla":100089,"idEntidadPropiedad":10007,"idPropiedad":"MCMetodo","ejecutarRegla":"1","id":"MCMetodo10007"},{"idEntidad":10007,"idFormulario":"","idRegla":100088,"idEntidadPropiedad":10007,"idPropiedad":"MCRubro","ejecutarRegla":"1","id":"MCRubro10007"},{"idEntidad":10007,"idFormulario":"","idRegla":100090,"idEntidadPropiedad":10007,"idPropiedad":"MCFechaInicioAplicacion","ejecutarRegla":"1","id":"MCFechaInicioAplicacion10007"},{"idEntidad":10008,"idFormulario":"","idRegla":100091,"idEntidadPropiedad":10008,"idPropiedad":"ODBEnTramiteFusion","ejecutarRegla":"1","id":"ODBEnTramiteFusion10008"},{"idEntidad":10008,"idFormulario":"","idRegla":100092,"idEntidadPropiedad":10008,"idPropiedad":"ODBAccionesCartera","ejecutarRegla":"1","id":"ODBAccionesCartera10008"},{"idEntidad":10008,"idFormulario":"","idRegla":100093,"idEntidadPropiedad":10008,"idPropiedad":"ODBConcursoPreventivo","ejecutarRegla":"1","id":"ODBConcursoPreventivo10008"},{"idEntidad":10008,"idFormulario":"","idRegla":100094,"idEntidadPropiedad":10008,"idPropiedad":"ODBOfertaPublicaAcciones","ejecutarRegla":"1","id":"ODBOfertaPublicaAcciones10008"},{"idEntidad":10008,"idFormulario":"","idRegla":100048,"idEntidadPropiedad":10008,"idPropiedad":"ODBOfertaPublicaAcciones","ejecutarRegla":"1","id":"ODBOfertaPublicaAcciones10008"},{"idEntidad":10008,"idFormulario":"","idRegla":100048,"idEntidadPropiedad":10008,"idPropiedad":"ODBCantidadAcciones","ejecutarRegla":"1","id":"ODBCantidadAcciones10008"},{"idEntidad":10008,"idFormulario":"","idRegla":100095,"idEntidadPropiedad":10008,"idPropiedad":"ODBOfertaPublicaAcciones","ejecutarRegla":"1","id":"ODBOfertaPublicaAcciones10008"},{"idEntidad":10008,"idFormulario":"","idRegla":100095,"idEntidadPropiedad":10008,"idPropiedad":"ODBCantidadAcciones","ejecutarRegla":"1","id":"ODBCantidadAcciones10008"},{"idEntidad":10008,"idFormulario":"","idRegla":100096,"idEntidadPropiedad":10008,"idPropiedad":"ODBOfertaPublicaAcciones","ejecutarRegla":"1","id":"ODBOfertaPublicaAcciones10008"},{"idEntidad":10008,"idFormulario":"","idRegla":100096,"idEntidadPropiedad":10008,"idPropiedad":"ODBPrecioCotizacion","ejecutarRegla":"1","id":"ODBPrecioCotizacion10008"},{"idEntidad":10008,"idFormulario":"","idRegla":100097,"idEntidadPropiedad":10008,"idPropiedad":"ODBOfertaPublicaAcciones","ejecutarRegla":"1","id":"ODBOfertaPublicaAcciones10008"},{"idEntidad":10008,"idFormulario":"","idRegla":100097,"idEntidadPropiedad":10008,"idPropiedad":"ODBCapitalizacionBursatil","ejecutarRegla":"1","id":"ODBCapitalizacionBursatil10008"},{"idEntidad":10008,"idFormulario":"","idRegla":100098,"idEntidadPropiedad":10008,"idPropiedad":"ODBOfertaPublicaAcciones","ejecutarRegla":"1","id":"ODBOfertaPublicaAcciones10008"},{"idEntidad":10008,"idFormulario":"","idRegla":100098,"idEntidadPropiedad":10008,"idPropiedad":"ODBPorcentajeFloating","ejecutarRegla":"1","id":"ODBPorcentajeFloating10008"},{"idEntidad":10008,"idFormulario":"","idRegla":100099,"idEntidadPropiedad":10008,"idPropiedad":"ODCCantidadEmpleados","ejecutarRegla":"1","id":"ODCCantidadEmpleados10008"},{"idEntidad":10008,"idFormulario":"","idRegla":100100,"idEntidadPropiedad":10008,"idPropiedad":"ODBCUITAuditor","ejecutarRegla":"1","id":"ODBCUITAuditor10008"},{"idEntidad":10008,"idFormulario":"","idRegla":100101,"idEntidadPropiedad":10008,"idPropiedad":"ODBNombreAuditor","ejecutarRegla":"1","id":"ODBNombreAuditor10008"},{"idEntidad":10008,"idFormulario":"","idRegla":100102,"idEntidadPropiedad":10008,"idPropiedad":"ODBCUITEstudioAuditor","ejecutarRegla":"1","id":"ODBCUITEstudioAuditor10008"},{"idEntidad":10008,"idFormulario":"","idRegla":100103,"idEntidadPropiedad":10008,"idPropiedad":"ODBRazonSocialEstudioAuditor","ejecutarRegla":"1","id":"ODBRazonSocialEstudioAuditor10008"},{"idEntidad":10009,"idFormulario":"","idRegla":100104,"idEntidadPropiedad":10009,"idPropiedad":"ABEstadoContable","ejecutarRegla":"1","id":"ABEstadoContable10009"},{"idEntidad":10009,"idFormulario":"","idRegla":100105,"idEntidadPropiedad":10009,"idPropiedad":"ABInformeAuditorIndependiente","ejecutarRegla":"1","id":"ABInformeAuditorIndependiente10009"},{"idEntidad":10009,"idFormulario":"","idRegla":100106,"idEntidadPropiedad":10009,"idPropiedad":"ABInformeComisiónFiscalizadoraSíndico","ejecutarRegla":"1","id":"ABInformeComisiónFiscalizadoraSíndico10009"},{"idEntidad":10009,"idFormulario":"","idRegla":100107,"idEntidadPropiedad":10009,"idPropiedad":"ABInformeComisionFiscalizadoraSindico","ejecutarRegla":"1","id":"ABInformeComisionFiscalizadoraSindico10009"},{"idEntidad":10008,"idFormulario":"","idRegla":100108,"idEntidadPropiedad":10008,"idPropiedad":"ODBOfertaPublicaAcciones","ejecutarRegla":"1","id":"ODBOfertaPublicaAcciones10008"},{"idEntidad":10008,"idFormulario":"","idRegla":100108,"idEntidadPropiedad":10008,"idPropiedad":"ODBPERPrecioCotizacionSobreBeneficioNeto","ejecutarRegla":"1","id":"ODBPERPrecioCotizacionSobreBeneficioNeto10008"},{"idEntidad":10008,"idFormulario":"","idRegla":100118,"idEntidadPropiedad":10008,"idPropiedad":"ODBCUITEstudioAuditor","ejecutarRegla":"1","id":"ODBCUITEstudioAuditor10008"},{"idEntidad":10008,"idFormulario":"","idRegla":100117,"idEntidadPropiedad":10008,"idPropiedad":"ODBCUITAuditor","ejecutarRegla":"1","id":"ODBCUITAuditor10008"},{"idEntidad":10004,"idFormulario":"","idRegla":100115,"idEntidadPropiedad":10004,"idPropiedad":"DGCUIT","ejecutarRegla":"1","id":"DGCUIT10004"},{"idEntidad":10010,"idFormulario":"","idRegla":100121,"idEntidadPropiedad":10010,"idPropiedad":"Monto","ejecutarRegla":"1","id":"Monto10010"},{"idEntidad":10007,"idFormulario":"","idRegla":100122,"idEntidadPropiedad":10007,"idPropiedad":"MCElemento","ejecutarRegla":"1","id":"MCElemento10007"},{"idEntidad":10008,"idFormulario":"","idRegla":100123,"idEntidadPropiedad":10008,"idPropiedad":"ODBCuitAuditor2","ejecutarRegla":"1","id":"ODBCuitAuditor210008"},{"idEntidad":10008,"idFormulario":"","idRegla":100124,"idEntidadPropiedad":10008,"idPropiedad":"ODBCuitEstudioAuditor2","ejecutarRegla":"1","id":"ODBCuitEstudioAuditor210008"},{"idEntidad":10009,"idFormulario":"","idRegla":100125,"idEntidadPropiedad":10009,"idPropiedad":"ABMemoria","ejecutarRegla":"1","id":"ABMemoria10009"},{"idEntidad":10009,"idFormulario":"","idRegla":100126,"idEntidadPropiedad":10009,"idPropiedad":"ABResenaInformativa","ejecutarRegla":"1","id":"ABResenaInformativa10009"},{"idEntidad":10014,"idFormulario":"","idRegla":100127,"idEntidadPropiedad":10014,"idPropiedad":"Registros","ejecutarRegla":"0","id":"Registros10014"},{"idEntidad":10013,"idFormulario":"","idRegla":100127,"idEntidadPropiedad":10013,"idPropiedad":"Nro","ejecutarRegla":"1","id":"Nro10013"},{"idEntidad":10014,"idFormulario":"","idRegla":100128,"idEntidadPropiedad":10014,"idPropiedad":"Registros","ejecutarRegla":"1","id":"Registros10014"},{"idEntidad":10014,"idFormulario":"","idRegla":100129,"idEntidadPropiedad":10014,"idPropiedad":"Registros","ejecutarRegla":"1","id":"Registros10014"},{"idEntidad":10014,"idFormulario":"","idRegla":100130,"idEntidadPropiedad":10014,"idPropiedad":"Registros","ejecutarRegla":"1","id":"Registros10014"},{"idEntidad":10015,"idFormulario":"","idRegla":100131,"idEntidadPropiedad":10015,"idPropiedad":"AMETieneActivosMonedaExtranjera","ejecutarRegla":"1","id":"AMETieneActivosMonedaExtranjera10015"}]}},"diagramacion":[{"control":{"id":"1maincontainer18827","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column128581","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1row52776","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column18763","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1select18889","tipoControl":"CuadroCombinado","idEntidadPropiedad":"10001","idPropiedad":"PeriodoBalance","orden":"1","atributos":{"atributo":[{"nombre":"Obligatorio","valor":"1"}]},"controles":{"control":[]}}]}},{"id":"1column37691","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[]}}]}},{"id":"1row26910","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column18344","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1date17466","tipoControl":"ControlFecha","idEntidadPropiedad":"10001","idPropiedad":"FechaCierre","orden":"","atributos":{"atributo":[{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}}]}},{"id":"1column563863","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[]}}]}},{"id":"1row30676","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column221145","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1date26266","tipoControl":"ControlFecha","idEntidadPropiedad":"10001","idPropiedad":"FechaDesde","orden":"3","atributos":{"atributo":[{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}}]}},{"id":"1column63881","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1date16474","tipoControl":"ControlFecha","idEntidadPropiedad":"10001","idPropiedad":"FechaHasta","orden":"4","atributos":{"atributo":[{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}}]}}]}},{"id":"1row18923","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column53785","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1textbox27622","tipoControl":"CuadroTexto","idEntidadPropiedad":"10001","idPropiedad":"Detalle","orden":"5","atributos":{"atributo":[{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}}]}}]}},{"id":"1row18745","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column149001","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1select36921","tipoControl":"CuadroCombinado","idEntidadPropiedad":"10001","idPropiedad":"TipoBalance","orden":"6","atributos":{"atributo":[{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}}]}},{"id":"1column48473","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1select22363","tipoControl":"CuadroCombinado","idEntidadPropiedad":"10001","idPropiedad":"Moneda","orden":"7","atributos":{"atributo":[{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}}]}},{"id":"1column21729","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1select111599","tipoControl":"CuadroCombinado","idEntidadPropiedad":"10001","idPropiedad":"UnidadMedida","orden":"8","atributos":{"atributo":[{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}}]}},{"id":"1column16626","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1select34258","tipoControl":"CuadroCombinado","idEntidadPropiedad":"10001","idPropiedad":"NormasContablesAplicadas","orden":"9","atributos":{"atributo":[{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}}]}}]}}]}}]}}},{"control":{"id":"1maincontainer47537","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column19689","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1row13605445","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column18255","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1select33401","tipoControl":"CuadroCombinado","idEntidadPropiedad":"10015","idPropiedad":"AMETieneActivosMonedaExtranjera","orden":"","atributos":{"atributo":[{"nombre":"Obligatorio","valor":"1"}]},"controles":{"control":[]}}]}},{"id":"1column46312","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[]}},{"id":"1column44610","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[]}},{"id":"1column180801","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[]}}]}},{"id":"1row22635","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column31367","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1gridformedit55853","tipoControl":"FormularioGridEdicion","idEntidadPropiedad":"10006","idPropiedad":"AMEMoneda","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column53405","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1row26246","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column17641","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1select38986","tipoControl":"CuadroCombinado","idEntidadPropiedad":"10006","idPropiedad":"AMEMoneda","orden":"","atributos":{"atributo":[{"nombre":"MuestraEnGrid","valor":""},{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}}]}},{"id":"1column19588","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[]}}]}},{"id":"1row20166","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column20518","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1decimal43351","tipoControl":"ControlDecimal","idEntidadPropiedad":"10006","idPropiedad":"AMEActivoInversiones","orden":"","atributos":{"atributo":[{"nombre":"MostrarDecimales","valor":"2"},{"nombre":"MuestraEnGrid","valor":""}]},"controles":{"control":[]}}]}},{"id":"1column19317","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1decimal17208","tipoControl":"ControlDecimal","idEntidadPropiedad":"10006","idPropiedad":"AMEActivoCreditosComerciales","orden":"","atributos":{"atributo":[{"nombre":"MostrarDecimales","valor":"2"},{"nombre":"MuestraEnGrid","valor":""}]},"controles":{"control":[]}}]}},{"id":"1column421596","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1decimal65549","tipoControl":"ControlDecimal","idEntidadPropiedad":"10006","idPropiedad":"AMEActivoExistencias","orden":"","atributos":{"atributo":[{"nombre":"MostrarDecimales","valor":"2"},{"nombre":"MuestraEnGrid","valor":""}]},"controles":{"control":[]}}]}}]}},{"id":"1row17526","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column22847","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1decimal21066","tipoControl":"ControlDecimal","idEntidadPropiedad":"10006","idPropiedad":"AMEPasivoDeudasComerciales","orden":"","atributos":{"atributo":[{"nombre":"MostrarDecimales","valor":"2"},{"nombre":"MuestraEnGrid","valor":""}]},"controles":{"control":[]}}]}},{"id":"1column16614","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1decimal22690","tipoControl":"ControlDecimal","idEntidadPropiedad":"10006","idPropiedad":"AMEPasivoPrestamosBancarios","orden":"","atributos":{"atributo":[{"nombre":"MostrarDecimales","valor":"2"},{"nombre":"MuestraEnGrid","valor":""}]},"controles":{"control":[]}}]}},{"id":"1column23030","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1decimal23340","tipoControl":"ControlDecimal","idEntidadPropiedad":"10006","idPropiedad":"AMEPasivoOtrasDeudas","orden":"","atributos":{"atributo":[{"nombre":"MostrarDecimales","valor":"2"},{"nombre":"MuestraEnGrid","valor":""}]},"controles":{"control":[]}}]}}]}}]}},{"id":"1hidden23209","tipoControl":"Oculto","idEntidadPropiedad":"10006","idPropiedad":"AMEMoneda","orden":"","atributos":{"atributo":[]},"controles":{"control":[]}}]}}]}}]}}]}}]}}},{"control":{"id":"1maincontainer58066","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column20195","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1gridformedit30465","tipoControl":"FormularioGridEdicion","idEntidadPropiedad":"10007","idPropiedad":"MCRubro","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column16447","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1row27899","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column17185","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1select25185","tipoControl":"CuadroCombinado","idEntidadPropiedad":"10007","idPropiedad":"MCRubro","orden":"","atributos":{"atributo":[{"nombre":"MuestraEnGrid","valor":""},{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}}]}},{"id":"1column15745","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1select23788","tipoControl":"CuadroCombinado","idEntidadPropiedad":"10007","idPropiedad":"MCMetodo","orden":"","atributos":{"atributo":[{"nombre":"MuestraEnGrid","valor":""},{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}}]}},{"id":"1column19536","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1date37851","tipoControl":"ControlFecha","idEntidadPropiedad":"10007","idPropiedad":"MCFechaInicioAplicacion","orden":"","atributos":{"atributo":[{"nombre":"MuestraEnGrid","valor":""},{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}}]}}]}},{"id":"1row52957","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column96856","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1textbox16398","tipoControl":"CuadroTexto","idEntidadPropiedad":"10007","idPropiedad":"MCElemento","orden":"","atributos":{"atributo":[{"nombre":"Obligatorio","valor":"1"}]},"controles":{"control":[]}}]}}]}}]}}]}}]}}]}}},{"control":{"id":"1maincontainer16712","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column21403","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1row22097","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column26111","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1select99591","tipoControl":"CuadroCombinado","idEntidadPropiedad":"10008","idPropiedad":"ODBEnTramiteFusion","orden":"","atributos":{"atributo":[{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}}]}},{"id":"1column40423","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1select21271","tipoControl":"CuadroCombinado","idEntidadPropiedad":"10008","idPropiedad":"ODBAccionesCartera","orden":"","atributos":{"atributo":[{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}}]}},{"id":"1column44403","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1select18901","tipoControl":"CuadroCombinado","idEntidadPropiedad":"10008","idPropiedad":"ODBConcursoPreventivo","orden":"","atributos":{"atributo":[{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}}]}},{"id":"1column296848","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1select496788","tipoControl":"CuadroCombinado","idEntidadPropiedad":"10008","idPropiedad":"ODBOfertaPublicaAcciones","orden":"","atributos":{"atributo":[{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}}]}}]}},{"id":"1row16916","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column213058","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1decimal21466","tipoControl":"ControlDecimal","idEntidadPropiedad":"10008","idPropiedad":"ODBCantidadAcciones","orden":"","atributos":{"atributo":[{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}},{"id":"1decimal61378","tipoControl":"ControlDecimal","idEntidadPropiedad":"10008","idPropiedad":"ODBPrecioCotizacion","orden":"","atributos":{"atributo":[{"nombre":"MostrarDecimales","valor":"2"},{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}},{"id":"1decimal42743","tipoControl":"ControlDecimal","idEntidadPropiedad":"10008","idPropiedad":"ODBPERPrecioCotizacionSobreBeneficioNeto","orden":"","atributos":{"atributo":[{"nombre":"MostrarDecimales","valor":"2"},{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}},{"id":"1decimal17252","tipoControl":"ControlDecimal","idEntidadPropiedad":"10008","idPropiedad":"ODBCapitalizacionBursatil","orden":"","atributos":{"atributo":[{"nombre":"MostrarDecimales","valor":"2"},{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}},{"id":"1decimal46286","tipoControl":"ControlDecimal","idEntidadPropiedad":"10008","idPropiedad":"ODBPorcentajeFloating","orden":"","atributos":{"atributo":[{"nombre":"MostrarDecimales","valor":"2"},{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}}]}},{"id":"1column15375","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[]}}]}},{"id":"1row25534","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column15618","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1textbox16696","tipoControl":"CuadroTexto","idEntidadPropiedad":"10008","idPropiedad":"ODCCantidadEmpleados","orden":"","atributos":{"atributo":[{"nombre":"SoloNumerosPositivos","valor":""},{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}}]}},{"id":"1column23307","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[]}}]}},{"id":"1row68141","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column22841","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1textbox89430","tipoControl":"CuadroTexto","idEntidadPropiedad":"10008","idPropiedad":"ODBCUITAuditor","orden":"","atributos":{"atributo":[{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}}]}},{"id":"1column31356","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1textbox81475","tipoControl":"CuadroTexto","idEntidadPropiedad":"10008","idPropiedad":"ODBNombreAuditor","orden":"","atributos":{"atributo":[{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}}]}}]}},{"id":"1row21843","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column18557","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1textbox33795","tipoControl":"CuadroTexto","idEntidadPropiedad":"10008","idPropiedad":"ODBCUITEstudioAuditor","orden":"","atributos":{"atributo":[{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}}]}},{"id":"1column1128901","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1textbox74977","tipoControl":"CuadroTexto","idEntidadPropiedad":"10008","idPropiedad":"ODBRazonSocialEstudioAuditor","orden":"","atributos":{"atributo":[{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}}]}}]}},{"id":"1row33837","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column92441","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1textbox16296","tipoControl":"CuadroTexto","idEntidadPropiedad":"10008","idPropiedad":"ODBCuitAuditor2","orden":"","atributos":{"atributo":[]},"controles":{"control":[]}}]}},{"id":"1column22960","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1textbox24461","tipoControl":"CuadroTexto","idEntidadPropiedad":"10008","idPropiedad":"ODBNombreAuditor2","orden":"","atributos":{"atributo":[]},"controles":{"control":[]}}]}}]}},{"id":"1row20162","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column18653","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1textbox45031","tipoControl":"CuadroTexto","idEntidadPropiedad":"10008","idPropiedad":"ODBCuitEstudioAuditor2","orden":"","atributos":{"atributo":[]},"controles":{"control":[]}}]}},{"id":"1column24066","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1textbox22020","tipoControl":"CuadroTexto","idEntidadPropiedad":"10008","idPropiedad":"ODBRazonSocialEstudioAuditor2","orden":"","atributos":{"atributo":[]},"controles":{"control":[]}}]}}]}}]}}]}}},{"control":{"id":"1maincontainer21205","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column22111","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1row35514","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column17771","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1textlabel115426","tipoControl":"EtiquetaTexto","idEntidadPropiedad":"10009","idPropiedad":"Etiqueta","orden":"","atributos":{"atributo":[]},"controles":{"control":[]}}]}}]}},{"id":"1row22275","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column51276","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1uploader90489","tipoControl":"Uploader","idEntidadPropiedad":"10009","idPropiedad":"ABEstadoContable","orden":"","atributos":{"atributo":[{"nombre":"NumeroArchivos","valor":"1"},{"nombre":"Extensiones","valor":".pdf"},{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}}]}}]}},{"id":"1row21497","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column220674","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1uploader17219","tipoControl":"Uploader","idEntidadPropiedad":"10009","idPropiedad":"ABMemoria","orden":"","atributos":{"atributo":[{"nombre":"Extensiones","valor":".pdf"},{"nombre":"NumeroArchivos","valor":"1"},{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}}]}}]}},{"id":"1row16468","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column66660","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1uploader16112","tipoControl":"Uploader","idEntidadPropiedad":"10009","idPropiedad":"ABResenaInformativa","orden":"","atributos":{"atributo":[{"nombre":"Extensiones","valor":".pdf"},{"nombre":"NumeroArchivos","valor":"1"},{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}}]}}]}},{"id":"1row19446","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column24769","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1uploader15873","tipoControl":"Uploader","idEntidadPropiedad":"10009","idPropiedad":"ABInformeAuditorIndependiente","orden":"","atributos":{"atributo":[{"nombre":"Extensiones","valor":".pdf"},{"nombre":"NumeroArchivos","valor":"1"},{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}}]}}]}},{"id":"1row19155","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column18930","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1uploader16065","tipoControl":"Uploader","idEntidadPropiedad":"10009","idPropiedad":"ABInformeComisionFiscalizadoraSindico","orden":"","atributos":{"atributo":[{"nombre":"Extensiones","valor":".pdf"},{"nombre":"NumeroArchivos","valor":"1"},{"nombre":"Obligatorio","valor":""}]},"controles":{"control":[]}}]}}]}}]}}]}}},{"control":{"id":"1maincontainer19853","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column71887","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1row1353720","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column139696","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1title61197","tipoControl":"Titulo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[{"nombre":"TituloCorto","valor":" IMPORTANTE: Recuerde que los costos, gastos y valores negativos deben ingresarse con el signo negativo (-)"},{"nombre":"TituloLargo","valor":" IMPORTANTE: Recuerde que los costos, gastos y valores negativos deben ingresarse con el signo negativo (-)"}]},"controles":{"control":[]}}]}}]}},{"id":"1row28952","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column22470","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1gridformedit6130388","tipoControl":"FormularioGridEdicion","idEntidadPropiedad":"10013","idPropiedad":"Nro","orden":"","atributos":{"atributo":[{"nombre":"CargaMasiva","valor":"EECC_NIIF.xlsx"},{"nombre":"SinCargaManual","valor":""}]},"controles":{"control":[{"id":"1column28127","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1row20997","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column16837","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1textbox46396","tipoControl":"CuadroTexto","idEntidadPropiedad":"10013","idPropiedad":"Nro","orden":"","atributos":{"atributo":[{"nombre":"MuestraEnGrid","valor":""}]},"controles":{"control":[]}}]}},{"id":"1column16064","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1textbox24092","tipoControl":"CuadroTexto","idEntidadPropiedad":"10013","idPropiedad":"Rubro","orden":"","atributos":{"atributo":[{"nombre":"MuestraEnGrid","valor":""}]},"controles":{"control":[]}}]}},{"id":"1column139099","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1decimal17521","tipoControl":"ControlDecimal","idEntidadPropiedad":"10013","idPropiedad":"Monto","orden":"","atributos":{"atributo":[{"nombre":"MuestraEnGrid","valor":""},{"nombre":"MostrarDecimales","valor":"2"}]},"controles":{"control":[]}}]}}]}}]}}]}}]}}]}},{"id":"1row33784","tipoControl":"Grupo","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1column76144","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[{"id":"1textbox31101","tipoControl":"CuadroTexto","idEntidadPropiedad":"10014","idPropiedad":"Registros","orden":"","atributos":{"atributo":[{"nombre":"Obligatorio","valor":"1"}]},"controles":{"control":[]}}]}},{"id":"1column52637","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[]}},{"id":"1column21361","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[]}},{"id":"1column76497","tipoControl":"Columna","idEntidadPropiedad":"","idPropiedad":"","orden":"","atributos":{"atributo":[]},"controles":{"control":[]}}]}}]}}]}}}],"ayudas":{"textos":{"ayudas":{"entidad":[{"IdEntidad":10001,"ayuda":[{"IdPropiedad":"PeriodoBalance","Valor":"lorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit amet"}]}]}}},"metadata":{"Aplicacion":"CNV - Autopista","Ejercicio":2018,"Periodo":"001","Periodicidad":"NA","FormularioId":1,"DescripcionFormulario":null,"DescripcionCorta":null,"Version":0,"Estatus":"edicion","FechaCreacion":"2018-07-04T17:48:33.7807959-03:00","FechaModificacion":"2018-07-04T17:48:33.7807959-03:00","UriArchivo":"https://desa-iis.cnv.gov.ar:7012/BlobWebService.svc/DownloadBlob/7e9d0996-1295-455c-b941-3b35836796da","UriRutaRespaldo":null,"EsFormularioComun":false,"UsuarioAsignado":"","Reforma":1,"FormType":147,"BlobId":"0dfcfaa6-ed3d-479c-a3b7-6f47f19440b5","PartitionKey":"1","RowKey":"2018.001.NA.1","Timestamp":"0001-01-01T00:00:00-03:00","ETag":""},"modeloDatos":[{"id":10001,"nombre":"Identificacion Balance","atributos":{"atributo":[{"nombre":"tipo","valor":""},{"nombre":"multiplicidad","valor":"1"},{"nombre":"llave","valor":"IdentificacionBalance"}]},"propiedades":{"propiedad":[{"id":"PeriodoBalance","nombre":"Período del Balance","tipoDatos":"Alfanumerico","claveInformativa":"PeriodoBalance","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Período del Balance"},{"nombre":"Catalogo","valor":"181"},{"nombre":"AyudaEnLinea","valor":"lorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit amet"},{"nombre":"TituloLargo","valor":"Titulo largo para la ayuda"}]}},{"id":"FechaCierre","nombre":"Fecha de Cierre","tipoDatos":"Fecha","claveInformativa":"FechaCierre","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Fecha de Cierre"}]}},{"id":"FechaDesde","nombre":"Fecha Desde","tipoDatos":"Fecha","claveInformativa":"FechaDesde","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Fecha Desde"}]}},{"id":"FechaHasta","nombre":"Fecha Hasta","tipoDatos":"Fecha","claveInformativa":"FechaHasta","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Fecha Hasta"}]}},{"id":"Detalle","nombre":"Detalle","tipoDatos":"Alfanumerico","claveInformativa":"Detalle","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Detalle"}]}},{"id":"TipoBalance","nombre":"Tipo De Balance","tipoDatos":"Alfanumerico","claveInformativa":"TipoBalance","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Tipo De Balance"},{"nombre":"Catalogo","valor":"182"}]}},{"id":"Moneda","nombre":"Moneda","tipoDatos":"Alfanumerico","claveInformativa":"Moneda","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Moneda"},{"nombre":"Catalogo","valor":"101"}]}},{"id":"UnidadMedida","nombre":"Unidad de Medida","tipoDatos":"Alfanumerico","claveInformativa":"UnidadMedida","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Unidad de Medida"},{"nombre":"Catalogo","valor":"183"}]}},{"id":"NormasContablesAplicadas","nombre":"Normas contables aplicadas","tipoDatos":"Alfanumerico","claveInformativa":"NormasContablesAplicadas","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Normas contables aplicadas"},{"nombre":"Catalogo","valor":"184"}]}}]}},{"id":10006,"nombre":"Activos en Moneda Extranjera","atributos":{"atributo":[{"nombre":"tipo","valor":""},{"nombre":"multiplicidad","valor":"*"},{"nombre":"llave","valor":"Activos en Moneda Extranjera"}]},"propiedades":{"propiedad":[{"id":"AMEMoneda","nombre":"Moneda","tipoDatos":"Alfanumerico","claveInformativa":"AMEMoneda","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Moneda"},{"nombre":"Catalogo","valor":"101"}]}},{"id":"AMEActivoInversiones","nombre":"Activo Inversiones","tipoDatos":"Numerico","claveInformativa":"AMEActivoInversiones","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Activo Inversiones"}]}},{"id":"AMEActivoExistencias","nombre":"Activo Existencias","tipoDatos":"Numerico","claveInformativa":"AMEActivoExistencias","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Activo Existencias"}]}},{"id":"AMEPasivoDeudasComerciales","nombre":"Pasivo Deudas Comerciales","tipoDatos":"Numerico","claveInformativa":"AMEPasivoDeudasComerciales","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Pasivo Deudas Comerciales"}]}},{"id":"AMEPasivoOtrasDeudas","nombre":"Pasivo Otras Deudas","tipoDatos":"Numerico","claveInformativa":"AMEPasivoOtrasDeudas","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Pasivo Otras Deudas"}]}},{"id":"AMEActivoCreditosComerciales","nombre":"Activo Créditos Comerciales","tipoDatos":"Numerico","claveInformativa":"AMEActivoCreditosComerciales","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Activo Créditos Comerciales"}]}},{"id":"AMEPasivoPrestamosBancarios","nombre":"Pasivo Préstamos Bancarios","tipoDatos":"Numerico","claveInformativa":"AMEPasivoPrestamosBancarios","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Pasivo Préstamos Bancarios"}]}}]}},{"id":10007,"nombre":"Método Contable","atributos":{"atributo":[{"nombre":"tipo","valor":""},{"nombre":"multiplicidad","valor":"*"},{"nombre":"llave","valor":"Método Contable"}]},"propiedades":{"propiedad":[{"id":"MCRubro","nombre":"Rubro","tipoDatos":"Alfanumerico","claveInformativa":"MCRubro","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Rubro"},{"nombre":"Catalogo","valor":"220"}]}},{"id":"MCMetodo","nombre":"Método","tipoDatos":"Alfanumerico","claveInformativa":"MCMetodo","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Método"},{"nombre":"Catalogo","valor":"221"}]}},{"id":"MCFechaInicioAplicacion","nombre":"Inicio de Aplicación","tipoDatos":"Fecha","claveInformativa":"MCFechaInicioAplicacion","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Inicio de Aplicación"}]}},{"id":"MCElemento","nombre":"Elemento","tipoDatos":"Alfanumerico","claveInformativa":"MCElemento","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Elemento"}]}}]}},{"id":10008,"nombre":"Otros Datos Balance","atributos":{"atributo":[{"nombre":"tipo","valor":""},{"nombre":"multiplicidad","valor":"1"},{"nombre":"llave","valor":"Otros Datos Balance"}]},"propiedades":{"propiedad":[{"id":"ODBEnTramiteFusion","nombre":"En Trámite de Fusión o Escisión","tipoDatos":"Alfanumerico","claveInformativa":"ODBEnTramiteFusion","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"En Trámite de Fusión o Escisión"},{"nombre":"Catalogo","valor":"108"}]}},{"id":"ODBAccionesCartera","nombre":"Acciones en Cartera","tipoDatos":"Alfanumerico","claveInformativa":"ODBAccionesCartera","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Acciones en Cartera"},{"nombre":"Catalogo","valor":"108"}]}},{"id":"ODBConcursoPreventivo","nombre":"Concuro Preventivo","tipoDatos":"Alfanumerico","claveInformativa":"ODBConcursoPreventivo","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Concuro Preventivo"},{"nombre":"Catalogo","valor":"108"}]}},{"id":"ODBCantidadAcciones","nombre":"Cantidad de Acciones Suscriptas al Cierre","tipoDatos":"Numerico","claveInformativa":"ODBCantidadAcciones","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Cantidad de Acciones Suscriptas al Cierre"}]}},{"id":"ODBCapitalizacionBursatil","nombre":"Capitalización Bursatil","tipoDatos":"Numerico","claveInformativa":"ODBCapitalizacionBursatil","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Capitalización Bursatil"}]}},{"id":"ODBPorcentajeFloating","nombre":"Porcentaje de Floating al Cierre del Balance","tipoDatos":"Numerico","claveInformativa":"ODBPorcentajeFloating","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Porcentaje de Floating al Cierre del Balance"}]}},{"id":"ODBCUITAuditor","nombre":"CUIT del Auditor","tipoDatos":"Alfanumerico","claveInformativa":"ODBCUITAuditor","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"CUIT del Auditor"},{"nombre":"Placeholder","valor":"20-12345678-5"}]}},{"id":"ODBNombreAuditor","nombre":"Nombre del Auditor","tipoDatos":"Alfanumerico","claveInformativa":"ODBNombreAuditor","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Nombre del Auditor"}]}},{"id":"ODBCUITEstudioAuditor","nombre":"CUIT del Estudio del Auditor","tipoDatos":"Alfanumerico","claveInformativa":"ODBCUITEstudioAuditor","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"CUIT del Estudio del Auditor"},{"nombre":"Placeholder","valor":"20-12345678-5"}]}},{"id":"ODBRazonSocialEstudioAuditor","nombre":"Razón Social del Estudio al que Pertenece el Auditor","tipoDatos":"Alfanumerico","claveInformativa":"ODBRazonSocialEstudioAuditor","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Razón Social del Estudio al que Pertenece el Auditor"}]}},{"id":"ODBOfertaPublicaAcciones","nombre":"Oferta Pública de Acciones","tipoDatos":"Numerico","claveInformativa":"ODBOfertaPublicaAcciones","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Oferta Pública de Acciones"},{"nombre":"Catalogo","valor":"108"}]}},{"id":"ODBPERPrecioCotizacionSobreBeneficioNeto","nombre":"Precio de Cotización sobre Beneficio Neto","tipoDatos":"Numerico","claveInformativa":"ODBPERPrecioCotizacionSobreBeneficioNeto","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Precio de Cotización sobre Beneficio Neto"}]}},{"id":"ODBPrecioCotizacion","nombre":"Precio de Cotización al Cierre del Balance","tipoDatos":"Numerico","claveInformativa":"ODBPrecioCotizacion","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Precio de Cotización al Cierre del Balance"}]}},{"id":"ODBCuitAuditor2","nombre":"Cuit del Auditor 2","tipoDatos":"Alfanumerico","claveInformativa":"ODBCuitAuditor2","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Cuit del Auditor 2"},{"nombre":"Placeholder","valor":"20-12345678-5"}]}},{"id":"ODBNombreAuditor2","nombre":"Nombre del Auditor 2","tipoDatos":"Alfanumerico","claveInformativa":"ODBNombreAuditor2","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Nombre del Auditor 2"}]}},{"id":"ODBCuitEstudioAuditor2","nombre":"CUIT del Estudio Auditor 2","tipoDatos":"Alfanumerico","claveInformativa":"ODBCuitEstudioAuditor2","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"CUIT del Estudio Auditor 2"},{"nombre":"Placeholder","valor":"20-12345678-5"}]}},{"id":"ODBRazonSocialEstudioAuditor2","nombre":"Razón Social del Estudio al que Pertenece el Auditor 2","tipoDatos":"Alfanumerico","claveInformativa":"ODBRazonSocialEstudioAuditor2","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Razón Social del Estudio al que Pertenece el Auditor 2"}]}},{"id":"ODCCantidadEmpleados","nombre":"Cantidad de Empleados al Cierre","tipoDatos":"Alfanumerico","claveInformativa":"ODCCantidadEmpleados","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Cantidad de Empleados al Cierre"}]}}]}},{"id":10009,"nombre":"Adjuntos Balance","atributos":{"atributo":[{"nombre":"tipo","valor":""},{"nombre":"multiplicidad","valor":"1"},{"nombre":"llave","valor":"Adjuntos Balance"}]},"propiedades":{"propiedad":[{"id":"ABEstadoContable","nombre":"Estado Contable","tipoDatos":"Alfanumerico","claveInformativa":"ABEstadoContable","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Estado Contable"},{"nombre":"Uploader","valor":"1"},{"nombre":"Obligatorio","valor":""}]}},{"id":"ABMemoria","nombre":"Memoria","tipoDatos":"Alfanumerico","claveInformativa":"ABMemoria","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Memoria"},{"nombre":"Uploader","valor":"1"},{"nombre":"Obligatorio","valor":""}]}},{"id":"ABInformeAuditorIndependiente","nombre":"Informe de Auditor Independiente","tipoDatos":"Alfanumerico","claveInformativa":"ABInformeAuditorIndependiente","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Informe de Auditor Independiente"},{"nombre":"Uploader","valor":"1"},{"nombre":"Obligatorio","valor":""}]}},{"id":"ABInformeComisionFiscalizadoraSindico","nombre":"Informe de Comisión Fiscalizadora o Síndico","tipoDatos":"Alfanumerico","claveInformativa":"ABInformeComisionFiscalizadoraSindico","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Informe de Comisión Fiscalizadora o Síndico"},{"nombre":"Uploader","valor":"1"},{"nombre":"Obligatorio","valor":""}]}},{"id":"Etiqueta","nombre":"Señor administrado, todos los campos son obligatorios. En caso de no corresponderle algún archivo según normativa, subir un adjunto .PDF con el nombre “No corresponde archivo obligatorio”.","tipoDatos":"Alfanumerico","claveInformativa":"Etiqueta","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Señor administrado, todos los campos son obligatorios. En caso de no corresponderle algún archivo según normativa, subir un adjunto .PDF con el nombre “No corresponde archivo obligatorio”."}]}},{"id":"ABResenaInformativa","nombre":"Reseña Informativa","tipoDatos":"Alfanumerico","claveInformativa":"ABResenaInformativa","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Reseña Informativa"},{"nombre":"Uploader","valor":"1"},{"nombre":"Obligatorio","valor":""}]}}]}},{"id":10013,"nombre":"Estados Contables Cuentas","atributos":{"atributo":[{"nombre":"tipo","valor":""},{"nombre":"multiplicidad","valor":"*"},{"nombre":"llave","valor":"Estados Contables Cuentas"}]},"propiedades":{"propiedad":[{"id":"Nro","nombre":"Nro","tipoDatos":"Alfanumerico","claveInformativa":"Nro","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Nro"}]}},{"id":"Rubro","nombre":"Rubro","tipoDatos":"Alfanumerico","claveInformativa":"Rubro","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Rubro"}]}},{"id":"Monto","nombre":"Monto","tipoDatos":"Numerico","claveInformativa":"Monto","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Monto"}]}}]}},{"id":10014,"nombre":"Contar Registros Estados Contables","atributos":{"atributo":[{"nombre":"tipo","valor":""},{"nombre":"multiplicidad","valor":"1"},{"nombre":"llave","valor":"Contar Registros Estados Contables"}]},"propiedades":{"propiedad":[{"id":"Registros","nombre":"Registros","tipoDatos":"Alfanumerico","claveInformativa":"Registros","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Registros"}]}}]}},{"id":10015,"nombre":"Activos en Moneda Extranjera SiNo","atributos":{"atributo":[{"nombre":"tipo","valor":""},{"nombre":"multiplicidad","valor":"1"},{"nombre":"llave","valor":"Activos en Moneda Extranjera"}]},"propiedades":{"propiedad":[{"id":"AMETieneActivosMonedaExtranjera","nombre":"Posee Activos/Pasivos en Moneda Extranjera","tipoDatos":"Alfanumerico","claveInformativa":"AMETieneActivosMonedaExtranjera","atributos":{"atributo":[{"nombre":"TituloCorto","valor":"Posee Activos/Pasivos en Moneda Extranjera"},{"nombre":"CatalogoUrl","valor":"/ParametricWS/SiNo/"},{"nombre":"CatalogoUrlCampoValor","valor":"id"},{"nombre":"CatalogoUrlCampoTexto","valor":"option"}]}}]}}]};
+
+    $(document).ready(function () {
+
+        viewModel = new PresentationModel();
+        GetPreviousExpirations(formTypeId, expirationId);
+        console.log(formFile)
+        $("#cerrarSesion").on('click', function () {
+            verificaPagina('/Home/LogOut');
+        });
+
+        if(!$("#txtExpirationDate").val()){
+            $(".expiration-date-container").hide();
+        }
+
+        $('#btnRevisionDeclara, #revisarResponsivo').on('click', function () {
+            window.location.href = 'das.pdf';
+        });
+
+        CNV.Environment.setSetting('isDAS', true);
+        CNV.Environment.setSetting('applyrules', false);
+
+        AppDeclaracionesSAT.initStepThree(function () {
+            $('#form-presentation input').prop('readonly', true);
+            $('#form-presentation select').prop('disabled', true);
+            $('#form-presentation label.btn').remove();
+
+            $("#form-presentation .btn")
+                .not('.formgrid .btnCancelEdit')
+                .not('.btnEditFormularioGridEdicionRow')
+                .remove();
+
+            $("[id^=lista-archivos] th:last-child, [id^=lista-archivos] td:last-child").remove();
+            $('.datepicker-control-div').datepicker("remove");
+        });
+
+        AppDeclaracionesSAT.initProxyDivs();
+
+        var info = {
+            rfc: 'ADC010403J89',
+            nombre: 'Ferreteria X',
+            tipodeclaracion: '001',
+            tipocomplementaria: '001',
+            tipodeclaraciontexto: 'texto declaracion',
+            tipocomplementariatexto: 'texto complementaria',
+            periodicidad: 'anual',
+            periodo: 'anual',
+            tipopersona: 'F',
+            origen: 'origen-data',
+            ejercicio: '2014',
+            subregimensugerido: '',
+            forma: 'tmp',
+            tipodisco: ''
+        };
+
+        $('#DVINFOCON').html(JSON.stringify(info));
+
+        $(window).bind('scroll', function () {
+            if ($(window).scrollTop() > 94) {
+                $('.lineGray').addClass('fixed');
+            } else {
+                $('.lineGray').removeClass('fixed');
+            }
+        });
+        $(".mainmenu").css("height", $('#mainPanel').height());
+
+        Response.action(function () {
+            if (Response.band(1200)) {
+                // 1200+
+                $('.mainmenu').removeClass('hide');
+                $('#banner-desktop').removeClass('hide');
+                $('#banner-responsive').addClass('hide');
+                $('.containerTabs').removeClass('hide');
+            }
+            else if (Response.band(992)) {
+                // 992+
+
+                $('.containerTabs').addClass('hide');
+                $('.mainmenu').addClass('hide');
+                $('#banner-responsive').removeClass('hide');
+                $('#banner-desktop').addClass('hide');
+            }
+            else if (Response.band(768)) {
+                // 768+
+                $('.containerTabs').addClass('hide');
+                $('.mainmenu').addClass('hide');
+                $('#banner-responsive').removeClass('hide');
+                $('#banner-desktop').addClass('hide');
+            }
+            else {
+                // 0->768
+                $('.containerTabs').addClass('hide');
+                $('.mainmenu').addClass('hide');
+                $('#banner-responsive').removeClass('hide');
+                $('#banner-desktop').addClass('hide');
+            }
+        });
+
+        $(document).on("hidden.bs.modal", function () {
+            var modalesAbiertos = $(".modal:visible").length;
+
+            if (modalesAbiertos > 0) {
+                $("body").addClass("modal-open");
+            }
+        });
+        FormsBuilder.Paginacion.configurarPaginador();
+        FormsBuilder.CargaMasiva.configurarCargaMasiva();
+    });
+</script>
+        </div><!-- /.inicio -->
+    </div>
+
+
+</body>
+
+</html>

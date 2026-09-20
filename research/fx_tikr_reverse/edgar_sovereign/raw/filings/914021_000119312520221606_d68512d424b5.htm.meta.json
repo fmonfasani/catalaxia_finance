@@ -1,0 +1,16 @@
+{
+ "source": "SEC_EDGAR",
+ "filing_url": "https://www.sec.gov/Archives/edgar/data/914021/000119312520221606/d68512d424b5.htm",
+ "accession_number": "000119312520221606",
+ "company_cik": "914021",
+ "document": "d68512d424b5.htm",
+ "fts_query": "phase2",
+ "motivo": "Argentina 424B5 2020-08-17 (canje 2020: Step-Up 2030/35/38/41/46?)",
+ "retrieved_at": "2026-09-16T00:02:50+00:00",
+ "sha256": "3a2f6b3b963aa8a7eddeb436e62b27f360e0a014f7f920b2a232699390506c64",
+ "http_status": 200,
+ "bytes": 1664664,
+ "collector": "edgar_dl@v1.0.0",
+ "git_commit": "f375090",
+ "raw_ref": "D:\\Software Development\\Porfolio\\catalaxia-cedears-prod\\research\\fx_tikr_reverse\\edgar_sovereign\\raw\\filings\\914021_000119312520221606_d68512d424b5.htm"
+}

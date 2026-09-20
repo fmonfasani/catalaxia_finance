@@ -1,0 +1,4 @@
+fx_id,fecha,mismo_instrumento,fecha_alineada,mismo_concepto,misma_unidad,mismo_nominal,mismo_mercado,mismo_tipo_precio,veredicto_comparabilidad,fx_implicito,formula,fuente_1,fuente_2
+FX01,2024-12-31,N/A (posición),TRUE,TRUE (posición neta),TRUE (millones),N/A,TRUE (balance),TRUE (traslación),"COMPARABLE (posición, banda ±~15)",1032.14,37157/36,GGAL 20-F,N/A
+FX02,2024-11-11,TRUE (GD30),PARTIAL (carta 11-11; reserva sin fecha propia),FALSE (nominal vs carrying),TRUE,TRUE,FALSE (cartera vs reserva),FALSE (nominal vs carrying),NO_COMPARABLE_COMO_FX (sólo ratio carrying),794.79 (carrying),115725101466/145602795,Telecom 6-K,N/A
+FX04,2023-11-30,TRUE (GD30),TRUE,NO_DETERMINABLE (falta pata USD),NO_DETERMINABLE,NO_DETERMINABLE,NO_DETERMINABLE,NO_DETERMINABLE,NO_DETERMINABLE (falta componente §18),NO_DETERMINABLE,ARS/ USD? (pata USD ausente),CEPU 6-K (ARS 328.50),NO_EVIDENCE_FOUND

@@ -1,0 +1,16 @@
+{
+ "source": "SEC_EDGAR",
+ "filing_url": "https://www.sec.gov/Archives/edgar/data/914021/000119312518005905/d519997d424b5.htm",
+ "accession_number": "000119312518005905",
+ "company_cik": "914021",
+ "document": "d519997d424b5.htm",
+ "fts_query": "phase2",
+ "motivo": "Argentina 424B5 2018-01-08 (emisión GLOBAL pre-canje)",
+ "retrieved_at": "2026-09-16T00:02:52+00:00",
+ "sha256": "e8af0827d5cf8030c8ff6a148e84ae7e103b343ad66944e69d9a08a06952cd8a",
+ "http_status": 200,
+ "bytes": 1215336,
+ "collector": "edgar_dl@v1.0.0",
+ "git_commit": "f375090",
+ "raw_ref": "D:\\Software Development\\Porfolio\\catalaxia-cedears-prod\\research\\fx_tikr_reverse\\edgar_sovereign\\raw\\filings\\914021_000119312518005905_d519997d424b5.htm"
+}

@@ -1,0 +1,5 @@
+dato,value_a,source_a,value_b,source_b,diff,possible_reason,concept
+A3500 2024-12-31,1032.5000 (GGAL cita BCRA),GGAL 20-F,"1032.00 (BCRA API, eff 2024-12-31)",normalized/fx_reference,+0.50 (+0.048%),Vintage/publicación de cierre vs serie API; en investigación,A3500 cierre 2024-12-31
+A3500 2023-12-31,808.4833 (GGAL),GGAL 20-F,"808.45 (BCRA API, eff 2023-12-29)",normalized/fx_reference,+0.0333 (+0.004%),Redondeo/fecha efectiva (sábado→viernes); consistente,A3500 cierre 2023
+A3500 2022-12-31,"177.1283 (GGAL, 'as of Dec 31 2022')",GGAL 20-F,"177.16 (BCRA API, eff 2022-12-30)",normalized/fx_reference,-0.0317 (-0.018%),31-12 sábado: tasa publicada = cierre 30-12; consistente,A3500 cierre 2022
+GD30 ARS 2023-11-30,328.50 ARS/NV (CEPU),CEPU 6-K,NO_EVIDENCE_FOUND,N/A,N/A,Sin pata USD primaria ni secundaria verificada aquí,Precio ARS GD30

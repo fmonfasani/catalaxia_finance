@@ -1,0 +1,14 @@
+{
+ "source": "BCRA-minorista-serie-cierre",
+ "fx_type": "OFICIAL",
+ "source_url": "https://www.bcra.gob.ar/cierre-de-cotizaciones-resultado/ [POST moneda=2]",
+ "retrieved_at": "2026-09-15T21:33:52+00:00",
+ "source_date": "snapshot-2026-09-15",
+ "sha256": "b2e8b8ae44515750bbe0650c706336865603bf76e0b44da256877325f32396ca",
+ "http_status": 200,
+ "collector": "bcra_oficial@v1.0.0",
+ "engine": "fx-engine@v1.0.0",
+ "git_commit": "f375090",
+ "raw_ref": "D:\\Software Development\\Porfolio\\catalaxia-cedears-prod\\research\\fx_tikr_reverse\\raw\\bcra\\oficial\\snapshot_2026-09-15.html",
+ "note": "venta = dólar vendedor minorista (canónico); compra se conserva"
+}

@@ -1,0 +1,16 @@
+{
+ "source": "SEC_EDGAR",
+ "filing_url": "https://www.sec.gov/Archives/edgar/data/913140/000094787103001038/ex1.txt",
+ "accession_number": "000094787103001038",
+ "company_cik": "913140",
+ "document": "ex1.txt",
+ "fts_query": "fts-historicos",
+ "motivo": "Banco Rio 6-K 2003-04-22 (BODEN, crisis 2001-02)",
+ "retrieved_at": "2026-09-15T23:00:34+00:00",
+ "sha256": "e1f86cae39c299bc4875854450cb3ca8132a048ab60d37303f39185909290474",
+ "http_status": 200,
+ "bytes": 53871,
+ "collector": "edgar_dl@v1.0.0",
+ "git_commit": "f375090",
+ "raw_ref": "D:\\Software Development\\Porfolio\\catalaxia-cedears-prod\\research\\fx_tikr_reverse\\edgar_sovereign\\raw\\filings\\913140_000094787103001038_ex1.txt"
+}
