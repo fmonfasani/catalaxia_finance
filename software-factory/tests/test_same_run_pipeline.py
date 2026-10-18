@@ -20,7 +20,18 @@ from coordinator.agent_registry import AgentRegistry
 from coordinator.coordinator import Coordinator
 from evals_catalog import build_default_registry as build_evals
 from invariants_catalog import build_default_registry as build_invariants
+from kernel.run_scope import RunScope
 from observability import build_trace, query_run
+
+# DEC-SF-001: alcance declarado que usan los Runs de este modulo. Code +
+# Validation son un subconjunto valido de las 12 etapas de FACTORY-SPEC.md
+# Seccion 7; el contrato exige ademas evidencia de ambos agentes.
+SCOPE_SAME_RUN = RunScope(
+    scope_id="SCOPE-SAME-RUN",
+    scope_version="1.0.0",
+    required_stages=("Code", "Validation"),
+    required_evidence_agents=("generator", "validator"),
+)
 
 
 def _especificacion_valida(spec_id="SPEC-SAMERUN") -> Specification:
@@ -65,8 +76,15 @@ def registry_with_generator_and_validator() -> AgentRegistry:
 @pytest.fixture
 def pipeline_run(real_run_manager):
     """Un Run fresco avanzado directamente a 'Code' -- la primera etapa que
-    `execute_pipeline()` orquesta en todos los tests de este modulo."""
-    run = real_run_manager.create_run()
+    `execute_pipeline()` orquesta en todos los tests de este modulo.
+
+    DEC-SF-001: el Run declara su alcance (Code+Validation). Antes de la
+    decision no lo declaraba y `execute_pipeline()` lo completaba igual; ahora
+    COMPLETED exige un contrato declarado, asi que el alcance es parte del
+    fixture. El contrato es un subconjunto legitimo de las 12 etapas de la
+    Seccion 7 -- esa es precisamente la semantica que DEC-SF-001 aprueba.
+    """
+    run = real_run_manager.create_run(scope=SCOPE_SAME_RUN)
     real_run_manager.advance_stage(run, "Code")
     return run
 

@@ -263,6 +263,70 @@ Ninguna etapa puede retroceder en silencio: si algo posterior invalida una etapa
 anterior, eso es un Change Request (§20), no una edición directa del artefacto ya
 aprobado.
 
+### 7.1 · Alcance declarado de un Run (DEC-SF-001)
+
+**IMPLEMENTADO.** Las 12 etapas de la tabla anterior son el **modelo conceptual
+completo** del pipeline SDD. Un Run concreto se evalúa contra su **alcance
+declarado** (`RunScope`): el subconjunto de esas etapas que ese Run se compromete a
+ejecutar, junto con los tests y la evidencia que su contrato exige.
+
+Lectura normativa de *"Ninguna etapa puede saltearse"* (§1): **ninguna etapa
+obligatoria dentro del alcance declarado puede omitirse.** Una etapa fuera de ese
+alcance no es obligatoria para ese Run, salvo que otro contrato aplicable la exija.
+
+**Conflicto registrado y resuelto por DEC-SF-001.** La frase de §1, leída de forma
+absoluta, exigiría las 12 etapas en todo Run. Esa lectura es incompatible con la
+Factory tal como existe hoy: solo `Code` y `Validation` tienen Agents implementados
+(§6 — Reviewer sigue siendo ARQUITECTURA OBJETIVO), de modo que ningún Run podría
+alcanzar `completed` jamás. DEC-SF-001 resuelve el conflicto de forma explícita y
+acotada: el alcance declarado es la unidad de evaluación. No se modifica la tabla de
+12 etapas ni se declara implementado nada que no lo esté.
+
+## 7.2 · DEC-SF-001 — Run Completion Semantics
+
+| Campo | Valor |
+|---|---|
+| ID | `DEC-SF-001` |
+| Estado | **APROBADA** — implementada en esta slice |
+| Afecta | §1 (lectura de "ninguna etapa puede saltearse"), §7, §8, §9, §12 |
+| Implementación | `kernel/run_scope.py`, `kernel/run_manager.py`, `coordinator/coordinator.py` |
+| Tests | `tests/test_dec_sf_001_run_scope.py` |
+
+**Motivo.** `Coordinator.execute_pipeline()` transicionaba a `COMPLETED` cuando se
+agotaba la lista de `steps` que le pasaba el llamador, sin compararla contra ninguna
+definición de completitud. Un Run de 2 etapas quedaba `COMPLETED` igual que uno de
+12: el estado terminal describía al llamador, no al contrato.
+
+**Reglas.**
+
+1. Un Run se evalúa contra un alcance **declarado, identificable y versionado**
+   (`scope_id` + `scope_version`).
+2. El alcance y sus criterios de aceptación se definen juntos y son trazables entre sí.
+3. Un Run puede transicionar a `completed` **solo si**: su alcance y versión son
+   identificables; se satisfacen todos los criterios obligatorios; todos los tests
+   requeridos **se ejecutaron realmente** y pasaron; existe la evidencia que el
+   contrato exige, trazable a ese Run y a esa versión de alcance; y no se omitió en
+   silencio ninguna etapa, criterio o test requerido.
+4. **Agotar los pasos provistos por el llamador no es evidencia de completitud.**
+5. Que una suite de tests pase no alcanza si el comportamiento requerido por el
+   alcance no está representado en los tests y criterios declarados.
+6. Un cambio posterior de alcance crea una **versión nueva** con su propio contrato.
+   No invalida retroactivamente un Run completado contra una versión anterior válida.
+7. `completed` significa que el Run satisfizo su contrato de ejecución. **No**
+   significa `approved`, `reviewed`, `delivered` ni `closed` (coherente con §8).
+8. No se agrega ningún estado nuevo (p. ej. `PARTIAL`): la evidencia del repositorio
+   no estableció su necesidad y ninguna decisión lo autoriza.
+
+**Consecuencias.**
+
+- `execute_pipeline()` **falla cerrado**: sin alcance declarado no puede afirmar
+  completitud, y transiciona a `failed` registrando el motivo como evento `ERROR`.
+- Un alcance ausente, vacío, con etapas desconocidas o fuera del orden de §7 se
+  rechaza al crear el Run (`InvalidScopeError`), antes de ejecutar nada.
+- `execute_stage()` **no cambia**: queda fuera del alcance de esta decisión.
+- La persistencia conserva `scope`, `executed_stages` y `passed_tests`. Un Run
+  guardado antes de DEC-SF-001 carga sin alcance, sin error — regla 6.
+
 ## 8 · State Machine
 
 **ARQUITECTURA OBJETIVO.** Estados conceptuales, sin implementación:

@@ -94,7 +94,7 @@ from typing import Any, Callable
 from agent_contract import AgentRole
 from contracts import Contract, ContractRegistry
 from coordinator.agent_registry import AgentRegistry
-from kernel.errors import NoAgentAuthorizedError
+from kernel.errors import KernelError, NoAgentAuthorizedError
 from kernel.events import EventLogger
 from kernel.run_manager import Run, RunManager
 from kernel.state_machine import RunStatus
@@ -284,6 +284,31 @@ class Coordinator:
 
         return run
 
+    @staticmethod
+    def _tests_aprobados(evidencia: dict[str, Any]) -> list[str]:
+        """IDs de los checks (Invariants + Evals) que REALMENTE corrieron y
+        dieron PASS en este paso (DEC-SF-001 regla 3).
+
+        Se leen de `checks`, que es el registro de lo ejecutado -- no de la
+        lista de checks que el registro declara conocer. Un test que no corrio
+        no aparece, y por lo tanto no puede satisfacer un `required_tests`:
+        omitir un test y reprobarlo bloquean COMPLETED por igual.
+        """
+        if not isinstance(evidencia, dict):
+            return []
+        # `evidencia` es `AgentResult.to_dict()`: los checks viven en `output`
+        # (la forma que declara VALIDATOR.md), no en la raiz.
+        output = evidencia.get("output")
+        if not isinstance(output, dict):
+            return []
+        aprobados = []
+        for check in output.get("checks", []) or []:
+            if isinstance(check, dict) and check.get("status") == "PASS":
+                check_id = check.get("id")
+                if check_id:
+                    aprobados.append(check_id)
+        return aprobados
+
     def execute_pipeline(
         self, run: Run,
         steps: list[tuple[str, Any | Callable[[dict[str, Any] | None, dict[str, Any] | None], Any]]],
@@ -313,9 +338,21 @@ class Coordinator:
         self.run_manager.emit(run, coord_started)
         parent = coord_started.event_id
 
+        # DEC-SF-001: antes de ejecutar, el alcance declarado manda sobre los
+        # steps que trajo el llamador. Si el Run declara un contrato y los
+        # steps no lo cubren, esto falla ACA -- no despues de haber corrido
+        # agentes para terminar igual en un COMPLETED que no corresponde.
+        if run.scope is not None:
+            run.scope.assert_steps_cover_scope([nombre for nombre, _ in steps])
+
         ultimo_artifact: dict[str, Any] | None = None
         ultima_evidencia: dict[str, Any] | None = None
         avanza_pipeline = True
+        # Agentes que dejaron evidencia en este pipeline. `run.evidence`
+        # guarda el dict crudo del Agent (sin su id), y el id lo conoce el
+        # Coordinator al seleccionarlo -- se registra aca en vez de cambiar
+        # la forma persistida de la evidencia, que es area protegida.
+        agentes_con_evidencia: list[str] = []
 
         for stage_name, input_data_o_builder in steps:
             if run.current_stage != stage_name:
@@ -338,9 +375,51 @@ class Coordinator:
 
             ultimo_artifact = outcome.artifact
             ultima_evidencia = outcome.evidence
+
+            # Registro de lo REALMENTE ejecutado, que es contra lo que se
+            # verifica el contrato al final. Un paso que no avanzo no cuenta
+            # como etapa ejecutada: ejecutarse y cumplir no son lo mismo.
+            if outcome.avanza:
+                run.executed_stages.append(stage_name)
+                if run.last_agent and run.last_agent not in agentes_con_evidencia:
+                    agentes_con_evidencia.append(run.last_agent)
+                for test_id in self._tests_aprobados(outcome.evidence or {}):
+                    if test_id not in run.passed_tests:
+                        run.passed_tests.append(test_id)
+
             if not outcome.avanza:
                 avanza_pipeline = False
                 break
+
+        # DEC-SF-001 regla 4: agotar los steps no alcanza. COMPLETED exige que
+        # el contrato declarado se haya satisfecho de verdad. Sin contrato,
+        # `execute_pipeline()` no puede afirmar completitud -- falla cerrado.
+        if avanza_pipeline:
+            if run.scope is None:
+                self.run_manager.emit(run, self.event_logger.error(
+                    run.run_id,
+                    message=(
+                        "DEC-SF-001: execute_pipeline() no puede declarar COMPLETED "
+                        "sin un contrato de alcance declarado (run.scope). "
+                        "Agotar los pasos del llamador no es evidencia de completitud."
+                    ),
+                    stage=run.current_stage, component="COORDINATOR", parent_event_id=parent,
+                ))
+                avanza_pipeline = False
+            else:
+                try:
+                    run.scope.assert_no_stage_skipped(run.executed_stages)
+                    run.scope.assert_completion(
+                        executed_stages=run.executed_stages,
+                        passed_tests=run.passed_tests,
+                        evidence_agents=agentes_con_evidencia,
+                    )
+                except KernelError as exc:
+                    self.run_manager.emit(run, self.event_logger.error(
+                        run.run_id, message=str(exc), stage=run.current_stage,
+                        component="COORDINATOR", parent_event_id=parent,
+                    ))
+                    avanza_pipeline = False
 
         if avanza_pipeline:
             self.run_manager.transition(run, RunStatus.COMPLETED, parent_event_id=parent)

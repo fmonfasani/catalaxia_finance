@@ -54,10 +54,23 @@ from evals_catalog import build_default_registry as build_evals  # noqa: E402
 from invariants_catalog import build_default_registry as build_invariants  # noqa: E402
 from kernel.factory_spec_loader import FactorySpecLoader  # noqa: E402
 from kernel.run_manager import RunManager  # noqa: E402
+from kernel.run_scope import RunScope  # noqa: E402
 from kernel.state_manager import StateManager  # noqa: E402
 from observability import build_trace, query_run, render_trace  # noqa: E402
 
 REQUIREMENT = "Alta de clientes: nombre obligatorio, DNI obligatorio y unico, email obligatorio"
+
+# DEC-SF-001: el alcance declarado de los Runs de esta demo. El pipeline de
+# FACTORY-SPEC.md Seccion 7 tiene 12 etapas; esta demo ejecuta 2 (Code y
+# Validation) y lo DECLARA. COMPLETED verifica ese contrato -- no se infiere
+# de haber agotado la lista de pasos.
+SCOPE_DEMO = RunScope(
+    scope_id="SCOPE-DEMO-SAME-RUN",
+    scope_version="1.0.0",
+    required_stages=("Code", "Validation"),
+    required_tests=("INV-001", "INV-002", "EVAL-001"),
+    required_evidence_agents=("generator", "validator"),
+)
 
 
 def _comprobacion_minima(ruta_modulo: str) -> None:
@@ -101,8 +114,10 @@ def _run_same_run_pipeline(spec, caso: str, registros: list[dict]) -> None:
     print(f"\n{'=' * 70}\nCASO {caso}\n{'=' * 70}")
 
     run_manager = RunManager(pipeline=spec.pipeline, factory_version=spec.version)
-    run = run_manager.create_run()
+    run = run_manager.create_run(scope=SCOPE_DEMO)
     print(f"RUN CREATED  run_id={run.run_id}  current_stage={run.current_stage}")
+    print(f"SCOPE DECLARADO: {SCOPE_DEMO.scope_id}@{SCOPE_DEMO.scope_version} "
+          f"etapas={list(SCOPE_DEMO.required_stages)}  (DEC-SF-001)")
 
     run_manager.advance_stage(run, "Code")
     registry = AgentRegistry()
