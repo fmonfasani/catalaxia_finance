@@ -17,6 +17,7 @@ from typing import Any
 from kernel.errors import UnknownStageError
 from kernel.events import Event, EventLogger
 from kernel.pipeline_definition import PipelineDefinition
+from kernel.run_scope import RunScope
 from kernel.state_machine import RunStatus, StateMachine
 
 
@@ -42,6 +43,16 @@ class Run:
     evidence: list[dict[str, Any]] = field(default_factory=list)
     last_agent: str | None = None
     last_result: dict[str, Any] | None = None
+    # DEC-SF-001: el contrato de completitud contra el que se evalua este Run.
+    # Se persiste con el Run (no solo en memoria) para que la regla 6 se pueda
+    # sostener: una version posterior del alcance no reescribe el contrato con
+    # el que un Run historico ya fue completado.
+    scope: "RunScope | None" = None
+    # Etapas efectivamente ejecutadas y tests que realmente pasaron, en este
+    # Run. Son la evidencia contra la que se verifica el contrato -- no se
+    # infieren de los steps que trajo el llamador (DEC-SF-001 regla 4).
+    executed_stages: list[str] = field(default_factory=list)
+    passed_tests: list[str] = field(default_factory=list)
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -56,6 +67,9 @@ class Run:
             "evidence": self.evidence,
             "agent": self.last_agent,
             "result": self.last_result,
+            "scope": self.scope.to_dict() if self.scope else None,
+            "executed_stages": list(self.executed_stages),
+            "passed_tests": list(self.passed_tests),
         }
 
     @classmethod
@@ -75,6 +89,12 @@ class Run:
             evidence=d.get("evidence", []),
             last_agent=d.get("agent"),
             last_result=d.get("result"),
+            # Compatibilidad hacia atras: un Run persistido ANTES de DEC-SF-001
+            # no tiene estas claves. Se cargan como None/vacio en vez de fallar
+            # -- la decision no invalida retroactivamente Runs historicos.
+            scope=RunScope.from_dict(d["scope"]) if d.get("scope") else None,
+            executed_stages=list(d.get("executed_stages", [])),
+            passed_tests=list(d.get("passed_tests", [])),
         )
         run._raw_events = d.get("events", [])  # type: ignore[attr-defined]
         return run
@@ -94,7 +114,21 @@ class RunManager:
         self.state_machine = StateMachine()
         self.event_logger = EventLogger()
 
-    def create_run(self) -> Run:
+    def create_run(self, scope: RunScope | None = None) -> Run:
+        """Crea un Run. `scope` (DEC-SF-001, opcional) declara el contrato de
+        completitud contra el que se evaluara.
+
+        El default `None` preserva la firma previa: quien use `execute_stage()`
+        o cree Runs sin alcance declarado sigue funcionando exactamente igual.
+        Lo que DEC-SF-001 cambia es que `execute_pipeline()` ya no puede
+        declarar COMPLETED sin un contrato -- no que crear un Run lo exija.
+
+        El alcance se valida contra la `PipelineDefinition` real al crearse,
+        no al terminar: un contrato malformado se rechaza antes de ejecutar
+        nada (fail-closed).
+        """
+        if scope is not None:
+            scope.validate_against(self.pipeline)
         run_id = str(uuid.uuid4())
         now = _now_iso()
         first_stage = self.pipeline.first_stage()
@@ -105,6 +139,7 @@ class RunManager:
             current_stage=first_stage,
             created_at=now,
             updated_at=now,
+            scope=scope,
         )
         run.events.append(self.event_logger.run_created(run_id, status=RunStatus.PENDING.value))
         return run

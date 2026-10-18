@@ -22,6 +22,16 @@ from coordinator.agent_registry import AgentRegistry
 from coordinator.coordinator import Coordinator
 from evals_catalog import build_default_registry as build_evals
 from invariants_catalog import build_default_registry as build_invariants
+from kernel.run_scope import RunScope
+
+# DEC-SF-001: alcance declarado de los Runs de este modulo (subconjunto
+# legitimo de las 12 etapas de FACTORY-SPEC.md Seccion 7).
+SCOPE_HARDENING = RunScope(
+    scope_id="SCOPE-HARDENING-5D",
+    scope_version="1.0.0",
+    required_stages=("Code", "Validation"),
+    required_evidence_agents=("generator", "validator"),
+)
 
 
 def _especificacion_valida(spec_id="SPEC-HARDENING", entity_name="Cliente") -> Specification:
@@ -60,7 +70,9 @@ def registry_with_generator_and_validator() -> AgentRegistry:
 
 @pytest.fixture
 def pipeline_run(real_run_manager):
-    run = real_run_manager.create_run()
+    # DEC-SF-001: el Run declara su alcance (Code+Validation). Sin contrato
+    # declarado, `execute_pipeline()` ya no puede transicionar a COMPLETED.
+    run = real_run_manager.create_run(scope=SCOPE_HARDENING)
     real_run_manager.advance_stage(run, "Code")
     return run
 
