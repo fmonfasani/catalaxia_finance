@@ -1,0 +1,35 @@
+{
+  "task_id": "MSG-CONTRACT-TEST-001",
+  "title": "test(messaging): assert tenant metadata is excluded from HTTP message responses",
+  "commit_message": "test(messaging): assert tenant metadata is excluded from HTTP responses",
+  "requirement": "Extend the existing MessagingController HTTP JSON contract tests in apps/api/src/messaging/messaging.controller.spec.ts. For created messages, edited messages, and message history, assert that the returned HTTP payload does not expose internal tenancy/identity fields such as businessId, authorUserId, authorCustomerId, deletedByUserId, or internal participant metadata. Preserve the existing contract that sequence is a decimal string and dates are ISO strings. Prefer adding assertions to existing tests; do not modify production code unless a test demonstrates a real leak. Do not edit any file outside the single authorized test file. Inspect the current tests and serializer first. If the current code already satisfies the contract, add only the missing regression assertions.",
+  "allowed_patterns": [
+    "apps/api/src/messaging/messaging.controller.spec.ts"
+  ],
+  "validation_commands": [
+    [
+      "npm",
+      "ci"
+    ],
+    [
+      "npm",
+      "run",
+      "test",
+      "--workspace=@otrarondamas/api",
+      "--",
+      "--runInBand",
+      "messaging.controller.spec.ts"
+    ],
+    [
+      "npm",
+      "run",
+      "build",
+      "--workspace=@otrarondamas/api"
+    ]
+  ],
+  "required_tests": [
+    "CMD-001",
+    "CMD-002",
+    "CMD-003"
+  ]
+}
