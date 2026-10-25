@@ -107,13 +107,21 @@ def test_runner_executes_generator_and_validator_inside_isolated_worktree(
     from invariants_catalog import build_default_registry as build_invariants
     from kernel.factory_spec_loader import FactorySpecLoader
     from kernel.run_manager import RunManager
+    from kernel.run_scope import RunScope
 
     workspace = adapter(product_repo, tmp_path / "factory-workspaces")
     factory_spec = FactorySpecLoader().load()
     run_manager = RunManager(
         pipeline=factory_spec.pipeline, factory_version=factory_spec.version
     )
-    run = run_manager.create_run()
+    scope = RunScope(
+        scope_id="SCOPE-WAPSELL-E2E",
+        scope_version="1.0.0",
+        required_stages=("Code", "Validation"),
+        required_tests=("INV-001", "INV-002", "EVAL-001"),
+        required_evidence_agents=("generator", "validator"),
+    )
+    run = run_manager.create_run(scope=scope)
     run_manager.advance_stage(run, "Code")
 
     registry = AgentRegistry()
