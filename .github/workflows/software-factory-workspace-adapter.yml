@@ -3,14 +3,18 @@ name: Software Factory workspace adapter
 on:
   pull_request:
     paths:
+      - "software-factory/agents/**"
       - "software-factory/integrations/**"
+      - "software-factory/tests/test_claude_code_agent.py"
       - "software-factory/tests/test_git_workspace.py"
       - ".github/workflows/software-factory-workspace-adapter.yml"
   push:
     branches:
       - main
     paths:
+      - "software-factory/agents/**"
       - "software-factory/integrations/**"
+      - "software-factory/tests/test_claude_code_agent.py"
       - "software-factory/tests/test_git_workspace.py"
       - ".github/workflows/software-factory-workspace-adapter.yml"
 
@@ -30,7 +34,7 @@ jobs:
           python-version: "3.11"
       - name: Install test runner
         run: python -m pip install --disable-pip-version-check pytest
-      - name: Test isolated Wapsell Git workspace
+      - name: Test bounded code agent and isolated Wapsell workspace
         env:
           PYTHONPATH: software-factory
-        run: python -m pytest software-factory/tests/test_git_workspace.py -q
+        run: python -m pytest software-factory/tests/test_claude_code_agent.py software-factory/tests/test_git_workspace.py -q
