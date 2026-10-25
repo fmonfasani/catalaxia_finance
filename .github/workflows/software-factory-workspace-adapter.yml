@@ -42,6 +42,8 @@ jobs:
           python-version: "3.11"
       - name: Install test runner
         run: python -m pip install --disable-pip-version-check pytest
+      - name: Compile factory code and task entrypoint
+        run: python -m compileall -q software-factory/agents software-factory/integrations software-factory/scripts
       - name: Test bounded code agent and isolated Wapsell workspace
         env:
           PYTHONPATH: software-factory
