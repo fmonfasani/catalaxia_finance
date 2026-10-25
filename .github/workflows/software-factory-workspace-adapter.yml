@@ -6,6 +6,7 @@ on:
       - "software-factory/agents/**"
       - "software-factory/integrations/**"
       - "software-factory/tests/test_claude_code_agent.py"
+      - "software-factory/tests/test_command_validator.py"
       - "software-factory/tests/test_git_workspace.py"
       - ".github/workflows/software-factory-workspace-adapter.yml"
   push:
@@ -37,4 +38,4 @@ jobs:
       - name: Test bounded code agent and isolated Wapsell workspace
         env:
           PYTHONPATH: software-factory
-        run: python -m pytest software-factory/tests/test_claude_code_agent.py software-factory/tests/test_git_workspace.py -q
+        run: python -m pytest software-factory/tests/test_claude_code_agent.py software-factory/tests/test_command_validator.py software-factory/tests/test_git_workspace.py -q
