@@ -183,3 +183,68 @@ def test_runner_executes_generator_and_validator_inside_isolated_worktree(
     assert generated.is_file()
     assert generated.resolve().is_relative_to(Path(report["worktree"]).resolve())
     assert git(product_repo, "branch", "--show-current") == "main"
+
+
+def test_runner_executes_claude_code_and_command_validation_in_same_run(
+    product_repo: Path, tmp_path: Path
+) -> None:
+    import sys
+
+    from agents.claude_code import ClaudeCodeAgent
+    from agents.command_validator import CommandValidatorAgent
+    from coordinator.agent_registry import AgentRegistry
+    from coordinator.coordinator import Coordinator
+    from contracts_catalog import build_default_registry as build_contracts
+    from integrations.wapsell_task_runner import WapsellTaskRunner
+    from kernel.factory_spec_loader import FactorySpecLoader
+    from kernel.run_manager import RunManager
+    from kernel.run_scope import RunScope
+
+    target = "apps/api/src/messaging/agent-demo.spec.ts"
+    script = (
+        "from pathlib import Path; "
+        f"p=Path({target!r}); p.parent.mkdir(parents=True, exist_ok=True); "
+        "p.write_text('export {};\\n', encoding='utf-8')"
+    )
+    workspace = adapter(product_repo, tmp_path / "factory-workspaces")
+    factory_spec = FactorySpecLoader().load()
+    run_manager = RunManager(
+        pipeline=factory_spec.pipeline, factory_version=factory_spec.version
+    )
+    scope = RunScope(
+        scope_id="SCOPE-WAPSELL-CLAUDE-E2E",
+        scope_version="1.0.0",
+        required_stages=("Code", "Validation"),
+        required_tests=("CMD-001",),
+        required_evidence_agents=("generator", "validator"),
+    )
+    run = run_manager.create_run(scope=scope)
+    run_manager.advance_stage(run, "Code")
+
+    registry = AgentRegistry()
+    registry.register(ClaudeCodeAgent(command=(sys.executable, "-c", script)))
+    registry.register(CommandValidatorAgent())
+    coordinator = Coordinator(
+        run_manager=run_manager,
+        registry=registry,
+        contract_registry=build_contracts(),
+    )
+    runner = WapsellTaskRunner(workspace, coordinator)
+
+    report = runner.execute_claude_task(
+        task_id="TASK-CLAUDE-E2E-001",
+        run=run,
+        requirement="Crear un archivo TypeScript de prueba dentro de Mensajería",
+        allowed_patterns=[target],
+        validation_commands=(
+            ("python", "-c", f"from pathlib import Path; assert Path({target!r}).is_file()"),
+        ),
+    )
+
+    assert report["status"] == "COMPLETED"
+    assert report["changed_files"] == [target]
+    assert report["path_violations"] == []
+    assert report["delivery_eligible"] is True
+    assert report["push_performed"] is False
+    assert report["merge_performed"] is False
+
