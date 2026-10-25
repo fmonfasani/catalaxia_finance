@@ -18,9 +18,12 @@ on:
     paths:
       - "software-factory/agents/**"
       - "software-factory/integrations/**"
+      - "software-factory/scripts/**"
+      - "software-factory/tasks/**"
       - "software-factory/tests/test_claude_code_agent.py"
       - "software-factory/tests/test_command_validator.py"
       - "software-factory/tests/test_git_workspace.py"
+      - ".github/workflows/wapsell-first-agent-task.yml"
       - ".github/workflows/software-factory-workspace-adapter.yml"
 
 permissions:
