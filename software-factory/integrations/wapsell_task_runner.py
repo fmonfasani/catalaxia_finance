@@ -10,6 +10,8 @@ from dataclasses import replace
 from pathlib import Path
 from typing import Any, Callable
 
+from agents.claude_code import ClaudeCodeInput
+from agents.command_validator import CommandValidatorInput
 from agents.generator import GeneratorInput
 from coordinator.coordinator import Coordinator
 from integrations.git_workspace import GitWorkspace
@@ -97,6 +99,76 @@ class WapsellTaskRunner:
             "allowed_patterns": patterns,
             "path_violations": violations,
             "delivery_eligible": run.status.value == "COMPLETED" and not violations,
+            "push_performed": False,
+            "merge_performed": False,
+            "project_context": context,
+        }
+
+    def execute_claude_task(
+        self,
+        *,
+        task_id: str,
+        run: Run,
+        requirement: str,
+        validation_commands: tuple[tuple[str, ...], ...],
+        allowed_patterns: list[str],
+        base_ref: str = "main",
+    ) -> dict[str, Any]:
+        """Execute Claude Code -> real command validation in an isolated Wapsell worktree.
+
+        The caller must register ClaudeCodeAgent as "generator" and
+        CommandValidatorAgent as "validator" in the Coordinator registry.
+        The task definition supplies explicit path scope and trusted validation
+        commands; the coding agent cannot choose or modify those gates.
+        """
+        if not requirement.strip():
+            raise ValueError("requirement no puede estar vacío")
+        if not allowed_patterns:
+            raise ValueError("allowed_patterns debe declarar el alcance explícito")
+        if not validation_commands:
+            raise ValueError("validation_commands debe incluir al menos un comando")
+
+        prepared = self.workspace.prepare(task_id, base_ref=base_ref)
+        worktree = Path(prepared["worktree"])
+        if run.current_stage != "Code":
+            self.coordinator.run_manager.advance_stage(run, "Code")
+
+        code_input = ClaudeCodeInput(
+            task_id=task_id,
+            run_id=run.run_id,
+            requirement=requirement,
+            workspace=worktree,
+            allowed_paths=tuple(allowed_patterns),
+        )
+        validator_input = lambda artifact, evidence: CommandValidatorInput(
+            run_id=run.run_id,
+            workspace=worktree,
+            commands=validation_commands,
+        )
+        self.coordinator.execute_pipeline(
+            run,
+            [("Code", code_input), ("Validation", validator_input)],
+        )
+
+        changed_files = self.workspace.get_changed_files(task_id)
+        violations = self.workspace.validate_changed_paths(task_id, allowed_patterns)
+        context = self.workspace.get_project_context(task_id)
+        delivery_eligible = (
+            run.status.value == "COMPLETED"
+            and bool(changed_files)
+            and not violations
+        )
+        return {
+            "task_id": task_id,
+            "run_id": run.run_id,
+            "status": run.status.value,
+            "worktree": str(worktree),
+            "branch": prepared["branch"],
+            "base_sha": prepared["base_sha"],
+            "changed_files": changed_files,
+            "allowed_patterns": allowed_patterns,
+            "path_violations": violations,
+            "delivery_eligible": delivery_eligible,
             "push_performed": False,
             "merge_performed": False,
             "project_context": context,

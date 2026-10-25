@@ -1,0 +1,65 @@
+name: First Wapsell agent task
+
+on:
+  workflow_dispatch:
+    inputs:
+      task_id:
+        description: "Task ID prefix; each run gets a unique suffix"
+        required: true
+        default: "MSG-CONTRACT-TEST-001"
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  execute-task:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Checkout software factory
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Check required secrets
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          WAPSELL_GITHUB_TOKEN: ${{ secrets.WAPSELL_GITHUB_TOKEN }}
+        run: |
+          test -n "$ANTHROPIC_API_KEY" || (echo "::error::Configure ANTHROPIC_API_KEY in repository secrets" && exit 1)
+          test -n "$WAPSELL_GITHUB_TOKEN" || (echo "::error::Configure WAPSELL_GITHUB_TOKEN with Contents and Pull requests write access to fmonfasani/otrarondamas" && exit 1)
+
+      - name: Install Claude Code CLI
+        run: npm install --global @anthropic-ai/claude-code
+
+      - name: Clone Wapsell
+        run: git clone https://github.com/fmonfasani/otrarondamas.git "$RUNNER_TEMP/wapsell"
+
+      - name: Configure GitHub authentication for product push
+        env:
+          WAPSELL_GITHUB_TOKEN: ${{ secrets.WAPSELL_GITHUB_TOKEN }}
+        run: |
+          auth="$(printf 'x-access-token:%s' "$WAPSELL_GITHUB_TOKEN" | base64 -w0)"
+          git -C "$RUNNER_TEMP/wapsell" config http.https://github.com/.extraheader "AUTHORIZATION: basic $auth"
+
+      - name: Run bounded agent task and open PR after validation
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          WAPSELL_GITHUB_TOKEN: ${{ secrets.WAPSELL_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.WAPSELL_GITHUB_TOKEN }}
+          PYTHONPATH: software-factory
+        run: |
+          python software-factory/scripts/run_wapsell_task.py \
+            --config software-factory/tasks/wapsell-messaging-contract-tests.json \
+            --repository "$RUNNER_TEMP/wapsell" \
+            --workspaces-root "$RUNNER_TEMP/wapsell-workspaces" \
+            --task-id "${{ inputs.task_id }}-${{ github.run_id }}"
