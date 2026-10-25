@@ -28,7 +28,7 @@ def init_repo(path: Path) -> Path:
 def fake_command_that_writes(path_name: str) -> tuple[str, ...]:
     script = (
         "from pathlib import Path; "
-        f"p=Path({path_name!r}); p.parent.mkdir(parents=True, exist_ok=True); p.write_text('generated\\\\n', encoding='utf-8'); "
+        f"p=Path({path_name!r}); p.parent.mkdir(parents=True, exist_ok=True); p.write_text('generated\\n', encoding='utf-8'); "
         "print('completed')"
     )
     return (sys.executable, "-c", script)
