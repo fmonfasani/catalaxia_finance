@@ -9,6 +9,8 @@ from __future__ import annotations
 import fnmatch
 import json
 import subprocess
+from datetime import datetime, timezone
+from uuid import uuid4
 from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
 from typing import Any, Sequence
@@ -35,8 +37,8 @@ class ClaudeCodeAgent(BaseAgent):
     """
 
     metadata = AgentMetadata(
-        id="claude_code",
-        name="Claude Code",
+        id="generator",
+        name="Claude Code Generator",
         role=AgentRole.GENERATOR,
         input_contract="ClaudeCodeInput: {task_id, run_id, requirement, workspace, allowed_paths}",
         output_contract="dict: {changed_files, path_violations, exit_code, delivery_eligible}",
@@ -161,7 +163,25 @@ class ClaudeCodeAgent(BaseAgent):
                 except json.JSONDecodeError:
                     parsed_output = result.stdout[-4000:]
             eligible = result.returncode == 0 and not violations and bool(changed_files)
+            artifact = None
+            code_reference = ", ".join(changed_files)
+            if changed_files:
+                artifact = {
+                    "artifact_id": f"ART-{uuid4().hex[:12]}",
+                    "run_id": input_data.run_id,
+                    "stage": "Code",
+                    "agent_id": self.metadata.id,
+                    "type": "source_changes",
+                    "reference": code_reference,
+                    "created_at": datetime.now(timezone.utc).isoformat(),
+                    "parent_artifact_id": None,
+                    "requirement_ref": input_data.requirement,
+                    "specification_ref": input_data.task_id,
+                    "evidence_ref": None,
+                }
             output = {
+                "artifact": artifact,
+                "code_reference": code_reference,
                 "task_id": input_data.task_id,
                 "run_id": input_data.run_id,
                 "changed_files": changed_files,
@@ -176,7 +196,7 @@ class ClaudeCodeAgent(BaseAgent):
                 "merge_performed": False,
                 "deploy_performed": False,
             }
-            status = "OK" if result.returncode == 0 and not violations else "ERROR"
+            status = "OK" if eligible else "ERROR"
             return AgentResult(
                 agent_id=self.metadata.id,
                 input={
