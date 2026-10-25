@@ -164,7 +164,7 @@ def test_runner_executes_generator_and_validator_inside_isolated_worktree(
         validation_input_builder=validation_input,
     )
 
-    assert report["status"] == "COMPLETED"
+    assert report["status"] == "COMPLETED", {"report": report, "evidence": run.evidence}
     assert report["delivery_eligible"] is True
     assert report["path_violations"] == []
     assert report["push_performed"] is False
