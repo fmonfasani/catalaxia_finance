@@ -1,0 +1,36 @@
+name: Software Factory workspace adapter
+
+on:
+  pull_request:
+    paths:
+      - "software-factory/integrations/**"
+      - "software-factory/tests/test_git_workspace.py"
+      - ".github/workflows/software-factory-workspace-adapter.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "software-factory/integrations/**"
+      - "software-factory/tests/test_git_workspace.py"
+      - ".github/workflows/software-factory-workspace-adapter.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  git-workspace-adapter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install test runner
+        run: python -m pip install --disable-pip-version-check pytest
+      - name: Test isolated Wapsell Git workspace
+        env:
+          PYTHONPATH: software-factory
+        run: python -m pytest software-factory/tests/test_git_workspace.py -q
