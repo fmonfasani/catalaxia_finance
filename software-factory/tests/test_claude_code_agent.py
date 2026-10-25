@@ -29,7 +29,7 @@ def fake_command_that_writes(path_name: str) -> tuple[str, ...]:
     script = (
         "from pathlib import Path; "
         f"Path({path_name!r}).write_text('generated\\n', encoding='utf-8'); "
-        "print('{\\"result\\":\\"completed\\"}')"
+        "print('completed')"
     )
     return (sys.executable, "-c", script)
 
