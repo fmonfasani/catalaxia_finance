@@ -90,3 +90,96 @@ def test_context_marks_delivery_as_manual(product_repo: Path, tmp_path: Path) ->
     assert context["push_performed"] is False
     assert context["merge_performed"] is False
     assert context["changed_files"] == []
+
+
+
+def test_runner_executes_generator_and_validator_inside_isolated_worktree(
+    product_repo: Path, tmp_path: Path
+) -> None:
+    from agents.generator import GeneratorAgent, GeneratorInput
+    from agents.specification import FieldSpec, Specification
+    from agents.validator import ValidatorAgent, ValidatorInput
+    from contracts_catalog import build_default_registry as build_contracts
+    from coordinator.agent_registry import AgentRegistry
+    from coordinator.coordinator import Coordinator
+    from evals_catalog import build_default_registry as build_evals
+    from integrations.wapsell_task_runner import WapsellTaskRunner
+    from invariants_catalog import build_default_registry as build_invariants
+    from kernel.factory_spec_loader import FactorySpecLoader
+    from kernel.run_manager import RunManager
+    from kernel.run_scope import RunScope
+
+    workspace = adapter(product_repo, tmp_path / "factory-workspaces")
+    factory_spec = FactorySpecLoader().load()
+    run_manager = RunManager(
+        pipeline=factory_spec.pipeline, factory_version=factory_spec.version
+    )
+    scope = RunScope(
+        scope_id="SCOPE-WAPSELL-E2E",
+        scope_version="1.0.0",
+        required_stages=("Code", "Validation"),
+        required_tests=("INV-001", "INV-002", "EVAL-001"),
+        required_evidence_agents=("generator", "validator"),
+    )
+    run = run_manager.create_run(scope=scope)
+    run_manager.advance_stage(run, "Code")
+
+    registry = AgentRegistry()
+    registry.register(GeneratorAgent())
+    registry.register(ValidatorAgent())
+    coordinator = Coordinator(
+        run_manager=run_manager,
+        registry=registry,
+        contract_registry=build_contracts(),
+    )
+    runner = WapsellTaskRunner(workspace, coordinator)
+
+    requirement = "Alta de clientes con nombre, DNI unico y email obligatorios"
+    specification = Specification(
+        spec_id="SPEC-WAPSELL-001",
+        entity_name="Cliente",
+        requirement_ref=requirement,
+        fields=(
+            FieldSpec("nombre", "str", required=True),
+            FieldSpec("dni", "str", required=True, unique=True),
+            FieldSpec("email", "str", required=True),
+        ),
+    )
+    generator_input = GeneratorInput(
+        run_id=run.run_id,
+        requirement=requirement,
+        specification=specification,
+    )
+
+    def validation_input(artifact, evidence):
+        return ValidatorInput(
+            run_id=run.run_id,
+            scope="Generator",
+            artifact=artifact,
+            evidence=evidence,
+            context={
+                "code_reference": artifact["reference"],
+                "registros": [{"dni": "30111222333"}],
+            },
+            invariant_registry=build_invariants(),
+            eval_registry=build_evals(),
+        )
+
+    report = runner.execute(
+        task_id="TASK-E2E-001",
+        run=run,
+        generator_input=generator_input,
+        validation_input_builder=validation_input,
+    )
+
+    assert report["status"] == "COMPLETED", {"report": report, "evidence": run.evidence}
+    assert report["delivery_eligible"] is True
+    assert report["path_violations"] == []
+    assert report["push_performed"] is False
+    assert report["merge_performed"] is False
+    assert report["changed_files"]
+    assert all(path.startswith(f"{run.run_id}/") for path in report["changed_files"])
+    generated = Path(run.artifacts[-1]["reference"])
+    assert generated.is_file()
+    assert generated.resolve().is_relative_to(Path(report["worktree"]).resolve())
+    assert git(product_repo, "branch", "--show-current") == "main"
